@@ -1,0 +1,32 @@
+{
+  "name": "starship-butler-config-providrer",
+  "type": "module",
+  "version": "0.0.0",
+  "description": "Your best starship butler.",
+  "author": "Lumirelle <shabbyacc@outlook.com>",
+  "license": "MIT",
+  "funding": "https://github.com/sponsors/lumirelle",
+  "homepage": "https://github.com/lumirelle/starship-butler#readme",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/lumirelle/starship-butler.git"
+  },
+  "bugs": "https://github.com/lumirelle/starship-butler/issues",
+  "keywords": [],
+  "sideEffects": false,
+  "exports": {
+    ".": "./dist/index.mjs"
+  },
+  "main": "./dist/index.mjs",
+  "module": "./dist/index.mjs",
+  "types": "./dist/index.d.mts",
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "build": "unbuild",
+    "dev": "unbuild --stub",
+    "prepublishOnly": "nr build",
+    "start": "tsx src/index.ts"
+  }
+}

@@ -10,6 +10,7 @@ export default definePrompt({
   scopeOverrides: {
     feat: [
       'butler',
+      'config-provider',
     ],
     chore: [
       'deps',
