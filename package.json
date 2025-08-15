@@ -2,7 +2,7 @@
   "type": "module",
   "version": "0.0.0",
   "private": true,
-  "packageManager": "pnpm@10.4.0",
+  "packageManager": "pnpm@10.14.0",
   "scripts": {
     "build": "nr -r build",
     "dev": "nr -r dev",
@@ -16,21 +16,23 @@
     "prepare": "simple-git-hooks"
   },
   "devDependencies": {
-    "@antfu/eslint-config": "catalog:",
-    "@antfu/ni": "catalog:",
-    "@antfu/utils": "catalog:",
-    "@types/node": "catalog:",
-    "bumpp": "catalog:",
-    "eslint": "catalog:",
-    "lint-staged": "catalog:",
-    "pnpm": "catalog:",
-    "simple-git-hooks": "catalog:",
+    "@antfu/eslint-config": "catalog:dev",
+    "@antfu/ni": "catalog:dev",
+    "@antfu/utils": "catalog:dev",
+    "@types/node": "catalog:dev",
+    "bumpp": "catalog:dev",
+    "czg": "catalog:dev",
+    "eslint": "catalog:dev",
+    "lint-staged": "catalog:dev",
+    "pnpm": "catalog:dev",
+    "simple-git-hooks": "catalog:dev",
     "starship-butler": "workspace:*",
-    "tsx": "catalog:",
-    "typescript": "catalog:",
-    "unbuild": "catalog:",
-    "vite": "catalog:",
-    "vitest": "catalog:"
+    "taze": "catalog:dev",
+    "tsx": "catalog:dev",
+    "typescript": "catalog:dev",
+    "unbuild": "catalog:dev",
+    "vite": "catalog:dev",
+    "vitest": "catalog:dev"
   },
   "simple-git-hooks": {
     "pre-commit": "pnpm lint-staged"

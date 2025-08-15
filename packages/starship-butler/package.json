@@ -33,8 +33,8 @@
     "start": "tsx src/cli.ts"
   },
   "dependencies": {
-    "c12": "catalog:",
-    "cac": "catalog:",
-    "consola": "catalog:"
+    "c12": "catalog:butler",
+    "cac": "catalog:butler",
+    "consola": "catalog:prod"
   }
 }
