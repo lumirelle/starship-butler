@@ -13,6 +13,9 @@ catalog:
   '@unocss/reset': ^65.5.0
   '@vueuse/core': ^12.7.0
   bumpp: ^10.0.3
+  c12: ^3.2.0
+  cac: ^6.7.14
+  consola: ^3.4.2
   eslint: ^9.20.1
   floating-vue: ^5.2.2
   lint-staged: ^15.4.3

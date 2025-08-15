@@ -20,6 +20,9 @@
   "main": "./dist/index.mjs",
   "module": "./dist/index.mjs",
   "types": "./dist/index.d.mts",
+  "bin": {
+    "butler": "bin/index.mjs"
+  },
   "files": [
     "dist"
   ],
@@ -27,6 +30,11 @@
     "build": "unbuild",
     "dev": "unbuild --stub",
     "prepublishOnly": "nr build",
-    "start": "tsx src/index.ts"
+    "start": "tsx src/cli.ts"
+  },
+  "dependencies": {
+    "c12": "catalog:",
+    "cac": "catalog:",
+    "consola": "catalog:"
   }
 }
