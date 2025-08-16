@@ -1,40 +1,12 @@
 import type { UserInputConfig } from 'c12'
 import type { ConfigureOptions } from './types'
 import consola from 'consola'
+import { actions } from './actions'
 
-interface Action {
-  /**
-   * Action name
-   */
-  name: string
-  /**
-   * Prehandler for the action, if returns `false` or throw an error, the handler will not be executed.
-   * @param options The options from user config and user command line input
-   * @returns Whether the action handler should be executed
-   */
-  prehandler?: (options: Partial<ConfigureOptions>) => boolean
-  /**
-   * Handler for the action
-   * @param options The options from user config and user command line input
-   */
-  handler: (options: Partial<ConfigureOptions>) => void
-  /**
-   * Run after handler is executed, useful for cleanup or other post-processing logic.
-   * @param options The options from user config and user command line input
-   */
-  posthandler?: (options: Partial<ConfigureOptions>) => void
-}
-
-export const actions: Action[] = [
-  {
-    name: 'Action 1',
-    prehandler: () => false,
-    handler: async (options) => {
-      consola.log('Action 1 executed', options)
-    },
-  },
-]
-
+/**
+ * Running actions to configure your system.
+ * @param options User configuration and command line options
+ */
 export function runActions(options: UserInputConfig & Partial<ConfigureOptions>): void {
   if (options.verbose) {
     consola.info('Running actions with options:', options)

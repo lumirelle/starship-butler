@@ -1,5 +1,5 @@
 {
-  "name": "starship-butler-config-providrer",
+  "name": "starship-butler-config-provider",
   "type": "module",
   "version": "0.0.0",
   "description": "Your best starship butler.",
@@ -28,5 +28,9 @@
     "dev": "unbuild --stub",
     "prepublishOnly": "nr build",
     "start": "tsx src/index.ts"
+  },
+  "dependencies": {
+    "c12": "catalog:prod",
+    "consola": "catalog:prod"
   }
 }

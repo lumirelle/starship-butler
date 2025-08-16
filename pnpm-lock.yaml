@@ -6,9 +6,6 @@ settings:
 
 catalogs:
   butler:
-    c12:
-      specifier: ^3.2.0
-      version: 3.2.0
     cac:
       specifier: ^6.7.14
       version: 6.7.14
@@ -99,6 +96,9 @@ catalogs:
       specifier: ^3.5.18
       version: 3.5.18
   prod:
+    c12:
+      specifier: ^3.2.0
+      version: 3.2.0
     consola:
       specifier: ^3.4.2
       version: 3.4.2
@@ -198,10 +198,19 @@ importers:
         specifier: catalog:docs
         version: 3.5.18(typescript@5.9.2)
 
+  packages/config-provider:
+    dependencies:
+      c12:
+        specifier: catalog:prod
+        version: 3.2.0
+      consola:
+        specifier: catalog:prod
+        version: 3.4.2
+
   packages/starship-butler:
     dependencies:
       c12:
-        specifier: catalog:butler
+        specifier: catalog:prod
         version: 3.2.0
       cac:
         specifier: catalog:butler
@@ -209,6 +218,9 @@ importers:
       consola:
         specifier: catalog:prod
         version: 3.4.2
+      starship-butler-config-provider:
+        specifier: workspace:../config-provider
+        version: link:../config-provider
 
 packages:
 

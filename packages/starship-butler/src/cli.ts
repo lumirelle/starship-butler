@@ -2,8 +2,8 @@ import type { ConfigureOptions } from 'starship-butler-config-provider'
 import process from 'node:process'
 import { loadConfig } from 'c12'
 import cac from 'cac'
+import { runActions } from 'starship-butler-config-provider'
 import { name, version } from '../package.json'
-import { runActions } from './configure'
 import { mergeOptions } from './utils'
 
 const { config: configOptions } = await loadConfig({ name: 'butler' })
