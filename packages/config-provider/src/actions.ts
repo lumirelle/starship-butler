@@ -1,38 +1,41 @@
-import type { ConfigureOptions } from './types'
+import type { UserInputConfig } from 'c12'
+import type { Action, ConfigureOptions } from './types'
 import consola from 'consola'
-
-interface Action {
-  /**
-   * Action name
-   */
-  name: string
-  /**
-   * Prehandler for the action, if returns `false` or throw an error, the handler will not be executed.
-   * @param options The options from user config and user command line input
-   * @returns Whether the action handler should be executed
-   */
-  prehandler?: (options: Partial<ConfigureOptions>) => boolean
-  /**
-   * Handler for the action
-   * @param options The options from user config and user command line input
-   */
-  handler: (options: Partial<ConfigureOptions>) => void
-  /**
-   * Run after handler is executed, useful for cleanup or other post-processing logic.
-   * @param options The options from user config and user command line input
-   */
-  posthandler?: (options: Partial<ConfigureOptions>) => void
-}
 
 /**
  * Predefined actions to configure your system.
  */
 export const actions: Action[] = [
   {
-    name: 'Action 1',
+    name: 'Action 1 with prehandler returns true',
+    prehandler: () => true,
+    handler: async () => {
+    },
+  },
+  {
+    name: 'Action 2 with prehandler returns false',
     prehandler: () => false,
-    handler: async (options) => {
-      consola.log('Action 1 executed', options)
+    handler: async () => {
     },
   },
 ]
+
+export function filterActions(options: UserInputConfig & Partial<ConfigureOptions>): Action[] {
+  return actions.filter((action) => {
+    if (options.include) {
+      const shouldIncluded = options.include === action.name || (Array.isArray(options.include) && options.include.includes(action.name))
+      if (!shouldIncluded) {
+        consola.info(`Skipping "${action.name}" as it's not included.`)
+      }
+      return shouldIncluded
+    }
+    if (options.exclude) {
+      const shouldExcluded = options.exclude !== action.name && !(Array.isArray(options.exclude) && options.exclude.includes(action.name))
+      if (shouldExcluded) {
+        consola.info(`Skipping "${action.name}" as it's excluded.`)
+      }
+      return shouldExcluded
+    }
+    return true
+  })
+}

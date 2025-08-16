@@ -43,6 +43,9 @@ catalogs:
     taze:
       specifier: ^19.1.0
       version: 19.1.0
+    tinyexec:
+      specifier: ^1.0.1
+      version: 1.0.1
     tsx:
       specifier: ^4.20.4
       version: 4.20.4
@@ -221,6 +224,10 @@ importers:
       starship-butler-config-provider:
         specifier: workspace:../config-provider
         version: link:../config-provider
+    devDependencies:
+      tinyexec:
+        specifier: catalog:dev
+        version: 1.0.1
 
 packages:
 

@@ -1,12 +1,11 @@
 import type { ConfigureOptions } from 'starship-butler-config-provider'
 import process from 'node:process'
-import { loadConfig } from 'c12'
 import cac from 'cac'
 import { runActions } from 'starship-butler-config-provider'
 import { name, version } from '../package.json'
-import { mergeOptions } from './utils'
+import { loadConfig, mergeOptions } from './utils'
 
-const { config: configOptions } = await loadConfig({ name: 'butler' })
+const configOptions = await loadConfig()
 
 const cli = cac(name)
 
@@ -19,7 +18,7 @@ cli
   .option('--verbose, -?', 'Show verbose output')
   .option('--dry-run, -d', 'Dry run')
   .action((options: Partial<ConfigureOptions>) => {
-    runActions(mergeOptions(configOptions, options))
+    runActions(mergeOptions(configOptions, 'config-provider', options))
   })
 
 cli.help()

@@ -19,6 +19,7 @@ catalogs:
     pnpm: ^10.14.0
     simple-git-hooks: ^2.13.1
     taze: ^19.1.0
+    tinyexec: ^1.0.1
     tsx: ^4.20.4
     typescript: ^5.9.2
     unbuild: ^3.6.0

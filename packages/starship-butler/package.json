@@ -37,5 +37,8 @@
     "cac": "catalog:butler",
     "consola": "catalog:prod",
     "starship-butler-config-provider": "workspace:../config-provider"
+  },
+  "devDependencies": {
+    "tinyexec": "catalog:dev"
   }
 }
