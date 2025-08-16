@@ -1,4 +1,4 @@
-import type { ConfigureOptions } from './types'
+import type { ConfigureOptions } from 'starship-butler-config-provider'
 import process from 'node:process'
 import { loadConfig } from 'c12'
 import cac from 'cac'
@@ -11,7 +11,7 @@ const { config: configOptions } = await loadConfig({ name: 'butler' })
 const cli = cac(name)
 
 cli
-  .command('configure', 'Let bulter configure you system.')
+  .command('configure', 'Let butler configure your system.')
   .alias('conf')
   .option('--include, -n [actions]', 'Include certain configure actions')
   .option('--exclude, -x [actions]', 'Exclude certain configure actions')
