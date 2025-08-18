@@ -12,7 +12,13 @@ import { copyConfig } from './handler'
 export const defaultActions: Action[] = [
   {
     name: 'Setting Up Nushell',
-    prehandler: () => process.env.APPDATA != null, // TODO: Support Unix-like system
+    prehandler: () => {
+      const shouldRun = process.env.APPDATA != null
+      if (!shouldRun) {
+        consola.info(`NU: Unix-like system support is a work in progress.`)
+      }
+      return shouldRun
+    }, // TODO: Support Unix-like system
     handler: async (options) => {
       const { force } = options
       const target = join(process.env.APPDATA!, 'nushell')
