@@ -244,6 +244,9 @@ importers:
       ansis:
         specifier: catalog:utils/prod
         version: 4.1.0
+      consola:
+        specifier: catalog:shared/prod
+        version: 3.4.2
 
 packages:
 

@@ -30,6 +30,7 @@
     "start": "tsx src/index.ts"
   },
   "dependencies": {
-    "ansis": "catalog:utils/prod"
+    "ansis": "catalog:utils/prod",
+    "consola": "catalog:shared/prod"
   }
 }
