@@ -30,7 +30,7 @@
     "start": "tsx src/index.ts"
   },
   "dependencies": {
-    "c12": "catalog:prod",
-    "consola": "catalog:prod"
+    "c12": "catalog:shared/prod",
+    "consola": "catalog:shared/prod"
   }
 }

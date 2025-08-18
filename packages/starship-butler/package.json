@@ -33,9 +33,9 @@
     "start": "tsx src/cli.ts"
   },
   "dependencies": {
-    "c12": "catalog:prod",
-    "cac": "catalog:butler",
-    "consola": "catalog:prod",
+    "c12": "catalog:shared/prod",
+    "cac": "catalog:butler/prod",
+    "consola": "catalog:shared/prod",
     "starship-butler-config-provider": "workspace:../config-provider"
   },
   "devDependencies": {
