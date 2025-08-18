@@ -12,11 +12,13 @@ export default definePrompt({
       'butler',
       'config-provider',
       'utils',
+      'types',
     ],
     refactor: [
       'butler',
       'config-provider',
       'utils',
+      'types',
     ],
     chore: [
       'deps',
