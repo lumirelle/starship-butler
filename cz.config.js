@@ -11,10 +11,12 @@ export default definePrompt({
     feat: [
       'butler',
       'config-provider',
+      'utils',
     ],
     refactor: [
       'butler',
       'config-provider',
+      'utils',
     ],
     chore: [
       'deps',

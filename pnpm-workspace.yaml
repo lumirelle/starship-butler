@@ -41,3 +41,5 @@ catalogs:
   prod:
     c12: ^3.2.0
     consola: ^3.4.2
+  utils/prod:
+    ansis: ^4.1.0
