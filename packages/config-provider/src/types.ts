@@ -1,14 +1,12 @@
+import type { OptionsBasic } from 'starship-butler-types'
+
 /**
- * Command line options for configuring the system.
+ * Basic options for config provider.
  */
-export interface ConfigureOptions {
-  /**
-   * User define actions, will cover default actions.
-   */
-  actions?: Action[]
-  /**
-   * Actions should be ran.
-   */
+interface ConfigProviderOptionsBasic extends OptionsBasic {
+/**
+ * Actions should be ran.
+ */
   include?: string[] | string
   /**
    * Actions should not be ran.
@@ -19,14 +17,30 @@ export interface ConfigureOptions {
    */
   force?: boolean
   /**
-   * Show verbose output.
-   */
-  verbose?: boolean
-  /**
    * Dry run.
    */
   dryRun?: boolean
 }
+
+/**
+ * Config options for config provider.
+ */
+export interface ConfigProviderOptionsFromConfig extends ConfigProviderOptionsBasic {
+  /**
+   * User define actions, will cover default actions.
+   */
+  actions?: Action[]
+}
+
+/**
+ * Command line options for config provider.
+ */
+export interface ConfigProviderOptionsFromCommandLine extends ConfigProviderOptionsBasic {}
+
+/**
+ * Config & Command line options for config provider.
+ */
+export type ConfigProviderOptions = ConfigProviderOptionsFromConfig & ConfigProviderOptionsFromCommandLine
 
 /**
  * Action interface for defining actions to run.
@@ -41,15 +55,15 @@ export interface Action {
    * @param options The options from user config and user command line input
    * @returns Whether the action handler should be executed
    */
-  prehandler?: (options: Partial<ConfigureOptions>) => boolean
+  prehandler?: (options: Partial<ConfigProviderOptions>) => boolean
   /**
    * Handler for the action
    * @param options The options from user config and user command line input
    */
-  handler: (options: Partial<ConfigureOptions>) => void
+  handler: (options: Partial<ConfigProviderOptions>) => void
   /**
    * Run after handler is executed, useful for cleanup or other post-processing logic.
    * @param options The options from user config and user command line input
    */
-  posthandler?: (options: Partial<ConfigureOptions>) => void
+  posthandler?: (options: Partial<ConfigProviderOptions>) => void
 }

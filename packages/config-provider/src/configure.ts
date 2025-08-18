@@ -1,5 +1,4 @@
-import type { UserInputConfig } from 'c12'
-import type { ConfigureOptions } from './types'
+import type { ConfigProviderOptions } from './types'
 import consola from 'consola'
 import { filterActions } from './actions'
 
@@ -7,7 +6,7 @@ import { filterActions } from './actions'
  * Running actions to configure your system. The entry of this package.
  * @param options User configuration and command line options
  */
-export function runActions(options: UserInputConfig & Partial<ConfigureOptions>): void {
+export function runActions(options: ConfigProviderOptions): void {
   consola.debug('[config-provider] Running actions with options:', options)
 
   if (options.include && options.exclude) {

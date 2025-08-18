@@ -32,6 +32,7 @@
   "dependencies": {
     "c12": "catalog:shared/prod",
     "consola": "catalog:shared/prod",
+    "starship-butler-types": "workspace:../types",
     "starship-butler-utils": "workspace:../utils"
   }
 }

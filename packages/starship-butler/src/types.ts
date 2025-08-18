@@ -1,5 +1,5 @@
-import type { ConfigureOptions } from 'starship-butler-config-provider'
+import type { ConfigProviderOptionsFromConfig } from 'starship-butler-config-provider'
 
 export interface ButlerConfig {
-  'config-provider': ConfigureOptions
+  'config-provider': ConfigProviderOptionsFromConfig
 }

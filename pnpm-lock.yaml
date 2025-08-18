@@ -213,6 +213,9 @@ importers:
       consola:
         specifier: catalog:shared/prod
         version: 3.4.2
+      starship-butler-types:
+        specifier: workspace:../types
+        version: link:../types
       starship-butler-utils:
         specifier: workspace:../utils
         version: link:../utils
@@ -231,6 +234,9 @@ importers:
       starship-butler-config-provider:
         specifier: workspace:../config-provider
         version: link:../config-provider
+      starship-butler-types:
+        specifier: workspace:../types
+        version: link:../types
       starship-butler-utils:
         specifier: workspace:../utils
         version: link:../utils
@@ -238,6 +244,8 @@ importers:
       tinyexec:
         specifier: catalog:dev
         version: 1.0.1
+
+  packages/types: {}
 
   packages/utils:
     dependencies:

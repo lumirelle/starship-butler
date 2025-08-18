@@ -1,5 +1,5 @@
 import type { UserInputConfig } from 'c12'
-import type { Action, ConfigureOptions } from './types'
+import type { Action, ConfigProviderOptions } from './types'
 import { join } from 'node:path'
 import process from 'node:process'
 import consola from 'consola'
@@ -43,7 +43,7 @@ export const defaultActions: Action[] = [
   },
 ]
 
-export function filterActions(options: UserInputConfig & Partial<ConfigureOptions>): Action[] {
+export function filterActions(options: UserInputConfig & Partial<ConfigProviderOptions>): Action[] {
   const effectActions = options.actions ? options.actions : defaultActions
   return effectActions.filter((action) => {
     if (options.include) {

@@ -37,6 +37,7 @@
     "cac": "catalog:butler/prod",
     "consola": "catalog:shared/prod",
     "starship-butler-config-provider": "workspace:../config-provider",
+    "starship-butler-types": "workspace:../types",
     "starship-butler-utils": "workspace:../utils"
   },
   "devDependencies": {
