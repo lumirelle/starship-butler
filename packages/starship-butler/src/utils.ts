@@ -28,7 +28,7 @@ export function mergeOptions<
  * @param config User config.
  * @returns User config as it is.
  */
-export function defineButlerConfig(config: UserInputConfig & Partial<ButlerConfig>): UserInputConfig & Partial<ButlerConfig> {
+export function defineButlerConfig(config: ButlerConfig): ButlerConfig {
   return config
 }
 
