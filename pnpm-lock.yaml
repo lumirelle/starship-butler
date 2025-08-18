@@ -5,7 +5,7 @@ settings:
   excludeLinksFromLockfile: false
 
 catalogs:
-  butler:
+  butler/prod:
     cac:
       specifier: ^6.7.14
       version: 6.7.14
@@ -98,16 +98,17 @@ catalogs:
     vue:
       specifier: ^3.5.18
       version: 3.5.18
-  prod:
-    ansis:
-      specifier: ^4.1.0
-      version: 4.1.0
+  shared/prod:
     c12:
       specifier: ^3.2.0
       version: 3.2.0
     consola:
       specifier: ^3.4.2
       version: 3.4.2
+  utils/prod:
+    ansis:
+      specifier: ^4.1.0
+      version: 4.1.0
 
 importers:
 
@@ -207,26 +208,32 @@ importers:
   packages/config-provider:
     dependencies:
       c12:
-        specifier: catalog:prod
+        specifier: catalog:shared/prod
         version: 3.2.0
       consola:
-        specifier: catalog:prod
+        specifier: catalog:shared/prod
         version: 3.4.2
+      starship-butler-utils:
+        specifier: workspace:../utils
+        version: link:../utils
 
   packages/starship-butler:
     dependencies:
       c12:
-        specifier: catalog:prod
+        specifier: catalog:shared/prod
         version: 3.2.0
       cac:
-        specifier: catalog:butler
+        specifier: catalog:butler/prod
         version: 6.7.14
       consola:
-        specifier: catalog:prod
+        specifier: catalog:shared/prod
         version: 3.4.2
       starship-butler-config-provider:
         specifier: workspace:../config-provider
         version: link:../config-provider
+      starship-butler-utils:
+        specifier: workspace:../utils
+        version: link:../utils
     devDependencies:
       tinyexec:
         specifier: catalog:dev
@@ -235,7 +242,7 @@ importers:
   packages/utils:
     dependencies:
       ansis:
-        specifier: catalog:prod
+        specifier: catalog:utils/prod
         version: 4.1.0
 
 packages:
