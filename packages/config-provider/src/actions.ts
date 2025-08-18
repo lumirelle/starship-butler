@@ -5,7 +5,7 @@ import consola from 'consola'
 /**
  * Predefined actions to configure your system.
  */
-export const actions: Action[] = [
+export const defaultActions: Action[] = [
   {
     name: 'Action 1 with prehandler returns true',
     prehandler: () => true,
@@ -21,7 +21,8 @@ export const actions: Action[] = [
 ]
 
 export function filterActions(options: UserInputConfig & Partial<ConfigureOptions>): Action[] {
-  return actions.filter((action) => {
+  const effectActions = options.actions ? options.actions : defaultActions
+  return effectActions.filter((action) => {
     if (options.include) {
       const shouldIncluded = options.include === action.name || (Array.isArray(options.include) && options.include.includes(action.name))
       if (!shouldIncluded) {

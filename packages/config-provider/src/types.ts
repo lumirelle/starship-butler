@@ -2,11 +2,30 @@
  * Command line options for configuring the system.
  */
 export interface ConfigureOptions {
-  include: string[] | string
-  exclude: string[] | string
-  force: boolean
-  verbose: boolean
-  dryRun: boolean
+  /**
+   * User define actions, will cover default actions.
+   */
+  actions?: Action[]
+  /**
+   * Actions should be ran.
+   */
+  include?: string[] | string
+  /**
+   * Actions should not be ran.
+   */
+  exclude?: string[] | string
+  /**
+   * Run actions forcedly
+   */
+  force?: boolean
+  /**
+   * Show verbose output.
+   */
+  verbose?: boolean
+  /**
+   * Dry run.
+   */
+  dryRun?: boolean
 }
 
 /**
