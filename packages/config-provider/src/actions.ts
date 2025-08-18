@@ -1,21 +1,38 @@
 import type { UserInputConfig } from 'c12'
 import type { Action, ConfigureOptions } from './types'
+import { join } from 'node:path'
+import process from 'node:process'
 import consola from 'consola'
+import { fs } from 'starship-butler-utils'
+import { copyConfig } from './handler'
 
 /**
  * Predefined actions to configure your system.
  */
 export const defaultActions: Action[] = [
   {
-    name: 'Action 1 with prehandler returns true',
-    prehandler: () => true,
-    handler: async () => {
-    },
-  },
-  {
-    name: 'Action 2 with prehandler returns false',
-    prehandler: () => false,
-    handler: async () => {
+    name: 'Setting Up Nushell',
+    prehandler: () => process.env.APPDATA != null, // TODO: Support Unix-like system
+    handler: async (options) => {
+      const { force } = options
+      const target = join(process.env.APPDATA!, 'nushell')
+      fs.ensureDir(target)
+      const handlerOperations = [
+        { source: 'shell/nu/config.nu', target: join(target, 'config.nu') },
+        { source: 'shell/nu/defs.nu', target: join(target, 'defs.nu') },
+        { source: 'shell/nu/env.nu', target: join(target, 'env.nu') },
+      ]
+      try {
+        for (const operation of handlerOperations) {
+          copyConfig(operation.source, operation.target, { force })
+        }
+      }
+      catch (error) {
+        consola.error(`Failed to copy config: ${error}`)
+        for (const operation of handlerOperations) {
+          fs.removeFile(operation.target)
+        }
+      }
     },
   },
 ]

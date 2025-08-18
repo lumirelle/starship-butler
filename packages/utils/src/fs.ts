@@ -82,9 +82,17 @@ export function removeSymlink(targetPath: string): boolean {
 }
 
 export function copyFile(sourcePath: string, targetPath: string, force: boolean = false): boolean {
-  if (existsSync(targetPath) && !force) {
-    consola.warn(`COPY: File already exists: ${highlight.info(targetPath)}, skip`)
-    return false
+  if (existsSync(targetPath)) {
+    if (!force) {
+      consola.warn(`COPY: File already exists: ${highlight.info(targetPath)}, skip`)
+      return false
+    }
+    else {
+      if (lstatSync(targetPath).isSymbolicLink()) {
+        consola.debug(`Try to force override a symbolic link, will remove it first.`)
+        removeSymlink(targetPath)
+      }
+    }
   }
 
   copyFileSync(sourcePath, targetPath, force ? constants.COPYFILE_FICLONE : constants.COPYFILE_EXCL)
