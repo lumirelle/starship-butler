@@ -13,7 +13,8 @@
     "release": "bumpp -r && pnpm -r publish",
     "test": "vitest",
     "typecheck": "tsc --noEmit",
-    "prepare": "simple-git-hooks"
+    "prepare": "simple-git-hooks",
+    "start": "cd ./packages/starship-butler && nr start"
   },
   "devDependencies": {
     "@antfu/eslint-config": "catalog:dev",
