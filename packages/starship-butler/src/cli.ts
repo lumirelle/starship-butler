@@ -17,7 +17,7 @@ cli
   .option('--force, -f', 'Force configure')
   .option('--verbose, -?', 'Show verbose output')
   .option('--dry-run, -d', 'Dry run')
-  .action((options: Partial<ConfigProviderOptionsFromCommandLine>) => {
+  .action((options: ConfigProviderOptionsFromCommandLine) => {
     runActions(mergeOptions(config, 'config-provider', options))
   })
 
