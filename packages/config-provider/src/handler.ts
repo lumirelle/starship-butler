@@ -31,7 +31,7 @@ export async function processConfig(source: string, target: string, options: Par
  * @param target Target path, absolute path or relative path to CWD
  * @returns Operation success
  */
-export async function copyConfig(source: string, target: string, options: Exclude<Partial<ProcessConfigOptions>, 'mode'> = {}): Promise<boolean> {
+export async function copyConfig(source: string, target: string, options: Omit<Partial<ProcessConfigOptions>, 'mode'> = {}): Promise<boolean> {
   const { useGlob, force } = options
   if (useGlob) {
     // TODO: Implement support for glob
@@ -46,7 +46,7 @@ export async function copyConfig(source: string, target: string, options: Exclud
  * @param target Target path, absolute path or relative path to CWD
  * @returns Operation success
  */
-export async function symlinkConfig(source: string, target: string, options: Exclude<Partial<ProcessConfigOptions>, 'mode'> = {}): Promise<boolean> {
+export async function symlinkConfig(source: string, target: string, options: Omit<Partial<ProcessConfigOptions>, 'mode'> = {}): Promise<boolean> {
   const { useGlob, force } = options
   if (useGlob) {
     // TODO: Implement support for glob
