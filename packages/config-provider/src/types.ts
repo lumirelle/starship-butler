@@ -37,6 +37,11 @@ export interface ConfigProviderOptionsFromConfig extends ConfigProviderOptionsBa
    * @default []
    */
   actions: Action[]
+  /**
+   * Last configuring timestamp
+   * @default ''
+   */
+  lastConfiguring: string
 }
 
 /**

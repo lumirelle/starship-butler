@@ -18,8 +18,8 @@ cli
   .option('--verbose, -?', 'Show verbose output')
   .option('--dry-run, -d', 'Dry run')
   .option('--symlink, -s', 'Use symlink instead of copy')
-  .action((options: Partial<ConfigProviderOptionsFromCommandLine>) => {
-    runActions(mergeOptions(config, 'config-provider', options))
+  .action(async (options: Partial<ConfigProviderOptionsFromCommandLine>) => {
+    await runActions(mergeOptions(config, 'config-provider', options))
   })
 
 cli.help()
