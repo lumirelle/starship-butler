@@ -1,4 +1,4 @@
-import { constants, copyFileSync, promises as fsPromises, lstatSync, mkdirSync, unlinkSync } from 'node:fs'
+import { constants, copyFileSync, promises as fsPromises, lstatSync, mkdirSync, renameSync, unlinkSync } from 'node:fs'
 import { dirname } from 'node:path'
 import consola from 'consola'
 import { highlight } from './highlight'
@@ -68,12 +68,19 @@ export function copyFile(sourcePath: string, targetPath: string, force: boolean 
       return false
     }
     else {
-      // FIXME: If actions failed, should revert the removed file
-      removeFile(targetPath)
+      renameSync(targetPath, `${targetPath}.bak`)
     }
   }
 
-  copyFileSync(sourcePath, targetPath, force ? constants.COPYFILE_FICLONE : constants.COPYFILE_EXCL)
+  try {
+    copyFileSync(sourcePath, targetPath, force ? constants.COPYFILE_FICLONE : constants.COPYFILE_EXCL)
+    removeFile(`${targetPath}.bak`)
+  }
+  catch (error) {
+    renameSync(`${targetPath}.bak`, targetPath)
+    consola.error(error)
+    return false
+  }
   return true
 }
 
@@ -91,12 +98,19 @@ export async function createSymlink(sourcePath: string, targetPath: string, forc
       return false
     }
     else {
-      // FIXME: If actions failed, should revert the removed file
-      removeFile(targetPath)
+      renameSync(targetPath, `${targetPath}.bak`)
     }
   }
 
-  await fsPromises.symlink(sourcePath, targetPath, 'file')
+  try {
+    await fsPromises.symlink(sourcePath, targetPath, 'file')
+    removeFile(`${targetPath}.bak`)
+  }
+  catch (error) {
+    renameSync(`${targetPath}.bak`, targetPath)
+    consola.error(error)
+    return false
+  }
   return true
 }
 
