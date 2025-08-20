@@ -3,10 +3,10 @@ export interface OptionsBasic {
    * Show verbose output.
    * @default false
    */
-  verbose?: boolean
+  verbose: boolean
   /**
    * Dry run.
    * @default false
    */
-  dryRun?: boolean
+  dryRun: boolean
 }

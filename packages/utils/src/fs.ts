@@ -68,6 +68,7 @@ export function copyFile(sourcePath: string, targetPath: string, force: boolean 
       return false
     }
     else {
+      // FIXME: If actions failed, should revert the removed file
       removeFile(targetPath)
     }
   }
@@ -90,6 +91,7 @@ export async function createSymlink(sourcePath: string, targetPath: string, forc
       return false
     }
     else {
+      // FIXME: If actions failed, should revert the removed file
       removeFile(targetPath)
     }
   }

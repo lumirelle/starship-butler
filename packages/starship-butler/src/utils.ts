@@ -8,7 +8,7 @@ import consola, { LogLevels } from 'consola'
  * @param config User config.
  * @returns User config as it is.
  */
-export function defineButlerConfig(config: ButlerConfig): ButlerConfig {
+export function defineButlerConfig(config: Partial<ButlerConfig>): Partial<ButlerConfig> {
   return config
 }
 
@@ -34,9 +34,9 @@ export async function loadConfig<
  * @param options The command line options
  * @returns The merged options
  */
-export function mergeOptions<T extends keyof ButlerConfig, R extends ButlerConfig[T]>(config: ButlerConfig, packageName: T, options: R): typeof config[T] & R {
+export function mergeOptions<T extends keyof ButlerConfig, R extends ButlerConfig[T]>(config: Partial<ButlerConfig>, packageName: T, options: R): typeof config[T] & R {
   const packageConfig = config[packageName]
-  if (packageConfig.verbose || options.verbose) {
+  if (packageConfig?.verbose || options.verbose) {
     consola.level = LogLevels.debug
   }
   consola.debug('[starship-butler] Package config for "%s":', packageName, packageConfig)

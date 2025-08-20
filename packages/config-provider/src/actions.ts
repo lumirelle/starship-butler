@@ -4,7 +4,7 @@ import { join } from 'node:path'
 import process from 'node:process'
 import consola from 'consola'
 import { fs } from 'starship-butler-utils'
-import { copyConfig } from './handler'
+import { processConfig } from './handler'
 
 /**
  * Predefined actions to configure your system.
@@ -20,7 +20,7 @@ export const defaultActions: Action[] = [
       return shouldRun
     }, // TODO: Support Unix-like system
     handler: async (options) => {
-      const { force } = options
+      const { force, symlink } = options
       const target = join(process.env.APPDATA!, 'nushell')
       fs.ensureDir(target)
       const handlerOperations = [
@@ -30,7 +30,7 @@ export const defaultActions: Action[] = [
       ]
       try {
         for (const operation of handlerOperations) {
-          copyConfig(operation.source, operation.target, { force })
+          processConfig(operation.source, operation.target, { force, mode: symlink ? 'symlink' : 'copy' })
         }
       }
       catch (error) {

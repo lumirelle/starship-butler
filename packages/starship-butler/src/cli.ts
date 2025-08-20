@@ -17,7 +17,8 @@ cli
   .option('--force, -f', 'Force configure')
   .option('--verbose, -?', 'Show verbose output')
   .option('--dry-run, -d', 'Dry run')
-  .action((options: ConfigProviderOptionsFromCommandLine) => {
+  .option('--symlink, -s', 'Use symlink instead of copy')
+  .action((options: Partial<ConfigProviderOptionsFromCommandLine>) => {
     runActions(mergeOptions(config, 'config-provider', options))
   })
 

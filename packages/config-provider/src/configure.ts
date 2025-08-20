@@ -6,7 +6,7 @@ import { filterActions } from './actions'
  * Running actions to configure your system. The entry of this package.
  * @param options User configuration and command line options
  */
-export function runActions(options: ConfigProviderOptions): void {
+export function runActions(options: Partial<ConfigProviderOptions>): void {
   consola.debug('[config-provider] Running actions with options:', options)
 
   if (options.include && options.exclude) {
