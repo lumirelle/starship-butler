@@ -4,9 +4,9 @@ import type { OptionsBasic } from 'starship-butler-types'
  * Basic options for config provider.
  */
 interface ConfigProviderOptionsBasic extends OptionsBasic {
-/**
- * Actions should be ran.
- */
+  /**
+   * Actions should be ran.
+   */
   include?: string[] | string
   /**
    * Actions should not be ran.
