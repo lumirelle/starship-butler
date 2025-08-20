@@ -1,7 +1,8 @@
 import type { ConfigProviderOptions } from './types'
 import consola from 'consola'
+import semver from 'semver'
 import { updateOrCreateUserRc } from 'starship-butler-utils'
-import { version } from './../package.json'
+import { version as versionInPackage } from '../package.json'
 import { filterActions } from './actions'
 
 /**
@@ -9,6 +10,14 @@ import { filterActions } from './actions'
  * @param options User configuration and command line options
  */
 export async function runActions(options: Partial<ConfigProviderOptions>): Promise<void> {
+  // If `version` is provided, that means the user already configured his/her system before
+  // If that `version` is lower than the current package version, we will force update
+  const needUpdate = Boolean((options.version && semver.lt(options.version, versionInPackage)))
+  if (needUpdate) {
+    consola.info(`Detect global .butlerrc file with old version ${options.version}, will force update all config.`)
+    options.force = true
+  }
+
   consola.debug('[config-provider] Running actions with options:', options)
 
   if (options.include && options.exclude) {
@@ -49,7 +58,7 @@ export async function runActions(options: Partial<ConfigProviderOptions>): Promi
   // Update last configuring timestamp
   updateOrCreateUserRc('.butlerrc', {
     'config-provider': {
-      version,
+      version: versionInPackage,
     },
   })
 }

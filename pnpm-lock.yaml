@@ -12,6 +12,14 @@ catalogs:
     defu:
       specifier: ^6.1.4
       version: 6.1.4
+  config-provider/dev:
+    '@types/semver':
+      specifier: ^7.7.0
+      version: 7.7.0
+  config-provider/prod:
+    semver:
+      specifier: ^7.7.2
+      version: 7.7.2
   dev:
     '@antfu/eslint-config':
       specifier: ^5.2.1
@@ -223,12 +231,19 @@ importers:
       consola:
         specifier: catalog:shared/prod
         version: 3.4.2
+      semver:
+        specifier: catalog:config-provider/prod
+        version: 7.7.2
       starship-butler-types:
         specifier: workspace:../types
         version: link:../types
       starship-butler-utils:
         specifier: workspace:../utils
         version: link:../utils
+    devDependencies:
+      '@types/semver':
+        specifier: catalog:config-provider/dev
+        version: 7.7.0
 
   packages/starship-butler:
     dependencies:
@@ -265,9 +280,6 @@ importers:
       ansis:
         specifier: catalog:utils/prod
         version: 4.1.0
-      c12:
-        specifier: catalog:shared/prod
-        version: 3.2.0
       consola:
         specifier: catalog:shared/prod
         version: 3.4.2
@@ -953,6 +965,9 @@ packages:
 
   '@types/resolve@1.20.2':
     resolution: {integrity: sha512-60BCwRFOZCQhDncwQdxxeOEEkbc5dIMccYLwbxsS4TUNeVECQ/pBJ0j09mrHOl/JJvpRPGwO9SvE4nR2Nb/a4Q==}
+
+  '@types/semver@7.7.0':
+    resolution: {integrity: sha512-k107IF4+Xr7UHjwDc7Cfd6PRQfbdkiRabXGRjo07b4WyPahFBZCZ1sE+BNxYIJPPg73UkfOsVOLwqVc/6ETrIA==}
 
   '@types/unist@3.0.3':
     resolution: {integrity: sha512-ko/gIFJRv177XgZsZcBwnqJN5x/Gien8qNOn0D5bQU/zAzVf9Zt3BlcUiLqhV9y4ARk0GbT3tnUiPNgnTXzc/Q==}
@@ -4055,6 +4070,8 @@ snapshots:
       undici-types: 7.10.0
 
   '@types/resolve@1.20.2': {}
+
+  '@types/semver@7.7.0': {}
 
   '@types/unist@3.0.3': {}
 

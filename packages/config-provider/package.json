@@ -32,7 +32,11 @@
   "dependencies": {
     "c12": "catalog:shared/prod",
     "consola": "catalog:shared/prod",
+    "semver": "catalog:config-provider/prod",
     "starship-butler-types": "workspace:../types",
     "starship-butler-utils": "workspace:../utils"
+  },
+  "devDependencies": {
+    "@types/semver": "catalog:config-provider/dev"
   }
 }

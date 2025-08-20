@@ -8,6 +8,10 @@ catalogs:
   butler/prod:
     cac: ^6.7.14
     defu: ^6.1.4
+  config-provider/dev:
+    '@types/semver': ^7.7.0
+  config-provider/prod:
+    semver: ^7.7.2
   dev:
     '@antfu/eslint-config': ^5.2.1
     '@antfu/ni': ^25.0.0
