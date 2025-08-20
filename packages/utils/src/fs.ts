@@ -3,6 +3,8 @@ import { dirname } from 'node:path'
 import consola from 'consola'
 import { highlight } from './highlight'
 
+/* ----------------------------- Basic Operations ---------------------------- */
+
 /**
  * Check if a file or directory exists. Does not dereference symlinks.
  * @param path - The path to check
@@ -50,37 +52,15 @@ export function ensureDir(dirPath: string): boolean {
   return false
 }
 
-export async function createSymlink(sourcePath: string, targetPath: string, force = false): Promise<boolean> {
-  if (existsSync(targetPath)) {
-    if (force) {
-      unlinkSync(targetPath)
-    }
-    else {
-      consola.warn(`LINK: File already exists: ${highlight.info(targetPath)}, skip`)
-      return false
-    }
-  }
+/* ----------------------------- Create & Remove ---------------------------- */
 
-  await fsPromises.symlink(sourcePath, targetPath, 'file')
-  return true
-}
-
-export function removeSymlink(targetPath: string): boolean {
-  if (!existsSync(targetPath)) {
-    consola.warn(`UNLINK: Target file not found: ${highlight.info(targetPath)}, skip`)
-    return false
-  }
-
-  const stats = lstatSync(targetPath)
-  if (!stats.isSymbolicLink()) {
-    consola.warn(`UNLINK: Target file is not a symlink: ${highlight.info(targetPath)}, skip`)
-    return false
-  }
-
-  unlinkSync(targetPath)
-  return true
-}
-
+/**
+ * Copy a file.
+ * @param sourcePath The path to the source file
+ * @param targetPath The path to the target file
+ * @param force Whether to force overwrite the target file
+ * @returns `true` if the file was copied, `false` otherwise
+ */
 export function copyFile(sourcePath: string, targetPath: string, force: boolean = false): boolean {
   if (existsSync(targetPath)) {
     if (!force) {
@@ -88,10 +68,7 @@ export function copyFile(sourcePath: string, targetPath: string, force: boolean 
       return false
     }
     else {
-      if (lstatSync(targetPath).isSymbolicLink()) {
-        consola.debug(`Try to force override a symbolic link, will remove it first.`)
-        removeSymlink(targetPath)
-      }
+      removeFile(targetPath)
     }
   }
 
@@ -99,6 +76,33 @@ export function copyFile(sourcePath: string, targetPath: string, force: boolean 
   return true
 }
 
+/**
+ * Create a symbolic link.
+ * @param sourcePath The path to the source file
+ * @param targetPath The path to the target symlink
+ * @param force Whether to force overwrite the target symlink
+ * @returns `true` if the symlink was created, `false` otherwise
+ */
+export async function createSymlink(sourcePath: string, targetPath: string, force = false): Promise<boolean> {
+  if (existsSync(targetPath)) {
+    if (!force) {
+      consola.warn(`LINK: File already exists: ${highlight.info(targetPath)}, skip`)
+      return false
+    }
+    else {
+      removeFile(targetPath)
+    }
+  }
+
+  await fsPromises.symlink(sourcePath, targetPath, 'file')
+  return true
+}
+
+/**
+ * Remove a file.
+ * @param targetPath The path to the target file
+ * @returns `true` if the file was removed, `false` otherwise
+ */
 export function removeFile(targetPath: string): boolean {
   if (!existsSync(targetPath)) {
     consola.warn(`REMOVE: Target file not found: ${highlight.info(targetPath)}, skip`)
@@ -106,5 +110,21 @@ export function removeFile(targetPath: string): boolean {
   }
 
   unlinkSync(targetPath)
+  return true
+}
+
+/**
+ * Remove a symbolic link.
+ * @param targetPath The path to the target symlink
+ * @returns `true` if the symlink was removed, `false` otherwise
+ */
+export function removeSymlink(targetPath: string): boolean {
+  const stats = lstatSync(targetPath)
+  if (!stats.isSymbolicLink()) {
+    consola.warn(`REMOVE: Target file is not a symlink: ${highlight.info(targetPath)}, skip`)
+    return false
+  }
+
+  removeFile(targetPath)
   return true
 }
