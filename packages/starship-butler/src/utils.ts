@@ -22,6 +22,7 @@ export async function loadConfig<
 >(options?: LoadConfigOptions<T, MT>): Promise<ButlerConfig> {
   const { config = {} } = await loadConfigC12({
     name: 'butler',
+    globalRc: true,
     ...(options || {}),
   })
   return Promise.resolve(config as ButlerConfig)

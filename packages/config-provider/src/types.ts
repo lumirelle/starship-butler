@@ -38,10 +38,10 @@ export interface ConfigProviderOptionsFromConfig extends ConfigProviderOptionsBa
    */
   actions: Action[]
   /**
-   * Last configuring timestamp
-   * @default ''
+   * Version
+   * @default See generated global rc file
    */
-  lastConfiguring: string
+  version: string
 }
 
 /**

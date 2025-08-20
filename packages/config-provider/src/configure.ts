@@ -1,5 +1,7 @@
 import type { ConfigProviderOptions } from './types'
 import consola from 'consola'
+import { readUser as readUserRc, updateUser as updateUserRc, writeUser as writeUserRc } from 'rc9'
+import { version } from './../package.json'
 import { filterActions } from './actions'
 
 /**
@@ -44,5 +46,20 @@ export async function runActions(options: Partial<ConfigProviderOptions>): Promi
     }
   })
 
-  // TODO: Update last configuring timestamp
+  // Update last configuring timestamp
+  const rc = readUserRc('.butlerrc')
+  if (!rc) {
+    writeUserRc({
+      'config-provider': {
+        version,
+      },
+    }, '.butlerrc')
+  }
+  else {
+    updateUserRc({
+      'config-provider': {
+        version,
+      },
+    }, '.butlerrc')
+  }
 }

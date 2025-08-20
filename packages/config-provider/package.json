@@ -34,5 +34,8 @@
     "consola": "catalog:shared/prod",
     "starship-butler-types": "workspace:../types",
     "starship-butler-utils": "workspace:../utils"
+  },
+  "devDependencies": {
+    "rc9": "catalog:config-provider/prod"
   }
 }

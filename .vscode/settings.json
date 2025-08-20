@@ -38,6 +38,6 @@
 
   // File associations
   "files.associations": {
-    ".butlerrc": "jsonc"
+    ".butlerrc": "properties"
   }
 }

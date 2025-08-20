@@ -9,6 +9,10 @@ catalogs:
     cac:
       specifier: ^6.7.14
       version: 6.7.14
+  config-provider/prod:
+    rc9:
+      specifier: ^2.1.2
+      version: 2.1.2
   dev:
     '@antfu/eslint-config':
       specifier: ^5.2.1
@@ -223,6 +227,10 @@ importers:
       starship-butler-utils:
         specifier: workspace:../utils
         version: link:../utils
+    devDependencies:
+      rc9:
+        specifier: catalog:config-provider/prod
+        version: 2.1.2
 
   packages/starship-butler:
     dependencies:
