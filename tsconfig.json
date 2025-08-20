@@ -5,7 +5,7 @@
     "module": "ESNext",
     "moduleResolution": "Bundler",
     "paths": {
-      "pkg-placeholder": ["./packages/pkg-placeholder/src/index.ts"]
+      "starship-butler": ["./packages/starship-butler/src/index.ts"]
     },
     "resolveJsonModule": true,
     "strict": true,
