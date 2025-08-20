@@ -7,8 +7,7 @@ packages:
 catalogs:
   butler/prod:
     cac: ^6.7.14
-  config-provider/prod:
-    rc9: ^2.1.2
+    defu: ^6.1.4
   dev:
     '@antfu/eslint-config': ^5.2.1
     '@antfu/ni': ^25.0.0
@@ -45,3 +44,4 @@ catalogs:
     consola: ^3.4.2
   utils/prod:
     ansis: ^4.1.0
+    rc9: ^2.1.2

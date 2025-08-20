@@ -1,6 +1,6 @@
 import { filterActions } from 'starship-butler-config-provider'
 import { describe, expect, it } from 'vitest'
-import { loadConfig, mergeOptions } from '../../src/utils'
+import { loadConfig, mergeOptions } from '../../src/config'
 import { stringify } from '../utils'
 
 describe('filter actions', () => {

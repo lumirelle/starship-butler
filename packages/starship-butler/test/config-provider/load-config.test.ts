@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest'
-import { loadConfig } from '../../src/utils'
+import { loadConfig } from '../../src/config'
 import { stringify } from '../utils'
 import rawJSONConfig from './.butlerrc.json'
 import rawTSConfig from './butler.config'

@@ -2,6 +2,7 @@ import type { ConfigLayerMeta, LoadConfigOptions } from 'c12'
 import type { ButlerConfig } from './types'
 import { loadConfig as loadConfigC12 } from 'c12'
 import consola, { LogLevels } from 'consola'
+import { createDefu } from 'defu'
 
 /**
  * Type helper for define butler config.
@@ -20,9 +21,17 @@ export async function loadConfig<
   T extends ButlerConfig = ButlerConfig,
   MT extends ConfigLayerMeta = ConfigLayerMeta,
 >(options?: LoadConfigOptions<T, MT>): Promise<ButlerConfig> {
+  const merger = createDefu((obj, key) => {
+    // Keep the version field, load from global rc file
+    if (obj[key] && key === 'version') {
+      return true
+    }
+  })
   const { config = {} } = await loadConfigC12({
     name: 'butler',
     globalRc: true,
+    // @ts-expect-error It should accept createDefu directly
+    merger,
     ...(options || {}),
   })
   return Promise.resolve(config as ButlerConfig)

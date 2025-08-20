@@ -9,10 +9,9 @@ catalogs:
     cac:
       specifier: ^6.7.14
       version: 6.7.14
-  config-provider/prod:
-    rc9:
-      specifier: ^2.1.2
-      version: 2.1.2
+    defu:
+      specifier: ^6.1.4
+      version: 6.1.4
   dev:
     '@antfu/eslint-config':
       specifier: ^5.2.1
@@ -113,6 +112,9 @@ catalogs:
     ansis:
       specifier: ^4.1.0
       version: 4.1.0
+    rc9:
+      specifier: ^2.1.2
+      version: 2.1.2
 
 importers:
 
@@ -227,10 +229,6 @@ importers:
       starship-butler-utils:
         specifier: workspace:../utils
         version: link:../utils
-    devDependencies:
-      rc9:
-        specifier: catalog:config-provider/prod
-        version: 2.1.2
 
   packages/starship-butler:
     dependencies:
@@ -243,6 +241,9 @@ importers:
       consola:
         specifier: catalog:shared/prod
         version: 3.4.2
+      defu:
+        specifier: catalog:butler/prod
+        version: 6.1.4
       starship-butler-config-provider:
         specifier: workspace:../config-provider
         version: link:../config-provider
@@ -264,9 +265,15 @@ importers:
       ansis:
         specifier: catalog:utils/prod
         version: 4.1.0
+      c12:
+        specifier: catalog:shared/prod
+        version: 3.2.0
       consola:
         specifier: catalog:shared/prod
         version: 3.4.2
+      rc9:
+        specifier: catalog:utils/prod
+        version: 2.1.2
 
 packages:
 

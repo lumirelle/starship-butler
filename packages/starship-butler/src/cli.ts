@@ -3,7 +3,7 @@ import process from 'node:process'
 import cac from 'cac'
 import { runActions } from 'starship-butler-config-provider'
 import { name, version } from '../package.json'
-import { loadConfig, mergeOptions } from './utils'
+import { loadConfig, mergeOptions } from './config'
 
 const config = await loadConfig()
 

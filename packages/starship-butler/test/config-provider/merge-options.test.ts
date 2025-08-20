@@ -1,6 +1,6 @@
 import type { ButlerConfig } from '../../src/types'
 import { describe, expect, it } from 'vitest'
-import { loadConfig, mergeOptions } from '../../src/utils'
+import { loadConfig, mergeOptions } from '../../src/config'
 import { stringify } from '../utils'
 import rawJSONConfig from './.butlerrc.json'
 import rawTSConfig from './butler.config'

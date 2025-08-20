@@ -1,6 +1,6 @@
 import type { ConfigProviderOptions } from './types'
 import consola from 'consola'
-import { readUser as readUserRc, updateUser as updateUserRc, writeUser as writeUserRc } from 'rc9'
+import { updateOrCreateUserRc } from 'starship-butler-utils'
 import { version } from './../package.json'
 import { filterActions } from './actions'
 
@@ -47,19 +47,9 @@ export async function runActions(options: Partial<ConfigProviderOptions>): Promi
   })
 
   // Update last configuring timestamp
-  const rc = readUserRc('.butlerrc')
-  if (!rc) {
-    writeUserRc({
-      'config-provider': {
-        version,
-      },
-    }, '.butlerrc')
-  }
-  else {
-    updateUserRc({
-      'config-provider': {
-        version,
-      },
-    }, '.butlerrc')
-  }
+  updateOrCreateUserRc('.butlerrc', {
+    'config-provider': {
+      version,
+    },
+  })
 }
