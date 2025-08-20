@@ -1,0 +1,5 @@
+{
+  "config-provider": {
+    "include": ["Action In Config 1"]
+  }
+}

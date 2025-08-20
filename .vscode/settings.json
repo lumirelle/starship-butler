@@ -34,5 +34,10 @@
     "json",
     "jsonc",
     "yaml"
-  ]
+  ],
+
+  // File associations
+  "files.associations": {
+    ".butlerrc": "jsonc"
+  }
 }
