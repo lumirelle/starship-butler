@@ -1,4 +1,5 @@
 import type { ConfigLayerMeta, LoadConfigOptions } from 'c12'
+import type { ConfigProviderOptionsFromConfig } from 'starship-butler-config-provider'
 import type { ButlerConfig } from './types'
 import { loadConfig as loadConfigC12 } from 'c12'
 import consola, { LogLevels } from 'consola'
@@ -9,7 +10,7 @@ import { createDefu } from 'defu'
  * @param config User config.
  * @returns User config as it is.
  */
-export function defineButlerConfig(config: Partial<ButlerConfig>): Partial<ButlerConfig> {
+export function defineButlerConfig(config: Partial<ButlerConfig<Partial<Omit<ConfigProviderOptionsFromConfig, 'version'>>>>): Partial<ButlerConfig<Partial<Omit<ConfigProviderOptionsFromConfig, 'version'>>>> {
   return config
 }
 
@@ -22,7 +23,7 @@ export async function loadConfig<
   MT extends ConfigLayerMeta = ConfigLayerMeta,
 >(options?: LoadConfigOptions<T, MT>): Promise<ButlerConfig> {
   const merger = createDefu((obj, key) => {
-    // Keep the version field, load from global rc file
+    // Keep the version field, load from global rc file (Global rc file has the highest priority)
     if (obj[key] && key === 'version') {
       return true
     }
@@ -51,5 +52,9 @@ export function mergeOptions<T extends keyof ButlerConfig, R extends ButlerConfi
   }
   consola.debug('[starship-butler] Package config for "%s":', packageName, packageConfig)
   consola.debug('[starship-butler] Command line options:', options)
+  if (options.version) {
+    consola.warn('[starship-butler] Command line option "version" is ignored.')
+  }
+  delete options.version
   return { ...packageConfig, ...options }
 }
