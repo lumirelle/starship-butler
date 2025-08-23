@@ -14,6 +14,12 @@ export default definePrompt({
       'utils',
       'types',
     ],
+    fix: [
+      'butler',
+      'config-provider',
+      'utils',
+      'types',
+    ],
     refactor: [
       'butler',
       'config-provider',
@@ -21,6 +27,7 @@ export default definePrompt({
       'types',
     ],
     chore: [
+      'config-provider',
       'deps',
       'tools',
     ],
