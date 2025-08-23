@@ -12,6 +12,7 @@ describe('merge options', () => {
       cwd: import.meta.dirname,
     })
     const mergedOptions = mergeOptions(config, 'config-provider', { actions: [{ name: 'test', handler: () => { } }] })
+    delete mergedOptions.version
     const expectedOptions = rawJSONConfig['config-provider'] as ButlerConfig['config-provider']
     expectedOptions.actions = [{ name: 'test', handler: () => { } }]
     expect(stringify(mergedOptions)).toEqual(stringify(expectedOptions))
@@ -23,6 +24,7 @@ describe('merge options', () => {
       cwd: import.meta.dirname,
     })
     const mergedOptions = mergeOptions(config, 'config-provider', { actions: [{ name: 'test', handler: () => { } }] })
+    delete mergedOptions.version
     const expectedOptions = rawTSConfig['config-provider'] as ButlerConfig['config-provider']
     expectedOptions.actions = [{ name: 'test', handler: () => { } }]
     expect(stringify(mergedOptions)).toEqual(stringify(expectedOptions))

@@ -10,6 +10,7 @@ describe('load config', () => {
       configFile: './.butlerrc.json',
       cwd: import.meta.dirname,
     })
+    delete config['config-provider'].version
     expect(stringify(config)).toEqual(stringify(rawJSONConfig))
   })
 
@@ -18,6 +19,7 @@ describe('load config', () => {
       configFile: './butler.config.ts',
       cwd: import.meta.dirname,
     })
+    delete config['config-provider'].version
     expect(stringify(config)).toEqual(stringify(rawTSConfig))
   })
 })
