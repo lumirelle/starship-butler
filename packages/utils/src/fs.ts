@@ -62,7 +62,8 @@ export function ensureDir(dirPath: string): boolean {
  * @returns `true` if the file was copied, `false` otherwise
  */
 export function copyFile(sourcePath: string, targetPath: string, force: boolean = false): boolean {
-  if (existsSync(targetPath)) {
+  const isExist = existsSync(targetPath)
+  if (isExist) {
     if (!force) {
       consola.warn(`COPY: File already exists: ${highlight.info(targetPath)}, skip`)
       return false
@@ -71,13 +72,16 @@ export function copyFile(sourcePath: string, targetPath: string, force: boolean 
       renameSync(targetPath, `${targetPath}.bak`)
     }
   }
-
   try {
     copyFileSync(sourcePath, targetPath, force ? constants.COPYFILE_FICLONE : constants.COPYFILE_EXCL)
-    removeFile(`${targetPath}.bak`)
+    if (isExist) {
+      removeFile(`${targetPath}.bak`)
+    }
   }
   catch (error) {
-    renameSync(`${targetPath}.bak`, targetPath)
+    if (isExist) {
+      renameSync(`${targetPath}.bak`, targetPath)
+    }
     consola.error(error)
     return false
   }
@@ -92,7 +96,8 @@ export function copyFile(sourcePath: string, targetPath: string, force: boolean 
  * @returns `true` if the symlink was created, `false` otherwise
  */
 export async function createSymlink(sourcePath: string, targetPath: string, force = false): Promise<boolean> {
-  if (existsSync(targetPath)) {
+  const isExist = existsSync(targetPath)
+  if (isExist) {
     if (!force) {
       consola.warn(`LINK: File already exists: ${highlight.info(targetPath)}, skip`)
       return false
@@ -101,13 +106,16 @@ export async function createSymlink(sourcePath: string, targetPath: string, forc
       renameSync(targetPath, `${targetPath}.bak`)
     }
   }
-
   try {
     await fsPromises.symlink(sourcePath, targetPath, 'file')
-    removeFile(`${targetPath}.bak`)
+    if (isExist) {
+      removeFile(`${targetPath}.bak`)
+    }
   }
   catch (error) {
-    renameSync(`${targetPath}.bak`, targetPath)
+    if (isExist) {
+      renameSync(`${targetPath}.bak`, targetPath)
+    }
     consola.error(error)
     return false
   }
