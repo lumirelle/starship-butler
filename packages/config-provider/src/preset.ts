@@ -24,8 +24,8 @@ export const DEFAULT_ACTIONS: Action[] = [
       const target = join(process.env.APPDATA!, 'nushell')
       fs.ensureDir(target)
       const handlerOperations = [
+        { source: 'shell/nu/utils.nu', target: join(target, 'utils.nu') },
         { source: 'shell/nu/config.nu', target: join(target, 'config.nu') },
-        { source: 'shell/nu/defs.nu', target: join(target, 'defs.nu') },
         { source: 'shell/nu/env.nu', target: join(target, 'env.nu') },
       ]
       for (const operation of handlerOperations) {
