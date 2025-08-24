@@ -38,6 +38,7 @@
     "starship-butler-utils": "workspace:../utils"
   },
   "devDependencies": {
-    "@types/semver": "catalog:config-provider/dev"
+    "@types/semver": "catalog:config-provider/dev",
+    "tinyexec": "catalog:dev"
   }
 }

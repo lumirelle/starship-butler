@@ -244,6 +244,9 @@ importers:
       '@types/semver':
         specifier: catalog:config-provider/dev
         version: 7.7.0
+      tinyexec:
+        specifier: catalog:dev
+        version: 1.0.1
 
   packages/starship-butler:
     dependencies:
