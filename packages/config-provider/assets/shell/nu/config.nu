@@ -27,7 +27,7 @@ $env.config.hooks.env_change.PWD = [
         $env.Path = ($env.Path | prepend $new_path)
       } else {
         # If `node_modules/.bin` is already in the path, update it
-        $env.Path = ($env.Path | update $index_of_node_modules_path.1 $new_path)
+        $env.Path = ($env.Path | update $index_of_node_modules_path.0 $new_path)
       }
     }
   }
