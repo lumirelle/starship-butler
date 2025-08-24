@@ -21,27 +21,6 @@ export def any-path-exists-parent [] {
   false
 }
 
-# Check if all paths exist in the current directory.
-export def all-path-exists [] {
-  $in | all {|el| $el | path exists}
-}
-
-# Check if all paths exist in the current directory or any of its parent directories.
-export def all-path-exists-parent [] {
-  for $path in $in {
-    let $abs_dirname = $path | path expand | path dirname
-    let $dir_level = $abs_dirname | path split | length
-    for $i in (seq 0 $dir_level) {
-      let $dir = $abs_dirname | path split | drop $i | path join
-      let $new_path = $dir | path join $path
-      if not ($new_path | path exists) {
-        return false
-      }
-    }
-  }
-  true
-}
-
 # Find out the dirname of the specified path both cwd & parent.
 export def dirname-parent [] {
   let $abs_dirname = $in | path expand | path dirname
