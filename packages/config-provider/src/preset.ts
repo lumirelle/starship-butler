@@ -1,4 +1,5 @@
 import type { Action } from './types'
+import { homedir } from 'node:os'
 import { join } from 'node:path'
 import process from 'node:process'
 import consola from 'consola'
@@ -9,6 +10,7 @@ import { processConfig } from './handler'
  * Predefined actions to configure your system.
  */
 export const DEFAULT_ACTIONS: Action[] = [
+  /* --------------------------------- Shells --------------------------------- */
   {
     name: 'Setting Up Nushell',
     prehandler: () => {
@@ -29,7 +31,22 @@ export const DEFAULT_ACTIONS: Action[] = [
         { source: 'shell/nu/env.nu', target: join(target, 'env.nu') },
       ]
       for (const operation of handlerOperations) {
-        processConfig(operation.source, operation.target, { force, mode })
+        await processConfig(operation.source, operation.target, { force, mode })
+      }
+    },
+  },
+  {
+    name: 'Setting Up Bash',
+    handler: async (options) => {
+      const { force, symlink } = options
+      const mode = symlink ? 'symlink' : 'copy'
+      const target = homedir()
+      fs.ensureDir(target)
+      const handlerOperations = [
+        { source: 'shell/bash/.bash_profile', target: join(target, '.bash_profile') },
+      ]
+      for (const operation of handlerOperations) {
+        await processConfig(operation.source, operation.target, { force, mode })
       }
     },
   },

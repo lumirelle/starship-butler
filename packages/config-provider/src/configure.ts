@@ -28,11 +28,11 @@ export async function runActions(options: Partial<ConfigProviderOptions>): Promi
 
   consola.debug(`[config-provider] Found ${filteredActions.length} actions to run.`)
 
-  filteredActions.forEach((action) => {
+  for (const action of filteredActions) {
     let shouldRun = true
     if (action.prehandler) {
       try {
-        shouldRun = action.prehandler(options)
+        shouldRun = await action.prehandler(options)
       }
       catch (error) {
         shouldRun = false
@@ -47,13 +47,13 @@ export async function runActions(options: Partial<ConfigProviderOptions>): Promi
     }
 
     consola.info(`Running "${action.name}"...`)
-    action.handler(options)
+    await action.handler(options)
 
     if (action.posthandler) {
       consola.debug(`[config-provider] Running posthandler for "${action.name}"...`)
-      action.posthandler(options)
+      await action.posthandler(options)
     }
-  })
+  }
 
   // Update last configuring timestamp
   updateOrCreateUserRc('.butlerrc', {

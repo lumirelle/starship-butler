@@ -69,17 +69,17 @@ export interface Action {
    * @param options The options from user config and user command line input
    * @returns Whether the action handler should be executed
    */
-  prehandler?: (options: Partial<ConfigProviderOptions>) => boolean
+  prehandler?: (options: Partial<ConfigProviderOptions>) => Promise<boolean> | boolean
   /**
    * Handler for the action
    * @param options The options from user config and user command line input
    */
-  handler: (options: Partial<ConfigProviderOptions>) => void
+  handler: (options: Partial<ConfigProviderOptions>) => Promise<void> | void
   /**
    * Run after handler is executed, useful for cleanup or other post-processing logic.
    * @param options The options from user config and user command line input
    */
-  posthandler?: (options: Partial<ConfigProviderOptions>) => void
+  posthandler?: (options: Partial<ConfigProviderOptions>) => Promise<void> | void
 }
 
 /* ----------------------------- Process Config ----------------------------- */
