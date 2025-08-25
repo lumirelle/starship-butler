@@ -1,3 +1,6 @@
+/**
+ * Basic options for config & cli.
+ */
 export interface OptionsBasic {
   /**
    * Show verbose output.
@@ -9,4 +12,11 @@ export interface OptionsBasic {
    * @default false
    */
   dryRun: boolean
+}
+
+export interface SystemOptions {
+  /**
+   * User platform (e.g. 'win32', 'linux', 'darwin').
+   */
+  userPlatform: NodeJS.Platform
 }

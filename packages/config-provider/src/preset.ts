@@ -13,17 +13,25 @@ export const DEFAULT_ACTIONS: Action[] = [
   /* --------------------------------- Shells --------------------------------- */
   {
     name: 'Setting Up Nushell',
-    prehandler: () => {
-      const shouldRun = process.env.APPDATA != null
+    prehandler: (_, systemOptions) => {
+      const { userPlatform } = systemOptions
+      const shouldRun = userPlatform === 'win32' || userPlatform === 'linux' || userPlatform === 'darwin'
       if (!shouldRun) {
-        consola.info(`NU: Unix-like system support is a work in progress.`)
+        consola.info(`NU: Just support win32, linux and darwin platform now.`)
       }
       return shouldRun
     }, // TODO: Support Unix-like system
-    handler: async (options) => {
+    handler: async (options, systemOptions) => {
       const { force, symlink } = options
+      const { userPlatform } = systemOptions
       const mode = symlink ? 'symlink' : 'copy'
-      const target = join(process.env.APPDATA!, 'nushell')
+      const target = userPlatform === 'win32'
+        ? join(process.env.APPDATA!, 'nushell')
+        : userPlatform === 'linux'
+          ? join(homedir(), '.config', 'nushell')
+          : userPlatform === 'darwin'
+            ? join(homedir(), 'Library', 'Application Support', 'nushell')
+            : ''
       fs.ensureDir(target)
       const handlerOperations = [
         { source: 'shell/nu/utils.nu', target: join(target, 'utils.nu') },

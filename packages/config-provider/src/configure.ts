@@ -1,3 +1,4 @@
+import type { SystemOptions } from 'starship-butler-types'
 import type { ConfigProviderOptions } from './types'
 import consola from 'consola'
 import semver from 'semver'
@@ -9,7 +10,7 @@ import { filterActions } from './actions'
  * Running actions to configure your system. The entry of this package.
  * @param options User configuration and command line options
  */
-export async function runActions(options: Partial<ConfigProviderOptions>): Promise<void> {
+export async function runActions(options: Partial<ConfigProviderOptions>, systemOptions: SystemOptions): Promise<void> {
   // If `version` is provided, that means the user already configured his/her system before
   // If that `version` is lower than the current package version, we will force update
   const needUpdate = Boolean((options.version && semver.lt(options.version, versionInPackage)))
@@ -32,7 +33,7 @@ export async function runActions(options: Partial<ConfigProviderOptions>): Promi
     let shouldRun = true
     if (action.prehandler) {
       try {
-        shouldRun = await action.prehandler(options)
+        shouldRun = await action.prehandler(options, systemOptions)
       }
       catch (error) {
         shouldRun = false
@@ -47,11 +48,11 @@ export async function runActions(options: Partial<ConfigProviderOptions>): Promi
     }
 
     consola.info(`Running "${action.name}"...`)
-    await action.handler(options)
+    await action.handler(options, systemOptions)
 
     if (action.posthandler) {
       consola.debug(`[config-provider] Running posthandler for "${action.name}"...`)
-      await action.posthandler(options)
+      await action.posthandler(options, systemOptions)
     }
   }
 
