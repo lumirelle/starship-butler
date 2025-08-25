@@ -11,6 +11,7 @@ import { processConfig } from './handler'
  */
 export const DEFAULT_ACTIONS: Action[] = [
   /* --------------------------------- Shells --------------------------------- */
+  // Nushell
   {
     name: 'Setting Up Nushell',
     prehandler: (_, systemOptions) => {
@@ -43,6 +44,7 @@ export const DEFAULT_ACTIONS: Action[] = [
       }
     },
   },
+  // Bash
   {
     name: 'Setting Up Bash',
     handler: async (options) => {
@@ -58,6 +60,7 @@ export const DEFAULT_ACTIONS: Action[] = [
       }
     },
   },
+  // CMD
   {
     name: 'Setting Up CMD',
     prehandler: (_, systemOptions) => {
@@ -83,6 +86,38 @@ export const DEFAULT_ACTIONS: Action[] = [
     },
     posthandler: () => {
       consola.info('Please running the `.reg` file with Registry Editor to enable autorun feature.')
+    },
+  },
+  // PowerShell
+  {
+    name: 'Setting Up PowerShell',
+    prehandler: (_, systemOptions) => {
+      const { userPlatform } = systemOptions
+      const shouldRun = userPlatform === 'win32'
+      if (!shouldRun) {
+        consola.info(`PowerShell: Just support win32 platform.`)
+      }
+      return shouldRun
+    },
+    handler: async (options, systemOptions) => {
+      const { force, symlink } = options
+      const { userPlatform } = systemOptions
+      const mode = symlink ? 'symlink' : 'copy'
+      const target = userPlatform === 'win32'
+        ? join(homedir(), 'Documents', 'PowerShell')
+        : userPlatform === 'linux' || userPlatform === 'darwin'
+          ? join(homedir(), '.config', 'powershell')
+          : ''
+      fs.ensureDir(target)
+      const handlerOperations = [
+        { source: 'shell/pwsh/profile.ps1', target: join(target, 'profile.ps1') },
+      ]
+      for (const operation of handlerOperations) {
+        await processConfig(operation.source, operation.target, { force, mode })
+      }
+    },
+    posthandler: () => {
+      consola.info('Please running `Set-ExecutionPolicy RemoteSigned -Scope CurrentUser` to allow local scripts to run.')
     },
   },
 ]
