@@ -15,12 +15,12 @@ export async function processConfig(source: string, target: string, options: Par
   delete options.mode
   if (mode === 'copy') {
     if (await copyConfig(source, target, options)) {
-      consola.log(`Config file ${highlight.important(`"${source}"`)} copied to ${highlight.important(`"${target}"`)}.`)
+      consola.success(`Config file ${highlight.important(`"${source}"`)} copied to ${highlight.important(`"${target}"`)}.`)
     }
   }
   else if (mode === 'symlink') {
     if (await symlinkConfig(source, target, options)) {
-      consola.log(`Config file ${highlight.important(`"${source}"`)} symlinked to ${highlight.important(`"${target}"`)}.`)
+      consola.success(`Config file ${highlight.important(`"${source}"`)} symlinked to ${highlight.important(`"${target}"`)}.`)
     }
   }
 }

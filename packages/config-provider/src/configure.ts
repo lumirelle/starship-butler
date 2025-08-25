@@ -47,7 +47,7 @@ export async function runActions(options: Partial<ConfigProviderOptions>, system
       return
     }
 
-    consola.info(`Running "${action.name}"...`)
+    consola.start(`Running "${action.name}"...`)
     await action.handler(options, systemOptions)
 
     if (action.posthandler) {

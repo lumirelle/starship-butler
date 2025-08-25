@@ -85,7 +85,7 @@ export const DEFAULT_ACTIONS: Action[] = [
       }
     },
     posthandler: () => {
-      consola.info('Please running the `.reg` file with Registry Editor to enable autorun feature.')
+      consola.info('Please running the `.reg` file under `~/Documents/CMD` with Registry Editor to enable autorun feature.')
     },
   },
   // PowerShell
