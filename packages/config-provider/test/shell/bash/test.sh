@@ -16,7 +16,6 @@ if [ "$silent" == false ]; then
   echo "--------------------------------"
 fi
 
-echo "$PWD"
 ls -all
 
 # Change to the script directory
