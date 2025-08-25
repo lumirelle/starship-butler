@@ -16,6 +16,10 @@ if [ "$silent" == false ]; then
   echo "--------------------------------"
 fi
 
+# Change to the script directory
+script_dirname=$(cd "$(dirname "$0")" && pwd -P)
+cd "$script_dirname"
+
 if any-path-exists 'not-exists-file'; then
   if [ "$silent" == false ]; then
     echo "Test failed: any-path-exists 'not-exists-file' is true"
