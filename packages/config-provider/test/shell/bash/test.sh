@@ -16,6 +16,9 @@ if [ "$silent" == false ]; then
   echo "--------------------------------"
 fi
 
+echo "$PWD"
+ls -all
+
 # Change to the script directory
 script_dirname=$(cd "$(dirname "$0")" && pwd -P)
 cd "$script_dirname"
