@@ -27,6 +27,23 @@ any-path-exists-parent () {
   return 1
 }
 
+dirname-parent () {
+  local path="$1"
+  local abs=$(realpath "$path")
+  local level=$(echo "$abs" | tr '/' '\n' | wc -l | awk '{print $1 - 1}')
+  for i in $(seq 2 $level); do
+    local dir=$(echo "$abs" | tr '/' '\n' | head -n $i | tr '\n' '/' | sed 's:/$::')
+    local new_path="$dir/$path"
+    if [ -e "$new_path" ]; then
+      # Bash function can only return number (0~255)
+      # We should store the dirname to a variable
+      dirname="$dir"
+      return 0
+    fi
+  done
+  return 1
+}
+
 nr-agent () {
   if any-path-exists-parent package.json; then
     if [ -x "$(command -v nr)" ]; then
@@ -50,7 +67,7 @@ eval "$(fnm env --use-on-cd --corepack-enabled --shell bash)"
 # >> Add current node_modules/.bin to PATH if this is a npm project, so we can run npm scripts without `npx`.
 # NOTICE: Just effect on the first time you start a new shell
 if any-path-exists-parent package.json; then
-  export PATH="$PWD/node_modules/.bin:$PATH"
+  export PATH="$(dirname-parent package.json && echo "$dirname")/node_modules/.bin:$PATH"
 fi
 
 # UI
