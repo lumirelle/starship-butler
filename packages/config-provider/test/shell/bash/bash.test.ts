@@ -7,13 +7,13 @@ it('bash', async () => {
       cwd: import.meta.dirname,
     },
   })
-  const result: number[] = []
+  const result: string[] = []
   for await (const line of proc) {
-    result.push(+line)
+    result.push(line)
   }
   // Result[0] = total tests
   // Result[1] = passed tests
   // Result[2] = failed tests
   assert.equal(result[0], result[1])
-  assert.equal(result[2], 0)
+  assert.equal(result[2], '0')
 })
