@@ -6,6 +6,19 @@ passed_tests=0
 failed_tests=0
 silent=false
 
+realpath() {
+  OUR_PWD=$PWD
+  cd "$(dirname "$1")"
+  LINK=$(readlink "$(basename "$1")")
+  while [ "$LINK" ]; do
+    cd "$(dirname "$LINK")"
+    LINK=$(readlink "$(basename "$1")")
+  done
+  REALPATH="$PWD/$(basename "$1")"
+  cd "$OUR_PWD"
+  echo "$REALPATH"
+}
+
 if [ "$1" == "--silent" ]; then
   silent=true
 fi
@@ -72,7 +85,7 @@ else
 fi
 total_tests=$((total_tests + 1))
 
-abs=$(realpath -f 'bash.test.ts')
+abs=$(realpath 'bash.test.ts')
 if [ "$(dirname-parent 'bash.test.ts' && echo "$dirname")" == "$(echo "$abs" | tr '/' '\n' | head -n "$(echo "$abs" | tr '/' '\n' | wc -l | awk '{print $1 - 1}')" | tr '\n' '/' | sed 's:/$::')" ]; then
   if [ "$silent" == false ]; then
     echo "Test passed: dirname-parent 'bash.test.ts' is correctly resolved"
