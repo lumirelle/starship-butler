@@ -38,40 +38,40 @@ def main [--silent] {
   }
   $total_tests += 1
 
-  if (['test.nu'] | utils any-path-exists) {
+  if (['nushell.test.ts'] | utils any-path-exists) {
     if $silent == false {
-      print $"(ansi green)Test passed: any-path-exists 'test.nu' is true(ansi reset)"
+      print $"(ansi green)Test passed: any-path-exists 'nushell.test.ts' is true(ansi reset)"
     }
     $passed_tests += 1
   } else {
     if $silent == false {
-      print $"(ansi red)Test failed: any-path-exists 'test.nu' is false(ansi reset)"
+      print $"(ansi red)Test failed: any-path-exists 'nushell.test.ts' is false(ansi reset)"
     }
     $failed_tests += 1
   }
   $total_tests += 1
 
-  if (['test.nu'] | utils any-path-exists-parent) {
+  if (['nushell.test.ts'] | utils any-path-exists-parent) {
     if $silent == false {
-        print $"(ansi green)Test passed: any-path-exists-parent 'test.nu' is true(ansi reset)"
+        print $"(ansi green)Test passed: any-path-exists-parent 'nushell.test.ts' is true(ansi reset)"
     }
     $passed_tests += 1
   } else {
     if $silent == false {
-      print $"(ansi red)Test failed: any-path-exists-parent 'test.nu' is false(ansi reset)"
+      print $"(ansi red)Test failed: any-path-exists-parent 'nushell.test.ts' is false(ansi reset)"
     }
     $failed_tests += 1
   }
   $total_tests += 1
 
-  if (('test.nu' | utils dirname-parent) == ('test.nu' | path expand | path dirname)) {
+  if (('nushell.test.ts' | utils dirname-parent) == ('nushell.test.ts' | path expand | path dirname)) {
     if $silent == false {
-        print $"(ansi green)Test passed: dirname-parent 'test.nu' is correctly resolved(ansi reset)"
+        print $"(ansi green)Test passed: dirname-parent 'nushell.test.ts' is correctly resolved(ansi reset)"
     }
     $passed_tests += 1
   } else {
     if $silent == false {
-      print $"(ansi red)Test failed: dirname-parent 'test.nu' is unresolved(ansi reset)"
+      print $"(ansi red)Test failed: dirname-parent 'nushell.test.ts' is unresolved(ansi reset)"
     }
     $failed_tests += 1
   }

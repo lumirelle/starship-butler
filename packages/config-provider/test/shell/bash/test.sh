@@ -42,41 +42,41 @@ else
 fi
 total_tests=$((total_tests + 1))
 
-if any-path-exists 'test.sh'; then
+if any-path-exists 'bash.test.ts'; then
   if [ "$silent" == false ]; then
-    echo "Test passed: any-path-exists 'test.sh' is true"
+    echo "Test passed: any-path-exists 'bash.test.ts' is true"
   fi
   passed_tests=$((passed_tests + 1))
 else
   if [ "$silent" == false ]; then
-    echo "Test failed: any-path-exists 'test.sh' is false"
+    echo "Test failed: any-path-exists 'bash.test.ts' is false"
   fi
   failed_tests=$((failed_tests + 1))
 fi
 total_tests=$((total_tests + 1))
 
-if any-path-exists-parent 'test.sh'; then
+if any-path-exists-parent 'bash.test.ts'; then
   if [ "$silent" == false ]; then
-    echo "Test passed: any-path-exists-parent 'test.sh' is true"
+    echo "Test passed: any-path-exists-parent 'bash.test.ts' is true"
   fi
   passed_tests=$((passed_tests + 1))
 else
   if [ "$silent" == false ]; then
-    echo "Test failed: any-path-exists-parent 'test.sh' is false"
+    echo "Test failed: any-path-exists-parent 'bash.test.ts' is false"
   fi
   failed_tests=$((failed_tests + 1))
 fi
 total_tests=$((total_tests + 1))
 
-abs=$(realpath 'test.sh')
-if [ "$(dirname-parent 'test.sh' && echo "$dirname")" == "$(echo "$abs" | tr '/' '\n' | head -n "$(echo "$abs" | tr '/' '\n' | wc -l | awk '{print $1 - 1}')" | tr '\n' '/' | sed 's:/$::')" ]; then
+abs=$(realpath 'bash.test.ts')
+if [ "$(dirname-parent 'bash.test.ts' && echo "$dirname")" == "$(echo "$abs" | tr '/' '\n' | head -n "$(echo "$abs" | tr '/' '\n' | wc -l | awk '{print $1 - 1}')" | tr '\n' '/' | sed 's:/$::')" ]; then
   if [ "$silent" == false ]; then
-    echo "Test passed: dirname-parent 'test.sh' is correctly resolved"
+    echo "Test passed: dirname-parent 'bash.test.ts' is correctly resolved"
   fi
   passed_tests=$((passed_tests + 1))
 else
   if [ "$silent" == false ]; then
-    echo "Test failed: dirname-parent 'test.sh' is unresolved"
+    echo "Test failed: dirname-parent 'bash.test.ts' is unresolved"
   fi
   failed_tests=$((failed_tests + 1))
 fi
