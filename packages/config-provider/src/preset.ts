@@ -58,4 +58,31 @@ export const DEFAULT_ACTIONS: Action[] = [
       }
     },
   },
+  {
+    name: 'Setting Up CMD',
+    prehandler: (_, systemOptions) => {
+      const { userPlatform } = systemOptions
+      const shouldRun = userPlatform === 'win32'
+      if (!shouldRun) {
+        consola.info(`CMD: Just support win32 platform.`)
+      }
+      return shouldRun
+    },
+    handler: async (options) => {
+      const { force, symlink } = options
+      const mode = symlink ? 'symlink' : 'copy'
+      const target = join(homedir(), 'Documents', 'CMD')
+      fs.ensureDir(target)
+      const handlerOperations = [
+        { source: 'shell/cmd/autorun.cmd', target: join(target, 'autorun.cmd') },
+        { source: 'shell/cmd/autorun.reg', target: join(target, 'autorun.reg') },
+      ]
+      for (const operation of handlerOperations) {
+        await processConfig(operation.source, operation.target, { force, mode })
+      }
+    },
+    posthandler: () => {
+      consola.info('Please running the `.reg` file with Registry Editor to enable autorun feature.')
+    },
+  },
 ]
