@@ -140,4 +140,29 @@ export const DEFAULT_ACTIONS: Action[] = [
       consola.info('This configuration will use `"Fantasque Sans Mono", "Source Han Sans TC", "Symbols Nerd Font"` as terminal fonts.')
     },
   },
+  /* -------------------------------- VPN ------------------------------- */
+  // Clash for Windows
+  {
+    name: 'Setting Up Clash for Windows',
+    prehandler: (_, systemOptions) => {
+      const { userPlatform } = systemOptions
+      const shouldRun = userPlatform === 'win32'
+      if (!shouldRun) {
+        consola.info(`Clash for Windows: Just support win32 platform.`)
+      }
+      return shouldRun
+    },
+    handler: async (options) => {
+      const { force, symlink } = options
+      const mode = symlink ? 'symlink' : 'copy'
+      const target = join(homedir(), '.config', 'clash')
+      fs.ensureDir(target)
+      const handlerOperations = [
+        { source: 'vpn/clash-for-windows/cfw-settings.yaml', target: join(target, 'cfw-settings.yaml') },
+      ]
+      for (const operation of handlerOperations) {
+        await processConfig(operation.source, operation.target, { force, mode })
+      }
+    },
+  },
 ]
