@@ -91,14 +91,6 @@ export const DEFAULT_ACTIONS: Action[] = [
   // PowerShell
   {
     name: 'Setting Up PowerShell',
-    prehandler: (_, systemOptions) => {
-      const { userPlatform } = systemOptions
-      const shouldRun = userPlatform === 'win32'
-      if (!shouldRun) {
-        consola.info(`PowerShell: Just support win32 platform.`)
-      }
-      return shouldRun
-    },
     handler: async (options, systemOptions) => {
       const { force, symlink } = options
       const { userPlatform } = systemOptions
@@ -118,6 +110,34 @@ export const DEFAULT_ACTIONS: Action[] = [
     },
     posthandler: () => {
       consola.info('Please running `Set-ExecutionPolicy RemoteSigned -Scope CurrentUser` to allow local scripts to run.')
+    },
+  },
+  /* -------------------------------- Terminals ------------------------------- */
+  // Windows Terminal
+  {
+    name: 'Setting Up Windows Terminal',
+    prehandler: (_, systemOptions) => {
+      const { userPlatform } = systemOptions
+      const shouldRun = userPlatform === 'win32'
+      if (!shouldRun) {
+        consola.info(`Windows Terminal: Just support win32 platform.`)
+      }
+      return shouldRun
+    },
+    handler: async (options) => {
+      const { force, symlink } = options
+      const mode = symlink ? 'symlink' : 'copy'
+      const target = join(process.env.LOCALAPPDATA!, 'Packages', 'Microsoft.WindowsTerminal_8wekyb3d8bbwe', 'LocalState')
+      fs.ensureDir(target)
+      const handlerOperations = [
+        { source: 'terminal/windows-terminal/settings.json', target: join(target, 'settings.json') },
+      ]
+      for (const operation of handlerOperations) {
+        await processConfig(operation.source, operation.target, { force, mode })
+      }
+    },
+    posthandler: () => {
+      consola.info('This configuration will use `"Fantasque Sans Mono", "Source Han Sans TC", "Symbols Nerd Font"` as terminal fonts.')
     },
   },
 ]
