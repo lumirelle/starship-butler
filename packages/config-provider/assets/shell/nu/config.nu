@@ -13,7 +13,8 @@ $env.config.hooks.env_change.PWD = [
   # See related issue https://github.com/Schniz/fnm/issues/463 and PowerShell example https://github.com/Schniz/fnm/blob/master/src/shell/powershell.rs
   {
     condition: {|| ['.nvmrc' '.node-version', 'package.json'] | utils any-path-exists}
-    code: {|| ^fnm use --silent-if-unchanged}
+    # Temporary fix the loading issue following https://github.com/Schniz/fnm/issues/463#issuecomment-3022203794
+    code: {|| ^fnm use --silent-if-unchanged --install-if-missing}
   }
   # >> Add current `node_modules/.bin` to `$env.Path` if we are in a npm project, so we can run npm scripts without `npx`.
   {
