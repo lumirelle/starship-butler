@@ -226,4 +226,20 @@ export const DEFAULT_ACTIONS: Action[] = [
       consola.info('This configuration is amiming to run `simple-git-hooks` with `fnm` environment.')
     },
   },
+  // czg -- Git commit message generating tool
+  {
+    name: 'Setting Up czg',
+    handler: async (options) => {
+      const { force, symlink } = options
+      const mode = symlink ? 'symlink' : 'copy'
+      const target = homedir()
+      fs.ensureDir(target)
+      const handlerOperations = [
+        { source: join('tools', 'czg', '.czrc'), target: join(target, '.czrc') },
+      ]
+      for (const operation of handlerOperations) {
+        await processConfig(operation.source, operation.target, { force, mode })
+      }
+    },
+  },
 ]
