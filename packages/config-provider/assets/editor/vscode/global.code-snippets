@@ -1,0 +1,283 @@
+{
+	"Import": {
+		"prefix": "im",
+		"description": "Import a module",
+		"scope": "javascript,typescript",
+		"body": [
+			"import $1 from '$2'"
+		]
+	},
+	"Import Partial": {
+		"prefix": "ip",
+		"description": "Import a module partial",
+		"scope": "javascript,typescript",
+		"body": [
+			"import { $1 } from '$2'"
+		]
+	},
+	"Export": {
+		"prefix": "ex",
+		"description": "Export this module",
+		"scope": "javascript,typescript",
+		"body": [
+			"export default $1"
+		]
+	},
+	"Export Partial": {
+		"prefix": "ep",
+		"description": "Export this module partial",
+		"scope": "javascript,typescript",
+		"body": [
+			"export $1"
+		]
+	},
+	"Export From": {
+		"prefix": "ef",
+		"description": "Export this module from another module",
+		"scope": "javascript,typescript",
+		"body": [
+			"export * from '$1'"
+		]
+	},
+	"Const": {
+		"prefix": "cs",
+		"description": "Const",
+		"scope": "javascript,typescript",
+		"body": [
+			"const $1"
+		]
+	},
+	"Let": {
+		"prefix": "lt",
+		"description": "Let",
+		"scope": "javascript,typescript",
+		"body": [
+			"let $1"
+		]
+	},
+	"Function": {
+		"prefix": "fn",
+		"description": "Function",
+		"scope": "javascript,typescript",
+		"body": [
+			"function ${1:name}($2) {",
+			"  $0",
+			"}"
+		]
+	},
+	"Arrow Function": {
+		"prefix": "afn",
+		"description": "Arrow function",
+		"scope": "javascript,typescript",
+		"body": [
+			"${1:name} = ($2) => {",
+			"  $0",
+			"}"
+		]
+	},
+	"For In": {
+		"prefix": "fin",
+		"description": "For in",
+		"scope": "javascript,typescript",
+		"body": [
+			"for (const ${1:item} in {2:object}) {",
+			"  $0",
+			"}"
+		]
+	},
+	"For Of": {
+		"prefix": "fof",
+		"description": "For of",
+		"scope": "javascript,typescript",
+		"body": [
+			"for (const ${1:item} of {2:object}) {",
+			"  $0",
+			"}"
+		]
+	},
+	"Destructin Object": {
+		"prefix": "dob",
+		"description": "Destructin object",
+		"scope": "javascript,typescript",
+		"body": [
+			"const { ${1:property} } = ${2:object}"
+		]
+	},
+	"Console Log": {
+		"prefix": "cl",
+		"description": "Console log",
+		"scope": "javascript,typescript",
+		"body": [
+			"console.log($1)"
+		]
+	},
+	"Console Info": {
+		"prefix": "ci",
+		"description": "Console info",
+		"scope": "javascript,typescript",
+		"body": [
+			"console.info($1)"
+		]
+	},
+	"Console Warn": {
+		"prefix": "cw",
+		"description": "Console warn",
+		"scope": "javascript,typescript",
+		"body": [
+			"console.warn($1)"
+		]
+	},
+	"Console Error": {
+		"prefix": "ce",
+		"description": "Console error",
+		"scope": "javascript,typescript",
+		"body": [
+			"console.error($1)"
+		]
+	},
+	"Markdown Table": {
+		"prefix": "mtable",
+		"description": "Markdown table",
+		"scope": "markdown",
+		"body": [
+			"<table>",
+			"<tr><td width=\"600px\">",
+			"",
+			"$1",
+			"",
+			"</td><td width=\"600px\"><br>",
+			"",
+			"$2",
+			"",
+			"</td></tr>",
+			"</table>"
+		]
+	},
+	"Vue Script": {
+		"prefix": "vscript",
+		"description": "Vue SFC script",
+		"scope": "vue",
+		"body": [
+			"<script>",
+			"export default {",
+			"  $0",
+			"}",
+			"</script>"
+		]
+	},
+	"Vue Script Setup (TS)": {
+		"prefix": [
+			"vsetupscript",
+			"vsetupscript-ts"
+		],
+		"description": "Vue SFC script setup (TS)",
+		"scope": "vue",
+		"body": [
+			"<script lang=\"ts\" setup>",
+			"$0",
+			"</script>"
+		]
+	},
+	"Vue Script Setup (JS)": {
+		"prefix": "vsetupscript-js",
+		"description": "Vue SFC script setup (JS)",
+		"scope": "vue",
+		"body": [
+			"<script setup>",
+			"$0",
+			"</script>"
+		]
+	},
+	"Vue Style (SCSS)": {
+		"prefix": [
+			"vstyle",
+			"vstyle-scss"
+		],
+		"description": "Vue SFC style (SCSS)",
+		"scope": "vue",
+		"body": [
+			"<style lang=\"scss\">",
+			"$0",
+			"</style>"
+		]
+	},
+	"Vue Style (CSS)": {
+		"prefix": "vstyle-css",
+		"description": "Vue SFC style (CSS)",
+		"scope": "vue",
+		"body": [
+			"<style>",
+			"$0",
+			"</style>"
+		]
+	},
+	"Vue Style Scoped (SCSS)": {
+		"prefix": [
+			"vscopedstyle",
+			"vscopedstyle-scss"
+		],
+		"description": "Vue SFC style scoped (SCSS)",
+		"scope": "vue",
+		"body": [
+			"<style lang=\"scss\" scoped>",
+			"$0",
+			"</style>"
+		]
+	},
+	"Vue Style Scoped (CSS)": {
+		"prefix": "vscopedstyle-css",
+		"description": "Vue SFC style scoped (CSS)",
+		"scope": "vue",
+		"body": [
+			"<style scoped>",
+			"$0",
+			"</style>"
+		]
+	},
+	"Vue I18n Block (YAML)": {
+		"prefix": [
+			"vi18n",
+			"vi18n-yaml"
+		],
+		"description": "Vue SFC i18n block (YAML)",
+		"scope": "vue",
+		"body": [
+			"<i18n lang=\"yaml\">",
+			"$0",
+			"</i18n>"
+		]
+	},
+	"Vue I18n Block (JSON)": {
+		"prefix": "vi18n-json",
+		"description": "Vue SFC i18n block (JSON)",
+		"scope": "vue",
+		"body": [
+			"<i18n>",
+			"$0",
+			"</i18n>"
+		]
+	},
+	"Vue I18n Block Global (YAML)": {
+		"prefix": [
+			"vglobali18n",
+			"vglobali18n-yaml"
+		],
+		"description": "Vue SFC i18n block global (YAML)",
+		"scope": "vue",
+		"body": [
+			"<i18n lang=\"yaml\" global>",
+			"$0",
+			"</i18n>"
+		]
+	},
+	"Vue I18n Block Global (JSON)": {
+		"prefix": "vglobali18n-json",
+		"description": "Vue SFC i18n block global (JSON)",
+		"scope": "vue",
+		"body": [
+			"<i18n global>",
+			"$0",
+			"</i18n>"
+		]
+	}
+}

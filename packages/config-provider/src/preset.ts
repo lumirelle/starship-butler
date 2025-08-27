@@ -270,4 +270,77 @@ export const DEFAULT_ACTIONS: Action[] = [
       consola.info('I prefer using cSpell as an extension for Visual Studio Code, this configuration is meant to be used by the editor.')
     },
   },
+  /* --------------------------------- Editors -------------------------------- */
+  // VSCode
+  {
+    name: 'Setting Up VSCode',
+    prehandler: (_, systemOptions) => {
+      const { userPlatform } = systemOptions
+      const shouldRun = userPlatform === 'win32' || userPlatform === 'linux' || userPlatform === 'darwin'
+      if (!shouldRun) {
+        consola.info(`VSCode: Just support win32, linux and darwin platform now.`)
+      }
+      return shouldRun
+    },
+    handler: async (options, systemOptions) => {
+      const { force, symlink } = options
+      const { userPlatform } = systemOptions
+      const mode = symlink ? 'symlink' : 'copy'
+      const target = userPlatform === 'win32'
+        ? join(process.env.APPDATA!, 'Code', 'User')
+        : userPlatform === 'linux'
+          ? join(homedir(), '.config', 'Code', 'User')
+          : userPlatform === 'darwin'
+            ? join(homedir(), 'Library', 'Application Support', 'Code', 'User')
+            : ''
+      fs.ensureDir(target)
+      const handlerOperations = [
+        { source: join('editor', 'vscode', 'keybindings.json'), target: join(target, 'keybindings.json') },
+        { source: join('editor', 'vscode', 'settings.json'), target: join(target, 'settings.json') },
+        { source: join('editor', 'vscode', 'global.code-snippets'), target: join(target, 'snippets', 'global.code-snippets') },
+      ]
+      for (const operation of handlerOperations) {
+        await processConfig(operation.source, operation.target, { force, mode })
+      }
+    },
+    posthandler: () => {
+      consola.info('This configuration is meant to be used by `Visual Studio Code` in user scope.')
+    },
+  },
+  // Cursor
+  {
+    name: 'Setting Up Cursor',
+    prehandler: (_, systemOptions) => {
+      const { userPlatform } = systemOptions
+      const shouldRun = userPlatform === 'win32' || userPlatform === 'linux' || userPlatform === 'darwin'
+      if (!shouldRun) {
+        consola.info(`Cursor: Just support win32, linux and darwin platform now.`)
+      }
+      return shouldRun
+    },
+    handler: async (options, systemOptions) => {
+      const { force, symlink } = options
+      const { userPlatform } = systemOptions
+      const mode = symlink ? 'symlink' : 'copy'
+      const target = userPlatform === 'win32'
+        ? join(process.env.APPDATA!, 'Cursor', 'User')
+        : userPlatform === 'linux'
+          ? join(homedir(), '.config', 'Cursor', 'User')
+          : userPlatform === 'darwin'
+            ? join(homedir(), 'Library', 'Application Support', 'Cursor', 'User')
+            : ''
+      fs.ensureDir(target)
+      const handlerOperations = [
+        { source: join('editor', 'vscode', 'keybindings.json'), target: join(target, 'keybindings.json') },
+        { source: join('editor', 'vscode', 'settings.json'), target: join(target, 'settings.json') },
+        { source: join('editor', 'vscode', 'global.code-snippets'), target: join(target, 'snippets', 'global.code-snippets') },
+      ]
+      for (const operation of handlerOperations) {
+        await processConfig(operation.source, operation.target, { force, mode })
+      }
+    },
+    posthandler: () => {
+      consola.info('This configuration is meant to be used by `Cursor` in user scope.')
+    },
+  },
 ]
