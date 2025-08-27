@@ -165,4 +165,21 @@ export const DEFAULT_ACTIONS: Action[] = [
       }
     },
   },
+  /* ----------------------------------- VCS ---------------------------------- */
+  // Git
+  {
+    name: 'Setting Up Git',
+    handler: async (options) => {
+      const { force, symlink } = options
+      const mode = symlink ? 'symlink' : 'copy'
+      const target = homedir()
+      fs.ensureDir(target)
+      const handlerOperations = [
+        { source: join('vcs', 'git', '.gitconfig'), target: join(target, '.gitconfig') },
+      ]
+      for (const operation of handlerOperations) {
+        await processConfig(operation.source, operation.target, { force, mode })
+      }
+    },
+  },
 ]
