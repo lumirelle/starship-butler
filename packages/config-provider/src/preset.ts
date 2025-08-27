@@ -222,8 +222,16 @@ export const DEFAULT_ACTIONS: Action[] = [
         await processConfig(operation.source, operation.target, { force, mode })
       }
     },
-    posthandler: () => {
-      consola.info('This configuration is amiming to run `simple-git-hooks` with `fnm` environment.')
+    posthandler: (_, systemOptions) => {
+      const { userPlatform } = systemOptions
+      const target = join(homedir(), '.simple-git-hooks.rc')
+      consola.info('This configuration is aiming to run `simple-git-hooks` with `fnm` environment.')
+      if (userPlatform === 'win32') {
+        consola.info(`Notice that, you should add \`SIMPLE_GIT_HOOKS_RC=${target}\` to your system environment variables to let this configuration take effect.`)
+      }
+      else {
+        consola.info(`Notice that, you should add \`SIMPLE_GIT_HOOKS_RC=${target}\` to your system environment variables at \`/etc/environment\` to let this configuration take effect.`)
+      }
     },
   },
   // czg -- Git commit message generating tool
