@@ -343,4 +343,26 @@ export const DEFAULT_ACTIONS: Action[] = [
       consola.info('This configuration is meant to be used by `Cursor` in user scope.')
     },
   },
+  // Neo Vim
+  {
+    name: 'Setting Up Neo Vim',
+    handler: async (options, systemOptions) => {
+      const { force, symlink } = options
+      const { userPlatform } = systemOptions
+      const mode = symlink ? 'symlink' : 'copy'
+      const target = userPlatform === 'win32'
+        ? join(process.env.LOCALAPPDATA!, 'nvim')
+        : join(homedir(), '.config', 'nvim')
+      fs.ensureDir(target)
+      const handlerOperations = [
+        { source: join('editor', 'nvim', 'init.lua'), target: join(target, 'init.lua') },
+        { source: join('editor', 'nvim', 'lua', 'config', 'autocmds.lua'), target: join(target, 'lua', 'config', 'autocmds.lua') },
+        { source: join('editor', 'nvim', 'lua', 'config', 'keymaps.lua'), target: join(target, 'lua', 'config', 'keymaps.lua') },
+        { source: join('editor', 'nvim', 'lua', 'config', 'options.lua'), target: join(target, 'lua', 'config', 'options.lua') },
+      ]
+      for (const operation of handlerOperations) {
+        await processConfig(operation.source, operation.target, { force, mode })
+      }
+    },
+  },
 ]
