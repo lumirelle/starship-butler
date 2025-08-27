@@ -35,9 +35,9 @@ export const DEFAULT_ACTIONS: Action[] = [
             : ''
       fs.ensureDir(target)
       const handlerOperations = [
-        { source: 'shell/nu/utils.nu', target: join(target, 'utils.nu') },
-        { source: 'shell/nu/config.nu', target: join(target, 'config.nu') },
-        { source: 'shell/nu/env.nu', target: join(target, 'env.nu') },
+        { source: join('shell', 'nu', 'utils.nu'), target: join(target, 'utils.nu') },
+        { source: join('shell', 'nu', 'config.nu'), target: join(target, 'config.nu') },
+        { source: join('shell', 'nu', 'env.nu'), target: join(target, 'env.nu') },
       ]
       for (const operation of handlerOperations) {
         await processConfig(operation.source, operation.target, { force, mode })
@@ -53,7 +53,7 @@ export const DEFAULT_ACTIONS: Action[] = [
       const target = homedir()
       fs.ensureDir(target)
       const handlerOperations = [
-        { source: 'shell/bash/.bash_profile', target: join(target, '.bash_profile') },
+        { source: join('shell', 'bash', '.bash_profile'), target: join(target, '.bash_profile') },
       ]
       for (const operation of handlerOperations) {
         await processConfig(operation.source, operation.target, { force, mode })
@@ -77,8 +77,8 @@ export const DEFAULT_ACTIONS: Action[] = [
       const target = join(homedir(), 'Documents', 'CMD')
       fs.ensureDir(target)
       const handlerOperations = [
-        { source: 'shell/cmd/autorun.cmd', target: join(target, 'autorun.cmd') },
-        { source: 'shell/cmd/autorun.reg', target: join(target, 'autorun.reg') },
+        { source: join('shell', 'cmd', 'autorun.cmd'), target: join(target, 'autorun.cmd') },
+        { source: join('shell', 'cmd', 'autorun.reg'), target: join(target, 'autorun.reg') },
       ]
       for (const operation of handlerOperations) {
         await processConfig(operation.source, operation.target, { force, mode })
@@ -102,7 +102,7 @@ export const DEFAULT_ACTIONS: Action[] = [
           : ''
       fs.ensureDir(target)
       const handlerOperations = [
-        { source: 'shell/pwsh/profile.ps1', target: join(target, 'profile.ps1') },
+        { source: join('shell', 'pwsh', 'profile.ps1'), target: join(target, 'profile.ps1') },
       ]
       for (const operation of handlerOperations) {
         await processConfig(operation.source, operation.target, { force, mode })
@@ -130,7 +130,7 @@ export const DEFAULT_ACTIONS: Action[] = [
       const target = join(process.env.LOCALAPPDATA!, 'Packages', 'Microsoft.WindowsTerminal_8wekyb3d8bbwe', 'LocalState')
       fs.ensureDir(target)
       const handlerOperations = [
-        { source: 'terminal/windows-terminal/settings.json', target: join(target, 'settings.json') },
+        { source: join('terminal', 'windows-terminal', 'settings.json'), target: join(target, 'settings.json') },
       ]
       for (const operation of handlerOperations) {
         await processConfig(operation.source, operation.target, { force, mode })
@@ -158,7 +158,7 @@ export const DEFAULT_ACTIONS: Action[] = [
       const target = join(homedir(), '.config', 'clash')
       fs.ensureDir(target)
       const handlerOperations = [
-        { source: 'vpn/clash-for-windows/cfw-settings.yaml', target: join(target, 'cfw-settings.yaml') },
+        { source: join('vpn', 'clash-for-windows', 'cfw-settings.yaml'), target: join(target, 'cfw-settings.yaml') },
       ]
       for (const operation of handlerOperations) {
         await processConfig(operation.source, operation.target, { force, mode })
