@@ -250,4 +250,24 @@ export const DEFAULT_ACTIONS: Action[] = [
       }
     },
   },
+  /* --------------------------------- Linters -------------------------------- */
+  // cSpell
+  {
+    name: 'Setting Up cSpell',
+    handler: async (options) => {
+      const { force, symlink } = options
+      const mode = symlink ? 'symlink' : 'copy'
+      const target = homedir()
+      fs.ensureDir(target)
+      const handlerOperations = [
+        { source: join('linter', 'cspell', '.cspell.common.txt'), target: join(target, '.cspell.common.txt') },
+      ]
+      for (const operation of handlerOperations) {
+        await processConfig(operation.source, operation.target, { force, mode })
+      }
+    },
+    posthandler: () => {
+      consola.info('I prefer using cSpell as an extension for Visual Studio Code, this configuration is meant to be used by the editor.')
+    },
+  },
 ]
