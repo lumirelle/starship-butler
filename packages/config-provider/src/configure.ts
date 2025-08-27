@@ -5,17 +5,19 @@ import semver from 'semver'
 import { updateOrCreateUserRc } from 'starship-butler-utils'
 import { version as versionInPackage } from '../package.json'
 import { filterActions } from './actions'
+import { DEFAULT_ACTIONS } from './preset'
 
 /**
  * Running actions to configure your system. The entry of this package.
  * @param options User configuration and command line options
  */
 export async function runActions(options: Partial<ConfigProviderOptions>, systemOptions: SystemOptions): Promise<void> {
-  // If `version` is provided, that means the user already configured his/her system before
-  // If that `version` is lower than the current package version, we will force update
+  // If `version` is provided, that means the user already fully configured his/her system before
+  // Fully configuring means all actions available are included and forcibly executed
+  // If that `version` is lower than the current package version, we will fully update
   const needUpdate = Boolean((options.version && semver.lt(options.version, versionInPackage)))
-  if (needUpdate) {
-    consola.info(`Detect global .butlerrc file with old version ${options.version}, will force update all config.`)
+  if (options.fullyUpdate && needUpdate) {
+    consola.info(`Detect global .butlerrc file with old version ${options.version}, will fully update all config.`)
     options.force = true
   }
 
@@ -56,10 +58,13 @@ export async function runActions(options: Partial<ConfigProviderOptions>, system
     }
   }
 
-  // Update last configuring timestamp
-  updateOrCreateUserRc('.butlerrc', {
-    'config-provider': {
-      version: versionInPackage,
-    },
-  })
+  // If fully configuring, store the version of config provider
+  const isFullyConfiguring = (!options.include || filteredActions.length === DEFAULT_ACTIONS.length) && !options.exclude && options.force
+  if (isFullyConfiguring) {
+    updateOrCreateUserRc('.butlerrc', {
+      'config-provider': {
+        version: versionInPackage,
+      },
+    })
+  }
 }

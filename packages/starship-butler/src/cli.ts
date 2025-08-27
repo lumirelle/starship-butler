@@ -21,12 +21,13 @@ const systemOptions: SystemOptions = {
 cli
   .command('configure', 'Let butler configure your system.')
   .alias('conf')
-  .option('-n, --include [actions]', 'Include certain configure actions')
+  .option('-i, --include [actions]', 'Include certain configure actions')
   .option('-x, --exclude [actions]', 'Exclude certain configure actions')
   .option('-f, --force', 'Force configure')
   .option('-?, --verbose', 'Show verbose output')
   .option('-d, --dry-run', 'Dry run')
   .option('-s, --symlink', 'Use symlink instead of copy')
+  .option('-u, --no-fully-update', 'Disable fully update behavior')
   .action(async (options: Partial<ConfigProviderOptionsFromCommandLine>) => {
     await runActions(mergeOptions(config, 'config-provider', options), systemOptions)
   })

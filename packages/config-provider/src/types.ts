@@ -17,8 +17,12 @@ interface ConfigProviderOptionsBasic extends OptionsBasic {
    */
   exclude: string[] | string
   /**
-   * Run actions forcedly
+   * Run actions forcedly, if you don't specify include or exclude options and force is true, this will recognized as fully configuring.
+   * The version executed will be recorded in global rc file.
+   * The next time the user runs the configure command, the recorded version will be used to determine if a full update is needed.
+   * You can change the behavior by option `enableFullUpdate`.
    * @default false
+   * @see enableFullUpdate
    */
   force: boolean
   /**
@@ -26,6 +30,11 @@ interface ConfigProviderOptionsBasic extends OptionsBasic {
    * @default false
    */
   symlink: boolean
+  /**
+   * Whether to enable fully update
+   * @default true
+   */
+  fullyUpdate: boolean
 }
 
 /**
