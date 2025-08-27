@@ -207,4 +207,23 @@ export const DEFAULT_ACTIONS: Action[] = [
       }
     },
   },
+  // simple-git-hooks -- Run with fnm environment
+  {
+    name: 'Setting Up simple-git-hooks',
+    handler: async (options) => {
+      const { force, symlink } = options
+      const mode = symlink ? 'symlink' : 'copy'
+      const target = homedir()
+      fs.ensureDir(target)
+      const handlerOperations = [
+        { source: join('tools', 'simple-git-hooks', '.simple-git-hooks.rc'), target: join(target, '.simple-git-hooks.rc') },
+      ]
+      for (const operation of handlerOperations) {
+        await processConfig(operation.source, operation.target, { force, mode })
+      }
+    },
+    posthandler: () => {
+      consola.info('This configuration is amiming to run `simple-git-hooks` with `fnm` environment.')
+    },
+  },
 ]
