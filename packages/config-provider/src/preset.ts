@@ -21,7 +21,7 @@ export const DEFAULT_ACTIONS: Action[] = [
         consola.info(`NU: Just support win32, linux and darwin platform now.`)
       }
       return shouldRun
-    }, // TODO: Support Unix-like system
+    },
     handler: async (options, systemOptions) => {
       const { force, symlink } = options
       const { userPlatform } = systemOptions
@@ -91,6 +91,14 @@ export const DEFAULT_ACTIONS: Action[] = [
   // PowerShell
   {
     name: 'Setting Up PowerShell',
+    prehandler: (_, systemOptions) => {
+      const { userPlatform } = systemOptions
+      const shouldRun = userPlatform === 'win32' || userPlatform === 'linux' || userPlatform === 'darwin'
+      if (!shouldRun) {
+        consola.info(`PowerShell: Just support win32, linux and darwin platform now.`)
+      }
+      return shouldRun
+    },
     handler: async (options, systemOptions) => {
       const { force, symlink } = options
       const { userPlatform } = systemOptions
@@ -176,6 +184,23 @@ export const DEFAULT_ACTIONS: Action[] = [
       fs.ensureDir(target)
       const handlerOperations = [
         { source: join('vcs', 'git', '.gitconfig'), target: join(target, '.gitconfig') },
+      ]
+      for (const operation of handlerOperations) {
+        await processConfig(operation.source, operation.target, { force, mode })
+      }
+    },
+  },
+  /* ---------------------------------- Tools --------------------------------- */
+  // @sxzz/creator -- Creating projects
+  {
+    name: 'Setting Up @sxzz/creator',
+    handler: async (options) => {
+      const { force, symlink } = options
+      const mode = symlink ? 'symlink' : 'copy'
+      const target = join(homedir(), '.config')
+      fs.ensureDir(target)
+      const handlerOperations = [
+        { source: join('tools', 'sxzz-creator', 'create.config.yml'), target: join(target, 'create.config.yml') },
       ]
       for (const operation of handlerOperations) {
         await processConfig(operation.source, operation.target, { force, mode })

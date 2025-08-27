@@ -1,0 +1,23 @@
+git:
+  add: true
+templates:
+  - name: Library
+    url: antfu/starter-ts
+    git:
+      init: false
+  - name: Monorepo
+    url: lumirelle/starter-monorepo
+    git:
+      init: false
+  - name: VS Code
+    url: antfu/starter-vscode
+    git:
+      init: false
+  - name: Vitesse Lite
+    url: antfu-collective/vitesse-lite
+    git:
+      init: false
+  - name: Vitesse Nuxt
+    url: antfu/vitesse-nuxt
+    git:
+      init: false
