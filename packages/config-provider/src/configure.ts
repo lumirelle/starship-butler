@@ -49,6 +49,7 @@ export async function runActions(options: Partial<ConfigProviderOptions>, system
       return
     }
 
+    consola.log('') // New line
     consola.start(`Running "${action.name}"...`)
     await action.handler(options, systemOptions)
 
@@ -67,4 +68,7 @@ export async function runActions(options: Partial<ConfigProviderOptions>, system
       },
     })
   }
+
+  consola.log('') // New line
+  consola.success('All actions completed. Please check the output info above carefully.')
 }
