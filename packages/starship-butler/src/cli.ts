@@ -3,13 +3,13 @@ import type { SystemOptions } from 'starship-butler-types'
 import { platform } from 'node:os'
 import process from 'node:process'
 import cac from 'cac'
-import { runActions } from 'starship-butler-config-provider'
+import { configureSystem } from 'starship-butler-config-provider'
 import { name, version } from '../package.json'
 import { loadConfig, mergeOptions } from './config'
 
-const config = await loadConfig()
-
 const cli = cac(name)
+
+const config = await loadConfig()
 
 /**
  * User system info
@@ -19,8 +19,8 @@ const systemOptions: SystemOptions = {
 }
 
 cli
-  .command('configure', 'Let butler configure your system.')
-  .alias('conf')
+  .command('configure-system', 'Let butler configure your system.')
+  .alias('csys')
   .option('-i, --include [actions]', 'Include certain configure actions')
   .option('-x, --exclude [actions]', 'Exclude certain configure actions')
   .option('-f, --force', 'Force configure')
@@ -29,7 +29,8 @@ cli
   .option('-s, --symlink', 'Use symlink instead of copy')
   .option('-u, --no-fully-update', 'Disable fully update behavior')
   .action(async (options: Partial<ConfigProviderOptionsFromCommandLine>) => {
-    await runActions(mergeOptions(config, 'config-provider', options), systemOptions)
+    const mergedOptions = mergeOptions(config, 'config-provider', options)
+    await configureSystem(mergedOptions, systemOptions)
   })
 
 cli.help()

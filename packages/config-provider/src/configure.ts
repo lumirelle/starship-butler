@@ -8,10 +8,10 @@ import { filterActions } from './actions'
 import { DEFAULT_ACTIONS } from './preset'
 
 /**
- * Running actions to configure your system. The entry of this package.
+ * Running actions to configure your system.
  * @param options User configuration and command line options
  */
-export async function runActions(options: Partial<ConfigProviderOptions>, systemOptions: SystemOptions): Promise<void> {
+export async function configureSystem(options: Partial<ConfigProviderOptions>, systemOptions: SystemOptions): Promise<void> {
   // If `version` is provided, that means the user already fully configured his/her system before
   // Fully configuring means all actions available are included and forcibly executed
   // If that `version` is lower than the current package version, we will fully update

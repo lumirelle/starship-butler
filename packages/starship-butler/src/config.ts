@@ -39,8 +39,8 @@ export async function loadConfig<
 }
 
 /**
- * Merges user configuration with command line options.
- * @param config The user configuration loading from `c12`
+ * Merges configuration with command line options.
+ * @param config The configuration loading from `c12`
  * @param packageName The package name, to identify which options in configuration should be used
  * @param options The command line options
  * @returns The merged options
