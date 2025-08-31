@@ -1,0 +1,41 @@
+# Docker compose for data services (MySQL and Redis)
+version: '3.9'
+services:
+  sql-service:
+    image: mysql:lts
+    environment:
+      MYSQL_ROOT_PASSWORD: root # Or your custom root password
+      MYSQL_DATABASE: database # Or your custom database name
+      TZ: Asia/Shanghai
+    ports:
+      - 3306:3306
+    volumes:
+      # Use volumes
+      # - mysql_data:/var/lib/mysql
+      # Or use local path
+      - ./data/mysql:/var/lib/mysql
+    networks:
+      - data-group
+  redis-service:
+    image: redis:alpine
+    # command: --requirepass "12345678"  # Uncomment if you need a password
+    environment:
+      TZ: Asia/Shanghai
+    ports:
+      - 6379:6379
+    volumes:
+      # Use volumes
+      # - redis_data:/data
+      # Or use local path
+      - ./data/redis:/data
+    networks:
+      - data-group
+# If you want to use volumes instead of local paths
+# volumes:
+#   mysql-data:
+#     driver: local
+#   redis-data:
+#     driver: local
+networks:
+  data-group:
+    driver: bridge
