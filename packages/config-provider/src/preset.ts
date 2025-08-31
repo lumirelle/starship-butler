@@ -365,4 +365,21 @@ export const DEFAULT_ACTIONS: Action[] = [
       }
     },
   },
+  /* --------------------------------- PM (Package Manager) -------------------------------- */
+  // Maven
+  {
+    name: 'Setting Up Maven',
+    handler: async (options) => {
+      const { force, symlink } = options
+      const mode = symlink ? 'symlink' : 'copy'
+      const target = join(homedir(), '.m2')
+      fs.ensureDir(target)
+      const handlerOperations = [
+        { source: join('pm', 'maven', 'settings.xml'), target: join(target, 'settings.xml') },
+      ]
+      for (const operation of handlerOperations) {
+        await processConfig(operation.source, operation.target, { force, mode })
+      }
+    },
+  },
 ]
