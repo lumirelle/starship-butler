@@ -454,7 +454,8 @@
     }
   ],
   "todohighlight.include": [
-    "**/*" // Include all files
+    "**/.*", // Include all dot files
+    "**/*" // Include all non-dot files
   ],
   "todohighlight.exclude": [
     "**/node_modules/**",
