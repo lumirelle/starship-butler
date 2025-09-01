@@ -1,14 +1,20 @@
 [user]
-# Please replace the following with your own information.
+# NOTICE: Please replace the following with your own information.
 name = Lumirelle
 email = shabbyacc@outlook.com
 
 [credential "https://gitee.com"]
 provider = generic
 
+[feature]
+manyFiles = true
+
 [core]
 ignorecase = false
 symlinks = true
+
+[index]
+version = 4
 
 [log]
 date = short
@@ -35,9 +41,16 @@ pruneTags = false
 [pull]
 rebase = true
 
+[push]
+default = simple
+
 [merge]
 conflictstyle = zdiff3
 ff = no
+
+[rebase]
+autostash = true
+updateRefs = true
 
 [diff]
 algorithm = histogram
@@ -53,11 +66,8 @@ aliases = "!git config --get-regexp ^alias\\. | sed -e s/^alias\\.// -e s/\\ /\\
 # log
 log = log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit
 log-last = log -1 HEAD --stat
-# config
-config-list = config --list
-config-global = config --global
 # remote
-remote-add-default-origin = "!f() { \
+remote-add = "!f() { \
   if [ -z \"$2\" ]; then \
     git remote add origin \"$1\"; \
   else \
@@ -67,12 +77,12 @@ remote-add-default-origin = "!f() { \
 remote-list = remote --verbose
 remote-remove = remote remove
 # pull
-pull-set-upstream-current-branch = "!f() { \
+pull-set-upstream = "!f() { \
   current_branch=$(git branch --show-current); \
   git pull --set-upstream origin \"$current_branch\"; \
 }; f"
 # push
-push-set-upstream-current-branch = "!f() { \
+push-set-upstream = "!f() { \
   current_branch=$(git branch --show-current); \
   git push --set-upstream origin \"$current_branch\"; \
 }; f"
@@ -113,7 +123,7 @@ add-all-then-commit-with-message = "!f() { \
   git commit-with-message \"$1\"; \
 }; f"
 # only for a node package, which requires `czg` to be installed
-add-all-then-commit-with-czg = "!f() { \
+add-all-then-czg = "!f() { \
   git add-all; \
   git czg \"$@\";\
 }; f"
@@ -139,35 +149,35 @@ stash-drop = stash drop
 # branch
 branch-list-local = branch
 branch-list-remote = branch --remote
-branch-list-all = branch --all
+branch-list-both = branch --all
 branch-delete-local = branch --delete
 branch-force-delete-local = branch --delete --force
-branch-delete-remote-default-origin = "!f() {\
+branch-delete-remote = "!f() {\
   if [ -z \"$2\" ]; then \
     git push --delete origin \"$1\"; \
   else \
     git push --delete \"$1\" \"$2\"; \
   fi; \
 }; f"
-branch-delete-local-and-remote-default-origin = "!f() { \
+branch-delete-both = "!f() { \
   if [ -z \"$2\" ]; then \
     git branch-delete-local \"$1\"; \
-    git branch-delete-remote-default-origin \"$1\"; \
+    git branch-delete-remote \"$1\"; \
   else \
     git branch-delete-local \"$2\"; \
-    git branch-delete-remote-default-origin \"$1\" \"$2\"; \
+    git branch-delete-remote \"$1\" \"$2\"; \
   fi; \
 }; f"
 branch-rename = branch --move
-branch-rename-remote-default-origin = "!f() { \
+branch-rename-remote = "!f() { \
   if [ -z \"$3\" ]; then \
-    git branch-delete-remote-default-origin \"$1\" \"$2\"; \
+    git branch-delete-remote \"$1\" \"$2\"; \
     git branch --move \"$2\" \"$3\"; \
-    git push-set-upstream-current-branch; \
+    git push-set-upstream; \
   else \
-    git branch-delete-remote-default-origin \"$1\"; \
+    git branch-delete-remote \"$1\"; \
     git branch --move \"$1\" \"$2\"; \
-    git push-set-upstream-current-branch; \
+    git push-set-upstream; \
   fi; \
 }; f"
 # branch & switch
@@ -195,14 +205,14 @@ tag-new = "!f() { \
 }; f"
 tag-list = tag --list
 tag-list-remote = ls-remote --tags
-tag-push-remote-default-origin = "!f() { \
+tag-push-remote = "!f() { \
   if [ -z \"$2\" ]; then \
     git push origin \"$1\"; \
   else \
     git push \"$1\" \"$2\"; \
   fi; \
 }; f"
-tag-push-remote-default-origin-all = "!f() { \
+tag-push-remote-all = "!f() { \
   if [ -z \"$1\" ]; then \
     git push origin --tags; \
   else \
@@ -210,7 +220,7 @@ tag-push-remote-default-origin-all = "!f() { \
   fi; \
 }; f"
 tag-delete-local = tag --delete
-tag-delete-remote-default-origin = "!f() { \
+tag-delete-remote = "!f() { \
   if [ -z \"$2\" ]; then \
     git push-delete origin \"$1\"; \
   else \
@@ -227,36 +237,32 @@ tag-prune = fetch --prune-tags
 #   `x`: `discard | delete | drop`, which means **drop things** we don't need any more
 #   `n`: `rename`
 #   <TO SPECIFY TARGET>
-#   `g`: `global`
 #   `a`: `all`
+#   `b`: `both`
 #   `e`: `remote`
-#   `m`: `multiple`
 #   <TO SPECIFY PARAMETERS>
 #   `m`: with `--message` parameter
 #   `e`: with `--edit` parameter
 #   `f`: with `--force` parameter
 #   `z`: with `--abort` parameter
 #   `c`: with `--continue` parameter
-# config: cf
-cf = config
-cfg = config-global
-cfs = config-list
+#   `u`: with `--set-upstream` parameter
 # init: i
 i = init
 # clone: cl
 cl = clone
 # remote: e
-e = remote-add-default-origin
+e = remote-add
 es = remote-list
 ex = remote-remove
 # fetch: f
 f = fetch
 # pull: l
 l = pull
-lu = pull-set-upstream-current-branch
+lu = pull-set-upstream
 # push: p
 p = push
-pu = push-set-upstream-current-branch
+pu = push-set-upstream
 pf = push-force
 px = push-delete
 # pull & push: l*p*
@@ -277,7 +283,7 @@ cg = czg
 ac = add-all-then-commit # `ac` instead of `aac` because `aac` is too long to type
 acm = add-all-then-commit-with-message # `acm` instead of `aacm` because `aacm` is too long to type
 # add & commit (czg): a*cz*
-acg = add-all-then-commit-with-czg
+acg = add-all-then-czg
 # amend commit: md
 md = amend-commit
 mde = amend-commit-with-edit
@@ -295,13 +301,13 @@ sx = stash-drop
 b = branch
 bs = branch-list-local
 bse = branch-list-remote
-bsa = branch-list-all
+bsb = branch-list-both
 bx = branch-delete-local
 bxf = branch-delete-local-force
-bxe = branch-delete-remote-default-origin
-bxa = branch-delete-local-and-remote-default-origin
+bxe = branch-delete-remote
+bxb = branch-delete-both
 bn = branch-rename
-bne = branch-rename-remote-default-origin
+bne = branch-rename-remote
 # switch: w
 w = switch
 # branch & switch: b*w*
@@ -327,7 +333,7 @@ t = tag-new
 ts = tag-list
 tse = tag-list-remote
 tl = tag-prune
-tp = tag-push-remote-default-origin
-tpa = tag-push-remote-default-origin-all
+tp = tag-push-remote
+tpa = tag-push-remote-all
 tx = tag-delete-local
-txe = tag-delete-remote-default-origin
+txe = tag-delete-remote
