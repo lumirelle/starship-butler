@@ -99,6 +99,7 @@ export interface Action {
 export interface ProcessConfigOptions {
   /**
    * Use glob pattern matching.
+   * WIP: Work in progress.
    * @default false
    */
   useGlob: boolean

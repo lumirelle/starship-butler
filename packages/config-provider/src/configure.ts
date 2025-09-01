@@ -2,14 +2,15 @@ import type { SystemOptions } from 'starship-butler-types'
 import type { ConfigProviderOptions } from './types'
 import consola from 'consola'
 import semver from 'semver'
-import { updateOrCreateUserRc } from 'starship-butler-utils'
+import { upsertUserRc } from 'starship-butler-utils'
 import { version as versionInPackage } from '../package.json'
 import { filterActions } from './actions'
 import { DEFAULT_ACTIONS } from './preset'
 
 /**
  * Running actions to configure your system.
- * @param options User configuration and command line options
+ * @param options Configuration and command line options
+ * @param systemOptions User system information options
  */
 export async function configureSystem(options: Partial<ConfigProviderOptions>, systemOptions: SystemOptions): Promise<void> {
   // If `version` is provided, that means the user already fully configured his/her system before
@@ -28,7 +29,6 @@ export async function configureSystem(options: Partial<ConfigProviderOptions>, s
   }
 
   const filteredActions = filterActions(options)
-
   consola.debug(`[config-provider] Found ${filteredActions.length} actions to run.`)
 
   for (const action of filteredActions) {
@@ -62,7 +62,7 @@ export async function configureSystem(options: Partial<ConfigProviderOptions>, s
   // If fully configuring, store the version of config provider
   const isFullyConfiguring = (!options.include || filteredActions.length === DEFAULT_ACTIONS.length) && !options.exclude && options.force
   if (isFullyConfiguring) {
-    updateOrCreateUserRc('.butlerrc', {
+    upsertUserRc('.butlerrc', {
       'config-provider': {
         version: versionInPackage,
       },

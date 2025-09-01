@@ -11,7 +11,8 @@ describe('merge options', () => {
       configFile: './.butlerrc.json',
       cwd: import.meta.dirname,
     })
-    const mergedOptions = mergeOptions(config, 'config-provider', { actions: [{ name: 'test', handler: () => { } }] })
+    const configOptions = config['config-provider']
+    const mergedOptions = mergeOptions(configOptions, { actions: [{ name: 'test', handler: () => { } }] })
     delete mergedOptions.version
     const expectedOptions = rawJSONConfig['config-provider'] as ButlerConfig['config-provider']
     expectedOptions.actions = [{ name: 'test', handler: () => { } }]
@@ -23,7 +24,8 @@ describe('merge options', () => {
       configFile: './butler.config.ts',
       cwd: import.meta.dirname,
     })
-    const mergedOptions = mergeOptions(config, 'config-provider', { actions: [{ name: 'test', handler: () => { } }] })
+    const configOptions = config['config-provider']
+    const mergedOptions = mergeOptions(configOptions, { actions: [{ name: 'test', handler: () => { } }] })
     delete mergedOptions.version
     const expectedOptions = rawTSConfig['config-provider'] as ButlerConfig['config-provider']
     expectedOptions.actions = [{ name: 'test', handler: () => { } }]

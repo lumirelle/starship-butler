@@ -3,6 +3,7 @@ import type { SystemOptions } from 'starship-butler-types'
 import { platform } from 'node:os'
 import process from 'node:process'
 import cac from 'cac'
+import consola, { LogLevels } from 'consola'
 import { configureSystem } from 'starship-butler-config-provider'
 import { name, version } from '../package.json'
 import { loadConfig, mergeOptions } from './config'
@@ -28,7 +29,11 @@ cli
   .option('-s, --symlink', 'Symlink configuration instead of copy and paste')
   .option('-u, --no-fully-update', 'Disable fully update behavior, default: false')
   .action(async (options: Partial<ConfigProviderOptionsFromCommandLine>) => {
-    const mergedOptions = mergeOptions(config, 'config-provider', options)
+    const configOptions = config['config-provider']
+    if (configOptions.verbose || options.verbose) {
+      consola.level = LogLevels.debug
+    }
+    const mergedOptions = mergeOptions(configOptions, options)
     await configureSystem(mergedOptions, systemOptions)
   })
 

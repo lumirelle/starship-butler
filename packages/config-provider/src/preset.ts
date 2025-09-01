@@ -10,7 +10,60 @@ import { processConfig } from './handler'
  * Predefined actions to configure your system.
  */
 export const DEFAULT_ACTIONS: Action[] = [
-  /* --------------------------------- Shells --------------------------------- */
+  /* ------------------------------- 1. Network ------------------------------- */
+  // Clash for Windows
+  {
+    name: 'Setting Up Clash for Windows',
+    prehandler: (_, systemOptions) => {
+      const { userPlatform } = systemOptions
+      const shouldRun = userPlatform === 'win32'
+      if (!shouldRun) {
+        consola.info(`Clash for Windows: Just support win32 platform.`)
+      }
+      return shouldRun
+    },
+    handler: async (options) => {
+      const { force, symlink } = options
+      const mode = symlink ? 'symlink' : 'copy'
+      const target = join(homedir(), '.config', 'clash')
+      fs.ensureDir(target)
+      const handlerOperations = [
+        { source: join('network', 'clash-for-windows', 'cfw-settings.yaml'), target: join(target, 'cfw-settings.yaml') },
+      ]
+      for (const operation of handlerOperations) {
+        await processConfig(operation.source, operation.target, { force, mode })
+      }
+    },
+  },
+  /* ------------------------------ 2. Terminals ------------------------------ */
+  // Windows Terminal
+  {
+    name: 'Setting Up Windows Terminal',
+    prehandler: (_, systemOptions) => {
+      const { userPlatform } = systemOptions
+      const shouldRun = userPlatform === 'win32'
+      if (!shouldRun) {
+        consola.info(`Windows Terminal: Just support win32 platform.`)
+      }
+      return shouldRun
+    },
+    handler: async (options) => {
+      const { force, symlink } = options
+      const mode = symlink ? 'symlink' : 'copy'
+      const target = join(process.env.LOCALAPPDATA!, 'Packages', 'Microsoft.WindowsTerminal_8wekyb3d8bbwe', 'LocalState')
+      fs.ensureDir(target)
+      const handlerOperations = [
+        { source: join('terminal', 'windows-terminal', 'settings.json'), target: join(target, 'settings.json') },
+      ]
+      for (const operation of handlerOperations) {
+        await processConfig(operation.source, operation.target, { force, mode })
+      }
+    },
+    posthandler: () => {
+      consola.info('This configuration will use `"Fantasque Sans Mono", "Source Han Sans TC", "Symbols Nerd Font"` as terminal fonts.')
+    },
+  },
+  /* -------------------------------- 3. Shells ------------------------------- */
   // Nushell
   {
     name: 'Setting Up Nushell',
@@ -120,60 +173,7 @@ export const DEFAULT_ACTIONS: Action[] = [
       consola.info('Please running `Set-ExecutionPolicy RemoteSigned -Scope CurrentUser` to allow local scripts to run.')
     },
   },
-  /* -------------------------------- Terminals ------------------------------- */
-  // Windows Terminal
-  {
-    name: 'Setting Up Windows Terminal',
-    prehandler: (_, systemOptions) => {
-      const { userPlatform } = systemOptions
-      const shouldRun = userPlatform === 'win32'
-      if (!shouldRun) {
-        consola.info(`Windows Terminal: Just support win32 platform.`)
-      }
-      return shouldRun
-    },
-    handler: async (options) => {
-      const { force, symlink } = options
-      const mode = symlink ? 'symlink' : 'copy'
-      const target = join(process.env.LOCALAPPDATA!, 'Packages', 'Microsoft.WindowsTerminal_8wekyb3d8bbwe', 'LocalState')
-      fs.ensureDir(target)
-      const handlerOperations = [
-        { source: join('terminal', 'windows-terminal', 'settings.json'), target: join(target, 'settings.json') },
-      ]
-      for (const operation of handlerOperations) {
-        await processConfig(operation.source, operation.target, { force, mode })
-      }
-    },
-    posthandler: () => {
-      consola.info('This configuration will use `"Fantasque Sans Mono", "Source Han Sans TC", "Symbols Nerd Font"` as terminal fonts.')
-    },
-  },
-  /* -------------------------------- VPN ------------------------------- */
-  // Clash for Windows
-  {
-    name: 'Setting Up Clash for Windows',
-    prehandler: (_, systemOptions) => {
-      const { userPlatform } = systemOptions
-      const shouldRun = userPlatform === 'win32'
-      if (!shouldRun) {
-        consola.info(`Clash for Windows: Just support win32 platform.`)
-      }
-      return shouldRun
-    },
-    handler: async (options) => {
-      const { force, symlink } = options
-      const mode = symlink ? 'symlink' : 'copy'
-      const target = join(homedir(), '.config', 'clash')
-      fs.ensureDir(target)
-      const handlerOperations = [
-        { source: join('vpn', 'clash-for-windows', 'cfw-settings.yaml'), target: join(target, 'cfw-settings.yaml') },
-      ]
-      for (const operation of handlerOperations) {
-        await processConfig(operation.source, operation.target, { force, mode })
-      }
-    },
-  },
-  /* ----------------------------------- VCS ---------------------------------- */
+  /* --------------------------------- 4. VCS --------------------------------- */
   // Git
   {
     name: 'Setting Up Git',
@@ -190,7 +190,24 @@ export const DEFAULT_ACTIONS: Action[] = [
       }
     },
   },
-  /* ---------------------------------- Tools --------------------------------- */
+  /* ------------------------- 5. PM (Package Manager) ------------------------ */
+  // Maven
+  {
+    name: 'Setting Up Maven',
+    handler: async (options) => {
+      const { force, symlink } = options
+      const mode = symlink ? 'symlink' : 'copy'
+      const target = join(homedir(), '.m2')
+      fs.ensureDir(target)
+      const handlerOperations = [
+        { source: join('pm', 'maven', 'settings.xml'), target: join(target, 'settings.xml') },
+      ]
+      for (const operation of handlerOperations) {
+        await processConfig(operation.source, operation.target, { force, mode })
+      }
+    },
+  },
+  /* -------------------------------- 6. Tools -------------------------------- */
   // @sxzz/creator -- Creating projects
   {
     name: 'Setting Up @sxzz/creator',
@@ -250,27 +267,7 @@ export const DEFAULT_ACTIONS: Action[] = [
       }
     },
   },
-  /* --------------------------------- Linters -------------------------------- */
-  // cSpell
-  {
-    name: 'Setting Up cSpell',
-    handler: async (options) => {
-      const { force, symlink } = options
-      const mode = symlink ? 'symlink' : 'copy'
-      const target = homedir()
-      fs.ensureDir(target)
-      const handlerOperations = [
-        { source: join('linter', 'cspell', '.cspell.common.txt'), target: join(target, '.cspell.common.txt') },
-      ]
-      for (const operation of handlerOperations) {
-        await processConfig(operation.source, operation.target, { force, mode })
-      }
-    },
-    posthandler: () => {
-      consola.info('I prefer using cSpell as an extension for Visual Studio Code, this configuration is meant to be used by the editor.')
-    },
-  },
-  /* --------------------------------- Editors -------------------------------- */
+  /* ------------------------------- 7. Editors ------------------------------- */
   // VSCode
   {
     name: 'Setting Up VSCode',
@@ -365,21 +362,24 @@ export const DEFAULT_ACTIONS: Action[] = [
       }
     },
   },
-  /* --------------------------------- PM (Package Manager) -------------------------------- */
-  // Maven
+  /* ------------------------------- 8. Linters ------------------------------- */
+  // cSpell
   {
-    name: 'Setting Up Maven',
+    name: 'Setting Up cSpell',
     handler: async (options) => {
       const { force, symlink } = options
       const mode = symlink ? 'symlink' : 'copy'
-      const target = join(homedir(), '.m2')
+      const target = homedir()
       fs.ensureDir(target)
       const handlerOperations = [
-        { source: join('pm', 'maven', 'settings.xml'), target: join(target, 'settings.xml') },
+        { source: join('linter', 'cspell', '.cspell.common.txt'), target: join(target, '.cspell.common.txt') },
       ]
       for (const operation of handlerOperations) {
         await processConfig(operation.source, operation.target, { force, mode })
       }
+    },
+    posthandler: () => {
+      consola.info('I prefer using cSpell as an extension for Visual Studio Code, this configuration is meant to be used by the editor.')
     },
   },
 ]

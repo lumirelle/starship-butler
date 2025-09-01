@@ -10,7 +10,8 @@ describe('filter actions', () => {
       configFile: './butler.config.ts',
       cwd: import.meta.dirname,
     })
-    const filteredActions = filterActions(mergeOptions(config, 'config-provider', { include: ['Action In Config 2'] }))
+    const configOptions = config['config-provider']
+    const filteredActions = filterActions(mergeOptions(configOptions, { include: ['Action In Config 2'] }))
     expect(stringify(filteredActions)).toEqual(`[
   {
     "name": "Action In Config 2",
