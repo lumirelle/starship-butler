@@ -64,10 +64,10 @@ enabled = true
 #   1: `!` means execute the command in the shell, not in the git command line. (e.g. `!f() { ... }`)
 aliases = "!git config --get-regexp ^alias\\. | sed -e s/^alias\\.// -e s/\\ /\\ =\\ /"
 # log
-log = log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit
-log-last = log -1 HEAD --stat
+logs = log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit
+log = log -1 HEAD --stat
 # remote
-remote-add = "!f() { \
+remote-new = "!f() { \
   if [ -z \"$2\" ]; then \
     git remote add origin \"$1\"; \
   else \
@@ -147,8 +147,6 @@ stash-list = stash list
 stash-undo = stash pop
 stash-drop = stash drop
 # branch
-branch-list-local = branch
-branch-list-remote = branch --remote
 branch-list-both = branch --all
 branch-delete-local = branch --delete
 branch-force-delete-local = branch --delete --force
@@ -181,7 +179,7 @@ branch-rename-remote = "!f() { \
   fi; \
 }; f"
 # branch & switch
-branch-then-switch = switch --create
+switch-new = switch --create
 # merge
 merge-with-default-message = "!f() { \
   current_branch=$(git branch --show-current); \
@@ -227,99 +225,94 @@ tag-delete-remote = "!f() { \
     git push-delete \"$1\" \"$2\"; \
   fi; \
 }; f"
-tag-prune = fetch --prune-tags
+tag-fetch-prune = fetch --prune-tags
 
 # SHORTCUTS ALIASES
 # SUFFIX INTRODUCTION
 #   <TO SPECIFY ADDITIONAL BEHAVIOR>
-#   `s`: `list | show`
-#   `u`: `undo`, which means recover the status **after an operation is completed**
-#   `x`: `discard | delete | drop`, which means **drop things** we don't need any more
-#   `n`: `rename`
+#   `n`:    `add | new`
+#   `s`:    `list | show`
+#   `x`:    `discard | delete | drop`, which means **drop things** we don't need any more
+#   `u`:    `undo`, which means recover the status **after an operation is completed**
+#   `xx`:   `x` for both local and remote
+#   `rn`:   `rename`
 #   <TO SPECIFY TARGET>
-#   `a`: `all`
-#   `b`: `both`
-#   `e`: `remote`
+#   `a`:    `all`
+#   `b`:    `both`
+#   `e`:    `remote`
 #   <TO SPECIFY PARAMETERS>
-#   `m`: with `--message` parameter
-#   `e`: with `--edit` parameter
-#   `f`: with `--force` parameter
-#   `z`: with `--abort` parameter
-#   `c`: with `--continue` parameter
-#   `u`: with `--set-upstream` parameter
-# init: i
-i = init
-# clone: cl
-cl = clone
-# remote: e
-e = remote-add
-es = remote-list
-ex = remote-remove
-# fetch: f
-f = fetch
-# pull: l
-l = pull
-lu = pull-set-upstream
-# push: p
-p = push
-pu = push-set-upstream
-pf = push-force
-px = push-delete
-# pull & push: l*p*
-lp = pull-then-push
+#   `up`:   with `--set-upstream` parameter
+#   `f`:    with `--force` parameter
+#   `ms`:   with `--message` parameter
+#   `i`:    with `--edit` parameter
+#   `z`:    with `--abort` parameter
+#   `c`:    with `--continue` parameter
+# remote: re
+ren = remote-new
+res = remote-list
+rex = remote-remove
+# fetch: ft
+ft = fetch
+# pull: pl
+pl = pull
+plup = pull-set-upstream
+# push: ps
+ps = push
+psup = push-set-upstream
+psf = push-force
+psx = push-delete
+# pull & push: plps
+plps = pull-then-push
 # discard: x
 x = discard
 xa = discard-all
-# add (all): a
-a = add-all # Add all by command line as default, add specific files by using GUI
-au = add-all-undo
-# commit: c
-c = commit
-cm = commit-with-message
-cu = commit-undo
+# add all: aa
+aa = add-all
+aau = add-all-undo
+# commit: cm
+cm = commit
+cmms = commit-with-message
+cmu = commit-undo
 # czg: cg
-cg = czg
-# add & commit: a*c*
-ac = add-all-then-commit # `ac` instead of `aac` because `aac` is too long to type
-acm = add-all-then-commit-with-message # `acm` instead of `aacm` because `aacm` is too long to type
-# add & commit (czg): a*cz*
-acg = add-all-then-czg
+cz = czg
+# add & commit: adcm
+aacm = add-all-then-commit # `ac` instead of `aac` because `aac` is too long to type
+aacmms = add-all-then-commit-with-message # `acm` instead of `aacm` because `aacm` is too long to type
+# add & commit (czg): adcz
+aacz = add-all-then-czg
 # amend commit: md
 md = amend-commit
-mde = amend-commit-with-edit
-amd = add-all-then-amend-commit
-amde = add-all-then-amend-commit-with-edit
+mdi = amend-commit-with-edit
+aamd = add-all-then-amend-commit
+aamdi = add-all-then-amend-commit-with-edit
 # work-in-progress: wip
 wip = work-in-progress
 wipu = work-in-progress-undo
-# stash: s
-s = stash-push
-ss = stash-list
-su = stash-undo
-sx = stash-drop
-# branch: b
-b = branch
-bs = branch-list-local
-bse = branch-list-remote
-bsb = branch-list-both
-bx = branch-delete-local
-bxf = branch-delete-local-force
-bxe = branch-delete-remote
-bxb = branch-delete-both
-bn = branch-rename
-bne = branch-rename-remote
-# switch: w
-w = switch
-# branch & switch: b*w*
-bw = branch-then-switch
-# merge: m
-m = merge-with-default-message
-mz = merge-abort
-mc = merge-continue
-# rebase: r
-r = rebase
-rz = rebase-abort
-rc = rebase-continue
+# stash: st
+stn = stash-push
+sts = stash-list
+stu = stash-undo
+stx = stash-drop
+# branch: br
+brn = branch
+brs = branch-list-both
+brx = branch-delete-local
+brxf = branch-delete-local-force
+brxe = branch-delete-remote
+brxx = branch-delete-both
+brrn = branch-rename
+brrne = branch-rename-remote
+# switch: sw
+sw = switch
+swn = switch-new
+# merge: mg
+mg = merge-with-default-message
+mgz = merge-abort
+mgc = merge-continue
+# rebase: rb
+rb = rebase
+rba = rebase-abort
+rbc = rebase-continue
 # reset: rs
 rs = reset
 # revert: rv
@@ -328,12 +321,12 @@ rv = revert
 cp = cherry-pick
 cpz = cherry-pick-abort
 cpc = cherry-pick-continue
-# tag: t
-t = tag-new
-ts = tag-list
-tse = tag-list-remote
-tl = tag-prune
-tp = tag-push-remote
-tpa = tag-push-remote-all
-tx = tag-delete-local
-txe = tag-delete-remote
+# tag: tg
+tgn = tag-new
+tgs = tag-list
+tgse = tag-list-remote
+tgft = tag-fetch-prune
+tgps = tag-push-remote
+tgpsa = tag-push-remote-all
+tgx = tag-delete-local
+tgxe = tag-delete-remote
