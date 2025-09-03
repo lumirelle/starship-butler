@@ -1,0 +1,38 @@
+{
+  // cspell:disable
+  // VSCODE PROFILE_JS <= PROFILE_DEFAULT
+  "recommendations": [
+    // FILES (Editor, LSP, Formatter, Linter, Snippets...)
+    // >> LSP
+    "dotenv.dotenv-vscode", // <NOT OPENVSIX>
+    "humao.rest-client",
+    "lokalise.i18n-ally",
+    "vue.volar",
+    // >> Formatter & Linter
+    "dbaeumer.vscode-eslint",
+
+    // FRAMEWORKS
+    // >> Nuxt
+    "alimozdemir.vscode-nuxt-dx-tools",
+    // >> Slidev
+    "antfu.slidev",
+    // >> UnoCSS
+    "antfu.unocss",
+    // >> Tailwind CSS
+    "bradlc.vscode-tailwindcss",
+
+    // LIFE SAVERS
+    // >> Editor Views
+    "antfu.iconify",
+    "antfu.pnpm-catalog-lens",
+    "johnsoncodehk.vscode-tsconfig-helper", // <NOT OPENVSIX>
+    "wallabyjs.console-ninja",
+    // >> Editor Behavior
+    "antfu.goto-alias", // F12
+    "ecmel.vscode-html-css",
+    "ritwickdey.liveserver" // NEED TRAIL, ALT+L ALT+O, ALT+L CTRL+C
+  ]
+  // EXTENSION COUNT
+  // >> VSCode: INDEX + 1 + {PROFILE_DEFAULT: 47} = 63
+  // >> Cursor: INDEX + 1 + {PROFILE_DEFAULT: 45} = 61
+}

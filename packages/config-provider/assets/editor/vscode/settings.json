@@ -89,12 +89,13 @@
   },
   "search.showLineNumbers": true,
   "security.workspace.trust.enabled": false,
-  "terminal.integrated.mouseWheelScrollSensitivity": 2,
-  "terminal.integrated.fastScrollSensitivity": 3,
   "terminal.integrated.defaultProfile.linux": "nushell",
   "terminal.integrated.defaultProfile.osx": "nushell",
   "terminal.integrated.defaultProfile.windows": "Nushell",
+  "terminal.integrated.env.windows": {},
+  "terminal.integrated.fastScrollSensitivity": 3,
   "terminal.integrated.fontLigatures.enabled": true,
+  "terminal.integrated.mouseWheelScrollSensitivity": 2,
   "terminal.integrated.persistentSessionReviveProcess": "never",
   "terminal.integrated.profiles.linux": {
     "nushell": { "path": "nu" }
@@ -118,11 +119,11 @@
   "workbench.startupEditor": "none",
 
   /* --------------------------------- Format --------------------------------- */
-  "files.insertFinalNewline": true,
-  "editor.tabSize": 2,
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
   "editor.detectIndentation": false,
   "editor.formatOnSave": false,
-  "editor.defaultFormatter": "esbenp.prettier-vscode",
+  "editor.tabSize": 2,
+  "files.insertFinalNewline": true,
 
   /* ------------------------------ File nesting ------------------------------ */
   "explorer.fileNesting.enabled": true,
@@ -306,6 +307,7 @@
   ],
 
   /* --------------------------- Extensions behavior -------------------------- */
+  "console-ninja.featureSet": "Community",
   "css.enabledLanguages": ["html", "vue"],
   "css.styleSheets": ["**/*.{c,sc,sa,le,postc}ss"],
   "cursor.cpp.disabledLanguages": ["plaintext"],
@@ -337,8 +339,8 @@
     "scminput": false
   },
   "github.copilot.nextEditSuggestions.enabled": true,
-  "gitlens.defaultGravatarsStyle": "monsterid",
   "gitlens.codeLens.scopes": ["document", "containers"],
+  "gitlens.defaultGravatarsStyle": "monsterid",
   "gitlens.fileAnnotations.command": "blame",
   "gitlens.graph.dimMergeCommits": true,
   "gitlens.graph.onlyFollowFirstParent": true,
@@ -396,7 +398,6 @@
   ],
 
   /* ---------------------- Extension linter & formatter ---------------------- */
-  "cSpell.language": "en,en-US",
   "cSpell.allowCompoundWords": true,
   "cSpell.customDictionaries": {
     "common": { "name": "common", "path": "~/.cspell.common.txt", "description": "Words used in common situation.", "addWords": false },
@@ -415,6 +416,7 @@
     "bun.lockb",
     "bun.lock"
   ],
+  "cSpell.language": "en,en-US",
   "eslint.codeAction.showDocumentation": { "enable": true },
   "eslint.validate": [
     "javascript",
@@ -455,8 +457,8 @@
   /* -------------------------- Extension inlayhints -------------------------- */
   "arrayIndexInlay.minLength": 5,
   "javascript.inlayHints.parameterNames.enabled": "all",
-  "typescript.inlayHints.parameterNames.enabled": "all",
   "typescript.inlayHints.enumMemberValues.enabled": true,
+  "typescript.inlayHints.parameterNames.enabled": "all",
   "vue.inlayHints.missingProps": true,
 
   /* ----------------------- Language specific settings ----------------------- */

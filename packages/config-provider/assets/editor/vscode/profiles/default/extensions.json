@@ -1,0 +1,77 @@
+{
+  // cspell:disable
+  /* ----------------------------- Default profile ---------------------------- */
+  "recommendations": [
+    // Visual
+    "antfu.icons-carbon",
+    "antfu.theme-vitesse",
+    "catppuccin.catppuccin-vsc-icons",
+    "jgclark.vscode-todo-highlight",
+    "naumovs.color-highlight",
+    "subframe7536.custom-ui-style",
+    "vincaslt.highlight-matching-tag",
+    "ibm.output-colorizer",
+
+    // PROJECT MANAGER
+    "alefragnani.project-manager",
+    "codezombiech.gitignore",
+    "eamodio.gitlens",
+
+    // DEV CONTAINER
+    "ms-azuretools.vscode-containers",
+
+    // FILES (Editor, LSP, Formatter, Linter, Snippets...)
+    // >> Editor
+    "ms-vscode.hexeditor",
+    "pomdtr.excalidraw-editor",
+    // >> LSP
+    "redhat.vscode-yaml",
+    "somewhatstationery.some-sass",
+    "tamasfe.even-better-toml",
+    "thenuprojectcontributors.vscode-nushell-lang", // also the formatter & linter for nushell
+    // >> Formatter
+    "editorconfig.editorconfig",
+    "esbenp.prettier-vscode",
+    "foxundermoon.shell-format",
+    // >> Linter
+    "streetsidesoftware.code-spell-checker",
+
+    // LIFE SAVERS
+    // >> Explorer Views
+    "antfu.file-nesting",
+    // >> Editor Views
+    "antfu.array-index-inlay", // <NOT OPENVSIX>
+    "usernamehw.errorlens",
+    "yoavbls.pretty-ts-errors",
+    // >> Status Bar Views
+    "tomoki1207.selectline-statusbar", // <NOT OPENVSIX>
+    // >> Explorer Behavior
+    "JannisX11.batch-rename-extension", // <NOT OPENVSIX>
+    "sandcastle.vscode-open", // <NOT OPENVSIX>
+    // >> Editor Behavior
+    "antfu.smart-clicks", // Mouse Click
+    "britesnow.vscode-toggle-quotes", // CTRL+'
+    "cardinal90.multi-cursor-case-preserve",
+    "christian-kohler.path-intellisense",
+    "dnut.rewrap-revived", // Less use, ALT+Q
+    "github.copilot", // <VSCODE ONLY>
+    "github.copilot-chat", // <VSCODE ONLY>
+    "mpontus.tab-cycle", // <NOT OPENVSIX>. CTRL+PGUP, CTRL+PGDN, ALT+<NUMBER>
+    "northisup.comment-divider-updated", // ALT+X, SHIFT+ALT+X, ALT+Y
+    "nrevia05hp.plaintext-comment", // CTRL+/
+    "ow.vscode-subword-navigation", // ALT+LEFT_ARROW, ALT+RIGHT_ARROW
+    "tyriar.sort-lines", // Less use, F9
+    "yatki.vscode-surround", // Less use, CTRL+SHIFT+T
+    // >> Main Bar Behavior
+    "zjffun.snippetsmanager",
+    // >> Status Bar Behavior
+    "tombonnike.vscode-status-bar-format-toggle",
+    // >> Commands
+    "chouzz.vscode-better-align",
+    "helixquar.randomeverything", // <NOT OPENVSIX>
+    "idleberg.emoji-code"
+  ]
+  // EXTENSION COUNT
+  // >> VSCode: INDEX + 1 = 47
+  // >> Cursor: INDEX - 1 = 45
+}
