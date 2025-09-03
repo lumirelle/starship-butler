@@ -38,10 +38,20 @@
   "diffEditor.ignoreTrimWhitespace": false,
   "editor.fastScrollSensitivity": 3,
   "editor.find.addExtraSpaceOnTop": false,
+  "editor.gotoLocation.multipleDefinitions": "goto",
   "editor.mouseWheelScrollSensitivity": 2,
   "editor.mouseWheelZoom": true,
   "editor.smoothScrolling": true,
   "editor.suggest.showDeprecated": false,
+  "editor.tokenColorCustomizations": {
+    "[*Light*]": {
+      "textMateRules": []
+    },
+    "[*Dark*]": {
+      "textMateRules": []
+    },
+    "textMateRules": []
+  },
   "explorer.autoOpenDroppedFile": false,
   "explorer.confirmDelete": false,
   "explorer.confirmDragAndDrop": false,
