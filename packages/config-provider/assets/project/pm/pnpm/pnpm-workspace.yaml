@@ -1,0 +1,22 @@
+# Ignore the confirm while adding dependencies to the root package.json
+ignoreWorkspaceRootCheck: true
+
+# If the dependencies in `node_modules` are not synchronized with those in `package.json`, reinstall them before running the script
+verifyDepsBeforeRun: install
+
+# Use a shell emulator to provide cross-platform operation support for running npm scripts
+# It is equivalent to what the `cross-env` package does
+# shellEmulator: true
+
+# Hoist the dependencies to the root package.json
+# It is equivalent to what the npm does by default
+# shamefullyHoist: true
+
+# Support architectures tell pnpm to install the dependencies for which architectures
+# supportedArchitectures:
+#   cpu:
+#     - x64
+#   os:
+#     - win32
+#     - linux
+#     - darwin

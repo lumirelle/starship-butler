@@ -1,0 +1,54 @@
+/**
+ * TSConfig for JavaScript Project, based on https://www.totaltypescript.com/tsconfig-cheat-sheet
+ * Only for IDE type support. I prefer to use `unbuild` & `vite` as bundler to build the project.
+ */
+{
+  // Compiler options
+  "compilerOptions": {
+    // Base options
+    "target": "ESNext", // Allow to use the latest ECMAScript features, bundler will handle the ES downleveling & polyfill for us.
+    "lib": [
+      "ESNext"
+    ],
+    "moduleDetection": "force",
+    "module": "preserve",
+
+    // Path resolution
+    "paths": {
+      /* Add your custom paths resolution here, should align with your bundler config */
+    },
+
+    // JSON support
+    "resolveJsonModule": true,
+
+    // Do not load any global types
+    "types": [],
+
+    // Strictness & compatibility
+    "allowImportingTsExtensions": true,
+    "allowJs": true,
+    "strict": true,
+    "noImplicitOverride": true,
+    "noUncheckedIndexedAccess": true,
+    "noEmit": true,
+    "esModuleInterop": true,
+    "forceConsistentCasingInFileNames": true,
+    "isolatedModules": true,
+    "noUncheckedSideEffectImports": true,
+    "verbatimModuleSyntax": true,
+    "skipLibCheck": true
+  },
+
+  // Include files
+  "include": [
+    /* Custom your include files below */
+    "**/*"
+  ],
+
+  // Excluded files
+  "exclude": [
+    /* Custom your excluded files below */
+    "node_modules/**/*",
+    "dist/**/*"
+  ]
+}

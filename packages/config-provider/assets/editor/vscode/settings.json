@@ -450,9 +450,6 @@
     { "rule": "*semi", "severity": "off" }
   ],
   "prettier.enable": false,
-  "prettier.printWidth": 200,
-  "prettier.semi": false,
-  "prettier.singleQuote": true,
 
   /* -------------------------- Extension inlayhints -------------------------- */
   "arrayIndexInlay.minLength": 5,
