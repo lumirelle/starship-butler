@@ -30,7 +30,7 @@ cli
   .option('-u, --no-fully-update', 'Disable fully update behavior, default: false')
   .action(async (options: Partial<SetSysOptionsFromCommandLine>) => {
     // Use type to limit the usage of config options
-    const configOptions = config['config-provider'] as Partial<SetSysOptionsFromConfig>
+    const configOptions = config['config-provider'] ?? {} as Partial<SetSysOptionsFromConfig>
     if (configOptions.verbose || options.verbose) {
       consola.level = LogLevels.debug
     }
@@ -46,7 +46,7 @@ cli
   .option('-s, --symlink', 'Symlink configuration instead of copy and paste')
   .action(async (source: string, target: string, options: Partial<SetOptionsFromCommandLine>) => {
     // Use type to limit the usage of config options
-    const configOptions = config['config-provider'] as Partial<SetOptionsFromConfig>
+    const configOptions = config['config-provider'] ?? {} as Partial<SetOptionsFromConfig>
     if (configOptions.verbose || options.verbose) {
       consola.level = LogLevels.debug
     }
