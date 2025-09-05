@@ -1,9 +1,12 @@
 import type { ConfigLayerMeta, LoadConfigOptions, UserInputConfig } from 'c12'
 import type { ConfigProviderOptionsFromConfig } from 'starship-butler-config-provider'
-import type { ButlerConfig } from './types'
 import { loadConfig as loadConfigC12 } from 'c12'
 import consola from 'consola'
 import { createDefu } from 'defu'
+
+export interface ButlerConfig<ConfigProviderT extends Partial<ConfigProviderOptionsFromConfig> = Partial<ConfigProviderOptionsFromConfig>> {
+  'config-provider': ConfigProviderT
+}
 
 /**
  * Type helper for define butler config

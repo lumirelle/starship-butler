@@ -1,4 +1,4 @@
-import type { ButlerConfig } from '../../src/types'
+import type { ButlerConfig } from '../../src/config'
 import { describe, expect, it } from 'vitest'
 import { loadConfig, mergeOptions } from '../../src/config'
 import { stringify } from '../utils'

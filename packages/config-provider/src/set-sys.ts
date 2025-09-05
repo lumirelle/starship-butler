@@ -1,5 +1,5 @@
-import type { SystemOptions } from 'starship-butler-types'
-import type { ConfigProviderOptions } from './types'
+import type { OptionsBasic, SystemOptions } from 'starship-butler-types'
+import type { Action } from './preset'
 import consola from 'consola'
 import semver from 'semver'
 import { upsertUserRc } from 'starship-butler-utils'
@@ -8,11 +8,66 @@ import { filterActions } from './actions'
 import { DEFAULT_ACTIONS } from './preset'
 
 /**
- * Running actions to configure your system.
+ * Options for command `set-sys`.
+ */
+export interface SetSysOptions extends OptionsBasic {
+  /**
+   * Actions should be ran.
+   * @default []
+   */
+  include: string[] | string
+  /**
+   * Actions should not be ran.
+   * @default []
+   */
+  exclude: string[] | string
+  /**
+   * Run actions forcedly, if you don't specify include or exclude options and force is true, this will recognized as fully configuring.
+   * The version executed will be recorded in global rc file.
+   * The next time the user runs the configure command, the recorded version will be used to determine if a full update is needed.
+   * You can change the behavior by option `enableFullUpdate`.
+   * @default false
+   * @see enableFullUpdate
+   */
+  force: boolean
+  /**
+   * Use symlink instead of copy
+   * @default false
+   */
+  symlink: boolean
+  /**
+   * Whether to enable fully update
+   * @default true
+   */
+  fullyUpdate: boolean
+  /**
+   * User define actions, will cover default actions.
+   * @default []
+   */
+  actions: Action[]
+  /**
+   * Version
+   * @default See generated global rc file
+   */
+  version: string
+}
+
+/**
+ * Config options for command `set-sys`.
+ */
+export interface SetSysOptionsFromConfig extends SetSysOptions {}
+
+/**
+ * Command line options for command `set-sys`.
+ */
+export type SetSysOptionsFromCommandLine = Omit<SetSysOptions, 'actions' | 'version'>
+
+/**
+ * Running actions to setting up your system.
  * @param options Configuration and command line options
  * @param systemOptions User system information options
  */
-export async function configureSystem(options: Partial<ConfigProviderOptions>, systemOptions: SystemOptions): Promise<void> {
+export async function settingUpSystem(options: Partial<SetSysOptions>, systemOptions: SystemOptions): Promise<void> {
   // If `version` is provided, that means the user already fully configured his/her system before
   // Fully configuring means all actions available are included and forcibly executed
   // If that `version` is lower than the current package version, we will fully update
@@ -22,7 +77,7 @@ export async function configureSystem(options: Partial<ConfigProviderOptions>, s
     options.force = true
   }
 
-  consola.debug('[config-provider] Running actions with options:', options)
+  consola.debug('[config-provider] Setting up system with options:', options)
 
   if (options.include && options.exclude) {
     consola.warn('Don\'t specify both include and exclude options. Notice that, Include has higher priority than exclude.')
@@ -50,7 +105,7 @@ export async function configureSystem(options: Partial<ConfigProviderOptions>, s
     }
 
     consola.log('') // New line
-    consola.start(`Running "${action.name}"...`)
+    consola.start(`Start to "${action.name}"...`)
     await action.handler(options, systemOptions)
 
     if (action.posthandler) {

@@ -1,10 +1,40 @@
-import type { Action } from './types'
+import type { SystemOptions } from 'starship-butler-types'
+import type { SetSysOptions } from './set-sys'
 import { homedir } from 'node:os'
 import { join } from 'node:path'
 import process from 'node:process'
 import consola from 'consola'
 import { fs } from 'starship-butler-utils'
 import { processConfig } from './handler'
+
+/**
+ * Action interface for defining actions to run.
+ */
+export interface Action {
+  /**
+   * Action name
+   */
+  name: string
+  /**
+   * Prehandler for the action, if returns `false` or throw an error, the handler will not be executed.
+   * @param options The options from user config and user command line input
+   * @param systemOptions The options about system info
+   * @returns Whether the action handler should be executed
+   */
+  prehandler?: (options: Partial<SetSysOptions>, systemOptions: SystemOptions) => Promise<boolean> | boolean
+  /**
+   * Handler for the action
+   * @param options The options from user config and user command line input
+   * @param systemOptions The options about system info
+   */
+  handler: (options: Partial<SetSysOptions>, systemOptions: SystemOptions) => Promise<void> | void
+  /**
+   * Run after handler is executed, useful for cleanup or other post-processing logic.
+   * @param options The options from user config and user command line input
+   * @param systemOptions The options about system info
+   */
+  posthandler?: (options: Partial<SetSysOptions>, systemOptions: SystemOptions) => Promise<void> | void
+}
 
 /**
  * Predefined actions to configure your system.

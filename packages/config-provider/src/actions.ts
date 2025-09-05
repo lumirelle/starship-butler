@@ -1,9 +1,10 @@
 import type { UserInputConfig } from 'c12'
-import type { Action, ConfigProviderOptions } from './types'
+import type { Action } from './preset'
+import type { SetSysOptions } from './set-sys'
 import consola from 'consola'
 import { DEFAULT_ACTIONS } from './preset'
 
-export function filterActions(options: UserInputConfig & Partial<ConfigProviderOptions>): Action[] {
+export function filterActions(options: UserInputConfig & Partial<SetSysOptions>): Action[] {
   const effectActions = options.actions ? options.actions : DEFAULT_ACTIONS
   return effectActions.filter((action) => {
     if (options.include) {

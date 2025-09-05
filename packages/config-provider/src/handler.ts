@@ -1,7 +1,25 @@
-import type { ProcessConfigOptions } from './types'
 import { join } from 'node:path'
 import consola from 'consola'
 import { fs, highlight } from 'starship-butler-utils'
+
+export interface ProcessConfigOptions {
+  /**
+   * Use glob pattern matching.
+   * WIP: Work in progress.
+   * @default false
+   */
+  useGlob: boolean
+  /**
+   * Force overwrite existing files.
+   * @default false
+   */
+  force: boolean
+  /**
+   * Mode
+   * @default 'copy'
+   */
+  mode: 'copy' | 'symlink'
+}
 
 /**
  * Process config files (Copy or symlink)
