@@ -1,6 +1,7 @@
-# Best Practices
+# Clash for Windows
 
-> R.I.P. Clash.
+> R.I.P. Clash for Windows.
+> This is deprecated. Please use [Clash Verge Rev](https://github.com/clash-verge-rev/clash-verge-rev) instead.
 
 ## Windows Task Scheduler
 
