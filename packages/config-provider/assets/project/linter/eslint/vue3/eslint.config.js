@@ -14,6 +14,11 @@ export default antfu(
     // That's very dangerous.
     typescript: false,
 
+    // If you don't like some of the opinions provided by `@antfu/eslint-config`,
+    // such as `antfu/top-level-function`, and `antfu/if-newline`,
+    // you can disable it by setting this option to `true`
+    lessOpinionated: false,
+
     // `.eslintignore` is no longer supported in flat config, use `ignores` option instead
     // Build output, node_modules and other common ignored files are already included
     ignores: [
@@ -33,14 +38,32 @@ export default antfu(
     ],
   },
 )
-  // NOTE: Custom (override) rules of `@antfu/config` below
-  .override('antfu/javascript/rules', {
-    rules: {
-      // We need to use `console` in development environment, we can use build plugin to remove it in production environment
-      'no-console': 'off',
+  // Append custom rules below
+  .prepend({
+    name: 'lumirelle/javascript/setup',
+    languageOptions: {
+      globals: {
+        // Add your custom global variables here
+      },
     },
   })
-  .override('antfu/regexp/rules', {
+  .prepend({
+    name: 'lumirelle/javascript/rules',
+    rules: {
+      // RECOMMENDED:
+      // We need to use `console` in development environment, we can use build plugin to remove it in production environment
+      'no-console': 'off',
+
+      // SHAMELESSLY DISABLED:
+      'eqeqeq': 'warn',
+      'no-irregular-whitespace': 'warn',
+      'prefer-rest-params': 'warn',
+      'unused-imports/no-unused-imports': 'warn',
+      'unused-imports/no-unused-vars': 'warn',
+    },
+  })
+  .prepend({
+    name: 'lumirelle/regexp/rules',
     rules: {
       // A large number of none-capturing groups are less readable than the same number of capturing groups
       // Tell the true, it's not so necessary to use none-capturing groups in most cases
@@ -49,24 +72,15 @@ export default antfu(
       'regexp/no-unused-capturing-group': 'off',
     },
   })
-  .override('antfu/vue/rules', {
+  .prepend({
+    name: 'lumirelle/vue/rules',
+    files: ['**/*.vue'],
     rules: {
+      // RECOMMENDED:
       // Enforce that properties used in templates are defined in the component
       'vue/no-undef-properties': 'error',
-    },
-  })
-  // FIXME: Compatible with old project, these rules are not providing auto-fix operation, please reactive these rules progressively
-  .override('antfu/javascript/rules', {
-    rules: {
-      'eqeqeq': 'warn',
-      'unused-imports/no-unused-vars': 'warn',
-      'unused-imports/no-unused-imports': 'warn',
-      'no-irregular-whitespace': 'warn',
-      'prefer-rest-params': 'warn',
-    },
-  })
-  .override('antfu/vue/rules', {
-    rules: {
+
+      // SHAMELESSLY DISABLED:
       'vue/eqeqeq': 'warn',
       // Vue 3 recommends camelCase for custom event names
       'vue/custom-event-name-casing': ['warn', 'camelCase'],
@@ -75,14 +89,5 @@ export default antfu(
       // You'd better not mutating props directly, it will break the unidirectional data flow
       // However, humans always tend to be lazy, wish they will not be debugging in hell in the future
       'vue/no-mutating-props': 'warn',
-    },
-  })
-  // NOTE: Append custom rules below
-  .append({
-    name: 'lumirelle/setup',
-    languageOptions: {
-      globals: {
-        // Add your custom global variables here
-      },
     },
   })
