@@ -13,7 +13,6 @@
     "ibm.output-colorizer",
 
     // PROJECT MANAGER
-    "alefragnani.project-manager",
     "codezombiech.gitignore",
     "eamodio.gitlens",
 
@@ -45,6 +44,7 @@
     "yoavbls.pretty-ts-errors",
     // >> Status Bar Views
     "tomoki1207.selectline-statusbar", // <NOT OPENVSIX>
+    "antfu.where-am-i",
     // >> Explorer Behavior
     "JannisX11.batch-rename-extension", // <NOT OPENVSIX>
     "sandcastle.vscode-open", // <NOT OPENVSIX>

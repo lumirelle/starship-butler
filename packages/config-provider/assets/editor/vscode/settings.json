@@ -369,8 +369,6 @@
   "iconify.excludes": ["el"],
   "iconify.inplace": true,
   "json.schemaDownload.enable": true,
-  "projectManager.git.baseFolders": ["D:/Projects"],
-  "projectManager.supportSymlinksOnBaseFolders": true,
   "redhat.telemetry.enabled": false,
   "rest-client.enableTelemetry": false,
   "rewrap.wrappingColumn": 120,
