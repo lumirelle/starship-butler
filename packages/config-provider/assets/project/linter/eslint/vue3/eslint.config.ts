@@ -74,6 +74,14 @@ export default antfu(
     },
   })
   .prepend({
+    name: 'lumirelle/node/rules',
+    rules: {
+      // RECOMMENDED:
+      'node/no-missing-import': 'error',
+      'node/no-missing-require': 'error',
+    },
+  })
+  .prepend({
     name: 'lumirelle/vue/rules',
     files: ['**/*.vue'],
     rules: {
