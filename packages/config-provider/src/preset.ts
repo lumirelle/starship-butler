@@ -41,24 +41,32 @@ export interface Action {
  */
 export const DEFAULT_ACTIONS: Action[] = [
   /* ------------------------------- 1. Network ------------------------------- */
-  // Clash for Windows
+  // Clash Verge Rev
   {
-    name: 'Setting Up Clash for Windows',
+    name: 'Setting Up Clash Verge Rev',
     prehandler: (_, systemOptions) => {
       const { userPlatform } = systemOptions
-      const shouldRun = userPlatform === 'win32'
+      const shouldRun = userPlatform === 'win32' || userPlatform === 'linux' || userPlatform === 'darwin'
       if (!shouldRun) {
-        consola.info(`Clash for Windows: Just support win32 platform.`)
+        consola.info(`Clash Verge Rev: Just support win32, linux and darwin platform now.`)
       }
       return shouldRun
     },
-    handler: async (options) => {
+    handler: async (options, systemOptions) => {
+      const { userPlatform } = systemOptions
       const { force, symlink } = options
       const mode = symlink ? 'symlink' : 'copy'
-      const target = join(homedir(), '.config', 'clash')
+      const target = userPlatform === 'win32'
+        ? join(process.env.APPDATA!, 'io.github.clash-verge-rev.clash-verge-rev', 'profiles')
+        : userPlatform === 'linux'
+          ? join(homedir(), '.local', 'shared', 'io.github.clash-verge-rev.clash-verge-rev', 'profiles')
+          : userPlatform === 'darwin'
+            ? join(homedir(), 'Library', 'Application Support', 'io.github.clash-verge-rev.clash-verge-rev', 'profiles')
+            : ''
+
       fs.ensureDir(target)
       const handlerOperations = [
-        { source: join('network', 'clash-for-windows', 'cfw-settings.yaml'), target: join(target, 'cfw-settings.yaml') },
+        { source: join('network', 'clash-verge-rev', 'Script.js'), target: join(target, 'Script.js') },
       ]
       for (const operation of handlerOperations) {
         await processConfig(operation.source, operation.target, { force, mode })

@@ -1,68 +1,64 @@
 /**
- * Custom dns
+ * If you want to learn about clash verge config example, please visit:
+ * https://github.com/MetaCubeX/mihomo/blob/Meta/docs/config.yaml
+ */
+
+/**
+ * Custom DNS configuration
  */
 function customDns() {
-  // 国内DNS服务器
+  // Default nameservers, used to resolve other dns servers
+  const defaultNameservers = [
+    '223.5.5.5', // AliDNS
+    '119.29.29.29', // DNSPod
+    '114.114.114.114', // 114DNS
+    '1.1.1.1', // Cloudflare DNS
+    '8.8.8.8', // Google DNS
+  ]
+  // Nameservers
   const nameservers = [
-    '223.5.5.5',
-    '119.29.29.29',
-    '[2400:3200::1]:53',
-    '[2402:4e00::]:53',
+    'https://dns.alidns.com/dns-query', // AliDNS DoH
+    'https://doh.pub/dns-query', // DNSPod DoH
+    'https://dns.cloudflare.com/dns-query', // Cloudflare DoH
+    'https://dns.google/dns-query', // Google DoH
+    'tls://dns.alidns.com:853', // AliDNS DoT
+    'tls://dot.pub:853', // DNSPod DoT
+    'tls://dns.cloudflare.com:853', // Cloudflare DoT
+    'tls://dns.google:853', // Google DoT
   ]
-  // 国外DNS服务器
-  const fallbackNameservers = [
-    'https://223.5.5.5/dns-query',
-    'https://1.1.1.1/dns-query',
-    'https://8.8.8.8/dns-query',
-    'tls://223.5.5.5:853',
-    'tls://1.1.1.1:853',
-    'tls://8.8.8.8:853',
-  ]
-  // DNS配置
+  // DNS configuration
   const dns = {
     'enable': true,
-    'listen': '0.0.0.0:1053',
+    'cache-algorithm': 'arc',
     'ipv6': true,
+    // Response fake ip for dns queries
     'enhanced-mode': 'fake-ip',
+    // Range of responsed fake ips
     'fake-ip-range': '198.18.0.1/16',
+    // Domains that should not use fake ip
     'fake-ip-filter': [
-      // 本地主机/设备
+      // Local network
       '+.lan',
       '+.local',
       '+.internal',
-      // Windows网络出现小地球图标
+      // Microsoft NCSI
       '+.msftconnecttest.com',
       '+.msftncsi.com',
-      // QQ快速登录检测失败
+      // QQ quick login check
       'localhost.ptlogin2.qq.com',
       'localhost.sec.qq.com',
-      // 微信快速登录检测失败
+      // WeChat quick login check
       'localhost.work.weixin.qq.com',
+      // NTP
+      '+.ntp.org',
+      '+.ntp.org.cn',
+      'time.windows.com',
     ],
-    'default-nameserver': nameservers,
+    // Default nameservers, used to resolve other dns servers
+    'default-nameserver': defaultNameservers,
+    // Nameservers
     'nameserver': nameservers,
-    'fallback': fallbackNameservers,
-    'nameserver-policy': {
-      'geosite:private,cn,geolocation-cn': nameservers,
-      'geosite:google,youtube,telegram,gfw,geolocation-!cn': fallbackNameservers,
-    },
-    'fallback-filter': {
-      'geoip': true,
-      'geoip-code': 'CN',
-      'geo-site': ['gfw'],
-      'ip-cidr': '240.0.0.0/4',
-      'domain': [
-        '+.google.com',
-        '+.facebook.com',
-        '+.twitter.com',
-        '+.youtube.com',
-        '+.xn--ngstr-lra8j.com',
-        '+.google.cn',
-        '+.googleapis.cn',
-        '+.googleapis.com',
-        '+.gvt1.com',
-      ],
-    },
+    // We can also use `nameserver-policy` and `fallback` to customize dns servers
   }
   return {
     dns,
@@ -73,12 +69,8 @@ function customDns() {
  * Custom proxy groups
  */
 function customProxyGroups(config) {
-  const proxyCount = config?.proxies?.length ?? 0
-  const proxyProviderCount
-    = typeof config?.['proxy-providers'] === 'object' ? Object.keys(config['proxy-providers']).length : 0
-  if (proxyCount === 0 && proxyProviderCount === 0) {
-    throw new Error('配置文件中未找到任何代理')
-  }
+  const reg = /剩余|套餐|导航/
+  const proxies = (config.proxies ?? []).filter(p => !reg.test(p.name))
   const groupBaseOption = {
     'interval': 300,
     'timeout': 3000,
@@ -179,13 +171,6 @@ function customProxyGroups(config) {
     },
     {
       ...groupBaseOption,
-      name: '广告过滤',
-      type: 'select',
-      proxies: ['REJECT', 'DIRECT'],
-      icon: 'https://fastly.jsdelivr.net/gh/clash-verge-rev/clash-verge-rev.github.io@main/docs/assets/icons/bug.svg',
-    },
-    {
-      ...groupBaseOption,
       'name': '全局直连',
       'type': 'select',
       'proxies': ['DIRECT', '节点选择', '延迟选优', '故障转移', '负载均衡(散列)', '负载均衡(轮询)'],
@@ -209,6 +194,7 @@ function customProxyGroups(config) {
     },
   ]
   return {
+    proxies,
     proxyGroups,
   }
 }
@@ -309,18 +295,14 @@ function customRules() {
     },
   }
   const rules = [
-    // 自定义规则
-    'DOMAIN-SUFFIX,googleapis.cn,节点选择', // Google服务
-    'DOMAIN-SUFFIX,gstatic.com,节点选择', // Google静态资源
-    'DOMAIN-SUFFIX,xn--ngstr-lra8j.com,节点选择', // Google Play下载服务
-    'DOMAIN-SUFFIX,github.io,节点选择', // Github Pages
-    'DOMAIN,v2rayse.com,节点选择', // V2rayse节点工具
-    // blackmatrix7 规则集
+    // Custom rules
+    'PROCESS-NAME,ForzaHorizon4.exe,全局直连',
+    // blackmatrix7 rule set
     'RULE-SET,openai,ChatGPT',
-    // Loyalsoldier 规则集
+    // Loyalsoldier rule set
     'RULE-SET,applications,全局直连',
     'RULE-SET,private,全局直连',
-    'RULE-SET,reject,广告过滤',
+    'RULE-SET,reject,全局拦截',
     'RULE-SET,icloud,微软服务',
     'RULE-SET,apple,苹果服务',
     'RULE-SET,google,谷歌服务',
@@ -331,7 +313,7 @@ function customRules() {
     'RULE-SET,lancidr,全局直连,no-resolve',
     'RULE-SET,cncidr,全局直连,no-resolve',
     'RULE-SET,telegramcidr,电报消息,no-resolve',
-    // 其他规则
+    // Other rules
     'GEOIP,LAN,全局直连,no-resolve',
     'GEOIP,CN,全局直连,no-resolve',
     'MATCH,漏网之鱼',
@@ -345,7 +327,8 @@ function customRules() {
 // eslint-disable-next-line no-unused-vars, unused-imports/no-unused-vars
 function main(config) {
   // -------- Custom Proxies & Proxy Groups --------
-  const { proxyGroups } = customProxyGroups(config)
+  const { proxies, proxyGroups } = customProxyGroups(config)
+  config.proxies = proxies
   config['proxy-groups'] = proxyGroups
 
   // -------- Custom dns --------
