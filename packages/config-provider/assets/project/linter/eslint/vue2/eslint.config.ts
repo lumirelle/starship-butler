@@ -8,13 +8,8 @@ export default antfu(
     formatters: true,
 
     // Set vue version to 2
+    // Requires `@vue/compiler-sfc@^3` as dev dependency
     vue: {
-      // Disable sfc block detection for styles, because it's not supported in vue@^2
-      sfcBlocks: {
-        blocks: {
-          styles: false,
-        },
-      },
       vueVersion: 2,
     },
 
@@ -58,6 +53,12 @@ export default antfu(
       // Unless performance is sensitive or there are a large number of redundant captures, readability is more important
       // When working in teams, readability is more critical than which grouping you choose
       'regexp/no-unused-capturing-group': 'off',
+    },
+  })
+  .override('antfu/vue/rules', {
+    rules: {
+      // Enforce that properties used in templates are defined in the component
+      'vue/no-undef-properties': 'error',
     },
   })
   // FIXME: Need to prove (I'm not sure if these are caused by the different of browser env & node env, or the different of webpack4 & webpack5 (or vite))

@@ -49,6 +49,12 @@ export default antfu(
       'regexp/no-unused-capturing-group': 'off',
     },
   })
+  .override('antfu/vue/rules', {
+    rules: {
+      // Enforce that properties used in templates are defined in the component
+      'vue/no-undef-properties': 'error',
+    },
+  })
   // FIXME: Compatible with old project, these rules are not providing auto-fix operation, please reactive these rules progressively
   .override('antfu/javascript/rules', {
     rules: {
