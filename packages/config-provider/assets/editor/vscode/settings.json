@@ -250,9 +250,9 @@
     },
     {
       "text": "FIXME(string):",
-      "regex": { "pattern": "(?<=^|\"|\\s)(FIXME)(\\(\\w+\\))?:" },
-      "backgroundColor": "#ee7959",
-      "overviewRulerColor": "rgb(238 121 89 / 80%)"
+      "regex": { "pattern": "(?<=^|\"|\\s)(FIXME|SHAMELESSLY DISABLED)(\\(\\w+\\))?:" },
+      "backgroundColor": "#e18a3b",
+      "overviewRulerColor": "rgb(225 138 59 / 80%)"
     },
     {
       "text": "TODO(string):",
@@ -278,7 +278,7 @@
     },
     {
       "text": "DONE(string):",
-      "regex": { "pattern": "(?<=^|\"|\\s)(DONE)(\\(\\w+\\))?:" },
+      "regex": { "pattern": "(?<=^|\"|\\s)(DONE|RECOMMENDED)(\\(\\w+\\))?:" },
       "backgroundColor": "#68945c",
       "overviewRulerColor": "rgb(104 148 92 / 80%)"
     },
@@ -290,8 +290,8 @@
     {
       "text": "NOTE(string):",
       "regex": { "pattern": "(?<=^|\"|\\s)(NOTE|NOTICE)(\\(\\w+\\))?:" },
-      "backgroundColor": "#e18a3b",
-      "overviewRulerColor": "rgb(225 138 59 / 80%)"
+      "backgroundColor": "#cf929e",
+      "overviewRulerColor": "rgb(207 146 158 / 80%)"
     },
     {
       "text": "OPTINAL(string):",
