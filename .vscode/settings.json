@@ -39,5 +39,10 @@
   // File associations
   "files.associations": {
     ".butlerrc": "properties"
+  },
+
+  // Search
+  "search.exclude": {
+    "packages/config-provider/assets": false
   }
 }
