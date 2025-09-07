@@ -89,6 +89,7 @@ export async function settingUpSystem(options: Partial<SetSysOptions>, systemOpt
   for (const action of filteredActions) {
     let shouldRun = true
     if (action.prehandler) {
+      consola.debug(`[config-provider] Running prehandler for "${action.name}"...`)
       try {
         shouldRun = await action.prehandler(options, systemOptions)
       }
@@ -106,6 +107,7 @@ export async function settingUpSystem(options: Partial<SetSysOptions>, systemOpt
 
     consola.log('') // New line
     consola.start(`Start to "${action.name}"...`)
+    consola.debug(`[config-provider] Running handler for "${action.name}"...`)
     await action.handler(options, systemOptions)
 
     if (action.posthandler) {
