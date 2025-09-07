@@ -47,7 +47,7 @@ export default antfu(
       },
     },
   })
-  .prepend({
+  .insertAfter('lumirelle/javascript/setup', {
     name: 'lumirelle/javascript/rules',
     rules: {
       // RECOMMENDED:
@@ -62,7 +62,7 @@ export default antfu(
       'unused-imports/no-unused-vars': 'warn',
     },
   })
-  .prepend({
+  .insertAfter('lumirelle/javascript/rules', {
     name: 'lumirelle/regexp/rules',
     rules: {
       // RECOMMENDED:
@@ -73,7 +73,7 @@ export default antfu(
       'regexp/no-unused-capturing-group': 'off',
     },
   })
-  .prepend({
+  .insertAfter('lumirelle/regexp/rules', {
     name: 'lumirelle/node/rules',
     rules: {
       // RECOMMENDED:
@@ -81,7 +81,7 @@ export default antfu(
       'node/no-missing-require': 'error',
     },
   })
-  .prepend({
+  .insertAfter('lumirelle/node/rules', {
     name: 'lumirelle/vue/rules',
     files: ['**/*.vue'],
     rules: {
@@ -98,5 +98,13 @@ export default antfu(
       // You'd better not mutating props directly, it will break the unidirectional data flow
       // However, humans always tend to be lazy, wish they will not be debugging in hell in the future
       'vue/no-mutating-props': 'warn',
+    },
+  })
+  .insertAfter('lumirelle/node/rules', {
+    name: 'lumirelle/import/rules',
+    rules: {
+      // RECOMMENDED:
+      // Ensure imports point to files/modules that can be resolved
+      // 'import/named': 'error',
     },
   })
