@@ -39,19 +39,19 @@ cli
   })
 
 cli
-  .command('set [category] <source> [target]', 'Let butler setting up locally.')
+  .command('set <source> <target> [category]', 'Let butler setting up locally.')
   .option('-f, --force', 'Configure locally and forcibly, override the existing configuration with the same name')
   .option('-?, --verbose', 'Show verbose output')
   .option('-d, --dry-run', 'Dry run')
   .option('-s, --symlink', 'Symlink configuration instead of copy and paste')
-  .action(async (category: string | undefined, source: string, target: string | undefined, options: Partial<SetOptionsFromCommandLine>) => {
+  .action(async (source: string, target: string, category: string | undefined, options: Partial<SetOptionsFromCommandLine>) => {
     // Use type to limit the usage of config options
     const configOptions = config['config-provider'] ?? {} as Partial<SetOptionsFromConfig>
     if (configOptions.verbose || options.verbose) {
       consola.level = LogLevels.debug
     }
     const mergedOptions = mergeOptions(configOptions, options)
-    await settingUp(category, source, target, mergedOptions)
+    await settingUp(source, target, category, mergedOptions)
   })
 
 cli.help()

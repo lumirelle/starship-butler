@@ -28,7 +28,7 @@ export interface ProcessConfigOptions {
 
 /**
  * Process config files (Copy or symlink)
- * @param source Source path
+ * @param source Relative path to assets folder (package-root/assets/)
  * @param target Target path
  * @param options Processing options
  * @returns Operation success
@@ -38,12 +38,12 @@ export async function processConfig(source: string, target: string, options: Par
   delete options.mode
   if (mode === 'copy') {
     if (dryRun || await copyConfig(source, target, options)) {
-      consola.success(`Config file ${highlight.important(`"${source}"`)} ${highlight.green(dryRun ? 'will' : '')} copied to ${highlight.important(`"${target}"`)}.`)
+      consola.success(`Config file ${highlight.important(`"${source}"`)}${highlight.green(dryRun ? ' will ' : ' ')}copied to ${highlight.important(`"${target}"`)}.`)
     }
   }
   else if (mode === 'symlink') {
     if (dryRun || await symlinkConfig(source, target, options)) {
-      consola.success(`Config file ${highlight.important(`"${source}"`)} ${highlight.green(dryRun ? 'will' : '')} symlinked to ${highlight.important(`"${target}"`)}.`)
+      consola.success(`Config file ${highlight.important(`"${source}"`)}${highlight.green(dryRun ? ' will ' : ' ')}symlinked to ${highlight.important(`"${target}"`)}.`)
     }
   }
 }

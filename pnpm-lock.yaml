@@ -17,6 +17,9 @@ catalogs:
       specifier: ^7.7.0
       version: 7.7.0
   config-provider/prod:
+    '@posva/prompts':
+      specifier: ^2.4.4
+      version: 2.4.4
     semver:
       specifier: ^7.7.2
       version: 7.7.2
@@ -240,6 +243,9 @@ importers:
 
   packages/config-provider:
     dependencies:
+      '@posva/prompts':
+        specifier: catalog:config-provider/prod
+        version: 2.4.4
       c12:
         specifier: catalog:shared/prod
         version: 3.2.0
@@ -769,6 +775,10 @@ packages:
 
   '@polka/url@1.0.0-next.28':
     resolution: {integrity: sha512-8LduaNlMZGwdZ6qWrKlfa+2M4gahzFkprZiAt2TF8uS0qQgBizKXpXURqvTJ4WtmupWxaLqjRb2UCTe72mu+Aw==}
+
+  '@posva/prompts@2.4.4':
+    resolution: {integrity: sha512-8aPwklhbSV2VN/NQMBNFkuo8+hlJVdcFRXp4NCIfdcahh3qNEcaSoD8qXjru0OlN1sONJ7le7p6+YUbALaG6Mg==}
+    engines: {node: '>= 14'}
 
   '@quansync/fs@0.1.5':
     resolution: {integrity: sha512-lNS9hL2aS2NZgNW7BBj+6EBl4rOf8l+tQ0eRY6JWCI8jI2kc53gSoqbjojU0OnAWhzoXiOjFyGsHcDGePB3lhA==}
@@ -2380,6 +2390,10 @@ packages:
   kind-of@6.0.3:
     resolution: {integrity: sha512-dcS1ul+9tmeD95T+x28/ehLgd9mENa3LsvDTtzm3vyBEO7RPptvAD+t44WVXaUjTBRcrpFeFlC8WCruUR456hw==}
     engines: {node: '>=0.10.0'}
+
+  kleur@4.1.5:
+    resolution: {integrity: sha512-o+NO+8WrRiQEE4/7nwRJhN1HWpVmJm511pBHUxPLtp0BUISzlBplORYSmTclCnJvQq2tKu/sgl3xVpkc7ZWuQQ==}
+    engines: {node: '>=6'}
 
   knitwork@1.2.0:
     resolution: {integrity: sha512-xYSH7AvuQ6nXkq42x0v5S8/Iry+cfulBz/DJQzhIyESdLD7425jXsPy4vn5cCXU+HhRN2kVw51Vd1K6/By4BQg==}
@@ -4137,6 +4151,11 @@ snapshots:
   '@pkgr/core@0.1.2': {}
 
   '@polka/url@1.0.0-next.28': {}
+
+  '@posva/prompts@2.4.4':
+    dependencies:
+      kleur: 4.1.5
+      sisteransi: 1.0.5
 
   '@quansync/fs@0.1.5':
     dependencies:
@@ -5932,6 +5951,8 @@ snapshots:
       '@keyv/serialize': 1.1.0
 
   kind-of@6.0.3: {}
+
+  kleur@4.1.5: {}
 
   knitwork@1.2.0: {}
 
