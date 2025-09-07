@@ -16,9 +16,6 @@
     "prepare": "simple-git-hooks",
     "start": "cd ./packages/starship-butler && nr start"
   },
-  "dependencies": {
-    "unocss": "catalog:docs"
-  },
   "devDependencies": {
     "@antfu/eslint-config": "catalog:dev",
     "@antfu/ni": "catalog:dev",
@@ -29,7 +26,6 @@
     "eslint": "catalog:dev",
     "eslint-plugin-format": "catalog:dev",
     "lint-staged": "catalog:dev",
-    "pnpm": "catalog:dev",
     "simple-git-hooks": "catalog:dev",
     "starship-butler": "workspace:*",
     "stylelint": "catalog:dev",
