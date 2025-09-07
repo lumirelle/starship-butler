@@ -9,19 +9,19 @@ export default definePrompt({
   },
   scopeOverrides: {
     feat: [
-      'starship-butler',
+      'core',
       'config-provider',
       'utils',
       'types',
     ],
     fix: [
-      'starship-butler',
+      'core',
       'config-provider',
       'utils',
       'types',
     ],
     refactor: [
-      'starship-butler',
+      'core',
       'config-provider',
       'utils',
       'types',

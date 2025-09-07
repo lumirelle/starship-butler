@@ -1,1 +1,1 @@
-packages/starship-butler/README.md
+packages//core//README.md
