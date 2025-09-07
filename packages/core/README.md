@@ -8,6 +8,20 @@
 
 Your best starship butler.
 
+## Usage
+
+Install globally with node package manager (npm, yarn, pnpm, etc.):
+
+```sh
+npm install starship-butler -g
+```
+
+Run the cli and get help info with `--help` flag:
+
+```sh
+butler --help
+```
+
 ## Sponsors
 
 <p align="center">
