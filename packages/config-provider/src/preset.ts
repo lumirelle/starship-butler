@@ -54,7 +54,7 @@ export const DEFAULT_ACTIONS: Action[] = [
     },
     handler: async (options, systemOptions) => {
       const { userPlatform } = systemOptions
-      const { force, symlink } = options
+      const { force, symlink, dryRun } = options
       const mode = symlink ? 'symlink' : 'copy'
       const target = userPlatform === 'win32'
         ? join(process.env.APPDATA!, 'io.github.clash-verge-rev.clash-verge-rev', 'profiles')
@@ -69,7 +69,7 @@ export const DEFAULT_ACTIONS: Action[] = [
         { source: join('network', 'clash-verge-rev', 'Script.js'), target: join(target, 'Script.js') },
       ]
       for (const operation of handlerOperations) {
-        await processConfig(operation.source, operation.target, { force, mode })
+        await processConfig(operation.source, operation.target, { force, mode, dryRun })
       }
     },
   },
@@ -86,7 +86,7 @@ export const DEFAULT_ACTIONS: Action[] = [
       return shouldRun
     },
     handler: async (options) => {
-      const { force, symlink } = options
+      const { force, symlink, dryRun } = options
       const mode = symlink ? 'symlink' : 'copy'
       const target = join(process.env.LOCALAPPDATA!, 'Packages', 'Microsoft.WindowsTerminal_8wekyb3d8bbwe', 'LocalState')
       fs.ensureDir(target)
@@ -94,7 +94,7 @@ export const DEFAULT_ACTIONS: Action[] = [
         { source: join('terminal', 'windows-terminal', 'settings.json'), target: join(target, 'settings.json') },
       ]
       for (const operation of handlerOperations) {
-        await processConfig(operation.source, operation.target, { force, mode })
+        await processConfig(operation.source, operation.target, { force, mode, dryRun })
       }
     },
     posthandler: () => {
@@ -114,7 +114,7 @@ export const DEFAULT_ACTIONS: Action[] = [
       return shouldRun
     },
     handler: async (options, systemOptions) => {
-      const { force, symlink } = options
+      const { force, symlink, dryRun } = options
       const { userPlatform } = systemOptions
       const mode = symlink ? 'symlink' : 'copy'
       const target = userPlatform === 'win32'
@@ -131,7 +131,7 @@ export const DEFAULT_ACTIONS: Action[] = [
         { source: join('shell', 'nu', 'env.nu'), target: join(target, 'env.nu') },
       ]
       for (const operation of handlerOperations) {
-        await processConfig(operation.source, operation.target, { force, mode })
+        await processConfig(operation.source, operation.target, { force, mode, dryRun })
       }
     },
   },
@@ -139,7 +139,7 @@ export const DEFAULT_ACTIONS: Action[] = [
   {
     name: 'Setting Up Bash',
     handler: async (options) => {
-      const { force, symlink } = options
+      const { force, symlink, dryRun } = options
       const mode = symlink ? 'symlink' : 'copy'
       const target = homedir()
       fs.ensureDir(target)
@@ -147,7 +147,7 @@ export const DEFAULT_ACTIONS: Action[] = [
         { source: join('shell', 'bash', '.bash_profile'), target: join(target, '.bash_profile') },
       ]
       for (const operation of handlerOperations) {
-        await processConfig(operation.source, operation.target, { force, mode })
+        await processConfig(operation.source, operation.target, { force, mode, dryRun })
       }
     },
   },
@@ -163,7 +163,7 @@ export const DEFAULT_ACTIONS: Action[] = [
       return shouldRun
     },
     handler: async (options) => {
-      const { force, symlink } = options
+      const { force, symlink, dryRun } = options
       const mode = symlink ? 'symlink' : 'copy'
       const target = join(homedir(), 'Documents', 'CMD')
       fs.ensureDir(target)
@@ -172,7 +172,7 @@ export const DEFAULT_ACTIONS: Action[] = [
         { source: join('shell', 'cmd', 'autorun.reg'), target: join(target, 'autorun.reg') },
       ]
       for (const operation of handlerOperations) {
-        await processConfig(operation.source, operation.target, { force, mode })
+        await processConfig(operation.source, operation.target, { force, mode, dryRun })
       }
     },
     posthandler: () => {
@@ -191,7 +191,7 @@ export const DEFAULT_ACTIONS: Action[] = [
       return shouldRun
     },
     handler: async (options, systemOptions) => {
-      const { force, symlink } = options
+      const { force, symlink, dryRun } = options
       const { userPlatform } = systemOptions
       const mode = symlink ? 'symlink' : 'copy'
       const target = userPlatform === 'win32'
@@ -204,7 +204,7 @@ export const DEFAULT_ACTIONS: Action[] = [
         { source: join('shell', 'pwsh', 'profile.ps1'), target: join(target, 'profile.ps1') },
       ]
       for (const operation of handlerOperations) {
-        await processConfig(operation.source, operation.target, { force, mode })
+        await processConfig(operation.source, operation.target, { force, mode, dryRun })
       }
     },
     posthandler: () => {
@@ -216,7 +216,7 @@ export const DEFAULT_ACTIONS: Action[] = [
   {
     name: 'Setting Up Git',
     handler: async (options) => {
-      const { force, symlink } = options
+      const { force, symlink, dryRun } = options
       const mode = symlink ? 'symlink' : 'copy'
       const target = homedir()
       fs.ensureDir(target)
@@ -224,7 +224,7 @@ export const DEFAULT_ACTIONS: Action[] = [
         { source: join('vcs', 'git', '.gitconfig'), target: join(target, '.gitconfig') },
       ]
       for (const operation of handlerOperations) {
-        await processConfig(operation.source, operation.target, { force, mode })
+        await processConfig(operation.source, operation.target, { force, mode, dryRun })
       }
     },
   },
@@ -233,7 +233,7 @@ export const DEFAULT_ACTIONS: Action[] = [
   {
     name: 'Setting Up Maven',
     handler: async (options) => {
-      const { force, symlink } = options
+      const { force, symlink, dryRun } = options
       const mode = symlink ? 'symlink' : 'copy'
       const target = join(homedir(), '.m2')
       fs.ensureDir(target)
@@ -241,7 +241,7 @@ export const DEFAULT_ACTIONS: Action[] = [
         { source: join('pm', 'maven', 'settings.xml'), target: join(target, 'settings.xml') },
       ]
       for (const operation of handlerOperations) {
-        await processConfig(operation.source, operation.target, { force, mode })
+        await processConfig(operation.source, operation.target, { force, mode, dryRun })
       }
     },
   },
@@ -250,7 +250,7 @@ export const DEFAULT_ACTIONS: Action[] = [
   {
     name: 'Setting Up @sxzz/creator',
     handler: async (options) => {
-      const { force, symlink } = options
+      const { force, symlink, dryRun } = options
       const mode = symlink ? 'symlink' : 'copy'
       const target = join(homedir(), '.config')
       fs.ensureDir(target)
@@ -258,7 +258,7 @@ export const DEFAULT_ACTIONS: Action[] = [
         { source: join('tools', 'sxzz-creator', 'create.config.yml'), target: join(target, 'create.config.yml') },
       ]
       for (const operation of handlerOperations) {
-        await processConfig(operation.source, operation.target, { force, mode })
+        await processConfig(operation.source, operation.target, { force, mode, dryRun })
       }
     },
   },
@@ -266,7 +266,7 @@ export const DEFAULT_ACTIONS: Action[] = [
   {
     name: 'Setting Up simple-git-hooks',
     handler: async (options) => {
-      const { force, symlink } = options
+      const { force, symlink, dryRun } = options
       const mode = symlink ? 'symlink' : 'copy'
       const target = homedir()
       fs.ensureDir(target)
@@ -274,7 +274,7 @@ export const DEFAULT_ACTIONS: Action[] = [
         { source: join('tools', 'simple-git-hooks', '.simple-git-hooks.rc'), target: join(target, '.simple-git-hooks.rc') },
       ]
       for (const operation of handlerOperations) {
-        await processConfig(operation.source, operation.target, { force, mode })
+        await processConfig(operation.source, operation.target, { force, mode, dryRun })
       }
     },
     posthandler: (_, systemOptions) => {
@@ -293,7 +293,7 @@ export const DEFAULT_ACTIONS: Action[] = [
   {
     name: 'Setting Up czg',
     handler: async (options) => {
-      const { force, symlink } = options
+      const { force, symlink, dryRun } = options
       const mode = symlink ? 'symlink' : 'copy'
       const target = homedir()
       fs.ensureDir(target)
@@ -301,7 +301,7 @@ export const DEFAULT_ACTIONS: Action[] = [
         { source: join('tools', 'czg', '.czrc'), target: join(target, '.czrc') },
       ]
       for (const operation of handlerOperations) {
-        await processConfig(operation.source, operation.target, { force, mode })
+        await processConfig(operation.source, operation.target, { force, mode, dryRun })
       }
     },
   },
@@ -318,7 +318,7 @@ export const DEFAULT_ACTIONS: Action[] = [
       return shouldRun
     },
     handler: async (options, systemOptions) => {
-      const { force, symlink } = options
+      const { force, symlink, dryRun } = options
       const { userPlatform } = systemOptions
       const mode = symlink ? 'symlink' : 'copy'
       const target = userPlatform === 'win32'
@@ -335,7 +335,7 @@ export const DEFAULT_ACTIONS: Action[] = [
         { source: join('editor', 'vscode', 'global.code-snippets'), target: join(target, 'snippets', 'global.code-snippets') },
       ]
       for (const operation of handlerOperations) {
-        await processConfig(operation.source, operation.target, { force, mode })
+        await processConfig(operation.source, operation.target, { force, mode, dryRun })
       }
     },
     posthandler: () => {
@@ -354,7 +354,7 @@ export const DEFAULT_ACTIONS: Action[] = [
       return shouldRun
     },
     handler: async (options, systemOptions) => {
-      const { force, symlink } = options
+      const { force, symlink, dryRun } = options
       const { userPlatform } = systemOptions
       const mode = symlink ? 'symlink' : 'copy'
       const target = userPlatform === 'win32'
@@ -371,7 +371,7 @@ export const DEFAULT_ACTIONS: Action[] = [
         { source: join('editor', 'vscode', 'global.code-snippets'), target: join(target, 'snippets', 'global.code-snippets') },
       ]
       for (const operation of handlerOperations) {
-        await processConfig(operation.source, operation.target, { force, mode })
+        await processConfig(operation.source, operation.target, { force, mode, dryRun })
       }
     },
     posthandler: () => {
@@ -382,7 +382,7 @@ export const DEFAULT_ACTIONS: Action[] = [
   {
     name: 'Setting Up Neo Vim',
     handler: async (options, systemOptions) => {
-      const { force, symlink } = options
+      const { force, symlink, dryRun } = options
       const { userPlatform } = systemOptions
       const mode = symlink ? 'symlink' : 'copy'
       const target = userPlatform === 'win32'
@@ -396,7 +396,7 @@ export const DEFAULT_ACTIONS: Action[] = [
         { source: join('editor', 'nvim', 'lua', 'config', 'options.lua'), target: join(target, 'lua', 'config', 'options.lua') },
       ]
       for (const operation of handlerOperations) {
-        await processConfig(operation.source, operation.target, { force, mode })
+        await processConfig(operation.source, operation.target, { force, mode, dryRun })
       }
     },
   },
@@ -405,7 +405,7 @@ export const DEFAULT_ACTIONS: Action[] = [
   {
     name: 'Setting Up cSpell',
     handler: async (options) => {
-      const { force, symlink } = options
+      const { force, symlink, dryRun } = options
       const mode = symlink ? 'symlink' : 'copy'
       const target = homedir()
       fs.ensureDir(target)
@@ -413,7 +413,7 @@ export const DEFAULT_ACTIONS: Action[] = [
         { source: join('linter', 'cspell', '.cspell.common.txt'), target: join(target, '.cspell.common.txt') },
       ]
       for (const operation of handlerOperations) {
-        await processConfig(operation.source, operation.target, { force, mode })
+        await processConfig(operation.source, operation.target, { force, mode, dryRun })
       }
     },
     posthandler: () => {

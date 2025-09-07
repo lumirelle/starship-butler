@@ -15,10 +15,15 @@ export interface ProcessConfigOptions {
    */
   force: boolean
   /**
-   * Mode
+   * Mode.
    * @default 'copy'
    */
   mode: 'copy' | 'symlink'
+  /**
+   * Dry run.
+   * @default false
+   */
+  dryRun: boolean
 }
 
 /**
@@ -29,16 +34,16 @@ export interface ProcessConfigOptions {
  * @returns Operation success
  */
 export async function processConfig(source: string, target: string, options: Partial<ProcessConfigOptions> = {}): Promise<void> {
-  const { mode = 'copy' } = options
+  const { mode = 'copy', dryRun = false } = options
   delete options.mode
   if (mode === 'copy') {
-    if (await copyConfig(source, target, options)) {
-      consola.success(`Config file ${highlight.important(`"${source}"`)} copied to ${highlight.important(`"${target}"`)}.`)
+    if (dryRun || await copyConfig(source, target, options)) {
+      consola.success(`Config file ${highlight.important(`"${source}"`)} ${highlight.green(dryRun ? 'will' : '')} copied to ${highlight.important(`"${target}"`)}.`)
     }
   }
   else if (mode === 'symlink') {
-    if (await symlinkConfig(source, target, options)) {
-      consola.success(`Config file ${highlight.important(`"${source}"`)} symlinked to ${highlight.important(`"${target}"`)}.`)
+    if (dryRun || await symlinkConfig(source, target, options)) {
+      consola.success(`Config file ${highlight.important(`"${source}"`)} ${highlight.green(dryRun ? 'will' : '')} symlinked to ${highlight.important(`"${target}"`)}.`)
     }
   }
 }
