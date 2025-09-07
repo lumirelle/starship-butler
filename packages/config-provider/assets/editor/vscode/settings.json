@@ -36,6 +36,7 @@
 
   /* -------------------------------- Behavior -------------------------------- */
   "diffEditor.ignoreTrimWhitespace": false,
+  "editor.accessibilitySupport": "off",
   "editor.fastScrollSensitivity": 3,
   "editor.find.addExtraSpaceOnTop": false,
   "editor.gotoLocation.multipleDefinitions": "goto",
