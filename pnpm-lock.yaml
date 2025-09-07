@@ -5,13 +5,6 @@ settings:
   excludeLinksFromLockfile: false
 
 catalogs:
-  butler/prod:
-    cac:
-      specifier: ^6.7.14
-      version: 6.7.14
-    defu:
-      specifier: ^6.1.4
-      version: 6.1.4
   config-provider/dev:
     '@types/semver':
       specifier: ^7.7.0
@@ -26,6 +19,13 @@ catalogs:
     tinyglobby:
       specifier: ^0.2.15
       version: 0.2.15
+  core/prod:
+    cac:
+      specifier: ^6.7.14
+      version: 6.7.14
+    defu:
+      specifier: ^6.1.4
+      version: 6.1.4
   dev:
     '@antfu/eslint-config':
       specifier: ^5.2.1
@@ -169,7 +169,7 @@ importers:
         version: 2.13.1
       starship-butler:
         specifier: workspace:*
-        version: link:packages/starship-butler
+        version: link:packages/core
       stylelint:
         specifier: catalog:dev
         version: 16.23.1(typescript@5.9.2)
@@ -246,10 +246,10 @@ importers:
         specifier: catalog:config-provider/prod
         version: 7.7.2
       starship-butler-types:
-        specifier: workspace:../types
+        specifier: workspace:*
         version: link:../types
       starship-butler-utils:
-        specifier: workspace:../utils
+        specifier: workspace:*
         version: link:../utils
       tinyglobby:
         specifier: catalog:config-provider/prod
@@ -262,28 +262,28 @@ importers:
         specifier: catalog:dev
         version: 1.0.1
 
-  packages/starship-butler:
+  packages/core:
     dependencies:
       c12:
         specifier: catalog:shared/prod
         version: 3.2.0
       cac:
-        specifier: catalog:butler/prod
+        specifier: catalog:core/prod
         version: 6.7.14
       consola:
         specifier: catalog:shared/prod
         version: 3.4.2
       defu:
-        specifier: catalog:butler/prod
+        specifier: catalog:core/prod
         version: 6.1.4
       starship-butler-config-provider:
-        specifier: workspace:../config-provider
+        specifier: workspace:*
         version: link:../config-provider
       starship-butler-types:
-        specifier: workspace:../types
+        specifier: workspace:*
         version: link:../types
       starship-butler-utils:
-        specifier: workspace:../utils
+        specifier: workspace:*
         version: link:../utils
     devDependencies:
       tinyexec:
