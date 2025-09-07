@@ -35,7 +35,8 @@
     "consola": "catalog:shared/prod",
     "semver": "catalog:config-provider/prod",
     "starship-butler-types": "workspace:../types",
-    "starship-butler-utils": "workspace:../utils"
+    "starship-butler-utils": "workspace:../utils",
+    "tinyglobby": "catalog:config-provider/prod"
   },
   "devDependencies": {
     "@types/semver": "catalog:config-provider/dev",
