@@ -1,0 +1,17 @@
+///
+/// The mixins for operating (define & extend) placeholder
+/// @access public
+/// @author Lumirelle
+////
+
+@mixin define-placeholder($name) {
+  $rule-name: '%shared-' + $name;
+
+  @at-root #{$rule-name} {
+    @content;
+  }
+}
+
+@mixin extend-placeholder($name) {
+  @extend #{'%shared-' + $name} !optional;
+}

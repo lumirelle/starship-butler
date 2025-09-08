@@ -1,0 +1,145 @@
+////
+/// The module for utilities
+/// @access public
+/// @author Lumirelle
+////
+
+/// Clearfix
+/// @example
+///   @include clearfix;
+@mixin clearfix {
+  $selector: &;
+
+  @at-root {
+    #{$selector}::before,
+    #{$selector}::after {
+      display: table;
+      content: '';
+    }
+    #{$selector}::after {
+      clear: both;
+    }
+  }
+}
+
+/// Text Ellipsis
+/// @param {integer} $line-clamp - Line clamp, default is 1
+/// @example
+///   @include text-ellipsis(2);
+@mixin text-ellipsis($line-clamp: 1) {
+  display: -webkit-box;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  -webkit-line-clamp: $line-clamp;
+  line-clamp: $line-clamp;
+  -webkit-box-orient: vertical;
+}
+
+/// Gradient Border
+/// Limitation: Based on the `after` & `before` pseudo elements, so it's not suitable for all cases.
+/// @param {length} $border-margin Border margin
+/// @param {color} $border-color Border color, can be gradient color
+/// @param {color} $hover-border-color [null] Hover border color, can be gradient color, if null, use $border-color instead
+/// @param {length} $border-radius [0] Border radius
+/// @param {solid-color} $bg-color [#fff] Background color, must be solid color
+/// @param {transition} $transition [all 0.3s ease] Transition
+/// @param {boolean} $isolation [false] Isolation
+/// @example
+///   // SCSS
+///   .test-block {
+///     $border-color: linear-gradient(45deg, #000, #00f, #0ff, #0f0, #ff0, #f00, #000);
+///     $hover-border-color: linear-gradient(45deg, #f00, #ff0, #0f0, #0ff, #00f, #000, #f00);
+///     @include gradient-border(2px, $border-color, $hover-border-color, $border-radius: 8px);
+///   }
+///
+///   // CSS Output
+///   .test-block {
+///     position: relative;
+///     margin: 2px;
+///     background: #fff;
+///     background-clip: padding-box;
+///     border: 0 solid transparent;
+///     border-radius: 8px;
+///   }
+///   .test-block::before, .test-block::after {
+///     position: absolute;
+///     inset: -2px;
+///     padding: 2px;
+///     z-index: -1;
+///     pointer-events: none;
+///     content: "";
+///     border-radius: 10px;
+///     transition: all 0.3s ease;
+///   }
+///   .test-block::before {
+///     background: linear-gradient(45deg, #000, #00f, #0ff, #0f0, #ff0, #f00, #000);
+///     opacity: 1;
+///   }
+///   .test-block::after {
+///     background: linear-gradient(45deg, #f00, #ff0, #0f0, #0ff, #00f, #000, #f00);
+///     opacity: 0;
+///   }
+///   .test-block:hover::before {
+///     opacity: 0;
+///   }
+///   .test-block:hover::after {
+///     opacity: 1;
+///   }
+@mixin gradient-border(
+  $border-margin,
+  $border-color,
+  $hover-border-color: null,
+  $bg-color: #fff,
+  $border-radius: 0,
+  $transition: all 0.3s ease,
+  $isolation: false
+) {
+  $selector: &;
+
+  position: relative;
+  margin: $border-margin;
+  background: $bg-color;
+  background-clip: padding-box;
+  border: 0 solid transparent;
+  border-radius: $border-radius;
+
+  &::before,
+  &::after {
+    position: absolute;
+    inset: -$border-margin;
+    padding: $border-margin;
+    z-index: -1;
+    pointer-events: none;
+    content: '';
+    border-radius: $border-radius + $border-margin;
+    transition: $transition;
+  }
+
+  &::before {
+    background: $border-color;
+    opacity: 1;
+  }
+
+  &::after {
+    background: if($hover-border-color == null, $border-color, $hover-border-color);
+    opacity: 0;
+  }
+
+  &:hover {
+    &::before {
+      opacity: 0;
+    }
+
+    &::after {
+      opacity: 1;
+    }
+  }
+
+  @at-root {
+    @if $isolation {
+      *:has(> #{$selector}) {
+        isolation: isolate;
+      }
+    }
+  }
+}

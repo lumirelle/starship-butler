@@ -1,0 +1,118 @@
+////
+/// The module for implementing responsive layout
+/// @access public
+/// @author Lumirelle
+////
+
+@use 'sass:map';
+@use 'sass:meta';
+
+/// Break-points, follow the design of Tailwind CSS
+/// https://tailwindcss.com/docs/responsive-design
+$breakpoints: (
+  'xs': 0, // Mobile
+  'sm': 640px,
+  'md': 768px, // Tablet
+  'lg': 1024px, // Laptop
+  'xl': 1280px,
+  '2xl': 1536px // Desktop
+) !default;
+
+/// Response layout by using media query
+/// @param {'xs' | 'sm' | 'md' | 'lg' | 'xl' | '2xl' | length} $breakpoint Key of predefined breakpoints or breakpoint value directly
+/// @param {'up' | 'down' | 'only'} $direction Direction of media query
+/// @example
+///   // Mobile first
+///   .component {
+///     // Mobile, default style (xs: 0px+)
+///     padding: 16px;
+///     font-size: 12px;
+///
+///     // Tablet (md: 768px+)
+///     @include res('md') {
+///       padding: 24px;
+///       font-size: 16px;
+///     }
+///
+///     // Laptop (lg: 1024px+)
+///     @include res('lg') {
+///       padding: 32px;
+///       font-size: 20px;
+///     }
+///
+///     // Desktop (xl: 1280px+)
+///     @include res('xl') {
+///       padding: 40px;
+///       font-size: 24px;
+///     }
+///   }
+///
+@mixin res($breakpoint, $direction: 'up') {
+  @if meta.type-of($breakpoint) == 'number' {
+    // If the breakpoint is number, use it directly
+    @if $direction == 'up' {
+      @media (min-width: $breakpoint) {
+        @content;
+      }
+    } @else if $direction == 'down' {
+      @media (max-width: ($breakpoint - 1px)) {
+        @content;
+      }
+    } @else if $direction == 'only' {
+      @media (min-width: $breakpoint) and (max-width: ($breakpoint + 1px)) {
+        @content;
+      }
+    }
+  } @else {
+    // Else, use predefined value
+    @if map.has-key($breakpoints, $breakpoint) {
+      $value: map.get($breakpoints, $breakpoint);
+
+      @if $direction == 'up' {
+        @if $value == 0 {
+          @warn "You'd better not use 'xs' breakpoint, just write the default style without media query.";
+          @content;
+        } @else {
+          @media (min-width: $value) {
+            @content;
+          }
+        }
+      } @else if $direction == 'down' {
+        @if $value == 0 {
+          @warn "Cannot query down from 'xs' breakpoint.";
+        } @else {
+          @media (max-width: ($value - 1px)) {
+            @content;
+          }
+        }
+      } @else if $direction == 'only' {
+        @if $value == 0 {
+          @media (max-width: (map.get($breakpoints, 'sm') - 1px)) {
+            @content;
+          }
+        } @else {
+          // Find next breakpoint
+          $next-breakpoint: null;
+          @each $key, $val in $breakpoints {
+            @if $val > $value and $next-breakpoint == null {
+              $next-breakpoint: $val;
+            }
+          }
+          @if $next-breakpoint {
+            // If has next
+            @media (min-width: $value) and (max-width: ($next-breakpoint - 1px)) {
+              @content;
+            }
+          } @else {
+            // Else
+            @media (min-width: $value) {
+              @content;
+            }
+          }
+        }
+      }
+    } @else {
+      @warn "Breakpoint '#{$breakpoint}' doesn't exist in $breakpoints!";
+    }
+  }
+}

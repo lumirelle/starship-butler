@@ -42,6 +42,7 @@
   "devDependencies": {
     "@types/semver": "catalog:config-provider/dev",
     "tinyexec": "catalog:dev",
-    "unbuild": "catalog:dev"
+    "unbuild": "catalog:dev",
+    "vue": "catalog:docs"
   }
 }

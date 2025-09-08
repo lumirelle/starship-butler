@@ -261,6 +261,12 @@ importers:
       tinyexec:
         specifier: catalog:dev
         version: 1.0.1
+      unbuild:
+        specifier: catalog:dev
+        version: 3.6.1(typescript@5.9.2)(vue@3.5.18(typescript@5.9.2))
+      vue:
+        specifier: catalog:docs
+        version: 3.5.18(typescript@5.9.2)
 
   packages/core:
     dependencies:
@@ -289,8 +295,15 @@ importers:
       tinyexec:
         specifier: catalog:dev
         version: 1.0.1
+      unbuild:
+        specifier: catalog:dev
+        version: 3.6.1(typescript@5.9.2)(vue@3.5.18(typescript@5.9.2))
 
-  packages/types: {}
+  packages/types:
+    devDependencies:
+      unbuild:
+        specifier: catalog:dev
+        version: 3.6.1(typescript@5.9.2)(vue@3.5.18(typescript@5.9.2))
 
   packages/utils:
     dependencies:
@@ -303,6 +316,10 @@ importers:
       rc9:
         specifier: catalog:utils/prod
         version: 2.1.2
+    devDependencies:
+      unbuild:
+        specifier: catalog:dev
+        version: 3.6.1(typescript@5.9.2)(vue@3.5.18(typescript@5.9.2))
 
 packages:
 
@@ -374,10 +391,6 @@ packages:
 
   '@antfu/utils@9.2.0':
     resolution: {integrity: sha512-Oq1d9BGZakE/FyoEtcNeSwM7MpDO2vUBi11RWBZXf75zPsbUVWmUs03EqkRFrcgbXyKTas0BdZWC1wcuSoqSAw==}
-
-  '@babel/code-frame@7.26.2':
-    resolution: {integrity: sha512-RJlIHRueQgwWitWgF8OdFYGZX328Ax5BCemNGlqHfplnRT9ESi8JkFlvaVYbS+UubVY6dpv87Fs2u5M29iNFVQ==}
-    engines: {node: '>=6.9.0'}
 
   '@babel/code-frame@7.27.1':
     resolution: {integrity: sha512-cjQ7ZlQ0Mv3b47hABuTevyTuYN4i+loJKGeV9flcCgIK37cCXRh+L1bd3iBHlynerhQ7BhCkn2BPbQUL+rGqFg==}
@@ -2999,10 +3012,6 @@ packages:
     resolution: {integrity: sha512-Q8qQfPiZ+THO/3ZrOrO0cJJKfpYCagtMUkXbnEfmgUjwXg6z/WBeOyS9APBBPCTSiDV+s4SwQGu8yFsiMRIudg==}
     engines: {node: '>=4'}
 
-  postcss-selector-parser@7.0.0:
-    resolution: {integrity: sha512-9RbEr1Y7FFfptd/1eEdntyjMwLeghW1bHX9GWjXo19vx4ytPQhANltvVxDggzJl7mnWM+dX28kb6cyS/4iQjlQ==}
-    engines: {node: '>=4'}
-
   postcss-selector-parser@7.1.0:
     resolution: {integrity: sha512-8sLjZwK0R+JlxlYcTuVnyT2v+htpdrjDOKuMcOVdYjt52Lh8hWRYpxBPoKx/Zg+bcjc3wx6fmQevMmUztS/ccA==}
     engines: {node: '>=4'}
@@ -3797,13 +3806,6 @@ snapshots:
       tinyexec: 1.0.1
 
   '@antfu/utils@9.2.0': {}
-
-  '@babel/code-frame@7.26.2':
-    dependencies:
-      '@babel/helper-validator-identifier': 7.27.1
-      js-tokens: 4.0.0
-      picocolors: 1.1.1
-    optional: true
 
   '@babel/code-frame@7.27.1':
     dependencies:
@@ -6403,7 +6405,7 @@ snapshots:
       postcss: 8.5.6
       postcss-nested: 7.0.2(postcss@8.5.6)
       semver: 7.7.2
-      tinyglobby: 0.2.14
+      tinyglobby: 0.2.15
     optionalDependencies:
       typescript: 5.9.2
       vue: 3.5.18(typescript@5.9.2)
@@ -6643,7 +6645,7 @@ snapshots:
   postcss-nested@7.0.2(postcss@8.5.6):
     dependencies:
       postcss: 8.5.6
-      postcss-selector-parser: 7.0.0
+      postcss-selector-parser: 7.1.0
 
   postcss-normalize-charset@7.0.0(postcss@8.5.6):
     dependencies:
@@ -6714,11 +6716,6 @@ snapshots:
       postcss: 8.5.6
 
   postcss-selector-parser@6.1.2:
-    dependencies:
-      cssesc: 3.0.0
-      util-deprecate: 1.0.2
-
-  postcss-selector-parser@7.0.0:
     dependencies:
       cssesc: 3.0.0
       util-deprecate: 1.0.2
@@ -6834,7 +6831,7 @@ snapshots:
       rollup: 4.46.2
       typescript: 5.9.2
     optionalDependencies:
-      '@babel/code-frame': 7.26.2
+      '@babel/code-frame': 7.27.1
 
   rollup@4.46.2:
     dependencies:
@@ -7224,7 +7221,7 @@ snapshots:
       rollup: 4.46.2
       rollup-plugin-dts: 6.2.1(rollup@4.46.2)(typescript@5.9.2)
       scule: 1.3.0
-      tinyglobby: 0.2.14
+      tinyglobby: 0.2.15
       untyped: 2.0.0
     optionalDependencies:
       typescript: 5.9.2
