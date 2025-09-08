@@ -28,5 +28,8 @@
     "dev": "unbuild --stub",
     "prepublishOnly": "nr build",
     "start": "tsx src/cli.ts"
+  },
+  "devDependencies": {
+    "unbuild": "catalog:dev"
   }
 }

@@ -33,5 +33,8 @@
     "ansis": "catalog:utils/prod",
     "consola": "catalog:shared/prod",
     "rc9": "catalog:utils/prod"
+  },
+  "devDependencies": {
+    "unbuild": "catalog:dev"
   }
 }
