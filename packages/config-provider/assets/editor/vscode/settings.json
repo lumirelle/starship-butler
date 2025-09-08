@@ -395,6 +395,7 @@
     "**/.next/**",
     "**/.output/**"
   ],
+  "where-am-i.colorful": false,
 
   /* ---------------------- Extension linter & formatter ---------------------- */
   "cSpell.allowCompoundWords": true,
