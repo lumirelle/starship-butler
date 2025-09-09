@@ -31,7 +31,6 @@
     // >> Formatter
     "editorconfig.editorconfig",
     "esbenp.prettier-vscode",
-    "foxundermoon.shell-format",
     // >> Linter
     "streetsidesoftware.code-spell-checker",
 
@@ -72,6 +71,6 @@
     "idleberg.emoji-code"
   ]
   // EXTENSION COUNT
-  // >> VSCode: INDEX + 1 = 47
-  // >> Cursor: INDEX - 1 = 45
+  // >> VSCode: INDEX + 1 = 46
+  // >> Cursor: INDEX - 1 = 44
 }

@@ -4,7 +4,7 @@
   "recommendations": [
     // FILES (Editor, LSP, Formatter, Linter, Snippets...)
     // >> LSP
-    "dotenv.dotenv-vscode", // <NOT OPENVSIX>
+    "mikestead.dotenv",
     "humao.rest-client",
     "lokalise.i18n-ally",
     "vue.volar",
@@ -33,6 +33,6 @@
     "ritwickdey.liveserver" // NEED TRAIL, ALT+L ALT+O, ALT+L CTRL+C
   ]
   // EXTENSION COUNT
-  // >> VSCode: INDEX + 1 + {PROFILE_DEFAULT: 47} = 63
-  // >> Cursor: INDEX + 1 + {PROFILE_DEFAULT: 45} = 61
+  // >> VSCode: INDEX + 1 + {PROFILE_DEFAULT: 46} = 62
+  // >> Cursor: INDEX + 1 + {PROFILE_DEFAULT: 44} = 60
 }

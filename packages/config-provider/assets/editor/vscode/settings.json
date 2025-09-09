@@ -58,6 +58,8 @@
   "explorer.confirmDragAndDrop": false,
   "files.associations": {
     ".env*": "dotenv",
+    ".env*.js": "javascript",
+    ".env*.ts": "typescript",
     ".simple-git-hooks.rc": "shellscript",
     ".czrc": "json",
     ".butlerrc": "properties"
@@ -460,11 +462,5 @@
 
   /* ----------------------- Language specific settings ----------------------- */
   "[dockerfile]": { "editor.defaultFormatter": "ms-azuretools.vscode-containers" },
-  "[dotenv]": { "editor.defaultFormatter": "foxundermoon.shell-format" },
-  "[ignore]": { "editor.defaultFormatter": "foxundermoon.shell-format" },
-  "[markdown]": { "editor.wordWrap": "off" },
-  "[properties]": { "editor.defaultFormatter": "foxundermoon.shell-format" },
-  "[shellscript]": {
-    "editor.defaultFormatter": "foxundermoon.shell-format"
-  }
+  "[markdown]": { "editor.wordWrap": "off" }
 }
