@@ -246,16 +246,16 @@ export const DEFAULT_ACTIONS: Action[] = [
     },
   },
   /* -------------------------------- 6. Tools -------------------------------- */
-  // @sxzz/creator -- Creating projects
+  // @sxzz/create -- Creating projects
   {
-    name: 'Setting Up @sxzz/creator',
+    name: 'Setting Up @sxzz/create',
     handler: async (options) => {
       const { force, symlink, dryRun } = options
       const mode = symlink ? 'symlink' : 'copy'
       const target = join(homedir(), '.config')
       fs.ensureDir(target)
       const handlerOperations = [
-        { source: join('tools', 'sxzz-creator', 'create.config.yml'), target: join(target, 'create.config.yml') },
+        { source: join('tools', 'sxzz-create', 'create.config.yml'), target: join(target, 'create.config.yml') },
       ]
       for (const operation of handlerOperations) {
         await processConfig(operation.source, operation.target, { force, mode, dryRun })

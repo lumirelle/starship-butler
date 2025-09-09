@@ -18,6 +18,6 @@ templates:
     git:
       init: false
   - name: Vitesse Nuxt
-    url: antfu/vitesse-nuxt
+    url: lumirelle/starter-vitesse-nuxt
     git:
       init: false
