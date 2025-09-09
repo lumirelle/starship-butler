@@ -43,6 +43,6 @@
 
   // Search
   "search.exclude": {
-    "packages/config-provider/assets": false
+    "**/assets": false
   }
 }
