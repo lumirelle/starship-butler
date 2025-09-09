@@ -27,6 +27,7 @@
     "antfu.pnpm-catalog-lens",
     "johnsoncodehk.vscode-tsconfig-helper", // <NOT OPENVSIX>
     "wallabyjs.console-ninja",
+    "hyrious.import-cost",
     // >> Editor Behavior
     "antfu.goto-alias", // F12
     "ecmel.vscode-html-css",

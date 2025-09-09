@@ -16,8 +16,7 @@
   "editor.renderWhitespace": "boundary",
   "editor.rulers": [80, 120],
   "editor.showFoldingControls": "always",
-  "editor.wordWrap": "on",
-  "editor.wordWrapColumn": 120,
+  "editor.wordWrap": "off",
   "terminal.integrated.cursorBlinking": true,
   "terminal.integrated.cursorStyle": "line",
   "terminal.integrated.fontSize": 14,
@@ -25,7 +24,7 @@
   "window.autoDetectColorScheme": true,
   "window.title": "${rootPath}", // this make tabs more readable
   "window.titleBarStyle": "custom",
-  "window.zoomLevel": 1.4,
+  "window.zoomLevel": 1.2,
   "workbench.activityBar.orientation": "vertical",
   "workbench.iconTheme": "catppuccin-mocha",
   "workbench.preferredDarkColorTheme": "Vitesse Dark",
