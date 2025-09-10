@@ -108,6 +108,7 @@
   "terminal.integrated.profiles.windows": {
     "Nushell": { "path": "C:\\Program Files\\nu\\bin\\nu.exe" }
   },
+  "terminal.integrated.rightClickBehavior": "default",
   "terminal.integrated.smoothScrolling": true,
   "terminal.integrated.tabs.enabled": true,
   "workbench.editor.closeOnFileDelete": true,

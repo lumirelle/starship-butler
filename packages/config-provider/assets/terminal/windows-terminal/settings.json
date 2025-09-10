@@ -66,6 +66,7 @@
           "backgroundImageOpacity": 0.5,
           "colorScheme": "One Half Dark",
           "experimental.retroTerminalEffect": false,
+          "experimental.rightClickContextMenu": true,
           "font":
             {
               "builtinGlyphs": false,
