@@ -39,17 +39,16 @@ export interface SetOptionsFromCommandLine extends SetOptions {}
 
 /**
  * Setting up locally.
- * @param source Source file path
+ * @param sourcePattern Source glob pattern, relative to assets folder
  * @param target Target file or folder path
- * @param category
  * Category of the configuration, default is `''`.
  * This option will be transformed to fit glob pattern:
  * - If category is `*`, will replace it with `**`
  * - Otherwise, will transform it to `{category}/**`
  * @param options Configuration and command line options
  */
-export async function settingUp(source: string, target: string, category: string | undefined, options: Partial<SetOptions>): Promise<void> {
-  consola.debug(`[starship-butler] Setting up locally with source: '${source}', target: '${target}', and category: '${category}'`)
+export async function settingUp(sourcePattern: string, target: string, options: Partial<SetOptions>): Promise<void> {
+  consola.debug(`[starship-butler] Setting up locally with source: '${sourcePattern}', target: '${target}'`)
   consola.debug('[config-provider] Setting up locally with options:', options)
 
   /**
@@ -58,21 +57,7 @@ export async function settingUp(source: string, target: string, category: string
   const assetsPath = path.join(import.meta.dirname, '..', 'assets')
   consola.debug('[starship-butler] Assets path:', assetsPath)
 
-  // Default values
-  if (!category) {
-    category = ''
-  }
-  // If category is `*`, will replace it with `**` to fit glob pattern
-  else if (category === '*') {
-    category = '**/'
-  }
-  // Transform category to fit glob pattern
-  else {
-    category = `${category}/**/`
-  }
-
   // Create source glob pattern
-  const sourcePattern = `${category}${source}`
   consola.debug('[starship-butler] Source pattern:', sourcePattern)
   const matchedFiles = globSync(sourcePattern, {
     cwd: assetsPath,
@@ -97,8 +82,12 @@ export async function settingUp(source: string, target: string, category: string
     })
     sourceFile = choice as string
   }
-  else {
+  else if (matchedFiles.length === 1) {
     sourceFile = matchedFiles[0]
+  }
+  else {
+    consola.error('No files matched the source pattern!')
+    return
   }
 
   if (cancelled) {
