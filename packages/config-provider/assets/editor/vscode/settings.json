@@ -345,7 +345,7 @@
   "gitlens.codeLens.scopes": ["document", "containers"],
   "gitlens.defaultGravatarsStyle": "monsterid",
   "gitlens.fileAnnotations.command": "blame",
-  "gitlens.graph.onlyFollowFirstParent": true,
+  "gitlens.graph.dimMergeCommits": true,
   "gitlens.menus": {
     "editor": { "blame": true, "clipboard": true, "compare": true, "history": true, "remote": true },
     "editorGroup": false,
