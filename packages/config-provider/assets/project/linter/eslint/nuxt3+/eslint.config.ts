@@ -76,8 +76,8 @@ export default antfu(
     name: 'lumirelle/node/rules',
     rules: {
       // RECOMMENDED:
-      'node/no-missing-import': 'error',
-      'node/no-missing-require': 'error',
+      'node/no-missing-import': ['error', { tryExtensions: ['.js', '.json', '.node', '.ts', '.tsx', '.vue'] }],
+      'node/no-missing-require': ['error', { tryExtensions: ['.js', '.json', '.node', '.ts', '.tsx', '.vue'] }],
     },
   })
   .insertAfter('lumirelle/node/rules', {
