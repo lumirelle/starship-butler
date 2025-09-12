@@ -1,39 +1,39 @@
 {
-	"Import": {
-		"prefix": "im",
+	"Import From Default": {
+		"prefix": "im-default",
 		"description": "Import a module",
 		"scope": "javascript,typescript",
 		"body": [
 			"import $1 from '$2'"
 		]
 	},
-	"Import Partial": {
-		"prefix": "ip",
-		"description": "Import a module partial",
+	"Import From": {
+		"prefix": "im",
+		"description": "Import members from a module",
 		"scope": "javascript,typescript",
 		"body": [
 			"import { $1 } from '$2'"
 		]
 	},
-	"Export": {
-		"prefix": "ex",
+	"Export Default": {
+		"prefix": "ex-default",
 		"description": "Export this module",
 		"scope": "javascript,typescript",
 		"body": [
 			"export default $1"
 		]
 	},
-	"Export Partial": {
-		"prefix": "ep",
-		"description": "Export this module partial",
+	"Export": {
+		"prefix": "ex",
+		"description": "Export a member of this module",
 		"scope": "javascript,typescript",
 		"body": [
 			"export $1"
 		]
 	},
-	"Export From": {
-		"prefix": "ef",
-		"description": "Export this module from another module",
+	"Export Other": {
+		"prefix": "ex-other",
+		"description": "Export members of another module in this module",
 		"scope": "javascript,typescript",
 		"body": [
 			"export * from '$1'"
@@ -136,7 +136,7 @@
 		]
 	},
 	"Markdown Table": {
-		"prefix": "mtable",
+		"prefix": "md-table",
 		"description": "Markdown table",
 		"scope": "markdown",
 		"body": [
@@ -153,9 +153,9 @@
 			"</table>"
 		]
 	},
-	"Vue Script": {
-		"prefix": "vscript",
-		"description": "Vue SFC script",
+	"Vue Script Options": {
+		"prefix": "v-script-options",
+		"description": "Vue SFC script options",
 		"scope": "vue",
 		"body": [
 			"<script>",
@@ -165,12 +165,12 @@
 			"</script>"
 		]
 	},
-	"Vue Script Setup (TS)": {
+	"Vue Script Setup": {
 		"prefix": [
-			"vsetupscript",
-			"vsetupscript-ts"
+			"v-script",
+			"v-script-setup"
 		],
-		"description": "Vue SFC script setup (TS)",
+		"description": "Vue SFC script setup",
 		"scope": "vue",
 		"body": [
 			"<script lang=\"ts\" setup>",
@@ -178,32 +178,9 @@
 			"</script>"
 		]
 	},
-	"Vue Script Setup (JS)": {
-		"prefix": "vsetupscript-js",
-		"description": "Vue SFC script setup (JS)",
-		"scope": "vue",
-		"body": [
-			"<script setup>",
-			"$0",
-			"</script>"
-		]
-	},
-	"Vue Style (SCSS)": {
-		"prefix": [
-			"vstyle",
-			"vstyle-scss"
-		],
-		"description": "Vue SFC style (SCSS)",
-		"scope": "vue",
-		"body": [
-			"<style lang=\"scss\">",
-			"$0",
-			"</style>"
-		]
-	},
-	"Vue Style (CSS)": {
-		"prefix": "vstyle-css",
-		"description": "Vue SFC style (CSS)",
+	"Vue Style Global": {
+		"prefix": "v-style-global",
+		"description": "Vue SFC style global",
 		"scope": "vue",
 		"body": [
 			"<style>",
@@ -211,22 +188,12 @@
 			"</style>"
 		]
 	},
-	"Vue Style Scoped (SCSS)": {
+	"Vue Style Scoped": {
 		"prefix": [
-			"vscopedstyle",
-			"vscopedstyle-scss"
+			"v-style",
+			"v-style-scoped"
 		],
-		"description": "Vue SFC style scoped (SCSS)",
-		"scope": "vue",
-		"body": [
-			"<style lang=\"scss\" scoped>",
-			"$0",
-			"</style>"
-		]
-	},
-	"Vue Style Scoped (CSS)": {
-		"prefix": "vscopedstyle-css",
-		"description": "Vue SFC style scoped (CSS)",
+		"description": "Vue SFC style scoped",
 		"scope": "vue",
 		"body": [
 			"<style scoped>",
@@ -234,12 +201,12 @@
 			"</style>"
 		]
 	},
-	"Vue I18n Block (YAML)": {
+	"Vue I18n Block Local": {
 		"prefix": [
-			"vi18n",
-			"vi18n-yaml"
+			"v-i18n",
+			"v-i18n-local"
 		],
-		"description": "Vue SFC i18n block (YAML)",
+		"description": "Vue SFC i18n block local",
 		"scope": "vue",
 		"body": [
 			"<i18n lang=\"yaml\">",
@@ -247,22 +214,9 @@
 			"</i18n>"
 		]
 	},
-	"Vue I18n Block (JSON)": {
-		"prefix": "vi18n-json",
-		"description": "Vue SFC i18n block (JSON)",
-		"scope": "vue",
-		"body": [
-			"<i18n>",
-			"$0",
-			"</i18n>"
-		]
-	},
-	"Vue I18n Block Global (YAML)": {
-		"prefix": [
-			"vglobali18n",
-			"vglobali18n-yaml"
-		],
-		"description": "Vue SFC i18n block global (YAML)",
+	"Vue I18n Block Global": {
+		"prefix": "v-i18n-global",
+		"description": "Vue SFC i18n block global",
 		"scope": "vue",
 		"body": [
 			"<i18n lang=\"yaml\" global>",
@@ -270,14 +224,43 @@
 			"</i18n>"
 		]
 	},
-	"Vue I18n Block Global (JSON)": {
-		"prefix": "vglobali18n-json",
-		"description": "Vue SFC i18n block global (JSON)",
-		"scope": "vue",
-		"body": [
-			"<i18n global>",
-			"$0",
-			"</i18n>"
-		]
-	}
+  "Pinia Options Store Boilerplate": {
+    "scope": "javascript,typescript",
+    "prefix": "pinia-options",
+    "body": [
+		"import { acceptHMRUpdate, defineStore } from 'pinia'",
+		"",
+		"export const use${TM_FILENAME_BASE/^(.*)$/${1:/pascalcase}/}Store = defineStore('$TM_FILENAME_BASE', {",
+		" state: () => ({",
+		"   $0",
+		" }),",
+		" getters: {},",
+		" actions: {},",
+		"})",
+		"",
+		"if (import.meta.hot) {",
+		" import.meta.hot.accept(acceptHMRUpdate(use${TM_FILENAME_BASE/^(.*)$/${1:/pascalcase}/}Store, import.meta.hot))",
+		"}",
+		""
+	],
+    "description": "Bootstrap the code needed for a Vue.js Pinia Options Store file"
+  },
+  "Pinia Setup Store Boilerplate": {
+    "scope": "javascript,typescript",
+    "prefix": "pinia-setup",
+    "body": [
+		"import { acceptHMRUpdate, defineStore } from 'pinia'",
+		"",
+		"export const use${TM_FILENAME_BASE/^(.*)$/${1:/pascalcase}/}Store = defineStore('$TM_FILENAME_BASE', () => {",
+		" $0",
+		" return {}",
+		"})",
+		"",
+		"if (import.meta.hot) {",
+		" import.meta.hot.accept(acceptHMRUpdate(use${TM_FILENAME_BASE/^(.*)$/${1:/pascalcase}/}Store, import.meta.hot))",
+		"}",
+		""
+	],
+    "description": "Bootstrap the code needed for a Vue.js Pinia Setup Store file"
+  }
 }
