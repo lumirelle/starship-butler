@@ -7,6 +7,9 @@ import nuxt from './.nuxt/eslint.config.mjs'
  * Based on antfu's eslint config.
  */
 export default antfu(
+  /**
+   * The options for generating the ESLint configurations
+   */
   {
     /**
      * Enable formatters for css, markdown and etc. (requires `eslint-plugin-format`). If you are using `stylelint`, you
