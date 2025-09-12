@@ -247,7 +247,10 @@
   },
   "Pinia Setup Store Boilerplate": {
     "scope": "javascript,typescript",
-    "prefix": "pinia-setup",
+    "prefix": [
+		"pinia",
+		"pinia-setup"
+	],
     "body": [
 		"import { acceptHMRUpdate, defineStore } from 'pinia'",
 		"",

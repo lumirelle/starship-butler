@@ -38,7 +38,8 @@
 
   // File associations
   "files.associations": {
-    ".butlerrc": "properties"
+    ".butlerrc": "properties",
+    "*.json": "jsonc"
   },
 
   // Search
