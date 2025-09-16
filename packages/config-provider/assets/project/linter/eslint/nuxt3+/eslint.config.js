@@ -1,4 +1,4 @@
-// Uncomment the comment below to enable type checking when using this config
+// Uncomment the comment below to enable type checking and linting when using this config
 // // @ts-check
 import antfu from '@antfu/eslint-config'
 import nuxt from './.nuxt/eslint.config.mjs'
@@ -24,13 +24,14 @@ export default antfu(
     lessOpinionated: false,
 
     /**
-     * UnoCSS support.
+     * UnoCSS support, enable it if you are using UnoCSS in this project.
      */
-    unocss: true,
+    unocss: false,
+
     /**
-     * PNPM support.
+     * PNPM support, enable it if you are using PNPM as package manager.
      */
-    pnpm: true,
+    pnpm: false,
 
     /**
      * Custom ignore patterns.
@@ -72,36 +73,6 @@ export default antfu(
        * readability is more critical than which grouping you choose.
        */
       'regexp/no-unused-capturing-group': 'off',
-    },
-  })
-  .insertAfter('lumirelle/regexp/rules', {
-    name: 'lumirelle/node/rules',
-    rules: {
-      // RECOMMENDED:
-      'node/no-missing-import': ['error', { tryExtensions: ['.js', '.json', '.node', '.ts', '.tsx', '.vue'] }],
-      'node/no-missing-require': ['error', { tryExtensions: ['.js', '.json', '.node', '.ts', '.tsx', '.vue'] }],
-    },
-  })
-  .insertAfter('lumirelle/node/rules', {
-    name: 'lumirelle/vue/rules',
-    files: ['**/*.vue'],
-    rules: {
-      // RECOMMENDED:
-      /**
-       * Enforce that properties used in templates are defined in the component
-       */
-      'vue/no-undef-properties': 'error',
-    },
-  })
-  .insertAfter('lumirelle/node/rules', {
-    name: 'lumirelle/import/rules',
-    rules: {
-      // RECOMMENDED:
-      /**
-       * Ensure imports point to files/modules that can be resolved. Not implemented in `eslint-plugin-import-lite` currently.
-       * @see https://github.com/9romise/eslint-plugin-import-lite/issues/9
-       */
-      // 'import/named': 'error',
     },
   })
   /**

@@ -14,7 +14,7 @@ export default antfu({
   formatters: true,
 
   /**
-   * If you are using pnpm workspace, you can set pnpm to true
+   * PNPM support, enable it if you are using PNPM as package manager.
    */
-  // pnpm: true,
+  pnpm: false,
 })

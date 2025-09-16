@@ -16,18 +16,20 @@ export default antfu(
     formatters: true,
 
     /**
-     * Disable typescript support, only enable it when this project uses typescript itself. This option is auto-enabled
-     * if there is `typescript` package under your node_modules. That means if you install dependencies by NPM or PNPM
-     * with `shamfully-hoist: true`, TypeScript plugin will be enabled. If this project is a pure JavaScript project
-     * (lack of type support), when you use undefined variables, you won't get any error. That's very dangerous.
-     */
-    typescript: false,
-
-    /**
      * If you don't like some of the opinions provided by `@antfu/eslint-config`, such as `antfu/top-level-function`,
      * and `antfu/if-newline`. You can disable it by setting this option to `true`.
      */
     lessOpinionated: false,
+
+    /**
+     * UnoCSS support, enable it if you are using UnoCSS in this project.
+     */
+    unocss: false,
+
+    /**
+     * PNPM support, enable it if you are using PNPM as package manager.
+     */
+    pnpm: false,
 
     /**
      * Custom ignore patterns.
@@ -78,24 +80,10 @@ export default antfu(
       'regexp/no-unused-capturing-group': 'off',
     },
   })
-  .insertAfter('lumirelle/regexp/rules', {
-    name: 'lumirelle/node/rules',
-    rules: {
-      // RECOMMENDED:
-      'node/no-missing-import': ['error', { tryExtensions: ['.js', '.json', '.node', '.ts', '.tsx', '.vue'] }],
-      'node/no-missing-require': ['error', { tryExtensions: ['.js', '.json', '.node', '.ts', '.tsx', '.vue'] }],
-    },
-  })
   .insertAfter('lumirelle/node/rules', {
     name: 'lumirelle/vue/rules',
     files: ['**/*.vue'],
     rules: {
-      // RECOMMENDED:
-      /**
-       * Enforce that properties used in templates are defined in the component
-       */
-      'vue/no-undef-properties': 'error',
-
       // SHAMELESSLY DISABLED:
       'vue/eqeqeq': 'warn',
       /**
@@ -109,16 +97,5 @@ export default antfu(
        * tend to be lazy, wish they will not be debugging in hell in the future
        */
       'vue/no-mutating-props': 'warn',
-    },
-  })
-  .insertAfter('lumirelle/node/rules', {
-    name: 'lumirelle/import/rules',
-    rules: {
-      // RECOMMENDED:
-      /**
-       * Ensure imports point to files/modules that can be resolved. Not implemented in `eslint-plugin-import-lite` currently.
-       * @see https://github.com/9romise/eslint-plugin-import-lite/issues/9
-       */
-      // 'import/named': 'error',
     },
   })
