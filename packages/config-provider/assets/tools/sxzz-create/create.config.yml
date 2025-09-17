@@ -2,7 +2,7 @@ git:
   add: true
 templates:
   - name: Library
-    url: antfu/starter-ts
+    url: lumirelle/starter-ts
     git:
       init: false
   - name: Monorepo
