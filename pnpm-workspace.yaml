@@ -52,3 +52,7 @@ catalogs:
   utils/prod:
     ansis: ^4.1.0
     rc9: ^2.1.2
+
+onlyBuiltDependencies:
+  - esbuild
+  - simple-git-hooks

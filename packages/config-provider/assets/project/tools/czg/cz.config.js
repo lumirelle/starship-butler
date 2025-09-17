@@ -1,3 +1,4 @@
+// @ts-check
 import { definePrompt } from 'czg'
 
 export default definePrompt({
