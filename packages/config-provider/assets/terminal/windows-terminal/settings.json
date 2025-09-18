@@ -70,7 +70,7 @@
           "font":
             {
               "builtinGlyphs": false,
-              "face": "'Fantasque Sans Mono', 'Source Han Sans TC', 'Symbols Nerd Font'",
+              "face": "'Go Mono', 'Source Han Sans TC', 'Symbols Nerd Font'",
               "size": 16
             },
           "opacity": 80,

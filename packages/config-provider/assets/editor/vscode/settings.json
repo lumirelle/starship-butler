@@ -5,7 +5,7 @@
   "editor.cursorBlinking": "smooth",
   "editor.cursorSmoothCaretAnimation": "on",
   "editor.cursorStyle": "line",
-  "editor.fontFamily": "'Fantasque Sans Mono', 'Source Han Sans TC', 'Symbols Nerd Font', monospace",
+  "editor.fontFamily": "'Go Mono', 'Source Han Sans TC', 'Symbols Nerd Font', monospace",
   "editor.fontLigatures": true,
   "editor.fontSize": 16,
   "editor.guides.bracketPairs": "active",
@@ -231,13 +231,13 @@
   },
 
   /* ---------------------------- Extensions visual --------------------------- */
-  "custom-ui-style.font.monospace": "'Fantasque Sans Mono', 'Source Han Sans TC', 'Symbols Nerd Font', monaspace",
-  "custom-ui-style.font.sansSerif": "'Fantasque Sans Mono', 'Source Han Sans TC', 'Symbols Nerd Font', sans-serif",
+  "custom-ui-style.font.monospace": "'Go Mono', 'Source Han Sans TC', 'Symbols Nerd Font', monaspace",
+  "custom-ui-style.font.sansSerif": "'Go Mono', 'Source Han Sans TC', 'Symbols Nerd Font', sans-serif",
   "excalidraw.theme": "auto",
   "highlight-matching-tag.styles": {
     "opening": { "name": { "highlight": "rgb(143 188 143 / 40%)" } }
   },
-  "markdown.preview.fontFamily": "'Fantasque Sans Mono', 'Source Han Sans TC', 'Symbols Nerd Font', monospace",
+  "markdown.preview.fontFamily": "'Go Mono', 'Source Han Sans TC', 'Symbols Nerd Font', monospace",
   "markdown.preview.fontSize": 16,
   "scm.diffDecorationsGutterWidth": 2,
   "todohighlight.defaultStyle": {

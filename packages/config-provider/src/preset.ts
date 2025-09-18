@@ -98,7 +98,7 @@ export const DEFAULT_ACTIONS: Action[] = [
       }
     },
     posthandler: () => {
-      consola.info('This configuration will use `"Fantasque Sans Mono", "Source Han Sans TC", "Symbols Nerd Font"` as terminal fonts.')
+      consola.info('This configuration will use `"Go Mono", "Source Han Sans TC", "Symbols Nerd Font"` as terminal fonts.')
     },
   },
   /* -------------------------------- 3. Shells ------------------------------- */
