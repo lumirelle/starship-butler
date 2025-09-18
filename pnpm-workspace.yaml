@@ -18,6 +18,7 @@ catalogs:
     '@antfu/eslint-config': ^5.2.1
     '@antfu/ni': ^25.0.0
     '@antfu/utils': ^9.2.0
+    '@lumirelle/stylelint-config': ^0.0.2-beta.1
     '@types/node': ^24.3.0
     bumpp: ^10.2.3
     czg: ^1.12.0

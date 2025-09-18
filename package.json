@@ -20,6 +20,7 @@
     "@antfu/eslint-config": "catalog:dev",
     "@antfu/ni": "catalog:dev",
     "@antfu/utils": "catalog:dev",
+    "@lumirelle/stylelint-config": "catalog:dev",
     "@types/node": "catalog:dev",
     "bumpp": "catalog:dev",
     "czg": "catalog:dev",
