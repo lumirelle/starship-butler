@@ -1,9 +1,14 @@
 {
   "$schema": "https://raw.githubusercontent.com/Zhengqbbb/cz-git/refs/tags/v1.12.0/docs/public/schema/cz-git.json",
-  "markBreakingChangeMode": true,
-  "allowBreakingChanges": [ "feat", "fix", "chore" ],
+
   "alias": {
     "typo": "docs: fix typos",
-    "readme": "docs: update README.md"
-  }
+    "readme": "docs: update README.md",
+    "deps": "chore: update dependencies"
+  },
+
+  "markBreakingChangeMode": true,
+  "allowBreakingChanges": [ "feat", "fix", "chore" ],
+
+  "skipQuestions": ["footerPrefix", "footer", "confirmCommit"]
 }
