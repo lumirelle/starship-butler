@@ -297,8 +297,8 @@
       "overviewRulerColor": "rgb(207 146 158 / 80%)"
     },
     {
-      "text": "OPTINAL(string):",
-      "regex": { "pattern": "(?<=^|\"|\\s)(OPTINAL)(\\(\\w+\\))?:" },
+      "text": "OPTIONAL(string):",
+      "regex": { "pattern": "(?<=^|\"|\\s)(OPTIONAL)(\\(\\w+\\))?:" },
       "backgroundColor": "#9aa7b1",
       "overviewRulerColor": "rgb(154 167 177 / 80%)"
     },
