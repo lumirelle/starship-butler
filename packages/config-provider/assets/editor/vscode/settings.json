@@ -314,7 +314,6 @@
   "css.enabledLanguages": ["html", "vue"],
   "css.styleSheets": ["**/*.{c,sc,sa,le,postc}ss"],
   "cursor.cpp.disabledLanguages": ["plaintext"],
-  "dotenv.enableAutocloaking": false,
   "editorconfig.showMenuEntry": false,
   "emmet.preferences": {
     "bem.modifierSeparator": "--"
