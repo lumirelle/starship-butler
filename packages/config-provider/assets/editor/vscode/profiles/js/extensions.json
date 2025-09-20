@@ -25,7 +25,7 @@
     // >> Editor Views
     "antfu.iconify",
     "antfu.pnpm-catalog-lens",
-    "johnsoncodehk.vscode-tsconfig-helper", // <NOT OPENVSIX>
+    "johnsoncodehk.vscode-tsconfig-helper", // <NOT OPENVSX>
     "wallabyjs.console-ninja",
     "hyrious.import-cost",
     // >> Editor Behavior

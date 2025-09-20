@@ -38,15 +38,17 @@
     // >> Explorer Views
     "antfu.file-nesting",
     // >> Editor Views
-    "antfu.array-index-inlay", // <NOT OPENVSIX>
+    "antfu.array-index-inlay", // <NOT OPENVSX>
     "usernamehw.errorlens",
     "yoavbls.pretty-ts-errors",
+    "albymor.increment-selection",
     // >> Status Bar Views
-    "tomoki1207.selectline-statusbar", // <NOT OPENVSIX>
+    "tomoki1207.selectline-statusbar", // <NOT OPENVSX>
     "antfu.where-am-i",
+    "natqe.reload", // <NOT OPENVSX>
     // >> Explorer Behavior
-    "JannisX11.batch-rename-extension", // <NOT OPENVSIX>
-    "sandcastle.vscode-open", // <NOT OPENVSIX>
+    "JannisX11.batch-rename-extension", // <NOT OPENVSX>
+    "sandcastle.vscode-open", // <NOT OPENVSX>
     // >> Editor Behavior
     "antfu.smart-clicks", // Mouse Click
     "britesnow.vscode-toggle-quotes", // CTRL+'
@@ -55,7 +57,7 @@
     "dnut.rewrap-revived", // Less use, ALT+Q
     "github.copilot", // <VSCODE ONLY>
     "github.copilot-chat", // <VSCODE ONLY>
-    "mpontus.tab-cycle", // <NOT OPENVSIX>. CTRL+PGUP, CTRL+PGDN, ALT+<NUMBER>
+    "mpontus.tab-cycle", // <NOT OPENVSX>. CTRL+PGUP, CTRL+PGDN, ALT+<NUMBER>
     "northisup.comment-divider-updated", // ALT+X, SHIFT+ALT+X, ALT+Y
     "nrevia05hp.plaintext-comment", // CTRL+/
     "ow.vscode-subword-navigation", // ALT+LEFT_ARROW, ALT+RIGHT_ARROW
@@ -67,7 +69,7 @@
     "tombonnike.vscode-status-bar-format-toggle",
     // >> Commands
     "chouzz.vscode-better-align",
-    "helixquar.randomeverything", // <NOT OPENVSIX>
+    "helixquar.randomeverything", // <NOT OPENVSX>
     "idleberg.emoji-code"
   ]
   // EXTENSION COUNT
