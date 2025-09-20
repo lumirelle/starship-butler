@@ -31,8 +31,8 @@
 			"export $1"
 		]
 	},
-	"Export Other": {
-		"prefix": "ex-other",
+	"Export Another": {
+		"prefix": "ex-another",
 		"description": "Export members of another module in this module",
 		"scope": "javascript,typescript",
 		"body": [
@@ -95,9 +95,9 @@
 			"}"
 		]
 	},
-	"Destructin Object": {
+	"Destructure Object": {
 		"prefix": "dob",
-		"description": "Destructin object",
+		"description": "Destructure object",
 		"scope": "javascript,typescript",
 		"body": [
 			"const { ${1:property} } = ${2:object}"

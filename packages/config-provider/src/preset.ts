@@ -333,6 +333,7 @@ export const DEFAULT_ACTIONS: Action[] = [
         { source: join('editor', 'vscode', 'keybindings.json'), target: join(target, 'keybindings.json') },
         { source: join('editor', 'vscode', 'settings.json'), target: join(target, 'settings.json') },
         { source: join('editor', 'vscode', 'global.code-snippets'), target: join(target, 'snippets', 'global.code-snippets') },
+        { source: join('editor', 'vscode', 'comment.code-snippets'), target: join(target, 'snippets', 'comment.code-snippets') },
       ]
       for (const operation of handlerOperations) {
         await processConfig(operation.source, operation.target, { force, mode, dryRun })
