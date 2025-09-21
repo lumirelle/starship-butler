@@ -13,7 +13,7 @@ const modulesDir = 'packages'
  */
 function getModuleNames(dir) {
   return fs.readdirSync(path.resolve(import.meta.dirname, dir)).filter((file) => {
-    return fs.statSync(path.resolve(import.meta.dirname, dir, file)).isDirectory()
+    return fs.statSync(path.resolve(import.meta.dirname, dir, file)).isDirectory() && !file.match(/^\.|node_modules/)
   })
 }
 
