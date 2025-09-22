@@ -27,7 +27,6 @@ $--b: null;
 /// @access private
 $--e: null;
 
-
 @function has-special-nesting-rule($selector) {
   @return has-modifier($selector) or has-state-flag($selector) or has-pseudo-class($selector);
 }

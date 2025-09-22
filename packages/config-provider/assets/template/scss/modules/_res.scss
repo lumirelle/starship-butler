@@ -10,12 +10,15 @@
 /// Break-points, follow the design of Tailwind CSS
 /// https://tailwindcss.com/docs/responsive-design
 $breakpoints: (
-  'xs': 0, // Mobile
+  'xs': 0,
+  // Mobile
   'sm': 640px,
-  'md': 768px, // Tablet
-  'lg': 1024px, // Laptop
+  'md': 768px,
+  // Tablet
+  'lg': 1024px,
+  // Laptop
   'xl': 1280px,
-  '2xl': 1536px // Desktop
+  '2xl': 1536px, // Desktop
 ) !default;
 
 /// Response layout by using media query
