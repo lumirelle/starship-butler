@@ -6,11 +6,11 @@
     "antfu.icons-carbon",
     "antfu.theme-vitesse",
     "catppuccin.catppuccin-vsc-icons",
+    "ibm.output-colorizer",
     "jgclark.vscode-todo-highlight",
     "naumovs.color-highlight",
     "subframe7536.custom-ui-style",
     "vincaslt.highlight-matching-tag",
-    "ibm.output-colorizer",
 
     // PROJECT MANAGER
     "codezombiech.gitignore",
@@ -41,38 +41,39 @@
     "antfu.array-index-inlay", // <NOT OPENVSX>
     "usernamehw.errorlens",
     "yoavbls.pretty-ts-errors",
-    "albymor.increment-selection",
     // >> Status Bar Views
-    "tomoki1207.selectline-statusbar", // <NOT OPENVSX>
     "antfu.where-am-i",
     "natqe.reload", // <NOT OPENVSX>
+    "tomoki1207.selectline-statusbar", // <NOT OPENVSX>
     // >> Explorer Behavior
     "JannisX11.batch-rename-extension", // <NOT OPENVSX>
     "sandcastle.vscode-open", // <NOT OPENVSX>
     // >> Editor Behavior
+    "agutierrezr.emmet-keybindings", // See https://marketplace.visualstudio.com/items?itemName=agutierrezr.emmet-keybindings
+    "albymor.increment-selection", // CTRL+ALT+I
     "antfu.smart-clicks", // Mouse Click
     "britesnow.vscode-toggle-quotes", // CTRL+'
     "cardinal90.multi-cursor-case-preserve",
+    "chouzz.vscode-better-align", // ALT+A
     "christian-kohler.path-intellisense",
-    "dnut.rewrap-revived", // Less use, ALT+Q
+    "dnut.rewrap-revived", // ALT+Q, rewarp comments with max line length
     "github.copilot", // <VSCODE ONLY>
     "github.copilot-chat", // <VSCODE ONLY>
     "mpontus.tab-cycle", // <NOT OPENVSX>. CTRL+PGUP, CTRL+PGDN, ALT+<NUMBER>
     "northisup.comment-divider-updated", // ALT+X, SHIFT+ALT+X, ALT+Y
-    "nrevia05hp.plaintext-comment", // CTRL+/
+    "nrevia05hp.plaintext-comment",
     "ow.vscode-subword-navigation", // ALT+LEFT_ARROW, ALT+RIGHT_ARROW
-    "tyriar.sort-lines", // Less use, F9
-    "yatki.vscode-surround", // Less use, CTRL+SHIFT+T
+    "tyriar.sort-lines", // F9
+    "yatki.vscode-surround", // After selection, CTRL+SHIFT+T
     // >> Main Bar Behavior
     "zjffun.snippetsmanager",
     // >> Status Bar Behavior
     "tombonnike.vscode-status-bar-format-toggle",
     // >> Commands
-    "chouzz.vscode-better-align",
     "helixquar.randomeverything", // <NOT OPENVSX>
     "idleberg.emoji-code"
   ]
   // EXTENSION COUNT
-  // >> VSCode: INDEX + 1 = 46
-  // >> Cursor: INDEX - 1 = 44
+  // >> VSCode: INDEX + 1 = 49
+  // >> Cursor: INDEX - 1 = 47
 }

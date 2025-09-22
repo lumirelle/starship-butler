@@ -41,10 +41,6 @@ export interface SetOptionsFromCommandLine extends SetOptions {}
  * Setting up locally.
  * @param sourcePattern Source glob pattern, relative to assets folder
  * @param target Target file or folder path
- * Category of the configuration, default is `''`.
- * This option will be transformed to fit glob pattern:
- * - If category is `*`, will replace it with `**`
- * - Otherwise, will transform it to `{category}/**`
  * @param options Configuration and command line options
  */
 export async function settingUp(sourcePattern: string, target: string, options: Partial<SetOptions>): Promise<void> {

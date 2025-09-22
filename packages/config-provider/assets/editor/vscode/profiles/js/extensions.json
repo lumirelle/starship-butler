@@ -4,12 +4,14 @@
   "recommendations": [
     // FILES (Editor, LSP, Formatter, Linter, Snippets...)
     // >> LSP
-    "mikestead.dotenv",
+    "csstools.postcss",
     "humao.rest-client",
     "lokalise.i18n-ally",
+    "mikestead.dotenv",
     "vue.volar",
     // >> Formatter & Linter
     "dbaeumer.vscode-eslint",
+    "stylelint.vscode-stylelint",
 
     // FRAMEWORKS
     // >> Nuxt
@@ -25,15 +27,15 @@
     // >> Editor Views
     "antfu.iconify",
     "antfu.pnpm-catalog-lens",
+    "hyrious.import-cost",
     "johnsoncodehk.vscode-tsconfig-helper", // <NOT OPENVSX>
     "wallabyjs.console-ninja",
-    "hyrious.import-cost",
     // >> Editor Behavior
     "antfu.goto-alias", // F12
     "ecmel.vscode-html-css",
     "ritwickdey.liveserver" // NEED TRAIL, ALT+L ALT+O, ALT+L CTRL+C
   ]
   // EXTENSION COUNT
-  // >> VSCode: INDEX + 1 + {PROFILE_DEFAULT: 46} = 62
-  // >> Cursor: INDEX + 1 + {PROFILE_DEFAULT: 44} = 60
+  // >> VSCode: INDEX + 1 + {PROFILE_DEFAULT: 49} = 68
+  // >> Cursor: INDEX + 1 + {PROFILE_DEFAULT: 47} = 66
 }

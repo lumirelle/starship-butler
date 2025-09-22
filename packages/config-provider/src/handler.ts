@@ -4,8 +4,7 @@ import { fs, highlight } from 'starship-butler-utils'
 
 export interface ProcessConfigOptions {
   /**
-   * Use glob pattern matching.
-   * WIP: Work in progress.
+   * Use glob pattern matching. WIP: Work in progress.
    * @default false
    */
   useGlob: boolean
