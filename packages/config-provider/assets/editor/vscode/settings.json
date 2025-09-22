@@ -395,6 +395,7 @@
     "**/.next/**",
     "**/.output/**"
   ],
+  "vue.autoInsert.dotValue": true,
   "where-am-i.colorful": false,
 
   /* ---------------------- Extension linter & formatter ---------------------- */
@@ -456,6 +457,7 @@
   "javascript.inlayHints.parameterNames.enabled": "all",
   "typescript.inlayHints.enumMemberValues.enabled": true,
   "typescript.inlayHints.parameterNames.enabled": "all",
+  "vue.inlayHints.inlineHandlerLeading": true,
   "vue.inlayHints.missingProps": true,
 
   /* ----------------------- Language specific settings ----------------------- */

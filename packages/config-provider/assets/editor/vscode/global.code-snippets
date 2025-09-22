@@ -40,7 +40,7 @@
 		]
 	},
 	"Const": {
-		"prefix": "cs",
+		"prefix": "cst",
 		"description": "Const",
 		"scope": "javascript,typescript",
 		"body": [
@@ -48,31 +48,11 @@
 		]
 	},
 	"Let": {
-		"prefix": "lt",
+		"prefix": "let",
 		"description": "Let",
 		"scope": "javascript,typescript",
 		"body": [
 			"let $1"
-		]
-	},
-	"Function": {
-		"prefix": "fn",
-		"description": "Function",
-		"scope": "javascript,typescript",
-		"body": [
-			"function ${1:name}($2) {",
-			"  $0",
-			"}"
-		]
-	},
-	"Arrow Function": {
-		"prefix": "afn",
-		"description": "Arrow function",
-		"scope": "javascript,typescript",
-		"body": [
-			"${1:name} = ($2) => {",
-			"  $0",
-			"}"
 		]
 	},
 	"For In": {
@@ -96,7 +76,7 @@
 		]
 	},
 	"Destructure Object": {
-		"prefix": "dob",
+		"prefix": "deo",
 		"description": "Destructure object",
 		"scope": "javascript,typescript",
 		"body": [

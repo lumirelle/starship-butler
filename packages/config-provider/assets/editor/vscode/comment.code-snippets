@@ -7,6 +7,16 @@
 			"// TODO(Lumirelle): $0"
 		]
 	},
+	"Commnet Todo Block": {
+		"prefix": "td-block",
+		"description": "Commnet todo block",
+		"scope": "javascript,javascriptreact,typescript,typescriptreact,scss,sass,java,go,python,c,cpp,rust",
+		"body": [
+			"/**",
+			" * TODO(Lumirelle): $0",
+			" */"
+		]
+	},
 	"Commnet Todo in HTML": {
 		"prefix": "td",
 		"description": "Commnet todo in HTML",
@@ -32,8 +42,18 @@
 			"// BUG(Lumirelle): $0"
 		]
 	},
+	"Commnet Bug Block": {
+		"prefix": "bug-block",
+		"description": "Commnet bug block",
+		"scope": "javascript,javascriptreact,typescript,typescriptreact,scss,sass,java,go,python,c,cpp,rust",
+		"body": [
+			"/**",
+			" * BUG(Lumirelle): $0",
+			" */"
+		]
+	},
   	"Commnet Bug in HTML": {
-		"prefix": "td",
+		"prefix": "bug",
 		"description": "Commnet bug in HTML",
 		"scope": "html",
 		"body": [
@@ -41,7 +61,7 @@
 		]
 	},
 	"Commnet Bug in CSS": {
-		"prefix": "td",
+		"prefix": "bug",
 		"description": "Commnet bug in CSS",
 		"scope": "css",
 		"body": [
@@ -57,8 +77,18 @@
 			"// FIXME(Lumirelle): $0"
 		]
 	},
+	"Commnet Fixme Block": {
+		"prefix": "fxm-block",
+		"description": "Commnet fixme block",
+		"scope": "javascript,javascriptreact,typescript,typescriptreact,scss,sass,java,go,python,c,cpp,rust",
+		"body": [
+			"/**",
+			" * FIXME(Lumirelle): $0",
+			" */"
+		]
+	},
   "Commnet Fixme in HTML": {
-		"prefix": "td",
+		"prefix": "fxm",
 		"description": "Commnet fixme in HTML",
 		"scope": "html",
 		"body": [
@@ -66,7 +96,7 @@
 		]
 	},
 	"Commnet Fixme in CSS": {
-		"prefix": "td",
+		"prefix": "fxm",
 		"description": "Commnet fixme in CSS",
 		"scope": "css",
 		"body": [
@@ -82,8 +112,18 @@
 			"// WIP(Lumirelle): $0"
 		]
 	},
+	"Commnet WIP Block": {
+		"prefix": "wip-block",
+		"description": "Commnet WIP block",
+		"scope": "javascript,javascriptreact,typescript,typescriptreact,scss,sass,java,go,python,c,cpp,rust",
+		"body": [
+			"/**",
+			" * WIP(Lumirelle): $0",
+			" */"
+		]
+	},
   "Commnet WIP in HTML": {
-		"prefix": "td",
+		"prefix": "wip",
 		"description": "Commnet wIP in HTML",
 		"scope": "html",
 		"body": [
@@ -91,7 +131,7 @@
 		]
 	},
 	"Commnet WIP in CSS": {
-		"prefix": "td",
+		"prefix": "wip",
 		"description": "Commnet wIP in CSS",
 		"scope": "css",
 		"body": [
@@ -107,8 +147,18 @@
 			"// DONE(Lumirelle): $0"
 		]
 	},
+	"Commnet Done Block": {
+		"prefix": "done-block",
+		"description": "Commnet done block",
+		"scope": "javascript,javascriptreact,typescript,typescriptreact,scss,sass,java,go,python,c,cpp,rust",
+		"body": [
+			"/**",
+			" * DONE(Lumirelle): $0",
+			" */"
+		]
+	},
   "Commnet Done in HTML": {
-		"prefix": "td",
+		"prefix": "done",
 		"description": "Commnet done in HTML",
 		"scope": "html",
 		"body": [
@@ -116,7 +166,7 @@
 		]
 	},
 	"Commnet Done in CSS": {
-		"prefix": "td",
+		"prefix": "done",
 		"description": "Commnet done in CSS",
 		"scope": "css",
 		"body": [
@@ -132,8 +182,18 @@
 			"// NOTE(Lumirelle): $0"
 		]
 	},
+	"Commnet Note Block": {
+		"prefix": "note-block",
+		"description": "Commnet note block",
+		"scope": "javascript,javascriptreact,typescript,typescriptreact,scss,sass,java,go,python,c,cpp,rust",
+		"body": [
+			"/**",
+			" * NOTE(Lumirelle): $0",
+			" */"
+		]
+	},
   	"Commnet Note in HTML": {
-		"prefix": "td",
+		"prefix": "note",
 		"description": "Commnet note in HTML",
 		"scope": "html",
 		"body": [
@@ -141,7 +201,7 @@
 		]
 	},
 	"Commnet Note in CSS": {
-		"prefix": "td",
+		"prefix": "note",
 		"description": "Commnet note in CSS",
 		"scope": "css",
 		"body": [
@@ -157,8 +217,18 @@
 			"// OPTIONAL(Lumirelle): $0"
 		]
 	},
+	"Commnet Optional Block": {
+		"prefix": "opt-block",
+		"description": "Commnet optional block",
+		"scope": "javascript,javascriptreact,typescript,typescriptreact,scss,sass,java,go,python,c,cpp,rust",
+		"body": [
+			"/**",
+			" * OPTIONAL(Lumirelle): $0",
+			" */"
+		]
+	},
   	"Commnet Optional in HTML": {
-		"prefix": "td",
+		"prefix": "opt",
 		"description": "Commnet optional in HTML",
 		"scope": "html",
 		"body": [
@@ -166,7 +236,7 @@
 		]
 	},
 	"Commnet Optional in CSS": {
-		"prefix": "td",
+		"prefix": "opt",
 		"description": "Commnet optional in CSS",
 		"scope": "css",
 		"body": [
