@@ -370,6 +370,9 @@
   "iconify.excludes": ["el"],
   "iconify.inplace": true,
   "json.schemaDownload.enable": true,
+  "markdown.extension.italic.indicator": "_",
+  "markdown.extension.preview.autoShowPreviewToSide": true,
+  "markdown.extension.tableFormatter.enabled": false, // Use `prettier` or `eslint-plugin-format` instead
   "redhat.telemetry.enabled": false,
   "rest-client.enableTelemetry": false,
   "rewrap.wrappingColumn": 120,

@@ -6,7 +6,7 @@
 [![JSDocs][jsdocs-src]][jsdocs-href]
 [![License][license-src]][license-href]
 
-Your best starship butler.
+Your best starship butler. :smiley:
 
 ## Usage
 
@@ -21,6 +21,10 @@ Run the cli and get help info with `--help` flag:
 ```sh
 butler --help
 ```
+
+| w   | w123 |
+| --- | ---- |
+| e   | e123 |
 
 ## Sponsors
 

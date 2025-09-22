@@ -36,6 +36,6 @@
     "ritwickdey.liveserver" // NEED TRAIL, ALT+L ALT+O, ALT+L CTRL+C
   ]
   // EXTENSION COUNT
-  // >> VSCode: INDEX + 1 + {PROFILE_DEFAULT: 49} = 68
-  // >> Cursor: INDEX + 1 + {PROFILE_DEFAULT: 47} = 66
+  // >> VSCode: INDEX + 1 + {PROFILE_DEFAULT: 56} = 75
+  // >> Cursor: INDEX + 1 + {PROFILE_DEFAULT: 54} = 73
 }

@@ -24,10 +24,17 @@
     "ms-vscode.hexeditor",
     "pomdtr.excalidraw-editor",
     // >> LSP
+    "bierner.emojisense",
+    "bierner.markdown-checkbox",
+    "bierner.markdown-emoji",
+    "bierner.markdown-footnotes",
+    "bierner.markdown-preview-github-styles",
+    "bierner.markdown-yaml-preamble",
     "redhat.vscode-yaml",
     "somewhatstationery.some-sass",
     "tamasfe.even-better-toml",
     "thenuprojectcontributors.vscode-nushell-lang", // also the formatter & linter for nushell
+    "yzhang.markdown-all-in-one",
     // >> Formatter
     "editorconfig.editorconfig",
     "esbenp.prettier-vscode",
@@ -74,6 +81,6 @@
     "idleberg.emoji-code"
   ]
   // EXTENSION COUNT
-  // >> VSCode: INDEX + 1 = 49
-  // >> Cursor: INDEX - 1 = 47
+  // >> VSCode: INDEX + 1 = 56
+  // >> Cursor: INDEX - 1 = 54
 }
