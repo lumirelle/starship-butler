@@ -1,7 +1,7 @@
 {
   "name": "starship-butler-utils",
   "type": "module",
-  "version": "0.0.1-beta.13",
+  "version": "0.0.1-beta.14",
   "description": "Your best starship butler.",
   "author": "Lumirelle <shabbyacc@outlook.com>",
   "license": "MIT",
