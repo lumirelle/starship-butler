@@ -1,4 +1,12 @@
 {
+	"Now": {
+		"prefix": "now",
+		"description": "Now",
+		"scope": "",
+		"body": [
+			"${CURRENT_YEAR}-$CURRENT_MONTH-${CURRENT_DATE}T${CURRENT_HOUR}:${CURRENT_MINUTE}${CURRENT_TIMEZONE_OFFSET}"
+		]
+	},
 	"Import From Default": {
 		"prefix": "im-default",
 		"description": "Import a module",
