@@ -45,13 +45,6 @@ export default definePrompt({
   },
 
   scopes: moduleScopes,
-  scopeOverrides: {
-    chore: [
-      ...moduleScopes,
-      { value: 'deps', name: `${formatName('deps: ', maxLenModuleName)} A dependencies change` },
-      { value: 'tools', name: `${formatName('tools: ', maxLenModuleName)} A tools and utilities change` },
-    ],
-  },
 
   allowBreakingChanges: ['feat', 'fix', 'chore'],
   markBreakingChangeMode: true,
