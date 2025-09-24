@@ -46,6 +46,7 @@
     "antfu.file-nesting",
     // >> Editor Views
     "antfu.array-index-inlay", // <NOT OPENVSX>
+    "kisstkondoros.vscode-codemetrics",
     "usernamehw.errorlens",
     "yoavbls.pretty-ts-errors",
     // >> Status Bar Views
