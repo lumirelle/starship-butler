@@ -12,6 +12,9 @@ const modulesDir = 'packages'
  * @return {string[]} names of directories under `dir`
  */
 function getModuleNames(dir) {
+  if (!dir || dir === '') {
+    return []
+  }
   return fs.readdirSync(path.resolve(import.meta.dirname, dir)).filter((file) => {
     return fs.statSync(path.resolve(import.meta.dirname, dir, file)).isDirectory() && !file.match(/^\.|node_modules/)
   })
