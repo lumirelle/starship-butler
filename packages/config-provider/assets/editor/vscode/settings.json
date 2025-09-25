@@ -24,7 +24,7 @@
   "window.autoDetectColorScheme": true,
   "window.title": "${rootPath}", // this make tabs more readable
   "window.titleBarStyle": "custom",
-  "window.zoomLevel": 1.2,
+  "window.zoomLevel": 1.0,
   "workbench.activityBar.orientation": "vertical",
   "workbench.iconTheme": "catppuccin-mocha",
   "workbench.preferredDarkColorTheme": "Vitesse Dark",
