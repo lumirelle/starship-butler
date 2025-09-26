@@ -57,6 +57,7 @@
     // >> Formatter
     "editorconfig.editorconfig",
     "esbenp.prettier-vscode",
+    "foxundermoon.shell-format",
     // >> Linter
     "streetsidesoftware.code-spell-checker",
     // >> Snippets

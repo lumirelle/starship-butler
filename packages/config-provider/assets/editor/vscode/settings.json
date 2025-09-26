@@ -124,7 +124,7 @@
   /* --------------------------------- Format --------------------------------- */
   "editor.defaultFormatter": "esbenp.prettier-vscode",
   "editor.detectIndentation": false,
-  "editor.formatOnSave": false,
+  "editor.formatOnSave": true,
   "editor.tabSize": 2,
   "files.insertFinalNewline": true,
 
@@ -454,6 +454,7 @@
     { "rule": "*semi", "severity": "off" }
   ],
   "prettier.enable": false,
+  "shellformat.useEditorConfig": true,
 
   /* -------------------------- Extension inlayhints -------------------------- */
   "arrayIndexInlay.minLength": 5,
@@ -465,5 +466,6 @@
 
   /* ----------------------- Language specific settings ----------------------- */
   "[dockerfile]": { "editor.defaultFormatter": "ms-azuretools.vscode-containers" },
-  "[markdown]": { "editor.wordWrap": "off" }
+  "[markdown]": { "editor.wordWrap": "off" },
+  "[properties]": { "editor.defaultFormatter": "foxundermoon.shell-format" }
 }

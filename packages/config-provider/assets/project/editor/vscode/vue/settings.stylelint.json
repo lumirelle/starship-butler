@@ -1,10 +1,12 @@
 {
-  /* --------------------------------- Format --------------------------------- */
+  // Editor Code Actions on Save
   "editor.codeActionsOnSave": {
     "source.fixAll.eslint": "explicit",
     "source.fixAll.stylelint": "explicit",
     "source.organizeImports": "never"
   },
+
+  // Formatter & Linter
   "prettier.enable": false,
   "eslint.codeAction.showDocumentation": { "enable": true },
   "eslint.validate": [
@@ -35,7 +37,7 @@
   ],
   "stylelint.validate": ["css", "postcss", "scss", "sass", "less", "html", "vue"],
 
-  /* ---------------------------------- I18n ---------------------------------- */
+  // i18n Ally
   "i18n-ally.autoDetection": false,
   "i18n-ally.enabledFrameworks": ["vue", "vue-sfc"],
   "i18n-ally.keystyle": "nested",

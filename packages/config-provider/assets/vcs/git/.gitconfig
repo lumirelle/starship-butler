@@ -1,3 +1,4 @@
+# ----------------------------------- User ----------------------------------- #
 [user]
 # NOTICE: Please replace the following with your own information.
 name = Lumirelle
@@ -6,33 +7,51 @@ email = shabbyacc@outlook.com
 [credential "https://gitee.com"]
 provider = generic
 
+# ----------------------------------- Core ----------------------------------- #
+[core]
+editor = code --wait
+ignorecase = false
+
 [feature]
+# Will enable some default configurations to better handle a large number of files, include `index.version=4`.
+# See https://git-scm.com/docs/git-config#Documentation/git-config.txt-featuremanyFiles.
 manyFiles = true
 
-[core]
-ignorecase = false
-symlinks = true
-
-[index]
-version = 4
-
-[log]
-date = short
-decoration = short
-
+# --------------------------------- Repo init -------------------------------- #
 [init]
 defaultBranch = main
 
-[stash]
-includeUntracked = true
+# ---------------------------- Work with branches ---------------------------- #
 
 [branch]
 sort = -committerdate
 
+[diff]
+algorithm = histogram
+context = 5
+
+[merge]
+autostash = true
+conflictstyle = zdiff3
+ff = no
+
+[rebase]
+autostash = true
+autosquash = true
+# See https://juejin.cn/post/7267567645493674021.
+updateRefs = true
+
+[rerere]
+enabled = true
+
+[tag]
+sort = taggerdate
+
+# ----------------------------- Work with remote ----------------------------- #
 [fetch]
 prune = true
-output = compact
-# !! Do not set `pruneTags` as `true`, it's not compatible with some tag tools, like `bumpp` !!
+# TODO(Lumirelle): Need proves.
+# Do not set `pruneTags` as `true`, it's not compatible with some tag tools, like `bumpp`!!
 # Because `bumpp` will create a local tag and fetch from remote, then push the local tag to remote.
 # If we set `pruneTags` as `true`, it will delete the local tag when fetching from remote, which is not what we want.
 # So, it's recommended to set `pruneTags` as `false`, and set a alias to sync tags instead.
@@ -42,61 +61,26 @@ pruneTags = false
 rebase = true
 
 [push]
-default = simple
+autoSetupRemote = true
+default = current
+followtags = true
 
-[merge]
-conflictstyle = zdiff3
-ff = no
+# ------------------------------------ Log ----------------------------------- #
+[log]
+date = short
+decoration = short
 
-[rebase]
-autostash = true
-updateRefs = true
-
-[diff]
-algorithm = histogram
-
-[rerere]
-enabled = true
-
+# ----------------------------------- Alias ---------------------------------- #
 [alias]
-# ENHANCEMENTS ALIASES
-# WHY USING `!`?
-#   1: `!` means execute the command in the shell, not in the git command line. (e.g. `!f() { ... }`)
-aliases = "!git config --get-regexp ^alias\\. | sed -e s/^alias\\.// -e s/\\ /\\ =\\ /"
-# log
-logs = log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit
-log = log -1 HEAD --stat
-# remote
-remote-new = "!f() { \
-  if [ -z \"$2\" ]; then \
-    git remote add origin \"$1\"; \
-  else \
-    git remote add  \"$1\" \"$2\"; \
-  fi; \
-}; f"
-remote-list = remote --verbose
-remote-remove = remote remove
-# pull
-pull-set-upstream = "!f() { \
-  current_branch=$(git branch --show-current); \
-  git pull --set-upstream origin \"$current_branch\"; \
-}; f"
-# push
-push-set-upstream = "!f() { \
-  current_branch=$(git branch --show-current); \
-  git push --set-upstream origin \"$current_branch\"; \
-}; f"
-push-force = push --force
-push-delete = push --delete
-# pull & push
-pull-then-push = pull && push
+# =========================== ENHANCEMENTS ALIASES =========================== #
+# >> Basic
+# add
+add-undo = reset HEAD --
+add-all = add .
+add-all-undo = reset HEAD -- .
 # discard
-#   If the file is tracked, then restore the file to the working directory.
-#   If the file is untracked, then delete the file.
-# WHY USING FUNCTION?
-#   1: Support special characters in parameters.
-#   2: Support variables.
-#   3: Refuse unexpected parameters provided by user.
+#   - If the file is tracked, then restore the file to the working directory.
+#   - If the file is untracked, then delete the file.
 discard = "!f() { \
   if git ls-files --error-unmatch -- \"$1\" >/dev/null 2>&1; then \
     git restore --staged --worktree -- \"$1\"; \
@@ -107,12 +91,9 @@ discard = "!f() { \
   fi; \
 }; f"
 discard-all = "!git restore --staged --worktree . && git clean -df"
-# add
-add-all = add .
-add-all-undo = reset HEAD -- . # Move all staged changes back to the working directory
 # commit
 commit-with-message = commit --message
-commit-undo = reset --soft HEAD^ # Move commit back to the staging area
+commit-undo = reset --soft HEAD^ # Back to the staging area
 # add & commit
 add-all-then-commit = "!f() { \
   git add-all; \
@@ -138,14 +119,11 @@ add-all-then-amend-commit-with-edit = "!f() { \
   git add-all; \
   git amend-commit-with-edit \"$1\"; \
 }; f"
-# wip
+# wip commit
 work-in-progress = "!git add-all && git commit-with-message 'chore: wip'"
 work-in-progress-undo = "!git log -n 1 | grep -q -c 'chore: wip' && git reset HEAD~1"
-# stash
-stash-push = stash push
-stash-list = stash list
-stash-undo = stash pop
-stash-drop = stash drop
+
+# >> Work with branches
 # branch
 branch-list-both = branch --all
 branch-delete-local = branch --delete
@@ -178,6 +156,11 @@ branch-rename-remote = "!f() { \
     git push-set-upstream; \
   fi; \
 }; f"
+# stash
+stash-push = stash push
+stash-list = stash list
+stash-undo = stash pop
+stash-drop = stash drop
 # branch & switch
 switch-new = switch --create
 # merge
@@ -227,7 +210,40 @@ tag-delete-remote = "!f() { \
 }; f"
 tag-fetch-prune = fetch --prune-tags
 
-# SHORTCUTS ALIASES
+# >> Work with remote
+# remote
+remote-new = "!f() { \
+  if [ -z \"$2\" ]; then \
+    git remote add origin \"$1\"; \
+  else \
+    git remote add  \"$1\" \"$2\"; \
+  fi; \
+}; f"
+remote-list = remote --verbose
+remote-remove = remote remove
+# pull
+pull-set-upstream = "!f() { \
+  current_branch=$(git branch --show-current); \
+  git pull --set-upstream origin \"$current_branch\"; \
+}; f"
+# push
+push-set-upstream = "!f() { \
+  current_branch=$(git branch --show-current); \
+  git push --set-upstream origin \"$current_branch\"; \
+}; f"
+push-force = push --force
+push-delete = push --delete
+# pull & push
+pull-then-push = pull && push
+
+# >> Log
+logs = log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit
+log = log -1 HEAD --stat
+
+# >> Alias
+aliases = "!git config --get-regexp ^alias\\. | sed -e s/^alias\\.// -e s/\\ /\\ =\\ /"
+
+# ============================ SHORTCUTS ALIASES ============================= #
 # SUFFIX INTRODUCTION
 #   <TO SPECIFY ADDITIONAL BEHAVIOR>
 #   `n`:    `add | new`
@@ -247,28 +263,14 @@ tag-fetch-prune = fetch --prune-tags
 #   `i`:    with `--edit` parameter
 #   `z`:    with `--abort` parameter
 #   `c`:    with `--continue` parameter
-# remote: re
-ren = remote-new
-res = remote-list
-rex = remote-remove
-# fetch: ft
-ft = fetch
-# pull: pl
-pl = pull
-plup = pull-set-upstream
-# push: ps
-ps = push
-psup = push-set-upstream
-psf = push-force
-psx = push-delete
-# pull & push: plps
-plps = pull-then-push
+# >> Basic
+# add: a
+aa = add-all
+au = add-undo
+aau = add-all-undo
 # discard: x
 x = discard
 xa = discard-all
-# add all: aa
-aa = add-all
-aau = add-all-undo
 # commit: cm
 cm = commit
 cmms = commit-with-message
@@ -276,7 +278,7 @@ cmu = commit-undo
 # czg: cg
 cz = czg
 # add & commit: adcm
-aacm = add-all-then-commit # `ac` instead of `aac` because `aac` is too long to type
+aacm = add-all-then-commit                # `ac` instead of `aac` because `aac` is too long to type
 aacmms = add-all-then-commit-with-message # `acm` instead of `aacm` because `aacm` is too long to type
 # add & commit (czg): adcz
 aacz = add-all-then-czg
@@ -288,11 +290,8 @@ aamdi = add-all-then-amend-commit-with-edit
 # work-in-progress: wip
 wip = work-in-progress
 wipu = work-in-progress-undo
-# stash: st
-stn = stash-push
-sts = stash-list
-stu = stash-undo
-stx = stash-drop
+
+# >> Work with branches
 # branch: br
 brn = branch
 brs = branch-list-both
@@ -302,6 +301,11 @@ brxe = branch-delete-remote
 brxx = branch-delete-both
 brrn = branch-rename
 brrne = branch-rename-remote
+# stash: st
+stn = stash-push
+sts = stash-list
+stu = stash-undo
+stx = stash-drop
 # switch: sw
 sw = switch
 swn = switch-new
@@ -330,3 +334,20 @@ tgps = tag-push-remote
 tgpsa = tag-push-remote-all
 tgx = tag-delete-local
 tgxe = tag-delete-remote
+
+# remote: re
+ren = remote-new
+res = remote-list
+rex = remote-remove
+# fetch: ft
+ft = fetch
+# pull: pl
+pl = pull
+plup = pull-set-upstream
+# push: ps
+ps = push
+psup = push-set-upstream
+psf = push-force
+psx = push-delete
+# pull & push: plps
+plps = pull-then-push

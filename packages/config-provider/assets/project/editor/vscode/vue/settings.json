@@ -1,9 +1,11 @@
 {
-  /* --------------------------------- Format --------------------------------- */
+  // Editor Code Actions on Save
   "editor.codeActionsOnSave": {
     "source.fixAll.eslint": "explicit",
     "source.organizeImports": "never"
   },
+
+  // Formatter & Linter
   "prettier.enable": false,
   "eslint.codeAction.showDocumentation": { "enable": true },
   "eslint.validate": [
@@ -38,7 +40,7 @@
     { "rule": "*semi", "severity": "off" }
   ],
 
-  /* ---------------------------------- I18n ---------------------------------- */
+  // i18n Ally
   "i18n-ally.autoDetection": false,
   "i18n-ally.enabledFrameworks": ["vue", "vue-sfc"],
   "i18n-ally.keystyle": "nested",
