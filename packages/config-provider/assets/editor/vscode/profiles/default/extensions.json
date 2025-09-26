@@ -2,48 +2,29 @@
   // cspell:disable
   /* ----------------------------- Default profile ---------------------------- */
   "recommendations": [
-    // Visual
+    // THEMES & ICONS
     "antfu.icons-carbon",
     "antfu.theme-vitesse",
     "catppuccin.catppuccin-vsc-icons",
+    "subframe7536.custom-ui-style",
+
+    // BETTER UI
+    "antfu.file-nesting",
+
+    // BETTER VISUALS
+    // >> Highlighting
     "ibm.output-colorizer",
     "jgclark.vscode-todo-highlight",
     "naumovs.color-highlight",
-    "subframe7536.custom-ui-style",
     "vincaslt.highlight-matching-tag",
-
-    // PROJECT MANAGER
-    "codezombiech.gitignore",
-    "eamodio.gitlens",
-
-    // DEV CONTAINER
-    "ms-azuretools.vscode-containers",
-
-    // FILES (Editor, LSP, Formatter, Linter, Snippets...)
-    // >> Editor
-    "ms-vscode.hexeditor",
-    "pomdtr.excalidraw-editor",
-    // >> LSP
-    "bierner.emojisense",
+    // >> Markdown Preview Github Styling
     "bierner.markdown-checkbox",
     "bierner.markdown-emoji",
     "bierner.markdown-footnotes",
     "bierner.markdown-preview-github-styles",
     "bierner.markdown-yaml-preamble",
-    "redhat.vscode-yaml",
-    "somewhatstationery.some-sass",
-    "tamasfe.even-better-toml",
-    "thenuprojectcontributors.vscode-nushell-lang", // also the formatter & linter for nushell
-    "yzhang.markdown-all-in-one",
-    // >> Formatter
-    "editorconfig.editorconfig",
-    "esbenp.prettier-vscode",
-    // >> Linter
-    "streetsidesoftware.code-spell-checker",
 
-    // LIFE SAVERS
-    // >> Explorer Views
-    "antfu.file-nesting",
+    // BETTER INFORMATION
     // >> Editor Views
     "antfu.array-index-inlay", // <NOT OPENVSX>
     "kisstkondoros.vscode-codemetrics",
@@ -51,8 +32,37 @@
     "yoavbls.pretty-ts-errors",
     // >> Status Bar Views
     "antfu.where-am-i",
-    "natqe.reload", // <NOT OPENVSX>
+    "johnpapa.read-time", // <NOT OPENVSX>
     "tomoki1207.selectline-statusbar", // <NOT OPENVSX>
+
+    // BETTER VCS
+    "codezombiech.gitignore",
+    "eamodio.gitlens",
+
+    // DEV CONTAINER
+    "ms-azuretools.vscode-containers",
+
+    // EDITOR
+    "ms-vscode.hexeditor",
+    "pomdtr.excalidraw-editor",
+
+    // LSP
+    "redhat.vscode-yaml",
+    "somewhatstationery.some-sass",
+    "tamasfe.even-better-toml",
+    "thenuprojectcontributors.vscode-nushell-lang",
+    "yzhang.markdown-all-in-one",
+
+    // FORMATTER, LINTER & SNIPPETS
+    // >> Formatter
+    "editorconfig.editorconfig",
+    "esbenp.prettier-vscode",
+    // >> Linter
+    "streetsidesoftware.code-spell-checker",
+    // >> Snippets
+    "bierner.emojisense",
+
+    // LIFE SAVERS
     // >> Explorer Behavior
     "JannisX11.batch-rename-extension", // <NOT OPENVSX>
     "sandcastle.vscode-open", // <NOT OPENVSX>
@@ -65,8 +75,6 @@
     "chouzz.vscode-better-align", // ALT+A
     "christian-kohler.path-intellisense",
     "dnut.rewrap-revived", // ALT+Q, rewarp comments with max line length
-    "github.copilot", // <VSCODE ONLY>
-    "github.copilot-chat", // <VSCODE ONLY>
     "mpontus.tab-cycle", // <NOT OPENVSX>. CTRL+PGUP, CTRL+PGDN, ALT+<NUMBER>
     "northisup.comment-divider-updated", // ALT+X, SHIFT+ALT+X, ALT+Y
     "nrevia05hp.plaintext-comment",
@@ -76,12 +84,16 @@
     // >> Main Bar Behavior
     "zjffun.snippetsmanager",
     // >> Status Bar Behavior
+    "dirsouza.reload-editor",
     "tombonnike.vscode-status-bar-format-toggle",
     // >> Commands
     "helixquar.randomeverything", // <NOT OPENVSX>
-    "idleberg.emoji-code"
+    "idleberg.emoji-code",
+    // >> AI (VSCode Only)
+    "github.copilot",
+    "github.copilot-chat"
   ]
   // EXTENSION COUNT
-  // >> VSCode: INDEX + 1 = 56
-  // >> Cursor: INDEX - 1 = 54
+  // >> VSCode: INDEX + 1 = 58
+  // >> Cursor: INDEX - 1 = 56
 }

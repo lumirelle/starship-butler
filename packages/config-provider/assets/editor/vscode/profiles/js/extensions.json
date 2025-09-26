@@ -2,14 +2,22 @@
   // cspell:disable
   // VSCODE PROFILE_JS <= PROFILE_DEFAULT
   "recommendations": [
-    // FILES (Editor, LSP, Formatter, Linter, Snippets...)
-    // >> LSP
+    // BETTER INFORMATION
+    // >> Editor Views
+    "antfu.iconify",
+    "antfu.pnpm-catalog-lens",
+    "hyrious.import-cost",
+    "johnsoncodehk.vscode-tsconfig-helper", // <NOT OPENVSX>
+    "wallabyjs.console-ninja",
+
+    // LSP
     "csstools.postcss",
     "humao.rest-client",
     "lokalise.i18n-ally",
     "mikestead.dotenv",
     "vue.volar",
-    // >> Formatter & Linter
+
+    // FORMATTER, LINTER & SNIPPETS
     "dbaeumer.vscode-eslint",
     "stylelint.vscode-stylelint",
 
@@ -24,18 +32,13 @@
     "bradlc.vscode-tailwindcss",
 
     // LIFE SAVERS
-    // >> Editor Views
-    "antfu.iconify",
-    "antfu.pnpm-catalog-lens",
-    "hyrious.import-cost",
-    "johnsoncodehk.vscode-tsconfig-helper", // <NOT OPENVSX>
-    "wallabyjs.console-ninja",
     // >> Editor Behavior
     "antfu.goto-alias", // F12
     "ecmel.vscode-html-css",
+    "jasonnutter.search-node-modules", // <NOT OPENVSX>, CTRL+K CTRL+N
     "ritwickdey.liveserver" // NEED TRAIL, ALT+L ALT+O, ALT+L CTRL+C
   ]
   // EXTENSION COUNT
-  // >> VSCode: INDEX + 1 + {PROFILE_DEFAULT: 56} = 75
-  // >> Cursor: INDEX + 1 + {PROFILE_DEFAULT: 54} = 73
+  // >> VSCode: INDEX + 1 = 20 + {PROFILE_DEFAULT: 58} = 78
+  // >> Cursor: INDEX + 1 = 20 + {PROFILE_DEFAULT: 56} = 76
 }
