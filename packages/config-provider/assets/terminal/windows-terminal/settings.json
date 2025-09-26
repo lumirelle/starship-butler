@@ -42,7 +42,7 @@
           "font":
             {
               "builtinGlyphs": false,
-              "face": "'Go Mono', 'Source Han Sans TC', 'Symbols Nerd Font'",
+              "face": "'M Plus Code Latin 50', 'Source Han Sans TC', 'Symbols Nerd Font'",
               "size": 16
             },
           "opacity": 80,

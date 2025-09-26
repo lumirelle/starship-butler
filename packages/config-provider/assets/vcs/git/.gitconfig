@@ -50,12 +50,7 @@ sort = taggerdate
 # ----------------------------- Work with remote ----------------------------- #
 [fetch]
 prune = true
-# TODO(Lumirelle): Need proves.
-# Do not set `pruneTags` as `true`, it's not compatible with some tag tools, like `bumpp`!!
-# Because `bumpp` will create a local tag and fetch from remote, then push the local tag to remote.
-# If we set `pruneTags` as `true`, it will delete the local tag when fetching from remote, which is not what we want.
-# So, it's recommended to set `pruneTags` as `false`, and set a alias to sync tags instead.
-pruneTags = false
+pruneTags = true
 
 [pull]
 rebase = true
@@ -75,19 +70,24 @@ decoration = short
 # =========================== ENHANCEMENTS ALIASES =========================== #
 # >> Basic
 # add
-add-undo = reset HEAD --
 add-all = add .
+add-undo = reset HEAD --
 add-all-undo = reset HEAD -- .
 # discard
-#   - If the file is tracked, then restore the file to the working directory.
-#   - If the file is untracked, then delete the file.
+# Accepts one or more parameters:
+#   - If the file is tracked, then restore the file[s] to the working directory.
+#   - If the file is untracked, then delete the file[s].
 discard = "!f() { \
-  if git ls-files --error-unmatch -- \"$1\" >/dev/null 2>&1; then \
-    git restore --staged --worktree -- \"$1\"; \
+  if git ls-files --error-unmatch -- \"$@\" >/dev/null 2>&1; then \
+    git restore --staged --worktree -- \"$@\"; \
   else \
-    if [ -e \"$1\" ]; then \
-      git clean -fd -- \"$1\" >/dev/null 2>&1; \
-    fi; \
+    for f in \"$@\"; do \
+      if ! [ -e \"$f\" ]; then \
+        echo \"Warning: '$f' does not exist!\"; \
+        continue; \
+      fi; \
+      git clean -fd -- \"$f\" >/dev/null 2>&1; \
+    done; \
   fi; \
 }; f"
 discard-all = "!git restore --staged --worktree . && git clean -df"
@@ -101,9 +101,9 @@ add-all-then-commit = "!f() { \
 }; f"
 add-all-then-commit-with-message = "!f() { \
   git add-all; \
-  git commit-with-message \"$1\"; \
+  git commit-with-message \"$@\"; \
 }; f"
-# only for a node package, which requires `czg` to be installed
+# Only for a node package, which requires `czg` to be installed
 add-all-then-czg = "!f() { \
   git add-all; \
   git czg \"$@\";\
@@ -117,7 +117,7 @@ add-all-then-amend-commit = "!f() { \
 amend-commit-with-edit = commit --amend
 add-all-then-amend-commit-with-edit = "!f() { \
   git add-all; \
-  git amend-commit-with-edit \"$1\"; \
+  git amend-commit-with-edit \"$@\"; \
 }; f"
 # wip commit
 work-in-progress = "!git add-all && git commit-with-message 'chore: wip'"
@@ -125,9 +125,13 @@ work-in-progress-undo = "!git log -n 1 | grep -q -c 'chore: wip' && git reset HE
 
 # >> Work with branches
 # branch
-branch-list-both = branch --all
+branch-list-localremote = branch --all
 branch-delete-local = branch --delete
 branch-force-delete-local = branch --delete --force
+# Accepts one or two parameters:
+#   - If one parameter is provided, it is treated as the branch name to be deleted from the `origin` remote.
+#   - If two parameters are provided, the first is treated as the remote name, and the second as the branch name to be
+#     deleted from that remote.
 branch-delete-remote = "!f() {\
   if [ -z \"$2\" ]; then \
     git push --delete origin \"$1\"; \
@@ -135,7 +139,12 @@ branch-delete-remote = "!f() {\
     git push --delete \"$1\" \"$2\"; \
   fi; \
 }; f"
-branch-delete-both = "!f() { \
+# Accepts one or two parameters:
+#   - If one parameter is provided, it is treated as the branch name to be deleted both locally and from the `origin`
+#     remote.
+#   - If two parameters are provided, the first is treated as the remote name, and the second as the branch name to be
+#     deleted both locally and from that remote.
+branch-delete-localremote = "!f() { \
   if [ -z \"$2\" ]; then \
     git branch-delete-local \"$1\"; \
     git branch-delete-remote \"$1\"; \
@@ -144,15 +153,21 @@ branch-delete-both = "!f() { \
     git branch-delete-remote \"$1\" \"$2\"; \
   fi; \
 }; f"
-branch-rename = branch --move
-branch-rename-remote = "!f() { \
+branch-move = branch --move
+# Accepts two or three parameters:
+#   - If two parameters are provided, the first is treated as the old branch name, and the second as the new branch
+#     name. The command renames the local branch and updates the remote accordingly.
+#   - If three parameters are provided, the first is treated as the remote name, the second as the old branch name, and
+#     the third as the new branch name. The command deletes the old branch from the specified remote, renames the local
+#     branch, and updates the remote accordingly.
+branch-move-localremote = "!f() { \
   if [ -z \"$3\" ]; then \
     git branch-delete-remote \"$1\" \"$2\"; \
-    git branch --move \"$2\" \"$3\"; \
+    git branch-move \"$2\" \"$3\"; \
     git push-set-upstream; \
   else \
     git branch-delete-remote \"$1\"; \
-    git branch --move \"$1\" \"$2\"; \
+    git branch-move \"$1\" \"$2\"; \
     git push-set-upstream; \
   fi; \
 }; f"
@@ -166,7 +181,7 @@ switch-new = switch --create
 # merge
 merge-with-default-message = "!f() { \
   current_branch=$(git branch --show-current); \
-  git merge \"$1\" --no-ff --message \"chore: merge '$1' into '$current_branch'\"; \
+  git merge \"$1\" --no-ff --message \"chore: merge branch '$1' into '$current_branch'\"; \
 }; f"
 merge-abort = merge --abort
 merge-continue = merge --continue
@@ -179,27 +194,12 @@ cherry-pick-continue = cherry-pick --continue
 # tag
 tag-new = "!f() { \
   if ! (git branch-list-local \"$1\" >/dev/null 2>&1); then \
-    echo \"Error: Branch with the same name as the tag '$1' already exists! It is not recommended to use the same name as the branch name, you may get some trouble when pushing them to remote.\"; \
+    echo \"Error: Branch with the same name as the tag '$1' already exists!\"; \
     exit 1; \
   fi; \
   git tag \"$@\"; \
 }; f"
-tag-list = tag --list
 tag-list-remote = ls-remote --tags
-tag-push-remote = "!f() { \
-  if [ -z \"$2\" ]; then \
-    git push origin \"$1\"; \
-  else \
-    git push \"$1\" \"$2\"; \
-  fi; \
-}; f"
-tag-push-remote-all = "!f() { \
-  if [ -z \"$1\" ]; then \
-    git push origin --tags; \
-  else \
-    git push \"$1\" --tags; \
-  fi; \
-}; f"
 tag-delete-local = tag --delete
 tag-delete-remote = "!f() { \
   if [ -z \"$2\" ]; then \
@@ -208,7 +208,6 @@ tag-delete-remote = "!f() { \
     git push-delete \"$1\" \"$2\"; \
   fi; \
 }; f"
-tag-fetch-prune = fetch --prune-tags
 
 # >> Work with remote
 # remote
@@ -250,12 +249,11 @@ aliases = "!git config --get-regexp ^alias\\. | sed -e s/^alias\\.// -e s/\\ /\\
 #   `s`:    `list | show`
 #   `x`:    `discard | delete | drop`, which means **drop things** we don't need any more
 #   `u`:    `undo`, which means recover the status **after an operation is completed**
-#   `xx`:   `x` for both local and remote
-#   `rn`:   `rename`
+#   `mv`:   `move | rename`
 #   <TO SPECIFY TARGET>
 #   `a`:    `all`
-#   `b`:    `both`
-#   `e`:    `remote`
+#   `bt`:    `both | localremote`
+#   `re`:    `remote`
 #   <TO SPECIFY PARAMETERS>
 #   `up`:   with `--set-upstream` parameter
 #   `f`:    with `--force` parameter
@@ -265,6 +263,7 @@ aliases = "!git config --get-regexp ^alias\\. | sed -e s/^alias\\.// -e s/\\ /\\
 #   `c`:    with `--continue` parameter
 # >> Basic
 # add: a
+a = add
 aa = add-all
 au = add-undo
 aau = add-all-undo
@@ -278,8 +277,8 @@ cmu = commit-undo
 # czg: cg
 cz = czg
 # add & commit: adcm
-aacm = add-all-then-commit                # `ac` instead of `aac` because `aac` is too long to type
-aacmms = add-all-then-commit-with-message # `acm` instead of `aacm` because `aacm` is too long to type
+aacm = add-all-then-commit
+aacmms = add-all-then-commit-with-message
 # add & commit (czg): adcz
 aacz = add-all-then-czg
 # amend commit: md
@@ -294,13 +293,13 @@ wipu = work-in-progress-undo
 # >> Work with branches
 # branch: br
 brn = branch
-brs = branch-list-both
+brs = branch-list-localremote
 brx = branch-delete-local
 brxf = branch-delete-local-force
-brxe = branch-delete-remote
-brxx = branch-delete-both
-brrn = branch-rename
-brrne = branch-rename-remote
+brxre = branch-delete-remote
+brxbt = branch-delete-localremote
+brmv = branch-move
+brmvbt = branch-move-localremote
 # stash: st
 stn = stash-push
 sts = stash-list
@@ -315,7 +314,7 @@ mgz = merge-abort
 mgc = merge-continue
 # rebase: rb
 rb = rebase
-rba = rebase-abort
+rbz = rebase-abort
 rbc = rebase-continue
 # reset: rs
 rs = reset
@@ -327,13 +326,9 @@ cpz = cherry-pick-abort
 cpc = cherry-pick-continue
 # tag: tg
 tgn = tag-new
-tgs = tag-list
-tgse = tag-list-remote
-tgft = tag-fetch-prune
-tgps = tag-push-remote
-tgpsa = tag-push-remote-all
+tgs = tag-list-remote
 tgx = tag-delete-local
-tgxe = tag-delete-remote
+tgxre = tag-delete-remote
 
 # remote: re
 ren = remote-new
