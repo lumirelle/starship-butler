@@ -233,7 +233,7 @@ push-set-upstream = "!f() { \
 push-force = push --force
 push-delete = push --delete
 # pull & push
-pull-then-push = pull && push
+pull-then-push = "!git pull && git push"
 
 # >> Log
 logs = log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit
