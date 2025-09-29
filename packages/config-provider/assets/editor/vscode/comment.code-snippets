@@ -33,6 +33,14 @@
 			"/* TODO(Lumirelle): $0 */"
 		]
 	},
+	"Commnet Todo in Markdown": {
+		"prefix": "td",
+		"description": "Commnet todo in Markdown",
+		"scope": "markdown",
+		"body": [
+			"TODO(Lumirelle): $0"
+		]
+	},
 
 	"Commnet Bug": {
 		"prefix": "bug",
@@ -66,6 +74,14 @@
 		"scope": "css",
 		"body": [
 			"/* BUG(Lumirelle): $0 */"
+		]
+	},
+	"Commnet Bug in Markdown": {
+		"prefix": "bug",
+		"description": "Commnet bug in Markdown",
+		"scope": "markdown",
+		"body": [
+			"BUG(Lumirelle): $0"
 		]
 	},
 
@@ -103,6 +119,14 @@
 			"/* FIXME(Lumirelle): $0 */"
 		]
 	},
+	"Commnet Fixme in Markdown": {
+		"prefix": "fxm",
+		"description": "Commnet fixme in Markdown",
+		"scope": "markdown",
+		"body": [
+			"FIXME(Lumirelle): $0"
+		]
+	},
 
 	"Commnet WIP": {
 		"prefix": "wip",
@@ -124,7 +148,7 @@
 	},
   "Commnet WIP in HTML": {
 		"prefix": "wip",
-		"description": "Commnet wIP in HTML",
+		"description": "Commnet WIP in HTML",
 		"scope": "html",
 		"body": [
 			"<!-- WIP(Lumirelle): $0 -->"
@@ -132,10 +156,18 @@
 	},
 	"Commnet WIP in CSS": {
 		"prefix": "wip",
-		"description": "Commnet wIP in CSS",
+		"description": "Commnet WIP in CSS",
 		"scope": "css",
 		"body": [
 			"/* WIP(Lumirelle): $0 */"
+		]
+	},
+	"Commnet WIP in Markdown": {
+		"prefix": "wip",
+		"description": "Commnet WIP in Markdown",
+		"scope": "markdown",
+		"body": [
+			"WIP(Lumirelle): $0"
 		]
 	},
 
@@ -173,6 +205,14 @@
 			"/* DONE(Lumirelle): $0 */"
 		]
 	},
+	"Commnet Done in Markdown": {
+		"prefix": "done",
+		"description": "Commnet done in Markdown",
+		"scope": "markdown",
+		"body": [
+			"DONE(Lumirelle): $0"
+		]
+	},
 
 	"Commnet Note": {
 		"prefix": "note",
@@ -208,6 +248,14 @@
 			"/* NOTE(Lumirelle): $0 */"
 		]
 	},
+	"Commnet Note in Markdown": {
+		"prefix": "note",
+		"description": "Commnet note in Markdown",
+		"scope": "markdown",
+		"body": [
+			"NOTE(Lumirelle): $0"
+		]
+	},
 
 	"Commnet Optional": {
 		"prefix": "opt",
@@ -241,6 +289,14 @@
 		"scope": "css",
 		"body": [
 			"/* OPTIONAL(Lumirelle): $0 */"
+		]
+	},
+	"Commnet Optional in Markdown": {
+		"prefix": "opt",
+		"description": "Commnet optional in Markdown",
+		"scope": "markdown",
+		"body": [
+			"OPTIONAL(Lumirelle): $0"
 		]
 	},
 }
