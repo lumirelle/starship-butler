@@ -27,12 +27,14 @@
     // BETTER INFORMATION
     // >> Editor Views
     "antfu.array-index-inlay", // <NOT OPENVSX>
+    "bierner.color-info",
     "kisstkondoros.vscode-codemetrics",
     "usernamehw.errorlens",
     "yoavbls.pretty-ts-errors",
     // >> Status Bar Views
     "antfu.where-am-i",
     "johnpapa.read-time", // <NOT OPENVSX>
+    "mkxml.vscode-filesize",
     "tomoki1207.selectline-statusbar", // <NOT OPENVSX>
 
     // BETTER VCS
@@ -95,6 +97,6 @@
     "github.copilot-chat"
   ]
   // EXTENSION COUNT
-  // >> VSCode: INDEX + 1 = 59
-  // >> Cursor: INDEX - 1 = 57
+  // >> VSCode: INDEX + 1 = 61
+  // >> Cursor: INDEX - 1 = 59
 }

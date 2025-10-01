@@ -310,6 +310,7 @@
   ],
 
   /* --------------------------- Extensions behavior -------------------------- */
+  "colorInfo.languages": [{ "selector": "*", "colors": "css" }],
   "console-ninja.featureSet": "Community",
   "css.enabledLanguages": ["html", "vue"],
   "css.styleSheets": ["**/*.{c,sc,sa,le,postc}ss"],

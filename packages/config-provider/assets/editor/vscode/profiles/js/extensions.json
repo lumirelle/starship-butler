@@ -30,15 +30,18 @@
     "antfu.unocss",
     // >> Tailwind CSS
     "bradlc.vscode-tailwindcss",
+    // >> Vitest
+    "vitest.explorer",
 
     // LIFE SAVERS
     // >> Editor Behavior
     "antfu.goto-alias", // F12
     "ecmel.vscode-html-css",
     "jasonnutter.search-node-modules", // <NOT OPENVSX>, CTRL+K CTRL+N
+    "mariusalchimavicius.json-to-ts", // <NOT OPENVSX>, CTRL+ALT+V
     "ritwickdey.liveserver" // NEED TRAIL, ALT+L ALT+O, ALT+L CTRL+C
   ]
   // EXTENSION COUNT
-  // >> VSCode: INDEX + 1 = 20 + {PROFILE_DEFAULT: 59} = 79
-  // >> Cursor: INDEX + 1 = 20 + {PROFILE_DEFAULT: 57} = 77
+  // >> VSCode: INDEX + 1 = 22 + {PROFILE_DEFAULT: 61} = 83
+  // >> Cursor: INDEX + 1 = 22 + {PROFILE_DEFAULT: 59} = 81
 }
