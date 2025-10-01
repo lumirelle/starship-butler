@@ -399,6 +399,7 @@
     "**/.next/**",
     "**/.output/**"
   ],
+  "vitest.shellType": "terminal",
   "vue.autoInsert.dotValue": true,
   "where-am-i.colorful": false,
 
