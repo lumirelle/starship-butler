@@ -45,7 +45,25 @@
   "i18n-ally.enabledFrameworks": ["vue", "vue-sfc"],
   "i18n-ally.keystyle": "nested",
   "i18n-ally.localesPaths": ["locales", "pages", "components", "app/i18n/locales", "app/pages", "app/components"],
-  "i18n-ally.namespace": true
+  "i18n-ally.namespace": true,
   // If your i18n modules are under `modules` folder, or you don't need to use custom path matcher
   // "i18n-ally.pathMatcher": "modules/{namespaces}/{locale}.json",
+
+  // Rest client
+  // See https://github.com/Huachao/vscode-restclient/blob/master/README.md for details
+  "rest-client.defaultHeaders": {
+    "User-Agent": "vscode-restclient",
+    "Accept-Encoding": "gzip, deflate, br"
+  },
+  "rest-client.environmentVariables": {
+    "$shared": {
+      // Your shared environment variables
+    },
+    "dev": {
+      // Your development environment variables
+    },
+    "prod": {
+      // Your production environment variables
+    }
+  }
 }
