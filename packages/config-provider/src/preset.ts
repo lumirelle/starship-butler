@@ -382,6 +382,17 @@ export const DEFAULT_ACTIONS: Action[] = [
   // Neo Vim
   {
     name: 'Setting Up Neo Vim',
+    prehandler: (_, systemOptions) => {
+      const { userPlatform } = systemOptions
+      const target = userPlatform === 'win32'
+        ? join(process.env.LOCALAPPDATA!, 'nvim')
+        : join(homedir(), '.config', 'nvim')
+      if (!fs.existsSync(target) || !fs.existsSync(join(target, 'lazyvim.json'))) {
+        consola.warn(`You should install Neo Vim and Lazy Vim first!`)
+        return false
+      }
+      return true
+    },
     handler: async (options, systemOptions) => {
       const { force, symlink, dryRun } = options
       const { userPlatform } = systemOptions
