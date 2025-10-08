@@ -63,7 +63,6 @@
     ".czrc": "json",
     ".butlerrc": "properties"
   },
-  "files.autoSave": "afterDelay",
   "files.simpleDialog.enable": true,
   "search.exclude": {
     "**/*.snap": true,
