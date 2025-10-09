@@ -6,7 +6,14 @@
 [![JSDocs][jsdocs-src]][jsdocs-href]
 [![License][license-src]][license-href]
 
-Your best starship butler. :smiley:
+Your best starship butler. 😃
+
+## Features
+
+- 🚀 WIP: Quick management of your system & project configuration
+- 🧰 Easy to use CLI interface
+- 🔗 Support symlink mode
+- 🧹 WIP: Auto cleanup when uninstalling
 
 ## Usage
 
@@ -21,10 +28,6 @@ Run the cli and get help info with `--help` flag:
 ```sh
 butler --help
 ```
-
-| w   | w123 |
-| --- | ---- |
-| e   | e123 |
 
 ## Sponsors
 
