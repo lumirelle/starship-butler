@@ -267,9 +267,6 @@ importers:
       tinyexec:
         specifier: catalog:dev
         version: 1.0.1
-      tsdown:
-        specifier: catalog:dev
-        version: 0.15.6(typescript@5.9.3)
       vue:
         specifier: catalog:docs
         version: 3.5.22(typescript@5.9.3)
@@ -301,15 +298,8 @@ importers:
       tinyexec:
         specifier: catalog:dev
         version: 1.0.1
-      tsdown:
-        specifier: catalog:dev
-        version: 0.15.6(typescript@5.9.3)
 
-  packages/types:
-    devDependencies:
-      tsdown:
-        specifier: catalog:dev
-        version: 0.15.6(typescript@5.9.3)
+  packages/types: {}
 
   packages/utils:
     dependencies:
@@ -322,10 +312,6 @@ importers:
       rc9:
         specifier: catalog:utils/prod
         version: 2.1.2
-    devDependencies:
-      tsdown:
-        specifier: catalog:dev
-        version: 0.15.6(typescript@5.9.3)
 
 packages:
 

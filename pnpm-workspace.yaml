@@ -57,3 +57,6 @@ catalogs:
 onlyBuiltDependencies:
   - esbuild
   - simple-git-hooks
+
+verifyDepsBeforeRun: install
+ignoreWorkspaceRootCheck: true
