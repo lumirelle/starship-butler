@@ -37,8 +37,5 @@
     "ansis": "catalog:utils/prod",
     "consola": "catalog:shared/prod",
     "rc9": "catalog:utils/prod"
-  },
-  "devDependencies": {
-    "tsdown": "catalog:dev"
   }
 }

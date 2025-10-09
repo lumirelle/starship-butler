@@ -46,7 +46,6 @@
     "starship-butler-utils": "workspace:*"
   },
   "devDependencies": {
-    "tinyexec": "catalog:dev",
-    "tsdown": "catalog:dev"
+    "tinyexec": "catalog:dev"
   }
 }
