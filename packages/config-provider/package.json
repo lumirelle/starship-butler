@@ -12,7 +12,11 @@
     "url": "git+https://github.com/lumirelle/starship-butler.git"
   },
   "bugs": "https://github.com/lumirelle/starship-butler/issues",
-  "keywords": [],
+  "keywords": [
+    "config-butler",
+    "config-manager",
+    "starship-butler"
+  ],
   "sideEffects": false,
   "exports": {
     ".": "./dist/index.js"
