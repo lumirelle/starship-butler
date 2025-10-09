@@ -15,18 +15,18 @@
   "keywords": [],
   "sideEffects": false,
   "exports": {
-    ".": "./dist/index.mjs"
+    ".": "./dist/index.js"
   },
-  "main": "./dist/index.mjs",
-  "module": "./dist/index.mjs",
-  "types": "./dist/index.d.mts",
+  "main": "./dist/index.js",
+  "module": "./dist/index.js",
+  "types": "./dist/index.d.ts",
   "files": [
     "assets",
     "dist"
   ],
   "scripts": {
-    "build": "unbuild",
-    "dev": "unbuild --stub",
+    "build": "tsdown",
+    "dev": "tsdown --watch",
     "prepublishOnly": "nr build",
     "start": "tsx src/index.ts"
   },
@@ -42,7 +42,7 @@
   "devDependencies": {
     "@types/semver": "catalog:config-provider/dev",
     "tinyexec": "catalog:dev",
-    "unbuild": "catalog:dev",
+    "tsdown": "catalog:dev",
     "vue": "catalog:docs"
   }
 }

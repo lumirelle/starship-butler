@@ -2,7 +2,7 @@
   "type": "module",
   "version": "0.0.1-beta.15",
   "private": true,
-  "packageManager": "pnpm@10.17.1",
+  "packageManager": "pnpm@10.18.1",
   "scripts": {
     "build": "nr -r build",
     "dev": "nr -r dev",
@@ -31,9 +31,9 @@
     "starship-butler": "workspace:*",
     "stylelint": "catalog:dev",
     "taze": "catalog:dev",
+    "tsdown": "catalog:dev",
     "tsx": "catalog:dev",
     "typescript": "catalog:dev",
-    "unbuild": "catalog:dev",
     "vite": "catalog:dev",
     "vitest": "catalog:dev"
   },
