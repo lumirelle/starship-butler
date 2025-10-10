@@ -5,10 +5,10 @@ import process from 'node:process'
 import cac from 'cac'
 import consola, { LogLevels } from 'consola'
 import { configure, configureSystem } from 'starship-butler-config-provider'
-import { name, version } from '../package.json'
+import { version } from '../package.json'
 import { loadConfig, mergeOptions } from './config'
 
-const cli = cac(name)
+const cli = cac('butler')
 
 const config = await loadConfig()
 
