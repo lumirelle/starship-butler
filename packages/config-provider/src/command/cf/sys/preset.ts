@@ -50,7 +50,7 @@ export const PRESET_ACTIONS: Action[] = [
   {
     id: 'windows-terminal',
     name: 'setting up Windows Terminal',
-    targetFolder: join(process.env.LOCALAPPDATA!, 'Packages', 'Microsoft.WindowsTerminal_8wekyb3d8bbwe', 'LocalState'),
+    targetFolder: join(process.env.LOCALAPPDATA ?? '', 'Packages', 'Microsoft.WindowsTerminal_8wekyb3d8bbwe', 'LocalState'),
     prehandler: ({ systemOptions, targetFolder }) => {
       const { platform } = systemOptions
       if (!checkPlatformSupport(['win32'], platform)) {
