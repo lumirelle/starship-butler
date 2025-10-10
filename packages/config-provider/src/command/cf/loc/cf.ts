@@ -1,25 +1,28 @@
-import type { Arrayable } from '@antfu/utils'
 import type { ConfigureOptions } from './types'
 import path from 'node:path'
 import process from 'node:process'
-import { toArray } from '@antfu/utils'
 import { isCancel, select } from '@clack/prompts'
 import consola from 'consola'
 import { fs } from 'starship-butler-utils'
 import { globSync } from 'tinyglobby'
 import { processConfig } from '../config'
+import { validateOptions } from './validate'
 
 /**
  * Configure locally. If source pattern matches multiple files, user will be prompted to select one.
  *
- * @param sourcePattern Source glob pattern(s), relative to assets folder
+ * @param sourcePattern Source glob pattern, relative to assets folder
  * @param target Target file or folder path
  * @param options Configuration and command line options
  */
-export async function configure(sourcePattern: Arrayable<string>, target: string, options: Partial<ConfigureOptions>): Promise<void> {
-  sourcePattern = toArray(sourcePattern)
-  consola.debug(`[starship-butler] Configure locally with source: '${sourcePattern.join(',')}', target: '${target}'`)
+export async function configure(sourcePattern: string, target: string, options: Partial<ConfigureOptions>): Promise<void> {
+  consola.debug(`[starship-butler] Configure locally with source: '${sourcePattern}', target: '${target}'`)
   consola.debug('[config-provider] Configure locally with options:', options)
+
+  if (!validateOptions(options)) {
+    consola.debug('[config-provider] Invalid options detected, aborting configuration.')
+    return
+  }
 
   /**
    * Assets folder path

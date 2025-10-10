@@ -11,21 +11,30 @@ import { fs, highlight } from 'starship-butler-utils'
  * @param options Processing options.
  * @returns Whether operation success or not.
  */
-export async function processConfig(source: string, target: string, options: Partial<ProcessConfigOptions> = {}): Promise<void> {
+export async function processConfig(
+  source: string,
+  target: string,
+  options: Partial<ProcessConfigOptions> = {},
+): Promise<void> {
   const { mode = 'copy-paste', dryRun = false } = options
-  delete options.mode
   if (mode === 'copy-paste') {
     if (dryRun || await _copyPasteConfig(source, target, options)) {
-      consola.success(`Configuration ${highlight.important(`"${source}"`)} ${dryRun ? highlight.green('will') : 'is'} copied to ${highlight.important(`"${target}"`)}.`)
+      consola.success(
+        `Configuration ${highlight.important(`"${source}"`)} ${
+          dryRun ? highlight.green('will') : 'is'
+        } copied to ${highlight.important(`"${target}"`)}.`,
+      )
     }
   }
   else if (mode === 'symlink') {
     if (dryRun || await _symlinkConfig(source, target, options)) {
-      consola.success(`Configuration ${highlight.important(`"${source}"`)} ${dryRun ? highlight.green('will') : 'is'} symlinked to ${highlight.important(`"${target}"`)}.`)
+      consola.success(`Configuration ${highlight.important(`"${target}"`)} ${
+        dryRun ? highlight.green('will') : 'is'
+      } symlinked to ${highlight.important(`"${source}"`)}.`)
     }
   }
   else {
-    consola.error(`Unknown mode: "${mode}"`)
+    throw new Error(`Unknown configure mode: ${mode}`)
   }
 }
 
@@ -37,13 +46,23 @@ export async function processConfig(source: string, target: string, options: Par
  * @param target Target path, absolute path or relative path to CWD.
  * @returns Whether operation success or not.
  */
-async function _copyPasteConfig(source: string, target: string, options: Omit<Partial<ProcessConfigOptions>, 'mode'> = {}): Promise<boolean> {
+async function _copyPasteConfig(
+  source: string,
+  target: string,
+  options: Omit<Partial<ProcessConfigOptions>, 'mode'> = {},
+): Promise<boolean> {
   const { useGlob, force } = options
   if (useGlob) {
     // TODO: Implement support for glob
     return Promise.resolve(false)
   }
-  return Promise.resolve(fs.copyFile(join(import.meta.dirname, '..', 'assets', source), target, force))
+  return Promise.resolve(
+    fs.copyFile(
+      join(import.meta.dirname, '..', 'assets', source),
+      target,
+      force,
+    ),
+  )
 }
 
 /**
@@ -54,11 +73,19 @@ async function _copyPasteConfig(source: string, target: string, options: Omit<Pa
  * @param target Target path, absolute path or relative path to CWD.
  * @returns Whether operation success or not.
  */
-async function _symlinkConfig(source: string, target: string, options: Omit<Partial<ProcessConfigOptions>, 'mode'> = {}): Promise<boolean> {
+async function _symlinkConfig(
+  source: string,
+  target: string,
+  options: Omit<Partial<ProcessConfigOptions>, 'mode'> = {},
+): Promise<boolean> {
   const { useGlob, force } = options
   if (useGlob) {
     // TODO: Implement support for glob
     return Promise.resolve(false)
   }
-  return fs.createSymlink(join(import.meta.dirname, '..', 'assets', source), target, force)
+  return fs.createSymlink(
+    join(import.meta.dirname, '..', 'assets', source),
+    target,
+    force,
+  )
 }

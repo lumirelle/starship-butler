@@ -10,9 +10,9 @@ Your best starship butler. 😃
 
 ## Features
 
-- 🚀 WIP: Quick management of your system & project configuration
+- 🚀 Quick management of your system & local project configurations
 - 🧰 Easy to use CLI interface
-- 🔗 Support symlink mode
+- 🔗 Support symlink mode (experimental)
 - 🧹 WIP: Auto cleanup when uninstalling
 
 ## Usage

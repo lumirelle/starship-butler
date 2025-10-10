@@ -82,8 +82,7 @@ export function copyFile(sourcePath: string, targetPath: string, force: boolean 
     if (isExist) {
       renameSync(`${targetPath}.bak`, targetPath)
     }
-    consola.error(error)
-    return false
+    throw error
   }
   return true
 }
@@ -116,8 +115,7 @@ export async function createSymlink(sourcePath: string, targetPath: string, forc
     if (isExist) {
       renameSync(`${targetPath}.bak`, targetPath)
     }
-    consola.error(error)
-    return false
+    throw error
   }
   return true
 }
@@ -132,7 +130,6 @@ export function removeFile(targetPath: string): boolean {
     consola.warn(`REMOVE: Target file not found: ${highlight.info(targetPath)}, skip`)
     return false
   }
-
   unlinkSync(targetPath)
   return true
 }
@@ -148,7 +145,6 @@ export function removeSymlink(targetPath: string): boolean {
     consola.warn(`REMOVE: Target file is not a symlink: ${highlight.info(targetPath)}, skip`)
     return false
   }
-
   removeFile(targetPath)
   return true
 }
