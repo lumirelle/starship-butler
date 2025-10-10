@@ -8,6 +8,8 @@
 
 Config provider of starship butler.
 
+Provide the configuring ability for starship butler.
+
 ## Sponsors
 
 <p align="center">

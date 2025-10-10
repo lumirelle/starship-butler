@@ -1,5 +1,5 @@
 {
   "config-provider": {
-    "include": ["Action In Config 1"]
+    "includeOnly": ["nushell"]
   }
 }

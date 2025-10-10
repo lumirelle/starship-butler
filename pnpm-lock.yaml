@@ -5,17 +5,10 @@ settings:
   excludeLinksFromLockfile: false
 
 catalogs:
-  config-provider/dev:
-    '@types/semver':
-      specifier: ^7.7.1
-      version: 7.7.1
   config-provider/prod:
-    '@posva/prompts':
-      specifier: ^2.4.4
-      version: 2.4.4
-    semver:
-      specifier: ^7.7.3
-      version: 7.7.3
+    '@clack/prompts':
+      specifier: ^0.11.0
+      version: 0.11.0
     tinyglobby:
       specifier: ^0.2.15
       version: 0.2.15
@@ -239,18 +232,15 @@ importers:
 
   packages/config-provider:
     dependencies:
-      '@posva/prompts':
+      '@clack/prompts':
         specifier: catalog:config-provider/prod
-        version: 2.4.4
+        version: 0.11.0
       c12:
         specifier: catalog:shared/prod
         version: 3.3.0
       consola:
         specifier: catalog:shared/prod
         version: 3.4.2
-      semver:
-        specifier: catalog:config-provider/prod
-        version: 7.7.3
       starship-butler-types:
         specifier: workspace:*
         version: link:../types
@@ -261,9 +251,9 @@ importers:
         specifier: catalog:config-provider/prod
         version: 0.2.15
     devDependencies:
-      '@types/semver':
-        specifier: catalog:config-provider/dev
-        version: 7.7.1
+      '@antfu/utils':
+        specifier: catalog:dev
+        version: 9.3.0
       tinyexec:
         specifier: catalog:dev
         version: 1.0.1
@@ -377,9 +367,6 @@ packages:
     resolution: {integrity: sha512-QlkuYC2bkrT1xjnA66/mH68hrazYlxJoESws2wQRWsAbCtIDFeZ9O6Ji5sGmYjVVtbiDRwoX5hyfS3igW6IuXw==}
     engines: {node: '>=20'}
     hasBin: true
-
-  '@antfu/utils@9.2.1':
-    resolution: {integrity: sha512-TMilPqXyii1AsiEii6l6ubRzbo76p6oshUSYPaKsmXDavyMLqjzVDkcp3pHp5ELMUNJHATcEOGxKTTsX9yYhGg==}
 
   '@antfu/utils@9.3.0':
     resolution: {integrity: sha512-9hFT4RauhcUzqOE4f1+frMKLZrgNog5b06I7VmZQV1BkvwvqrbC8EBZf3L1eEL2AKb6rNKjER0sEvJiSP1FXEA==}
@@ -821,10 +808,6 @@ packages:
   '@polka/url@1.0.0-next.28':
     resolution: {integrity: sha512-8LduaNlMZGwdZ6qWrKlfa+2M4gahzFkprZiAt2TF8uS0qQgBizKXpXURqvTJ4WtmupWxaLqjRb2UCTe72mu+Aw==}
 
-  '@posva/prompts@2.4.4':
-    resolution: {integrity: sha512-8aPwklhbSV2VN/NQMBNFkuo8+hlJVdcFRXp4NCIfdcahh3qNEcaSoD8qXjru0OlN1sONJ7le7p6+YUbALaG6Mg==}
-    engines: {node: '>= 14'}
-
   '@quansync/fs@0.1.5':
     resolution: {integrity: sha512-lNS9hL2aS2NZgNW7BBj+6EBl4rOf8l+tQ0eRY6JWCI8jI2kc53gSoqbjojU0OnAWhzoXiOjFyGsHcDGePB3lhA==}
 
@@ -1123,9 +1106,6 @@ packages:
 
   '@types/node@24.7.1':
     resolution: {integrity: sha512-CmyhGZanP88uuC5GpWU9q+fI61j2SkhO3UGMUdfYRE6Bcy0ccyzn1Rqj9YAB/ZY4kOXmNf0ocah5GtphmLMP6Q==}
-
-  '@types/semver@7.7.1':
-    resolution: {integrity: sha512-FmgJfu+MOcQ370SD0ev7EI8TlCAfKYU+B4m5T3yXc1CiRN94g/SZPtsCkk506aUDtlMnFZvasDwHHUcZUEaYuA==}
 
   '@types/unist@3.0.3':
     resolution: {integrity: sha512-ko/gIFJRv177XgZsZcBwnqJN5x/Gien8qNOn0D5bQU/zAzVf9Zt3BlcUiLqhV9y4ARk0GbT3tnUiPNgnTXzc/Q==}
@@ -2469,10 +2449,6 @@ packages:
     resolution: {integrity: sha512-dcS1ul+9tmeD95T+x28/ehLgd9mENa3LsvDTtzm3vyBEO7RPptvAD+t44WVXaUjTBRcrpFeFlC8WCruUR456hw==}
     engines: {node: '>=0.10.0'}
 
-  kleur@4.1.5:
-    resolution: {integrity: sha512-o+NO+8WrRiQEE4/7nwRJhN1HWpVmJm511pBHUxPLtp0BUISzlBplORYSmTclCnJvQq2tKu/sgl3xVpkc7ZWuQQ==}
-    engines: {node: '>=6'}
-
   known-css-properties@0.36.0:
     resolution: {integrity: sha512-A+9jP+IUmuQsNdsLdcg6Yt7voiMF/D4K83ew0OpJtpu+l34ef7LaohWV0Rc6KNvzw6ZDizkqfyB5JznZnzuKQA==}
 
@@ -3800,8 +3776,6 @@ snapshots:
       tinyexec: 1.0.1
       tinyglobby: 0.2.15
 
-  '@antfu/utils@9.2.1': {}
-
   '@antfu/utils@9.3.0': {}
 
   '@babel/code-frame@7.27.1':
@@ -4138,7 +4112,7 @@ snapshots:
   '@iconify/utils@3.0.1':
     dependencies:
       '@antfu/install-pkg': 1.1.0
-      '@antfu/utils': 9.2.1
+      '@antfu/utils': 9.3.0
       '@iconify/types': 2.0.0
       debug: 4.4.1
       globals: 15.15.0
@@ -4211,11 +4185,6 @@ snapshots:
   '@pkgr/core@0.1.2': {}
 
   '@polka/url@1.0.0-next.28': {}
-
-  '@posva/prompts@2.4.4':
-    dependencies:
-      kleur: 4.1.5
-      sisteransi: 1.0.5
 
   '@quansync/fs@0.1.5':
     dependencies:
@@ -4494,8 +4463,6 @@ snapshots:
   '@types/node@24.7.1':
     dependencies:
       undici-types: 7.14.0
-
-  '@types/semver@7.7.1': {}
 
   '@types/unist@3.0.3': {}
 
@@ -5990,8 +5957,6 @@ snapshots:
       '@keyv/serialize': 1.1.0
 
   kind-of@6.0.3: {}
-
-  kleur@4.1.5: {}
 
   known-css-properties@0.36.0: {}
 

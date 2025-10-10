@@ -1,25 +1,32 @@
 import type { ConfigLayerMeta, LoadConfigOptions, UserInputConfig } from 'c12'
-import type { ConfigProviderOptionsFromConfig } from 'starship-butler-config-provider'
+import type { ConfigProviderOptions } from 'starship-butler-config-provider'
 import { loadConfig as loadConfigC12 } from 'c12'
 import consola from 'consola'
 import { createDefu } from 'defu'
 
-export interface ButlerConfig<ConfigProviderT extends Partial<ConfigProviderOptionsFromConfig> = Partial<ConfigProviderOptionsFromConfig>> {
+export interface ButlerConfig<ConfigProviderT extends Partial<ConfigProviderOptions> = Partial<ConfigProviderOptions>> {
+  /**
+   * Configuration for `config-provider` package.
+   */
   'config-provider': ConfigProviderT
 }
 
 /**
- * Type helper for define butler config
- * @param config Configuration
- * @returns Configuration as it is
+ * Type helper for define butler config.
+ *
+ * @param config Configuration.
+ * @returns Configuration as it is.
  */
-export function defineButlerConfig(config: Partial<ButlerConfig<Partial<Omit<ConfigProviderOptionsFromConfig, 'version'>>>>): Partial<ButlerConfig<Partial<Omit<ConfigProviderOptionsFromConfig, 'version'>>>> {
+export function defineButlerConfig(
+  config: Partial<ButlerConfig<Partial<Omit<ConfigProviderOptions, 'version'>>>>,
+): Partial<ButlerConfig<Partial<Omit<ConfigProviderOptions, 'version'>>>> {
   return config
 }
 
 /**
- * Loads the configuration using `c12`
- * @returns Configuration
+ * Loads the configuration using `c12`.
+ *
+ * @returns Configuration.
  */
 export async function loadConfig<
   T extends ButlerConfig = ButlerConfig,
@@ -43,13 +50,14 @@ export async function loadConfig<
 }
 
 /**
- * Merges configuration options with command line options
- * @param configOptions The configuration options
- * @param clOptions The command line options
- * @returns The merged options
+ * Merges configuration options with command line interface options.
+ *
+ * @param cfgOptions The configuration options.
+ * @param cliOptions The command line interface options.
+ * @returns The merged options.
  */
-export function mergeOptions<T extends UserInputConfig = UserInputConfig, U extends UserInputConfig = UserInputConfig>(configOptions: T, clOptions: U): T & U {
-  consola.debug('[starship-butler] Configuration options:', configOptions)
-  consola.debug('[starship-butler] Command line options:', clOptions)
-  return { ...configOptions, ...clOptions }
+export function mergeOptions<T extends UserInputConfig = UserInputConfig>(cfgOptions: T, cliOptions: T): T {
+  consola.debug('[starship-butler] Configuration options:', cfgOptions)
+  consola.debug('[starship-butler] Command line interface options:', cliOptions)
+  return { ...cfgOptions, ...cliOptions }
 }

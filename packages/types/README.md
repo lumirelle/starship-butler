@@ -6,7 +6,7 @@
 [![JSDocs][jsdocs-src]][jsdocs-href]
 [![License][license-src]][license-href]
 
-Your best starship butler.
+Types shared by starship butler.
 
 ## Sponsors
 

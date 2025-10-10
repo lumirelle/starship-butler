@@ -35,16 +35,15 @@
     "start": "tsx src/index.ts"
   },
   "dependencies": {
-    "@posva/prompts": "catalog:config-provider/prod",
+    "@clack/prompts": "catalog:config-provider/prod",
     "c12": "catalog:shared/prod",
     "consola": "catalog:shared/prod",
-    "semver": "catalog:config-provider/prod",
     "starship-butler-types": "workspace:*",
     "starship-butler-utils": "workspace:*",
     "tinyglobby": "catalog:config-provider/prod"
   },
   "devDependencies": {
-    "@types/semver": "catalog:config-provider/dev",
+    "@antfu/utils": "catalog:dev",
     "tinyexec": "catalog:dev",
     "vue": "catalog:docs"
   }
