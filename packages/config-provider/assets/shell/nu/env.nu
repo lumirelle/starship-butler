@@ -15,7 +15,8 @@ if not (which fnm | is-empty) {
 }
 
 # UI
-^oh-my-posh init nu --config $'($env.POSH_THEMES_PATH)/the-unnamed.omp.json'
+mkdir ($nu.data-dir | path join "vendor/autoload")
+starship init nu | save -f ($nu.data-dir | path join "vendor/autoload/starship.nu")
 
 # COMMAND SHORTCUTS
 # dev, test, build, start, release, lint, typecheck:

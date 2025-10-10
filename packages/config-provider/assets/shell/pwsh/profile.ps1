@@ -64,7 +64,7 @@ if (Test-AnyPathExistsParent "package.json") {
 }
 
 # UI
-oh-my-posh init pwsh --config "$env:POSH_THEMES_PATH/the-unnamed.omp.json" | Invoke-Expression
+Invoke-Expression (&starship init powershell)
 
 # COMMAND ALIASES
 # which: Show the path of commands

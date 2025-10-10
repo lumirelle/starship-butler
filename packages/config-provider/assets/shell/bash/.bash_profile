@@ -71,7 +71,7 @@ if any-path-exists-parent package.json; then
 fi
 
 # UI
-eval "$(oh-my-posh init bash --config "${POSH_THEMES_PATH}the-unnamed.omp.json")"
+eval "$(starship init bash)"
 
 # COMMAND SHORTCUTS
 # dev, test, build, start, release, lint, typecheck:

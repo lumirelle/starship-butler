@@ -211,6 +211,25 @@ export const DEFAULT_ACTIONS: Action[] = [
       consola.info('Please running `Set-ExecutionPolicy RemoteSigned -Scope CurrentUser` to allow local scripts to run.')
     },
   },
+  // Starship
+  {
+    name: 'Setting Up Starship',
+    handler: async (options) => {
+      const { force, symlink, dryRun } = options
+      const mode = symlink ? 'symlink' : 'copy'
+      const target = join(homedir(), '.config')
+      fs.ensureDir(target)
+      const handlerOperations = [
+        { source: join('shell-prompt', 'starship', 'starship.toml'), target: join(target, 'starship.toml') },
+      ]
+      for (const operation of handlerOperations) {
+        await processConfig(operation.source, operation.target, { force, mode, dryRun })
+      }
+    },
+    posthandler: () => {
+      consola.info('Nerd Fonts is required to display all icons correctly in Starship prompt.')
+    },
+  },
   /* --------------------------------- 4. VCS --------------------------------- */
   // Git
   {
