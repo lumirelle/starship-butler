@@ -10,7 +10,7 @@
     "prepublishOnly": "nr typecheck && nr build",
     "docs": "nr -C docs docs:dev",
     "docs:build": "nr -C docs docs:build",
-    "release": "bumpp -r && nr -r publish",
+    "release": "bumpp -r && na -r publish",
     "test": "vitest",
     "typecheck": "tsc --noEmit",
     "prepare": "simple-git-hooks",
