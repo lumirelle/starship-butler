@@ -1,6 +1,3 @@
-/**
- * Root JSConfig for Vue 2 Project, using `references` to combine other JSConfig.
- */
 {
   "references": [
     {

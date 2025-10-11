@@ -1,13 +1,10 @@
-/**
- * Root TSConfig for Vue 2 Project, using `references` to combine other TSConfig.
- */
 {
   "references": [
     {
-      "path": "./base.tsconfig.json"
+      "path": "./base.jsconfig.json"
     },
     {
-      "path": "./src.tsconfig.json"
+      "path": "./src.jsconfig.json"
     }
   ],
   "files": []
