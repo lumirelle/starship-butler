@@ -468,5 +468,5 @@
   /* ----------------------- Language specific settings ----------------------- */
   "[dockerfile]": { "editor.defaultFormatter": "ms-azuretools.vscode-containers" },
   "[markdown]": { "editor.wordWrap": "off" },
-  "[properties]": { "editor.defaultFormatter": "foxundermoon.shell-format" }
+  "[properties]": { "editor.defaultFormatter": "lumirelle.shell-format-rev" }
 }
