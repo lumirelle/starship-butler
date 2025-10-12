@@ -18,7 +18,6 @@
     "exactOptionalPropertyTypes": true,
     "noImplicitOverride": true,
     "noImplicitReturns": true,
-    "noPropertyAccessFromIndexSignature": true,
     "noUncheckedIndexedAccess": true,
     "noEmit": true,
     "noUncheckedSideEffectImports": true,

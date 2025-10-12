@@ -34,10 +34,11 @@ export async function loadConfig<
 >(options?: LoadConfigOptions<T, MT>): Promise<ButlerConfig> {
   const merger = createDefu((obj, key) => {
     // Keep the version field first loaded
-    // FIXME: Make sure it loads from global rc file (Global rc file has the highest priority)
+    // TODO: Make sure it loads from global rc file (Global rc file has the highest priority)
     if (obj[key] && key === 'version') {
       return true
     }
+    return false
   })
   const { config = {} } = await loadConfigC12({
     name: 'butler',
