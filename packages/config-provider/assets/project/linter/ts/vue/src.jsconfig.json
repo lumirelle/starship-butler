@@ -1,7 +1,6 @@
 {
   "compilerOptions": {
     "target": "ESNext",
-    "jsx": "preserve",
     "lib": [
       "ESNext",
       "webworker",
@@ -21,22 +20,23 @@
       "@@/*": ["./*"]
       /* Add your custom paths resolution here, should align with your bundler's config */
     },
-    "resolveJsonModule": true,
     "types": [
       /* Manually specify the types you want included here */
     ],
+    "jsx": "preserve",
+    "jsxImportSource": "vue",
     "allowImportingTsExtensions": true,
     "allowJs": true,
     "strict": true,
+    "exactOptionalPropertyTypes": true,
     "noImplicitOverride": true,
+    "noImplicitReturns": true,
+    "noPropertyAccessFromIndexSignature": true,
     "noUncheckedIndexedAccess": true,
     "noEmit": true,
-    "esModuleInterop": true,
-    "forceConsistentCasingInFileNames": true,
-    "isolatedModules": true,
+    "noUncheckedSideEffectImports": true,
     "verbatimModuleSyntax": true,
-    "skipLibCheck": true,
-    "noUncheckedSideEffectImports": true
+    "skipLibCheck": true
   },
   "include": [
     "src/**/*"
