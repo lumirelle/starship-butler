@@ -313,7 +313,7 @@
   "console-ninja.featureSet": "Community",
   "css.enabledLanguages": ["html", "vue"],
   "css.styleSheets": ["**/*.{c,sc,sa,le,postc}ss"],
-  "cursor.cpp.disabledLanguages": ["plaintext"],
+  "cursor.cpp.disabledLanguages": ["plaintext", "dotenv"],
   "editorconfig.showMenuEntry": false,
   "emmet.preferences": {
     "bem.modifierSeparator": "--"
@@ -338,7 +338,8 @@
     "*": true,
     "plaintext": false,
     "markdown": true,
-    "scminput": false
+    "scminput": false,
+    "dotenv": false
   },
   "github.copilot.nextEditSuggestions.enabled": true,
   "gitlens.codeLens.scopes": ["document", "containers"],
