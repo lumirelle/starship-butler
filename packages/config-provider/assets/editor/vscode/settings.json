@@ -111,6 +111,7 @@
   "terminal.integrated.rightClickBehavior": "default",
   "terminal.integrated.smoothScrolling": true,
   "terminal.integrated.tabs.enabled": true,
+  "window.newWindowProfile": "Default",
   "workbench.editor.closeOnFileDelete": true,
   "workbench.editor.highlightModifiedTabs": true,
   "workbench.editor.limit.enabled": true,
