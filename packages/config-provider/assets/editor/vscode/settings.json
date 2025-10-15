@@ -42,6 +42,7 @@
   "editor.mouseWheelScrollSensitivity": 2,
   "editor.mouseWheelZoom": true,
   "editor.smoothScrolling": true,
+  "editor.snippetSuggestions": "top",
   "editor.suggest.showDeprecated": false,
   "editor.tokenColorCustomizations": {
     "[*Light*]": {

@@ -70,7 +70,7 @@
 		"description": "Export const",
 		"scope": "javascript,typescript",
 		"body": [
-			"export const ${1:variable}"
+			"export const ${1:name}"
 		]
 	},
 	"Export Function": {
@@ -81,7 +81,7 @@
 		"description": "Export function",
 		"scope": "javascript,typescript",
 		"body": [
-			"export function ${1:func}"
+			"export function ${1:name}"
 		]
 	},
 	"Export From": {
@@ -111,12 +111,32 @@
 			"let $1"
 		]
 	},
+	"Function": {
+		"prefix": "fn",
+		"description": "Function",
+		"scope": "javascript,typescript",
+		"body": [
+			"function ${1:name} (${2:params}) {",
+			"  $0",
+			"}"
+		]
+	},
+	"Arrow Function": {
+		"prefix": "afn",
+		"description": "Arrow function",
+		"scope": "javascript,typescript",
+		"body": [
+			"(${1:params}) => {",
+			"  $0",
+			"}"
+		]
+	},
 	"For In": {
 		"prefix": "fin",
 		"description": "For in",
 		"scope": "javascript,typescript",
 		"body": [
-			"for (const ${1:item} in {2:object}) {",
+			"for (const ${1:key} in {2:object}) {",
 			"  $0",
 			"}"
 		]
@@ -126,7 +146,7 @@
 		"description": "For of",
 		"scope": "javascript,typescript",
 		"body": [
-			"for (const ${1:item} of {2:object}) {",
+			"for (const ${1:item} of {2:array}) {",
 			"  $0",
 			"}"
 		]
