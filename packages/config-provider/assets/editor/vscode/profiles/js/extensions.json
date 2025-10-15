@@ -6,7 +6,7 @@
     // >> Editor Views
     "antfu.iconify",
     "antfu.pnpm-catalog-lens",
-    "hyrious.import-cost",
+    "hyrious.import-cost", // <NOT OPENVSX>
     "johnsoncodehk.vscode-tsconfig-helper", // <NOT OPENVSX>
     "wallabyjs.console-ninja",
 
@@ -23,7 +23,7 @@
 
     // FRAMEWORKS
     // >> Nuxt
-    "alimozdemir.vscode-nuxt-dx-tools",
+    "alimozdemir.vscode-nuxt-dx-tools", // <NOT OPENVSX>
     // >> Slidev
     "antfu.slidev",
     // >> UnoCSS

@@ -18,11 +18,11 @@
     "naumovs.color-highlight",
     "vincaslt.highlight-matching-tag",
     // >> Markdown Preview Github Styling
-    "bierner.markdown-checkbox",
-    "bierner.markdown-emoji",
-    "bierner.markdown-footnotes",
-    "bierner.markdown-preview-github-styles",
-    "bierner.markdown-yaml-preamble",
+    "bierner.markdown-checkbox", // <NOT OPENVSX>
+    "bierner.markdown-emoji", // <NOT OPENVSX>
+    "bierner.markdown-footnotes", // <NOT OPENVSX>
+    "bierner.markdown-preview-github-styles", // <NOT OPENVSX>
+    "bierner.markdown-yaml-preamble", // <NOT OPENVSX>
 
     // BETTER INFORMATION
     // >> Editor Views
@@ -59,7 +59,7 @@
     // >> Formatter
     "editorconfig.editorconfig",
     "esbenp.prettier-vscode",
-    "lumirelle.shell-format-rev",
+    "lumirelle.shell-format-rev", // <NOT OPENVSX>?
     // >> Linter
     "streetsidesoftware.code-spell-checker",
     // >> Snippets
@@ -70,24 +70,24 @@
     "JannisX11.batch-rename-extension", // <NOT OPENVSX>
     "sandcastle.vscode-open", // <NOT OPENVSX>
     // >> Editor Behavior
-    "agutierrezr.emmet-keybindings", // See https://marketplace.visualstudio.com/items?itemName=agutierrezr.emmet-keybindings
+    "agutierrezr.emmet-keybindings", // See https://marketplace.visualstudio.com/items?itemName=agutierrezr.emmet-keybindings, <NOT OPENVSX>
     "albymor.increment-selection", // CTRL+ALT+I
     "antfu.smart-clicks", // Mouse Click
     "britesnow.vscode-toggle-quotes", // CTRL+'
     "cardinal90.multi-cursor-case-preserve",
-    "chouzz.vscode-better-align", // ALT+A
+    "chouzz.vscode-better-align", // ALT+A, <NOT OPENVSX>
     "christian-kohler.path-intellisense",
-    "dnut.rewrap-revived", // ALT+Q, rewarp comments with max line length
+    "dnut.rewrap-revived", // <NOT OPENVSX>. ALT+Q, rewarp comments with max line length
     "mpontus.tab-cycle", // <NOT OPENVSX>. CTRL+PGUP, CTRL+PGDN, ALT+<NUMBER>
-    "northisup.comment-divider-updated", // ALT+X, SHIFT+ALT+X, ALT+Y
-    "nrevia05hp.plaintext-comment",
-    "ow.vscode-subword-navigation", // ALT+LEFT_ARROW, ALT+RIGHT_ARROW
+    "northisup.comment-divider-updated", //  <NOT OPENVSX>. ALT+X, SHIFT+ALT+X, ALT+Y
+    "nrevia05hp.plaintext-comment", // <NOT OPENVSX>.
+    "ow.vscode-subword-navigation", //  <NOT OPENVSX>. ALT+LEFT_ARROW, ALT+RIGHT_ARROW
     "tyriar.sort-lines", // F9
     "yatki.vscode-surround", // After selection, CTRL+SHIFT+T
     // >> Main Bar Behavior
-    "zjffun.snippetsmanager",
+    "zjffun.snippetsmanager", // <NOT OPENVSX>
     // >> Status Bar Behavior
-    "dirsouza.reload-editor",
+    "dirsouza.reload-editor", // <NOT OPENVSX>
     "tombonnike.vscode-status-bar-format-toggle",
     // >> Commands
     "helixquar.randomeverything", // <NOT OPENVSX>
