@@ -6,7 +6,7 @@
   "scripts": {
     "build": "nr -r build",
     "dev": "nr -r --parallel dev",
-    "lint": "eslint --cache . && stylelint --cache .",
+    "lint": "eslint --cache . && stylelint --cache **/*.{css,postcss,scss,sass,less,html,vue}",
     "docs": "nr -C docs docs:dev",
     "docs:build": "nr -C docs docs:build",
     "prerelease": "nr test:run && nr typecheck",
