@@ -11,7 +11,7 @@
     "wallabyjs.console-ninja",
 
     // LSP
-    "csstools.postcss",
+    "vunguyentuan.vscode-postcss",
     "humao.rest-client",
     "lokalise.i18n-ally",
     "mikestead.dotenv",
