@@ -42,7 +42,6 @@
   "editor.mouseWheelScrollSensitivity": 2,
   "editor.mouseWheelZoom": true,
   "editor.smoothScrolling": true,
-  "editor.snippetSuggestions": "top",
   "editor.suggest.showDeprecated": false,
   "editor.tokenColorCustomizations": {
     "[*Light*]": {
@@ -325,12 +324,10 @@
     "html": { "filters": "bem" }
   },
   "emmet.triggerExpansionOnTab": false,
-  "emoji-code.legacyMode": true,
   "errorLens.enabledDiagnosticLevels": ["warning", "error"],
   "errorLens.messageTemplate": "$severity$message",
   "errorLens.severityText": ["■ ", "■ ", "■ ", "■ "],
   "fileNestingUpdater.autoUpdate": false,
-  "formattingToggle.affects": ["editor.formatOnSave"],
   "git.autofetch": true,
   "git.confirmSync": true,
   "git.enableSmartCommit": true,
@@ -374,7 +371,6 @@
   "iconify.inplace": true,
   "json.schemaDownload.enable": true,
   "markdown.extension.italic.indicator": "_",
-  "markdown.extension.preview.autoShowPreviewToSide": true,
   "markdown.extension.tableFormatter.enabled": false, // Use `prettier` or `eslint-plugin-format` instead
   "redhat.telemetry.enabled": false,
   "rest-client.enableTelemetry": false,
@@ -382,7 +378,6 @@
   "selectline.alignment": "right",
   "selectline.displayFormat": "%d Lines Selected",
   "selectline.statusbarPriority": 101,
-  "svg.preview.mode": "svg",
   "todohighlight.include": [
     "**/.*", // Include all dot files
     "**/*" // Include all non-dot files

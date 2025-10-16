@@ -46,7 +46,6 @@
 
     // EDITOR
     "ms-vscode.hexeditor",
-    "pomdtr.excalidraw-editor",
 
     // LSP
     "redhat.vscode-yaml",
@@ -88,15 +87,13 @@
     "zjffun.snippetsmanager", // <NOT OPENVSX>
     // >> Status Bar Behavior
     "dirsouza.reload-editor", // <NOT OPENVSX>
-    "tombonnike.vscode-status-bar-format-toggle",
     // >> Commands
     "helixquar.randomeverything", // <NOT OPENVSX>
-    "idleberg.emoji-code",
     // >> AI (VSCode Only)
     "github.copilot",
     "github.copilot-chat"
   ]
   // EXTENSION COUNT
-  // >> VSCode: INDEX + 1 = 61
-  // >> Cursor: INDEX - 1 = 59
+  // >> VSCode: INDEX + 1 = 58
+  // >> Cursor: INDEX - 1 = 56
 }
