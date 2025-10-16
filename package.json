@@ -6,7 +6,7 @@
   "scripts": {
     "build": "nr -r build",
     "dev": "nr -r --parallel dev",
-    "lint": "eslint --cache .",
+    "lint": "eslint --cache . && stylelint --cache .",
     "docs": "nr -C docs docs:dev",
     "docs:build": "nr -C docs docs:build",
     "prerelease": "nr test:run && nr typecheck",
@@ -42,6 +42,11 @@
     "pre-commit": "pnpm lint-staged"
   },
   "lint-staged": {
-    "*": "eslint --fix"
+    "*": [
+      "eslint --fix"
+    ],
+    "*.{css,postcss,scss,sass,less,html,vue}": [
+      "stylelint --fix"
+    ]
   }
 }

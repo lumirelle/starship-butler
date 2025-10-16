@@ -1,0 +1,4 @@
+@use "placeholder" as placeholder;
+@use "res" as *; // Frequently used modules, no need to rename alias
+@use "selector" as *; // Frequently used modules, no need to rename alias
+@use "utils" as utils;

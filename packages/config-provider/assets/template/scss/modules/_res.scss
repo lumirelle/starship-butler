@@ -1,29 +1,41 @@
 ////
-/// The module for implementing responsive layout
+/// The module for creating media queries
+///
+/// @group res
 /// @access public
 /// @author Lumirelle
 ////
 
-@use 'sass:map';
-@use 'sass:meta';
+@use "sass:map";
+@use "sass:meta";
 
-/// Break-points, follow the design of Tailwind CSS
-/// https://tailwindcss.com/docs/responsive-design
+/// Break-points, follow the design of Tailwind CSS.
+///
+/// Mobile: `xs` >= viewport width > `md`
+/// Pad: `md` >= viewport width > `lg`
+/// Laptop: `lg` >= viewport width > `xl`
+/// Desktop: `xl` >= viewport width > `2xl`
+///
+/// @type Map
+/// @link https://tailwindcss.com/docs/responsive-design;
 $breakpoints: (
-  'xs': 0,
-  // Mobile
-  'sm': 640px,
-  'md': 768px,
-  // Tablet
-  'lg': 1024px,
-  // Laptop
-  'xl': 1280px,
-  '2xl': 1536px, // Desktop
+  "xs": 0,
+  "sm": 40rem, // 640px
+  "md": 48rem, // 768px
+  "lg": 64rem, // 1024px
+  "xl": 80rem, // 1280px
+  "2xl": 96rem, // 1536px
 ) !default;
 
-/// Response layout by using media query
-/// @param {'xs' | 'sm' | 'md' | 'lg' | 'xl' | '2xl' | length} $breakpoint Key of predefined breakpoints or breakpoint value directly
-/// @param {'up' | 'down' | 'only'} $direction Direction of media query
+/// Create media queries by using predefined breakpoints or breakpoint value directly
+///
+/// @param {'xs' | 'sm' | 'md' | 'lg' | 'xl | '2xl' | Number | null} $left Start breakpoint, viewport width larger than
+/// this value will apply this media query
+/// @param {'xs' | 'sm' | 'md' | 'lg' | 'xl | '2xl' | Number | null} $right [null] End breakpoint, viewport width less
+/// than this value will apply this media query
+/// @requires $breakpoints
+/// @content Media query content
+/// @output Media query definition
 /// @example
 ///   // Mobile first
 ///   .component {
@@ -50,72 +62,28 @@ $breakpoints: (
 ///     }
 ///   }
 ///
-@mixin res($breakpoint, $direction: 'up') {
-  @if meta.type-of($breakpoint) == 'number' {
-    // If the breakpoint is number, use it directly
-    @if $direction == 'up' {
-      @media (min-width: $breakpoint) {
-        @content;
-      }
-    } @else if $direction == 'down' {
-      @media (max-width: ($breakpoint - 1px)) {
-        @content;
-      }
-    } @else if $direction == 'only' {
-      @media (min-width: $breakpoint) and (max-width: ($breakpoint + 1px)) {
-        @content;
-      }
-    }
-  } @else {
-    // Else, use predefined value
-    @if map.has-key($breakpoints, $breakpoint) {
-      $value: map.get($breakpoints, $breakpoint);
+@mixin res($left, $right: null) {
+  @if meta.type-of($left) == "string" {
+    $left: map.get($breakpoints, $left);
+  }
 
-      @if $direction == 'up' {
-        @if $value == 0 {
-          @warn "You'd better not use 'xs' breakpoint, just write the default style without media query.";
-          @content;
-        } @else {
-          @media (min-width: $value) {
-            @content;
-          }
-        }
-      } @else if $direction == 'down' {
-        @if $value == 0 {
-          @warn "Cannot query down from 'xs' breakpoint.";
-        } @else {
-          @media (max-width: ($value - 1px)) {
-            @content;
-          }
-        }
-      } @else if $direction == 'only' {
-        @if $value == 0 {
-          @media (max-width: (map.get($breakpoints, 'sm') - 1px)) {
-            @content;
-          }
-        } @else {
-          // Find next breakpoint
-          $next-breakpoint: null;
-          @each $key, $val in $breakpoints {
-            @if $val > $value and $next-breakpoint == null {
-              $next-breakpoint: $val;
-            }
-          }
-          @if $next-breakpoint {
-            // If has next
-            @media (min-width: $value) and (max-width: ($next-breakpoint - 1px)) {
-              @content;
-            }
-          } @else {
-            // Else
-            @media (min-width: $value) {
-              @content;
-            }
-          }
-        }
-      }
-    } @else {
-      @warn "Breakpoint '#{$breakpoint}' doesn't exist in $breakpoints!";
+  @if meta.type-of($right) == "string" {
+    $right: map.get($breakpoints, $right);
+  }
+
+  @if not $right {
+    @media (min-width: $left) {
+      @content;
+    }
+  }
+  @else if not $left {
+    @media (max-width: $right) {
+      @content;
+    }
+  }
+  @else {
+    @media (min-width: $left) and (width <= calc($right - 1px)) {
+      @content;
     }
   }
 }

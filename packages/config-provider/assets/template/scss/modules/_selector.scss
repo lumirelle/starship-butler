@@ -1,66 +1,77 @@
 ////
 /// The module for operating selector (BEM style & state check)
+///
 /// @access public
 /// @author Lumirelle
 ////
 
-@use 'sass:meta';
-@use 'sass:string';
+@use "sass:meta";
+@use "sass:string";
 
-/// Common separator
-$common-separator: '-';
+/// Separator
+$separator: "-";
 
 /// Element separator
-$element-separator: '__';
+$element-separator: "__";
 
 /// Modifier separator
-$modifier-separator: '--';
+$modifier-separator: "--";
 
 /// State prefix
-$state-prefix: 'is-';
+$state-prefix: "is-";
 
 /// Block name
+///
 /// @access private
-$--b: null;
+$block: null;
 
 /// Element name
+///
 /// @access private
-$--e: null;
+$element: null;
 
+/// @access private
 @function has-special-nesting-rule($selector) {
   @return has-modifier($selector) or has-state-flag($selector) or has-pseudo-class($selector);
 }
 
+/// @access private
 @function has-modifier($selector) {
   $selector: selector-to-string($selector);
 
-  @if string.index($selector, config.$modifier-separator) {
+  @if string.index($selector, $modifier-separator) {
     @return true;
-  } @else {
+  }
+  @else {
     @return false;
   }
 }
 
+/// @access private
 @function has-state-flag($selector) {
   $selector: selector-to-string($selector);
 
-  @if string.index($selector, '.' + config.$state-prefix) {
+  @if string.index($selector, "." + $state-prefix) {
     @return true;
-  } @else {
+  }
+  @else {
     @return false;
   }
 }
 
+/// @access private
 @function has-pseudo-class($selector) {
   $selector: selector-to-string($selector);
 
-  @if string.index($selector, ':') {
+  @if string.index($selector, ":") {
     @return true;
-  } @else {
+  }
+  @else {
     @return false;
   }
 }
 
+/// @access private
 @function selector-to-string($selector) {
   $selector: meta.inspect($selector);
   $selector: string.slice($selector, 2, -2);
@@ -69,65 +80,100 @@ $--e: null;
 }
 
 /// Generate a BEM selector, commonly used in the case of setting the same style to multiple selectors
-/// @access public
+///
 /// @param {String} $block - Block name
 /// @param {String} $element - Element name
 /// @param {String} $modifier - Modifier name
-/// @return {String} BEM selector
+/// @content BEM selector content
+/// @output BEM selector definition
 /// @example
-///   .#{bem('color-picker')},
-///   .#{bem('color-picker', 'panel')} {
-///     @include css-var(('color-picker', 'alpha-bg-a'), '#ccc');
-///     @include css-var(('color-picker', 'alpha-bg-b'), 'transparent');
+///   // SCSS
+///   @function bem('color-picker') {
+///     width: 100%;
 ///   }
-@function bem($block, $element: '', $modifier: '') {
-  $name: config.$namespace + config.$common-separator + $block;
+///
+///   @function bem('color-picker', 'panel') {
+///     width: 100%;
+///   }
+///
+///   @function bem('color-picker', 'panel', 'large') {
+///     width: 100%;
+///   }
+///
+///   // CSS Output
+///   .color-picker {
+///     width: 100%;
+///   }
+///
+///   .color-picker__panel {
+///     width: 100%;
+///   }
+///
+///   .color-picker__panel--large {
+///     width: 100%;
+///   }
+@function bem($block, $element: "", $modifier: "") {
+  $name: $separator + $block;
 
-  @if $element != '' {
-    $name: $name + config.$element-separator + $element;
+  @if $element != "" {
+    $name: $name + $element-separator + $element;
   }
 
-  @if $modifier != '' {
-    $name: $name + config.$modifier-separator + $modifier;
+  @if $modifier != "" {
+    $name: $name + $modifier-separator + $modifier;
   }
 
   @return $name;
 }
 
-/// Generate BEM selector for block
+/// Generate BEM selector for block.
+///
 /// @param {String} $block - Block name
+/// @content BEM selector content
+/// @output BEM selector definition
 /// @example
+///   // SCSS
 ///   @include b('button') {
-///     @content;
+///     border: 1px solid #000;
 ///   }
+///
+///   // CSS Output
 ///   .button {
-///     @content;
+///     border: 1px solid #000;
 ///   }
 @mixin b($block) {
-  $--b: $block !global;
+  $block: $block !global;
 
-  .#{$--b} {
+  .#{$block} {
     @content;
   }
 }
 
-/// Generate BEM selector for element
-/// @access public
+/// Generate BEM selector for element. Should be used within the block mixin.
+///
 /// @param {String} $element - Element name
+/// @requires $block
+/// @content BEM selector content
+/// @output BEM selector definition
 /// @example
-///   @include e('button') {
-///     @content;
+///   // SCSS
+///   @include b('button') {
+///     @include e('icon') {
+///       width: 16px;
+///     }
 ///   }
-///   .#{$--b}__input {
-///     @content;
+///
+///   // CSS Output
+///   .button__icon {
+///     width: 16px;
 ///   }
 @mixin e($element) {
-  $--e: $element !global;
+  $element: $element !global;
   $selector: &;
-  $current-selector: '';
+  $current-selector: "";
 
   @each $unit in $element {
-    $current-selector: #{$current-selector + '.' + $--b + $element-separator + $unit + ','};
+    $current-selector: #{$current-selector + "." + $block + $element-separator + $unit + ","};
   }
 
   @if has-special-nesting-rule($selector) {
@@ -138,7 +184,8 @@ $--e: null;
         }
       }
     }
-  } @else {
+  }
+  @else {
     @at-root {
       #{$current-selector} {
         @content;
@@ -147,23 +194,30 @@ $--e: null;
   }
 }
 
-/// Generate BEM selector for modifier
-/// @access public
+/// Generate BEM selector for modifier. Should be used within the block or element mixin.
+///
 /// @param {String} $modifier - Modifier name
+/// @requires $block
+/// @requires $element
+/// @content BEM selector content
+/// @output BEM selector definition
 /// @example
+///   // SCSS
 ///   @include m('large', 'small) {
-///     @content;
+///     width: 100%;
 ///   }
-///   .#{$--b}__#{$--e}--large,
-///   .#{$--b}__#{$--e}--small {
-///     @content;
+///
+///   // CSS Output
+///   .button__icon--large,
+///   .button__icon--small {
+///     width: 100%;
 ///   }
 @mixin m($modifier) {
   $selector: &;
-  $current-selector: '';
+  $current-selector: "";
 
   @each $unit in $modifier {
-    $current-selector: #{$current-selector + $selector + $modifier-separator + $unit + ','};
+    $current-selector: #{$current-selector + $selector + $modifier-separator + $unit + ","};
   }
 
   @at-root {
@@ -173,15 +227,22 @@ $--e: null;
   }
 }
 
-/// Generate BEM selector for state
-/// @access public
+/// Generate BEM selector for state, should be used within the block or element mixin.
+///
 /// @param {String} $state - State name
+/// @requires $block
+/// @requires $element
+/// @content BEM selector content
+/// @output BEM selector definition
 /// @example
+///   // SCSS
 ///   @include when('active') {
-///     @content;
+///     width: 100%;
 ///   }
-///   .#{$--b}__#{$--e}--#{$--m}.is-active {
-///     @content;
+///
+///   // CSS Output
+///   .button.is-active {
+///     width: 100%;
 ///   }
 @mixin when($state) {
   @at-root {
@@ -191,15 +252,22 @@ $--e: null;
   }
 }
 
-/// Generate BEM selector for state not
-/// @access public
+/// Generate BEM selector for state not. Should be used within the block or element mixin.
+///
 /// @param {String} $state - State name
+/// @requires $block
+/// @requires $element
+/// @content BEM selector content
+/// @output BEM selector definition
 /// @example
+///   // SCSS
 ///   @include when-not('active') {
-///     @content;
+///     width: 100%;
 ///   }
-///   .#{$--b}__#{$--e}--#{$--m}:not(.is-active) {
-///     @content;
+///
+///   // CSS Output
+///   .button:not(.is-active) {
+///     width: 100%;
 ///   }
 @mixin when-not($state) {
   @at-root {

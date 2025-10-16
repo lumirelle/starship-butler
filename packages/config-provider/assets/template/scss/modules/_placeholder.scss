@@ -1,17 +1,40 @@
 ///
 /// The mixins for operating (define & extend) placeholder
+///
+/// @group placeholder
 /// @access public
 /// @author Lumirelle
 ////
 
-@mixin define-placeholder($name) {
-  $rule-name: '%shared-' + $name;
+/// Define a placeholder
+///
+/// @param {String} $name Placeholder name
+/// @content Placeholder content
+/// @output Placeholder definition
+/// @example
+///   @include define('button') {
+///     border: 1px solid #000;
+///   }
+@mixin define($name) {
+  $rule-name: "%shared-" + $name;
 
   @at-root #{$rule-name} {
     @content;
   }
 }
 
-@mixin extend-placeholder($name) {
-  @extend #{'%shared-' + $name} !optional;
+/// Extend a placeholder
+///
+/// @param {String} $name Placeholder name
+/// @output Placeholder extension
+/// @example
+///   @include define('button') {
+///     border: 1px solid #000;
+///   }
+///
+///   .custom-button {
+///     @include extend('button');
+///   }
+@mixin extend($name) {
+  @extend #{"%shared-" + $name} !optional;
 }
