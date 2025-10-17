@@ -1,23 +1,14 @@
-# -------------------------------- Recommended ------------------------------- #
-# If the dependencies in `node_modules` are not synchronized with those in `package.json`, reinstall them before running the script
 verifyDepsBeforeRun: install
+ignoreWorkspaceRootCheck: true
 
-# --------------------------------- Monorepo --------------------------------- #
-# Ignore the confirm while adding dependencies to the root package.json
-# ignoreWorkspaceRootCheck: true
-
-# ----------------------------- Web applications ----------------------------- #
-# Use a shell emulator to provide cross-platform operation support for running npm scripts
-# It is equivalent to what the `cross-env` package does
+# Cross-platform env variables support
+# e.g. "NODE_ENV=production node server.js"
 # shellEmulator: true
 
-# ----------------------------- NPM compatibility ---------------------------- #
-# Hoist the dependencies to the root package.json
-# It is equivalent to what the npm does by default
+# Hoist the dependencies, act like NPM
 # shamefullyHoist: true
 
-# ------------------------ Multi-platform Development ------------------------ #
-# Support architectures tell pnpm to install the dependencies for which architectures
+# Install dependencies for which architectures
 # supportedArchitectures:
 #   cpu:
 #     - x64
