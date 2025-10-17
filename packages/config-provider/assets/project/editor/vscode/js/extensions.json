@@ -2,7 +2,6 @@
   // cspell:disable
   "recommendations": [
     "editorconfig.editorconfig",
-    "esbenp.prettier-vscode",
     "dbaeumer.vscode-eslint",
     "jgclark.vscode-todo-highlight"
   ]
