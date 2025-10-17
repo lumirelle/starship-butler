@@ -1,10 +1,10 @@
 {
   // cspell:disable
   "recommendations": [
-    "editorconfig.editorconfig",
     "dbaeumer.vscode-eslint",
-    "vue.volar",
+    "editorconfig.editorconfig",
+    "jgclark.vscode-todo-highlight",
     "lokalise.i18n-ally",
-    "jgclark.vscode-todo-highlight"
+    "vue.volar"
   ]
 }

@@ -1,8 +1,8 @@
 {
   // cspell:disable
   "recommendations": [
-    "editorconfig.editorconfig",
     "dbaeumer.vscode-eslint",
+    "editorconfig.editorconfig",
     "jgclark.vscode-todo-highlight"
   ]
 }
