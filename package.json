@@ -39,7 +39,7 @@
     "vitest": "catalog:dev"
   },
   "simple-git-hooks": {
-    "pre-commit": "pnpm lint-staged"
+    "pre-commit": "na exec lint-staged"
   },
   "lint-staged": {
     "*": [
