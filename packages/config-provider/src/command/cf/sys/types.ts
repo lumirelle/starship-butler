@@ -16,6 +16,7 @@ export type ActionId = 'clash-verge-rev'
   | 'czg'
   | 'vscode'
   | 'cursor'
+  | 'zed'
   | 'nvim'
   | 'cspell'
 

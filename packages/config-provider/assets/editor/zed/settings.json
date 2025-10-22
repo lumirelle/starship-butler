@@ -1,0 +1,25 @@
+{
+  // cSpell:disable
+
+  /* --------------------------------- Visual --------------------------------- */
+  "buffer_font_fallbacks": ["Maple Mono CN", "Symbols Nerd Font Mono"],
+  "buffer_font_family": "Rec Mono Casual",
+  "buffer_font_size": 18,
+  "icon_theme": "Catppuccin Mocha",
+  "theme": "Vitesse Refined Dark",
+  "ui_font_fallbacks": ["Maple Mono CN", "Symbols Nerd Font Mono"],
+  "ui_font_family": "Rec Mono Casual",
+  "ui_font_size": 18,
+  "wrap_guides": [80, 120],
+
+  /* -------------------------------- Behavior -------------------------------- */
+  "inlay_hints": {
+    "enabled": true
+  },
+  "minimap": {
+    "display_in": "all_editors",
+    "show": "always"
+  },
+  "use_system_prompts": false,
+  "use_system_path_prompts": false
+}

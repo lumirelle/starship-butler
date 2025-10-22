@@ -394,6 +394,42 @@ export const PRESET_ACTIONS: Action[] = [
       consola.info('This configuration is meant to be used by `Cursor` in user scope.')
     },
   },
+  // Zed
+  {
+    id: 'zed',
+    name: 'setting up Zed',
+    targetFolder: ({ systemOptions }) => {
+      const { platform } = systemOptions
+      const targetMap: TargetMap = {
+        win32: join(process.env.APPDATA!, 'Zed'),
+        linux: join(homedir(), '.config', 'Zed'),
+        darwin: join(homedir(), 'Library', 'Application Support', 'Zed'),
+      }
+      return targetMap[platform] ?? ''
+    },
+    prehandler: ({ systemOptions, targetFolder }) => {
+      const { platform } = systemOptions
+      if (!checkPlatformSupport(['win32', 'linux', 'darwin'], platform)) {
+        return false
+      }
+      // TODO: Is this check correct?
+      if (!checkTargetExist(targetFolder, 'You should install Zed first!')) {
+        return false
+      }
+      return true
+    },
+    handler: async ({ options, targetFolder }) => {
+      const handlerOperations = [
+        { source: join('editor', 'zed', 'settings.json'), target: join(targetFolder, 'settings.json') },
+      ]
+      for (const operation of handlerOperations) {
+        await processConfig(operation.source, operation.target, options)
+      }
+    },
+    posthandler: () => {
+      consola.info('This configuration is meant to be used by `Zed` in user scope.')
+    },
+  },
   // Neo Vim
   {
     id: 'nvim',

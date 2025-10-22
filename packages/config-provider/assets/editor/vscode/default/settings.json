@@ -5,7 +5,7 @@
   "editor.cursorBlinking": "smooth",
   "editor.cursorSmoothCaretAnimation": "on",
   "editor.cursorStyle": "line",
-  "editor.fontFamily": "'Symbols Nerd Font', 'Rec Mono Casual', 'Maple Mono CN', monospace",
+  "editor.fontFamily": "'Rec Mono Casual', 'Maple Mono CN', 'Symbols Nerd Font Mono', monospace",
   "editor.fontLigatures": true,
   "editor.fontSize": 16,
   "editor.guides.bracketPairs": "active",
@@ -231,13 +231,13 @@
   },
 
   /* ---------------------------- Extensions visual --------------------------- */
-  "custom-ui-style.font.monospace": "'Symbols Nerd Font', 'Rec Mono Casual', 'Maple Mono CN', monospace",
-  "custom-ui-style.font.sansSerif": "'Symbols Nerd Font', 'Rec Mono Casual', 'Maple Mono CN', sans-serif",
+  "custom-ui-style.font.monospace": "'Rec Mono Casual', 'Maple Mono CN', 'Symbols Nerd Font Mono', monospace",
+  "custom-ui-style.font.sansSerif": "'Rec Mono Casual', 'Maple Mono CN', 'Symbols Nerd Font Mono', sans-serif",
   "excalidraw.theme": "auto",
   "highlight-matching-tag.styles": {
     "opening": { "name": { "highlight": "rgb(143 188 143 / 40%)" } }
   },
-  "markdown.preview.fontFamily": "'Symbols Nerd Font', 'Rec Mono Casual', 'Maple Mono CN', monospace",
+  "markdown.preview.fontFamily": "'Rec Mono Casual', 'Maple Mono CN', 'Symbols Nerd Font Mono', monospace",
   "markdown.preview.fontSize": 16,
   "scm.diffDecorationsGutterWidth": 2,
   "todohighlight.defaultStyle": {
