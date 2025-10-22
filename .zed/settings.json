@@ -1,11 +1,9 @@
 {
-  // Editor Code Actions on Save
+  // Editor Code Actions on
   "formatter": [
-    "auto",
-    {
-      "code_action": "source.fixAll.eslint"
-    }
+    { "code_action": "source.fixAll.eslint" }
   ],
+
   // Formatter & Linter
   "prettier": {
     "allowed": false

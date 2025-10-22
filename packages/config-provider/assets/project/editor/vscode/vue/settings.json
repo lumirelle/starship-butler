@@ -7,7 +7,6 @@
 
   // Formatter & Linter
   "prettier.enable": false,
-  "eslint.codeAction.showDocumentation": { "enable": true },
   "eslint.validate": [
     "javascript",
     "javascriptreact",
