@@ -296,6 +296,7 @@
     "dotenv": false
   },
   "github.copilot.nextEditSuggestions.enabled": true,
+  "chat.mcp.gallery.enabled": true,
 
   /* --------------------------------- Format --------------------------------- */
   "editor.tabSize": 2,
