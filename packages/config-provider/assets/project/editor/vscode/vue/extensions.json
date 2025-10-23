@@ -1,6 +1,7 @@
 {
   // cspell:disable
   "recommendations": [
+    "antfu.goto-alias",
     "dbaeumer.vscode-eslint",
     "editorconfig.editorconfig",
     "jgclark.vscode-todo-highlight",

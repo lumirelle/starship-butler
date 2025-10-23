@@ -36,7 +36,7 @@
   ],
   "stylelint.validate": ["css", "postcss", "scss", "sass", "less", "html", "vue"],
 
-  // i18n Ally
+  // I18n Ally
   "i18n-ally.autoDetection": false,
   "i18n-ally.enabledFrameworks": ["vue", "vue-sfc"],
   "i18n-ally.keystyle": "nested",

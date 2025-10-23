@@ -1,25 +1,61 @@
 {
   // cSpell:disable
-
   /* --------------------------------- Visual --------------------------------- */
-  "buffer_font_fallbacks": ["Maple Mono CN", "Symbols Nerd Font Mono"],
-  "buffer_font_family": "Rec Mono Casual",
-  "buffer_font_size": 18,
-  "icon_theme": "Catppuccin Mocha",
+  // Theme
   "theme": "Vitesse Refined Dark",
-  "ui_font_fallbacks": ["Maple Mono CN", "Symbols Nerd Font Mono"],
-  "ui_font_family": "Rec Mono Casual",
-  "ui_font_size": 18,
+  "icon_theme": "Catppuccin Mocha",
+  // Editor
+  "indent_guides": {
+    "coloring": "indent_aware"
+  },
   "wrap_guides": [80, 120],
+  // Font
+  "ui_font_family": "Rec Mono Casual",
+  "ui_font_fallbacks": ["Maple Mono CN", "Symbols Nerd Font Mono"],
+  "ui_font_size": 18,
+  "buffer_font_family": "Rec Mono Casual",
+  "buffer_font_fallbacks": ["Maple Mono CN", "Symbols Nerd Font Mono"],
+  "buffer_font_size": 18,
+  "buffer_font_features": {
+    "calt": true,
+    "liga": true
+  },
 
   /* -------------------------------- Behavior -------------------------------- */
-  "inlay_hints": {
-    "enabled": true
+  // File Associations
+  "file_types": {
+    "env": [".env*"],
+    "JavaScript": [".env*.js"],
+    "TypeScript": [".env*.ts"],
+    "Shell Script": [".simple-git-hooks.rc"],
+    "JSON": [".czrc"]
   },
+  // Prompts
+  "use_system_prompts": false,
+  "use_system_path_prompts": false,
+  // Editor
+  "close_on_file_delete": true,
+  // Terminal
+  "terminal": {
+    "shell": {
+      "program": "nu"
+    }
+  },
+  // Minimap
   "minimap": {
     "display_in": "all_editors",
     "show": "always"
   },
-  "use_system_prompts": false,
-  "use_system_path_prompts": false
+  // Inlay Hints
+  "inlay_hints": {
+    "enabled": true
+  },
+  // Scroll
+  "scroll_sensitivity": 2,
+  "fast_scroll_sensitivity": 3,
+
+  /* --------------------------------- Format --------------------------------- */
+  "tab_size": 2,
+  "auto_indent": false,
+  "auto_indent_on_paste": false
 }

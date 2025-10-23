@@ -1,36 +1,49 @@
 {
   // cspell:disable
-  /* ----------------------------- Default profile ---------------------------- */
   "recommendations": [
-    // THEMES & ICONS
-    "antfu.icons-carbon",
+    /* --------------------------------- Visual --------------------------------- */
+    // Theme
     "antfu.theme-vitesse",
+    "antfu.icons-carbon",
     "catppuccin.catppuccin-vsc-icons",
+    // Font
     "subframe7536.custom-ui-style",
 
-    // BETTER UI
-    "antfu.file-nesting",
-
-    // BETTER VISUALS
-    // >> Highlighting
-    "ibm.output-colorizer",
+    /* -------------------------------- Behavior -------------------------------- */
+    // Inlay Hints
+    "antfu.array-index-inlay", // <NOT OPENVSX>
+    // Lens
+    "usernamehw.errorlens",
+    "kisstkondoros.vscode-codemetrics",
+    "yoavbls.pretty-ts-errors",
+    "eamodio.gitlens",
+    // Highlight
     "jgclark.vscode-todo-highlight",
     "naumovs.color-highlight",
+    "ibm.output-colorizer",
     "vincaslt.highlight-matching-tag",
-    // >> Markdown Preview Github Styling
+    // Preview
     "bierner.markdown-checkbox", // <NOT OPENVSX>
     "bierner.markdown-emoji", // <NOT OPENVSX>
     "bierner.markdown-footnotes", // <NOT OPENVSX>
     "bierner.markdown-preview-github-styles", // <NOT OPENVSX>
     "bierner.markdown-yaml-preamble", // <NOT OPENVSX>
+    // AI
+    "github.copilot",
+    "github.copilot-chat",
+
+    /* --------------------------------- Format --------------------------------- */
+    "editorconfig.editorconfig",
+    "esbenp.prettier-vscode",
+    "lumirelle.shell-format-rev",
+
+    /* ---------------------------------- Lint ---------------------------------- */
+    "streetsidesoftware.code-spell-checker",
+
+    /* ------------------------------ File Nesting ------------------------------ */
+    "antfu.file-nesting",
 
     // BETTER INFORMATION
-    // >> Editor Views
-    "antfu.array-index-inlay", // <NOT OPENVSX>
-    "bierner.color-info",
-    "kisstkondoros.vscode-codemetrics",
-    "usernamehw.errorlens",
-    "yoavbls.pretty-ts-errors",
     // >> Status Bar Views
     "antfu.where-am-i",
     "johnpapa.read-time", // <NOT OPENVSX>
@@ -39,7 +52,6 @@
 
     // BETTER VCS
     "codezombiech.gitignore",
-    "eamodio.gitlens",
 
     // DEV CONTAINER
     "ms-azuretools.vscode-containers",
@@ -54,13 +66,7 @@
     "thenuprojectcontributors.vscode-nushell-lang",
     "yzhang.markdown-all-in-one",
 
-    // FORMATTER, LINTER & SNIPPETS
-    // >> Formatter
-    "editorconfig.editorconfig",
-    "esbenp.prettier-vscode",
-    "lumirelle.shell-format-rev", // <NOT OPENVSX>?
-    // >> Linter
-    "streetsidesoftware.code-spell-checker",
+    // SNIPPETS
     // >> Snippets
     "bierner.emojisense",
 
@@ -88,12 +94,10 @@
     // >> Status Bar Behavior
     "dirsouza.reload-editor", // <NOT OPENVSX>
     // >> Commands
-    "helixquar.randomeverything", // <NOT OPENVSX>
-    // >> AI (VSCode Only)
-    "github.copilot",
-    "github.copilot-chat"
+    "helixquar.randomeverything" // <NOT OPENVSX>
+
   ]
   // EXTENSION COUNT
-  // >> VSCode: INDEX + 1 = 58
-  // >> Cursor: INDEX - 1 = 56
+  // >> VSCode: INDEX + 1 = 57
+  // >> Cursor: INDEX - 1 = 55
 }
