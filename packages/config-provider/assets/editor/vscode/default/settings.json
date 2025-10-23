@@ -18,6 +18,15 @@
   "editor.guides.bracketPairs": true,
   "editor.renderWhitespace": "boundary",
   "editor.rulers": [80, 120],
+  "editor.tokenColorCustomizations": {
+    "[*Light*]": {
+      "textMateRules": []
+    },
+    "[*Dark*]": {
+      "textMateRules": []
+    },
+    "textMateRules": []
+  },
   "scm.diffDecorationsGutterWidth": 2,
   // Font
   "custom-ui-style.font.monospace": "'Rec Mono Casual', 'Maple Mono CN', 'Symbols Nerd Font Mono', monospace",
@@ -33,101 +42,6 @@
   // Cursor
   "editor.cursorBlinking": "smooth",
   "editor.cursorSmoothCaretAnimation": "on",
-  // Colors
-  "editor.tokenColorCustomizations": {
-    "[*Light*]": {
-      "textMateRules": []
-    },
-    "[*Dark*]": {
-      "textMateRules": []
-    },
-    "textMateRules": []
-  },
-
-  /* -------------------------------- Behavior -------------------------------- */
-  // Security
-  "security.workspace.trust.enabled": false,
-  // Profile
-  "window.newWindowProfile": "Default",
-  // File Associations
-  "files.associations": {
-    ".env*": "dotenv",
-    ".env*.js": "javascript",
-    ".env*.ts": "typescript",
-    ".simple-git-hooks.rc": "shellscript",
-    ".czrc": "json"
-  },
-  // Editor
-  "workbench.editor.closeOnFileDelete": true,
-  "workbench.editor.highlightModifiedTabs": true,
-  "workbench.editor.limit.enabled": true,
-  "workbench.editor.limit.perEditorGroup": true,
-  "workbench.editor.limit.value": 5,
-  "workbench.startupEditor": "none",
-  // Prompts
-  "window.dialogStyle": "custom",
-  "files.simpleDialog.enable": true,
-  // Terminal
-  "terminal.integrated.env.windows": {},
-  "terminal.integrated.profiles.linux": {
-    "nushell": { "path": "nu" }
-  },
-  "terminal.integrated.profiles.osx": {
-    "nushell": { "path": "nu" }
-  },
-  "terminal.integrated.profiles.windows": {
-    "Nushell": { "path": "C:\\Program Files\\nu\\bin\\nu.exe" }
-  },
-  "terminal.integrated.defaultProfile.linux": "nushell",
-  "terminal.integrated.defaultProfile.osx": "nushell",
-  "terminal.integrated.defaultProfile.windows": "Nushell",
-  "terminal.integrated.persistentSessionReviveProcess": "never",
-  "terminal.integrated.rightClickBehavior": "default",
-  // Minimap
-  "editor.minimap.enabled": true,
-  // Inlay Hints
-  "arrayIndexInlay.minLength": 5,
-  "javascript.inlayHints.functionLikeReturnTypes.enabled": true,
-  "javascript.inlayHints.parameterNames.enabled": "all",
-  "javascript.inlayHints.parameterTypes.enabled": true,
-  "javascript.inlayHints.propertyDeclarationTypes.enabled": true,
-  "javascript.inlayHints.variableTypes.enabled": true,
-  "typescript.inlayHints.enumMemberValues.enabled": true,
-  "typescript.inlayHints.functionLikeReturnTypes.enabled": true,
-  "typescript.inlayHints.parameterNames.enabled": "all",
-  "typescript.inlayHints.parameterTypes.enabled": true,
-  "typescript.inlayHints.propertyDeclarationTypes.enabled": true,
-  "typescript.inlayHints.variableTypes.enabled": true,
-  "vue.inlayHints.destructuredProps": true,
-  "vue.inlayHints.inlineHandlerLeading": true,
-  "vue.inlayHints.missingProps": true,
-  "vue.inlayHints.optionsWrapper": true,
-  "vue.inlayHints.vBindShorthand": true,
-  // Lens
-  "errorLens.enabledDiagnosticLevels": ["warning", "error"],
-  "errorLens.messageTemplate": "$severity$message",
-  "errorLens.severityText": ["■ ", "■ ", "■ ", "■ "],
-  "gitlens.codeLens.scopes": ["document", "containers"],
-  "gitlens.defaultGravatarsStyle": "monsterid",
-  "gitlens.fileAnnotations.command": "blame",
-  "gitlens.graph.dimMergeCommits": true,
-  "gitlens.menus": {
-    "editor": { "blame": true, "clipboard": true, "compare": true, "history": true, "remote": true },
-    "editorGroup": false,
-    "editorGutter": false,
-    "editorTab": false,
-    "explorer": { "clipboard": true, "compare": true, "history": true, "remote": true },
-    "ghpr": { "worktree": true },
-    "scm": false,
-    "scmGroup": { "compare": true, "openClose": true, "patch": false, "stash": true },
-    "scmGroupInline": { "stash": true },
-    "scmItem": false,
-    "scmItemInline": false,
-    "scmRepository": false,
-    "scmRepositoryInline": false
-  },
-  "gitlens.views.branches.showRemoteBranches": true,
-  "gitlens.views.commitDetails.files.layout": "tree",
   // Highlight
   "highlight-matching-tag.styles": {
     "opening": { "name": { "highlight": "rgb(143 188 143 / 40%)" } }
@@ -218,10 +132,27 @@
       "overviewRulerColor": "rgb(126 82 127 / 80%)"
     }
   ],
-  // Diff
-  "diffEditor.ignoreTrimWhitespace": false,
-  // Accessibility
-  "editor.accessibilitySupport": "off",
+
+  /* -------------------------------- Behavior -------------------------------- */
+  // Security
+  "security.workspace.trust.enabled": false,
+  // Profile
+  "window.newWindowProfile": "Default",
+  // File Associations
+  "files.associations": {
+    ".env*": "dotenv",
+    ".env*.js": "javascript",
+    ".env*.ts": "typescript",
+    ".simple-git-hooks.rc": "shellscript",
+    ".czrc": "json"
+  },
+  // Prompts
+  "window.dialogStyle": "custom",
+  "files.simpleDialog.enable": true,
+  // Status Bar
+  "selectline.alignment": "right",
+  "selectline.displayFormat": "%d lines selected",
+  "selectline.statusbarPriority": 100.4,
   // Explorer
   "explorer.autoOpenDroppedFile": false,
   "explorer.confirmDelete": false,
@@ -252,6 +183,95 @@
     "**/CHANGELOG*": true,
     "**/LICENSE*": true
   },
+  // Git
+  "git.autofetch": true,
+  "git.confirmSync": true,
+  "git.enableSmartCommit": true,
+  "git.openRepositoryInParentFolders": "always",
+  "git.untrackedChanges": "separate",
+  // Editor Group
+  "workbench.editor.closeOnFileDelete": true,
+  "workbench.editor.highlightModifiedTabs": true,
+  "workbench.editor.limit.enabled": true,
+  "workbench.editor.limit.perEditorGroup": true,
+  "workbench.editor.limit.value": 5,
+  "workbench.startupEditor": "none",
+  // Editor
+  "editor.minimap.enabled": true,
+  "editor.accessibilitySupport": "off",
+  // Diff Editor
+  "diffEditor.ignoreTrimWhitespace": false,
+  // Terminal
+  "terminal.integrated.env.windows": {},
+  "terminal.integrated.profiles.linux": {
+    "nushell": { "path": "nu" }
+  },
+  "terminal.integrated.profiles.osx": {
+    "nushell": { "path": "nu" }
+  },
+  "terminal.integrated.profiles.windows": {
+    "Nushell": { "path": "C:\\Program Files\\nu\\bin\\nu.exe" }
+  },
+  "terminal.integrated.defaultProfile.linux": "nushell",
+  "terminal.integrated.defaultProfile.osx": "nushell",
+  "terminal.integrated.defaultProfile.windows": "Nushell",
+  "terminal.integrated.persistentSessionReviveProcess": "never",
+  "terminal.integrated.rightClickBehavior": "default",
+  // Inlay Hints
+  "arrayIndexInlay.minLength": 5,
+  "javascript.inlayHints.functionLikeReturnTypes.enabled": true,
+  "javascript.inlayHints.parameterNames.enabled": "all",
+  "javascript.inlayHints.parameterTypes.enabled": true,
+  "javascript.inlayHints.propertyDeclarationTypes.enabled": true,
+  "javascript.inlayHints.variableTypes.enabled": true,
+  "typescript.inlayHints.enumMemberValues.enabled": true,
+  "typescript.inlayHints.functionLikeReturnTypes.enabled": true,
+  "typescript.inlayHints.parameterNames.enabled": "all",
+  "typescript.inlayHints.parameterTypes.enabled": true,
+  "typescript.inlayHints.propertyDeclarationTypes.enabled": true,
+  "typescript.inlayHints.variableTypes.enabled": true,
+  "vue.inlayHints.destructuredProps": true,
+  "vue.inlayHints.inlineHandlerLeading": true,
+  "vue.inlayHints.missingProps": true,
+  "vue.inlayHints.optionsWrapper": true,
+  "vue.inlayHints.vBindShorthand": true,
+  // Lens
+  "errorLens.enabledDiagnosticLevels": ["warning", "error"],
+  "errorLens.messageTemplate": "$severity$message",
+  "errorLens.severityText": ["■ ", "■ ", "■ ", "■ "],
+  "gitlens.codeLens.scopes": ["document", "containers"],
+  "gitlens.defaultGravatarsStyle": "monsterid",
+  "gitlens.fileAnnotations.command": "blame",
+  "gitlens.graph.dimMergeCommits": true,
+  "gitlens.menus": {
+    "editor": { "blame": true, "clipboard": true, "compare": true, "history": true, "remote": true },
+    "editorGroup": false,
+    "editorGutter": false,
+    "editorTab": false,
+    "explorer": { "clipboard": true, "compare": true, "history": true, "remote": true },
+    "ghpr": { "worktree": true },
+    "scm": false,
+    "scmGroup": { "compare": true, "openClose": true, "patch": false, "stash": true },
+    "scmGroupInline": { "stash": true },
+    "scmItem": false,
+    "scmItemInline": false,
+    "scmRepository": false,
+    "scmRepositoryInline": false
+  },
+  "gitlens.views.branches.showRemoteBranches": true,
+  "gitlens.views.commitDetails.files.layout": "tree",
+  // Suggestion & Completion
+  "css.enabledLanguages": ["html", "vue"],
+  "css.styleSheets": ["**/*.{c,sc,sa,le,postc}ss"],
+  // Emmet
+  "emmet.preferences": {
+    "bem.modifierSeparator": "--"
+  },
+  "emmet.showSuggestionsAsSnippets": true,
+  "emmet.syntaxProfiles": {
+    "html": { "filters": "bem" }
+  },
+  "emmet.triggerExpansionOnTab": false,
   // Scroll
   "workbench.list.mouseWheelScrollSensitivity": 2,
   "workbench.list.fastScrollSensitivity": 3,
@@ -266,24 +286,6 @@
   "editor.mouseWheelZoom": true,
   // Goto
   "editor.gotoLocation.multipleDefinitions": "goto",
-  // Suggestion & Completion
-  "css.enabledLanguages": ["html", "vue"],
-  "css.styleSheets": ["**/*.{c,sc,sa,le,postc}ss"],
-  // Emmet
-  "emmet.preferences": {
-    "bem.modifierSeparator": "--"
-  },
-  "emmet.showSuggestionsAsSnippets": true,
-  "emmet.syntaxProfiles": {
-    "html": { "filters": "bem" }
-  },
-  "emmet.triggerExpansionOnTab": false,
-  // Git
-  "git.autofetch": true,
-  "git.confirmSync": true,
-  "git.enableSmartCommit": true,
-  "git.openRepositoryInParentFolders": "always",
-  "git.untrackedChanges": "separate",
   // AI
   "cursor.cpp.disabledLanguages": ["plaintext", "dotenv"],
   "github.copilot.enable": {
@@ -469,9 +471,6 @@
   "redhat.telemetry.enabled": false,
   "rest-client.enableTelemetry": false,
   "rewrap.wrappingColumn": 120,
-  "selectline.alignment": "right",
-  "selectline.displayFormat": "%d lines selected",
-  "selectline.statusbarPriority": 100.4,
   "vitest.shellType": "terminal",
   "where-am-i.colorful": false,
 

@@ -1,0 +1,29 @@
+{
+  // cspell:disable
+  "recommendations": [
+    /* --------------------------------- Visual --------------------------------- */
+    // Theme
+    "vitesse-theme-refined",
+    "catppuccin-icons",
+    // Highlight
+    "log",
+
+    /* -------------------------------- Behavior -------------------------------- */
+    // Emmet
+    "emmet",
+
+    /* ----------------------------------- LSP ---------------------------------- */
+    "xml",
+    "toml",
+    "csv",
+    "ini",
+    "html",
+    "scss",
+    "env",
+    "vue",
+    "dockerfile",
+    "nu"
+  ]
+  // EXTENSION COUNT
+  // >> INDEX + 1 = 13
+}

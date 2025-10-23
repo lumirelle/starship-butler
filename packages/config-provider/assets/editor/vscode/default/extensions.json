@@ -8,8 +8,48 @@
     "catppuccin.catppuccin-vsc-icons",
     // Font
     "subframe7536.custom-ui-style",
+    // Highlight
+    "jgclark.vscode-todo-highlight",
+    "naumovs.color-highlight",
+    "ibm.output-colorizer",
+    "vincaslt.highlight-matching-tag",
+    // Markdown Preview
+    "bierner.markdown-checkbox", // <NOT OPENVSX>
+    "bierner.markdown-emoji", // <NOT OPENVSX>
+    "bierner.markdown-footnotes", // <NOT OPENVSX>
+    "bierner.markdown-preview-github-styles", // <NOT OPENVSX>
+    "bierner.markdown-yaml-preamble", // <NOT OPENVSX>
 
     /* -------------------------------- Behavior -------------------------------- */
+    // Status Bar
+    "antfu.where-am-i",
+    "tomoki1207.selectline-statusbar", // <NOT OPENVSX>
+    "mkxml.vscode-filesize",
+    "johnpapa.read-time", // <NOT OPENVSX>
+    "dirsouza.reload-editor", // <NOT OPENVSX>
+    // Main Bar
+    "zjffun.snippetsmanager", // <NOT OPENVSX>
+    // Explorer
+    "JannisX11.batch-rename-extension", // <NOT OPENVSX>
+    "sandcastle.vscode-open", // <NOT OPENVSX>
+    // Git
+    "codezombiech.gitignore",
+    // Editor Group
+    "mpontus.tab-cycle", // <NOT OPENVSX>. CTRL+PGUP, CTRL+PGDN, ALT+<NUMBER>
+    // Editor
+    "nrevia05hp.plaintext-comment", // <NOT OPENVSX>.
+    "christian-kohler.path-intellisense",
+    "antfu.smart-clicks", // Mouse Click
+    "agutierrezr.emmet-keybindings", // See https://marketplace.visualstudio.com/items?itemName=agutierrezr.emmet-keybindings, <NOT OPENVSX>
+    "ow.vscode-subword-navigation", //  <NOT OPENVSX>. ALT+LEFT_ARROW, ALT+RIGHT_ARROW
+    "cardinal90.multi-cursor-case-preserve",
+    "albymor.increment-selection", // CTRL+ALT+I
+    "britesnow.vscode-toggle-quotes", // CTRL+'
+    "northisup.comment-divider-updated", //  <NOT OPENVSX>. ALT+X, SHIFT+ALT+X, ALT+Y
+    "dnut.rewrap-revived", // <NOT OPENVSX>. ALT+Q, rewarp comments with max line length
+    "chouzz.vscode-better-align", // ALT+A, <NOT OPENVSX>
+    "tyriar.sort-lines", // F9
+    "yatki.vscode-surround", // After selection, CTRL+SHIFT+T
     // Inlay Hints
     "antfu.array-index-inlay", // <NOT OPENVSX>
     // Lens
@@ -17,20 +57,23 @@
     "kisstkondoros.vscode-codemetrics",
     "yoavbls.pretty-ts-errors",
     "eamodio.gitlens",
-    // Highlight
-    "jgclark.vscode-todo-highlight",
-    "naumovs.color-highlight",
-    "ibm.output-colorizer",
-    "vincaslt.highlight-matching-tag",
-    // Preview
-    "bierner.markdown-checkbox", // <NOT OPENVSX>
-    "bierner.markdown-emoji", // <NOT OPENVSX>
-    "bierner.markdown-footnotes", // <NOT OPENVSX>
-    "bierner.markdown-preview-github-styles", // <NOT OPENVSX>
-    "bierner.markdown-yaml-preamble", // <NOT OPENVSX>
+    // Suggestion & Completion
+    "bierner.emojisense",
+    // Command
+    "helixquar.randomeverything", // <NOT OPENVSX>
+    // Dev Container
+    "ms-azuretools.vscode-containers",
     // AI
     "github.copilot",
     "github.copilot-chat",
+
+    /* ----------------------------------- LSP ---------------------------------- */
+    "yzhang.markdown-all-in-one",
+    "redhat.vscode-yaml",
+    "tamasfe.even-better-toml",
+    "somewhatstationery.some-sass",
+    "thenuprojectcontributors.vscode-nushell-lang",
+    "ms-vscode.hexeditor",
 
     /* --------------------------------- Format --------------------------------- */
     "editorconfig.editorconfig",
@@ -41,61 +84,7 @@
     "streetsidesoftware.code-spell-checker",
 
     /* ------------------------------ File Nesting ------------------------------ */
-    "antfu.file-nesting",
-
-    // BETTER INFORMATION
-    // >> Status Bar Views
-    "antfu.where-am-i",
-    "johnpapa.read-time", // <NOT OPENVSX>
-    "mkxml.vscode-filesize",
-    "tomoki1207.selectline-statusbar", // <NOT OPENVSX>
-
-    // BETTER VCS
-    "codezombiech.gitignore",
-
-    // DEV CONTAINER
-    "ms-azuretools.vscode-containers",
-
-    // EDITOR
-    "ms-vscode.hexeditor",
-
-    // LSP
-    "redhat.vscode-yaml",
-    "somewhatstationery.some-sass",
-    "tamasfe.even-better-toml",
-    "thenuprojectcontributors.vscode-nushell-lang",
-    "yzhang.markdown-all-in-one",
-
-    // SNIPPETS
-    // >> Snippets
-    "bierner.emojisense",
-
-    // LIFE SAVERS
-    // >> Explorer Behavior
-    "JannisX11.batch-rename-extension", // <NOT OPENVSX>
-    "sandcastle.vscode-open", // <NOT OPENVSX>
-    // >> Editor Behavior
-    "agutierrezr.emmet-keybindings", // See https://marketplace.visualstudio.com/items?itemName=agutierrezr.emmet-keybindings, <NOT OPENVSX>
-    "albymor.increment-selection", // CTRL+ALT+I
-    "antfu.smart-clicks", // Mouse Click
-    "britesnow.vscode-toggle-quotes", // CTRL+'
-    "cardinal90.multi-cursor-case-preserve",
-    "chouzz.vscode-better-align", // ALT+A, <NOT OPENVSX>
-    "christian-kohler.path-intellisense",
-    "dnut.rewrap-revived", // <NOT OPENVSX>. ALT+Q, rewarp comments with max line length
-    "mpontus.tab-cycle", // <NOT OPENVSX>. CTRL+PGUP, CTRL+PGDN, ALT+<NUMBER>
-    "northisup.comment-divider-updated", //  <NOT OPENVSX>. ALT+X, SHIFT+ALT+X, ALT+Y
-    "nrevia05hp.plaintext-comment", // <NOT OPENVSX>.
-    "ow.vscode-subword-navigation", //  <NOT OPENVSX>. ALT+LEFT_ARROW, ALT+RIGHT_ARROW
-    "tyriar.sort-lines", // F9
-    "yatki.vscode-surround", // After selection, CTRL+SHIFT+T
-    // >> Main Bar Behavior
-    "zjffun.snippetsmanager", // <NOT OPENVSX>
-    // >> Status Bar Behavior
-    "dirsouza.reload-editor", // <NOT OPENVSX>
-    // >> Commands
-    "helixquar.randomeverything" // <NOT OPENVSX>
-
+    "antfu.file-nesting"
   ]
   // EXTENSION COUNT
   // >> VSCode: INDEX + 1 = 57

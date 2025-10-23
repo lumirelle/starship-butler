@@ -1,45 +1,43 @@
 {
   // cspell:disable
-  // VSCODE PROFILE_JS <= PROFILE_DEFAULT
   "recommendations": [
-    // BETTER INFORMATION
-    // >> Editor Views
-    "antfu.iconify",
-    "antfu.pnpm-catalog-lens",
+    /* -------------------------------- Behavior -------------------------------- */
+    // Lens
     "hyrious.import-cost", // <NOT OPENVSX>
-    "johnsoncodehk.vscode-tsconfig-helper", // <NOT OPENVSX>
+    "antfu.pnpm-catalog-lens",
     "wallabyjs.console-ninja",
+    // >> Editor
+    "antfu.iconify",
+    "mariusalchimavicius.json-to-ts", // <NOT OPENVSX>, CTRL+ALT+V
+    "ritwickdey.liveserver", // NEED TRAIL, ALT+L ALT+O, ALT+L CTRL+C
+    // Suggestion & Completion
+    "ecmel.vscode-html-css",
+    // Command
+    "jasonnutter.search-node-modules", // <NOT OPENVSX>, CTRL+K CTRL+N
 
-    // LSP
-    "vunguyentuan.vscode-postcss",
-    "humao.rest-client",
-    "lokalise.i18n-ally",
+    /* ----------------------------------- LSP ---------------------------------- */
+    "johnsoncodehk.vscode-tsconfig-helper", // <NOT OPENVSX>
     "mikestead.dotenv",
     "vue.volar",
-
-    // FORMATTER, LINTER & SNIPPETS
-    "dbaeumer.vscode-eslint",
-    "stylelint.vscode-stylelint",
-
-    // FRAMEWORKS
-    // >> Nuxt
+    "vunguyentuan.vscode-postcss",
+    "humao.rest-client",
+    // I18n
+    "lokalise.i18n-ally",
+    // Vitest
+    "vitest.explorer",
+    // UnoCSS
+    "antfu.unocss",
+    // Tailwind CSS
+    "bradlc.vscode-tailwindcss",
+    // Nuxt
     "alimozdemir.vscode-nuxt-dx-tools", // <NOT OPENVSX>
     "antfu.goto-alias", // F12
-    // >> Slidev
+    // Slidev
     "antfu.slidev",
-    // >> UnoCSS
-    "antfu.unocss",
-    // >> Tailwind CSS
-    "bradlc.vscode-tailwindcss",
-    // >> Vitest
-    "vitest.explorer",
 
-    // LIFE SAVERS
-    // >> Editor Behavior
-    "ecmel.vscode-html-css",
-    "jasonnutter.search-node-modules", // <NOT OPENVSX>, CTRL+K CTRL+N
-    "mariusalchimavicius.json-to-ts", // <NOT OPENVSX>, CTRL+ALT+V
-    "ritwickdey.liveserver" // NEED TRAIL, ALT+L ALT+O, ALT+L CTRL+C
+    /* ---------------------------------- Lint ---------------------------------- */
+    "dbaeumer.vscode-eslint",
+    "stylelint.vscode-stylelint"
   ]
   // EXTENSION COUNT
   // >> VSCode: INDEX + 1 = 22 + {PROFILE_DEFAULT: 57} = 79
