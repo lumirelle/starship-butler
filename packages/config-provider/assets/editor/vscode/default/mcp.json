@@ -1,0 +1,81 @@
+{
+  "servers": {
+    "upstash/context7": {
+      "type": "http",
+      "url": "https://mcp.context7.com/mcp",
+      "headers": {
+        "CONTEXT7_API_KEY": "${input:context7_api_key}"
+      },
+      "gallery": "https://api.mcp.github.com/2025-09-15/v0/servers/dcec7705-b81b-4e0f-8615-8032604be7ad",
+      "version": "1.0.0"
+    },
+    "github/github-mcp-server": {
+      "type": "http",
+      "url": "https://api.githubcopilot.com/mcp/",
+      "gallery": "https://api.mcp.github.com/2025-09-15/v0/servers/ab12cd34-5678-90ef-1234-567890abcdef",
+      "version": "0.13.0"
+    },
+    "chromedevtools/chrome-devtools-mcp": {
+      "type": "stdio",
+      "command": "fnm",
+      "args": [
+        "exec",
+        "--using",
+        "default",
+        "npx.cmd",
+        "chrome-devtools-mcp@latest",
+        "--browserUrl",
+        "${input:browser_url}",
+        "--headless",
+        "${input:headless}",
+        "--isolated",
+        "${input:isolated}",
+        "--channel",
+        "${input:chrome_channel}"
+      ],
+      "gallery": "https://api.mcp.github.com/2025-09-15/v0/servers/13749964-2447-4c31-bcab-32731cced504",
+      "version": "0.0.1-seed"
+    },
+    "antfu/nuxt-mcp": {
+      "type": "http",
+      "url": "https://mcp.nuxt.com/sse",
+      "gallery": "https://api.mcp.github.com/2025-09-15/v0/servers/7d2aa3fa-ab7a-4609-b27c-7b24037bf6ce",
+      "version": "1.0.0"
+    }
+  },
+  "inputs": [
+    {
+      "id": "context7_api_key",
+      "type": "promptString",
+      "description": "Context7 API key (optional; increases rate limits). Get one at https://context7.com/dashboard",
+      "password": true
+    },
+    {
+      "id": "browser_url",
+      "type": "promptString",
+      "description": "Optional: connect to an already-running Chrome (remote debugging / port-forward). Example: http://127.0.0.1:9222",
+      "password": false
+    },
+    {
+      "id": "headless",
+      "type": "promptString",
+      "description": "Run Chrome headless (true/false). Default: false",
+      "password": false,
+      "default": "false"
+    },
+    {
+      "id": "isolated",
+      "type": "promptString",
+      "description": "Use a temporary user-data-dir (true/false). Default: false",
+      "password": false,
+      "default": "false"
+    },
+    {
+      "id": "chrome_channel",
+      "type": "promptString",
+      "description": "Chrome channel: stable | canary | beta | dev (default: stable).",
+      "password": false,
+      "default": "stable"
+    }
+  ]
+}
