@@ -31,9 +31,7 @@
         "--isolated",
         "${input:isolated}",
         "--channel",
-        "${input:chrome_channel}",
-        "--executablePath",
-        "${input:chrome_executable_path}"
+        "${input:chrome_channel}"
       ],
       "gallery": "https://api.mcp.github.com/2025-09-15/v0/servers/13749964-2447-4c31-bcab-32731cced504",
       "version": "0.0.1-seed"
@@ -78,12 +76,6 @@
       "description": "Chrome channel: stable | canary | beta | dev (default: stable).",
       "password": false,
       "default": "stable"
-    },
-    {
-      "id": "chrome_executable_path",
-      "type": "promptString",
-      "description": "Optional: specify the path to the Chrome executable.",
-      "password": false
     }
   ]
 }
