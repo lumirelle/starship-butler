@@ -19,12 +19,13 @@ mkdir ($nu.data-dir | path join "vendor/autoload")
 starship init nu | save -f ($nu.data-dir | path join "vendor/autoload/starship.nu")
 
 # COMMAND SHORTCUTS
-# dev, test, build, start, release, lint, typecheck:
 # Run npm scripts quickly while we are in a directory that has a `package.json`.
 alias dev = utils nr-agent dev
-alias test = utils nr-agent test
+alias play = utils nr-agent play
 alias build = utils nr-agent build
 alias start = utils nr-agent start
-alias release = utils nr-agent release
 alias lint = utils nr-agent lint
+alias test = utils nr-agent test
 alias typecheck = utils nr-agent typecheck
+alias docs = utils nr-agent docs
+alias release = utils nr-agent release

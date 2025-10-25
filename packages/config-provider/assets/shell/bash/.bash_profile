@@ -1,6 +1,6 @@
 # --------------------------------- FUNCTIONS -------------------------------- #
 
-any-path-exists () {
+any-path-exists() {
   for path in "$@"; do
     if [ -e "$path" ]; then
       return 0
@@ -9,7 +9,7 @@ any-path-exists () {
   return 1
 }
 
-any-path-exists-parent () {
+any-path-exists-parent() {
   for path in "$@"; do
     if [ -e "$path" ]; then
       return 0
@@ -27,7 +27,7 @@ any-path-exists-parent () {
   return 1
 }
 
-dirname-parent () {
+dirname-parent() {
   local path="$1"
   local abs=$(realpath "$path")
   local level=$(echo "$abs" | tr '/' '\n' | wc -l | awk '{print $1 - 1}')
@@ -44,7 +44,7 @@ dirname-parent () {
   return 1
 }
 
-nr-agent () {
+nr-agent() {
   if any-path-exists-parent package.json; then
     if [ -x "$(command -v nr)" ]; then
       nr -- "$@"
@@ -74,12 +74,13 @@ fi
 eval "$(starship init bash)"
 
 # COMMAND SHORTCUTS
-# dev, test, build, start, release, lint, typecheck:
 # Run npm scripts quickly while we are in a directory that has a `package.json`.
 alias dev='nr-agent dev'
-alias test='nr-agent test'
+alias play='nr-agent play'
 alias build='nr-agent build'
 alias start='nr-agent start'
-alias release='nr-agent release'
 alias lint='nr-agent lint'
+alias test='nr-agent test'
 alias typecheck='nr-agent typecheck'
+alias docs='nr-agent docs'
+alias release='nr-agent release'
