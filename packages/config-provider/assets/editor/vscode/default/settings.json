@@ -487,5 +487,8 @@
   },
   "[properties]": {
     "editor.defaultFormatter": "lumirelle.shell-format-rev"
+  },
+  "[shellscript]": {
+    "editor.defaultFormatter": "lumirelle.shell-format-rev"
   }
 }
