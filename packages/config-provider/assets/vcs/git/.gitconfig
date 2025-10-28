@@ -9,7 +9,6 @@ provider = generic
 
 # ----------------------------------- Core ----------------------------------- #
 [core]
-editor = code --wait
 ignorecase = false
 
 [feature]
@@ -58,7 +57,6 @@ rebase = true
 [push]
 autoSetupRemote = true
 default = current
-followtags = true
 
 # ------------------------------------ Log ----------------------------------- #
 [log]
@@ -193,11 +191,11 @@ cherry-pick-abort = cherry-pick --abort
 cherry-pick-continue = cherry-pick --continue
 # tag
 tag-new = "!f() { \
-  if ! (git branch-list-local \"$1\" >/dev/null 2>&1); then \
-    echo \"Error: Branch with the same name as the tag '$1' already exists!\"; \
-    exit 1; \
+  if [ -z \"$2\" ]; then \
+    git tag \"$1\"; \
+  else \
+    git tag --annotate \"$1\" --message \"$2\"; \
   fi; \
-  git tag \"$@\"; \
 }; f"
 tag-list-remote = ls-remote --tags
 tag-delete-local = tag --delete
@@ -206,6 +204,15 @@ tag-delete-remote = "!f() { \
     git push-delete origin \"$1\"; \
   else \
     git push-delete \"$1\" \"$2\"; \
+  fi; \
+}; f"
+tag-delete-localremote = "!f() { \
+  if [ -z \"$2\" ]; then \
+    git tag-delete-local \"$1\"; \
+    git tag-delete-remote \"$1\"; \
+  else \
+    git tag-delete-local \"$2\"; \
+    git tag-delete-remote \"$1\" \"$2\"; \
   fi; \
 }; f"
 
@@ -230,10 +237,17 @@ push-set-upstream = "!f() { \
   current_branch=$(git branch --show-current); \
   git push --set-upstream origin \"$current_branch\"; \
 }; f"
+push-tag = "!f() { \
+  if [ -z \"$2\" ]; then \
+    git push origin tag \"$1\"; \
+  else \
+    git push \"$1\" tag \"$2\"; \
+  fi; \
+}; f"
 push-force = push --force
 push-delete = push --delete
 # pull & push
-pull-then-push = "!git pull && git push"
+pull-then-push = "!git pl && git ps"
 
 # >> Log
 logs = log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit
@@ -329,6 +343,7 @@ tgn = tag-new
 tgs = tag-list-remote
 tgx = tag-delete-local
 tgxre = tag-delete-remote
+tgxbt = tag-delete-localremote
 
 # remote: re
 ren = remote-new
@@ -342,6 +357,7 @@ plup = pull-set-upstream
 # push: ps
 ps = push
 psup = push-set-upstream
+pstg = push-tag
 psf = push-force
 psx = push-delete
 # pull & push: plps
