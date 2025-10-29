@@ -29,6 +29,41 @@ Run the cli and get help info with `--help` flag:
 butler --help
 ```
 
+### Configure System
+
+Command `configure-system` (with alias `cfsys`) helps you to set up system-level configurations.
+
+```sh
+butler configure-system [...options]
+```
+
+See help info for more details:
+
+```sh
+butler configure-system --help
+```
+
+### Configure
+
+Command `configure` (with alias `cf`) helps you to set up local project configurations.
+
+```sh
+butler configure <sourcePattern> <target> [...options]
+```
+
+`sourcePattern` is support both file path and glob pattern.
+
+If `sourcePattern` is a file path (which does not contain `/` character), butler will automatically prefix with `**` in
+order to match files in all sub-directories.
+
+This behavior is designed for better user experience, so that users don't need to type long glob patterns manually.
+
+See help info for more details:
+
+```sh
+butler configure --help
+```
+
 ## Sponsors
 
 <p align="center">

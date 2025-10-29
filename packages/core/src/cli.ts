@@ -39,7 +39,7 @@ cli
   })
 
 cli
-  .command('configure <sourcePattern> <target>', 'Let butler setting up locally, `sourcePattern` is support both file path and glob pattern.')
+  .command('configure <sourcePattern> <target>', 'Let butler provide configuration locally.')
   .alias('cf')
   .option('-f, --force', 'Let butler configure locally and forcibly, will override the existing configuration with the same name')
   .option('-?, --verbose', 'Show verbose output')

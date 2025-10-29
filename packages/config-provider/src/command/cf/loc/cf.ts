@@ -16,7 +16,7 @@ import { validateOptions } from './validate'
  * @param options Configuration and command line options
  */
 export async function configure(sourcePattern: string, target: string, options: Partial<ConfigureOptions>): Promise<void> {
-  consola.debug(`[starship-butler] Configure locally with source: '${sourcePattern}', target: '${target}'`)
+  consola.debug(`[config-provider] Configure locally with source: '${sourcePattern}', target: '${target}'`)
   consola.debug('[config-provider] Configure locally with options:', options)
 
   if (!validateOptions(options)) {
@@ -28,15 +28,19 @@ export async function configure(sourcePattern: string, target: string, options: 
    * Assets folder path
    */
   const assetsPath = path.join(import.meta.dirname, '..', 'assets')
-  consola.debug('[starship-butler] Assets path:', assetsPath)
+  consola.debug('[config-provider] Assets path:', assetsPath)
 
   // Create source glob pattern
-  consola.debug('[starship-butler] Source pattern:', sourcePattern)
+  // If the pattern does not contain folder part, add '**/' prefix to match files in all sub-folders
+  if (!sourcePattern.includes('/')) {
+    sourcePattern = `**/${sourcePattern}`
+  }
+  consola.debug('[config-provider] Source pattern:', sourcePattern)
   const matchedFiles = globSync(sourcePattern, {
     cwd: assetsPath,
     dot: true,
   })
-  consola.debug('[starship-butler] Matched files:', matchedFiles)
+  consola.debug('[config-provider] Matched files:', matchedFiles)
 
   // Get source file
   /**
@@ -49,7 +53,7 @@ export async function configure(sourcePattern: string, target: string, options: 
       options: matchedFiles.map(file => ({ label: file, value: file })),
     })
     if (isCancel(choice)) {
-      consola.info('[starship-butler] Operation cancelled by the user.')
+      consola.info('Operation cancelled by the user.')
       process.exit(0)
     }
     sourceFile = choice as string
@@ -62,11 +66,11 @@ export async function configure(sourcePattern: string, target: string, options: 
     return
   }
 
-  consola.debug('[starship-butler] Selected source file:', sourceFile)
+  consola.debug('[config-provider] Selected source file:', sourceFile)
 
   // Infer target file path and ensure target folder exists
   const cwd = process.cwd()
-  consola.debug('[starship-butler] Current working directory:', cwd)
+  consola.debug('[config-provider] Current working directory:', cwd)
   let targetFile: string | undefined
   if (fs.isDirectory(target)) {
     fs.ensureDir(target)
@@ -76,7 +80,7 @@ export async function configure(sourcePattern: string, target: string, options: 
     fs.ensureDir(path.dirname(target))
     targetFile = path.join(cwd, target)
   }
-  consola.debug('[starship-butler] Target file path:', targetFile)
+  consola.debug('[config-provider] Target file path:', targetFile)
 
   processConfig(sourceFile, targetFile, options)
 }

@@ -35,6 +35,7 @@
     "start": "tsx src/index.ts"
   },
   "dependencies": {
+    "@antfu/utils": "catalog:shared/prod",
     "@clack/prompts": "catalog:config-provider/prod",
     "c12": "catalog:shared/prod",
     "consola": "catalog:shared/prod",
@@ -43,7 +44,6 @@
     "tinyglobby": "catalog:config-provider/prod"
   },
   "devDependencies": {
-    "@antfu/utils": "catalog:dev",
     "tinyexec": "catalog:dev",
     "vue": "catalog:docs"
   }

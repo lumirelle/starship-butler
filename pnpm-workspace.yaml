@@ -14,7 +14,6 @@ catalogs:
   dev:
     '@antfu/eslint-config': ^6.0.0
     '@antfu/ni': ^27.0.0
-    '@antfu/utils': ^9.3.0
     '@lumirelle/stylelint-config': ^1.0.0
     '@types/node': ^24.9.1
     bumpp: ^10.3.1
@@ -45,6 +44,7 @@ catalogs:
     vitepress-plugin-group-icons: ^1.6.5
     vue: ^3.5.22
   shared/prod:
+    '@antfu/utils': ^9.3.0
     c12: ^3.3.1
     consola: ^3.4.2
   utils/prod:
