@@ -21,12 +21,15 @@
     "bierner.markdown-yaml-preamble", // <NOT OPENVSX>
 
     /* -------------------------------- Behavior -------------------------------- */
+    // Classic Behavior
+    "yutengjing.vscode-classic-experience", // Cursor only
     // Status Bar
     "antfu.where-am-i",
     "tomoki1207.selectline-statusbar", // <NOT OPENVSX>
     "mkxml.vscode-filesize",
     "johnpapa.read-time", // <NOT OPENVSX>
     "dirsouza.reload-editor", // <NOT OPENVSX>
+    "tombonnike.vscode-status-bar-format-toggle",
     // Main Bar
     "zjffun.snippetsmanager", // <NOT OPENVSX>
     // Explorer
@@ -64,8 +67,8 @@
     // Dev Container
     "ms-azuretools.vscode-containers",
     // AI
-    "github.copilot",
-    "github.copilot-chat",
+    "github.copilot", // VSCode only
+    "github.copilot-chat", // VSCode only
 
     /* ----------------------------------- LSP ---------------------------------- */
     "yzhang.markdown-all-in-one",
@@ -87,6 +90,6 @@
     "antfu.file-nesting"
   ]
   // EXTENSION COUNT
-  // >> VSCode: INDEX + 1 = 57
-  // >> Cursor: INDEX - 1 = 55
+  // >> VSCode: INDEX = 58
+  // >> Cursor: INDEX - 1 = 57
 }

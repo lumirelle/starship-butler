@@ -1,10 +1,5 @@
 [
   /* --------------------------- Workbench Disables --------------------------- */
-  // Quick Open
-  {
-    "key": "ctrl+p",
-    "command": "-workbench.action.quickOpen"
-  },
   // Editor
   {
     "key": "ctrl+m",
@@ -26,12 +21,6 @@
     "key": "ctrl+i",
     "command": "-emojisense.quickEmoji",
     "when": "editorTextFocus"
-  },
-  // Markdown
-  {
-    "key": "ctrl+m",
-    "command": "-markdown.extension.editing.toggleMath",
-    "when": "editorTextFocus && !editorReadonly && editorLangId =~ /^markdown$|^rmd$|^quarto$/"
   },
 
   /* --------------------------- Custom Keybindings --------------------------- */
