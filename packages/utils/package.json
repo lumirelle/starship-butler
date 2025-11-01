@@ -36,7 +36,6 @@
   "dependencies": {
     "ansis": "catalog:prod",
     "consola": "catalog:prod",
-    "pathe": "catalog:prod",
     "rc9": "catalog:prod"
   }
 }

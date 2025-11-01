@@ -299,9 +299,6 @@ importers:
       consola:
         specifier: catalog:prod
         version: 3.4.2
-      pathe:
-        specifier: catalog:prod
-        version: 2.0.3
       rc9:
         specifier: catalog:prod
         version: 2.1.2
