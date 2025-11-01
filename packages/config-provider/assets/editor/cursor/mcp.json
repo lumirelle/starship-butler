@@ -1,0 +1,16 @@
+{
+  "mcpServers": {
+    "upstash/context7": {
+      "url": "https://mcp.context7.com/mcp",
+      "headers": {
+        "CONTEXT7_API_KEY": "YOUR_API_KEY"
+      }
+    },
+    "github/github-mcp-server": {
+      "url": "https://api.githubcopilot.com/mcp/"
+    },
+    "antfu/nuxt-mcp": {
+      "url": "https://mcp.nuxt.com/sse"
+    }
+  }
+}

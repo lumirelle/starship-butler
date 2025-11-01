@@ -384,6 +384,7 @@ export const PRESET_ACTIONS: Action[] = [
       const handlerOperations = [
         { source: join('editor', 'vscode', 'default', 'keybindings.json'), target: join(targetFolder, 'keybindings.json') },
         { source: join('editor', 'vscode', 'default', 'settings.json'), target: join(targetFolder, 'settings.json') },
+        { source: join('editor', 'cursor', 'mcp.json'), target: join(homedir(), '.cursor', 'mcp.json') },
         { source: join('editor', 'vscode', 'default', 'global.code-snippets'), target: join(targetFolder, 'snippets', 'global.code-snippets') },
         { source: join('editor', 'vscode', 'default', 'comment.code-snippets'), target: join(targetFolder, 'snippets', 'comment.code-snippets') },
       ]
