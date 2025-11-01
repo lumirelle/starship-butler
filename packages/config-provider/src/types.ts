@@ -1,5 +1,5 @@
-import type { ConfigureOptions } from './command/cf/loc/types'
-import type { ConfigureSystemOptions } from './command/cf/sys/types'
+import type { ConfigureSystemOptions } from './command/configure-system/types'
+import type { ConfigureOptions } from './command/configure/types'
 
 export interface ProcessConfigOptions {
   /**

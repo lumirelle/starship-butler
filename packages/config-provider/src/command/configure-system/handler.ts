@@ -41,7 +41,7 @@ export function checkTargetExist(target: Arrayable<string>, customMessage?: stri
   }
   const isTargetExist = target.every(t => fs.existsSync(t))
   if (!isTargetExist) {
-    consola.warn(customMessage ?? `Target ${target.join(',')} is not exist, please check your configuration!`)
+    consola.warn(customMessage ?? `Target ${target.join(', ')} ${target.length > 1 ? 'are' : 'is'} not exist, please check your configuration!`)
   }
   return isTargetExist
 }

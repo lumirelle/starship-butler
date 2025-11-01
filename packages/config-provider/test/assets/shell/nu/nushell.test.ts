@@ -1,8 +1,8 @@
 import { x } from 'tinyexec'
 import { assert, describe, it } from 'vitest'
 
-describe('assets/shell/nu', () => {
-  it('utils', async () => {
+describe('nushell profile tests', () => {
+  it('should pass', async () => {
     const proc = x('nu', ['./test.nu', '--silent'], {
       nodeOptions: {
         cwd: import.meta.dirname,

@@ -1,5 +1,5 @@
 #!/usr/bin/env nu
-use '../../../assets/shell/nu/utils.nu'
+use '../../../../assets/shell/nu/utils.nu'
 
 def main [--silent] {
   mut total_tests = 0

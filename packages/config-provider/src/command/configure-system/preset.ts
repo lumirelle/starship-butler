@@ -3,7 +3,7 @@ import { homedir } from 'node:os'
 import process from 'node:process'
 import consola from 'consola'
 import { join } from 'pathe'
-import { processConfig } from '../config'
+import { processConfig } from '../../utils/config'
 import { checkPlatformSupport, checkTargetExist, ensureTargetFolderExist } from './handler'
 
 /**

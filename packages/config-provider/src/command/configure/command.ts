@@ -5,7 +5,7 @@ import consola from 'consola'
 import path from 'pathe'
 import { fs } from 'starship-butler-utils'
 import { globSync } from 'tinyglobby'
-import { processConfig } from '../config'
+import { processConfig } from '../../utils/config'
 import { validateOptions } from './validate'
 
 /**

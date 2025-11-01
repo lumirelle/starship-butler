@@ -1,8 +1,8 @@
 import { x } from 'tinyexec'
 import { assert, describe, it } from 'vitest'
 
-describe('assets/shell/bash', () => {
-  it('bash', async () => {
+describe('bash profile tests', () => {
+  it('should pass', async () => {
     const proc = x('bash', ['./test.sh', '--silent'], {
       nodeOptions: {
         cwd: import.meta.dirname,

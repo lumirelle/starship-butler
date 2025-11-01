@@ -1,8 +1,8 @@
 import { describe, expect, it } from 'vitest'
-import { stringify } from './utils'
+import { stringify } from '../src/stringify'
 
-describe('should', () => {
-  it('stringify function correctly', () => {
+describe('stringify', () => {
+  it('should work with object containing functions correctly', () => {
     expect(stringify({
       testFn: () => {
         // eslint-disable-next-line no-console

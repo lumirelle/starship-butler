@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-source ../../../assets/shell/bash/.bash_profile > /dev/null 2>&1
+source ../../../../assets/shell/bash/.bash_profile >/dev/null 2>&1
 
 total_tests=0
 passed_tests=0

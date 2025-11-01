@@ -1,12 +1,12 @@
-import type { ButlerConfig } from '../../src/config'
+import type { ButlerConfig } from '../src/config'
+import { stringify } from 'starship-butler-utils'
 import { describe, expect, it } from 'vitest'
-import { loadConfig, mergeOptions } from '../../src/config'
-import { stringify } from '../utils'
+import { loadConfig, mergeOptions } from '../src/config'
 import rawJSONConfig from './.butlerrc.json'
 import rawTSConfig from './butler.config'
 
-describe('merge options', () => {
-  it('merge options correctly for JSON config', async () => {
+describe('options', () => {
+  it('merge with JSON config correctly', async () => {
     const config = await loadConfig({
       configFile: './.butlerrc.json',
       cwd: import.meta.dirname,
@@ -27,7 +27,7 @@ describe('merge options', () => {
     expect(stringify(mergedOptions)).toEqual(stringify(expectedOptions))
   })
 
-  it('merge options correctly for TS config', async () => {
+  it('merge with TS config correctly', async () => {
     const config = await loadConfig({
       configFile: './butler.config.ts',
       cwd: import.meta.dirname,

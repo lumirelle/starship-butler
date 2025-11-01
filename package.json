@@ -22,6 +22,7 @@
     "@antfu/ni": "catalog:dev",
     "@lumirelle/stylelint-config": "catalog:dev",
     "@types/node": "catalog:dev",
+    "@vitest/coverage-v8": "catalog:dev",
     "bumpp": "catalog:dev",
     "czg": "catalog:dev",
     "eslint": "catalog:dev",
