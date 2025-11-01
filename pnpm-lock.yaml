@@ -121,6 +121,9 @@ catalogs:
     consola:
       specifier: ^3.4.2
       version: 3.4.2
+    pathe:
+      specifier: ^1.1.2
+      version: 1.1.2
   utils/prod:
     ansis:
       specifier: ^4.2.0
@@ -241,6 +244,9 @@ importers:
       consola:
         specifier: catalog:shared/prod
         version: 3.4.2
+      pathe:
+        specifier: catalog:shared/prod
+        version: 1.1.2
       starship-butler-types:
         specifier: workspace:*
         version: link:../types
@@ -296,6 +302,9 @@ importers:
       consola:
         specifier: catalog:shared/prod
         version: 3.4.2
+      pathe:
+        specifier: catalog:shared/prod
+        version: 1.1.2
       rc9:
         specifier: catalog:utils/prod
         version: 2.1.2
@@ -2763,6 +2772,9 @@ packages:
   path-type@4.0.0:
     resolution: {integrity: sha512-gDKb8aZMDeD/tZWs9P6+q0J9Mwkdl6xMV8TjnGP3qJVJ06bdMgkbBlLU8IdfOsIsFz2BW1rNVT3XuNEl8zPAvw==}
     engines: {node: '>=8'}
+
+  pathe@1.1.2:
+    resolution: {integrity: sha512-whLdWMYL2TwI08hn8/ZqAbrVemu0LNaNNJZX73O6qaIdCTfXutsLhMkjdENX0qhsQ9uIimo4/aQOmXkoon2nDQ==}
 
   pathe@2.0.3:
     resolution: {integrity: sha512-WUjGcAqP1gQacoQe+OBJsFA7Ld4DyXuUIjZ5cc75cLHvJ7dtNsTugphxIADwspS+AraAUePCKrSVtPLFj/F88w==}
@@ -6327,6 +6339,8 @@ snapshots:
   path-key@3.1.1: {}
 
   path-type@4.0.0: {}
+
+  pathe@1.1.2: {}
 
   pathe@2.0.3: {}
 

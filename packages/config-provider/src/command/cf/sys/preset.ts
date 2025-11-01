@@ -1,8 +1,8 @@
 import type { Action, TargetMap } from './types'
 import { homedir } from 'node:os'
-import { join } from 'node:path'
 import process from 'node:process'
 import consola from 'consola'
+import { join } from 'pathe'
 import { processConfig } from '../config'
 import { checkPlatformSupport, checkTargetExist, ensureTargetFolderExist } from './handler'
 

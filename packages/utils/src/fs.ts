@@ -1,6 +1,6 @@
 import { constants, copyFileSync, promises as fsPromises, lstatSync, mkdirSync, renameSync, unlinkSync } from 'node:fs'
-import { dirname } from 'node:path'
 import consola from 'consola'
+import { dirname } from 'pathe'
 import { highlight } from './highlight'
 
 /* ----------------------------- Basic Operations ---------------------------- */

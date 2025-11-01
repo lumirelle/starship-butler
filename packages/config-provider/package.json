@@ -39,6 +39,7 @@
     "@clack/prompts": "catalog:config-provider/prod",
     "c12": "catalog:shared/prod",
     "consola": "catalog:shared/prod",
+    "pathe": "catalog:shared/prod",
     "starship-butler-types": "workspace:*",
     "starship-butler-utils": "workspace:*",
     "tinyglobby": "catalog:config-provider/prod"
