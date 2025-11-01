@@ -1,6 +1,5 @@
 import { constants, copyFileSync, promises as fsPromises, lstatSync, mkdirSync, renameSync, unlinkSync } from 'node:fs'
 import consola from 'consola'
-import { dirname } from 'pathe'
 import { highlight } from './highlight'
 
 /* ----------------------------- Basic Operations ---------------------------- */
@@ -36,15 +35,10 @@ export function isDirectory(path: string): boolean {
 
 /**
  * Ensure a directory exists.
- * If the path is not a directory, we will try to create it.
- * If the path is a file, we will create the parent directory.
  * @param dirPath - The path to ensure
  * @returns `true` if the directory is created, `false` otherwise
  */
 export function ensureDir(dirPath: string): boolean {
-  if (!isDirectory(dirPath)) {
-    dirPath = dirname(dirPath)
-  }
   if (!existsSync(dirPath)) {
     mkdirSync(dirPath, { recursive: true })
     return true
