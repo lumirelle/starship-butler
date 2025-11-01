@@ -34,9 +34,9 @@
     "start": "tsx src/index.ts"
   },
   "dependencies": {
-    "ansis": "catalog:utils/prod",
-    "consola": "catalog:shared/prod",
-    "pathe": "catalog:shared/prod",
-    "rc9": "catalog:utils/prod"
+    "ansis": "catalog:prod",
+    "consola": "catalog:prod",
+    "pathe": "catalog:prod",
+    "rc9": "catalog:prod"
   }
 }

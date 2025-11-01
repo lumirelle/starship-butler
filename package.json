@@ -21,7 +21,7 @@
     "@antfu/eslint-config": "catalog:dev",
     "@antfu/ni": "catalog:dev",
     "@lumirelle/stylelint-config": "catalog:dev",
-    "@types/node": "catalog:dev",
+    "@types/node": "catalog:types",
     "@vitest/coverage-v8": "catalog:dev",
     "bumpp": "catalog:dev",
     "czg": "catalog:dev",
@@ -35,7 +35,6 @@
     "tsdown": "catalog:dev",
     "tsx": "catalog:dev",
     "typescript": "catalog:dev",
-    "vite": "catalog:dev",
     "vitest": "catalog:dev"
   },
   "simple-git-hooks": {

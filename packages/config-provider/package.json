@@ -35,17 +35,16 @@
     "start": "tsx src/index.ts"
   },
   "dependencies": {
-    "@antfu/utils": "catalog:shared/prod",
-    "@clack/prompts": "catalog:config-provider/prod",
-    "c12": "catalog:shared/prod",
-    "consola": "catalog:shared/prod",
-    "pathe": "catalog:shared/prod",
+    "@clack/prompts": "catalog:prod",
+    "c12": "catalog:prod",
+    "consola": "catalog:prod",
+    "pathe": "catalog:prod",
     "starship-butler-types": "workspace:*",
     "starship-butler-utils": "workspace:*",
-    "tinyglobby": "catalog:config-provider/prod"
+    "tinyglobby": "catalog:prod"
   },
   "devDependencies": {
-    "tinyexec": "catalog:dev",
-    "vue": "catalog:docs"
+    "@antfu/utils": "catalog:inlined",
+    "tinyexec": "catalog:testing"
   }
 }

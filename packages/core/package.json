@@ -37,15 +37,15 @@
     "start": "tsx src/cli.ts"
   },
   "dependencies": {
-    "c12": "catalog:shared/prod",
-    "cac": "catalog:core/prod",
-    "consola": "catalog:shared/prod",
-    "defu": "catalog:core/prod",
+    "c12": "catalog:prod",
+    "cac": "catalog:prod",
+    "consola": "catalog:prod",
+    "defu": "catalog:prod",
     "starship-butler-config-provider": "workspace:*",
     "starship-butler-types": "workspace:*",
     "starship-butler-utils": "workspace:*"
   },
   "devDependencies": {
-    "tinyexec": "catalog:dev"
+    "tinyexec": "catalog:testing"
   }
 }

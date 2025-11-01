@@ -5,20 +5,6 @@ settings:
   excludeLinksFromLockfile: false
 
 catalogs:
-  config-provider/prod:
-    '@clack/prompts':
-      specifier: ^0.11.0
-      version: 0.11.0
-    tinyglobby:
-      specifier: ^0.2.15
-      version: 0.2.15
-  core/prod:
-    cac:
-      specifier: ^6.7.14
-      version: 6.7.14
-    defu:
-      specifier: ^6.1.4
-      version: 6.1.4
   dev:
     '@antfu/eslint-config':
       specifier: ^6.2.0
@@ -27,11 +13,8 @@ catalogs:
       specifier: ^27.0.1
       version: 27.0.1
     '@lumirelle/stylelint-config':
-      specifier: ^1.0.1
-      version: 1.0.1
-    '@types/node':
-      specifier: ^24.9.2
-      version: 24.9.2
+      specifier: ^1.0.4
+      version: 1.0.4
     '@vitest/coverage-v8':
       specifier: ^4.0.6
       version: 4.0.6
@@ -59,9 +42,6 @@ catalogs:
     taze:
       specifier: ^19.9.0
       version: 19.9.0
-    tinyexec:
-      specifier: ^1.0.1
-      version: 1.0.1
     tsdown:
       specifier: ^0.15.12
       version: 0.15.12
@@ -71,9 +51,6 @@ catalogs:
     typescript:
       specifier: ^5.9.3
       version: 5.9.3
-    vite:
-      specifier: ^7.1.12
-      version: 7.1.12
     vitest:
       specifier: ^4.0.6
       version: 4.0.6
@@ -114,26 +91,46 @@ catalogs:
     vue:
       specifier: ^3.5.22
       version: 3.5.22
-  shared/prod:
+  inlined:
     '@antfu/utils':
       specifier: ^9.3.0
       version: 9.3.0
-    c12:
-      specifier: ^3.3.1
-      version: 3.3.1
-    consola:
-      specifier: ^3.4.2
-      version: 3.4.2
-    pathe:
-      specifier: ^2.0.3
-      version: 2.0.3
-  utils/prod:
+  prod:
+    '@clack/prompts':
+      specifier: ^0.11.0
+      version: 0.11.0
     ansis:
       specifier: ^4.2.0
       version: 4.2.0
+    c12:
+      specifier: ^3.3.1
+      version: 3.3.1
+    cac:
+      specifier: ^6.7.14
+      version: 6.7.14
+    consola:
+      specifier: ^3.4.2
+      version: 3.4.2
+    defu:
+      specifier: ^6.1.4
+      version: 6.1.4
+    pathe:
+      specifier: ^2.0.3
+      version: 2.0.3
     rc9:
       specifier: ^2.1.2
       version: 2.1.2
+    tinyglobby:
+      specifier: ^0.2.15
+      version: 0.2.15
+  testing:
+    tinyexec:
+      specifier: ^1.0.1
+      version: 1.0.1
+  types:
+    '@types/node':
+      specifier: ^24.9.2
+      version: 24.9.2
 
 importers:
 
@@ -147,9 +144,9 @@ importers:
         version: 27.0.1
       '@lumirelle/stylelint-config':
         specifier: catalog:dev
-        version: 1.0.1(postcss-html@1.8.0)(postcss@8.5.6)(prettier@3.6.2)(stylelint-order@7.0.0(stylelint@16.25.0(typescript@5.9.3)))(stylelint@16.25.0(typescript@5.9.3))
+        version: 1.0.4(postcss-html@1.8.0)(postcss@8.5.6)(prettier@3.6.2)(stylelint-order@7.0.0(stylelint@16.25.0(typescript@5.9.3)))(stylelint@16.25.0(typescript@5.9.3))
       '@types/node':
-        specifier: catalog:dev
+        specifier: catalog:types
         version: 24.9.2
       '@vitest/coverage-v8':
         specifier: catalog:dev
@@ -190,9 +187,6 @@ importers:
       typescript:
         specifier: catalog:dev
         version: 5.9.3
-      vite:
-        specifier: catalog:dev
-        version: 7.1.12(@types/node@24.9.2)(jiti@2.6.1)(tsx@4.20.6)(yaml@2.8.1)
       vitest:
         specifier: catalog:dev
         version: 4.0.6(@types/debug@4.1.12)(@types/node@24.9.2)(jiti@2.6.1)(tsx@4.20.6)(yaml@2.8.1)
@@ -238,20 +232,17 @@ importers:
 
   packages/config-provider:
     dependencies:
-      '@antfu/utils':
-        specifier: catalog:shared/prod
-        version: 9.3.0
       '@clack/prompts':
-        specifier: catalog:config-provider/prod
+        specifier: catalog:prod
         version: 0.11.0
       c12:
-        specifier: catalog:shared/prod
+        specifier: catalog:prod
         version: 3.3.1(magicast@0.3.5)
       consola:
-        specifier: catalog:shared/prod
+        specifier: catalog:prod
         version: 3.4.2
       pathe:
-        specifier: catalog:shared/prod
+        specifier: catalog:prod
         version: 2.0.3
       starship-butler-types:
         specifier: workspace:*
@@ -260,29 +251,29 @@ importers:
         specifier: workspace:*
         version: link:../utils
       tinyglobby:
-        specifier: catalog:config-provider/prod
+        specifier: catalog:prod
         version: 0.2.15
     devDependencies:
+      '@antfu/utils':
+        specifier: catalog:inlined
+        version: 9.3.0
       tinyexec:
-        specifier: catalog:dev
+        specifier: catalog:testing
         version: 1.0.1
-      vue:
-        specifier: catalog:docs
-        version: 3.5.22(typescript@5.9.3)
 
   packages/core:
     dependencies:
       c12:
-        specifier: catalog:shared/prod
+        specifier: catalog:prod
         version: 3.3.1(magicast@0.3.5)
       cac:
-        specifier: catalog:core/prod
+        specifier: catalog:prod
         version: 6.7.14
       consola:
-        specifier: catalog:shared/prod
+        specifier: catalog:prod
         version: 3.4.2
       defu:
-        specifier: catalog:core/prod
+        specifier: catalog:prod
         version: 6.1.4
       starship-butler-config-provider:
         specifier: workspace:*
@@ -295,7 +286,7 @@ importers:
         version: link:../utils
     devDependencies:
       tinyexec:
-        specifier: catalog:dev
+        specifier: catalog:testing
         version: 1.0.1
 
   packages/types: {}
@@ -303,16 +294,16 @@ importers:
   packages/utils:
     dependencies:
       ansis:
-        specifier: catalog:utils/prod
+        specifier: catalog:prod
         version: 4.2.0
       consola:
-        specifier: catalog:shared/prod
+        specifier: catalog:prod
         version: 3.4.2
       pathe:
-        specifier: catalog:shared/prod
+        specifier: catalog:prod
         version: 2.0.3
       rc9:
-        specifier: catalog:utils/prod
+        specifier: catalog:prod
         version: 2.1.2
 
 packages:
@@ -790,8 +781,8 @@ packages:
   '@lumirelle/defu@1.0.2':
     resolution: {integrity: sha512-AVyvArqRL9Vf/B8ta5nwQ/SinLRaKMMZ7jOVbEmTh1Ed1NcUFKcY2IFQsBGXFo8BeawcUfB5gO4sQfmMmZ/yKA==}
 
-  '@lumirelle/stylelint-config@1.0.1':
-    resolution: {integrity: sha512-kAmGP+bI+xpD1MWELHDdgyLv31xGF4wh4hffrSUXMyBJV7Q+SLEQMh/apbWld2bCNZW//DbjNyE+zEUQEoTHcQ==}
+  '@lumirelle/stylelint-config@1.0.4':
+    resolution: {integrity: sha512-RpWotYTHYHvo7cPJb86egBRB+vN0IKeUWzN0x2ugUYrrTkFYzm1vC6LBd5WQ7WbmZjWQeFZ85DaqRzL16dbWrQ==}
     peerDependencies:
       stylelint: '>=16.0.0'
 
@@ -4078,12 +4069,13 @@ snapshots:
 
   '@lumirelle/defu@1.0.2': {}
 
-  '@lumirelle/stylelint-config@1.0.1(postcss-html@1.8.0)(postcss@8.5.6)(prettier@3.6.2)(stylelint-order@7.0.0(stylelint@16.25.0(typescript@5.9.3)))(stylelint@16.25.0(typescript@5.9.3))':
+  '@lumirelle/stylelint-config@1.0.4(postcss-html@1.8.0)(postcss@8.5.6)(prettier@3.6.2)(stylelint-order@7.0.0(stylelint@16.25.0(typescript@5.9.3)))(stylelint@16.25.0(typescript@5.9.3))':
     dependencies:
       '@lumirelle/defu': 1.0.2
       '@stylistic/stylelint-config': 3.0.1(stylelint@16.25.0(typescript@5.9.3))
       local-pkg: 1.1.2
       stylelint: 16.25.0(typescript@5.9.3)
+      stylelint-config-html: 1.1.0(postcss-html@1.8.0)(stylelint@16.25.0(typescript@5.9.3))
       stylelint-config-recess-order: 7.4.0(stylelint-order@7.0.0(stylelint@16.25.0(typescript@5.9.3)))(stylelint@16.25.0(typescript@5.9.3))
       stylelint-config-standard: 39.0.1(stylelint@16.25.0(typescript@5.9.3))
       stylelint-config-standard-scss: 16.0.0(postcss@8.5.6)(stylelint@16.25.0(typescript@5.9.3))

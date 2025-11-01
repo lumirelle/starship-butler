@@ -5,17 +5,10 @@ packages:
   - examples/*
 
 catalogs:
-  config-provider/prod:
-    '@clack/prompts': ^0.11.0
-    tinyglobby: ^0.2.15
-  core/prod:
-    cac: ^6.7.14
-    defu: ^6.1.4
   dev:
     '@antfu/eslint-config': ^6.2.0
     '@antfu/ni': ^27.0.1
-    '@lumirelle/stylelint-config': ^1.0.1
-    '@types/node': ^24.9.2
+    '@lumirelle/stylelint-config': ^1.0.4
     '@vitest/coverage-v8': ^4.0.6
     bumpp: ^10.3.1
     czg: ^1.12.0
@@ -25,11 +18,9 @@ catalogs:
     simple-git-hooks: ^2.13.1
     stylelint: ^16.25.0
     taze: ^19.9.0
-    tinyexec: ^1.0.1
     tsdown: ^0.15.12
     tsx: ^4.20.6
     typescript: ^5.9.3
-    vite: ^7.1.12
     vitest: ^4.0.6
   docs:
     '@iconify-json/svg-spinners': ^1.2.4
@@ -44,14 +35,22 @@ catalogs:
     vitepress: ^2.0.0-alpha.12
     vitepress-plugin-group-icons: ^1.6.5
     vue: ^3.5.22
-  shared/prod:
+  inlined:
     '@antfu/utils': ^9.3.0
-    c12: ^3.3.1
-    consola: ^3.4.2
-    pathe: ^2.0.3
-  utils/prod:
+  prod:
+    '@clack/prompts': ^0.11.0
     ansis: ^4.2.0
+    c12: ^3.3.1
+    cac: ^6.7.14
+    consola: ^3.4.2
+    defu: ^6.1.4
+    pathe: ^2.0.3
     rc9: ^2.1.2
+    tinyglobby: ^0.2.15
+  testing:
+    tinyexec: ^1.0.1
+  types:
+    '@types/node': ^24.9.2
 
 ignoreWorkspaceRootCheck: true
 
