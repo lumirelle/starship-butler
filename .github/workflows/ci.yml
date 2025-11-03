@@ -51,7 +51,7 @@ jobs:
       - run: pnpm i -g @antfu/ni nushell
       - run: nci
       - run: nr build
-      - run: nr test --coverage
+      - run: nr test run --coverage
       - uses: codecov/codecov-action@v5
         with:
           token: ${{ secrets.CODECOV_TOKEN }}
