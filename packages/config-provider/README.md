@@ -25,15 +25,15 @@ Provide the configuring ability for starship butler.
 
 <!-- Badges -->
 
-[npm-version-src]: https://img.shields.io/npm/v/starship-butler-config-provider?style=flat&colorA=080f12&colorB=1fa669
+[npm-version-src]: https://img.shields.io/npm/v/starship-butler-config-provider?style=flat&colorA=18181B&colorB=F0DB4F
 [npm-version-href]: https://npmjs.com/package/starship-butler-config-provider
-[npm-downloads-src]: https://img.shields.io/npm/dm/starship-butler-config-provider?style=flat&colorA=080f12&colorB=1fa669
+[npm-downloads-src]: https://img.shields.io/npm/dm/starship-butler-config-provider?style=flat&colorA=18181B&colorB=F0DB4F
 [npm-downloads-href]: https://npmjs.com/package/starship-butler-config-provider
-[bundle-src]: https://img.shields.io/bundlephobia/minzip/starship-butler-config-provider?style=flat&colorA=080f12&colorB=1fa669&label=minzip
+[bundle-src]: https://img.shields.io/bundlephobia/minzip/starship-butler-config-provider?style=flat&colorA=18181B&colorB=F0DB4F&label=minzip
 [bundle-href]: https://bundlephobia.com/result?p=starship-butler-config-provider
-[jsdocs-src]: https://img.shields.io/badge/jsdocs-reference-080f12?style=flat&colorA=080f12&colorB=1fa669
+[jsdocs-src]: https://img.shields.io/badge/jsdocs-reference-080f12?style=flat&colorA=18181B&colorB=F0DB4F
 [jsdocs-href]: https://www.jsdocs.io/package/starship-butler-config-provider
 [codecov-src]: https://img.shields.io/codecov/c/gh/lumirelle/starship-butler/main?style=flat&colorA=18181B&colorB=F0DB4F
 [codecov-href]: https://codecov.io/gh/lumirelle/starship-butler
-[license-src]: https://img.shields.io/github/license/lumirelle/starship-butler.svg?style=flat&colorA=080f12&colorB=1fa669
+[license-src]: https://img.shields.io/github/license/lumirelle/starship-butler.svg?style=flat&colorA=18181B&colorB=F0DB4F
 [license-href]: https://github.com/lumirelle/starship-butler/blob/main/LICENSE
