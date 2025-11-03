@@ -7,7 +7,7 @@
 [![Codecov][codecov-src]][codecov-href]
 [![License][license-src]][license-href]
 
-Utils of starship butler.
+Utils used by [starship butler](https://github.com/lumirelle/starship-butler).
 
 ## Sponsors
 

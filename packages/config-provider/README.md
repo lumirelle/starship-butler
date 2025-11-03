@@ -7,9 +7,9 @@
 [![Codecov][codecov-src]][codecov-href]
 [![License][license-src]][license-href]
 
-Config provider of starship butler.
+Config provider of [starship butler](https://github.com/lumirelle/starship-butler).
 
-Provide the configuring ability for starship butler.
+Provide the configuring ability for the butler.
 
 ## Sponsors
 

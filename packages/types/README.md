@@ -7,7 +7,7 @@
 [![Codecov][codecov-src]][codecov-href]
 [![License][license-src]][license-href]
 
-Types shared by starship butler.
+Types shared by [starship butler](https://github.com/lumirelle/starship-butler).
 
 ## Sponsors
 

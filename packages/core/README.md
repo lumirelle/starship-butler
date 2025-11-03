@@ -7,7 +7,11 @@
 [![Codecov][codecov-src]][codecov-href]
 [![License][license-src]][license-href]
 
-Your best starship butler. 😃
+> [!NOTE]
+>
+> This is an "opinionated" "butler", so that it's not suitable for everyone.
+
+Your best butler, helping you manage the whole development "starship". 😃
 
 ## Features
 

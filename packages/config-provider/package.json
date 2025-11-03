@@ -2,7 +2,7 @@
   "name": "starship-butler-config-provider",
   "type": "module",
   "version": "0.3.6",
-  "description": "Your best starship butler.",
+  "description": "Config provider of starship butler.",
   "author": "Lumirelle <shabbyacc@outlook.com>",
   "license": "MIT",
   "funding": "https://github.com/sponsors/lumirelle",

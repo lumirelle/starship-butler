@@ -2,7 +2,7 @@
   "name": "starship-butler",
   "type": "module",
   "version": "0.3.6",
-  "description": "Your best starship butler.",
+  "description": "Your best butler, helping you manage the whole development \"starship\". 😃",
   "author": "Lumirelle <shabbyacc@outlook.com>",
   "license": "MIT",
   "funding": "https://github.com/sponsors/lumirelle",
