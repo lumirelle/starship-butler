@@ -9,20 +9,19 @@
     "lint": "eslint --cache . && stylelint --cache **/*.{css,postcss,scss,sass,less,html,vue}",
     "docs": "nr -C docs docs:dev",
     "docs:build": "nr -C docs docs:build",
-    "prerelease": "nr test:run && nr typecheck",
-    "release": "nr prerelease && bumpp -r && na -r publish",
+    "prelease": "nr test run && nr typecheck",
+    "release": "nr prelease && bumpp -r && na -r publish",
     "test": "vitest",
-    "test:run": "vitest run",
     "typecheck": "tsc --noEmit",
     "prepare": "simple-git-hooks",
-    "start": "cd ./packages/core && nr start"
+    "start": "nr -C core start"
   },
   "devDependencies": {
     "@antfu/eslint-config": "catalog:dev",
     "@antfu/ni": "catalog:dev",
     "@lumirelle/stylelint-config": "catalog:dev",
     "@types/node": "catalog:types",
-    "@vitest/coverage-v8": "catalog:dev",
+    "@vitest/coverage-v8": "catalog:testing",
     "bumpp": "catalog:dev",
     "czg": "catalog:dev",
     "eslint": "catalog:dev",
@@ -35,7 +34,7 @@
     "tsdown": "catalog:dev",
     "tsx": "catalog:dev",
     "typescript": "catalog:dev",
-    "vitest": "catalog:dev"
+    "vitest": "catalog:testing"
   },
   "simple-git-hooks": {
     "pre-commit": "na exec lint-staged"

@@ -9,7 +9,6 @@ catalogs:
     '@antfu/eslint-config': ^6.2.0
     '@antfu/ni': ^27.0.1
     '@lumirelle/stylelint-config': ^1.0.4
-    '@vitest/coverage-v8': ^4.0.6
     bumpp: ^10.3.1
     czg: ^1.12.0
     eslint: ^9.39.0
@@ -21,7 +20,6 @@ catalogs:
     tsdown: ^0.15.12
     tsx: ^4.20.6
     typescript: ^5.9.3
-    vitest: ^4.0.6
   docs:
     '@iconify-json/svg-spinners': ^1.2.4
     '@shikijs/vitepress-twoslash': ^3.14.0
@@ -48,7 +46,9 @@ catalogs:
     rc9: ^2.1.2
     tinyglobby: ^0.2.15
   testing:
+    '@vitest/coverage-v8': ^4.0.6
     tinyexec: ^1.0.1
+    vitest: ^4.0.6
   types:
     '@types/node': ^24.9.2
 
