@@ -14,7 +14,7 @@
     "test": "vitest",
     "typecheck": "tsc --noEmit",
     "prepare": "simple-git-hooks",
-    "start": "nr -C core start"
+    "start": "nr -C packages/core start"
   },
   "devDependencies": {
     "@antfu/eslint-config": "catalog:dev",
