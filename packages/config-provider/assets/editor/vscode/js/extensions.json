@@ -19,7 +19,6 @@
     "johnsoncodehk.vscode-tsconfig-helper", // <NOT OPENVSX>
     "mikestead.dotenv",
     "vue.volar",
-    "vunguyentuan.vscode-postcss",
     "humao.rest-client",
     // I18n
     "lokalise.i18n-ally",

@@ -297,6 +297,7 @@
   },
   "github.copilot.nextEditSuggestions.enabled": true,
   "chat.mcp.gallery.enabled": true,
+  "chat.mcp.autostart": "never",
 
   /* --------------------------------- Format --------------------------------- */
   "editor.tabSize": 2,
@@ -304,6 +305,8 @@
   "editor.detectIndentation": false,
   "editor.defaultFormatter": "esbenp.prettier-vscode",
   "editor.formatOnSave": true,
+  "editor.formatOnPaste": false,
+  "editor.formatOnType": false,
   "shellformat.useEditorConfig": true,
 
   /* ---------------------------------- Lint ---------------------------------- */
