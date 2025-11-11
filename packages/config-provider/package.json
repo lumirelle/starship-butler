@@ -1,7 +1,7 @@
 {
   "name": "starship-butler-config-provider",
   "type": "module",
-  "version": "0.3.10",
+  "version": "0.3.11",
   "description": "Config provider of starship butler.",
   "author": "Lumirelle <shabbyacc@outlook.com>",
   "license": "MIT",
