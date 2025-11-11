@@ -28,7 +28,6 @@
     "tomoki1207.selectline-statusbar", // <NOT OPENVSX>
     "mkxml.vscode-filesize",
     "johnpapa.read-time", // <NOT OPENVSX>
-    "dirsouza.reload-editor", // <NOT OPENVSX>
     "tombonnike.vscode-status-bar-format-toggle",
     // Main Bar
     "zjffun.snippetsmanager", // <NOT OPENVSX>
@@ -58,8 +57,6 @@
     // Lens
     "usernamehw.errorlens",
     "kisstkondoros.vscode-codemetrics",
-    "yoavbls.pretty-ts-errors",
-    "eamodio.gitlens",
     // Suggestion & Completion
     "bierner.emojisense",
     // Command
@@ -90,6 +87,6 @@
     "antfu.file-nesting"
   ]
   // EXTENSION COUNT
-  // >> VSCode: INDEX = 58
-  // >> Cursor: INDEX - 1 = 57
+  // >> VSCode: INDEX = 55
+  // >> Cursor: INDEX - 1 = 54
 }

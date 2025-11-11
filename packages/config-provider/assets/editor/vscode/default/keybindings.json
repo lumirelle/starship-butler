@@ -5,17 +5,6 @@
     "key": "ctrl+m",
     "command": "-editor.action.toggleTabFocusMode" // This is for accessibility, which I don't need
   },
-  // Terminal
-  {
-    "key": "ctrl+shift+5",
-    "command": "-workbench.action.terminal.split",
-    "when": "terminalFocus && terminalProcessSupported || terminalFocus && terminalWebExtensionContributedProfile"
-  },
-  {
-    "key": "ctrl+shift+5",
-    "command": "-workbench.action.terminal.splitActiveTab",
-    "when": "terminalProcessSupported && terminalTabsFocus"
-  },
   // Emojisense
   {
     "key": "ctrl+i",
@@ -31,6 +20,16 @@
     "when": "terminalProcessSupported"
   },
   {
+    "key": "ctrl+shift+5",
+    "command": "-workbench.action.terminal.split",
+    "when": "terminalFocus && terminalProcessSupported || terminalFocus && terminalWebExtensionContributedProfile"
+  },
+  {
+    "key": "ctrl+shift+5",
+    "command": "-workbench.action.terminal.splitActiveTab",
+    "when": "terminalProcessSupported && terminalTabsFocus"
+  },
+  {
     "key": "alt+`",
     "command": "workbench.action.terminal.split",
     "when": "terminalFocus && terminalProcessSupported || terminalFocus && terminalWebExtensionContributedProfile"
@@ -39,10 +38,5 @@
     "key": "alt+`",
     "command": "workbench.action.terminal.splitActiveTab",
     "when": "terminalProcessSupported && terminalTabsFocus"
-  },
-  // GitLens
-  {
-    "key": "ctrl+;",
-    "command": "workbench.view.extension.gitlensPanel"
   }
 ]

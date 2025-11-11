@@ -250,8 +250,8 @@ push-delete = push --delete
 pull-then-push = "!git pl && git ps"
 
 # >> Log
-logs = log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit
-log = log -1 HEAD --stat
+graph = log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit
+logs = log -1 HEAD --stat
 
 # >> Alias
 aliases = "!git config --get-regexp ^alias\\. | sed -e s/^alias\\.// -e s/\\ /\\ =\\ /"
