@@ -13,8 +13,8 @@ catalogs:
       specifier: ^27.0.1
       version: 27.0.1
     '@lumirelle/stylelint-config':
-      specifier: ^4.1.1
-      version: 4.1.1
+      specifier: ^4.1.2
+      version: 4.1.2
     bumpp:
       specifier: ^10.3.1
       version: 10.3.1
@@ -144,7 +144,7 @@ importers:
         version: 27.0.1
       '@lumirelle/stylelint-config':
         specifier: catalog:dev
-        version: 4.1.1(postcss-html@1.8.0)(postcss@8.5.6)(stylelint-order@7.0.0(stylelint@16.25.0(typescript@5.9.3)))(stylelint@16.25.0(typescript@5.9.3))
+        version: 4.1.2(postcss-html@1.8.0)(postcss@8.5.6)(stylelint-order@7.0.0(stylelint@16.25.0(typescript@5.9.3)))(stylelint@16.25.0(typescript@5.9.3))
       '@types/node':
         specifier: catalog:types
         version: 24.10.0
@@ -778,8 +778,8 @@ packages:
   '@lumirelle/defu@1.1.0':
     resolution: {integrity: sha512-YZu3tcGxBTGThS+Jos/c8uqtAP+MS0e42gydT8/wFzoMx8rC8ndObk+oz/7g8imZviAc888Rlv/1SM1i8/xDjg==}
 
-  '@lumirelle/stylelint-config@4.1.1':
-    resolution: {integrity: sha512-Sf5R2iAqYc3PR+H/J/ceDU2EJelxVKovU8ncrPUikIVv9cOlnyMWT1+TiYhsv6n2iZHsZUkjjYbVz+gst1zrgQ==}
+  '@lumirelle/stylelint-config@4.1.2':
+    resolution: {integrity: sha512-nAvwpaGDgTJMtHPmNj1FMtcfoERePj1YDLudF8XmELCMj43nTLv7jXikC2N/EAwnuPtz203JG1qAKcDg6xTtMA==}
     peerDependencies:
       postcss-less: '>=6.0.0'
       stylelint: '>=16.0.0'
@@ -4038,8 +4038,10 @@ snapshots:
 
   '@lumirelle/defu@1.1.0': {}
 
-  '@lumirelle/stylelint-config@4.1.1(postcss-html@1.8.0)(postcss@8.5.6)(stylelint-order@7.0.0(stylelint@16.25.0(typescript@5.9.3)))(stylelint@16.25.0(typescript@5.9.3))':
+  '@lumirelle/stylelint-config@4.1.2(postcss-html@1.8.0)(postcss@8.5.6)(stylelint-order@7.0.0(stylelint@16.25.0(typescript@5.9.3)))(stylelint@16.25.0(typescript@5.9.3))':
     dependencies:
+      '@antfu/install-pkg': 1.1.0
+      '@clack/prompts': 0.11.0
       '@lumirelle/defu': 1.1.0
       '@stylistic/stylelint-config': 3.0.1(stylelint@16.25.0(typescript@5.9.3))
       local-pkg: 1.1.2
