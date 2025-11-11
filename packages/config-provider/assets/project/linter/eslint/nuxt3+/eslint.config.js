@@ -8,13 +8,6 @@ export default antfu({
   unocss: true,
   pnpm: true,
 })
-  .append({
-    name: 'lumirelle/javascript/rules',
-    rules: {
-      // RECOMMENDED:
-      'no-console': ['error', { allow: ['info', 'warn', 'error'] }],
-    },
-  })
   /**
    * Don't forget to set `standalone: false` in your Nuxt ESLint module options.
    */

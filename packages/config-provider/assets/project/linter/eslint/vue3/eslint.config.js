@@ -6,10 +6,3 @@ export default antfu({
   unocss: true,
   pnpm: true,
 })
-  .append({
-    name: 'lumirelle/javascript/rules',
-    rules: {
-      // RECOMMENDED:
-      'no-console': ['error', { allow: ['info', 'warn', 'error'] }],
-    },
-  })
