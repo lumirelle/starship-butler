@@ -13,8 +13,8 @@ catalogs:
       specifier: ^27.0.1
       version: 27.0.1
     '@lumirelle/stylelint-config':
-      specifier: ^4.1.2
-      version: 4.1.2
+      specifier: ^4.1.4
+      version: 4.1.4
     bumpp:
       specifier: ^10.3.1
       version: 10.3.1
@@ -144,7 +144,7 @@ importers:
         version: 27.0.1
       '@lumirelle/stylelint-config':
         specifier: catalog:dev
-        version: 4.1.2(postcss-html@1.8.0)(postcss@8.5.6)(stylelint-order@7.0.0(stylelint@16.25.0(typescript@5.9.3)))(stylelint@16.25.0(typescript@5.9.3))
+        version: 4.1.4(postcss-html@1.8.0)(postcss@8.5.6)(stylelint-order@7.0.0(stylelint@16.25.0(typescript@5.9.3)))(stylelint@16.25.0(typescript@5.9.3))
       '@types/node':
         specifier: catalog:types
         version: 24.10.0
@@ -190,6 +190,9 @@ importers:
       vitest:
         specifier: catalog:testing
         version: 4.0.8(@types/debug@4.1.12)(@types/node@24.10.0)(jiti@2.6.1)(tsx@4.20.6)(yaml@2.8.1)
+      vue:
+        specifier: catalog:docs
+        version: 3.5.24(typescript@5.9.3)
 
   docs:
     devDependencies:
@@ -778,8 +781,8 @@ packages:
   '@lumirelle/defu@1.1.0':
     resolution: {integrity: sha512-YZu3tcGxBTGThS+Jos/c8uqtAP+MS0e42gydT8/wFzoMx8rC8ndObk+oz/7g8imZviAc888Rlv/1SM1i8/xDjg==}
 
-  '@lumirelle/stylelint-config@4.1.2':
-    resolution: {integrity: sha512-nAvwpaGDgTJMtHPmNj1FMtcfoERePj1YDLudF8XmELCMj43nTLv7jXikC2N/EAwnuPtz203JG1qAKcDg6xTtMA==}
+  '@lumirelle/stylelint-config@4.1.4':
+    resolution: {integrity: sha512-o7dLpVr06zG8H4EkndVTRPvIU0mSKmFlEeDDrBVufsjG74+5H4m14S2e/3BVLrEPd1q1skalHYCLzKQNNyeY4A==}
     peerDependencies:
       postcss-less: '>=6.0.0'
       stylelint: '>=16.0.0'
@@ -4038,7 +4041,7 @@ snapshots:
 
   '@lumirelle/defu@1.1.0': {}
 
-  '@lumirelle/stylelint-config@4.1.2(postcss-html@1.8.0)(postcss@8.5.6)(stylelint-order@7.0.0(stylelint@16.25.0(typescript@5.9.3)))(stylelint@16.25.0(typescript@5.9.3))':
+  '@lumirelle/stylelint-config@4.1.4(postcss-html@1.8.0)(postcss@8.5.6)(stylelint-order@7.0.0(stylelint@16.25.0(typescript@5.9.3)))(stylelint@16.25.0(typescript@5.9.3))':
     dependencies:
       '@antfu/install-pkg': 1.1.0
       '@clack/prompts': 0.11.0
