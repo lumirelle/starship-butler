@@ -13,6 +13,8 @@
     "naumovs.color-highlight",
     "ibm.output-colorizer",
     "vincaslt.highlight-matching-tag",
+    // Animations
+    "BrandonKirbyson.vscode-animations",
     // Markdown Preview
     "bierner.markdown-checkbox", // <NOT OPENVSX>
     "bierner.markdown-emoji", // <NOT OPENVSX>
@@ -35,6 +37,7 @@
     "JannisX11.batch-rename-extension", // <NOT OPENVSX>
     "sandcastle.vscode-open", // <NOT OPENVSX>
     // Git
+    "waydotnet.minimal-git-file-history",
     "codezombiech.gitignore",
     // Editor Group
     "mpontus.tab-cycle", // <NOT OPENVSX>. CTRL+PGUP, CTRL+PGDN, ALT+<NUMBER>
@@ -87,6 +90,6 @@
     "antfu.file-nesting"
   ]
   // EXTENSION COUNT
-  // >> VSCode: INDEX = 55
-  // >> Cursor: INDEX - 1 = 54
+  // >> VSCode: INDEX = 57
+  // >> Cursor: INDEX - 1 = 56
 }

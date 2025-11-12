@@ -34,8 +34,7 @@
     "tsdown": "catalog:dev",
     "tsx": "catalog:dev",
     "typescript": "catalog:dev",
-    "vitest": "catalog:testing",
-    "vue": "catalog:docs"
+    "vitest": "catalog:testing"
   },
   "simple-git-hooks": {
     "pre-commit": "na exec lint-staged"

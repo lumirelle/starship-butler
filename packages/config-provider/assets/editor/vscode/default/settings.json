@@ -132,6 +132,11 @@
       "overviewRulerColor": "rgb(126 82 127 / 80%)"
     }
   ],
+  // Custom UI
+  "animations.Install-Method": "Custom UI Style",
+  "custom-ui-style.external.imports": [
+    "file:///${userHome}/.vscode/extensions/brandonkirbyson.vscode-animations-2.0.7/dist/updateHandler.js"
+  ],
 
   /* -------------------------------- Behavior -------------------------------- */
   // Security
@@ -452,7 +457,7 @@
   "markdown.extension.tableFormatter.enabled": false, // Use `prettier` or `eslint-plugin-format` instead
   "redhat.telemetry.enabled": false,
   "rest-client.enableTelemetry": false,
-  "rewrap.wrappingColumn": 120,
+  "rewrap.wrappingColumn": 80,
   "vitest.shellType": "terminal",
   "where-am-i.colorful": false,
 
