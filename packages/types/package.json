@@ -1,7 +1,7 @@
 {
   "name": "starship-butler-types",
   "type": "module",
-  "version": "0.3.11",
+  "version": "0.3.12",
   "description": "Types shared by starship butler.",
   "author": "Lumirelle <shabbyacc@outlook.com>",
   "license": "MIT",
