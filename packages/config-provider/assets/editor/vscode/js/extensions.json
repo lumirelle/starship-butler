@@ -23,8 +23,6 @@
     "humao.rest-client",
     // I18n
     "lokalise.i18n-ally",
-    // Vitest
-    "vitest.explorer",
     // UnoCSS
     "antfu.unocss",
     // Tailwind CSS
@@ -40,6 +38,6 @@
     "stylelint.vscode-stylelint"
   ]
   // EXTENSION COUNT
-  // >> VSCode: INDEX + 1 = 22 + {PROFILE_DEFAULT: 57} = 79
-  // >> Cursor: INDEX + 1 = 22 + {PROFILE_DEFAULT: 56} = 78
+  // >> VSCode: INDEX + 1 = 21 + {PROFILE_DEFAULT: 57} = 78
+  // >> Cursor: INDEX + 1 = 21 + {PROFILE_DEFAULT: 56} = 77
 }
