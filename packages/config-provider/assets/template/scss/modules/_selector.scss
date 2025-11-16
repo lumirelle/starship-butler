@@ -5,20 +5,20 @@
 /// @author Lumirelle
 ////
 
-@use "sass:meta";
-@use "sass:string";
+@use 'sass:meta';
+@use 'sass:string';
 
 /// Separator
-$separator: "-";
+$separator: '-';
 
 /// Element separator
-$element-separator: "__";
+$element-separator: '__';
 
 /// Modifier separator
-$modifier-separator: "--";
+$modifier-separator: '--';
 
 /// State prefix
-$state-prefix: "is-";
+$state-prefix: 'is-';
 
 /// Block name
 ///
@@ -51,7 +51,7 @@ $element: null;
 @function has-state-flag($selector) {
   $selector: selector-to-string($selector);
 
-  @if string.index($selector, "." + $state-prefix) {
+  @if string.index($selector, '.' + $state-prefix) {
     @return true;
   }
   @else {
@@ -63,7 +63,7 @@ $element: null;
 @function has-pseudo-class($selector) {
   $selector: selector-to-string($selector);
 
-  @if string.index($selector, ":") {
+  @if string.index($selector, ':') {
     @return true;
   }
   @else {
@@ -112,14 +112,14 @@ $element: null;
 ///   .color-picker__panel--large {
 ///     width: 100%;
 ///   }
-@function bem($block, $element: "", $modifier: "") {
+@function bem($block, $element: '', $modifier: '') {
   $name: $separator + $block;
 
-  @if $element != "" {
+  @if $element != '' {
     $name: $name + $element-separator + $element;
   }
 
-  @if $modifier != "" {
+  @if $modifier != '' {
     $name: $name + $modifier-separator + $modifier;
   }
 
@@ -170,10 +170,10 @@ $element: null;
 @mixin e($element) {
   $element: $element !global;
   $selector: &;
-  $current-selector: "";
+  $current-selector: '';
 
   @each $unit in $element {
-    $current-selector: #{$current-selector + "." + $block + $element-separator + $unit + ","};
+    $current-selector: #{$current-selector + '.' + $block + $element-separator + $unit + ','};
   }
 
   @if has-special-nesting-rule($selector) {
@@ -214,10 +214,10 @@ $element: null;
 ///   }
 @mixin m($modifier) {
   $selector: &;
-  $current-selector: "";
+  $current-selector: '';
 
   @each $unit in $modifier {
-    $current-selector: #{$current-selector + $selector + $modifier-separator + $unit + ","};
+    $current-selector: #{$current-selector + $selector + $modifier-separator + $unit + ','};
   }
 
   @at-root {

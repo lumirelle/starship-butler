@@ -6,8 +6,8 @@
 /// @author Lumirelle
 ////
 
-@use "sass:map";
-@use "sass:meta";
+@use 'sass:map';
+@use 'sass:meta';
 
 /// Break-points, follow the design of Tailwind CSS.
 ///
@@ -19,12 +19,12 @@
 /// @type Map
 /// @link https://tailwindcss.com/docs/responsive-design;
 $breakpoints: (
-  "xs": 0,
-  "sm": 40rem, // 640px
-  "md": 48rem, // 768px
-  "lg": 64rem, // 1024px
-  "xl": 80rem, // 1280px
-  "2xl": 96rem, // 1536px
+  'xs': 0,
+  'sm': 40rem, // 640px
+  'md': 48rem, // 768px
+  'lg': 64rem, // 1024px
+  'xl': 80rem, // 1280px
+  '2xl': 96rem, // 1536px
 ) !default;
 
 /// Create media queries by using predefined breakpoints or breakpoint value directly
@@ -63,11 +63,11 @@ $breakpoints: (
 ///   }
 ///
 @mixin res($left, $right: null) {
-  @if meta.type-of($left) == "string" {
+  @if meta.type-of($left) == 'string' {
     $left: map.get($breakpoints, $left);
   }
 
-  @if meta.type-of($right) == "string" {
+  @if meta.type-of($right) == 'string' {
     $right: map.get($breakpoints, $right);
   }
 

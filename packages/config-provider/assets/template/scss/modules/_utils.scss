@@ -17,7 +17,7 @@
     #{$selector}::before,
     #{$selector}::after {
       display: table;
-      content: "";
+      content: '';
     }
     #{$selector}::after {
       clear: both;
@@ -122,7 +122,7 @@
     z-index: -1;
     padding: $border-margin;
     pointer-events: none;
-    content: "";
+    content: '';
     border-radius: $border-radius + $border-margin;
     transition: $transition;
   }

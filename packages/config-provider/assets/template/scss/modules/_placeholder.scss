@@ -16,7 +16,7 @@
 ///     border: 1px solid #000;
 ///   }
 @mixin define($name) {
-  $rule-name: "%shared-" + $name;
+  $rule-name: '%shared-' + $name;
 
   @at-root #{$rule-name} {
     @content;
@@ -36,5 +36,5 @@
 ///     @include extend('button');
 ///   }
 @mixin extend($name) {
-  @extend #{"%shared-" + $name} !optional;
+  @extend #{'%shared-' + $name} !optional;
 }
