@@ -2,7 +2,11 @@
   // cSpell:disable
   /* --------------------------------- Visual --------------------------------- */
   // Theme
-  "theme": "Vitesse Refined Dark",
+  "theme": {
+    "mode": "system",
+    "light": "Vitesse Refined Light",
+    "dark": "Vitesse Refined Dark"
+  },
   "icon_theme": "Catppuccin Mocha",
   // Editor
   "indent_guides": {
