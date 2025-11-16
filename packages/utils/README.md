@@ -19,7 +19,7 @@ Utils used by [starship butler](https://github.com/lumirelle/starship-butler).
 
 ## License
 
-[MIT](./LICENSE) License © [Lumirelle](https://github.com/lumirelle)
+[MIT](../../LICENSE.md) License © [Lumirelle](https://github.com/lumirelle)
 
 <!-- Badges -->
 
@@ -34,4 +34,4 @@ Utils used by [starship butler](https://github.com/lumirelle/starship-butler).
 [codecov-src]: https://img.shields.io/codecov/c/gh/lumirelle/starship-butler/main?style=flat&colorA=18181B&colorB=F0DB4F
 [codecov-href]: https://codecov.io/gh/lumirelle/starship-butler
 [license-src]: https://img.shields.io/github/license/lumirelle/starship-butler.svg?style=flat&colorA=18181B&colorB=F0DB4F
-[license-href]: https://github.com/lumirelle/starship-butler/blob/main/LICENSE
+[license-href]: https://github.com/lumirelle/starship-butler/blob/main/LICENSE.md
