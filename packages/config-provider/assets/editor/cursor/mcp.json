@@ -1,16 +1,29 @@
 {
   "mcpServers": {
-    "upstash/context7": {
+    "context7": {
+      "type": "http",
       "url": "https://mcp.context7.com/mcp",
       "headers": {
-        "CONTEXT7_API_KEY": "YOUR_API_KEY"
-      }
+        "CONTEXT7_API_KEY": "${input:context7_api_key}"
+      },
+      "gallery": "https://api.mcp.github.com/2025-09-15/v0/servers/dcec7705-b81b-4e0f-8615-8032604be7ad",
+      "version": "1.0.0"
     },
-    "github/github-mcp-server": {
-      "url": "https://api.githubcopilot.com/mcp/"
+    "github": {
+      "type": "http",
+      "url": "https://api.githubcopilot.com/mcp/",
+      "gallery": "https://api.mcp.github.com/2025-09-15/v0/servers/ab12cd34-5678-90ef-1234-567890abcdef",
+      "version": "0.13.0"
     },
-    "antfu/nuxt-mcp": {
-      "url": "https://mcp.nuxt.com/sse"
+    "nuxt/docs": {
+      "type": "http",
+      "url": "https://nuxt.com/mcp"
+    },
+    "nuxt/app": {
+      "type": "http",
+      "url": "https://mcp.nuxt.com/sse",
+      "gallery": "https://api.mcp.github.com/2025-09-15/v0/servers/7d2aa3fa-ab7a-4609-b27c-7b24037bf6ce",
+      "version": "1.0.0"
     }
   }
 }
