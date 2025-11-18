@@ -240,6 +240,8 @@ push-set-upstream = "!f() { \
 push-tag = "!f() { \
   if [ -z \"$2\" ]; then \
     git push origin tag \"$1\"; \
+  elif [ -z \"$1\" ]; then \
+    git push --tags; \
   else \
     git push \"$1\" tag \"$2\"; \
   fi; \
