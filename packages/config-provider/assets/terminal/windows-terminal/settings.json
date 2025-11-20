@@ -35,7 +35,7 @@
       "defaults":
         {
           "backgroundImage": "desktopWallpaper",
-          "backgroundImageOpacity": 0.25,
+          "backgroundImageOpacity": 0.4,
           "colorScheme": "Tango Dark",
           "experimental.retroTerminalEffect": false,
           "experimental.rightClickContextMenu": true,
@@ -43,7 +43,7 @@
             {
               "builtinGlyphs": false,
               "face": "'Go Mono', 'Maple Mono CN', 'Symbols Nerd Font'",
-              "size": 16
+              "size": 14
             },
           "opacity": 80,
           "padding": "12",

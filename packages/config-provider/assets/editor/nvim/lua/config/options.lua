@@ -6,7 +6,7 @@ local opt = vim.opt
 
 opt.wrap = true
 opt.spell = false
-opt.guifont = { "LXGW Bright Code", "Symbols Nerd Font", "monospace" }
+opt.guifont = { "Go Mono", "Maple Mono CN", "Symbols Nerd Font" }
 opt.shell = "pwsh -nologo"
 opt.shellcmdflag = "-command"
 opt.shellquote = '"'
