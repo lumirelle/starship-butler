@@ -8,31 +8,31 @@ catalogs:
   dev:
     '@antfu/eslint-config': ^6.2.0
     '@antfu/ni': ^27.0.1
-    '@lumirelle/stylelint-config': ^4.1.4
+    '@lumirelle/stylelint-config': ^4.1.5
     bumpp: ^10.3.1
     czg: ^1.12.0
     eslint: ^9.39.1
     eslint-plugin-format: ^1.0.2
-    lint-staged: ^16.2.6
+    lint-staged: ^16.2.7
     simple-git-hooks: ^2.13.1
-    stylelint: ^16.25.0
+    stylelint: ^16.26.0
     taze: ^19.9.0
-    tsdown: ^0.16.2
+    tsdown: ^0.16.6
     tsx: ^4.20.6
     typescript: ^5.9.3
   docs:
     '@iconify-json/svg-spinners': ^1.2.4
     '@shikijs/vitepress-twoslash': ^3.15.0
-    '@unocss/reset': ^66.5.6
+    '@unocss/reset': ^66.5.9
     '@vueuse/core': ^14.0.0
     floating-vue: ^5.2.2
     pinia: ^3.0.4
-    unocss: ^66.5.6
+    unocss: ^66.5.9
     unplugin-vue-components: ^30.0.0
     vite-tsconfig-paths: ^5.1.4
-    vitepress: ^2.0.0-alpha.12
+    vitepress: ^2.0.0-alpha.15
     vitepress-plugin-group-icons: ^1.6.5
-    vue: ^3.5.24
+    vue: ^3.5.25
   inlined:
     '@antfu/utils': ^9.3.0
   prod:
@@ -46,11 +46,11 @@ catalogs:
     rc9: ^2.1.2
     tinyglobby: ^0.2.15
   testing:
-    '@vitest/coverage-v8': ^4.0.8
+    '@vitest/coverage-v8': ^4.0.13
     tinyexec: ^1.0.2
-    vitest: ^4.0.8
+    vitest: ^4.0.13
   types:
-    '@types/node': ^24.10.0
+    '@types/node': ^24.10.1
 
 ignoreWorkspaceRootCheck: true
 
