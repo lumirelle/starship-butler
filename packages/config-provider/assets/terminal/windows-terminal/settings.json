@@ -42,7 +42,7 @@
           "font":
             {
               "builtinGlyphs": false,
-              "face": "'Go Mono', 'Maple Mono CN', 'Symbols Nerd Font'",
+              "face": "'Monaspace Xenon', 'Maple Mono CN', 'Symbols Nerd Font'",
               "size": 14
             },
           "opacity": 85,
