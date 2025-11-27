@@ -462,9 +462,6 @@
   "[ignore]": {
     "editor.defaultFormatter": "lumirelle.shell-format-rev"
   },
-  "[markdown]": {
-    "editor.wordWrap": "off"
-  },
   "[properties]": {
     "editor.defaultFormatter": "lumirelle.shell-format-rev"
   },
