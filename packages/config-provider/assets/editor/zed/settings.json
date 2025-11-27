@@ -12,14 +12,14 @@
   "indent_guides": {
     "coloring": "indent_aware"
   },
-  "wrap_guides": [80, 120],
+  "wrap_guides": [80, 120, 160, 200],
   // Font
   "ui_font_family": "Monaspace Xenon",
   "ui_font_fallbacks": ["Maple Mono CN", "Symbols Nerd Font Mono"],
-  "ui_font_size": 18,
+  "ui_font_size": 16,
   "buffer_font_family": "Monaspace Xenon",
   "buffer_font_fallbacks": ["Maple Mono CN", "Symbols Nerd Font Mono"],
-  "buffer_font_size": 18,
+  "buffer_font_size": 16,
   "buffer_font_features": {
     "calt": true,
     "liga": true

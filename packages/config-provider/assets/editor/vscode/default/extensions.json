@@ -13,8 +13,6 @@
     "naumovs.color-highlight",
     "ibm.output-colorizer",
     "vincaslt.highlight-matching-tag",
-    // Animations
-    "BrandonKirbyson.vscode-animations",
     // Markdown Preview
     "bierner.markdown-checkbox", // <NOT OPENVSX>
     "bierner.markdown-emoji", // <NOT OPENVSX>
@@ -90,6 +88,6 @@
     "antfu.file-nesting"
   ]
   // EXTENSION COUNT
-  // >> VSCode: INDEX = 57
-  // >> Cursor: INDEX - 1 = 56
+  // >> VSCode: INDEX = 56
+  // >> Cursor: INDEX - 1 = 55
 }

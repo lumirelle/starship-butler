@@ -43,7 +43,7 @@
             {
               "builtinGlyphs": false,
               "face": "'Monaspace Xenon', 'Maple Mono CN', 'Symbols Nerd Font'",
-              "size": 14
+              "size": 12
             },
           "opacity": 85,
           "padding": "12",

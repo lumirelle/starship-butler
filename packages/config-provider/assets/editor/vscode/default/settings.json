@@ -9,7 +9,7 @@
   // Window
   "window.autoDetectColorScheme": true,
   "window.titleBarStyle": "custom",
-  "window.zoomLevel": 1,
+  "window.zoomLevel": 0.5,
   // Workbench
   "workbench.activityBar.orientation": "vertical",
   "workbench.tree.renderIndentGuides": "always",
@@ -17,7 +17,7 @@
   // Editor
   "editor.guides.bracketPairs": true,
   "editor.renderWhitespace": "boundary",
-  "editor.rulers": [80, 120],
+  "editor.rulers": [80, 120, 160, 200],
   "editor.tokenColorCustomizations": {
     "[*Light*]": {
       "textMateRules": []
@@ -27,13 +27,15 @@
     },
     "textMateRules": []
   },
+  "editor.wordWrap": "on",
+  "editor.wrapOnEscapedLineFeeds": true,
   "scm.diffDecorationsGutterWidth": 2,
   // Font
   "custom-ui-style.font.monospace": "'Monaspace Xenon', 'Maple Mono CN', 'Symbols Nerd Font Mono', monospace",
   "custom-ui-style.font.sansSerif": "'Monaspace Xenon', 'Maple Mono CN', 'Symbols Nerd Font Mono', sans-serif",
   "editor.fontFamily": "'Monaspace Xenon', 'Maple Mono CN', 'Symbols Nerd Font Mono', monospace",
   "editor.fontSize": 16,
-  "editor.lineHeight": 24,
+  "editor.lineHeight": 1.5,
   "editor.fontLigatures": true,
   "terminal.integrated.fontSize": 14,
   "terminal.integrated.fontLigatures.enabled": true,
@@ -132,11 +134,6 @@
       "overviewRulerColor": "rgb(126 82 127 / 80%)"
     }
   ],
-  // Custom UI
-  "animations.Install-Method": "Custom UI Style",
-  "custom-ui-style.external.imports": [
-    "file://${userHome}/.vscode/extensions/brandonkirbyson.vscode-animations-2.0.7/dist/updateHandler.js"
-  ],
 
   /* -------------------------------- Behavior -------------------------------- */
   // Security
@@ -206,6 +203,7 @@
   // Editor
   "editor.minimap.enabled": true,
   "editor.accessibilitySupport": "off",
+  "editor.unusualLineTerminators": "auto",
   // Diff Editor
   "diffEditor.ignoreTrimWhitespace": false,
   // Terminal
