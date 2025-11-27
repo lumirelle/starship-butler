@@ -4,8 +4,8 @@
   // Theme
   "theme": {
     "mode": "system",
-    "light": "Vitesse Refined Light",
-    "dark": "Vitesse Refined Dark"
+    "light": "Vitesse Light",
+    "dark": "Vitesse Dark"
   },
   "icon_theme": "Catppuccin Mocha",
   // Editor

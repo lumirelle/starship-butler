@@ -3,7 +3,7 @@
   "recommendations": [
     /* --------------------------------- Visual --------------------------------- */
     // Theme
-    "vitesse-theme-refined",
+    "vitesse",
     "catppuccin-icons",
     // Highlight
     "log",
