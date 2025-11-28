@@ -1,7 +1,7 @@
 {
   "name": "starship-butler",
   "type": "module",
-  "version": "0.3.13",
+  "version": "0.3.14",
   "description": "Your best butler, helping you manage the whole development \"starship\". 😃",
   "author": "Lumirelle <shabbyacc@outlook.com>",
   "license": "MIT",
