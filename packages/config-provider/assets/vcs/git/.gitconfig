@@ -1,72 +1,68 @@
-# ----------------------------------- User ----------------------------------- #
+# User Information
 [user]
 # NOTICE: Please replace the following with your own information.
 name = Lumirelle
 email = shabbyacc@outlook.com
-
 [credential "https://gitee.com"]
 provider = generic
 
-# ----------------------------------- Core ----------------------------------- #
+# Core Settings
 [core]
 ignorecase = false
-
 [feature]
-# Will enable some default configurations to better handle a large number of files, include `index.version=4`.
-# See https://git-scm.com/docs/git-config#Documentation/git-config.txt-featuremanyFiles.
+# Will enable some default configurations to better handle a large number of files, include `index.version=4`. See
+# https://git-scm.com/docs/git-config#Documentation/git-config.txt-featuremanyFiles.
 manyFiles = true
 
-# --------------------------------- Repo init -------------------------------- #
+# Repository Initialization
 [init]
 defaultBranch = main
 
-# ---------------------------- Work with branches ---------------------------- #
-
+# Working with Branches
 [branch]
 sort = -committerdate
-
 [diff]
 algorithm = histogram
 context = 5
-
 [merge]
 autostash = true
 conflictstyle = zdiff3
 ff = no
-
 [rebase]
 autostash = true
 autosquash = true
 # See https://juejin.cn/post/7267567645493674021.
 updateRefs = true
-
 [rerere]
 enabled = true
-
 [tag]
 sort = taggerdate
 
-# ----------------------------- Work with remote ----------------------------- #
+# Working with Remotes
 [fetch]
 prune = true
 pruneTags = true
-
 [pull]
 rebase = true
-
 [push]
 autoSetupRemote = true
 default = current
 
-# ------------------------------------ Log ----------------------------------- #
+# Log
 [log]
 date = short
 decoration = short
 
-# ----------------------------------- Alias ---------------------------------- #
+# Aliases
 [alias]
-# =========================== ENHANCEMENTS ALIASES =========================== #
-# >> Basic
+# Aliases -- Setup
+setup = "!f() { \
+  git config user.name \"$1\"; \
+  git config user.email \"$2\"; \
+  git config blame.ignoreRevsFile .git-blame-ignore-revs; \
+}; f"
+
+# Aliases -- Basic Operations
 # add
 add-all = add .
 add-undo = reset HEAD --
@@ -121,7 +117,7 @@ add-all-then-amend-commit-with-edit = "!f() { \
 work-in-progress = "!git add-all && git commit-with-message 'chore: wip'"
 work-in-progress-undo = "!git log -n 1 | grep -q -c 'chore: wip' && git reset HEAD~1"
 
-# >> Work with branches
+# Aliases -- Work with Branches
 # branch
 branch-list-localremote = branch --all
 branch-delete-local = branch --delete
@@ -216,7 +212,7 @@ tag-delete-localremote = "!f() { \
   fi; \
 }; f"
 
-# >> Work with remote
+# Aliases -- Work with Remote
 # remote
 remote-new = "!f() { \
   if [ -z \"$2\" ]; then \
@@ -251,14 +247,14 @@ push-delete = push --delete
 # pull & push
 pull-then-push = "!git pl && git ps"
 
-# >> Log
+# Log
 graph = log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit
 logs = log -1 HEAD --stat
 
-# >> Alias
+# Aliases
 aliases = "!git config --get-regexp ^alias\\. | sed -e s/^alias\\.// -e s/\\ /\\ =\\ /"
 
-# ============================ SHORTCUTS ALIASES ============================= #
+# Abbrev Alias
 # SUFFIX INTRODUCTION
 #   <TO SPECIFY ADDITIONAL BEHAVIOR>
 #   `n`:    `add | new`
@@ -277,7 +273,7 @@ aliases = "!git config --get-regexp ^alias\\. | sed -e s/^alias\\.// -e s/\\ /\\
 #   `i`:    with `--edit` parameter
 #   `z`:    with `--abort` parameter
 #   `c`:    with `--continue` parameter
-# >> Basic
+# Abbrev Aliases -- Basic Operations
 # add: a
 a = add
 aa = add-all
@@ -306,7 +302,7 @@ aamdi = add-all-then-amend-commit-with-edit
 wip = work-in-progress
 wipu = work-in-progress-undo
 
-# >> Work with branches
+# Abbrev Aliases -- Work with Branches
 # branch: br
 brn = branch
 brs = branch-list-localremote
@@ -347,6 +343,7 @@ tgx = tag-delete-local
 tgxre = tag-delete-remote
 tgxbt = tag-delete-localremote
 
+# Abbrev Aliases -- Work with Remote
 # remote: re
 ren = remote-new
 res = remote-list
