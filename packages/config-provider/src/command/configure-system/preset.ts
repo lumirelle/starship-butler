@@ -196,6 +196,44 @@ export const PRESET_ACTIONS: Action[] = [
       consola.info('Please running `Set-ExecutionPolicy RemoteSigned -Scope CurrentUser` to allow local scripts to run.')
     },
   },
+  // Windows PowerShell
+  {
+    id: 'windows-powershell',
+    name: 'setting up Windows PowerShell',
+    targetFolder: ({ systemOptions }) => {
+      const { platform } = systemOptions
+      const targetMap: TargetMap = {
+        win32: join(homedir(), 'Documents', 'WindowsPowerShell'),
+      }
+      return targetMap[platform] ?? ''
+    },
+    prehandler: ({ systemOptions, targetFolder }) => {
+      const { platform } = systemOptions
+      if (!checkPlatformSupport(
+        ['win32'],
+        platform,
+        'Windows PowerShell is the legacy version bundled in Windows, so we just support it in win32 platform.',
+      )) {
+        return false
+      }
+      // For win32 platform, ensure target folder exist
+      if (platform === 'win32' && !ensureTargetFolderExist(targetFolder)) {
+        return false
+      }
+      return true
+    },
+    handler: async ({ options, targetFolder }) => {
+      const handlerOperations = [
+        { source: join('shell', 'pwsh', 'profile.ps1'), target: join(targetFolder, 'Microsoft.PowerShell_profile.ps1') },
+      ]
+      for (const operation of handlerOperations) {
+        await processConfig(operation.source, operation.target, options)
+      }
+    },
+    posthandler: () => {
+      consola.info('Please running `Set-ExecutionPolicy RemoteSigned -Scope CurrentUser` to allow local scripts to run.')
+    },
+  },
   // Starship
   {
     id: 'starship',
