@@ -1,4 +1,3 @@
-import { stringify } from 'starship-butler-utils'
 import { describe, expect, it } from 'vitest'
 import { loadConfig } from '../src/config'
 import rawJSONConfig from './.butlerrc.json'
@@ -11,7 +10,7 @@ describe('config', () => {
       cwd: import.meta.dirname,
     })
     delete config['config-provider'].version
-    expect(stringify(config)).toEqual(stringify(rawJSONConfig))
+    expect(config).toEqual(rawJSONConfig)
   })
 
   it('load from TS file correctly', async () => {
@@ -20,6 +19,6 @@ describe('config', () => {
       cwd: import.meta.dirname,
     })
     delete config['config-provider'].version
-    expect(stringify(config)).toEqual(stringify(rawTSConfig))
+    expect(config).toEqual(rawTSConfig)
   })
 })

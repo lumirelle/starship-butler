@@ -1,5 +1,4 @@
 import type { ButlerConfig } from '../src/config'
-import { stringify } from 'starship-butler-utils'
 import { describe, expect, it } from 'vitest'
 import { loadConfig, mergeOptions } from '../src/config'
 import rawJSONConfig from './.butlerrc.json'
@@ -24,7 +23,7 @@ describe('options', () => {
     expectedOptions.mode = 'symlink'
     expectedOptions.force = true
     expectedOptions.dryRun = true
-    expect(stringify(mergedOptions)).toEqual(stringify(expectedOptions))
+    expect(mergedOptions).toEqual(expectedOptions)
   })
 
   it('merge with TS config correctly', async () => {
@@ -45,6 +44,6 @@ describe('options', () => {
     expectedOptions.mode = 'symlink'
     expectedOptions.force = true
     expectedOptions.dryRun = true
-    expect(stringify(mergedOptions)).toEqual(stringify(expectedOptions))
+    expect(mergedOptions).toEqual(expectedOptions)
   })
 })
