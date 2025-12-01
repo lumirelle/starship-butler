@@ -57,9 +57,13 @@ decoration = short
 [alias]
 # Aliases -- Setup
 setup = "!f() { \
-  git config user.name \"$1\"; \
-  git config user.email \"$2\"; \
-  git config blame.ignoreRevsFile .git-blame-ignore-revs; \
+  git config set user.name \"$1\"; \
+  git config set user.email \"$2\"; \
+  git config set blame.ignoreRevsFile .git-blame-ignore-revs; \
+}; f"
+me = "!f() { \
+  git config get user.name; \
+  git config get user.email; \
 }; f"
 
 # Aliases -- Basic Operations
