@@ -1,4 +1,5 @@
 {
+  "name": "starship-butler-docs",
   "type": "module",
   "private": true,
   "scripts": {

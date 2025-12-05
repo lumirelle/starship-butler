@@ -2,25 +2,83 @@
   "type": "module",
   "version": "0.3.14",
   "private": true,
-  "packageManager": "pnpm@10.23.0",
   "scripts": {
-    "build": "nr -r build",
-    "dev": "nr -r --parallel dev",
+    "build": "bun -F '*' build",
+    "dev": "bun -F '*' --parallel dev",
     "lint": "eslint --cache . && stylelint --cache **/*.{css,postcss,scss,sass,less,html,vue}",
-    "docs": "nr -C docs docs:dev",
-    "docs:build": "nr -C docs docs:build",
-    "prelease": "nr test run && nr typecheck",
-    "release": "nr prelease && bumpp -r && na -r publish",
-    "test": "vitest",
+    "docs": "bun -F './docs' docs:dev",
+    "docs:build": "bun -F './docs' docs:build",
+    "prerelease": "bun test run && bun typecheck",
+    "release": "bumpp -r && bun publish",
+    "test": "bun --bun vitest",
     "typecheck": "tsc --noEmit",
     "prepare": "simple-git-hooks",
-    "start": "nr -C packages/core start"
+    "start": "bun -F './packages/core' start"
+  },
+  "workspaces": {
+    "packages": [
+      "docs",
+      "packages/*",
+      "examples/*"
+    ],
+    "catalogs": {
+      "dev": {
+        "@antfu/eslint-config": "^6.2.0",
+        "@lumirelle/stylelint-config": "^4.1.5",
+        "bumpp": "^10.3.1",
+        "czg": "^1.12.0",
+        "eslint": "^9.39.1",
+        "eslint-plugin-format": "^1.0.2",
+        "lint-staged": "^16.2.7",
+        "simple-git-hooks": "^2.13.1",
+        "stylelint": "^16.26.0",
+        "taze": "^19.9.0",
+        "tsdown": "^0.16.6",
+        "typescript": "^5.9.3",
+        "vite": "^7.2.6"
+      },
+      "docs": {
+        "@iconify-json/svg-spinners": "^1.2.4",
+        "@shikijs/vitepress-twoslash": "^3.15.0",
+        "@unocss/reset": "^66.5.9",
+        "@vueuse/core": "^14.0.0",
+        "floating-vue": "^5.2.2",
+        "pinia": "^3.0.4",
+        "unocss": "^66.5.9",
+        "unplugin-vue-components": "^30.0.0",
+        "vite-tsconfig-paths": "^5.1.4",
+        "vitepress": "^2.0.0-alpha.15",
+        "vitepress-plugin-group-icons": "^1.6.5",
+        "vue": "^3.5.25"
+      },
+      "inlined": {
+        "@antfu/utils": "^9.3.0"
+      },
+      "prod": {
+        "@clack/prompts": "^0.11.0",
+        "ansis": "^4.2.0",
+        "c12": "^3.3.2",
+        "cac": "^6.7.14",
+        "consola": "^3.4.2",
+        "defu": "^6.1.4",
+        "pathe": "^2.0.3",
+        "rc9": "^2.1.2",
+        "tinyglobby": "^0.2.15"
+      },
+      "testing": {
+        "@vitest/coverage-v8": "^4.0.13",
+        "tinyexec": "^1.0.2",
+        "vitest": "^4.0.13"
+      },
+      "types": {
+        "@types/bun": "^1.3.3"
+      }
+    }
   },
   "devDependencies": {
     "@antfu/eslint-config": "catalog:dev",
-    "@antfu/ni": "catalog:dev",
     "@lumirelle/stylelint-config": "catalog:dev",
-    "@types/node": "catalog:types",
+    "@types/bun": "catalog:types",
     "@vitest/coverage-v8": "catalog:testing",
     "bumpp": "catalog:dev",
     "czg": "catalog:dev",
@@ -32,12 +90,12 @@
     "stylelint": "catalog:dev",
     "taze": "catalog:dev",
     "tsdown": "catalog:dev",
-    "tsx": "catalog:dev",
     "typescript": "catalog:dev",
+    "vite": "catalog:dev",
     "vitest": "catalog:testing"
   },
   "simple-git-hooks": {
-    "pre-commit": "na exec lint-staged"
+    "pre-commit": "bunx --no-install lint-staged"
   },
   "lint-staged": {
     "*": [

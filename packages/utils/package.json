@@ -30,8 +30,7 @@
   "scripts": {
     "build": "tsdown",
     "dev": "tsdown --watch",
-    "prepublishOnly": "nr build",
-    "start": "tsx src/index.ts"
+    "prepublishOnly": "bun build"
   },
   "dependencies": {
     "ansis": "catalog:prod",

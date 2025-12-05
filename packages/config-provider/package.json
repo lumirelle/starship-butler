@@ -31,8 +31,7 @@
   "scripts": {
     "build": "tsdown",
     "dev": "tsdown --watch",
-    "prepublishOnly": "nr build",
-    "start": "tsx src/index.ts"
+    "prepublishOnly": "bun build"
   },
   "dependencies": {
     "@clack/prompts": "catalog:prod",

@@ -1,20 +1,11 @@
-import { x } from 'tinyexec'
+import { $ } from 'bun'
 import { assert, describe, it } from 'vitest'
 
 describe('bash profile tests', () => {
   it('should pass', async () => {
-    const proc = x('bash', ['./test.sh', '--silent'], {
-      nodeOptions: {
-        cwd: import.meta.dirname,
-      },
-    })
-    const result: string[] = []
-    for await (const line of proc) {
-      result.push(line)
-    }
-    // Result[0] = total tests
-    // Result[1] = passed tests
-    // Result[2] = failed tests
+    $.cwd(import.meta.dirname)
+    const proc = $`bash ./test.sh --silent`
+    const result = (await proc.text()).split('\n')
     assert.equal(result[0], result[1])
     assert.equal(result[2], '0')
   })

@@ -30,7 +30,6 @@
   "scripts": {
     "build": "tsdown",
     "dev": "tsdown --watch",
-    "prepublishOnly": "nr build",
-    "start": "tsx src/cli.ts"
+    "prepublishOnly": "bun build"
   }
 }
