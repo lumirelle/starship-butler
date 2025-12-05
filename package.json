@@ -13,8 +13,7 @@
     "typecheck": "tsc --noEmit",
     "test": "bun test",
     "prerelease": "bun test && bun run typecheck",
-    "release": "bumpp -r",
-    "publish": "bun run -F '*' publish"
+    "release": "bumpp -r"
   },
   "workspaces": {
     "packages": [
@@ -24,14 +23,14 @@
     ],
     "catalogs": {
       "dev": {
-        "@antfu/eslint-config": "^6.4.1",
+        "@antfu/eslint-config": "^6.4.2",
         "@lumirelle/stylelint-config": "^4.1.5",
         "bumpp": "^10.3.2",
         "czg": "^1.12.0",
         "eslint": "^9.39.1",
         "eslint-plugin-format": "^1.1.0",
         "lint-staged": "^16.2.7",
-        "simple-git-hooks": "git+https://github.com/toplenboren/simple-git-hooks.git",
+        "simple-git-hooks": "git+https://github.com/toplenboren/simple-git-hooks.git#7625657",
         "stylelint": "^16.26.1",
         "taze": "^19.9.2",
         "tsdown": "^0.17.0",
