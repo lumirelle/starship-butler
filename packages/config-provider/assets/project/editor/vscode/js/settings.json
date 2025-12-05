@@ -20,12 +20,7 @@
     "jsonc",
     "yaml",
     "toml",
-    "xml",
-    "css",
-    "postcss",
-    "scss",
-    "sass",
-    "less"
+    "xml"
   ],
   "eslint.rules.customizations": [
     { "rule": "style/*", "severity": "off" },
