@@ -13,7 +13,8 @@
     "typecheck": "tsc --noEmit",
     "test": "bun test",
     "prerelease": "bun test && bun run typecheck",
-    "release": "bumpp -r && bun run -F '*' publish"
+    "release": "bumpp -r",
+    "publish": "bun run -F '*' publish"
   },
   "workspaces": {
     "packages": [
@@ -88,7 +89,7 @@
     "vite": "catalog:dev"
   },
   "simple-git-hooks": {
-    "pre-commit": "bunx --no-install lint-staged"
+    "pre-commit": "bun run lint-staged"
   },
   "lint-staged": {
     "*": [

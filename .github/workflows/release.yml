@@ -17,6 +17,11 @@ jobs:
         with:
           fetch-depth: 0
       - uses: oven-sh/setup-bun@v2
+        with:
+          bun-version: latest
+          registry-url: https://registry.npmjs.org/
       - run: bunx changelogithub
         env:
           GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}
+      - run: bun install
+      - run: bun run publish

@@ -24,8 +24,6 @@ jobs:
       - run: pnpm dlx changelogithub
         env:
           GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}
-      # Uncomment the following lines to publish to npm on CI
+      # Uncomment the following lines to publish to npm on CI using OIDC
       # - run: pnpm install
       # - run: pnpm publish -r --access public
-      #   env:
-      #     NODE_AUTH_TOKEN: ${{secrets.NPM_TOKEN}}
