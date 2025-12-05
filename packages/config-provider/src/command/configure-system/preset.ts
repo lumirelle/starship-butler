@@ -124,34 +124,6 @@ export const PRESET_ACTIONS: Action[] = [
       }
     },
   },
-  // CMD
-  {
-    id: 'cmd',
-    name: 'setting up CMD',
-    targetFolder: join(homedir(), 'Documents', 'CMD'),
-    prehandler: ({ systemOptions, targetFolder }) => {
-      const { platform } = systemOptions
-      if (!checkPlatformSupport(['win32'], platform)) {
-        return false
-      }
-      if (!ensureTargetFolderExist(targetFolder)) {
-        return false
-      }
-      return true
-    },
-    handler: async ({ options, targetFolder }) => {
-      const handlerOperations = [
-        { source: join('shell', 'cmd', 'autorun.cmd'), target: join(targetFolder, 'autorun.cmd') },
-        { source: join('shell', 'cmd', 'autorun.reg'), target: join(targetFolder, 'autorun.reg') },
-      ]
-      for (const operation of handlerOperations) {
-        await processConfig(operation.source, operation.target, options)
-      }
-    },
-    posthandler: () => {
-      consola.info('Please running the `.reg` file under `~/Documents/CMD` with Registry Editor to enable autorun feature.')
-    },
-  },
   // PowerShell
   {
     id: 'powershell',
@@ -311,31 +283,6 @@ export const PRESET_ACTIONS: Action[] = [
       ]
       for (const operation of handlerOperations) {
         await processConfig(operation.source, operation.target, options)
-      }
-    },
-  },
-  // simple-git-hooks -- Run with fnm environment
-  {
-    id: 'simple-git-hooks',
-    name: 'setting up simple-git-hooks',
-    targetFolder: homedir(),
-    handler: async ({ options, targetFolder }) => {
-      const handlerOperations = [
-        { source: join('tools', 'simple-git-hooks', '.simple-git-hooks.rc'), target: join(targetFolder, '.simple-git-hooks.rc') },
-      ]
-      for (const operation of handlerOperations) {
-        await processConfig(operation.source, operation.target, options)
-      }
-    },
-    posthandler: ({ systemOptions }) => {
-      const { platform } = systemOptions
-      const target = join(homedir(), '.simple-git-hooks.rc')
-      consola.info('This configuration is aiming to run `simple-git-hooks` with `fnm` environment.')
-      if (platform === 'win32') {
-        consola.info(`Notice that, you should add \`SIMPLE_GIT_HOOKS_RC=${target}\` to your system environment variables to let this configuration take effect.`)
-      }
-      else {
-        consola.info(`Notice that, you should add \`SIMPLE_GIT_HOOKS_RC=${target}\` to your system environment variables at \`/etc/environment\` to let this configuration take effect.`)
       }
     },
   },
