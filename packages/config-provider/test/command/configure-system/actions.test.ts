@@ -1,4 +1,4 @@
-import { describe, expect, it } from 'vitest'
+import { describe, expect, it } from 'bun:test'
 import { filterActions } from '../../../src/command/configure-system/actions'
 import { PRESET_ACTIONS } from '../../../src/command/configure-system/preset'
 
@@ -48,10 +48,6 @@ describe('actions', () => {
           "name": "setting up Bash",
         },
         {
-          "id": "cmd",
-          "name": "setting up CMD",
-        },
-        {
           "id": "powershell",
           "name": "setting up PowerShell",
         },
@@ -74,10 +70,6 @@ describe('actions', () => {
         {
           "id": "@sxzz/create",
           "name": "setting up @sxzz/create",
-        },
-        {
-          "id": "simple-git-hooks",
-          "name": "setting up simple-git-hooks",
         },
         {
           "id": "czg",

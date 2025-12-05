@@ -1,21 +1,12 @@
-import { x } from 'tinyexec'
-import { assert, describe, it } from 'vitest'
+import { $ } from 'bun'
+import { describe, expect, it } from 'bun:test'
 
 describe('nushell profile tests', () => {
   it('should pass', async () => {
-    const proc = x('nu', ['./test.nu', '--silent'], {
-      nodeOptions: {
-        cwd: import.meta.dirname,
-      },
-    })
-    const result: string[] = []
-    for await (const line of proc) {
-      result.push(line)
-    }
-    // Result[0] = total tests
-    // Result[1] = passed tests
-    // Result[2] = failed tests
-    assert.equal(result[0], result[1])
-    assert.equal(result[2], '0')
+    $.cwd(import.meta.dirname)
+    const proc = $`nu ./test.nu --silent`
+    const result = (await proc.text()).split('\n')
+    expect(result[0]).toBe(result[1])
+    expect(result[2]).toBe('0')
   })
 })

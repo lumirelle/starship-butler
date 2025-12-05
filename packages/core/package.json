@@ -31,10 +31,11 @@
     "dist"
   ],
   "scripts": {
-    "build": "tsdown",
     "dev": "tsdown --watch",
-    "prepublishOnly": "nr build",
-    "start": "tsx src/cli.ts"
+    "build": "tsdown",
+    "start": "bun src/cli.ts",
+    "prepublishOnly": "bun run build",
+    "publish": "bun publish"
   },
   "dependencies": {
     "c12": "catalog:prod",
@@ -44,8 +45,5 @@
     "starship-butler-config-provider": "workspace:*",
     "starship-butler-types": "workspace:*",
     "starship-butler-utils": "workspace:*"
-  },
-  "devDependencies": {
-    "tinyexec": "catalog:testing"
   }
 }

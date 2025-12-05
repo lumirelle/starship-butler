@@ -28,9 +28,9 @@
     "dist"
   ],
   "scripts": {
-    "build": "tsdown",
     "dev": "tsdown --watch",
-    "prepublishOnly": "nr build",
-    "start": "tsx src/cli.ts"
+    "build": "tsdown",
+    "prepublishOnly": "bun run build",
+    "publish": "bun publish"
   }
 }

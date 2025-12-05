@@ -1,54 +1,48 @@
->> ME
+# ME
 Lumirelle
 shabbyacc
 
->> OTHERS
+# OTHERS
 antfu
 JanDeDobbeleer
-Schniz
 Meiryo
 sxzz
 posva
 gerardog
 codezombiech
 
->> ANIMALS
+# ANIMALS
 Loong
 Merlion
 
->> OBJECTS
-Qrcode
-
->> WINDOWS
+# WINDOWS
 LOCALAPPDATA
 setx
 
->> FONTS
+# FONTS
 monaspace
 wisper
 Fantasque
 
->> SHELLS & TERMINALS
+# SHELLS & TERMINALS
 pwsh
 
->> OS TOOLS
+# OS TOOLS
 winget
 Ventoy
 DISM++
 gsudo
 NanaZip
 
->> DEV TOOLS
+# DEV TOOLS
 nvim
-OhMyPosh
-fnm
 Navicat
 
->> DEV: COMMON
+# DEV: COMMON
 breakline
 amde
 
->> DEV: JAVA
+# DEV: JAVA
 graalvm
 javax
 projectlombok
@@ -61,14 +55,13 @@ pagehelper
 fastjson
 webapps
 
->> DEV: JS
+# DEV: JS
 jquery
 vueuse
 nuxt
 nuxtjs
 nuxi
 taze
-commitlint
 lintstagedrc
 changelogithub
 unplugin
@@ -86,23 +79,14 @@ onwarn
 linkify
 exifreader
 exif
-excalidraw
 keystyle
 czrc
-cnpm
 bumpp
-nvmrc
 sconfig
 ofetch
 pinia
-pxtorem
-highlightjs
 
->> DEV: Python
-mconda
-venv
-
->> THIRD PARTY PLATFORMS
+# THIRD PARTY PLATFORMS
 iconfont
 aliyun
 opencollective

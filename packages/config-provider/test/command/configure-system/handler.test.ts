@@ -1,4 +1,4 @@
-import { describe, expect, it } from 'vitest'
+import { describe, expect, it } from 'bun:test'
 import { checkPlatformSupport, checkTargetExist } from '../../../src/command/configure-system/handler'
 
 const fixtureDir = import.meta.dirname

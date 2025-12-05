@@ -9,7 +9,7 @@
     "paths": {
     },
     "types": [
-      "node"
+      "bun"
     ],
     "allowImportingTsExtensions": true,
     "allowJs": true,
