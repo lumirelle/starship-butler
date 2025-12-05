@@ -31,7 +31,7 @@
   "scripts": {
     "build": "tsdown",
     "dev": "tsdown --watch",
-    "prepublishOnly": "bun build"
+    "prepublishOnly": "bun run build"
   },
   "dependencies": {
     "@clack/prompts": "catalog:prod",
@@ -43,7 +43,6 @@
     "tinyglobby": "catalog:prod"
   },
   "devDependencies": {
-    "@antfu/utils": "catalog:inlined",
-    "tinyexec": "catalog:testing"
+    "@antfu/utils": "catalog:inlined"
   }
 }

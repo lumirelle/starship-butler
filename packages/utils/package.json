@@ -30,7 +30,7 @@
   "scripts": {
     "build": "tsdown",
     "dev": "tsdown --watch",
-    "prepublishOnly": "bun build"
+    "prepublishOnly": "bun run build"
   },
   "dependencies": {
     "ansis": "catalog:prod",

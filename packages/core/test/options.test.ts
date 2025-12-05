@@ -1,5 +1,5 @@
 import type { ButlerConfig } from '../src/config'
-import { describe, expect, it } from 'vitest'
+import { describe, expect, it } from 'bun:test'
 import { loadConfig, mergeOptions } from '../src/config'
 import rawJSONConfig from './.butlerrc.json'
 import rawTSConfig from './butler.config'

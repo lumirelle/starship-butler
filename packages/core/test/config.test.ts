@@ -1,4 +1,4 @@
-import { describe, expect, it } from 'vitest'
+import { describe, expect, it } from 'bun:test'
 import { loadConfig } from '../src/config'
 import rawJSONConfig from './.butlerrc.json'
 import rawTSConfig from './butler.config'
@@ -10,7 +10,7 @@ describe('config', () => {
       cwd: import.meta.dirname,
     })
     delete config['config-provider'].version
-    expect(config).toEqual(rawJSONConfig)
+    expect(config).toEqual(rawJSONConfig as typeof config)
   })
 
   it('load from TS file correctly', async () => {
@@ -19,6 +19,6 @@ describe('config', () => {
       cwd: import.meta.dirname,
     })
     delete config['config-provider'].version
-    expect(config).toEqual(rawTSConfig)
+    expect(config).toEqual(rawTSConfig as typeof config)
   })
 })

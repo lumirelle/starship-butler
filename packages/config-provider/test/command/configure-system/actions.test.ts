@@ -1,4 +1,4 @@
-import { describe, expect, it } from 'vitest'
+import { describe, expect, it } from 'bun:test'
 import { filterActions } from '../../../src/command/configure-system/actions'
 import { PRESET_ACTIONS } from '../../../src/command/configure-system/preset'
 
