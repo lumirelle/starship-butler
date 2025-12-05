@@ -12,7 +12,7 @@
     "lint": "eslint --cache . && stylelint --cache **/*.{css,postcss,scss,sass,less,html,vue}",
     "typecheck": "tsc --noEmit",
     "prerelease": "bun test && bun run typecheck",
-    "release": "bumpp -r && bun publish"
+    "release": "bumpp -r && bun run -F '*' publish"
   },
   "workspaces": {
     "packages": [

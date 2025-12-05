@@ -31,10 +31,11 @@
     "dist"
   ],
   "scripts": {
-    "build": "tsdown",
     "dev": "tsdown --watch",
+    "build": "tsdown",
+    "start": "bun src/cli.ts",
     "prepublishOnly": "bun run build",
-    "start": "bun src/cli.ts"
+    "publish": "bun publish"
   },
   "dependencies": {
     "c12": "catalog:prod",

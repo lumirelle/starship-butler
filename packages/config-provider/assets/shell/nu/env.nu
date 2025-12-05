@@ -9,10 +9,10 @@ $env.LC_ALL = 'en_US.UTF-8'
 # >> Setting up fnm
 # NOTE: fnm does not support nushell officially, so we need to use a workaround.
 # See related issue https://github.com/Schniz/fnm/issues/463 and PowerShell example https://github.com/Schniz/fnm/blob/master/src/shell/powershell.rs
-# if not (which fnm | is-empty) {
-#   ^fnm env --corepack-enabled --json | from json | load-env
-#   $env.Path = $env.Path | prepend ($env.FNM_MULTISHELL_PATH | path join (if $nu.os-info.name == 'windows' {''} else {'bin'}))
-# }
+if not (which fnm | is-empty) {
+  ^fnm env --corepack-enabled --json | from json | load-env
+  $env.Path = $env.Path | prepend ($env.FNM_MULTISHELL_PATH | path join (if $nu.os-info.name == 'windows' {''} else {'bin'}))
+}
 
 # UI
 mkdir ($nu.data-dir | path join "vendor/autoload")
