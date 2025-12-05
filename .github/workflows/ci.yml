@@ -34,7 +34,7 @@ jobs:
         uses: oven-sh/setup-bun@v2
         with:
           bun-version: ${{ matrix.bun }}
-      - run: bun i -g @antfu/ni
+      - run: bun i -g @antfu/ni nushell
       - run: nci
       - run: nr build
       - run: nr test --coverage
