@@ -93,7 +93,7 @@
       "eslint": "^9.39.1",
       "eslint-plugin-format": "^1.1.0",
       "lint-staged": "^16.2.7",
-      "simple-git-hooks": "^2.13.1",
+      "simple-git-hooks": "git+https://github.com/toplenboren/simple-git-hooks.git",
       "stylelint": "^16.26.1",
       "taze": "^19.9.2",
       "tsdown": "^0.17.0",
@@ -1325,7 +1325,7 @@
 
     "signal-exit": ["signal-exit@4.1.0", "", {}, "sha512-bzyZ1e88w9O1iNJbKnOlvYTrWPDl46O1bG0D3XInv+9tkPrxrN8jUUTiFlDkkmKWgn1M6CfIA13SuGqOa9Korw=="],
 
-    "simple-git-hooks": ["simple-git-hooks@2.13.1", "", { "bin": { "simple-git-hooks": "cli.js" } }, "sha512-WszCLXwT4h2k1ufIXAgsbiTOazqqevFCIncOuUBZJ91DdvWcC5+OFkluWRQPrcuSYd8fjq+o2y1QfWqYMoAToQ=="],
+    "simple-git-hooks": ["simple-git-hooks@github:toplenboren/simple-git-hooks#7625657", { "bin": "./cli.js" }, "toplenboren-simple-git-hooks-7625657"],
 
     "sirv": ["sirv@3.0.2", "", { "dependencies": { "@polka/url": "^1.0.0-next.24", "mrmime": "^2.0.0", "totalist": "^3.0.0" } }, "sha512-2wcC/oGxHis/BoHkkPwldgiPSYcpZK3JU28WoMVv55yHJgcZ8rlXvuG9iZggz+sU1d4bRgIGASwyWqjxu3FM0g=="],
 
