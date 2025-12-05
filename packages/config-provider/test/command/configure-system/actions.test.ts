@@ -48,10 +48,6 @@ describe('actions', () => {
           "name": "setting up Bash",
         },
         {
-          "id": "cmd",
-          "name": "setting up CMD",
-        },
-        {
           "id": "powershell",
           "name": "setting up PowerShell",
         },
@@ -74,10 +70,6 @@ describe('actions', () => {
         {
           "id": "@sxzz/create",
           "name": "setting up @sxzz/create",
-        },
-        {
-          "id": "simple-git-hooks",
-          "name": "setting up simple-git-hooks",
         },
         {
           "id": "czg",
