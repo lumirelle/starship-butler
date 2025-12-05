@@ -36,6 +36,7 @@ jobs:
       - run: nci
       - run: nr build
       - run: nr test --coverage
-      - uses: codecov/codecov-action@v5
-        with:
-          token: ${{ secrets.CODECOV_TOKEN }}
+      # If you want to get code coverage reports from Codecov
+      # - uses: codecov/codecov-action@v5
+      #   with:
+      #     token: ${{ secrets.CODECOV_TOKEN }}

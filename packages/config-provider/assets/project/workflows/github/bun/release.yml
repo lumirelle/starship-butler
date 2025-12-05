@@ -13,10 +13,15 @@ jobs:
   release:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v6
         with:
           fetch-depth: 0
       - uses: oven-sh/setup-bun@v2
       - run: bunx changelogithub
         env:
           GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}
+      # Uncomment the following lines to publish to npm on CI
+      # - run: bun install
+      # - run: bun run publish
+      #   env:
+      #     NPM_CONFIG_TOKEN: ${{secrets.NPM_TOKEN}}

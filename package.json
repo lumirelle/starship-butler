@@ -11,6 +11,7 @@
     "docs:build": "bun run -F docs docs:build",
     "lint": "eslint --cache . && stylelint --cache **/*.{css,postcss,scss,sass,less,html,vue}",
     "typecheck": "tsc --noEmit",
+    "test": "bun test",
     "prerelease": "bun test && bun run typecheck",
     "release": "bumpp -r && bun run -F '*' publish"
   },
