@@ -1,5 +1,6 @@
 # --------------------------------- FUNCTIONS -------------------------------- #
 
+# Check if any path exists in the current directory.
 any-path-exists() {
   for path in "$@"; do
     if [ -e "$path" ]; then
@@ -9,6 +10,7 @@ any-path-exists() {
   return 1
 }
 
+# Check if any path exists in the current directory or any of its parent directories.
 any-path-exists-parent() {
   for path in "$@"; do
     if [ -e "$path" ]; then
@@ -27,6 +29,7 @@ any-path-exists-parent() {
   return 1
 }
 
+# Find out the dirname of the specified path both cwd & parent.
 dirname-parent() {
   local path="$1"
   local abs=$(realpath "$path")
@@ -44,43 +47,31 @@ dirname-parent() {
   return 1
 }
 
-nr-agent() {
-  if any-path-exists-parent package.json; then
-    if [ -x "$(command -v nr)" ]; then
-      nr -- "$@"
-    else
-      echo "Warning: \`@antfu/ni\` is not installed as a global node package."
-    fi
+# Wrapper for running node packages' scripts
+nr-wrapper() {
+  if not any-path-exists-parent package.json; then
+    return
+  fi
+  if [ -x "$(command -v nr)" ]; then
+    nr -- "$@"
+  else
+    echo "Warning: \`@antfu/ni\` is not installed as a global node package."
   fi
 }
 
 # ------------------------------------ ENV ----------------------------------- #
 
-# LANGUAGE & ENCODING
-# Setting the language to English and the encoding to UTF-8.
-export LANG=en_US.UTF-8
-export LC_ALL=en_US.UTF-8
-
-# $PATH
-# >> Setting up fnm
-eval "$(fnm env --use-on-cd --corepack-enabled --shell bash)"
-# >> Add current node_modules/.bin to PATH if this is a npm project, so we can run npm scripts without `npx`.
-# NOTICE: Just effect on the first time you start a new shell
-if any-path-exists-parent package.json; then
-  export PATH="$(dirname-parent package.json && echo "$dirname")/node_modules/.bin:$PATH"
-fi
-
 # UI
 eval "$(starship init bash)"
 
-# COMMAND SHORTCUTS
-# Run npm scripts quickly while we are in a directory that has a `package.json`.
-alias dev='nr-agent dev'
-alias play='nr-agent play'
-alias build='nr-agent build'
-alias start='nr-agent start'
-alias lint='nr-agent lint'
-alias test='nr-agent test'
-alias typecheck='nr-agent typecheck'
-alias docs='nr-agent docs'
-alias release='nr-agent release'
+# Commands Aliases
+# For running node packages' scripts
+alias dev='nr-wrapper dev'
+alias build='nr-wrapper build'
+alias start='nr-wrapper start'
+alias docs='nr-wrapper docs'
+alias play='nr-wrapper play'
+alias lint='nr-wrapper lint'
+alias test='nr-wrapper test'
+alias typecheck='nr-wrapper typecheck'
+alias release='nr-wrapper release'
