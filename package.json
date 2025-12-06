@@ -9,6 +9,8 @@
     "start": "bun -F starship-butler start",
     "docs": "bun -F docs docs:dev",
     "docs:build": "bun -F docs docs:build",
+    "docs:preview": "bun -F docs docs:preview",
+    "play": "bun -F playground play",
     "lint": "eslint --cache . && stylelint --cache **/*.{css,postcss,scss,sass,less,html,vue}",
     "typecheck": "tsc --noEmit",
     "test": "bun test",
@@ -18,6 +20,7 @@
   "workspaces": {
     "packages": [
       "docs",
+      "playground",
       "packages/*",
       "examples/*"
     ],

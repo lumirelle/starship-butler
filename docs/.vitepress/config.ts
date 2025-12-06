@@ -5,7 +5,7 @@ import { groupIconMdPlugin } from 'vitepress-plugin-group-icons'
 import { version } from '../../package.json'
 import vite from './vite.config'
 
-const GUIDES: DefaultTheme.NavItemWithLink[] = [
+const GUIDES: DefaultTheme.NavItemWithLink[] & DefaultTheme.SidebarItem[] = [
   { text: 'Getting Started', link: '/guide/' },
   { text: 'Installation & Usage', link: '/guide/install' },
 ]
