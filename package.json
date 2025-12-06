@@ -4,15 +4,15 @@
   "private": true,
   "scripts": {
     "prepare": "simple-git-hooks",
-    "dev": "bun run -F '*' dev",
-    "build": "bun run -F '*' build",
-    "start": "bun run -F starship-butler start",
-    "docs": "bun run -F docs docs:dev",
-    "docs:build": "bun run -F docs docs:build",
+    "dev": "bun -F '*' dev",
+    "build": "bun -F '*' build",
+    "start": "bun -F starship-butler start",
+    "docs": "bun -F docs docs:dev",
+    "docs:build": "bun -F docs docs:build",
     "lint": "eslint --cache . && stylelint --cache **/*.{css,postcss,scss,sass,less,html,vue}",
     "typecheck": "tsc --noEmit",
     "test": "bun test",
-    "prerelease": "bun test && bun run typecheck",
+    "prerelease": "bun test && bun typecheck",
     "release": "bumpp -r"
   },
   "workspaces": {
@@ -88,7 +88,7 @@
     "vite": "catalog:dev"
   },
   "simple-git-hooks": {
-    "pre-commit": "bun run lint-staged"
+    "pre-commit": "bun lint-staged"
   },
   "lint-staged": {
     "*": [

@@ -24,4 +24,4 @@ jobs:
         env:
           GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}
       - run: bun install
-      - run: bun run -F '*' publish
+      - run: bun -F '*' publish

@@ -9,7 +9,7 @@ $env.config.buffer_editor = 'code'
 # Hooks
 $env.config.hooks.env_change.PWD = [
   # Add `<project-root>/node_modules/.bin` to `$env.Path` if we are in a node
-  # project, so we can run scripts without anything (like `npx` or `bun run`).
+  # project, so we can run scripts without anything (like `npx` or `bun`).
   {
     condition: {|| ['package.json'] | any-path-exists-parent}
     code: {||
