@@ -30,7 +30,7 @@
   "scripts": {
     "dev": "tsdown --watch",
     "build": "tsdown",
-    "prepublishOnly": "bun build",
+    "prepublishOnly": "bun run build",
     "publish": "bun publish"
   }
 }

@@ -34,7 +34,7 @@
     "dev": "tsdown --watch",
     "build": "tsdown",
     "start": "bun src/cli.ts",
-    "prepublishOnly": "bun build",
+    "prepublishOnly": "bun run build",
     "publish": "bun publish"
   },
   "dependencies": {
