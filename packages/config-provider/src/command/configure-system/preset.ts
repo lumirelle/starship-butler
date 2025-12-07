@@ -259,6 +259,29 @@ export const PRESET_ACTIONS: Action[] = [
       }
     },
   },
+  {
+    id: 'bun-global-install',
+    name: 'setting up Bun Global Config',
+    targetFolder: join(homedir(), '.bun'),
+    prehandler: ({ targetFolder }) => {
+      // TODO: Is this check correct?
+      if (!checkTargetExist(targetFolder, 'You should install Visual Studio Code first!')) {
+        return false
+      }
+      return true
+    },
+    handler: async ({ options, targetFolder }) => {
+      const handlerOperations = [
+        { source: join('pm', 'bun', 'bunfig.global-install.toml'), target: join(targetFolder, 'bunfig.toml') },
+      ]
+      for (const operation of handlerOperations) {
+        await processConfig(operation.source, operation.target, options)
+      }
+    },
+    posthandler: () => {
+      consola.info('This configuration is meant to be used by bun\'s global package installation.')
+    },
+  },
   // Maven
   {
     id: 'maven',

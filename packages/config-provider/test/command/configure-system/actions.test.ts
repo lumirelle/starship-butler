@@ -68,6 +68,10 @@ describe('actions', () => {
           "name": "setting up Bun",
         },
         {
+          "id": "bun-global-install",
+          "name": "setting up Bun Global Config",
+        },
+        {
           "id": "maven",
           "name": "setting up Maven",
         },
