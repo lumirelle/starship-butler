@@ -91,7 +91,7 @@
     "vite": "catalog:dev"
   },
   "simple-git-hooks": {
-    "pre-commit": "bun run lint-staged"
+    "pre-commit": "bun run -b lint-staged"
   },
   "lint-staged": {
     "*": [
