@@ -20,8 +20,13 @@ jobs:
         with:
           bun-version: latest
           registry-url: https://registry.npmjs.org/
-      - run: bunx changelogithub
+      - uses: actions/setup-node@v6
+        with:
+          node-version: lts/*
+          registry-url: https://registry.npmjs.org/
+      - run: bunx -b changelogithub
         env:
           GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}
+      - run: npm install npm@latest -g
       - run: bun install --frozen-lockfile
       - run: bun run -F '*' publish
