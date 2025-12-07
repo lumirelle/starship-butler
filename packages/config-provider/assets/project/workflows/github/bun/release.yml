@@ -30,4 +30,4 @@ jobs:
       # Uncomment the following lines to publish to npm on CI using OIDC
       # - run: npm install npm@latest -g
       # - run: bun install --frozen-lockfile
-      # - run: bun run -F '*' publish
+      # - run: bun run -F '*' do-publish

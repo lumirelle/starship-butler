@@ -31,6 +31,6 @@
     "dev": "bun run -b tsdown --watch",
     "build": "bun run -b tsdown",
     "prepublishOnly": "bun run build",
-    "publish": "npm publish --access public"
+    "do-publish": "npm publish --access public"
   }
 }

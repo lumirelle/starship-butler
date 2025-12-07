@@ -35,7 +35,7 @@
     "build": "bun run -b tsdown",
     "start": "bun run ./src/cli.ts",
     "prepublishOnly": "bun run build",
-    "publish": "npm publish --access public"
+    "do-publish": "npm publish --access public"
   },
   "dependencies": {
     "c12": "catalog:prod",

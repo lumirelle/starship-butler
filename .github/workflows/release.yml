@@ -29,4 +29,4 @@ jobs:
           GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}
       - run: npm install npm@latest -g
       - run: bun install --frozen-lockfile
-      - run: bun run -F '*' publish
+      - run: bun run -F '*' do-publish
