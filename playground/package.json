@@ -3,7 +3,7 @@
   "type": "module",
   "private": true,
   "scripts": {
-    "play": "bun ./index.ts"
+    "play": "bun run ./index.ts"
   },
   "devDependencies": {
     "starship-butler": "workspace:*"

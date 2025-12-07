@@ -33,7 +33,7 @@
   "scripts": {
     "dev": "tsdown --watch",
     "build": "tsdown",
-    "start": "bun src/cli.ts",
+    "start": "bun run ./src/cli.ts",
     "prepublishOnly": "bun run build",
     "publish": "bun publish"
   },
