@@ -3,7 +3,7 @@
   "version": "0.3.14",
   "private": true,
   "scripts": {
-    "prepare": "simple-git-hooks",
+    "prepare": "bun run -b simple-git-hooks",
     "dev": "bun run -F '*' dev",
     "build": "bun run -F '*' build",
     "start": "bun run -F starship-butler start",
@@ -11,11 +11,11 @@
     "docs:build": "bun run -F docs docs:build",
     "docs:preview": "bun run -F docs docs:preview",
     "play": "bun run -F playground play",
-    "lint": "eslint --cache . && stylelint --cache **/*.{css,postcss,scss,sass,less,html,vue}",
-    "typecheck": "tsc --noEmit",
+    "lint": "eslint --cache . && bun run -b stylelint --cache **/*.{css,postcss,scss,sass,less,html,vue}",
+    "typecheck": "bun run -b tsc --noEmit",
     "test": "bun test",
-    "prerelease": "bun run test && bun typecheck",
-    "release": "bumpp -r"
+    "prerelease": "bun run test && bun run typecheck",
+    "release": "bun run -b bumpp -r"
   },
   "workspaces": {
     "packages": [

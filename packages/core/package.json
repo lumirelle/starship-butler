@@ -31,8 +31,8 @@
     "dist"
   ],
   "scripts": {
-    "dev": "tsdown --watch",
-    "build": "tsdown",
+    "dev": "bun run -b tsdown --watch",
+    "build": "bun run -b tsdown",
     "start": "bun run ./src/cli.ts",
     "prepublishOnly": "bun run build",
     "publish": "bun publish"
