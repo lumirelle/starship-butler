@@ -24,5 +24,5 @@ jobs:
         env:
           GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}
       # Uncomment the following lines to publish to npm on CI using OIDC
-      # - run: bun install
+      # - run: bun install --frozen-lockfile
       # - run: bun run -F '*' publish

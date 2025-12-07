@@ -23,5 +23,5 @@ jobs:
       - run: bunx changelogithub
         env:
           GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}
-      - run: bun install
+      - run: bun install --frozen-lockfile
       - run: bun run -F '*' publish
