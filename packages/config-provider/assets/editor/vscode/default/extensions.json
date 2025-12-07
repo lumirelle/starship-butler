@@ -37,6 +37,7 @@
     // Git
     "waydotnet.minimal-git-file-history",
     "codezombiech.gitignore",
+    "github.vscode-github-actions",
     // Editor Group
     "mpontus.tab-cycle", // <NOT OPENVSX>. CTRL+PGUP, CTRL+PGDN, ALT+<NUMBER>
     // Editor
@@ -88,6 +89,6 @@
     "antfu.file-nesting"
   ]
   // EXTENSION COUNT
-  // >> VSCode: INDEX = 56
-  // >> Cursor: INDEX - 1 = 55
+  // >> VSCode: INDEX = 57
+  // >> Cursor: INDEX - 1 = 56
 }
