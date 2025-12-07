@@ -1,18 +1,2 @@
 verifyDepsBeforeRun: install
 ignoreWorkspaceRootCheck: true
-
-# Cross-platform env variables support
-# e.g. "NODE_ENV=production node server.js"
-# shellEmulator: true
-
-# Hoist the dependencies, act like NPM
-# shamefullyHoist: true
-
-# Install dependencies for which architectures
-# supportedArchitectures:
-#   cpu:
-#     - x64
-#   os:
-#     - win32
-#     - linux
-#     - darwin
