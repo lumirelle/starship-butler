@@ -245,6 +245,20 @@ export const PRESET_ACTIONS: Action[] = [
     },
   },
   /* ------------------------- 5. PM (Package Manager) ------------------------ */
+  // Bun
+  {
+    id: 'bun',
+    name: 'setting up Bun',
+    targetFolder: homedir(),
+    handler: async ({ options, targetFolder }) => {
+      const handlerOperations = [
+        { source: join('pm', 'bun', 'bunfig.toml'), target: join(targetFolder, '.bunfig.toml') },
+      ]
+      for (const operation of handlerOperations) {
+        await processConfig(operation.source, operation.target, options)
+      }
+    },
+  },
   // Maven
   {
     id: 'maven',
