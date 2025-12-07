@@ -64,6 +64,10 @@ describe('actions', () => {
           "name": "setting up Git",
         },
         {
+          "id": "bun",
+          "name": "setting up Bun",
+        },
+        {
           "id": "maven",
           "name": "setting up Maven",
         },
