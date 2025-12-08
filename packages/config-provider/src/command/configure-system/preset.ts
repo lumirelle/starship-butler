@@ -262,19 +262,13 @@ export const PRESET_ACTIONS: Action[] = [
   {
     id: 'bun-global-install',
     name: 'setting up Bun Global Config',
-    targetFolder: join(homedir(), '.bun'),
-    prehandler: ({ targetFolder }) => {
-      // TODO: Is this check correct?
-      if (!checkTargetExist(targetFolder, 'You should install Visual Studio Code first!')) {
-        return false
-      }
-      return true
-    },
+    targetFolder: join(homedir(), '.bun', 'install', 'global'),
     handler: async ({ options, targetFolder }) => {
       const handlerOperations = [
         { source: join('pm', 'bun', 'bunfig.global-install.toml'), target: join(targetFolder, 'bunfig.toml') },
       ]
       for (const operation of handlerOperations) {
+        ensureTargetFolderExist(targetFolder)
         await processConfig(operation.source, operation.target, options)
       }
     },
