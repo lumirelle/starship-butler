@@ -179,9 +179,10 @@
     "**/out/**": true,
     "**/package-lock.json": true,
     "**/pnpm-lock.yaml": true,
+    "**/yarn.lock": true,
+    "**/bun.lock": true,
     "**/public": true,
     "**/temp": true,
-    "**/yarn.lock": true,
     "**/CHANGELOG*": true,
     "**/LICENSE*": true
   },
