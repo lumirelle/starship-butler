@@ -38,6 +38,7 @@
     "do-publish": "npm publish --access public"
   },
   "dependencies": {
+    "@clack/prompts": "catalog:prod",
     "c12": "catalog:prod",
     "cac": "catalog:prod",
     "consola": "catalog:prod",

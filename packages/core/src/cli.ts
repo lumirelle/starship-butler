@@ -2,6 +2,7 @@ import type { ConfigureOptions, ConfigureSystemOptions } from 'starship-butler-c
 import type { SystemOptions } from 'starship-butler-types'
 import { platform } from 'node:os'
 import process from 'node:process'
+import { confirm } from '@clack/prompts'
 import cac from 'cac'
 import consola, { LogLevels } from 'consola'
 import { configure, configureSystem } from 'starship-butler-config-provider'
@@ -35,7 +36,11 @@ cli
       consola.level = LogLevels.debug
     }
     const mergedOptions = mergeOptions(cfgOptions, cliOptions)
-    await configureSystem(mergedOptions, systemOptions)
+    if (mergedOptions.force && await confirm({
+      message: 'Are you sure you want to configure your system forcibly? This will override the existing configuration with the same name, and cannot be undone!',
+    })) {
+      await configureSystem(mergedOptions, systemOptions)
+    }
   })
 
 cli
