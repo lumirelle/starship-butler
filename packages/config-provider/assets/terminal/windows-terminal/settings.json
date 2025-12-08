@@ -71,12 +71,13 @@
             "name": "CMD"
           },
           {
-            "commandline": "%SystemRoot%\\system32\\wsl.exe --distribution-id {274e4cb2-2f1e-4b2b-b670-93d53e7e2e6e} --cd ~",
-            "guid": "{a7039207-ca87-4a61-bcf3-28948ee21ceb}",
+            "commandline": "ubuntu.exe",
+            "cursorShape": "filledBox",
+            "guid": "{49ca7d08-09ce-4f2e-ad1f-42ba704a3111}",
             "hidden": false,
-            "icon": "%LOCALAPPDATA%\\wsl\\{274e4cb2-2f1e-4b2b-b670-93d53e7e2e6e}\\shortcut.ico",
+            "icon": "https://assets.ubuntu.com/v1/49a1a858-favicon-32x32.png",
             "name": "Ubuntu",
-            "pathTranslationStyle": "wsl"
+            "tabTitle": "Ubuntu"
           },
           {
             "guid": "{b453ae62-4e3d-5e58-b989-0a998ec441b8}",
