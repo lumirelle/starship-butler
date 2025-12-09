@@ -1,6 +1,6 @@
 import type { ConfigureOptions } from './types'
 import process from 'node:process'
-import { isCancel, select } from '@clack/prompts'
+import { isCancel, multiselect } from '@clack/prompts'
 import consola from 'consola'
 import path from 'pathe'
 import { fs } from 'starship-butler-utils'
@@ -46,9 +46,9 @@ export async function configure(sourcePattern: string, target: string, options: 
   /**
    * Source file path, relative to assets folder
    */
-  let sourceFile: string | undefined
+  let sourceFiles: string[]
   if (matchedFiles.length > 1) {
-    const choice = await select({
+    const choice = await multiselect({
       message: 'Select a file to set up:',
       options: matchedFiles.map(file => ({ label: file, value: file })),
     })
@@ -56,31 +56,33 @@ export async function configure(sourcePattern: string, target: string, options: 
       consola.info('Operation cancelled by the user.')
       process.exit(0)
     }
-    sourceFile = choice as string
+    sourceFiles = choice
   }
   else if (matchedFiles.length === 1) {
-    sourceFile = matchedFiles[0]!
+    sourceFiles = matchedFiles
   }
   else {
     consola.error('No files matched the source pattern!')
     return
   }
 
-  consola.debug('[config-provider] Selected source file:', sourceFile)
+  consola.debug('[config-provider] Selected source file:', sourceFiles.join(', '))
 
   // Infer target file path and ensure target folder exists
   const cwd = process.cwd()
   consola.debug('[config-provider] Current working directory:', cwd)
-  let targetFile: string | undefined
-  if (fs.isDirectory(target)) {
-    fs.ensureDir(target)
-    targetFile = path.join(cwd, target, path.basename(sourceFile))
-  }
-  else {
-    fs.ensureDir(path.dirname(target))
-    targetFile = path.join(cwd, target)
-  }
-  consola.debug('[config-provider] Target file path:', targetFile)
 
-  processConfig(sourceFile, targetFile, options)
+  for (const sourceFile of sourceFiles) {
+    let targetFile: string | undefined
+    if (fs.isDirectory(target)) {
+      fs.ensureDir(target)
+      targetFile = path.join(cwd, target, path.basename(sourceFile))
+    }
+    else {
+      fs.ensureDir(path.dirname(target))
+      targetFile = path.join(cwd, target)
+    }
+    consola.debug('[config-provider] Target file path:', targetFile)
+    processConfig(sourceFile, targetFile, options)
+  }
 }
