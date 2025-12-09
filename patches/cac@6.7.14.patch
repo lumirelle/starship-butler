@@ -1,0 +1,63 @@
+diff --git a/deno/Command.ts b/deno/Command.ts
+index 3fd04a058a5d7ef12c941f86dcf087bf8ffc14dc..ef0c11255c68297511461cd9d3699c71a2659172 100644
+--- a/deno/Command.ts
++++ b/deno/Command.ts
+@@ -160,11 +160,15 @@ class Command {
+     if (options.length > 0) {
+       const longestOptionName = findLongest(options.map(option => option.rawName));
+       sections.push({
+         title: 'Options',
+         body: options.map(option => {
+-          return `  ${padRight(option.rawName, longestOptionName.length)}  ${option.description} ${option.config.default === undefined ? '' : `(default: ${option.config.default})`}`;
++          const description = option.description
++            .split('\n')
++            .map((line, index) => index === 0 ? line : `${' '.repeat(longestOptionName.length + 4)}${line}`)
++            .join('\n')
++          return `  ${padRight(option.rawName, longestOptionName.length)}  ${description} ${option.config.default === undefined ? '' : `(default: ${option.config.default})`}`;
+         }).join('\n')
+       });
+     }
+ 
+     if (this.examples.length > 0) {
+diff --git a/dist/index.js b/dist/index.js
+index 8582dbf62dcc4152a4a07a581c1cf19e4e7a4777..362a911158b4513074a197be1d0a1d9e1e5cbc75 100644
+--- a/dist/index.js
++++ b/dist/index.js
+@@ -358,11 +358,15 @@ class Command {
+     if (options.length > 0) {
+       const longestOptionName = findLongest(options.map((option) => option.rawName));
+       sections.push({
+         title: "Options",
+         body: options.map((option) => {
+-          return `  ${padRight(option.rawName, longestOptionName.length)}  ${option.description} ${option.config.default === void 0 ? "" : `(default: ${option.config.default})`}`;
++          const description = option.description
++            .split('\n')
++            .map((line, index) => index === 0 ? line : `${' '.repeat(longestOptionName.length + 4)}${line}`)
++            .join('\n')
++          return `  ${padRight(option.rawName, longestOptionName.length)}  ${description} ${option.config.default === void 0 ? "" : `(default: ${option.config.default})`}`;
+         }).join("\n")
+       });
+     }
+     if (this.examples.length > 0) {
+       sections.push({
+diff --git a/dist/index.mjs b/dist/index.mjs
+index 7c1c4440c6ed22a3829f828364b06669c56b31c9..9f27026864c1cb1c0903aae63fc6db4870434250 100644
+--- a/dist/index.mjs
++++ b/dist/index.mjs
+@@ -354,11 +354,15 @@ class Command {
+     if (options.length > 0) {
+       const longestOptionName = findLongest(options.map((option) => option.rawName));
+       sections.push({
+         title: "Options",
+         body: options.map((option) => {
+-          return `  ${padRight(option.rawName, longestOptionName.length)}  ${option.description} ${option.config.default === void 0 ? "" : `(default: ${option.config.default})`}`;
++          const description = option.description
++            .split('\n')
++            .map((line, index) => index === 0 ? line : `${' '.repeat(longestOptionName.length + 4)}${line}`)
++            .join('\n')
++          return `  ${padRight(option.rawName, longestOptionName.length)}  ${description} ${option.config.default === void 0 ? "" : `(default: ${option.config.default})`}`;
+         }).join("\n")
+       });
+     }
+     if (this.examples.length > 0) {
+       sections.push({

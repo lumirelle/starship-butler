@@ -2,6 +2,7 @@ import type { ConfigureOptions, ConfigureSystemOptions } from 'starship-butler-c
 import type { SystemOptions } from 'starship-butler-types'
 import { platform } from 'node:os'
 import process from 'node:process'
+import { unindent } from '@antfu/utils'
 import { confirm } from '@clack/prompts'
 import cac from 'cac'
 import consola, { LogLevels } from 'consola'
@@ -21,11 +22,36 @@ const systemOptions: SystemOptions = {
 }
 
 cli
-  .command('configure-system', 'Let butler configure your system.')
-  .alias('cfsys')
-  .option('-i, --includeOnly <actionIds>', 'Preset configuring actions that are included only.')
-  .option('-x, --exclude <actionIds>', 'Preset configuring actions that are excluded.')
-  .option('-f, --force', 'Let butler configure your system forcibly, will override the existing configuration with the same name')
+  .command('preset', 'Let butler preset application configurations for you.')
+  .option(
+    '-i, --include <preset_id_regex>',
+    unindent`
+      Presets that you want to include, accepts JavaScript regex pattern string.
+      Multiple value can be specified by separating them with commas, e.g.:
+        butler preset -i clash-verge-rev,maven
+      Or pass parameter multiple times, e.g.:
+        butler preset -i clash-verge-rev -i maven
+      (Default: "*")
+    `,
+  )
+  .option(
+    '-x, --exclude <preset_id_regex>',
+    unindent`
+      Presets that you want to exclude (apply on included presets), accepts JavaScript regex pattern string.
+      Multiple value can be specified by separating them with commas, e.g.:
+        butler preset -x clash-verge-rev,maven
+      Or pass parameter multiple times, e.g.:
+        butler preset -x clash-verge-rev -x maven
+      (Default: none)
+    `,
+  )
+  .option(
+    '-f, --force',
+    unindent`
+      Let butler configure your system forcibly, will override the existing configuration with the same name.
+      Make sure you know what you are doing!
+    `,
+  )
   .option('-?, --verbose', 'Show verbose output')
   .option('-d, --dry-run', 'Dry run')
   .option('-m, --mode <mode>', 'Symlink or copy-paste configuration, default is copy-paste. CAUTION: Symlink mode is experimental now.')

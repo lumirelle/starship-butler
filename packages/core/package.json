@@ -40,11 +40,14 @@
   "dependencies": {
     "@clack/prompts": "catalog:prod",
     "c12": "catalog:prod",
-    "cac": "catalog:prod",
     "consola": "catalog:prod",
     "defu": "catalog:prod",
     "starship-butler-config-provider": "workspace:*",
     "starship-butler-types": "workspace:*",
     "starship-butler-utils": "workspace:*"
+  },
+  "devDependencies": {
+    "@antfu/utils": "catalog:inlined",
+    "cac": "catalog:inlined"
   }
 }
