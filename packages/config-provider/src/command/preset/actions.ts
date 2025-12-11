@@ -1,0 +1,88 @@
+import type { Action, PresetOptions } from './types'
+import { toArray } from '@antfu/utils'
+import consola from 'consola'
+import { highlight } from 'starship-butler-utils'
+import { cursor, cursorMcp } from './actions/editor/cursor'
+import { neovim } from './actions/editor/neovim'
+import { vscode } from './actions/editor/vscode'
+import { zed } from './actions/editor/zed'
+import { cSpell } from './actions/linter/c-spell'
+import { clashVergeRev } from './actions/network/clash-verge-rev'
+import { bun } from './actions/pm/bun'
+import { bunGlobalInstall } from './actions/pm/bun-global-install'
+import { maven } from './actions/pm/maven'
+import { starship } from './actions/shell-prompt/starship'
+import { bash } from './actions/shell/bash'
+import { nushell } from './actions/shell/nushell'
+import { powershell } from './actions/shell/powershell'
+import { windowsPowerShell } from './actions/shell/windows-powershell'
+import { windowsTerminal } from './actions/terminal/windows-terminal'
+import { czg } from './actions/tools/czg'
+import { sxzzCreate } from './actions/tools/sxzz-create'
+import { git } from './actions/vcs/git'
+
+/**
+ * Preset actions.
+ *
+ * @private
+ */
+const _ACTIONS: Action[] = [
+  // Network
+  clashVergeRev(),
+  // Terminal & Shell & Prompt
+  windowsTerminal(),
+  nushell(),
+  bash(),
+  powershell(),
+  windowsPowerShell(),
+  starship(),
+  // VCS
+  git(),
+  // Package Manager
+  bun(),
+  bunGlobalInstall(),
+  maven(),
+  // Tools
+  sxzzCreate(),
+  czg(),
+  // Editors
+  vscode(),
+  cursor(),
+  cursorMcp(),
+  zed(),
+  neovim(),
+  // Linters
+  cSpell(),
+]
+
+export function filterActions(options: Partial<PresetOptions>): Action[] {
+  let include = toArray(options.include)
+  let exclude = toArray(options.exclude)
+  if (options.all) {
+    // TODO(Lumirelle): Use glob instead regex?
+    include = ['.*']
+    exclude = []
+    consola.debug('[config-provider] "all" option is set, overriding include and exclude options accordingly.')
+    consola.debug('[config-provider] Updated include and exclude:', { include, exclude })
+  }
+  // TODO(Lumirelle): If include is empty, then prompt user to select actions...
+  const includedActions = _ACTIONS.filter((action) => {
+    const isIncluded = include.some(pattern => new RegExp(pattern).test(action.id))
+    if (!isIncluded) {
+      consola.start(`Skip "${highlight.important(action.name)}" as it's not included.`)
+      consola.log('') // New line
+      return false
+    }
+    return true
+  })
+  const notExcludedActions = includedActions.filter((action) => {
+    const isNotExcluded = !exclude.some(pattern => new RegExp(pattern).test(action.id))
+    if (!isNotExcluded) {
+      consola.start(`Skip "${highlight.important(action.name)}" as it's excluded.`)
+      consola.log('') // New line
+      return false
+    }
+    return true
+  })
+  return notExcludedActions
+}

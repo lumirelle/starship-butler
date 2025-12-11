@@ -1,5 +1,5 @@
 /**
- * Basic options for both configuration & command line interface.
+ * Basic (Configuration and Command-line) options for butler's command.
  */
 export interface BasicOptions {
   /**

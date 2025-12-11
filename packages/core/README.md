@@ -15,17 +15,17 @@ Your best butler, helping you manage the whole development "starship". 😃
 
 ## Features
 
-- 🚀 Quick management of your system & local project configurations
+- 🚀 Quick management of your application configurations & local project configurations
 - 🧰 Easy to use CLI interface
 - 🔗 Support symlink mode (experimental)
 - 🧹 WIP: Auto cleanup when uninstalling
 
 ## Usage
 
-Install globally with node package manager (npm, yarn, pnpm, etc.):
+Install globally with node package manager (bun, npm, yarn, pnpm, etc.):
 
 ```sh
-npm install starship-butler -g
+bun install starship-butler -g
 ```
 
 Run the cli and get help info with `--help` flag:
@@ -34,39 +34,49 @@ Run the cli and get help info with `--help` flag:
 butler --help
 ```
 
-### Configure System
+### Preset
 
-Command `configure-system` (with alias `cfsys`) helps you to set up system-level configurations.
+Command `preset` helps you to preset your application configurations.
 
 ```sh
-butler configure-system [...options]
+butler preset [...options]
+```
+
+Applying all presets:
+
+```sh
+butler preset --all
+```
+
+Specifying included preset id pattern:
+
+```sh
+butler preset --include <preset_id_pattern>
 ```
 
 See help info for more details:
 
 ```sh
-butler configure-system --help
+butler preset --help
 ```
 
-### Configure
+### Set
 
-Command `configure` (with alias `cf`) helps you to set up local project configurations.
+Command `Set` helps you to set local project configurations.
 
 ```sh
-butler configure <sourcePattern> <target> [...options]
+butler set <source_pattern> <target> [...options]
 ```
 
-`sourcePattern` is support both file path and glob pattern.
+If `source_pattern` does not contain `/` character, it will be automatically prefix with `**` in
+order to match files in all sub-directories simply. For example, `butler set .eslintrc.json ./project/` will be treated as `butler set **/.eslintrc.json ./project/`.
 
-If `sourcePattern` is a file path (which does not contain `/` character), butler will automatically prefix with `**` in
-order to match files in all sub-directories.
-
-This behavior is designed for better user experience, so that users don't need to type long glob patterns manually.
+Notice that `target` must be a directory. If `target` is not existed yet, you must postfix it with `/` character to indicate it's a directory, or butler will treat it as a file path. For example, `butler set .eslintrc.json ./project` will copy the matched file to `.` and rename it to `project`.
 
 See help info for more details:
 
 ```sh
-butler configure --help
+butler set --help
 ```
 
 ## Sponsors

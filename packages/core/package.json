@@ -47,7 +47,6 @@
     "starship-butler-utils": "workspace:*"
   },
   "devDependencies": {
-    "@antfu/utils": "catalog:inlined",
     "cac": "catalog:inlined"
   }
 }

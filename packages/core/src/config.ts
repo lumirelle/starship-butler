@@ -1,7 +1,6 @@
-import type { ConfigLayerMeta, LoadConfigOptions, UserInputConfig } from 'c12'
+import type { ConfigLayerMeta, LoadConfigOptions } from 'c12'
 import type { ConfigProviderOptions } from 'starship-butler-config-provider'
 import { loadConfig as loadConfigC12 } from 'c12'
-import consola from 'consola'
 import { createDefu } from 'defu'
 
 export interface ButlerConfig<ConfigProviderT extends Partial<ConfigProviderOptions> = Partial<ConfigProviderOptions>> {
@@ -48,17 +47,4 @@ export async function loadConfig<
     ...(options || {}),
   })
   return Promise.resolve(config as ButlerConfig)
-}
-
-/**
- * Merges configuration options with command line interface options.
- *
- * @param cfgOptions The configuration options.
- * @param cliOptions The command line interface options.
- * @returns The merged options.
- */
-export function mergeOptions<T extends UserInputConfig = UserInputConfig>(cfgOptions: T, cliOptions: T): T {
-  consola.debug('[starship-butler] Configuration options:', cfgOptions)
-  consola.debug('[starship-butler] Command line interface options:', cliOptions)
-  return { ...cfgOptions, ...cliOptions }
 }
