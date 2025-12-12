@@ -7,7 +7,7 @@
     "hyrious.import-cost", // <NOT OPENVSX>
     "antfu.pnpm-catalog-lens",
     "wallabyjs.console-ninja",
-    // >> Editor
+    // Editor
     "antfu.iconify",
     "mariusalchimavicius.json-to-ts", // <NOT OPENVSX>, CTRL+ALT+V
     "soulfriends.html-tag-wrap-vscode", // ALT+W/ALT+D
@@ -22,6 +22,8 @@
     "oven.bun-vscode",
     "vue.volar",
     "humao.rest-client",
+    // TypeScript
+    "typescriptteam.native-preview", // Try out ts-go for better performance
     // I18n
     "lokalise.i18n-ally",
     // UnoCSS
@@ -39,6 +41,6 @@
     "stylelint.vscode-stylelint"
   ]
   // EXTENSION COUNT
-  // >> VSCode: INDEX + 1 = 22 + {PROFILE_DEFAULT: 57} = 79
-  // >> Cursor: INDEX + 1 = 22 + {PROFILE_DEFAULT: 56} = 78
+  // >> VSCode: INDEX + 1 = 23 + {PROFILE_DEFAULT: 57} = 80
+  // >> Cursor: INDEX + 1 = 23 + {PROFILE_DEFAULT: 56} = 79
 }

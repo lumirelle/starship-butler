@@ -6,6 +6,10 @@
     "source.organizeImports": "never"
   },
 
+  // LSP
+  // Try out ts-go for better performance
+  "typescript.experimental.useTsgo": true,
+
   // Formatter & Linter
   "editor.formatOnSave": false,
   "prettier.enable": false,
@@ -41,10 +45,5 @@
   "files.associations": {
     ".butlerrc": "properties",
     "*.json": "jsonc"
-  },
-
-  // Search
-  "search.exclude": {
-    "**/assets": false
   }
 }
