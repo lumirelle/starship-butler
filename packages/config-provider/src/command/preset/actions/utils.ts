@@ -1,11 +1,11 @@
 import type { Arrayable } from '@antfu/utils'
-import { homedir as osHomedir } from 'node:os'
+import { homedir as osHomedir, platform } from 'node:os'
 import process from 'node:process'
 import { toArray } from '@antfu/utils'
-import { $ } from 'bun'
 import consola from 'consola'
 import { join } from 'pathe'
 import { fs } from 'starship-butler-utils'
+import { x } from 'tinyexec'
 import { processConfig as _processConfig } from '../../../utils'
 
 /**
@@ -73,7 +73,8 @@ export async function isPathExistEnv(path: Arrayable<string>, customMessage?: st
     return false
   }
   try {
-    const results = await Promise.all(path.map(async t => (await $`which ${t}`.text()) !== ''))
+    const command = platform() === 'win32' ? 'where' : 'which'
+    const results = await Promise.all(path.map(async t => (await x(command, [t])).stdout.trim() !== ''))
     const isTargetExist = results.every(t => t)
     if (!isTargetExist) {
       consola.warn(customMessage ?? `Target ${path.join(', ')} ${path.length > 1 ? 'are' : 'is'} not found, please check your configuration!`)

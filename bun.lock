@@ -48,6 +48,7 @@
         "pathe": "catalog:prod",
         "starship-butler-types": "workspace:*",
         "starship-butler-utils": "workspace:*",
+        "tinyexec": "catalog:prod",
         "tinyglobby": "catalog:prod",
       },
       "devDependencies": {
@@ -138,6 +139,7 @@
       "defu": "^6.1.4",
       "pathe": "^2.0.3",
       "rc9": "^2.1.2",
+      "tinyexec": "^1.0.2",
       "tinyglobby": "^0.2.15",
     },
     "types": {
