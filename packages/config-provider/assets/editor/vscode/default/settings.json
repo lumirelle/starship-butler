@@ -46,11 +46,37 @@
   "editor.cursorSmoothCaretAnimation": "on",
   // Highlight
   "highlight-matching-tag.styles": {
-    "opening": { "name": { "highlight": "rgb(143 188 143 / 40%)" } }
+    "opening": { "name": { "highlight": "rgb(104 148 92 / 80%)" } }
   },
   "todohighlight.include": [
-    "**/.*", // Include all dot files
-    "**/*" // Include all non-dot files
+    // Shell Scripts
+    "**/*.sh",
+    "**/*.ps1",
+    "**/*.bat",
+    "**/*.nu",
+    // Front-end Ecosystem
+    "**/*.{,m,c}{j,t}s{,x}",
+    "**/*.vue",
+    "**/*.svelte",
+    "**/*.htm{,l}",
+    "**/*.{c,sc,le}ss",
+    // Back-end Ecosystem
+    "**/*.zig",
+    "**/*.rs",
+    "**/*.go",
+    "**/*.java",
+    "**/*.kt",
+    "**/*.py",
+    "**/*.php",
+    "**/*.sql",
+    "**/{d,D}ockerfile",
+    // Data & Configurations
+    "**/*.{x,y,ya,to}ml",
+    "**/*.json{,c}",
+    "**/.*rc",
+    // Texts
+    "**/*.md{,c,x}",
+    "**/*.txt"
   ],
   "todohighlight.exclude": [
     "**/node_modules/**",
@@ -95,17 +121,6 @@
       "overviewRulerColor": "rgb(50 113 174 / 80%)"
     },
     {
-      "text": "WIP(string):",
-      "regex": { "pattern": "(?<=^|\"|\\s)(WIP)(\\(\\w+\\))?:" },
-      "backgroundColor": "#6ca8af",
-      "overviewRulerColor": "rgb(108 168 175 / 80%)"
-    },
-    {
-      "text": "[~]",
-      "backgroundColor": "#6ca8af",
-      "overviewRulerColor": "rgb(108 168 175 / 80%)"
-    },
-    {
       "text": "DONE(string):",
       "regex": { "pattern": "(?<=^|\"|\\s)(DONE|RECOMMENDED)(\\(\\w+\\))?:" },
       "backgroundColor": "#68945c",
@@ -121,12 +136,6 @@
       "regex": { "pattern": "(?<=^|\"|\\s)(NOTE|NOTICE)(\\(\\w+\\))?:" },
       "backgroundColor": "#cf929e",
       "overviewRulerColor": "rgb(207 146 158 / 80%)"
-    },
-    {
-      "text": "OPTIONAL(string):",
-      "regex": { "pattern": "(?<=^|\"|\\s)(OPTIONAL)(\\(\\w+\\))?:" },
-      "backgroundColor": "#9aa7b1",
-      "overviewRulerColor": "rgb(154 167 177 / 80%)"
     },
     {
       "text": "<NOT OPENVSX>",
