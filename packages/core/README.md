@@ -7,7 +7,11 @@
 [![Codecov][codecov-src]][codecov-href]
 [![License][license-src]][license-href]
 
-> [!NOTE]
+> [!Caution]
+>
+> This package is still in development, and the API may change frequently.
+
+> [!Note]
 >
 > This is an "opinionated" "butler", so that it's not suitable for everyone.
 
