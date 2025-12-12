@@ -83,10 +83,6 @@ describe('actions', () => {
           "name": "@sxzz/create",
         },
         {
-          "id": "czg",
-          "name": "czg",
-        },
-        {
           "id": "vscode",
           "name": "VSCode",
         },
@@ -174,10 +170,6 @@ describe('actions', () => {
           "name": "@sxzz/create",
         },
         {
-          "id": "czg",
-          "name": "czg",
-        },
-        {
           "id": "vscode",
           "name": "VSCode",
         },
@@ -260,10 +252,6 @@ describe('actions', () => {
         {
           "id": "@sxzz/create",
           "name": "@sxzz/create",
-        },
-        {
-          "id": "czg",
-          "name": "czg",
         },
         {
           "id": "vscode",

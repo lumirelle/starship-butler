@@ -17,7 +17,6 @@ import { nushell } from './actions/shell/nushell'
 import { powershell } from './actions/shell/powershell'
 import { windowsPowerShell } from './actions/shell/windows-powershell'
 import { windowsTerminal } from './actions/terminal/windows-terminal'
-import { czg } from './actions/tools/czg'
 import { sxzzCreate } from './actions/tools/sxzz-create'
 import { git } from './actions/vcs/git'
 
@@ -44,7 +43,6 @@ const _ACTIONS: Action[] = [
   maven(),
   // Tools
   sxzzCreate(),
-  czg(),
   // Editors
   vscode(),
   cursor(),

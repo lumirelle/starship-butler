@@ -101,11 +101,6 @@ add-all-then-commit-with-message = "!f() { \
   git add-all; \
   git commit-with-message \"$@\"; \
 }; f"
-# Only for a node package, which requires `czg` to be installed
-add-all-then-czg = "!f() { \
-  git add-all; \
-  git czg \"$@\";\
-}; f"
 # amend commit
 amend-commit = commit --amend --no-edit
 add-all-then-amend-commit = "!f() { \
@@ -118,8 +113,11 @@ add-all-then-amend-commit-with-edit = "!f() { \
   git amend-commit-with-edit \"$@\"; \
 }; f"
 # wip commit
-work-in-progress = "!git add-all && git commit-with-message 'chore: wip'"
-work-in-progress-undo = "!git log -n 1 | grep -q -c 'chore: wip' && git reset HEAD~1"
+work-in-progress = "!git commit-with-message 'chore: wip'"
+# readme commit
+readme = "!git commit-with-message 'docs: update README.md'"
+# dependencies commit
+dependencies = "!git commit-with-message 'chore: update dependencies'"
 
 # Aliases -- Work with Branches
 # branch
@@ -290,13 +288,9 @@ xa = discard-all
 cm = commit
 cmms = commit-with-message
 cmu = commit-undo
-# czg: cg
-cz = czg
 # add & commit: adcm
 aacm = add-all-then-commit
 aacmms = add-all-then-commit-with-message
-# add & commit (czg): adcz
-aacz = add-all-then-czg
 # amend commit: md
 md = amend-commit
 mdi = amend-commit-with-edit
@@ -304,7 +298,10 @@ aamd = add-all-then-amend-commit
 aamdi = add-all-then-amend-commit-with-edit
 # work-in-progress: wip
 wip = work-in-progress
-wipu = work-in-progress-undo
+# readme: rdme
+rdme = readme
+# dependencies: deps
+deps = dependencies
 
 # Abbrev Aliases -- Work with Branches
 # branch: br
