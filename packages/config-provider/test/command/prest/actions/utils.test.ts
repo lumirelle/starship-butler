@@ -1,4 +1,4 @@
-import { homedir as osHomedir } from 'node:os'
+import { homedir as osHomedir, platform } from 'node:os'
 import { describe, expect, it } from 'bun:test'
 import { fs } from 'starship-butler-utils'
 import { appdata, ensureDirectoryExist, homedir, isPathExist, isPathExistEnv, localAppdata } from '../../../../src/command/preset/actions/utils'
@@ -11,12 +11,12 @@ describe('action utils', () => {
     expect(path).toBe(`${osHomedir().replace(/\\/g, '/')}/.config/test`)
   })
 
-  it('appdata should work', () => {
+  it.if(platform() === 'win32')('appdata should work', () => {
     const path = appdata('test', 'appdata')
     expect(path).toBe(`${process.env.APPDATA?.replace(/\\/g, '/')}/test/appdata`)
   })
 
-  it('localAppdata should work', () => {
+  it.if(platform() === 'win32')('localAppdata should work', () => {
     const path = localAppdata('test', 'localappdata')
     expect(path).toBe(`${process.env.LOCALAPPDATA?.replace(/\\/g, '/')}/test/localappdata`)
   })
