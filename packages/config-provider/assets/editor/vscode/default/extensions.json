@@ -1,75 +1,69 @@
 {
   // cspell:disable
   "recommendations": [
-    /* --------------------------------- Visual --------------------------------- */
+    /* ----- Visual ----- */
     // Theme
     "antfu.theme-vitesse",
     "antfu.icons-carbon",
     "catppuccin.catppuccin-vsc-icons",
-    // Font
-    "subframe7536.custom-ui-style",
     // Highlight
     "jgclark.vscode-todo-highlight",
     "naumovs.color-highlight",
     "ibm.output-colorizer",
     "vincaslt.highlight-matching-tag",
+    // Custom UI
+    "subframe7536.custom-ui-style",
     // Markdown Preview
-    "bierner.markdown-checkbox", // <NOT OPENVSX>
-    "bierner.markdown-emoji", // <NOT OPENVSX>
-    "bierner.markdown-footnotes", // <NOT OPENVSX>
-    "bierner.markdown-preview-github-styles", // <NOT OPENVSX>
-    "bierner.markdown-yaml-preamble", // <NOT OPENVSX>
+    "bierner.markdown-checkbox",
+    "bierner.markdown-emoji",
+    "bierner.markdown-footnotes",
+    "bierner.markdown-preview-github-styles",
+    "bierner.markdown-yaml-preamble",
+    // File Nesting
+    "antfu.file-nesting",
 
-    /* -------------------------------- Behavior -------------------------------- */
-    // Classic Behavior
-    "yutengjing.vscode-classic-experience", // Cursor only
+    /* ----- Behavior ----- */
     // Status Bar
     "antfu.where-am-i",
-    "tomoki1207.selectline-statusbar", // <NOT OPENVSX>
+    "tomoki1207.selectline-statusbar",
     "mkxml.vscode-filesize",
-    "johnpapa.read-time", // <NOT OPENVSX>
+    "johnpapa.read-time",
     "tombonnike.vscode-status-bar-format-toggle",
     // Main Bar
-    "zjffun.snippetsmanager", // <NOT OPENVSX>
+    "zjffun.snippetsmanager",
     // Explorer
-    "JannisX11.batch-rename-extension", // <NOT OPENVSX>
-    "sandcastle.vscode-open", // <NOT OPENVSX>
+    "JannisX11.batch-rename-extension",
+    "sandcastle.vscode-open",
     // Git
     "waydotnet.minimal-git-file-history",
     "codezombiech.gitignore",
     "github.vscode-github-actions",
     // Editor Group
-    "mpontus.tab-cycle", // <NOT OPENVSX>. CTRL+PGUP, CTRL+PGDN, ALT+<NUMBER>
+    "mpontus.tab-cycle", // CTRL+PGUP, CTRL+PGDN, ALT+<NUMBER>
     // Editor
-    "nrevia05hp.plaintext-comment", // <NOT OPENVSX>.
+    "nrevia05hp.plaintext-comment",
     "christian-kohler.path-intellisense",
     "antfu.smart-clicks", // Mouse Click
-    "agutierrezr.emmet-keybindings", // See https://marketplace.visualstudio.com/items?itemName=agutierrezr.emmet-keybindings, <NOT OPENVSX>
-    "ow.vscode-subword-navigation", //  <NOT OPENVSX>. ALT+LEFT_ARROW, ALT+RIGHT_ARROW
+    "agutierrezr.emmet-keybindings", // See https://marketplace.visualstudio.com/items?itemName=agutierrezr.emmet-keybindings
+    "ow.vscode-subword-navigation", // ALT+LEFT_ARROW, ALT+RIGHT_ARROW
     "cardinal90.multi-cursor-case-preserve",
     "albymor.increment-selection", // CTRL+ALT+I
     "britesnow.vscode-toggle-quotes", // CTRL+'
-    "northisup.comment-divider-updated", //  <NOT OPENVSX>. ALT+X, SHIFT+ALT+X, ALT+Y
-    "dnut.rewrap-revived", // <NOT OPENVSX>. ALT+Q, rewarp comments with max line length
-    "chouzz.vscode-better-align", // ALT+A, <NOT OPENVSX>
-    "tyriar.sort-lines", // F9
+    "northisup.comment-divider-updated", // ALT+X, SHIFT+ALT+X, ALT+Y
+    "chouzz.vscode-better-align", // ALT+A
     "yatki.vscode-surround", // After selection, CTRL+SHIFT+T
     // Inlay Hints
-    "antfu.array-index-inlay", // <NOT OPENVSX>
+    "antfu.array-index-inlay",
     // Lens
     "usernamehw.errorlens",
     "kisstkondoros.vscode-codemetrics",
-    // Suggestion & Completion
-    "bierner.emojisense",
-    // Command
-    "helixquar.randomeverything", // <NOT OPENVSX>
     // Dev Container
     "ms-azuretools.vscode-containers",
     // AI
     "github.copilot", // VSCode only
     "github.copilot-chat", // VSCode only
 
-    /* ----------------------------------- LSP ---------------------------------- */
+    /* ----- LSP ----- */
     "yzhang.markdown-all-in-one",
     "redhat.vscode-yaml",
     "tamasfe.even-better-toml",
@@ -77,18 +71,15 @@
     "thenuprojectcontributors.vscode-nushell-lang",
     "ms-vscode.hexeditor",
 
-    /* --------------------------------- Format --------------------------------- */
+    /* ----- Formatter ----- */
     "editorconfig.editorconfig",
     "esbenp.prettier-vscode",
     "lumirelle.shell-format-rev",
 
-    /* ---------------------------------- Lint ---------------------------------- */
-    "streetsidesoftware.code-spell-checker",
-
-    /* ------------------------------ File Nesting ------------------------------ */
-    "antfu.file-nesting"
+    /* ----- Linter ----- */
+    "streetsidesoftware.code-spell-checker"
   ]
   // EXTENSION COUNT
-  // >> VSCode: INDEX = 57
-  // >> Cursor: INDEX - 1 = 56
+  // >> VSCode: INDEX + 1 = 53
+  // >> Cursor: INDEX - 2 = 51
 }

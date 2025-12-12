@@ -1,29 +1,32 @@
 {
   // cspell:disable
   "recommendations": [
-    /* -------------------------------- Behavior -------------------------------- */
+    /* ----- Behavior ----- */
     // Lens
     "yoavbls.pretty-ts-errors",
-    "hyrious.import-cost", // <NOT OPENVSX>
+    "hyrious.import-cost",
     "antfu.pnpm-catalog-lens",
     "wallabyjs.console-ninja",
     // Editor
     "antfu.iconify",
-    "mariusalchimavicius.json-to-ts", // <NOT OPENVSX>, CTRL+ALT+V
+    "mariusalchimavicius.json-to-ts", // CTRL+ALT+V
     "soulfriends.html-tag-wrap-vscode", // ALT+W/ALT+D
     // Suggestion & Completion
     "ecmel.vscode-html-css",
     // Command
-    "jasonnutter.search-node-modules", // <NOT OPENVSX>, CTRL+K CTRL+N
+    "jasonnutter.search-node-modules", // CTRL+K CTRL+N
 
-    /* ----------------------------------- LSP ---------------------------------- */
-    "johnsoncodehk.vscode-tsconfig-helper", // <NOT OPENVSX>
-    "mikestead.dotenv",
+    /* ----- LSP ----- */
+    // JavaScript / TypeScript
     "oven.bun-vscode",
-    "vue.volar",
-    "humao.rest-client",
-    // TypeScript
+    "johnsoncodehk.vscode-tsconfig-helper",
     "typescriptteam.native-preview", // Try out ts-go for better performance
+    // Vue
+    "vue.volar",
+    // Dotenv
+    "mikestead.dotenv",
+    // REST Client
+    "humao.rest-client",
     // I18n
     "lokalise.i18n-ally",
     // UnoCSS
@@ -31,16 +34,16 @@
     // Tailwind CSS
     "bradlc.vscode-tailwindcss",
     // Nuxt
-    "alimozdemir.vscode-nuxt-dx-tools", // <NOT OPENVSX>
+    "alimozdemir.vscode-nuxt-dx-tools",
     "antfu.goto-alias", // F12
     // Slidev
     "antfu.slidev",
 
-    /* ---------------------------------- Lint ---------------------------------- */
+    /* ----- Linter ----- */
     "dbaeumer.vscode-eslint",
     "stylelint.vscode-stylelint"
   ]
   // EXTENSION COUNT
-  // >> VSCode: INDEX + 1 = 23 + {PROFILE_DEFAULT: 57} = 80
-  // >> Cursor: INDEX + 1 = 23 + {PROFILE_DEFAULT: 56} = 79
+  // >> VSCode: INDEX + 1 = 23 + {PROFILE_DEFAULT: 53} = 76
+  // >> Cursor: INDEX + 1 = 23 + {PROFILE_DEFAULT: 51} = 74
 }
