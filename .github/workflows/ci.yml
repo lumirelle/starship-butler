@@ -37,7 +37,7 @@ jobs:
       - run: bun i -g @antfu/ni nushell
       - run: nci
       - run: nr build
-      - run: nr test --coverage
+      - run: nr test --coverage --coverage-reporter=lcov
       - uses: codecov/codecov-action@v5
         with:
           token: ${{ secrets.CODECOV_TOKEN }}
