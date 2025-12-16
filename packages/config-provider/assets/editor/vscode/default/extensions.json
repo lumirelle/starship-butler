@@ -38,9 +38,8 @@
     "waydotnet.minimal-git-file-history",
     "codezombiech.gitignore",
     "github.vscode-github-actions",
-    // Editor Group
-    "mpontus.tab-cycle", // CTRL+PGUP, CTRL+PGDN, ALT+<NUMBER>
     // Editor
+    "vscodevim.vim",
     "nrevia05hp.plaintext-comment",
     "christian-kohler.path-intellisense",
     "antfu.smart-clicks", // Mouse Click
@@ -81,5 +80,5 @@
   ]
   // EXTENSION COUNT
   // >> VSCode: INDEX + 1 = 53
-  // >> Cursor: INDEX - 2 = 51
+  // >> Cursor: INDEX - 1 = 51
 }

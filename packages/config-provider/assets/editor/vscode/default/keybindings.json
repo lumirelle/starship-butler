@@ -1,18 +1,22 @@
 [
-  /* --------------------------- Workbench Disables --------------------------- */
-  // Editor
+  // Navigation
   {
-    "key": "ctrl+m",
-    "command": "-editor.action.toggleTabFocusMode" // This is for accessibility, which I don't need
+    "key": "ctrl+h",
+    "command": "workbench.action.navigateLeft"
   },
-  // Emojisense
   {
-    "key": "ctrl+i",
-    "command": "-emojisense.quickEmoji",
-    "when": "editorTextFocus"
+    "key": "ctrl+l",
+    "command": "workbench.action.navigateRight"
+  },
+  {
+    "key": "ctrl+k",
+    "command": "workbench.action.navigateUp"
+  },
+  {
+    "key": "ctrl+j",
+    "command": "workbench.action.navigateDown"
   },
 
-  /* --------------------------- Custom Keybindings --------------------------- */
   // Terminal
   {
     "key": "ctrl+alt+`",
