@@ -1,6 +1,14 @@
 [
   // Navigation
   {
+    "key": "ctrl+numpad_divide",
+    "command": "workbench.action.files.openFile"
+  },
+  {
+    "key": "ctrl+numpad_multiply",
+    "command": "workbench.action.files.openFolder"
+  },
+  {
     "key": "ctrl+h",
     "command": "workbench.action.navigateLeft"
   },
