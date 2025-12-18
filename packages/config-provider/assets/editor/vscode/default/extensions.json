@@ -39,7 +39,7 @@
     "codezombiech.gitignore",
     "github.vscode-github-actions",
     // Editor
-    "vscodevim.vim",
+    "asvetliakov.vscode-neovim",
     "nrevia05hp.plaintext-comment",
     "christian-kohler.path-intellisense",
     "antfu.smart-clicks", // Mouse Click

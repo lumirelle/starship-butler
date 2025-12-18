@@ -5,9 +5,4 @@
 local opt = vim.opt
 
 opt.wrap = true
-opt.spell = false
 opt.guifont = { "Monaspace Xenon", "Maple Mono CN", "Symbols Nerd Font" }
-opt.shell = "nu"
-opt.shellcmdflag = "--commands"
-opt.shellquote = "'"
-opt.shellxquote = ""

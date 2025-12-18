@@ -18,6 +18,7 @@
   "editor.guides.bracketPairs": true,
   "editor.renderWhitespace": "boundary",
   "editor.rulers": [80, 120, 160, 200],
+  "editor.lineNumbers": "relative",
   "editor.tokenColorCustomizations": {
     "[*Light*]": {
       "textMateRules": []
@@ -452,7 +453,7 @@
   "console-ninja.featureSet": "Community",
   "editorconfig.showMenuEntry": false,
   "extensions.experimental.affinity": {
-    "vscodevim.vim": 1
+    "asvetliakov.vscode-neovim": 1
   },
   "fileNestingUpdater.autoUpdate": false,
   "i18n-ally.autoDetection": false,
@@ -460,57 +461,52 @@
   "iconify.excludes": ["el"],
   "markdown.extension.italic.indicator": "_",
   "markdown.extension.tableFormatter.enabled": false, // Use `prettier` or `eslint-plugin-format` instead
+  "vscode-neovim.ctrlKeysForNormalMode": [
+    "a",
+    "b",
+    "c",
+    "d",
+    "e",
+    "f",
+    "h",
+    "i",
+    "j",
+    "k",
+    "l",
+    "m",
+    "o",
+    "r",
+    "t",
+    "u",
+    "v",
+    "w",
+    "x",
+    "y",
+    "z",
+    "/",
+    "]",
+    "right",
+    "left",
+    "up",
+    "down",
+    "backspace",
+    "delete"
+  ],
+  "vscode-neovim.ctrlKeysForInsertMode": [
+    "a",
+    "c",
+    "d",
+    "h",
+    "j",
+    "m",
+    "o",
+    "r",
+    "t",
+    "u",
+    "w"
+  ],
   "redhat.telemetry.enabled": false,
   "rest-client.enableTelemetry": false,
-  "rewrap.wrappingColumn": 80,
-  "vim.highlightedyank.enable": true,
-  "vim.useSystemClipboard": true,
-  "vim.smartRelativeLine": true,
-  "vim.leader": "<Space>",
-  "vim.handleKeys": {
-    "<C-d>": true,
-    "<C-f>": false,
-    "<C-s>": true,
-    "<C-z>": true
-  },
-  "vim.insertModeKeyBindings": [
-    { "before": ["j", "j"], "after": ["<Esc>"] }
-  ],
-  "vim.normalModeKeyBindingsNonRecursive": [
-    {
-      "before": ["<Esc>"],
-      "when": ["editorFocus"],
-      "commands": [":nohl"],
-      "silent": true
-    },
-    {
-      "before": ["<leader>", "a"],
-      "when": ["editorFocus"],
-      "after": ["g", "g", "v", "G"]
-    },
-    {
-      "before": ["<leader>", "u"],
-      "when": ["editorFocus"],
-      "after": ["<C-r>"]
-    },
-    {
-      "before": ["<leader>", "s"],
-      "when": ["editorFocus"],
-      "commands": ["workbench.action.files.save"],
-      "silent": true
-    },
-    {
-      "before": ["<leader>", "S"],
-      "commands": ["workbench.action.files.saveFiles"],
-      "silent": true
-    },
-    {
-      "before": ["<leader>", "q"],
-      "when": ["editorFocus"],
-      "commands": ["workbench.action.closeActiveEditor"],
-      "silent": true
-    }
-  ],
   "where-am-i.colorful": false,
 
   /* ----------------------- Language Specific Settings ----------------------- */
