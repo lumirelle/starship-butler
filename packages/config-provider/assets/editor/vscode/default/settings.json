@@ -315,6 +315,8 @@
     "bun.lockb",
     "bun.lock"
   ],
+  "eslint.runtime": "bun",
+  "eslint.execArgv": ["-b"],
   "eslint.validate": [
     "javascript",
     "javascriptreact",
