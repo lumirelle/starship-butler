@@ -6,3 +6,4 @@ local opt = vim.opt
 
 opt.wrap = true
 opt.guifont = { "Monaspace Xenon", "Maple Mono CN", "Symbols Nerd Font" }
+opt.shell = "nu"

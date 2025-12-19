@@ -2,25 +2,15 @@
 	"Commnet Todo": {
 		"prefix": "td",
 		"description": "Commnet todo",
-		"scope": "javascript,javascriptreact,typescript,typescriptreact,scss,sass,java,go,python,c,cpp,rust",
+		"scope": "javascript,javascriptreact,typescript,typescriptreact,scss,java,go,python,c,cpp,rust,jsonc,zig",
 		"body": [
 			"// TODO(Lumirelle): $0"
-		]
-	},
-	"Commnet Todo Block": {
-		"prefix": "td-block",
-		"description": "Commnet todo block",
-		"scope": "javascript,javascriptreact,typescript,typescriptreact,scss,sass,java,go,python,c,cpp,rust",
-		"body": [
-			"/**",
-			" * TODO(Lumirelle): $0",
-			" */"
 		]
 	},
 	"Commnet Todo in HTML": {
 		"prefix": "td",
 		"description": "Commnet todo in HTML",
-		"scope": "html",
+		"scope": "html,markdown",
 		"body": [
 			"<!-- TODO(Lumirelle): $0 -->"
 		]
@@ -33,37 +23,38 @@
 			"/* TODO(Lumirelle): $0 */"
 		]
 	},
-	"Commnet Todo in Markdown": {
-		"prefix": "td",
-		"description": "Commnet todo in Markdown",
-		"scope": "markdown",
+  "Commnet Todo Block": {
+		"prefix": "td-block",
+		"description": "Commnet todo block",
+		"scope": "javascript,javascriptreact,typescript,typescriptreact,java,go,python,c,cpp,rust,jsonc",
 		"body": [
-			"TODO(Lumirelle): $0"
+			"/**",
+			" * TODO(Lumirelle): $0",
+			" */"
 		]
 	},
-
+	"Commnet Todo Block With ///": {
+		"prefix": "td-block",
+		"description": "Commnet todo block with ///",
+		"scope": "scss,zig",
+		"body": [
+			"///",
+			"/// TODO(Lumirelle): $0",
+			"///"
+		]
+	},
 	"Commnet Bug": {
 		"prefix": "bug",
 		"description": "Commnet bug",
-		"scope": "javascript,javascriptreact,typescript,typescriptreact,scss,sass,java,go,python,c,cpp,rust",
+		"scope": "javascript,javascriptreact,typescript,typescriptreact,scss,java,go,python,c,cpp,rust,jsonc,zig",
 		"body": [
 			"// BUG(Lumirelle): $0"
 		]
 	},
-	"Commnet Bug Block": {
-		"prefix": "bug-block",
-		"description": "Commnet bug block",
-		"scope": "javascript,javascriptreact,typescript,typescriptreact,scss,sass,java,go,python,c,cpp,rust",
-		"body": [
-			"/**",
-			" * BUG(Lumirelle): $0",
-			" */"
-		]
-	},
-  	"Commnet Bug in HTML": {
+  "Commnet Bug in HTML": {
 		"prefix": "bug",
 		"description": "Commnet bug in HTML",
-		"scope": "html",
+		"scope": "html,markdown",
 		"body": [
 			"<!-- BUG(Lumirelle): $0 -->"
 		]
@@ -76,37 +67,38 @@
 			"/* BUG(Lumirelle): $0 */"
 		]
 	},
-	"Commnet Bug in Markdown": {
-		"prefix": "bug",
-		"description": "Commnet bug in Markdown",
-		"scope": "markdown",
+	"Commnet Bug Block": {
+		"prefix": "bug-block",
+		"description": "Commnet bug block",
+		"scope": "javascript,javascriptreact,typescript,typescriptreact,java,go,python,c,cpp,rust",
 		"body": [
-			"BUG(Lumirelle): $0"
+			"/**",
+			" * BUG(Lumirelle): $0",
+			" */"
 		]
 	},
-
+	"Commnet Bug Block With ///": {
+		"prefix": "bug-block",
+		"description": "Commnet bug  block with ///",
+		"scope": "scss,zig",
+		"body": [
+			"///",
+			"/// BUG(Lumirelle): $0",
+			"///"
+		]
+	},
 	"Commnet Fixme": {
 		"prefix": "fxm",
 		"description": "Commnet fixme",
-		"scope": "javascript,javascriptreact,typescript,typescriptreact,scss,sass,java,go,python,c,cpp,rust",
+		"scope": "javascript,javascriptreact,typescript,typescriptreact,scss,java,go,python,c,cpp,rust,jsonc,zig",
 		"body": [
 			"// FIXME(Lumirelle): $0"
-		]
-	},
-	"Commnet Fixme Block": {
-		"prefix": "fxm-block",
-		"description": "Commnet fixme block",
-		"scope": "javascript,javascriptreact,typescript,typescriptreact,scss,sass,java,go,python,c,cpp,rust",
-		"body": [
-			"/**",
-			" * FIXME(Lumirelle): $0",
-			" */"
 		]
 	},
   "Commnet Fixme in HTML": {
 		"prefix": "fxm",
 		"description": "Commnet fixme in HTML",
-		"scope": "html",
+		"scope": "html,markdown",
 		"body": [
 			"<!-- FIXME(Lumirelle): $0 -->"
 		]
@@ -119,80 +111,38 @@
 			"/* FIXME(Lumirelle): $0 */"
 		]
 	},
-	"Commnet Fixme in Markdown": {
-		"prefix": "fxm",
-		"description": "Commnet fixme in Markdown",
-		"scope": "markdown",
-		"body": [
-			"FIXME(Lumirelle): $0"
-		]
-	},
-
-	"Commnet WIP": {
-		"prefix": "wip",
-		"description": "Commnet WIP",
-		"scope": "javascript,javascriptreact,typescript,typescriptreact,scss,sass,java,go,python,c,cpp,rust",
-		"body": [
-			"// WIP(Lumirelle): $0"
-		]
-	},
-	"Commnet WIP Block": {
-		"prefix": "wip-block",
-		"description": "Commnet WIP block",
-		"scope": "javascript,javascriptreact,typescript,typescriptreact,scss,sass,java,go,python,c,cpp,rust",
+	"Commnet Fixme Block": {
+		"prefix": "fxm-block",
+		"description": "Commnet fixme block",
+		"scope": "javascript,javascriptreact,typescript,typescriptreact,java,go,python,c,cpp,rust",
 		"body": [
 			"/**",
-			" * WIP(Lumirelle): $0",
+			" * FIXME(Lumirelle): $0",
 			" */"
 		]
 	},
-  "Commnet WIP in HTML": {
-		"prefix": "wip",
-		"description": "Commnet WIP in HTML",
-		"scope": "html",
+	"Commnet Fixme Block With ///": {
+		"prefix": "fxm-block",
+		"description": "Commnet fixme block with ///",
+		"scope": "scss,zig",
 		"body": [
-			"<!-- WIP(Lumirelle): $0 -->"
+			"///",
+			"/// FIXME(Lumirelle): $0",
+			"///"
 		]
 	},
-	"Commnet WIP in CSS": {
-		"prefix": "wip",
-		"description": "Commnet WIP in CSS",
-		"scope": "css",
-		"body": [
-			"/* WIP(Lumirelle): $0 */"
-		]
-	},
-	"Commnet WIP in Markdown": {
-		"prefix": "wip",
-		"description": "Commnet WIP in Markdown",
-		"scope": "markdown",
-		"body": [
-			"WIP(Lumirelle): $0"
-		]
-	},
-
 	"Commnet Done": {
 		"prefix": "done",
 		"description": "Commnet done",
-		"scope": "javascript,javascriptreact,typescript,typescriptreact,scss,sass,java,go,python,c,cpp,rust",
+		"scope": "javascript,javascriptreact,typescript,typescriptreact,scss,java,go,python,c,cpp,rust,jsonc,zig",
 		"body": [
 			"// DONE(Lumirelle): $0"
-		]
-	},
-	"Commnet Done Block": {
-		"prefix": "done-block",
-		"description": "Commnet done block",
-		"scope": "javascript,javascriptreact,typescript,typescriptreact,scss,sass,java,go,python,c,cpp,rust",
-		"body": [
-			"/**",
-			" * DONE(Lumirelle): $0",
-			" */"
 		]
 	},
   "Commnet Done in HTML": {
 		"prefix": "done",
 		"description": "Commnet done in HTML",
-		"scope": "html",
+		"scope": "html,markdown",
 		"body": [
 			"<!-- DONE(Lumirelle): $0 -->"
 		]
@@ -205,37 +155,38 @@
 			"/* DONE(Lumirelle): $0 */"
 		]
 	},
-	"Commnet Done in Markdown": {
-		"prefix": "done",
-		"description": "Commnet done in Markdown",
-		"scope": "markdown",
+	"Commnet Done Block": {
+		"prefix": "done-block",
+		"description": "Commnet done block",
+		"scope": "javascript,javascriptreact,typescript,typescriptreact,java,go,python,c,cpp,rust",
 		"body": [
-			"DONE(Lumirelle): $0"
+			"/**",
+			" * DONE(Lumirelle): $0",
+			" */"
 		]
 	},
-
+	"Commnet Done Block With ///": {
+		"prefix": "done-block",
+		"description": "Commnet done block with ///",
+		"scope": "scss,zig",
+		"body": [
+			"///",
+			"/// DONE(Lumirelle): $0",
+			"///"
+		]
+	},
 	"Commnet Note": {
 		"prefix": "note",
 		"description": "Commnet note",
-		"scope": "javascript,javascriptreact,typescript,typescriptreact,scss,sass,java,go,python,c,cpp,rust",
+		"scope": "javascript,javascriptreact,typescript,typescriptreact,scss,java,go,python,c,cpp,rust,jsonc,zig",
 		"body": [
 			"// NOTE(Lumirelle): $0"
 		]
 	},
-	"Commnet Note Block": {
-		"prefix": "note-block",
-		"description": "Commnet note block",
-		"scope": "javascript,javascriptreact,typescript,typescriptreact,scss,sass,java,go,python,c,cpp,rust",
-		"body": [
-			"/**",
-			" * NOTE(Lumirelle): $0",
-			" */"
-		]
-	},
-  	"Commnet Note in HTML": {
+  "Commnet Note in HTML": {
 		"prefix": "note",
 		"description": "Commnet note in HTML",
-		"scope": "html",
+		"scope": "html,markdown",
 		"body": [
 			"<!-- NOTE(Lumirelle): $0 -->"
 		]
@@ -248,55 +199,24 @@
 			"/* NOTE(Lumirelle): $0 */"
 		]
 	},
-	"Commnet Note in Markdown": {
-		"prefix": "note",
-		"description": "Commnet note in Markdown",
-		"scope": "markdown",
-		"body": [
-			"NOTE(Lumirelle): $0"
-		]
-	},
-
-	"Commnet Optional": {
-		"prefix": "opt",
-		"description": "Commnet optional",
-		"scope": "javascript,javascriptreact,typescript,typescriptreact,scss,sass,java,go,python,c,cpp,rust",
-		"body": [
-			"// OPTIONAL(Lumirelle): $0"
-		]
-	},
-	"Commnet Optional Block": {
-		"prefix": "opt-block",
-		"description": "Commnet optional block",
-		"scope": "javascript,javascriptreact,typescript,typescriptreact,scss,sass,java,go,python,c,cpp,rust",
+	"Commnet Note Block": {
+		"prefix": "note-block",
+		"description": "Commnet note block",
+		"scope": "javascript,javascriptreact,typescript,typescriptreact,java,go,python,c,cpp,rust",
 		"body": [
 			"/**",
-			" * OPTIONAL(Lumirelle): $0",
+			" * NOTE(Lumirelle): $0",
 			" */"
 		]
 	},
-  	"Commnet Optional in HTML": {
-		"prefix": "opt",
-		"description": "Commnet optional in HTML",
-		"scope": "html",
+	"Commnet Note Block With ///": {
+		"prefix": "note-block",
+		"description": "Commnet note block with ///",
+		"scope": "scss,zig",
 		"body": [
-			"<!-- OPTIONAL(Lumirelle): $0 -->"
-		]
-	},
-	"Commnet Optional in CSS": {
-		"prefix": "opt",
-		"description": "Commnet optional in CSS",
-		"scope": "css",
-		"body": [
-			"/* OPTIONAL(Lumirelle): $0 */"
-		]
-	},
-	"Commnet Optional in Markdown": {
-		"prefix": "opt",
-		"description": "Commnet optional in Markdown",
-		"scope": "markdown",
-		"body": [
-			"OPTIONAL(Lumirelle): $0"
+			"///",
+			"/// NOTE(Lumirelle): $0",
+			"///"
 		]
 	},
 }

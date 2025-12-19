@@ -137,11 +137,6 @@
       "regex": { "pattern": "(?<=^|\"|\\s)(NOTE|NOTICE)(\\(\\w+\\))?:" },
       "backgroundColor": "#cf929e",
       "overviewRulerColor": "rgb(207 146 158 / 80%)"
-    },
-    {
-      "text": "<NOT OPENVSX>",
-      "backgroundColor": "#7e527f",
-      "overviewRulerColor": "rgb(126 82 127 / 80%)"
     }
   ],
 
@@ -214,6 +209,8 @@
   "editor.minimap.enabled": true,
   "editor.accessibilitySupport": "off",
   "editor.unusualLineTerminators": "auto",
+  "editor.snippetSuggestions": "top",
+  "editor.suggest.showWords": false,
   // Diff Editor
   "diffEditor.ignoreTrimWhitespace": false,
   // Terminal

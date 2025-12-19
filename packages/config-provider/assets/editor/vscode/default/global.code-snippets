@@ -7,108 +7,114 @@
 			"${CURRENT_YEAR}-$CURRENT_MONTH-${CURRENT_DATE}T${CURRENT_HOUR}:${CURRENT_MINUTE}${CURRENT_TIMEZONE_OFFSET}"
 		]
 	},
-	"Import Sideeffect": {
-		"prefix": [
-			"imp-sideeffect",
-			"ise"
-		],
-		"description": "Import sideeffect",
+	"Import Module": {
+		"prefix": "im",
+		"description": "Import module",
 		"scope": "javascript,typescript",
 		"body": [
-			"import '${1:module}'"
-		]
-	},
-	"Import Default From": {
-		"prefix": [
-			"imp-default",
-			"idf"
-		],
-		"description": "Import default from a module",
-		"scope": "javascript,typescript",
-		"body": [
-			"import ${1:module} from '${1:module}'"
+			"import ${2:*} from '${1:module}'"
 		]
 	},
 	"Import As": {
-		"prefix": [
-			"imp-as",
-			"ias"
-		],
-		"description": "Import as from a module",
+		"prefix": "ia",
+		"description": "Import module as",
 		"scope": "javascript,typescript",
 		"body": [
-			"import * as ${1:module} from '${1:module}'"
+			"import ${2:*} as ${3:name} from '${1:module}'"
 		]
 	},
-	"Import Destruct From": {
-		"prefix": [
-			"imp-destruct",
-			"ids"
-		],
-		"description": "Import destruct from a module",
+	"Import Destructured": {
+		"prefix": "id",
+		"description": "Import module destructured",
 		"scope": "javascript,typescript",
 		"body": [
-			"import { $2 } from '${1:module}'"
+			"import {${2}} from '${1:module}'"
 		]
 	},
-	"Export Default": {
-		"prefix": [
-			"exp-default",
-			"edf"
-		],
-		"description": "Export default",
+	"Export": {
+		"prefix": "e",
+		"description": "Export member",
 		"scope": "javascript,typescript",
 		"body": [
-			"export default $1"
+			"export ${1:member}"
 		]
 	},
 	"Export Const": {
-		"prefix": [
-			"exp-const",
-			"ecs"
-		],
-		"description": "Export const",
+		"prefix": "ec",
+		"description": "Export const member",
 		"scope": "javascript,typescript",
 		"body": [
-			"export const ${1:name}"
+			"export const ${1:member} = ${2:value}"
 		]
 	},
 	"Export Function": {
-		"prefix": [
-			"exp-function",
-			"efn"
-		],
+		"prefix": "ef",
 		"description": "Export function",
 		"scope": "javascript,typescript",
 		"body": [
-			"export function ${1:name}"
+			"export function ${1:member}(${2:args}) {",
+			"  $0",
+			"}"
 		]
 	},
-	"Export From": {
-		"prefix": [
-			"exp-from",
-			"efr"
-		],
-		"description": "Export from another module",
+"Export Default": {
+		"prefix": "ed",
+		"description": "Export default",
 		"scope": "javascript,typescript",
 		"body": [
-			"export * from '${1:module}'"
+			"export default ${1:member}"
+		]
+	},
+	"Export Module": {
+		"prefix": "em",
+		"description": "Export module",
+		"scope": "javascript,typescript",
+		"body": [
+			"export ${2:*} from '${1:module}'"
 		]
 	},
 	"Const": {
-		"prefix": "cs",
+		"prefix": "c",
 		"description": "Const",
 		"scope": "javascript,typescript",
 		"body": [
-			"const $1"
+			"const ${1:name}"
+		]
+	},
+	"Const Destructured": {
+		"prefix": "cd",
+		"description": "Const destructured",
+		"scope": "javascript,typescript",
+		"body": [
+			"const { ${2:prop} } = ${1:value}"
 		]
 	},
 	"Let": {
-		"prefix": "lt",
+		"prefix": "l",
 		"description": "Let",
 		"scope": "javascript,typescript",
 		"body": [
-			"let $1"
+			"let ${1:name}"
+		]
+	},
+	"Arrow Function1": {
+		"prefix": "f",
+		"description": "Arrow function",
+		"scope": "javascript,typescript",
+		"body": [
+			"(${1:args}) => {",
+			"  $0",
+			"}"
+		]
+	},
+	"Arrow Function Destructured": {
+		"prefix": "fd",
+		"description": "Arrow function with destructured args",
+		"scope": "javascript,typescript",
+		"body": [
+			"({ ${1:args} }) => {",
+			"  $0",
+			"}"
 		]
 	},
 	"Function": {
@@ -116,47 +122,42 @@
 		"description": "Function",
 		"scope": "javascript,typescript",
 		"body": [
-			"function ${1:name} (${2:params}) {",
+			"function ${1:name}(${2:args}) {",
 			"  $0",
 			"}"
 		]
 	},
-	"Arrow Function": {
-		"prefix": "afn",
-		"description": "Arrow function",
+	"Anonymous Function": {
+		"prefix": "fa",
+		"description": "Anonymous function",
 		"scope": "javascript,typescript",
 		"body": [
-			"(${1:params}) => {",
+			"function(${1:args}) {",
 			"  $0",
 			"}"
 		]
 	},
 	"For In": {
-		"prefix": "fin",
+		"prefix": "forin",
 		"description": "For in",
 		"scope": "javascript,typescript",
 		"body": [
-			"for (const ${1:key} in {2:object}) {",
-			"  $0",
+			"for (const ${1:key} in ${2:object}) {",
+			"  if (${2:object}.hasOwnProperty(${1:key})) {",
+			"    const ${3:element} = ${2:object}[${1:key}]",
+			"    $0",
+			"  }",
 			"}"
 		]
 	},
 	"For Of": {
-		"prefix": "fof",
+		"prefix": "forof",
 		"description": "For of",
 		"scope": "javascript,typescript",
 		"body": [
-			"for (const ${1:item} of {2:array}) {",
+			"for (const ${1:iterator} of {2:object}) {",
 			"  $0",
 			"}"
-		]
-	},
-	"Destructe Object": {
-		"prefix": "dso",
-		"description": "Destructe object",
-		"scope": "javascript,typescript",
-		"body": [
-			"const { ${1:property} } = ${2:object}"
 		]
 	},
 	"Console Log": {
@@ -165,6 +166,14 @@
 		"scope": "javascript,typescript",
 		"body": [
 			"console.log($1)"
+		]
+	},
+	"Console Debug": {
+		"prefix": "cd",
+		"description": "Console debug",
+		"scope": "javascript,typescript",
+		"body": [
+			"console.debug($1)"
 		]
 	},
 	"Console Info": {
@@ -191,11 +200,44 @@
 			"console.error($1)"
 		]
 	},
+	"Async": {
+		"prefix": "a",
+		"description": "Asnyc",
+		"scope": "javascript,typescript",
+		"body": [
+			"asnyc $0"
+		]
+	},
+	"Await": {
+		"prefix": "w",
+		"description": "Await",
+		"scope": "javascript,typescript",
+		"body": [
+			"await $0"
+		]
+	},
+	"IIFE": {
+		"prefix": "iife",
+		"description": "IIFE",
+		"scope": "javascript,typescript",
+		"body": [
+			";(function(${1:args}) {",
+			"  ",
+			"})()"
+		]
+	},
+	"IIFE1": {
+		"prefix": "aiife",
+		"description": "IIFE",
+		"scope": "javascript,typescript",
+		"body": [
+			";(async (${1:args}) => {",
+			"  ",
+			"})()"
+		]
+	},
 	"Markdown Table": {
-		"prefix": [
-			"mkd-table",
-			"mtable"
-		],
+		"prefix": "table",
 		"description": "Markdown table",
 		"scope": "markdown",
 		"body": [
@@ -207,29 +249,74 @@
 			"",
 			"### $2",
 			"",
+			"$0",
+			"",
 			"</td></tr></table>",
 			""
 		]
 	},
-	"Vue Script Setup (TS)": {
-		"prefix": [
-			"vue-script-setup",
-			"vsc"
-		],
-		"description": "Vue SFC script setup (TS)",
+	"Markdown Table Row": {
+		"prefix": "table-row",
+		"description": "Markdown table row",
+		"scope": "markdown",
+		"body": [
+			"<tr><td width=\"500px\" valign=\"top\">",
+			"",
+			"$1",
+			"",
+			"</td><td width=\"500px\" valign=\"top\">",
+			"",
+			"$0",
+			""
+		]
+	},
+	"Vue Script": {
+		"prefix": "script",
+		"description": "Vue script",
 		"scope": "vue",
 		"body": [
-			"<script lang=\"ts\" setup>",
+			"<script>",
+			"export default {",
+			"  $0",
+			"}",
+			"</script>"
+		]
+	},
+	"Vue Script Setup": {
+		"prefix": "script-setup",
+		"description": "Vue script setup",
+		"scope": "vue",
+		"body": [
+			"<script setup>",
 			"$0",
 			"</script>"
 		]
 	},
-  "Vue Style Scoped": {
-		"prefix": [
-			"vue-style-scoped",
-			"vst"
-		],
-		"description": "Vue SFC style scoped",
+	"Vue Script Setup With TypeScript": {
+		"prefix": "script-ts-setup",
+		"description": "Vue script setup with TypeScript",
+		"scope": "vue",
+		"body": [
+			"<script setup lang=\"ts\">",
+			"$0",
+			"</script>"
+		]
+	},
+	"Vue Template": {
+		"prefix": "template",
+		"description": "Vue template",
+		"scope": "vue",
+		"body": [
+			"<template>",
+			"  <div>",
+			"    $0",
+			"  </div>",
+			"</template>"
+		]
+	},
+	"Vue Style Scoped": {
+		"prefix": "style-scoped",
+		"description": "Vue style scoped",
 		"scope": "vue",
 		"body": [
 			"<style scoped>",
@@ -237,12 +324,29 @@
 			"</style>"
 		]
 	},
-	"Vue I18n Block Local": {
-		"prefix": [
-			"vue-i18n-local",
-			"i18"
-		],
-		"description": "Vue SFC i18n block local",
+	"Vue Style Scoped With SCSS": {
+		"prefix": "style-scss-scoped",
+		"description": "Vue style scoped with SCSS",
+		"scope": "vue",
+		"body": [
+			"<style scoped lang=\"scss\">",
+			"$0",
+			"</style>"
+		]
+	},
+	"Vue I18n Block": {
+		"prefix": "i18n",
+		"description": "Vue i18n block",
+		"scope": "vue",
+		"body": [
+			"<i18n>",
+			"$0",
+			"</i18n>"
+		]
+	},
+	"Vue I18n Block With YAML": {
+		"prefix": "i18n-yaml",
+		"description": "Vue i18n block with YAML",
 		"scope": "vue",
 		"body": [
 			"<i18n lang=\"yaml\">",
@@ -250,46 +354,95 @@
 			"</i18n>"
 		]
 	},
+	"Vue SFC": {
+		"prefix": "sfc",
+		"description": "Vue SFC",
+		"scope": "vue",
+		"body": [
+			"<script>",
+			"export default {",
+			"  // ...",
+			"}",
+			"</script>",
+			"",
+			"<template>",
+			"  <div>",
+			"    <!-- ... -->",
+			"  </div>",
+			"</template>",
+			"",
+			"<style scoped>",
+			"/* ... */",
+			"</style>",
+			""
+		]
+	},
+	"Vue SFC Setup": {
+		"prefix": "sfc-setup",
+		"description": "Vue SFC setup",
+		"scope": "vue",
+		"body": [
+			"<script setup>",
+			"// ...",
+			"</script>",
+			"",
+			"<template>",
+			"  <div>",
+			"    <!-- ... -->",
+			"  </div>",
+			"</template>",
+			"",
+			"<style scoped>",
+			"/* ... */",
+			"</style>",
+			"",
+			"<i18n>",
+			"",
+			"</i18n>"
+		]
+	},
+	"Vue SFC Setup With TypeScript1": {
+		"prefix": "sfc-ts-setup",
+		"description": "Vue SFC setup with TypeScript",
+		"scope": "vue",
+		"body": [
+			"<script setup lang=\"ts\">",
+			"// ...",
+			"</script>",
+			"",
+			"<template>",
+			"  <div>",
+			"    <!-- ... -->",
+			"  </div>",
+			"</template>",
+			"",
+			"<style scoped>",
+			"/* ... */",
+			"</style>",
+			"",
+			"<i18n lang=\"yaml\">",
+			"# ...",
+			"</i18n>"
+		]
+	},
   "Pinia Setup Store Boilerplate": {
     "scope": "javascript,typescript",
-    "prefix": [
-		"pinia-setup",
-		"pinia"
-	],
+    "prefix": "pinia-setup",
     "body": [
 		"import { acceptHMRUpdate, defineStore } from 'pinia'",
 		"",
 		"export const use${TM_FILENAME_BASE/^(.*)$/${1:/pascalcase}/}Store = defineStore('$TM_FILENAME_BASE', () => {",
-		" $0",
-		" return {}",
+		"  const ${1:state} = ${2:null}",
+		"  return {",
+		"    ${1:state},",
+		"  }",
 		"})",
 		"",
-		"if (import.meta.hot) {",
+		"if (import.meta.hot)",
 		" import.meta.hot.accept(acceptHMRUpdate(use${TM_FILENAME_BASE/^(.*)$/${1:/pascalcase}/}Store, import.meta.hot))",
-		"}",
+		"",
 		""
 	],
     "description": "Bootstrap the code needed for a Vue.js Pinia Setup Store file"
-  },
-  "Pinia Options Store Boilerplate": {
-    "scope": "javascript,typescript",
-    "prefix": "pinia-options",
-    "body": [
-		"import { acceptHMRUpdate, defineStore } from 'pinia'",
-		"",
-		"export const use${TM_FILENAME_BASE/^(.*)$/${1:/pascalcase}/}Store = defineStore('$TM_FILENAME_BASE', {",
-		" state: () => ({",
-		"   $0",
-		" }),",
-		" getters: {},",
-		" actions: {},",
-		"})",
-		"",
-		"if (import.meta.hot) {",
-		" import.meta.hot.accept(acceptHMRUpdate(use${TM_FILENAME_BASE/^(.*)$/${1:/pascalcase}/}Store, import.meta.hot))",
-		"}",
-		""
-	],
-    "description": "Bootstrap the code needed for a Vue.js Pinia Options Store file"
-  },
+},
 }

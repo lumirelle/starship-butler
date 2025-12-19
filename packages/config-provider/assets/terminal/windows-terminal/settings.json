@@ -21,6 +21,14 @@
       {
         "id": "Terminal.DuplicatePaneAuto",
         "keys": "alt+shift+d"
+      },
+      // Send Ctrl+. correctly (Used by Neovim for Quickfix List).
+      {
+        "keys": "ctrl+.",
+        "command": {
+          "action": "sendInput",
+          "input": "\u001b[46;5u"
+        }
       }
     ],
   "launchMode": "default",
