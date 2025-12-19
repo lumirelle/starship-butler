@@ -1,5 +1,5 @@
-import { homedir as osHomedir, platform } from 'node:os'
 import { describe, expect, it } from 'bun:test'
+import { homedir as osHomedir, platform } from 'node:os'
 import { fs } from 'starship-butler-utils'
 import { appdata, ensureDirectoryExist, homedir, isPathExist, isPathExistEnv, localAppdata } from '../../../../src/command/preset/actions/utils'
 

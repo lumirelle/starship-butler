@@ -1,6 +1,6 @@
-import { platform } from 'node:os'
 import { $ } from 'bun'
 import { describe, expect, it } from 'bun:test'
+import { platform } from 'node:os'
 
 describe('bash profile tests', () => {
   it('should pass', async () => {

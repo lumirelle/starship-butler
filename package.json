@@ -95,10 +95,10 @@
   },
   "lint-staged": {
     "*": [
-      "eslint --fix"
+      "bun run eslint --fix"
     ],
     "*.{css,postcss,scss,sass,less,html,vue}": [
-      "stylelint --fix"
+      "bun run stylelint --fix"
     ]
   },
   "patchedDependencies": {
