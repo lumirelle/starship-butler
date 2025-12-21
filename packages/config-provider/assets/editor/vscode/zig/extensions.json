@@ -1,0 +1,10 @@
+{
+  // cspell:disable
+  "recommendations": [
+    /* ----- LSP ----- */
+    "ziglang.vscode-zig"
+  ]
+  // EXTENSION COUNT
+  // >> VSCode: INDEX + 1 = 1 + {PROFILE_DEFAULT: 46} = 47
+  // >> Cursor: INDEX + 1 = 1 + {PROFILE_DEFAULT: 44} = 45
+}

@@ -4,3 +4,5 @@ This folder contains two sub-folders which are categorized based on the "profile
 
 - Default: For general-purpose development
 - JavaScript: For JavaScript/TypeScript development
+- Rust: For Rust development
+- Zig: For Zig development
