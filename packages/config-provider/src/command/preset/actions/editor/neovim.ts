@@ -20,6 +20,10 @@ const configPathGenerators: ConfigPathGenerator[] = [
     target: join(targetFolder, 'lua', 'config', 'autocmds.lua'),
   }),
   (targetFolder: string) => ({
+    source: join('editor', 'nvim', 'lua', 'config', 'autocmds_vscode.lua'),
+    target: join(targetFolder, 'lua', 'config', 'autocmds_vscode.lua'),
+  }),
+  (targetFolder: string) => ({
     source: join('editor', 'nvim', 'lua', 'config', 'keymaps.lua'),
     target: join(targetFolder, 'lua', 'config', 'keymaps.lua'),
   }),

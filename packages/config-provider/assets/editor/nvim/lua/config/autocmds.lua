@@ -7,20 +7,6 @@
 -- Or remove existing autocmds by their group name (which is prefixed with `lazyvim_` for the defaults)
 -- e.g. vim.api.nvim_del_augroup_by_name("lazyvim_wrap_spell")
 
-local function augroup(name)
-  vim.api.nvim_del_augroup_by_name("lazyvim_" .. name)
-  return vim.api.nvim_create_augroup("lazyvim_" .. name, { clear = true })
+if vim.g.vscode then
+  require("config.autocmds_vscode")
 end
-
--- Wrap and check for spell in text filetypes if not in VSCode
-vim.api.nvim_create_autocmd("FileType", {
-  group = augroup("wrap_spell"),
-  pattern = { "text", "plaintex", "typst", "gitcommit", "markdown" },
-  callback = function()
-    if vim.g.vscode then
-      return
-    end
-    vim.opt_local.wrap = true
-    vim.opt_local.spell = true
-  end,
-})
