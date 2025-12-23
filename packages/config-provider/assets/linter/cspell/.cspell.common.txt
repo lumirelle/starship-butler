@@ -1,13 +1,8 @@
-# ME
+# PEOPLE
 Lumirelle
 shabbyacc
-
-# OTHERS
 antfu
-JanDeDobbeleer
-Meiryo
 sxzz
-posva
 gerardog
 codezombiech
 
@@ -15,45 +10,50 @@ codezombiech
 Loong
 Merlion
 
-# WINDOWS
+# HARDWARES
+Aigo
+
+# OS: WINDOWS
+LTSC
 LOCALAPPDATA
 setx
 
 # FONTS
 monaspace
-wisper
-Fantasque
+Inconsolata
+Iosevka
+unhinted
+Adwaita
 
 # SHELLS & TERMINALS
 pwsh
 
-# OS TOOLS
+# TOOLS
 winget
 Ventoy
 DISM++
 gsudo
 NanaZip
-
-# DEV TOOLS
 nvim
 Navicat
+Huorong
+Weixin
+MSVC
+Svgl
+
+# GAMES
+Honkai
+Bronya
 
 # DEV: COMMON
 breakline
 amde
 
-# DEV: JAVA
-graalvm
-javax
-projectlombok
-mybatis
-baomidou
-jsqlparser
-springframework
-thymeleaf
-pagehelper
-fastjson
-webapps
+# DEV: BASH
+elif
+esac
+punct
+xdigit
 
 # DEV: JS
 jquery
@@ -85,6 +85,19 @@ bumpp
 sconfig
 ofetch
 pinia
+
+# DEV: JAVA
+graalvm
+javax
+projectlombok
+mybatis
+baomidou
+jsqlparser
+springframework
+thymeleaf
+pagehelper
+fastjson
+webapps
 
 # THIRD PARTY PLATFORMS
 iconfont
