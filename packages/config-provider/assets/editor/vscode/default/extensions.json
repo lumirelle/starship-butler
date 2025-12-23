@@ -3,7 +3,7 @@
   "recommendations": [
     /* ----- Visual ----- */
     // Theme
-    "antfu.theme-vitesse",
+    "github.github-vscode-theme",
     "antfu.icons-carbon",
     "catppuccin.catppuccin-vsc-icons",
     // Highlight
