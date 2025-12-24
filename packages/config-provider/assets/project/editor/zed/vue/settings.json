@@ -26,7 +26,12 @@
           "jsonc",
           "yaml",
           "toml",
-          "xml"
+          "xml",
+          "css",
+          "postcss",
+          "scss",
+          "sass",
+          "less"
         ],
         "rulesCustomizations": [
           { "rule": "style/*", "severity": "off" },
@@ -40,11 +45,6 @@
           { "rule": "*quotes", "severity": "off" },
           { "rule": "*semi", "severity": "off" }
         ]
-      }
-    },
-    "stylelint": {
-      "settings": {
-        "validate": ["css", "postcss", "scss", "sass", "less", "html", "vue"]
       }
     }
   }

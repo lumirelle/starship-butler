@@ -1,18 +1,18 @@
 {
   // cspell:disable
   "recommendations": [
-    /* --------------------------------- Visual --------------------------------- */
+    /* ----- Visual ----- */
     // Theme
     "vitesse",
     "catppuccin-icons",
     // Highlight
     "log",
 
-    /* -------------------------------- Behavior -------------------------------- */
+    /* ----- Behavior ----- */
     // Emmet
     "emmet",
 
-    /* ----------------------------------- LSP ---------------------------------- */
+    /* ----- LSP ----- */
     "xml",
     "toml",
     "csv",
@@ -22,8 +22,11 @@
     "env",
     "vue",
     "dockerfile",
-    "nu"
+    "nu",
+
+    /* ----- Linter ----- */
+    "stylelint"
   ]
   // EXTENSION COUNT
-  // >> INDEX + 1 = 13
+  // >> INDEX + 1 = 15
 }
