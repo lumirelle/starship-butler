@@ -1,11 +1,14 @@
 import type { Arrayable } from '@antfu/utils'
+import type { ConfigPathGenerator, PlatformTargetFolderMap } from '../types'
 import { homedir as osHomedir, platform } from 'node:os'
 import process from 'node:process'
 import { toArray } from '@antfu/utils'
 import { join } from 'pathe'
 import { fs } from 'starship-butler-utils'
 import { x } from 'tinyexec'
-import { processConfig as _processConfig } from '../../../utils'
+import { processConfig } from '../../../utils'
+
+/* ----- Path definition utilities ----- */
 
 /**
  * Join all arguments together and normalize the resulting path, starting from home directory.
@@ -39,6 +42,23 @@ export function appdata(...paths: string[]): string {
 export function localAppdata(...paths: string[]): string {
   return join(process.env.LOCALAPPDATA!, ...paths)
 }
+
+/* Target folder handler utilities */
+
+/**
+ * Create a target folder handler, which will return target folder based on platform.
+ *
+ * @param platformTargetFolderMap Platform to target folder map.
+ * @returns Target folder handler.
+ */
+export function createTargetFolderHandler(platformTargetFolderMap: PlatformTargetFolderMap) {
+  return ({ systemOptions }: { systemOptions: { platform: NodeJS.Platform } }) => {
+    const { platform } = systemOptions
+    return platformTargetFolderMap[platform] ?? ''
+  }
+}
+
+/* ----- Prehandler utilities ----- */
 
 /**
  * Check if path(s) exist and log warning if not exist.
@@ -97,4 +117,19 @@ export function ensureDirectoryExist(directory: string): boolean {
   return fs.ensureDirectory(directory)
 }
 
-export const processConfig = _processConfig
+/* ----- Handler utilities----- */
+
+/**
+ * Create a handler for given config path generators.
+ *
+ * @param configPathGenerators Config path generators.
+ * @returns Handler function.
+ */
+export function createHandler(configPathGenerators: ConfigPathGenerator[]) {
+  return async ({ options, targetFolder }: { options: Partial<any>, targetFolder: string }) => {
+    for (const generator of configPathGenerators) {
+      const { source, target } = generator(targetFolder)
+      await processConfig(source, target, options)
+    }
+  }
+}

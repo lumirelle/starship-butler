@@ -1,6 +1,6 @@
 import type { Action, ConfigPathGenerator } from '../../types'
 import { join } from 'pathe'
-import { homedir, processConfig } from '../utils'
+import { createHandler, homedir } from '../utils'
 
 const name = 'Git'
 
@@ -18,11 +18,6 @@ export function git(): Action {
     id: 'git',
     name,
     targetFolder,
-    handler: async ({ options, targetFolder }) => {
-      for (const generator of configPathGenerators) {
-        const { source, target } = generator(targetFolder)
-        await processConfig(source, target, options)
-      }
-    },
+    handler: createHandler(configPathGenerators),
   }
 }

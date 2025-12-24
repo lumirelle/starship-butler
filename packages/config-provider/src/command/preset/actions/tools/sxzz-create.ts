@@ -1,7 +1,7 @@
 import type { Action, ConfigPathGenerator } from '../../types'
 import { join } from 'pathe'
 import { HandlerError } from '../../error'
-import { homedir, isPathExistEnv, processConfig } from '../utils'
+import { createHandler, ensureDirectoryExist, homedir, isPathExistEnv } from '../utils'
 
 const name = '@sxzz/create'
 
@@ -21,12 +21,9 @@ export function sxzzCreate(): Action {
     prehandler: async () => {
       if (!(await isPathExistEnv('create')))
         throw new HandlerError(`You should install ${name} first!`)
+      if (!(ensureDirectoryExist(targetFolder)))
+        throw new HandlerError(`Failed to create @sxzz/create configuration folder: ${targetFolder}`)
     },
-    handler: async ({ options, targetFolder }) => {
-      for (const generator of configPathGenerators) {
-        const { source, target } = generator(targetFolder)
-        await processConfig(source, target, options)
-      }
-    },
+    handler: createHandler(configPathGenerators),
   }
 }

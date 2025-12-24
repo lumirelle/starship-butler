@@ -3,14 +3,13 @@ import { toArray } from '@antfu/utils'
 import { multiselect } from '@clack/prompts'
 import consola from 'consola'
 import { highlight } from 'starship-butler-utils'
-import { cursor, cursorMcp } from './actions/editor/cursor'
+import { cursor } from './actions/editor/cursor'
 import { neovim } from './actions/editor/neovim'
 import { vscode } from './actions/editor/vscode'
 import { zed } from './actions/editor/zed'
 import { cSpell } from './actions/linter/c-spell'
 import { clashVergeRev } from './actions/network/clash-verge-rev'
 import { bun } from './actions/pm/bun'
-import { bunGlobalInstall } from './actions/pm/bun-global-install'
 import { maven } from './actions/pm/maven'
 import { starship } from './actions/shell-prompt/starship'
 import { bash } from './actions/shell/bash'
@@ -40,14 +39,12 @@ const _ACTIONS: Action[] = [
   git(),
   // Package Manager
   bun(),
-  bunGlobalInstall(),
   maven(),
   // Tools
   sxzzCreate(),
   // Editors
   vscode(),
   cursor(),
-  cursorMcp(),
   zed(),
   neovim(),
   // Linters

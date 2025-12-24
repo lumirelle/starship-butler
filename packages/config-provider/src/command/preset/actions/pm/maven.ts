@@ -1,7 +1,7 @@
 import type { Action, ConfigPathGenerator } from '../../types'
 import { join } from 'pathe'
 import { HandlerError } from '../../error'
-import { ensureDirectoryExist, homedir, isPathExistEnv, processConfig } from '../utils'
+import { createHandler, ensureDirectoryExist, homedir, isPathExistEnv } from '../utils'
 
 const name = 'Maven'
 
@@ -22,13 +22,8 @@ export function maven(): Action {
       if (!(await isPathExistEnv('mvn')))
         throw new HandlerError(`You should install ${name} first!`)
       if (!ensureDirectoryExist(targetFolder))
-        throw new HandlerError(`Failed to ensure directory exists: ${targetFolder}`)
+        throw new HandlerError(`Failed to create maven folder: ${targetFolder}`)
     },
-    handler: async ({ options, targetFolder }) => {
-      for (const generator of configPathGenerators) {
-        const { source, target } = generator(targetFolder)
-        await processConfig(source, target, options)
-      }
-    },
+    handler: createHandler(configPathGenerators),
   }
 }

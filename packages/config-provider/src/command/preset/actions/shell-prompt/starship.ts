@@ -2,9 +2,11 @@ import type { Action, ConfigPathGenerator } from '../../types'
 import consola from 'consola'
 import { join } from 'pathe'
 import { HandlerError } from '../../error'
-import { ensureDirectoryExist, homedir, processConfig } from '../utils'
+import { createHandler, ensureDirectoryExist, homedir } from '../utils'
 
 const name = 'Starship'
+
+const targetFolder = homedir('.config')
 
 const configPathGenerators: ConfigPathGenerator[] = [
   (targetFolder: string) => ({
@@ -17,18 +19,13 @@ export function starship(): Action {
   return {
     id: 'starship',
     name,
-    targetFolder: homedir('.config'),
+    targetFolder,
     prehandler: ({ targetFolder }) => {
       // As Starship is necessary to my shells' configuration, so we ensure it's configurations are always usable.
       if (!ensureDirectoryExist(targetFolder))
-        throw new HandlerError(`Failed to ensure directory exists: ${targetFolder}`)
+        throw new HandlerError(`Failed to create Starship configuration folder: ${targetFolder}`)
     },
-    handler: async ({ options, targetFolder }) => {
-      for (const generator of configPathGenerators) {
-        const { source, target } = generator(targetFolder)
-        await processConfig(source, target, options)
-      }
-    },
+    handler: createHandler(configPathGenerators),
     posthandler: () => {
       consola.info('Nerd Fonts is required to display all icons correctly in Starship prompt.')
     },

@@ -71,10 +71,6 @@ describe('actions', () => {
           "name": "Bun",
         },
         {
-          "id": "bun-global-install",
-          "name": "Bun Global Config",
-        },
-        {
           "id": "maven",
           "name": "Maven",
         },
@@ -89,10 +85,6 @@ describe('actions', () => {
         {
           "id": "cursor",
           "name": "Cursor",
-        },
-        {
-          "id": "cursor-mcp",
-          "name": "Cursor MCP",
         },
         {
           "id": "zed",
@@ -158,10 +150,6 @@ describe('actions', () => {
           "name": "Bun",
         },
         {
-          "id": "bun-global-install",
-          "name": "Bun Global Config",
-        },
-        {
           "id": "maven",
           "name": "Maven",
         },
@@ -176,10 +164,6 @@ describe('actions', () => {
         {
           "id": "cursor",
           "name": "Cursor",
-        },
-        {
-          "id": "cursor-mcp",
-          "name": "Cursor MCP",
         },
         {
           "id": "zed",
@@ -242,10 +226,6 @@ describe('actions', () => {
           "name": "Bun",
         },
         {
-          "id": "bun-global-install",
-          "name": "Bun Global Config",
-        },
-        {
           "id": "maven",
           "name": "Maven",
         },
@@ -260,10 +240,6 @@ describe('actions', () => {
         {
           "id": "cursor",
           "name": "Cursor",
-        },
-        {
-          "id": "cursor-mcp",
-          "name": "Cursor MCP",
         },
         {
           "id": "zed",

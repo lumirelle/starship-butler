@@ -2,7 +2,7 @@ import type { Action, ConfigPathGenerator, PlatformTargetFolderMap } from '../..
 import consola from 'consola'
 import { join } from 'pathe'
 import { HandlerError } from '../../error'
-import { appdata, homedir, isPathExist, processConfig } from '../utils'
+import { appdata, createHandler, createTargetFolderHandler, ensureDirectoryExist, homedir, isPathExist } from '../utils'
 
 const name = 'VSCode'
 
@@ -39,21 +39,16 @@ export function vscode(): Action {
   return {
     id: 'vscode',
     name,
-    targetFolder: ({ systemOptions }) => {
-      const { platform } = systemOptions
-      return platformTargetFolderMap[platform] ?? ''
-    },
-    prehandler: ({ targetFolder }) => {
-      // TODO: Is this check correct?
+    targetFolder: createTargetFolderHandler(platformTargetFolderMap),
+    prehandler: ({ targetFolder, systemOptions }) => {
+      if (!(systemOptions.platform in platformTargetFolderMap))
+        throw new HandlerError(`Unsupported platform: ${systemOptions.platform}`)
       if (!isPathExist(targetFolder))
         throw new HandlerError(`You should install ${name} first!`)
+      if (!ensureDirectoryExist(join(targetFolder, 'snippets')))
+        throw new HandlerError(`Failed to create snippets directory for ${name}!`)
     },
-    handler: async ({ options, targetFolder }) => {
-      for (const generator of configPathGenerators) {
-        const { source, target } = generator(targetFolder)
-        await processConfig(source, target, options)
-      }
-    },
+    handler: createHandler(configPathGenerators),
     posthandler: () => {
       consola.info('This configuration is meant to be used by `Visual Studio Code` in user scope.')
     },

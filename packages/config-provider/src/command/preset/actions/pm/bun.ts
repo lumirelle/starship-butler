@@ -1,7 +1,8 @@
 import type { Action, ConfigPathGenerator } from '../../types'
+import consola from 'consola'
 import { join } from 'pathe'
 import { HandlerError } from '../../error'
-import { homedir, isPathExistEnv, processConfig } from '../utils'
+import { createHandler, ensureDirectoryExist, homedir, isPathExistEnv } from '../utils'
 
 const name = 'Bun'
 
@@ -12,6 +13,10 @@ const configPathGenerators: ConfigPathGenerator[] = [
     source: join('pm', 'bun', 'bunfig.toml'),
     target: join(targetFolder, '.bunfig.toml'),
   }),
+  (targetFolder: string) => ({
+    source: join('pm', 'bun', 'bunfig.global-install.toml'),
+    target: join(targetFolder, '.bun', 'install', 'global', 'bunfig.toml'),
+  }),
 ]
 export function bun(): Action {
   return {
@@ -21,12 +26,13 @@ export function bun(): Action {
     prehandler: async () => {
       if (!(await isPathExistEnv('bun')))
         throw new HandlerError(`You should install ${name} first!`)
+      const globalInstallFolder = homedir('.bun', 'install', 'global')
+      if (!ensureDirectoryExist(globalInstallFolder))
+        throw new HandlerError(`Failed to create bun global install folder: ${globalInstallFolder}`)
     },
-    handler: async ({ options, targetFolder }) => {
-      for (const generator of configPathGenerators) {
-        const { source, target } = generator(targetFolder)
-        await processConfig(source, target, options)
-      }
+    handler: createHandler(configPathGenerators),
+    posthandler: () => {
+      consola.info('The global install s configuration is meant to fix the behavior of bun\'s global package installation if you are using `install.linker=isolated` globally.')
     },
   }
 }

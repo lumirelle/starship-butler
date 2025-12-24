@@ -1,7 +1,7 @@
 import type { Action, ConfigPathGenerator, PlatformTargetFolderMap } from '../../types'
 import { join } from 'pathe'
 import { HandlerError } from '../../error'
-import { homedir, isPathExist, localAppdata, processConfig } from '../utils'
+import { createHandler, createTargetFolderHandler, ensureDirectoryExist, homedir, isPathExist, localAppdata } from '../utils'
 
 const name = 'Neo Vim'
 
@@ -42,20 +42,16 @@ export function neovim(): Action {
   return {
     id: 'nvim',
     name,
-    targetFolder: ({ systemOptions }) => {
-      const { platform } = systemOptions
-      return platformTargetFolderMap[platform] ?? ''
-    },
-    prehandler: ({ targetFolder }) => {
-      // TODO: Is this check correct?
+    targetFolder: createTargetFolderHandler(platformTargetFolderMap),
+    prehandler: ({ targetFolder, systemOptions }) => {
+      if (!(systemOptions.platform in platformTargetFolderMap))
+        throw new HandlerError(`Unsupported platform: ${systemOptions.platform}`)
       if (!isPathExist([targetFolder, join(targetFolder, 'lazyvim.json')]))
         throw new HandlerError(`You should install ${name} and LazyVim first!`)
+      const luaConfigDir = join(targetFolder, 'lua', 'config')
+      if (!ensureDirectoryExist(luaConfigDir))
+        throw new HandlerError(`Failed to create Lua config directory: ${luaConfigDir}`)
     },
-    handler: async ({ options, targetFolder }) => {
-      for (const generator of configPathGenerators) {
-        const { source, target } = generator(targetFolder)
-        await processConfig(source, target, options)
-      }
-    },
+    handler: createHandler(configPathGenerators),
   }
 }

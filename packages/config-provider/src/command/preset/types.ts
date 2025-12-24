@@ -11,12 +11,10 @@ export type ActionId = 'clash-verge-rev'
   | 'starship'
   | 'git'
   | 'bun'
-  | 'bun-global-install'
   | 'maven'
   | '@sxzz/create'
   | 'vscode'
   | 'cursor'
-  | 'cursor-mcp'
   | 'zed'
   | 'nvim'
   | 'cspell'
@@ -113,7 +111,7 @@ export interface Action {
 /**
  * Each generator will return source and target paths for a configuration file in the target folder.
  *
- * So a list of generators can be used to define how configuration files should be applied for a preset action.
+ * So a list of generators can be used to define what configuration files should be applied in a preset action.
  */
 export type ConfigPathGenerator = (targetFolder: string) => {
   source: string
