@@ -10,14 +10,22 @@ import { info } from './highlight'
  */
 export function exists(path: string): boolean {
   try {
-    lstatSync(path)
-    return true
-  }
-  catch (error) {
-    if (error instanceof Error && error.message.includes('ENOENT'))
+    // If it's a file but ends with `/` or `\`, we consider it does not exist, in order to let the behavior on Windows be consistent with Unix
+    if (lstatSync(path).isFile() && path.match(/\/$|\\$/))
       return false
     else
+      return true
+  }
+  catch (error) {
+    if (
+      error instanceof Error
+      && ['ENOENT', 'ENOTDIR'].some(str => error.message.includes(str))
+    ) {
+      return false
+    }
+    else {
       throw error
+    }
   }
 }
 

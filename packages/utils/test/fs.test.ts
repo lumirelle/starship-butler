@@ -29,8 +29,9 @@ describe('fs util tests', () => {
     expect(exists(dirname('fixture'))).toBe(true)
     expect(exists(dirname('fixture/'))).toBe(true)
     expect(exists(dirname('fixture/butler.config.json'))).toBe(true)
-    expect(exists(dirname('fixture/butler.config.json/'))).toBe(true)
     // Non existent paths
+    // If it's a file but ends with `/` or `\`, we consider it does not exist, in order to let the behavior on Windows be consistent with Unix
+    expect(exists(dirname('fixture/butler.config.json/'))).toBe(false)
     expect(exists(dirname('fixture/non-existent-folder'))).toBe(false)
     expect(exists(dirname('fixture/non-existent-folder/'))).toBe(false)
     expect(exists(dirname('fixture/non-existent-file.txt'))).toBe(false)
@@ -42,8 +43,8 @@ describe('fs util tests', () => {
     expect(isDirectory(dirname('fixture'))).toBe(true)
     expect(isDirectory(dirname('fixture/'))).toBe(true)
     expect(isDirectory(dirname('fixture/butler.config.json'))).toBe(false)
-    expect(isDirectory(dirname('fixture/butler.config.json/'))).toBe(false)
     // Non existent paths
+    expect(isDirectory(dirname('fixture/butler.config.json/'))).toBe(true)
     expect(isDirectory(dirname('fixture/non-existent-folder/'))).toBe(true)
     expect(isDirectory(dirname('fixture/non-existent-file'))).toBe(false)
   })
