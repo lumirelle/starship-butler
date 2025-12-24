@@ -1,5 +1,6 @@
 import { describe, expect, it } from 'bun:test'
 import { homedir as _homedir, platform } from 'node:os'
+import process from 'node:process'
 import { appdata, homedir, localAppdata } from '../src/path'
 
 describe('action utils', () => {

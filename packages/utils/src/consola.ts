@@ -1,3 +1,1 @@
-import consola from 'consola'
-
-export default consola
+export { consola as default, LogLevels } from 'consola'
