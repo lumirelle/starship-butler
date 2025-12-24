@@ -1,6 +1,25 @@
-import { describe, expect, it } from 'bun:test'
+import { afterAll, beforeAll, beforeEach, describe, expect, it } from 'bun:test'
+import { readUserRc, removeUserRc, writeUserRc } from 'starship-butler-utils/config'
 import { version } from '../package.json'
 import { loadConfig } from '../src/config'
+
+beforeAll(() => {
+  // Backup user rc file before all test
+  const rc = readUserRc()
+  writeUserRc(rc, { name: '.butlerrc.bak' })
+})
+
+beforeEach(() => {
+  // Initialize an example rc file for testing
+  writeUserRc({ 'config-provider': { version } })
+})
+
+afterAll(() => {
+  // Restore user rc file after all tests
+  const rc = readUserRc({ name: '.butlerrc.bak' })
+  writeUserRc(rc)
+  removeUserRc({ name: '.butlerrc.bak' })
+})
 
 describe('config', () => {
   it('should load JSON config file with global rc correctly', async () => {
