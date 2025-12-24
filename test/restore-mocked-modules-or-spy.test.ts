@@ -26,8 +26,8 @@ const originalEslint = { ...eslint }
 
 describe('restore mocked modules or spy', () => {
   it('should use original implementation by default', async () => {
-    const path = vite.normalizePath('C:\\path\\to\\file')
-    expect(path).toBe('C:/path/to/file')
+    const path = vite.normalizePath('/path/to/file/../file')
+    expect(path).toBe('/path/to/file')
 
     const eslintInstance = await eslint.loadESLint()
     expect(eslintInstance).toBeDefined()
@@ -42,13 +42,13 @@ describe('restore mocked modules or spy', () => {
     // Mock implementation once
     spiedViteNormalizePath.mockImplementationOnce((_: string) => 'Mocked')
     spiedEslintLoad.mockImplementationOnce(async () => undefined as any)
-    expect(vite.normalizePath('C:\\path\\to\\file')).toBe('Mocked')
+    expect(vite.normalizePath('/path/to/file/../file')).toBe('Mocked')
     expect(await eslint.loadESLint()).toBeUndefined()
     expect(spiedViteNormalizePath).toHaveBeenCalledTimes(1)
     expect(spiedEslintLoad).toHaveBeenCalledTimes(1)
 
     // Next call will use original implementation, but called times still increases
-    expect(vite.normalizePath('C:\\path\\to\\file')).toBe('C:/path/to/file')
+    expect(vite.normalizePath('/path/to/file/../file')).toBe('/path/to/file')
     expect(await eslint.loadESLint()).toBeDefined()
     expect(spiedViteNormalizePath).toHaveBeenCalledTimes(2)
     expect(spiedEslintLoad).toHaveBeenCalledTimes(2)
@@ -56,13 +56,13 @@ describe('restore mocked modules or spy', () => {
     // Mock implementation permanently, called times do not reset
     spiedViteNormalizePath.mockImplementation((_: string) => 'Mocked')
     spiedEslintLoad.mockImplementation(async () => undefined as any)
-    expect(vite.normalizePath('C:\\path\\to\\file')).toBe('Mocked')
+    expect(vite.normalizePath('/path/to/file/../file')).toBe('Mocked')
     expect(await eslint.loadESLint()).toBeUndefined()
     expect(spiedViteNormalizePath).toHaveBeenCalledTimes(3)
     expect(spiedEslintLoad).toHaveBeenCalledTimes(3)
 
     // Next call still uses mocked implementation, called times increases
-    expect(vite.normalizePath('C:\\path\\to\\file')).toBe('Mocked')
+    expect(vite.normalizePath('/path/to/file/../file')).toBe('Mocked')
     expect(await eslint.loadESLint()).toBeUndefined()
     expect(spiedViteNormalizePath).toHaveBeenCalledTimes(4)
     expect(spiedEslintLoad).toHaveBeenCalledTimes(4)
@@ -72,7 +72,7 @@ describe('restore mocked modules or spy', () => {
     spiedEslintLoad.mockClear()
     expect(spiedViteNormalizePath).toHaveBeenCalledTimes(0)
     expect(spiedEslintLoad).toHaveBeenCalledTimes(0)
-    expect(vite.normalizePath('C:\\path\\to\\file')).toBe('Mocked')
+    expect(vite.normalizePath('/path/to/file/../file')).toBe('Mocked')
     expect(await eslint.loadESLint()).toBeUndefined()
     expect(spiedViteNormalizePath).toHaveBeenCalledTimes(1)
     expect(spiedEslintLoad).toHaveBeenCalledTimes(1)
@@ -82,7 +82,7 @@ describe('restore mocked modules or spy', () => {
     spiedEslintLoad.mockRestore()
     expect(spiedViteNormalizePath).toHaveBeenCalledTimes(0)
     expect(spiedEslintLoad).toHaveBeenCalledTimes(0)
-    expect(vite.normalizePath('C:\\path\\to\\file')).toBe('C:/path/to/file')
+    expect(vite.normalizePath('/path/to/file/../file')).toBe('/path/to/file')
     expect(await eslint.loadESLint()).toBeDefined()
     expect(spiedViteNormalizePath).toHaveBeenCalledTimes(0)
     expect(spiedEslintLoad).toHaveBeenCalledTimes(0)
@@ -100,22 +100,22 @@ describe('restore mocked modules or spy', () => {
       loadESLint: async () => undefined as any,
     }))
 
-    expect(vite.normalizePath('C:\\path\\to\\file')).toBe('Mocked')
+    expect(vite.normalizePath('/path/to/file/../file')).toBe('Mocked')
     expect(await eslint.loadESLint()).toBeUndefined()
 
     // Next call still uses mocked implementation
-    expect(vite.normalizePath('C:\\path\\to\\file')).toBe('Mocked')
+    expect(vite.normalizePath('/path/to/file/../file')).toBe('Mocked')
     expect(await eslint.loadESLint()).toBeUndefined()
     // Restore does not work, next call still uses mocked implementation
     mock.restore()
-    expect(vite.normalizePath('C:\\path\\to\\file')).toBe('Mocked')
+    expect(vite.normalizePath('/path/to/file/../file')).toBe('Mocked')
     expect(await eslint.loadESLint()).toBeUndefined()
 
     // The only way to restore original implementation in this case is re-mock the module
     // Don't forget to use the copy of original implementation, to avoid being affected by the next time mocking
     mock.module('vite', () => ({ ...originalVite }))
     mock.module('eslint', () => ({ ...originalEslint }))
-    expect(vite.normalizePath('C:\\path\\to\\file')).toBe('C:/path/to/file')
+    expect(vite.normalizePath('/path/to/file/../file')).toBe('/path/to/file')
     expect(await eslint.loadESLint()).toBeDefined()
   })
 
@@ -133,20 +133,20 @@ describe('restore mocked modules or spy', () => {
       ...eslint,
       loadESLint: mockedEslintLoad,
     }))
-    expect(vite.normalizePath('C:\\path\\to\\file')).toBe('Mocked')
+    expect(vite.normalizePath('/path/to/file/../file')).toBe('Mocked')
     expect(await eslint.loadESLint()).toBeUndefined()
     expect(mockedViteNormalizePath).toHaveBeenCalledTimes(1)
     expect(mockedEslintLoad).toHaveBeenCalledTimes(1)
 
     // Next call still uses mocked implementation
-    expect(vite.normalizePath('C:\\path\\to\\file')).toBe('Mocked')
+    expect(vite.normalizePath('/path/to/file/../file')).toBe('Mocked')
     expect(await eslint.loadESLint()).toBeUndefined()
     expect(mockedViteNormalizePath).toHaveBeenCalledTimes(2)
     expect(mockedEslintLoad).toHaveBeenCalledTimes(2)
 
     // Restore does not work, next call still uses mocked implementation
     mock.restore()
-    expect(vite.normalizePath('C:\\path\\to\\file')).toBe('Mocked')
+    expect(vite.normalizePath('/path/to/file/../file')).toBe('Mocked')
     expect(await eslint.loadESLint()).toBeUndefined()
     expect(mockedViteNormalizePath).toHaveBeenCalledTimes(3)
     expect(mockedEslintLoad).toHaveBeenCalledTimes(3)
@@ -156,7 +156,7 @@ describe('restore mocked modules or spy', () => {
     mockedEslintLoad.mockRestore()
     expect(mockedViteNormalizePath).toHaveBeenCalledTimes(0)
     expect(mockedEslintLoad).toHaveBeenCalledTimes(0)
-    expect(vite.normalizePath('C:\\path\\to\\file')).toBeUndefined()
+    expect(vite.normalizePath('/path/to/file/../file')).toBeUndefined()
     expect(await eslint.loadESLint()).toBeUndefined()
     expect(mockedViteNormalizePath).toHaveBeenCalledTimes(1)
     expect(mockedEslintLoad).toHaveBeenCalledTimes(1)
@@ -164,7 +164,7 @@ describe('restore mocked modules or spy', () => {
     // The only way to recover original implementations in this case is re-mock the module
     mock.module('vite', () => ({ ...originalVite }))
     mock.module('eslint', () => ({ ...originalEslint }))
-    expect(vite.normalizePath('C:\\path\\to\\file')).toBe('C:/path/to/file')
+    expect(vite.normalizePath('/path/to/file/../file')).toBe('/path/to/file')
     expect(await eslint.loadESLint()).toBeDefined()
     expect(mockedViteNormalizePath).toHaveBeenCalledTimes(1)
     expect(mockedEslintLoad).toHaveBeenCalledTimes(1)
@@ -186,20 +186,20 @@ describe('restore mocked modules or spy', () => {
       ...eslint,
       loadESLint: spiedEslintLoad,
     }))
-    expect(vite.normalizePath('C:\\path\\to\\file')).toBe('Mocked')
+    expect(vite.normalizePath('/path/to/file/../file')).toBe('Mocked')
     expect(await eslint.loadESLint()).toBeUndefined()
     expect(spiedViteNormalizePath).toHaveBeenCalledTimes(1)
     expect(spiedEslintLoad).toHaveBeenCalledTimes(1)
 
     // Next call still uses mocked implementation
-    expect(vite.normalizePath('C:\\path\\to\\file')).toBe('Mocked')
+    expect(vite.normalizePath('/path/to/file/../file')).toBe('Mocked')
     expect(await eslint.loadESLint()).toBeUndefined()
     expect(spiedViteNormalizePath).toHaveBeenCalledTimes(2)
     expect(spiedEslintLoad).toHaveBeenCalledTimes(2)
 
     // Restore works well, next call will use original implementation
     mock.restore()
-    expect(vite.normalizePath('C:\\path\\to\\file')).toBe('C:/path/to/file')
+    expect(vite.normalizePath('/path/to/file/../file')).toBe('/path/to/file')
     expect(await eslint.loadESLint()).toBeDefined()
     expect(spiedViteNormalizePath).toHaveBeenCalledTimes(0)
     expect(spiedEslintLoad).toHaveBeenCalledTimes(0)
@@ -209,7 +209,7 @@ describe('restore mocked modules or spy', () => {
     // The same as above, `mockRestore()` work well
     spiedViteNormalizePath.mockRestore()
     spiedEslintLoad.mockRestore()
-    expect(vite.normalizePath('C:\\path\\to\\file')).toBe('C:/path/to/file')
+    expect(vite.normalizePath('/path/to/file/../file')).toBe('/path/to/file')
     expect(await eslint.loadESLint()).toBeDefined()
     expect(spiedViteNormalizePath).toHaveBeenCalledTimes(0)
     expect(spiedEslintLoad).toHaveBeenCalledTimes(0)
@@ -217,7 +217,7 @@ describe('restore mocked modules or spy', () => {
     // Re-mock the module also works
     mock.module('vite', () => ({ ...originalVite }))
     mock.module('eslint', () => ({ ...originalEslint }))
-    expect(vite.normalizePath('C:\\path\\to\\file')).toBe('C:/path/to/file')
+    expect(vite.normalizePath('/path/to/file/../file')).toBe('/path/to/file')
     expect(await eslint.loadESLint()).toBeDefined()
     expect(spiedViteNormalizePath).toHaveBeenCalledTimes(0)
     expect(spiedEslintLoad).toHaveBeenCalledTimes(0)
