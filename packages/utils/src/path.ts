@@ -21,7 +21,7 @@ export const join = _join
  * @throws {TypeError} if any of the path segments is not a string.
  */
 export function homedir(...paths: string[]): string {
-  return join(_homedir(), ...paths)
+  return join(process.env.XDG_CONFIG_HOME ?? _homedir(), ...paths)
 }
 
 /**
