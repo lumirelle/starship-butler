@@ -42,7 +42,6 @@
       "version": "0.4.5",
       "dependencies": {
         "@clack/prompts": "catalog:prod",
-        "c12": "catalog:prod",
         "consola": "catalog:prod",
         "pathe": "catalog:prod",
         "starship-butler-types": "workspace:*",
@@ -62,15 +61,12 @@
       },
       "dependencies": {
         "@clack/prompts": "catalog:prod",
-        "c12": "catalog:prod",
+        "cac": "catalog:prod",
         "consola": "catalog:prod",
         "defu": "catalog:prod",
         "starship-butler-config-provider": "workspace:*",
         "starship-butler-types": "workspace:*",
         "starship-butler-utils": "workspace:*",
-      },
-      "devDependencies": {
-        "cac": "catalog:inlined",
       },
     },
     "packages/types": {
@@ -82,6 +78,7 @@
       "version": "0.4.5",
       "dependencies": {
         "ansis": "catalog:prod",
+        "c12": "catalog:prod",
         "consola": "catalog:prod",
         "rc9": "catalog:prod",
       },
@@ -127,12 +124,12 @@
     },
     "inlined": {
       "@antfu/utils": "^9.3.0",
-      "cac": "^6.7.14",
     },
     "prod": {
       "@clack/prompts": "^0.11.0",
       "ansis": "^4.2.0",
       "c12": "^3.3.3",
+      "cac": "^6.7.14",
       "consola": "^3.4.2",
       "defu": "^6.1.4",
       "pathe": "^2.0.3",

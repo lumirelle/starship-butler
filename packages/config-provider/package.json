@@ -36,7 +36,6 @@
   },
   "dependencies": {
     "@clack/prompts": "catalog:prod",
-    "c12": "catalog:prod",
     "consola": "catalog:prod",
     "pathe": "catalog:prod",
     "starship-butler-types": "workspace:*",

@@ -19,7 +19,8 @@
   ],
   "sideEffects": false,
   "exports": {
-    ".": "./dist/index.mjs"
+    ".": "./dist/index.mjs",
+    "./cli": "./dist/cli.mjs"
   },
   "main": "./dist/index.mjs",
   "module": "./dist/index.mjs",
@@ -39,14 +40,11 @@
   },
   "dependencies": {
     "@clack/prompts": "catalog:prod",
-    "c12": "catalog:prod",
+    "cac": "catalog:prod",
     "consola": "catalog:prod",
     "defu": "catalog:prod",
     "starship-butler-config-provider": "workspace:*",
     "starship-butler-types": "workspace:*",
     "starship-butler-utils": "workspace:*"
-  },
-  "devDependencies": {
-    "cac": "catalog:inlined"
   }
 }

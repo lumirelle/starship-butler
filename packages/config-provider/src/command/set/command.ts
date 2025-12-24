@@ -4,8 +4,9 @@ import process from 'node:process'
 import { isCancel, multiselect } from '@clack/prompts'
 import consola from 'consola'
 import { basename, join } from 'pathe'
-import { fs } from 'starship-butler-utils'
+import { fs, upsertUserRc } from 'starship-butler-utils'
 import { globSync } from 'tinyglobby'
+import { version } from '../../../package.json'
 import { processConfig } from '../../utils/config'
 import { validateOptions } from './validate'
 
@@ -16,7 +17,7 @@ import { validateOptions } from './validate'
  * @param target Target file or folder path
  * @param options Configuration and command line options
  */
-export async function set(
+export async function commandSet(
   sourcePattern: string,
   target: string,
   options: Partial<SetOptions>,
@@ -28,6 +29,13 @@ export async function set(
     consola.debug('[config-provider] Invalid options detected, aborting configuration.')
     return
   }
+
+  // Update the version of preset
+  upsertUserRc({
+    'config-provider': {
+      version,
+    },
+  })
 
   /**
    * Assets folder path

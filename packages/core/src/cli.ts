@@ -6,14 +6,14 @@ import { confirm } from '@clack/prompts'
 import cac from 'cac'
 import consola, { LogLevels } from 'consola'
 import defu from 'defu'
-import { preset, set } from 'starship-butler-config-provider'
+import { commandPreset, commandSet } from 'starship-butler-config-provider'
 import { version } from '../package.json'
 import { loadConfig } from './config'
 
 const cli = cac('butler')
 
 /**
- * Configuration loaded from user's system.
+ * User's configuration.
  */
 const config = await loadConfig()
 
@@ -105,7 +105,7 @@ MAKE SURE YOU KNOW WHAT YOU ARE DOING!
     })) {
       return
     }
-    await preset(mergedOptions, systemOptions)
+    await commandPreset(mergedOptions, systemOptions)
   })
 
 cli
@@ -149,7 +149,7 @@ MAKE SURE YOU KNOW WHAT YOU ARE DOING!
     }
     const mergedOptions = defu(cliOptions, cfgOptions, defaultOptions)
     consola.debug('[starship-butler] Merged options:', mergedOptions)
-    await set(sourcePattern, target, mergedOptions)
+    await commandSet(sourcePattern, target, mergedOptions)
   })
 
 cli.help()

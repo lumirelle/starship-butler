@@ -19,7 +19,8 @@
   ],
   "sideEffects": false,
   "exports": {
-    ".": "./dist/index.mjs"
+    ".": "./dist/index.mjs",
+    "./config": "./dist/config.mjs"
   },
   "main": "./dist/index.mjs",
   "module": "./dist/index.mjs",
@@ -35,6 +36,7 @@
   },
   "dependencies": {
     "ansis": "catalog:prod",
+    "c12": "catalog:prod",
     "consola": "catalog:prod",
     "rc9": "catalog:prod"
   }

@@ -1,13 +1,23 @@
-import type { ConfigLayerMeta, LoadConfigOptions } from 'c12'
 import type { ConfigProviderOptions } from 'starship-butler-config-provider'
-import { loadConfig as loadConfigC12 } from 'c12'
+import type { ConfigLayerMeta, LoadConfigOptions, RCOptions } from 'starship-butler-utils/config'
 import { createDefu } from 'defu'
+import { loadConfig as _loadConfig, readUserRc } from 'starship-butler-utils/config'
 
-export interface ButlerConfig<ConfigProviderT extends Partial<ConfigProviderOptions> = Partial<ConfigProviderOptions>> {
+/**
+ * Type definition for Butler configuration.
+ */
+export interface ButlerConfig {
   /**
    * Configuration for `config-provider` package.
    */
-  'config-provider': ConfigProviderT
+  'config-provider': Partial<ConfigProviderOptions>
+}
+
+/**
+ * Type definition for Butler configuration, excludes auto-generated fields.
+ */
+type SafeButlerConfig = Omit<Partial<ButlerConfig>, 'config-provider'> & {
+  'config-provider'?: Omit<Partial<ConfigProviderOptions>, 'version'>
 }
 
 /**
@@ -16,35 +26,31 @@ export interface ButlerConfig<ConfigProviderT extends Partial<ConfigProviderOpti
  * @param config Configuration.
  * @returns Configuration as it is.
  */
-export function defineButlerConfig(
-  config: Partial<ButlerConfig<Partial<Omit<ConfigProviderOptions, 'version'>>>>,
-): Partial<ButlerConfig<Partial<Omit<ConfigProviderOptions, 'version'>>>> {
+export function defineButlerConfig(config: SafeButlerConfig): Partial<SafeButlerConfig> {
   return config
 }
 
+type LoadConfigT = Partial<ButlerConfig>
+type LoadConfigMT = ConfigLayerMeta
+
 /**
- * Loads the configuration using `c12`.
+ * Load user's configuration.
  *
+ * @param options Config loading options.
  * @returns Configuration.
  */
-export async function loadConfig<
-  T extends ButlerConfig = ButlerConfig,
-  MT extends ConfigLayerMeta = ConfigLayerMeta,
->(options?: LoadConfigOptions<T, MT>): Promise<ButlerConfig> {
-  const merger = createDefu((obj, key) => {
-    // Keep the version field first loaded
-    // TODO: Make sure it loads from global rc file (Global rc file has the highest priority)
-    if (obj[key] && key === 'version') {
+export async function loadConfig(
+  options?: RCOptions & LoadConfigOptions<LoadConfigT, LoadConfigMT>,
+): Promise<LoadConfigT> {
+  const rc = readUserRc<LoadConfigT>(options)
+  const { config } = await _loadConfig<LoadConfigT, LoadConfigMT>(options)
+  const defu = createDefu((obj, key) => {
+    // Ignore `config-provider.version` from `config`
+    if (key === 'version') {
       return true
     }
     return false
   })
-  const { config = {} } = await loadConfigC12({
-    name: 'butler',
-    globalRc: true,
-    // @ts-expect-error It should accept createDefu directly
-    merger,
-    ...(options || {}),
-  })
-  return Promise.resolve(config as ButlerConfig)
+  const mergedConfig = defu(config, rc)
+  return Promise.resolve(mergedConfig)
 }

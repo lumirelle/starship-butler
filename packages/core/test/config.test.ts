@@ -1,24 +1,73 @@
 import { describe, expect, it } from 'bun:test'
+import { version } from '../package.json'
 import { loadConfig } from '../src/config'
-import rawJSONConfig from './.butlerrc.json'
-import rawTSConfig from './butler.config'
 
 describe('config', () => {
-  it('load from JSON file correctly', async () => {
+  it('should load JSON config file with global rc correctly', async () => {
     const config = await loadConfig({
       configFile: './.butlerrc.json',
       cwd: import.meta.dirname,
     })
-    delete config['config-provider'].version
-    expect(config).toEqual(rawJSONConfig as typeof config)
+    expect(config).toMatchInlineSnapshot(`
+      {
+        "config-provider": {
+          "includeOnly": [
+            "nushell",
+          ],
+          "version": "${version}",
+        },
+      }
+    `)
   })
 
-  it('load from TS file correctly', async () => {
+  it('should load from TS config file with global rc correctly', async () => {
     const config = await loadConfig({
       configFile: './butler.config.ts',
       cwd: import.meta.dirname,
     })
-    delete config['config-provider'].version
-    expect(config).toEqual(rawTSConfig as typeof config)
+    expect(config).toMatchInlineSnapshot(`
+      {
+        "config-provider": {
+          "include": [
+            "nushell",
+          ],
+          "version": "${version}",
+        },
+      }
+    `)
+  })
+
+  it('should load from JSON config file with global rc and ignore version from JSON config file', async () => {
+    const config = await loadConfig({
+      configFile: './.butlerrc-with-version.json',
+      cwd: import.meta.dirname,
+    })
+    expect(config).toMatchInlineSnapshot(`
+      {
+        "config-provider": {
+          "includeOnly": [
+            "nushell",
+          ],
+          "version": "${version}",
+        },
+      }
+    `)
+  })
+
+  it('should load from TS config file with global rc and ignore version from TS config file', async () => {
+    const config = await loadConfig({
+      configFile: './butler.config-with-version.ts',
+      cwd: import.meta.dirname,
+    })
+    expect(config).toMatchInlineSnapshot(`
+      {
+        "config-provider": {
+          "include": [
+            "nushell",
+          ],
+          "version": "${version}",
+        },
+      }
+    `)
   })
 })

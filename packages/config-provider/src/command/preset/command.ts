@@ -13,7 +13,7 @@ import { validateOptions } from './validate'
  * @param options Configuration and command line interface options.
  * @param systemOptions Options contains user's system information.
  */
-export async function preset(
+export async function commandPreset(
   options: Partial<PresetOptions>,
   systemOptions: SystemOptions,
 ): Promise<void> {
@@ -24,6 +24,13 @@ export async function preset(
     consola.debug('[config-provider] Invalid options detected, aborting configuration.')
     return
   }
+
+  // Update the version of preset
+  upsertUserRc({
+    'config-provider': {
+      version,
+    },
+  })
 
   const actions = await filterActions(options)
   consola.debug(`[config-provider] Found ${actions.length} preset${actions.length > 1 ? 's' : ''}.`)
@@ -72,13 +79,6 @@ export async function preset(
         consola.error(`Got an error while applying "${highlight.important(action.name)}" preset, process stopped. Reason: ${error.message}`)
     }
   }
-
-  // Update the version of preset
-  upsertUserRc('.butlerrc', {
-    'config-provider': {
-      version,
-    },
-  })
 
   if (actions.length === 0)
     consola.info('No presets to apply. Do you forget to specify include patterns with `--include` or `--all` option? For more information, please run with `--help` option.')
