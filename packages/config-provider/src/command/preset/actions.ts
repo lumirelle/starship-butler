@@ -1,5 +1,6 @@
 import type { Action, PresetOptions } from './types'
 import { toArray } from '@antfu/utils'
+import { multiselect } from '@clack/prompts'
 import consola from 'consola'
 import { highlight } from 'starship-butler-utils'
 import { cursor, cursorMcp } from './actions/editor/cursor'
@@ -53,7 +54,7 @@ const _ACTIONS: Action[] = [
   cSpell(),
 ]
 
-export function filterActions(options: Partial<PresetOptions>): Action[] {
+export async function filterActions(options: Partial<PresetOptions>): Promise<Action[]> {
   let include = toArray(options.include)
   let exclude = toArray(options.exclude)
   if (options.all) {
@@ -63,12 +64,18 @@ export function filterActions(options: Partial<PresetOptions>): Action[] {
     consola.debug('[config-provider] "all" option is set, overriding include and exclude options accordingly.')
     consola.debug('[config-provider] Updated include and exclude:', { include, exclude })
   }
-  // TODO(Lumirelle): If include is empty, then prompt user to select actions...
+  // If include is empty, then prompt user to select actions...
+  if (include.length === 0) {
+    include = (await multiselect({
+      message: 'No actions specified to include. Please select the actions you want to include:',
+      options: _ACTIONS.map(action => ({ value: action.id, label: action.name })),
+    })) as string[]
+  }
   const includedActions = _ACTIONS.filter((action) => {
     const isIncluded = include.some(pattern => new RegExp(pattern).test(action.id))
     if (!isIncluded) {
-      consola.start(`Skip "${highlight.important(action.name)}" as it's not included.`)
-      consola.log('') // New line
+      consola.debug(`Skip "${highlight.important(action.name)}" as it's not included.`)
+      consola.debug('') // New line
       return false
     }
     return true
@@ -76,8 +83,8 @@ export function filterActions(options: Partial<PresetOptions>): Action[] {
   const notExcludedActions = includedActions.filter((action) => {
     const isNotExcluded = !exclude.some(pattern => new RegExp(pattern).test(action.id))
     if (!isNotExcluded) {
-      consola.start(`Skip "${highlight.important(action.name)}" as it's excluded.`)
-      consola.log('') // New line
+      consola.debug(`Skip "${highlight.important(action.name)}" as it's excluded.`)
+      consola.debug('') // New line
       return false
     }
     return true

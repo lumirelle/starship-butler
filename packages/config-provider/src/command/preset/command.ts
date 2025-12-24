@@ -24,7 +24,7 @@ export async function preset(
     return
   }
 
-  const actions = filterActions(options)
+  const actions = await filterActions(options)
   consola.debug(`[config-provider] Found ${actions.length} preset${actions.length > 1 ? 's' : ''}.`)
 
   let errorCount = 0
