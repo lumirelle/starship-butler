@@ -74,8 +74,7 @@ export async function filterActions(options: Partial<PresetOptions>): Promise<Ac
   const includedActions = _ACTIONS.filter((action) => {
     const isIncluded = include.some(pattern => new RegExp(pattern).test(action.id))
     if (!isIncluded) {
-      consola.debug(`Skip "${highlight.important(action.name)}" as it's not included.`)
-      consola.debug('') // New line
+      consola.debug(`[config-provider] Skip "${highlight.important(action.name)}" as it's not included.`)
       return false
     }
     return true
@@ -83,8 +82,7 @@ export async function filterActions(options: Partial<PresetOptions>): Promise<Ac
   const notExcludedActions = includedActions.filter((action) => {
     const isNotExcluded = !exclude.some(pattern => new RegExp(pattern).test(action.id))
     if (!isNotExcluded) {
-      consola.debug(`Skip "${highlight.important(action.name)}" as it's excluded.`)
-      consola.debug('') // New line
+      consola.debug(`[config-provider] Skip "${highlight.important(action.name)}" as it's excluded.`)
       return false
     }
     return true

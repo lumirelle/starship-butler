@@ -3,7 +3,7 @@ import { filterActions } from '../../../src/command/preset/actions'
 
 describe('actions', () => {
   it('should include only "nushell" action', async () => {
-    const filteredActions = filterActions({
+    const filteredActions = await filterActions({
       include: ['nushell'],
     })
     // Extract only `id` and `name` for comparison
@@ -23,7 +23,7 @@ describe('actions', () => {
     `)
   })
   it('should include all actions with include option set to ".*"', async () => {
-    const filteredActions = filterActions({
+    const filteredActions = await filterActions({
       include: ['.*'],
     })
     const simpleFilteredActions = filteredActions.map((item) => {
@@ -110,7 +110,7 @@ describe('actions', () => {
     `)
   })
   it('should include all actions with "all" option set to true', async () => {
-    const filteredActions = filterActions({
+    const filteredActions = await filterActions({
       all: true,
     })
     const simpleFilteredActions = filteredActions.map((item) => {
@@ -197,7 +197,7 @@ describe('actions', () => {
     `)
   })
   it('should exclude "nushell" action with include option set to ".*" and exclude option set to "nushell"', async () => {
-    const filteredActions = filterActions({
+    const filteredActions = await filterActions({
       include: ['.*'],
       exclude: ['nushell'],
     })

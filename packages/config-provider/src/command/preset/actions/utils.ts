@@ -2,7 +2,6 @@ import type { Arrayable } from '@antfu/utils'
 import { homedir as osHomedir, platform } from 'node:os'
 import process from 'node:process'
 import { toArray } from '@antfu/utils'
-import consola from 'consola'
 import { join } from 'pathe'
 import { fs } from 'starship-butler-utils'
 import { x } from 'tinyexec'
@@ -45,29 +44,23 @@ export function localAppdata(...paths: string[]): string {
  * Check if path(s) exist and log warning if not exist.
  *
  * @param path Path(s).
- * @param customMessage Custom warning message.
  * @returns If path(s) exist.
  */
-export function isPathExist(path: Arrayable<string>, customMessage?: string): boolean {
+export function isPathExist(path: Arrayable<string>): boolean {
   path = toArray(path)
   if (path.length === 0) {
     return false
   }
-  const isTargetExist = path.every(t => fs.exists(t))
-  if (!isTargetExist) {
-    consola.warn(customMessage ?? `Target ${path.join(', ')} ${path.length > 1 ? 'are' : 'is'} not found, please check your configuration!`)
-  }
-  return isTargetExist
+  return path.every(t => fs.exists(t))
 }
 
 /**
  * Check if path(s) exist in system's PATH environment variable and log warning if not exist.
  *
  * @param path Path(s).
- * @param customMessage Custom warning message.
  * @returns If path(s) exist in system's PATH environment variable.
  */
-export async function isPathExistEnv(path: Arrayable<string>, customMessage?: string): Promise<boolean> {
+export async function isPathExistEnv(path: Arrayable<string>): Promise<boolean> {
   path = toArray(path)
   if (path.length === 0) {
     return false
@@ -75,14 +68,9 @@ export async function isPathExistEnv(path: Arrayable<string>, customMessage?: st
   try {
     const command = platform() === 'win32' ? 'where' : 'which'
     const results = await Promise.all(path.map(async t => (await x(command, [t])).stdout.trim() !== ''))
-    const isTargetExist = results.every(t => t)
-    if (!isTargetExist) {
-      consola.warn(customMessage ?? `Target ${path.join(', ')} ${path.length > 1 ? 'are' : 'is'} not found, please check your configuration!`)
-    }
-    return isTargetExist
+    return results.every(t => t)
   }
   catch {
-    consola.warn(customMessage ?? `Target ${path.join(', ')} ${path.length > 1 ? 'are' : 'is'} not found, please check your configuration!`)
     return false
   }
 }
@@ -99,18 +87,14 @@ export async function isPathExistEnv(path: Arrayable<string>, customMessage?: st
  *   - If create failed, return false.
  *
  * @param directory Directory path.
- * @param customMessage Custom warning message.
  * @returns If directory exists.
  */
-export function ensureDirectoryExist(directory: string, customMessage?: string): boolean {
+export function ensureDirectoryExist(directory: string): boolean {
   if (!directory)
     return false
   if (fs.exists(directory))
     return true
-  const isSuccess = fs.ensureDirectory(directory)
-  if (!isSuccess)
-    consola.warn(customMessage ?? `Directory ${directory} cannot be accessed or created, please check you permissions!`)
-  return isSuccess
+  return fs.ensureDirectory(directory)
 }
 
 export const processConfig = _processConfig

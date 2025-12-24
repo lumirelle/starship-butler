@@ -1,6 +1,7 @@
 import type { Action, ConfigPathGenerator } from '../../types'
 import consola from 'consola'
 import { join } from 'pathe'
+import { HandlerError } from '../../error'
 import { ensureDirectoryExist, homedir, isPathExistEnv, processConfig } from '../utils'
 
 const name = 'Bun Global Config'
@@ -20,11 +21,10 @@ export function bunGlobalInstall(): Action {
     name,
     targetFolder,
     prehandler: async () => {
-      if (!(await isPathExistEnv('bun', `You should install ${name} first!`)))
-        return false
+      if (!(await isPathExistEnv('bun')))
+        throw new HandlerError(`You should install ${name} first!`)
       if (!ensureDirectoryExist(targetFolder))
-        return false
-      return true
+        throw new HandlerError(`Failed to ensure directory exists: ${targetFolder}`)
     },
     handler: async ({ options, targetFolder }) => {
       for (const generator of configPathGenerators) {

@@ -1,6 +1,7 @@
 import type { Action, ConfigPathGenerator } from '../../types'
 import consola from 'consola'
 import { join } from 'pathe'
+import { HandlerError } from '../../error'
 import { ensureDirectoryExist, homedir, processConfig } from '../utils'
 
 const name = 'Starship'
@@ -20,8 +21,7 @@ export function starship(): Action {
     prehandler: ({ targetFolder }) => {
       // As Starship is necessary to my shells' configuration, so we ensure it's configurations are always usable.
       if (!ensureDirectoryExist(targetFolder))
-        return false
-      return true
+        throw new HandlerError(`Failed to ensure directory exists: ${targetFolder}`)
     },
     handler: async ({ options, targetFolder }) => {
       for (const generator of configPathGenerators) {

@@ -1,6 +1,7 @@
 import type { Action, ConfigPathGenerator, PlatformTargetFolderMap } from '../../types'
 import consola from 'consola'
 import { join } from 'pathe'
+import { HandlerError } from '../../error'
 import { appdata, ensureDirectoryExist, homedir, isPathExist, processConfig } from '../utils'
 
 const name = 'Cursor'
@@ -49,9 +50,8 @@ export function cursor(): Action {
     },
     prehandler: ({ targetFolder }) => {
       // TODO: Is this check correct?
-      if (!isPathExist(targetFolder, `You should install ${name} first!`))
-        return false
-      return true
+      if (!isPathExist(targetFolder))
+        throw new HandlerError(`You should install ${name} first!`)
     },
     handler: async ({ options, targetFolder }) => {
       for (const generator of configPathGenerators) {
@@ -83,15 +83,12 @@ export function cursorMcp(): Action {
     targetFolder: mcpTargetFolder,
     prehandler: ({ targetFolder, systemOptions }) => {
       // TODO: Is this check correct?
-      if (!platformTargetFolderMap[systemOptions.platform]) {
-        consola.error(`Unsupported platform: ${systemOptions.platform}`)
-        return false
-      }
-      if (!isPathExist(platformTargetFolderMap[systemOptions.platform]!, `You should install ${name} first!`))
-        return false
+      if (!platformTargetFolderMap[systemOptions.platform])
+        throw new HandlerError(`Unsupported platform: ${systemOptions.platform}`)
+      if (!isPathExist(platformTargetFolderMap[systemOptions.platform]!))
+        throw new HandlerError(`You should install ${name} first!`)
       if (!ensureDirectoryExist(targetFolder))
-        return false
-      return true
+        throw new HandlerError(`Failed to ensure directory exists: ${targetFolder}`)
     },
     handler: async ({ options, targetFolder }) => {
       for (const generator of mcpConfigPathGenerators) {

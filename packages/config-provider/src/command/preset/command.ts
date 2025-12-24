@@ -4,6 +4,7 @@ import consola from 'consola'
 import { highlight, upsertUserRc } from 'starship-butler-utils'
 import { version } from '../../../package.json'
 import { filterActions } from './actions'
+import { HandlerError } from './error'
 import { validateOptions } from './validate'
 
 /**
@@ -44,14 +45,9 @@ export async function preset(
         context.targetFolder = action.targetFolder
 
       // Run `prehandler` if exist
-      let shouldRun = true
       if (action.prehandler) {
         consola.debug(`[config-provider] Running prehandler of "${highlight.important(action.name)}"...`)
-        shouldRun = await action.prehandler(context)
-      }
-      if (!shouldRun) {
-        consola.debug(`[config-provider] Skipping "${highlight.important(action.name)}" because prehandler returned \`false\` or threw an error.`)
-        continue
+        await action.prehandler(context)
       }
 
       // Run `handler`
@@ -66,14 +62,15 @@ export async function preset(
     }
     catch (error) {
       errorCount++
-      if (error instanceof Error) {
-        if (['EACCES', 'EPERM'].some(code => error.message.includes(code)))
-          consola.error(`Got a permission error while applying "${highlight.important(action.name)}" preset, please try running the command with admin privileges.`)
-        else
-          consola.error(`Got an error while applying "${highlight.important(action.name)}" preset, process stopped. Reason: ${error.message}`)
-      }
+      if (!(error instanceof Error))
+        console.error(error)
+      else if (error instanceof HandlerError)
+        consola.error(error.message)
+      else if (['EACCES', 'EPERM'].some(code => error.message.includes(code)))
+        consola.error(`Got a permission error while applying "${highlight.important(action.name)}" preset, please try running the command with admin privileges.`)
+      else
+        consola.error(`Got an error while applying "${highlight.important(action.name)}" preset, process stopped. Reason: ${error.message}`)
     }
-    consola.log('') // New line
   }
 
   // Update the version of preset

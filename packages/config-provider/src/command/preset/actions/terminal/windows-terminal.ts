@@ -1,6 +1,7 @@
 import type { Action, ConfigPathGenerator } from '../../types'
 import consola from 'consola'
 import { join } from 'pathe'
+import { HandlerError } from '../../error'
 import { isPathExist, localAppdata, processConfig } from '../utils'
 
 const name = 'Windows Terminal'
@@ -25,9 +26,8 @@ export function windowsTerminal(): Action {
     name,
     targetFolder,
     prehandler: ({ targetFolder }) => {
-      if (!isPathExist(targetFolder, `You should install ${name} first!`))
-        return false
-      return true
+      if (!isPathExist(targetFolder))
+        throw new HandlerError(`You should install ${name} first!`)
     },
     handler: async ({ options, targetFolder }) => {
       for (const generator of configPathGenerators) {

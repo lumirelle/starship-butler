@@ -1,6 +1,7 @@
 import type { Action, ConfigPathGenerator, PlatformTargetFolderMap } from '../../types'
 import consola from 'consola'
 import { join } from 'pathe'
+import { HandlerError } from '../../error'
 import { ensureDirectoryExist, homedir, isPathExistEnv, processConfig } from '../utils'
 
 const name = 'PowerShell'
@@ -27,12 +28,10 @@ export function powershell(): Action {
       return platformTargetFolderMap[platform] ?? ''
     },
     prehandler: async ({ targetFolder }) => {
-      if (!(await isPathExistEnv('pwsh', `You should install ${name} first and add it to your system's PATH environment variable!`))) {
-        return false
-      }
+      if (!(await isPathExistEnv('pwsh')))
+        throw new HandlerError(`You should install ${name} first and add it to your system's PATH environment variable!`)
       if (!ensureDirectoryExist(targetFolder))
-        return false
-      return true
+        throw new HandlerError(`Failed to ensure directory exists: ${targetFolder}`)
     },
     handler: async ({ options, targetFolder }) => {
       for (const generator of configPathGenerators) {

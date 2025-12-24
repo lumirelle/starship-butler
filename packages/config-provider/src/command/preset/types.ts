@@ -26,22 +26,19 @@ export type ActionId = 'clash-verge-rev'
  */
 export interface PresetOptions extends ProcessConfigOptions {
   /**
-   * Presets that you want to include, accepts JavaScript regex pattern
-   * string(s).
+   * Presets that you want to include, accepts JavaScript regex pattern string(s).
    *
    * @default undefined
    */
   include: Arrayable<string>
   /**
-   * Presets that you want to exclude (apply on included presets), accepts
-   * JavaScript regex pattern string(s).
+   * Presets that you want to exclude (apply on included presets), accepts JavaScript regex pattern string(s).
    *
    * @default undefined
    */
   exclude: Arrayable<string>
   /**
-   * Applying all presets, overrides `include` and `exclude` options with `[*]`
-   * and `[]` whatever they are provided.
+   * Applying all presets, overrides `include` and `exclude` options with `[*]` and `[]` whatever they are provided.
    *
    * @default false
    */
@@ -49,8 +46,7 @@ export interface PresetOptions extends ProcessConfigOptions {
 }
 
 /**
- * A map from platform to target folder, used for defining the target folders
- * for a multi-platform preset action.
+ * A map from platform to target folder, useful for multi-platform support.
  */
 export type PlatformTargetFolderMap = {
   [platform in NodeJS.Platform]?: string
@@ -87,31 +83,27 @@ export interface Action {
    */
   name: string
   /**
-   * Preset configuration target folder. Accepts a string or a action handler
-   * function that returns a string.
+   * Preset configuration target folder. Accepts a string or a action handler function that returns a string.
    *
    * @param context Context provided to action handler.
    * @returns The resolved target folder for the preset.
    */
   targetFolder: string | ((context: Omit<ActionHandlerContext, 'targetFolder'>) => Awaitable<string>)
   /**
-   * Prehandler for the action, if returns `false` or throw an error, the handler will not be executed.
+   * Prehandler for the action, if throws an error, the handler will not be executed, and this action will be considered failed.
    *
    * @param context Context provided to action handler.
-   * @returns Whether the action handler should be executed.
-   * @throws {Error} If prehandler fails.
+   * @throws {Error} When precondition is not met.
    */
-  prehandler?: (context: ActionHandlerContext) => Awaitable<boolean>
+  prehandler?: (context: ActionHandlerContext) => Awaitable<void>
   /**
-   * Handler for the action. All the logic for applying the preset should be
-   * implemented here.
+   * Handler for the action. All the logic of applying the preset should be implemented here.
    *
    * @param context Context provided to action handler.
    */
   handler: (context: ActionHandlerContext) => Awaitable<void>
   /**
-   * Run after handler is executed, useful for cleanup or prompt the additional
-   * but essential message to the user.
+   * Run after handler is executed, useful for cleanup or prompt the additional but essential message to the user.
    *
    * @param context Context provided to action handler.
    */
@@ -119,11 +111,9 @@ export interface Action {
 }
 
 /**
- * Each generator will return source and target paths for a configuration file
- * in the target folder.
+ * Each generator will return source and target paths for a configuration file in the target folder.
  *
- * So a list of generators can be used to define how configuration files should
- * be applied for a preset action.
+ * So a list of generators can be used to define how configuration files should be applied for a preset action.
  */
 export type ConfigPathGenerator = (targetFolder: string) => {
   source: string

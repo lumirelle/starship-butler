@@ -1,5 +1,6 @@
 import type { Action, ConfigPathGenerator, PlatformTargetFolderMap } from '../../types'
 import { join } from 'pathe'
+import { HandlerError } from '../../error'
 import { homedir, isPathExist, localAppdata, processConfig } from '../utils'
 
 const name = 'Neo Vim'
@@ -47,13 +48,8 @@ export function neovim(): Action {
     },
     prehandler: ({ targetFolder }) => {
       // TODO: Is this check correct?
-      if (!isPathExist(
-        [targetFolder, join(targetFolder, 'lazyvim.json')],
-        `You should install ${name} and Lazy Vim first!`,
-      )) {
-        return false
-      }
-      return true
+      if (!isPathExist([targetFolder, join(targetFolder, 'lazyvim.json')]))
+        throw new HandlerError(`You should install ${name} and LazyVim first!`)
     },
     handler: async ({ options, targetFolder }) => {
       for (const generator of configPathGenerators) {

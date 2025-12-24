@@ -1,5 +1,6 @@
 import type { Action, ConfigPathGenerator } from '../../types'
 import { join } from 'pathe'
+import { HandlerError } from '../../error'
 import { homedir, isPathExistEnv, processConfig } from '../utils'
 
 const name = 'Bun'
@@ -18,9 +19,8 @@ export function bun(): Action {
     name,
     targetFolder,
     prehandler: async () => {
-      if (!(await isPathExistEnv('bun', `You should install ${name} first!`)))
-        return false
-      return true
+      if (!(await isPathExistEnv('bun')))
+        throw new HandlerError(`You should install ${name} first!`)
     },
     handler: async ({ options, targetFolder }) => {
       for (const generator of configPathGenerators) {

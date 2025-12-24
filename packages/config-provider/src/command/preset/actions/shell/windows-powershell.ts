@@ -1,6 +1,7 @@
 import type { Action, ConfigPathGenerator } from '../../types'
 import consola from 'consola'
 import { join } from 'pathe'
+import { HandlerError } from '../../error'
 import { ensureDirectoryExist, homedir, processConfig } from '../utils'
 
 const name = 'Windows PowerShell'
@@ -20,14 +21,11 @@ export function windowsPowerShell(): Action {
     prehandler: ({ systemOptions, targetFolder }) => {
       const { platform } = systemOptions
       // Return false for non-win32 platform
-      if (platform !== 'win32') {
-        consola.warn('Windows PowerShell is the legacy version of PowerShell and bundled in Windows, you may never use it as you are not using Windows, so we will skip this preset.')
-        return false
-      }
+      if (platform !== 'win32')
+        throw new HandlerError('Windows PowerShell is the legacy version of PowerShell and bundled in Windows, you may never use it as you are not using Windows, so we will skip this preset.')
       // Ensure directory exist
       if (!ensureDirectoryExist(targetFolder))
-        return false
-      return true
+        throw new HandlerError(`Failed to ensure directory exists: ${targetFolder}`)
     },
     handler: async ({ options, targetFolder }) => {
       for (const generator of configPathGenerators) {
