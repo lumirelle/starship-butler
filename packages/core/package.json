@@ -39,10 +39,12 @@
     "do-publish": "npm publish --access public"
   },
   "dependencies": {
-    "cac": "catalog:prod",
     "defu": "catalog:prod",
     "starship-butler-config-provider": "workspace:*",
     "starship-butler-types": "workspace:*",
     "starship-butler-utils": "workspace:*"
+  },
+  "devDependencies": {
+    "cac": "catalog:inlined"
   }
 }

@@ -1,5 +1,5 @@
 import { constants, copyFileSync, promises as fsPromises, lstatSync, mkdirSync, renameSync, rmSync } from 'node:fs'
-import consola from 'starship-butler-utils/consola'
+import consola from './consola'
 import { info } from './highlight'
 
 /**
