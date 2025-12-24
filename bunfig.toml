@@ -8,4 +8,5 @@ bun = true
 coveragePathIgnorePatterns = [
   "**/dist/**",
   "**/command/preset/actions/**",
+  "**/*.{test,spec}.ts",
 ]

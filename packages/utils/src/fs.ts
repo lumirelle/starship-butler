@@ -1,4 +1,4 @@
-import { constants, copyFileSync, promises as fsPromises, lstatSync, mkdirSync, renameSync, rmSync } from 'node:fs'
+import { constants, copyFileSync, lstatSync, mkdirSync, renameSync, rmSync, symlinkSync } from 'node:fs'
 import consola from './consola'
 import { info } from './highlight'
 
@@ -31,7 +31,10 @@ export function exists(path: string): boolean {
  * @returns Whether the path is a directory.
  */
 export function isDirectory(path: string): boolean {
-  return (exists(path) && lstatSync(path).isDirectory()) || path.match(/\/$|\\$/) !== null
+  if (exists(path))
+    return lstatSync(path).isDirectory()
+  else
+    return (!exists(path) || lstatSync(path).isDirectory()) && path.match(/\/$|\\$/) !== null
 }
 
 /**
@@ -55,14 +58,18 @@ export function isSymbolicLink(path: string): boolean {
  * @returns `true` if the path is a directory and exists at the end, `false` otherwise.
  */
 export function ensureDirectory(path: string): boolean {
-  const isExist = exists(path)
-  if (isExist && !isDirectory(path))
-    return false
-  if (!isExist) {
-    mkdirSync(path, { recursive: true })
-    return true
+  try {
+    if (exists(path)) {
+      return isDirectory(path)
+    }
+    else {
+      mkdirSync(path, { recursive: true })
+      return true
+    }
   }
-  return false
+  catch {
+    return false
+  }
 }
 
 /**
@@ -103,7 +110,7 @@ export function copyFile(sourcePath: string, targetPath: string, force: boolean 
  * @param force Whether to force overwrite the target symlink.
  * @returns Whether the symlink was created.
  */
-export async function createSymlink(sourcePath: string, targetPath: string, force = false): Promise<boolean> {
+export function createSymlink(sourcePath: string, targetPath: string, force = false): boolean {
   const isExist = exists(targetPath)
   if (isExist) {
     if (!force) {
@@ -113,7 +120,7 @@ export async function createSymlink(sourcePath: string, targetPath: string, forc
     renameSync(targetPath, `${targetPath}.bak`)
   }
   try {
-    await fsPromises.symlink(sourcePath, targetPath, 'file')
+    symlinkSync(sourcePath, targetPath, 'file')
     if (isExist)
       remove(`${targetPath}.bak`)
   }
@@ -129,7 +136,7 @@ export async function createSymlink(sourcePath: string, targetPath: string, forc
  * Remove a path.
  *
  * @param path The path to remove.
- * @param recursive Whether to remove (directories) recursively.
+ * @param recursive Whether to remove (directories) recursively. If `false`, removing a directory will fail with an error.
  * @returns `true` if the file was removed, `false` otherwise.
  */
 export function remove(path: string, recursive: boolean = false): boolean {

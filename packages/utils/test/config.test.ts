@@ -78,6 +78,7 @@ describe('config utils', () => {
 
   it('should load user config without user rc file by default', async () => {
     const { config } = await loadConfig({
+      configFile: './fixture/butler.config.json',
       cwd: import.meta.dirname,
     })
     expect(config).toMatchInlineSnapshot(`

@@ -13,6 +13,8 @@ describe('error test', () => {
       throw new HandlerError('This is a test error')
     }
     catch (error) {
+      if (!(error instanceof Error))
+        return
       expect(error).toBeInstanceOf(HandlerError)
       expect(error.name).toBe('HandlerError')
     }

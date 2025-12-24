@@ -10,16 +10,15 @@ import { join } from 'starship-butler-utils/path'
  * @param source Relative path to assets folder (package-root/assets/).
  * @param target Target path.
  * @param options Processing options.
- * @returns Whether operation success or not.
  */
-export async function processConfig(
+export function processConfig(
   source: string,
   target: string,
   options: Partial<ProcessConfigOptions> = {},
-): Promise<void> {
+): void {
   const { mode = 'copy-paste', dryRun = false } = options
   if (mode === 'copy-paste') {
-    if (dryRun || await _copyPasteConfig(source, target, options)) {
+    if (dryRun || _copyPasteConfig(source, target, options)) {
       consola.success(
         `Configuration ${important(`"${source}"`)} ${
           dryRun ? green('will') : 'is'
@@ -28,7 +27,7 @@ export async function processConfig(
     }
   }
   else if (mode === 'symlink') {
-    if (dryRun || await _symlinkConfig(source, target, options)) {
+    if (dryRun || _symlinkConfig(source, target, options)) {
       consola.success(`Configuration ${important(`"${target}"`)} ${
         dryRun ? green('will') : 'is'
       } symlinked to ${important(`"${source}"`)}.`)
@@ -47,22 +46,20 @@ export async function processConfig(
  * @param target Target path, absolute path or relative path to CWD.
  * @returns Whether operation success or not.
  */
-async function _copyPasteConfig(
+function _copyPasteConfig(
   source: string,
   target: string,
   options: Omit<Partial<ProcessConfigOptions>, 'mode'> = {},
-): Promise<boolean> {
+): boolean {
   const { useGlob, force } = options
   if (useGlob) {
     // TODO: Implement support for glob
-    return Promise.resolve(false)
+    return false
   }
-  return Promise.resolve(
-    copyFile(
-      join(import.meta.dirname, '..', 'assets', source),
-      target,
-      force,
-    ),
+  return copyFile(
+    join(import.meta.dirname, '..', 'assets', source),
+    target,
+    force,
   )
 }
 
@@ -74,15 +71,15 @@ async function _copyPasteConfig(
  * @param target Target path, absolute path or relative path to CWD.
  * @returns Whether operation success or not.
  */
-async function _symlinkConfig(
+function _symlinkConfig(
   source: string,
   target: string,
   options: Omit<Partial<ProcessConfigOptions>, 'mode'> = {},
-): Promise<boolean> {
+): boolean {
   const { useGlob, force } = options
   if (useGlob) {
     // TODO: Implement support for glob
-    return Promise.resolve(false)
+    return false
   }
   return createSymlink(
     join(import.meta.dirname, '..', 'assets', source),

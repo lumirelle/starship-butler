@@ -5,7 +5,7 @@ import { loadConfig } from '../src/config'
 describe('config', () => {
   it('should load JSON config file with global rc correctly', async () => {
     const config = await loadConfig({
-      configFile: './butler.config.json',
+      configFile: './fixture/butler.config.json',
       cwd: import.meta.dirname,
     })
     expect(config).toMatchInlineSnapshot(`
@@ -22,7 +22,7 @@ describe('config', () => {
 
   it('should load from TS config file with global rc correctly', async () => {
     const config = await loadConfig({
-      configFile: './butler.config.ts',
+      configFile: './fixture/butler.config.ts',
       cwd: import.meta.dirname,
     })
     expect(config).toMatchInlineSnapshot(`
@@ -39,7 +39,7 @@ describe('config', () => {
 
   it('should load from JSON config file with global rc and ignore version from JSON config file', async () => {
     const config = await loadConfig({
-      configFile: './butler.config-with-version.json',
+      configFile: './fixture/butler.config-with-version.json',
       cwd: import.meta.dirname,
     })
     expect(config).toMatchInlineSnapshot(`
@@ -56,7 +56,7 @@ describe('config', () => {
 
   it('should load from TS config file with global rc and ignore version from TS config file', async () => {
     const config = await loadConfig({
-      configFile: './butler.config-with-version.ts',
+      configFile: './fixture/butler.config-with-version.ts',
       cwd: import.meta.dirname,
     })
     expect(config).toMatchInlineSnapshot(`

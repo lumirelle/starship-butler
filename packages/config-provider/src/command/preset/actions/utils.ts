@@ -89,10 +89,10 @@ export function ensureDirectoryExist(directory: string): boolean {
  * @returns Handler function.
  */
 export function createHandler(configPathGenerators: ConfigPathGenerator[]) {
-  return async ({ options, targetFolder }: { options: Partial<any>, targetFolder: string }) => {
+  return ({ options, targetFolder }: { options: Partial<any>, targetFolder: string }) => {
     for (const generator of configPathGenerators) {
       const { source, target } = generator(targetFolder)
-      await processConfig(source, target, options)
+      processConfig(source, target, options)
     }
   }
 }

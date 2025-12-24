@@ -1,4 +1,4 @@
-import { defineButlerConfig } from '../src/config'
+import { defineButlerConfig } from '../../src/config'
 
 export default defineButlerConfig({
   'config-provider': {
