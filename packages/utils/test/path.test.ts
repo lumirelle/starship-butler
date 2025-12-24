@@ -6,7 +6,7 @@ import { appdata, homedir, localAppdata } from '../src/path'
 describe('action utils', () => {
   it('homedir should work', () => {
     const path = homedir('.config', 'test')
-    expect(path).toBe(`${_homedir().replace(/\\/g, '/')}/.config/test`)
+    expect(path).toBe(`${process.env.XDG_CONFIG_HOME ?? _homedir().replace(/\\/g, '/')}/.config/test`)
   })
 
   it.if(platform() === 'win32')('appdata should work', () => {
