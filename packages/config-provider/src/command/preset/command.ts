@@ -1,7 +1,7 @@
 import type { SystemOptions } from 'starship-butler-types'
 import type { ActionHandlerContext, PresetOptions } from './types'
-import consola from 'consola'
 import { upsertUserRc } from 'starship-butler-utils/config'
+import consola from 'starship-butler-utils/consola'
 import { important } from 'starship-butler-utils/highlight'
 import { version } from '../../../package.json'
 import { filterActions } from './actions'

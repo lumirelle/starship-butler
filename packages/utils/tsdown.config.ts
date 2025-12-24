@@ -7,5 +7,7 @@ export default defineConfig({
     './src/path.ts',
     './src/fs.ts',
     './src/highlight.ts',
+    './src/consola.ts',
+    './src/prompts.ts',
   ],
 })

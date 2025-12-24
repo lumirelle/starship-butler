@@ -1,5 +1,5 @@
 import type { Action, ConfigPathGenerator } from '../../types'
-import consola from 'consola'
+import consola from 'starship-butler-utils/consola'
 import { homedir, join } from 'starship-butler-utils/path'
 import { createHandler } from '../utils'
 

@@ -23,7 +23,9 @@
     "./config": "./dist/config.mjs",
     "./path": "./dist/path.mjs",
     "./fs": "./dist/fs.mjs",
-    "./highlight": "./dist/highlight.mjs"
+    "./highlight": "./dist/highlight.mjs",
+    "./consola": "./dist/consola.mjs",
+    "./prompts": "./dist/prompts.mjs"
   },
   "main": "./dist/index.mjs",
   "module": "./dist/index.mjs",
@@ -38,6 +40,7 @@
     "do-publish": "npm publish --access public"
   },
   "dependencies": {
+    "@clack/prompts": "catalog:prod",
     "ansis": "catalog:prod",
     "c12": "catalog:prod",
     "consola": "catalog:prod",

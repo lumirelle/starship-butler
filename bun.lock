@@ -41,9 +41,6 @@
       "name": "starship-butler-config-provider",
       "version": "0.4.5",
       "dependencies": {
-        "@clack/prompts": "catalog:prod",
-        "consola": "catalog:prod",
-        "pathe": "catalog:prod",
         "starship-butler-types": "workspace:*",
         "starship-butler-utils": "workspace:*",
         "tinyexec": "catalog:prod",
@@ -62,7 +59,6 @@
       "dependencies": {
         "@clack/prompts": "catalog:prod",
         "cac": "catalog:prod",
-        "consola": "catalog:prod",
         "defu": "catalog:prod",
         "starship-butler-config-provider": "workspace:*",
         "starship-butler-types": "workspace:*",
@@ -77,6 +73,7 @@
       "name": "starship-butler-utils",
       "version": "0.4.5",
       "dependencies": {
+        "@clack/prompts": "catalog:prod",
         "ansis": "catalog:prod",
         "c12": "catalog:prod",
         "consola": "catalog:prod",

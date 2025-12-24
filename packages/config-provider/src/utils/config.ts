@@ -1,5 +1,5 @@
 import type { ProcessConfigOptions } from './types'
-import consola from 'consola'
+import consola from 'starship-butler-utils/consola'
 import { copyFile, createSymlink } from 'starship-butler-utils/fs'
 import { green, important } from 'starship-butler-utils/highlight'
 import { join } from 'starship-butler-utils/path'

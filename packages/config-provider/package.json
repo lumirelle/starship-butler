@@ -35,8 +35,6 @@
     "do-publish": "npm publish --access public"
   },
   "dependencies": {
-    "@clack/prompts": "catalog:prod",
-    "consola": "catalog:prod",
     "starship-butler-types": "workspace:*",
     "starship-butler-utils": "workspace:*",
     "tinyexec": "catalog:prod",
