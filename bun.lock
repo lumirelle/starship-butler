@@ -80,6 +80,7 @@
         "ansis": "catalog:prod",
         "c12": "catalog:prod",
         "consola": "catalog:prod",
+        "pathe": "catalog:prod",
         "rc9": "catalog:prod",
       },
     },

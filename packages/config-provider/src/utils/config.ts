@@ -1,7 +1,7 @@
 import type { ProcessConfigOptions } from './types'
 import consola from 'consola'
-import { join } from 'pathe'
 import { fs, highlight } from 'starship-butler-utils'
+import { join } from 'starship-butler-utils/path'
 
 /**
  * Process config files (copy-paste or symlink).

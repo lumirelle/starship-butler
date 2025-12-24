@@ -1,47 +1,10 @@
 import type { Arrayable } from '@antfu/utils'
 import type { ConfigPathGenerator, PlatformTargetFolderMap } from '../types'
-import { homedir as osHomedir, platform } from 'node:os'
-import process from 'node:process'
+import { platform } from 'node:os'
 import { toArray } from '@antfu/utils'
-import { join } from 'pathe'
 import { fs } from 'starship-butler-utils'
 import { x } from 'tinyexec'
 import { processConfig } from '../../../utils'
-
-/* ----- Path definition utilities ----- */
-
-/**
- * Join all arguments together and normalize the resulting path, starting from home directory.
- *
- * @param paths Paths to join.
- * @returns Joined paths.
- * @throws {TypeError} if any of the path segments is not a string.
- */
-export function homedir(...paths: string[]): string {
-  return join(osHomedir(), ...paths)
-}
-
-/**
- * Join all arguments together and normalize the resulting path, starting from appdata directory.
- *
- * @param paths Paths to join.
- * @returns Joined paths.
- * @throws {TypeError} if any of the path segments is not a string.
- */
-export function appdata(...paths: string[]): string {
-  return join(process.env.APPDATA!, ...paths)
-}
-
-/**
- * Join all arguments together and normalize the resulting path, starting from local appdata directory.
- *
- * @param paths Paths to join.
- * @returns Joined paths.
- * @throws {TypeError} if any of the path segments is not a string.
- */
-export function localAppdata(...paths: string[]): string {
-  return join(process.env.LOCALAPPDATA!, ...paths)
-}
 
 /* Target folder handler utilities */
 

@@ -1,7 +1,7 @@
 import type { Action, ConfigPathGenerator, PlatformTargetFolderMap } from '../../types'
-import { join } from 'pathe'
+import { homedir, join, localAppdata } from 'starship-butler-utils/path'
 import { HandlerError } from '../../error'
-import { createHandler, createTargetFolderHandler, ensureDirectoryExist, homedir, isPathExist, localAppdata } from '../utils'
+import { createHandler, createTargetFolderHandler, ensureDirectoryExist, isPathExist } from '../utils'
 
 const name = 'Neo Vim'
 

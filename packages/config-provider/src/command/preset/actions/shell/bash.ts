@@ -1,6 +1,6 @@
 import type { Action, ConfigPathGenerator } from '../../types'
-import { join } from 'pathe'
-import { createHandler, homedir } from '../utils'
+import { homedir, join } from 'starship-butler-utils/path'
+import { createHandler } from '../utils'
 
 const name = 'Bash'
 

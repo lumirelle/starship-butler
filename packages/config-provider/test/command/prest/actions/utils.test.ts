@@ -1,26 +1,10 @@
 import { describe, expect, it } from 'bun:test'
-import { homedir as osHomedir, platform } from 'node:os'
 import { fs } from 'starship-butler-utils'
-import { appdata, ensureDirectoryExist, homedir, isPathExist, isPathExistEnv, localAppdata } from '../../../../src/command/preset/actions/utils'
+import { ensureDirectoryExist, isPathExist, isPathExistEnv } from '../../../../src/command/preset/actions/utils'
 
 const fixtureDir = import.meta.dirname
 
 describe('action utils', () => {
-  it('homedir should work', () => {
-    const path = homedir('.config', 'test')
-    expect(path).toBe(`${osHomedir().replace(/\\/g, '/')}/.config/test`)
-  })
-
-  it.if(platform() === 'win32')('appdata should work', () => {
-    const path = appdata('test', 'appdata')
-    expect(path).toBe(`${process.env.APPDATA?.replace(/\\/g, '/')}/test/appdata`)
-  })
-
-  it.if(platform() === 'win32')('localAppdata should work', () => {
-    const path = localAppdata('test', 'localappdata')
-    expect(path).toBe(`${process.env.LOCALAPPDATA?.replace(/\\/g, '/')}/test/localappdata`)
-  })
-
   it('isPathExist should work', () => {
     const existingPath = fixtureDir
     const nonExistingPath = `${fixtureDir}/non-existing-file.txt`

@@ -1,8 +1,8 @@
 import type { Action, ConfigPathGenerator } from '../../types'
 import consola from 'consola'
-import { join } from 'pathe'
+import { join, localAppdata } from 'starship-butler-utils/path'
 import { HandlerError } from '../../error'
-import { createHandler, isPathExist, localAppdata } from '../utils'
+import { createHandler, isPathExist } from '../utils'
 
 const name = 'Windows Terminal'
 

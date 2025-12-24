@@ -1,8 +1,8 @@
 import type { Action, ConfigPathGenerator } from '../../types'
 import consola from 'consola'
-import { join } from 'pathe'
+import { homedir, join } from 'starship-butler-utils/path'
 import { HandlerError } from '../../error'
-import { createHandler, ensureDirectoryExist, homedir, isPathExistEnv } from '../utils'
+import { createHandler, ensureDirectoryExist, isPathExistEnv } from '../utils'
 
 const name = 'Bun'
 

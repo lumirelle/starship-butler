@@ -20,7 +20,8 @@
   "sideEffects": false,
   "exports": {
     ".": "./dist/index.mjs",
-    "./config": "./dist/config.mjs"
+    "./config": "./dist/config.mjs",
+    "./path": "./dist/path.mjs"
   },
   "main": "./dist/index.mjs",
   "module": "./dist/index.mjs",
@@ -38,6 +39,7 @@
     "ansis": "catalog:prod",
     "c12": "catalog:prod",
     "consola": "catalog:prod",
+    "pathe": "catalog:prod",
     "rc9": "catalog:prod"
   }
 }
