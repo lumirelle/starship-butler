@@ -1,6 +1,8 @@
 import type { ConfigLayerMeta, LoadConfigOptions, ResolvedConfig, UserInputConfig } from 'c12'
 import { loadConfig as _loadConfig } from 'c12'
 import { readUser, updateUser, writeUser } from 'rc9'
+import { remove } from './fs'
+import { homedir } from './path'
 
 /* ----- rc9 ----- */
 
@@ -52,6 +54,19 @@ export function updateUserRc(config: any, options?: RCOptions): any {
     name: RC_FILE_NAME,
     ...(options ?? {}),
   })
+}
+
+/**
+ * Removes the user rc file (rc file under home directory).
+ *
+ * Default rc file name is ".butlerrc".
+ *
+ * @param options Options for rc9.
+ */
+export function removeUserRc(options?: RCOptions): void {
+  const { dir, name = RC_FILE_NAME } = options ?? {}
+  const rcPath = dir ? `${dir}/${name}` : name
+  remove(homedir(rcPath))
 }
 
 /**

@@ -1,4 +1,4 @@
-import { describe, expect, it } from 'bun:test'
+import { describe, expect, it, mock } from 'bun:test'
 import { filterActions } from '../../../src/command/preset/actions'
 
 describe('actions', () => {
@@ -255,5 +255,19 @@ describe('actions', () => {
         },
       ]
     `)
+  })
+
+  it('should prompt user to select actions when include option is empty', async () => {
+    const mockedMultiselect = mock(async () => {
+      return ['nushell', 'bash']
+    })
+    mock.module('starship-butler-utils/prompts', () => ({
+      multiselect: mockedMultiselect,
+    }))
+    const filteredActions = await filterActions({
+      include: [],
+    })
+    expect(mockedMultiselect).toHaveBeenCalledTimes(1)
+    expect(filteredActions.map(action => action.id)).toEqual(['nushell', 'bash'])
   })
 })
