@@ -2,7 +2,7 @@ import type { Arrayable } from '@antfu/utils'
 import type { ConfigPathGenerator, PlatformTargetFolderMap } from '../types'
 import { platform } from 'node:os'
 import { toArray } from '@antfu/utils'
-import { fs } from 'starship-butler-utils'
+import { ensureDirectory, exists } from 'starship-butler-utils/fs'
 import { x } from 'tinyexec'
 import { processConfig } from '../../../utils'
 
@@ -34,7 +34,7 @@ export function isPathExist(path: Arrayable<string>): boolean {
   if (path.length === 0) {
     return false
   }
-  return path.every(t => fs.exists(t))
+  return path.every(t => exists(t))
 }
 
 /**
@@ -75,9 +75,9 @@ export async function isPathExistEnv(path: Arrayable<string>): Promise<boolean> 
 export function ensureDirectoryExist(directory: string): boolean {
   if (!directory)
     return false
-  if (fs.exists(directory))
+  if (exists(directory))
     return true
-  return fs.ensureDirectory(directory)
+  return ensureDirectory(directory)
 }
 
 /* ----- Handler utilities----- */

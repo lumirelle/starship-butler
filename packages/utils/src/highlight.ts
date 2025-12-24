@@ -1,17 +1,11 @@
-import { bold, cyan, green, magenta, red, reset } from 'ansis'
+import { bold, cyan, magenta } from 'ansis'
 
-export const highlight = {
-  green: (text: string) => {
-    return green(text)
-  },
-  red: (text: string) => {
-    return red(text)
-  },
-  info: (text: string) => {
-    return cyan(text)
-  },
-  important: (text: string) => {
-    return bold(magenta(text))
-  },
-  reset,
+export { green, red, reset } from 'ansis'
+
+export function info(v: unknown): string {
+  return cyan(v)
+}
+
+export function important(v: unknown): string {
+  return bold(magenta(v))
 }

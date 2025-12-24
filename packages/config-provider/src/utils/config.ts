@@ -1,6 +1,7 @@
 import type { ProcessConfigOptions } from './types'
 import consola from 'consola'
-import { fs, highlight } from 'starship-butler-utils'
+import { copyFile, createSymlink } from 'starship-butler-utils/fs'
+import { green, important } from 'starship-butler-utils/highlight'
 import { join } from 'starship-butler-utils/path'
 
 /**
@@ -20,17 +21,17 @@ export async function processConfig(
   if (mode === 'copy-paste') {
     if (dryRun || await _copyPasteConfig(source, target, options)) {
       consola.success(
-        `Configuration ${highlight.important(`"${source}"`)} ${
-          dryRun ? highlight.green('will') : 'is'
-        } copied to ${highlight.important(`"${target}"`)}.`,
+        `Configuration ${important(`"${source}"`)} ${
+          dryRun ? green('will') : 'is'
+        } copied to ${important(`"${target}"`)}.`,
       )
     }
   }
   else if (mode === 'symlink') {
     if (dryRun || await _symlinkConfig(source, target, options)) {
-      consola.success(`Configuration ${highlight.important(`"${target}"`)} ${
-        dryRun ? highlight.green('will') : 'is'
-      } symlinked to ${highlight.important(`"${source}"`)}.`)
+      consola.success(`Configuration ${important(`"${target}"`)} ${
+        dryRun ? green('will') : 'is'
+      } symlinked to ${important(`"${source}"`)}.`)
     }
   }
   else {
@@ -57,7 +58,7 @@ async function _copyPasteConfig(
     return Promise.resolve(false)
   }
   return Promise.resolve(
-    fs.copyFile(
+    copyFile(
       join(import.meta.dirname, '..', 'assets', source),
       target,
       force,
@@ -83,7 +84,7 @@ async function _symlinkConfig(
     // TODO: Implement support for glob
     return Promise.resolve(false)
   }
-  return fs.createSymlink(
+  return createSymlink(
     join(import.meta.dirname, '..', 'assets', source),
     target,
     force,

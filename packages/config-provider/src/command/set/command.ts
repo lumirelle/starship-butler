@@ -3,7 +3,8 @@ import type { SetOptions } from './types'
 import process from 'node:process'
 import { isCancel, multiselect } from '@clack/prompts'
 import consola from 'consola'
-import { fs, upsertUserRc } from 'starship-butler-utils'
+import { upsertUserRc } from 'starship-butler-utils/config'
+import { ensureDirectory, isDirectory } from 'starship-butler-utils/fs'
 import { basename, join } from 'starship-butler-utils/path'
 import { globSync } from 'tinyglobby'
 import { version } from '../../../package.json'
@@ -86,12 +87,12 @@ export async function commandSet(
 
   for (const sourceFile of sourceFiles) {
     let targetFile: Nullable<string>
-    if (fs.isDirectory(target)) {
-      fs.ensureDirectory(target)
+    if (isDirectory(target)) {
+      ensureDirectory(target)
       targetFile = join(cwd, target, basename(sourceFile))
     }
     else {
-      fs.ensureDirectory(join(cwd, target))
+      ensureDirectory(join(cwd, target))
       targetFile = join(cwd, target)
     }
     consola.debug('[config-provider] Target file path:', targetFile)

@@ -1,7 +1,8 @@
 import type { SystemOptions } from 'starship-butler-types'
 import type { ActionHandlerContext, PresetOptions } from './types'
 import consola from 'consola'
-import { highlight, upsertUserRc } from 'starship-butler-utils'
+import { upsertUserRc } from 'starship-butler-utils/config'
+import { important } from 'starship-butler-utils/highlight'
 import { version } from '../../../package.json'
 import { filterActions } from './actions'
 import { HandlerError } from './error'
@@ -42,7 +43,7 @@ export async function commandPreset(
       systemOptions,
       targetFolder: '',
     }
-    consola.start(`Applying "${highlight.important(action.name)}" preset...`)
+    consola.start(`Applying "${important(action.name)}" preset...`)
 
     try {
       // Process `targetFolder`
@@ -53,17 +54,17 @@ export async function commandPreset(
 
       // Run `prehandler` if exist
       if (action.prehandler) {
-        consola.debug(`[config-provider] Running prehandler of "${highlight.important(action.name)}"...`)
+        consola.debug(`[config-provider] Running prehandler of "${important(action.name)}"...`)
         await action.prehandler(context)
       }
 
       // Run `handler`
-      consola.debug(`[config-provider] Running handler of "${highlight.important(action.name)}"...`)
+      consola.debug(`[config-provider] Running handler of "${important(action.name)}"...`)
       await action.handler(context)
 
       // Run `posthandler` if exist
       if (action.posthandler) {
-        consola.debug(`[config-provider] Running posthandler of "${highlight.important(action.name)}"...`)
+        consola.debug(`[config-provider] Running posthandler of "${important(action.name)}"...`)
         await action.posthandler(context)
       }
     }
@@ -74,9 +75,9 @@ export async function commandPreset(
       else if (error instanceof HandlerError)
         consola.error(error.message)
       else if (['EACCES', 'EPERM'].some(code => error.message.includes(code)))
-        consola.error(`Got a permission error while applying "${highlight.important(action.name)}" preset, please try running the command with admin privileges.`)
+        consola.error(`Got a permission error while applying "${important(action.name)}" preset, please try running the command with admin privileges.`)
       else
-        consola.error(`Got an error while applying "${highlight.important(action.name)}" preset, process stopped. Reason: ${error.message}`)
+        consola.error(`Got an error while applying "${important(action.name)}" preset, process stopped. Reason: ${error.message}`)
     }
   }
 

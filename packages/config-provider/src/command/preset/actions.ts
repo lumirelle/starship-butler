@@ -2,7 +2,7 @@ import type { Action, PresetOptions } from './types'
 import { toArray } from '@antfu/utils'
 import { multiselect } from '@clack/prompts'
 import consola from 'consola'
-import { highlight } from 'starship-butler-utils'
+import { important } from 'starship-butler-utils/highlight'
 import { cursor } from './actions/editor/cursor'
 import { neovim } from './actions/editor/neovim'
 import { vscode } from './actions/editor/vscode'
@@ -71,7 +71,7 @@ export async function filterActions(options: Partial<PresetOptions>): Promise<Ac
   const includedActions = _ACTIONS.filter((action) => {
     const isIncluded = include.some(pattern => new RegExp(pattern).test(action.id))
     if (!isIncluded) {
-      consola.debug(`[config-provider] Skip "${highlight.important(action.name)}" as it's not included.`)
+      consola.debug(`[config-provider] Skip "${important(action.name)}" as it's not included.`)
       return false
     }
     return true
@@ -79,7 +79,7 @@ export async function filterActions(options: Partial<PresetOptions>): Promise<Ac
   const notExcludedActions = includedActions.filter((action) => {
     const isNotExcluded = !exclude.some(pattern => new RegExp(pattern).test(action.id))
     if (!isNotExcluded) {
-      consola.debug(`[config-provider] Skip "${highlight.important(action.name)}" as it's excluded.`)
+      consola.debug(`[config-provider] Skip "${important(action.name)}" as it's excluded.`)
       return false
     }
     return true

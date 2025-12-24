@@ -1,4 +1,4 @@
-export * from './config'
+export * as config from './config'
 export * as fs from './fs'
-export * from './highlight'
+export * as highlight from './highlight'
 export * as path from './path'

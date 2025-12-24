@@ -5,5 +5,7 @@ export default defineConfig({
     './src/index.ts',
     './src/config.ts',
     './src/path.ts',
+    './src/fs.ts',
+    './src/highlight.ts',
   ],
 })

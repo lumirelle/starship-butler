@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'bun:test'
-import { fs } from 'starship-butler-utils'
+import { exists, remove } from 'starship-butler-utils/fs'
 import { ensureDirectoryExist, isPathExist, isPathExistEnv } from '../../../../src/command/preset/actions/utils'
 
 const fixtureDir = import.meta.dirname
@@ -26,15 +26,15 @@ describe('action utils', () => {
     const testDir = `${fixtureDir}/temp-test-dir/subdir`
 
     // Ensure the directory does not exist before the test
-    if (fs.exists(testDir)) {
-      fs.remove(testDir, true)
+    if (exists(testDir)) {
+      remove(testDir, true)
     }
 
     ensureDirectoryExist(testDir)
-    const exists = fs.exists(testDir)
-    expect(exists).toBe(true)
+    const isExists = exists(testDir)
+    expect(isExists).toBe(true)
 
     // Clean up
-    fs.remove(`${fixtureDir}/temp-test-dir`, true)
+    remove(`${fixtureDir}/temp-test-dir`, true)
   })
 })

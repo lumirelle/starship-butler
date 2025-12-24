@@ -1,6 +1,6 @@
 import { constants, copyFileSync, promises as fsPromises, lstatSync, mkdirSync, renameSync, rmSync } from 'node:fs'
 import consola from 'consola'
-import { highlight } from './highlight'
+import { info } from './highlight'
 
 /**
  * Check if a path exists. Does not dereference symlinks.
@@ -77,7 +77,7 @@ export function copyFile(sourcePath: string, targetPath: string, force: boolean 
   const isExist = exists(targetPath)
   if (isExist) {
     if (!force) {
-      consola.warn(`COPY: Path already exists: ${highlight.info(targetPath)}, skip`)
+      consola.warn(`COPY: Path already exists: ${info(targetPath)}, skip`)
       return false
     }
     renameSync(targetPath, `${targetPath}.bak`)
@@ -107,7 +107,7 @@ export async function createSymlink(sourcePath: string, targetPath: string, forc
   const isExist = exists(targetPath)
   if (isExist) {
     if (!force) {
-      consola.warn(`LINK: Path already exists: ${highlight.info(targetPath)}, skip`)
+      consola.warn(`LINK: Path already exists: ${info(targetPath)}, skip`)
       return false
     }
     renameSync(targetPath, `${targetPath}.bak`)
@@ -134,7 +134,7 @@ export async function createSymlink(sourcePath: string, targetPath: string, forc
  */
 export function remove(path: string, recursive: boolean = false): boolean {
   if (!exists(path)) {
-    consola.warn(`REMOVE: Path not exists: ${highlight.info(path)}, skip`)
+    consola.warn(`REMOVE: Path not exists: ${info(path)}, skip`)
     return false
   }
   rmSync(path, { recursive })
@@ -152,7 +152,7 @@ export function remove(path: string, recursive: boolean = false): boolean {
  */
 export function removeSymlink(path: string): boolean {
   if (!isSymbolicLink(path)) {
-    consola.warn(`REMOVE: Path is not a symlink: ${highlight.info(path)}, skip`)
+    consola.warn(`REMOVE: Path is not a symlink: ${info(path)}, skip`)
     return false
   }
   return remove(path)
