@@ -1,6 +1,8 @@
 # Docker compose for data services (MySQL and Redis)
 services:
-  sql-service:
+  sql:
+    profiles:
+      - dev
     image: mysql:lts
     environment:
       MYSQL_ROOT_PASSWORD: root # Or your custom root password
@@ -9,10 +11,10 @@ services:
     ports:
       - 3306:3306
     volumes:
-      - mysql-data:/var/lib/mysql
-    networks:
-      - data-services
-  redis-service:
+      - ./data/mysql/:/var/lib/mysql
+  redis:
+    profiles:
+      - dev
     image: redis:alpine
     # command: --requirepass "12345678"  # Uncomment if you need a password
     environment:
@@ -20,14 +22,4 @@ services:
     ports:
       - 6379:6379
     volumes:
-      - redis-data:/data
-    networks:
-      - data-services
-
-volumes:
-  mysql-data:
-  redis-data:
-
-networks:
-  data-services:
-    driver: bridge
+      - ./data/redis/:/data

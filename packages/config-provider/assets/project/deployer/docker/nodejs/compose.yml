@@ -1,0 +1,17 @@
+services:
+  dev:
+    profiles:
+      - dev
+    image: frontend-app:dev
+    build: .
+    command: npm run dev
+    ports:
+      - 8080:8080
+    develop:
+      watch:
+        - path: .
+          target: /app
+          action: sync
+          initial_sync: true
+          ignore:
+            - node_modules
