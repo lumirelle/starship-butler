@@ -1,4 +1,4 @@
-# --------------------------------- FUNCTIONS -------------------------------- #
+# ----------------------------------- UTILS- --------------------------------- #
 
 # Check if any path exists in the current directory.
 any-path-exists() {
@@ -64,6 +64,8 @@ nr-wrapper() {
 # UI
 eval "$(starship init bash)"
 
+export PODMAN_COMPOSE_WARNING_LOGS=false
+
 # Commands Aliases
 # For running node packages' scripts
 alias dev='nr-wrapper dev'
@@ -75,3 +77,6 @@ alias lint='nr-wrapper lint'
 alias test='nr-wrapper test'
 alias typecheck='nr-wrapper typecheck'
 alias release='nr-wrapper release'
+# For container management
+alias docker='podman'
+alias compose='podman compose'

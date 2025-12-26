@@ -1,5 +1,3 @@
-# ---------------------------------- Path ----------------------------------
-
 # Check if any path exists in the current directory.
 export def any-path-exists [] {
   $in | any {|path| $path | path exists}
@@ -38,8 +36,6 @@ export def dirname-parent [] {
   }
   return ''
 }
-
-# ---------------------------------- Agent ----------------------------------
 
 # Wrapper for running node packages' scripts
 export def --wrapped nr-wrapper [...rest] {

@@ -1,4 +1,4 @@
-# --------------------------------- FUNCTIONS -------------------------------- #
+# ----------------------------------- UTILS ---------------------------------- #
 
 # Check if any path exists in the current directory.
 function Test-AnyPathExists {
@@ -64,6 +64,9 @@ $OutputEncoding = [console]::InputEncoding = [console]::OutputEncoding = [Text.E
 # UI
 Invoke-Expression (&starship init powershell)
 
+# Environment Variables
+$env:PODMAN_COMPOSE_WARNING_LOGS = $false
+
 # Commands Aliases
 # `which`: Show the path of commands
 New-Alias -Name which -Value where.exe
@@ -110,4 +113,9 @@ New-Alias -Name lint -Value Nr-Lint
 New-Alias -Name test -Value Nr-Test
 New-Alias -Name typecheck -Value Nr-Typecheck
 New-Alias -Name release -Value Nr-Release
-
+# For container management
+New-Alias -Name docker -Value podman
+function Podman-Compose {
+  podman compose @args
+}
+New-Alias -Name compose -Value Podman-Compose
