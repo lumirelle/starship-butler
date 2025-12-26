@@ -51,11 +51,12 @@
     "opening": { "name": { "highlight": "rgb(104 148 92 / 80%)" } }
   },
   "todohighlight.include": [
-    // Shell Scripts
+    // Scripts
     "**/*.sh",
     "**/*.ps1",
     "**/*.bat",
     "**/*.nu",
+    "**/*.lua",
     // Front-end Ecosystem
     "**/*.{,m,c}{j,t}s{,x}",
     "**/*.vue",

@@ -4,6 +4,19 @@ local map = vim.keymap.set
 local vscode = require("vscode")
 local vscode_neovim = require("vscode-neovim")
 
+-- Use VSCode's undo/redo, as Neovim's undo break-points does not work correctly in VSCode
+map("n", "u", function()
+  vscode.action("undo")
+end, { desc = "Undo" })
+map("n", "<C-r>", function()
+  vscode.action("redo")
+end, { desc = "Redo" })
+
+-- Use VSCode's toggle comment
+map({ "n", "v" }, "gcc", function()
+  vscode.action("editor.action.commentLine")
+end, { desc = "toggle line comment" })
+
 -- Better up/down
 map("n", "j", function()
   vscode_neovim.action("cursorMove", {

@@ -10,23 +10,19 @@
   },
   {
     "key": "ctrl+h",
-    "command": "vscode-neovim.send",
-    "args": "<C-h>"
-  },
-  {
-    "key": "ctrl+l",
-    "command": "vscode-neovim.send",
-    "args": "<C-l>"
+    "command": "workbench.action.navigateLeft"
   },
   {
     "key": "ctrl+k",
-    "command": "vscode-neovim.send",
-    "args": "<C-k>"
+    "command": "workbench.action.navigateUp"
   },
   {
     "key": "ctrl+j",
-    "command": "vscode-neovim.send",
-    "args": "<C-j>"
+    "command": "workbench.action.navigateDown"
+  },
+  {
+    "key": "ctrl+l",
+    "command": "workbench.action.navigateRight"
   },
 
   // Editor

@@ -3,8 +3,12 @@
 -- Add any additional keymaps here
 
 local map = vim.keymap.set
+local unmap = vim.keymap.del
 
--- Quickfix List
+-- Add undo break-points
+map("i", " ", " <C-g>u")
+
+-- FIXME(Lumirelle): Not only quickfix list, actually code action list
 map("n", "<C-.>", "<leader>xq", { desc = "Quickfix List", remap = true })
 
 -- Keymaps for Neovim when running inside VSCode

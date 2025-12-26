@@ -6,4 +6,7 @@ local opt = vim.opt
 
 opt.wrap = true
 opt.guifont = { "Maple Mono CN", "Symbols Nerd Font" }
-opt.shell = "nu"
+
+if vim.fn.executable("nu") == 1 then
+  opt.shell = "nu"
+end
