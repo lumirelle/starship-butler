@@ -7,6 +7,7 @@ import { cursor } from './actions/editor/cursor'
 import { neovim } from './actions/editor/neovim'
 import { vscode } from './actions/editor/vscode'
 import { zed } from './actions/editor/zed'
+import { rime } from './actions/input-method/rime'
 import { cSpell } from './actions/linter/c-spell'
 import { clashVergeRev } from './actions/network/clash-verge-rev'
 import { bun } from './actions/pm/bun'
@@ -28,6 +29,8 @@ import { git } from './actions/vcs/git'
 const _ACTIONS: Action[] = [
   // Network
   clashVergeRev(),
+  // Input Methods
+  rime(),
   // Terminal & Shell & Prompt
   windowsTerminal(),
   nushell(),

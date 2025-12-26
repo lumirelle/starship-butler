@@ -18,6 +18,7 @@ export type ActionId = 'clash-verge-rev'
   | 'zed'
   | 'nvim'
   | 'cspell'
+  | 'rime'
 
 /**
  * (Configuration and Command-line) Options for preset command.
