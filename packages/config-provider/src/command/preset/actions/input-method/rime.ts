@@ -16,6 +16,10 @@ const configPathGenerators: ConfigPathGenerator[] = [
     source: join('input-method', 'rime', 'default.custom.yaml'),
     target: join(targetFolder, 'default.custom.yaml'),
   }),
+  (targetFolder: string) => ({
+    source: join('input-method', 'rime', 'wanxiang.custom.yaml'),
+    target: join(targetFolder, 'wanxiang.custom.yaml'),
+  }),
 ]
 
 export function rime(): Action {
