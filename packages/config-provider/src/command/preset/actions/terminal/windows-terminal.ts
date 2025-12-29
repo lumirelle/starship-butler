@@ -30,7 +30,7 @@ export function windowsTerminal(): Action {
     },
     handler: createHandler(configPathGenerators),
     posthandler: () => {
-      consola.info('This configuration will use `"DM Mono", "Maple Mono CN", "Symbols Nerd Font"` as terminal fonts, "Nushell" as default shell and "Starship" as shell prompt. Don\'t forget to install them, or just exclude this preset if you want to use your own configuration!')
+      consola.info('This configuration will use `"Recursive Mono Linear", "Maple Mono CN", "Symbols Nerd Font"` as terminal fonts, "Nushell" as default shell and "Starship" as shell prompt. Don\'t forget to install them, or just exclude this preset if you want to use your own configuration!')
     },
   }
 }

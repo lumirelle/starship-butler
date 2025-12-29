@@ -14,10 +14,10 @@
   },
   "wrap_guides": [80, 120, 160, 200],
   // Font
-  "ui_font_family": "Maple Mono CN",
-  "ui_font_fallbacks": ["Symbols Nerd Font Mono"],
+  "ui_font_family": "Recursive Mono Linear",
+  "ui_font_fallbacks": ["Maple Mono CN", "Symbols Nerd Font Mono"],
   "ui_font_size": 16,
-  "buffer_font_family": "DM Mono",
+  "buffer_font_family": "Recursive Mono Linear",
   "buffer_font_fallbacks": ["Maple Mono CN", "Symbols Nerd Font Mono"],
   "buffer_font_size": 16,
   "buffer_font_features": {

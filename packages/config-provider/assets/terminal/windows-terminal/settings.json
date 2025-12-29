@@ -50,7 +50,7 @@
           "font":
             {
               "builtinGlyphs": false,
-              "face": "'DM Mono', 'Maple Mono CN', 'Symbols Nerd Font'",
+              "face": "'Recursive Mono Linear', 'Maple Mono CN', 'Symbols Nerd Font'",
               "size": 12
             },
           "opacity": 85,
