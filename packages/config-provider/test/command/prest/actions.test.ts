@@ -39,6 +39,10 @@ describe('actions', () => {
           "name": "Clash Verge Rev",
         },
         {
+          "id": "rime",
+          "name": "rime",
+        },
+        {
           "id": "windows-terminal",
           "name": "Windows Terminal",
         },
@@ -116,6 +120,10 @@ describe('actions', () => {
         {
           "id": "clash-verge-rev",
           "name": "Clash Verge Rev",
+        },
+        {
+          "id": "rime",
+          "name": "rime",
         },
         {
           "id": "windows-terminal",
@@ -196,6 +204,10 @@ describe('actions', () => {
         {
           "id": "clash-verge-rev",
           "name": "Clash Verge Rev",
+        },
+        {
+          "id": "rime",
+          "name": "rime",
         },
         {
           "id": "windows-terminal",
