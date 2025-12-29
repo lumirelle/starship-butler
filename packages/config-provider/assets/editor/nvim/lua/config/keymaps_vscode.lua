@@ -17,7 +17,21 @@ map({ "n", "v" }, "gcc", function()
   vscode.action("editor.action.commentLine")
 end, { desc = "toggle line comment" })
 
--- Better up/down
+-- Use VSCode's fold/unfold
+map("n", "za", function()
+  vscode.action("editor.toggleFold")
+end, { desc = "Toggle Fold" })
+map("n", "zA", function()
+  vscode.action("editor.toggleFoldRecursively")
+end, { desc = "Toggle Fold Recursively" })
+map("n", "zR", function()
+  vscode.action("editor.unfoldAll")
+end, { desc = "Unfold All" })
+map("n", "zM", function()
+  vscode.action("editor.foldAll")
+end, { desc = "Fold All" })
+
+-- Use VSCode's cursor move to handle wrapped lines correctly (compatible with fold/unfold)
 map("n", "j", function()
   vscode_neovim.action("cursorMove", {
     args = {
@@ -36,6 +50,14 @@ map("n", "<Down>", function()
     }
   })
 end, { desc = "Down", silent = true })
+map("n", "gj", function()
+  vscode_neovim.action("cursorMove", {
+    args = {
+      to = "down",
+      value = vim.v.count1,
+    }
+  })
+end, { desc = "Down (Expand Wrapped)", silent = true })
 map("n", "k", function()
   vscode_neovim.action("cursorMove", {
     args = {
@@ -54,6 +76,14 @@ map("n", "<Up>", function()
     }
   })
 end, { desc = "Up", silent = true })
+map("n", "gk", function()
+  vscode_neovim.action("cursorMove", {
+    args = {
+      to = "up",
+      value = vim.v.count1,
+    }
+  })
+end, { desc = "Up (Expand Wrapped)", silent = true })
 
 -- Resize window using <ctrl> arrow keys
 map("n", "<C-Up>", "<C-w>+", { desc = "Increase window height", remap = true })

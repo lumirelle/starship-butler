@@ -3,3 +3,6 @@
 patch:
   key_binder/bindings/+:
     - {when: always, accept: Release+Escape, toggle: ascii_mode}
+  switches/+:
+    - name: ascii_mode
+      reset: 1
