@@ -211,8 +211,6 @@
   "editor.minimap.enabled": true,
   "editor.accessibilitySupport": "off",
   "editor.unusualLineTerminators": "auto",
-  "editor.snippetSuggestions": "top",
-  "editor.suggest.showWords": false,
   // Diff Editor
   "diffEditor.ignoreTrimWhitespace": false,
   // Terminal
