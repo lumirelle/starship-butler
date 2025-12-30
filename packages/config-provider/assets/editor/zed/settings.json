@@ -14,7 +14,7 @@
   },
   "wrap_guides": [80, 120, 160, 200],
   // Font
-  "ui_font_family": "Recursive Mono Linear",
+  "ui_font_family": "Recursive Sans Linear",
   "ui_font_fallbacks": ["Maple Mono CN", "Symbols Nerd Font Mono"],
   "ui_font_size": 16,
   "buffer_font_family": "Recursive Mono Linear",

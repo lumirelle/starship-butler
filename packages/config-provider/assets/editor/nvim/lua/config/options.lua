@@ -5,7 +5,7 @@
 local opt = vim.opt
 
 opt.wrap = true
-opt.guifont = { "Recursive Mono Linear", "Maple Mono CN", "Symbols Nerd Font" }
+opt.guifont = { "Recursive Sans Linear", "Maple Mono CN", "Symbols Nerd Font" }
 
 if vim.fn.executable("nu") == 1 then
   opt.shell = "nu"
