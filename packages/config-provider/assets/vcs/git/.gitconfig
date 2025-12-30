@@ -9,6 +9,7 @@ provider = generic
 # Core Settings
 [core]
 ignorecase = false
+editor = nvim # Or replace with your preferred editor.
 [feature]
 # Will enable some default configurations to better handle a large number of files, include `index.version=4`. See
 # https://git-scm.com/docs/git-config#Documentation/git-config.txt-featuremanyFiles.
