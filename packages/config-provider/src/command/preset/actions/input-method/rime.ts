@@ -35,7 +35,7 @@ export function rime(): Action {
     targetFolder: createTargetFolderHandler(platformTargetFolderMap),
     handler: createHandler(configPathGenerators),
     posthandler: () => {
-      consola.info('Currently, this configuration only supports Rime official input method with default user configuration folder path. For Linux users, please use ibus-rime.\nAfter applying the configuration, don\'t forget to deploy Rime and wait for few seconds/minutes! Just with patience :)')
+      consola.info('Currently, this configuration only supports `Rime official input` method with default user configuration folder path. For Linux users, please make sure you are using `ibus-rime`. After applying the configuration, don\'t forget to deploy Rime and wait for few seconds/minutes! Just with patience :)')
     },
   }
 }

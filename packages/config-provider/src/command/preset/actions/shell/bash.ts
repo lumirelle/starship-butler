@@ -1,4 +1,5 @@
 import type { Action, ConfigPathGenerator } from '../../types'
+import consola from 'starship-butler-utils/consola'
 import { homedir, join } from 'starship-butler-utils/path'
 import { createHandler } from '../utils'
 
@@ -19,5 +20,8 @@ export function bash(): Action {
     name,
     targetFolder,
     handler: createHandler(configPathGenerators),
+    posthandler: ({ targetFolder }) => {
+      consola.info(`This configuration will use \`Starship\` as the prompt, if you don't want to use it, please edit this config \`(${join(targetFolder, '.bash_profile')})\` manually.`)
+    },
   }
 }

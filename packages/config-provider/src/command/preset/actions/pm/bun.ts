@@ -32,7 +32,7 @@ export function bun(): Action {
     },
     handler: createHandler(configPathGenerators),
     posthandler: () => {
-      consola.info('The global install s configuration is meant to fix the behavior of bun\'s global package installation if you are using `install.linker=isolated` globally.')
+      consola.info(`The global install s configuration is meant to fix the behavior of bun's global package installation if you are using \`install.linker=isolated\` globally.`)
     },
   }
 }

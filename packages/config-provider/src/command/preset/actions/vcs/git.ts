@@ -1,4 +1,5 @@
 import type { Action, ConfigPathGenerator } from '../../types'
+import consola from 'starship-butler-utils/consola'
 import { homedir, join } from 'starship-butler-utils/path'
 import { createHandler } from '../utils'
 
@@ -19,5 +20,8 @@ export function git(): Action {
     name,
     targetFolder,
     handler: createHandler(configPathGenerators),
+    posthandler: () => {
+      consola.info(`This config use \`Neovim\` as editor for Git commit messages. If you don't want to use it, please edit this configuration \`(${join(targetFolder, '.gitconfig')})\`.`)
+    },
   }
 }

@@ -32,7 +32,7 @@ export function zed(): Action {
     },
     handler: createHandler(configPathGenerators),
     posthandler: () => {
-      consola.info('This configuration is meant to be used by `Zed` in user scope.')
+      consola.info('This configuration is meant to be used by `Zed` installed in user scope and default path.')
     },
   }
 }

@@ -1,4 +1,5 @@
 import type { Action, ConfigPathGenerator, PlatformTargetFolderMap } from '../../types'
+import consola from 'starship-butler-utils/consola'
 import { homedir, join, localAppdata } from 'starship-butler-utils/path'
 import { HandlerError } from '../../error'
 import { createHandler, createTargetFolderHandler, ensureDirectoryExist, isPathExist } from '../utils'
@@ -53,5 +54,8 @@ export function neovim(): Action {
         throw new HandlerError(`Failed to create Lua config directory: ${luaConfigDir}`)
     },
     handler: createHandler(configPathGenerators),
+    posthandler: () => {
+      consola.info('This configuration is meant to be used by `NeoVim` installed in user scope and default path with LazyVim.')
+    },
   }
 }

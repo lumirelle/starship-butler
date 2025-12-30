@@ -1,4 +1,5 @@
 import type { Action, ConfigPathGenerator, PlatformTargetFolderMap } from '../../types'
+import consola from 'starship-butler-utils/consola'
 import { homedir, join } from 'starship-butler-utils/path'
 import { HandlerError } from '../../error'
 import { createHandler, createTargetFolderHandler, ensureDirectoryExist, isPathExistEnv } from '../utils'
@@ -34,5 +35,8 @@ export function powershell(): Action {
         throw new HandlerError(`Failed to create PowerShell profile folder: ${targetFolder}`)
     },
     handler: createHandler(configPathGenerators),
+    posthandler: ({ targetFolder }) => {
+      consola.info(`This configuration will use \`Starship\` as the prompt, if you don't want to use it, please edit this config \`(${join(targetFolder, 'profile.ps1')})\` manually.`)
+    },
   }
 }

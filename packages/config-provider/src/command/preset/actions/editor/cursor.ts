@@ -55,7 +55,7 @@ export function cursor(): Action {
     },
     handler: createHandler(configPathGenerators),
     posthandler: () => {
-      consola.info('This configuration is meant to be used by `Cursor` in user scope.')
+      consola.info('This configuration is meant to be used by `Cursor` installed in user scope and default path.')
     },
   }
 }

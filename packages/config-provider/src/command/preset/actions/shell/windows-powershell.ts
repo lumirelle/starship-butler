@@ -30,7 +30,7 @@ export function windowsPowerShell(): Action {
     },
     handler: createHandler(configPathGenerators),
     posthandler: () => {
-      consola.info('Please running `Set-ExecutionPolicy RemoteSigned -Scope CurrentUser` to allow local scripts!')
+      consola.info(`Please running \`Set-ExecutionPolicy RemoteSigned -Scope CurrentUser\` to allow local scripts! This configuration will use \`Starship\` as the prompt, if you don't want to use it, please edit this config \`(${join(targetFolder, 'Microsoft.PowerShell_profile.ps1')})\` manually.`)
     },
   }
 }

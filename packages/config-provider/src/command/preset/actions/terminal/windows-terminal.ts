@@ -29,8 +29,8 @@ export function windowsTerminal(): Action {
         throw new HandlerError(`You should install ${name} first!`)
     },
     handler: createHandler(configPathGenerators),
-    posthandler: () => {
-      consola.info('This configuration will use `"Recursive Mono Linear", "Maple Mono CN", "Symbols Nerd Font"` as terminal fonts, "Nushell" as default shell and "Starship" as shell prompt. Don\'t forget to install them, or just exclude this preset if you want to use your own configuration!')
+    posthandler: ({ targetFolder }) => {
+      consola.info(`This configuration will use \`'"Recursive Mono Linear", "Maple Mono CN", "Symbols Nerd Font"'\` as terminal fonts, \`Nushell\` as default shell. If you don't want to use them, please edit this config \`(${join(targetFolder, 'settings.json')})\` manually.`)
     },
   }
 }

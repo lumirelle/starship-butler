@@ -50,7 +50,7 @@ export function vscode(): Action {
     },
     handler: createHandler(configPathGenerators),
     posthandler: () => {
-      consola.info('This configuration is meant to be used by `Visual Studio Code` in user scope.')
+      consola.info('This configuration is meant to be used by `Visual Studio Code` installed in user scope and default path.')
     },
   }
 }

@@ -43,7 +43,8 @@ export async function commandPreset(
       systemOptions,
       targetFolder: '',
     }
-    consola.start(`Applying "${important(action.name)}" preset...`)
+    consola.log('') // New line
+    consola.start(`Applying ${important(`"${action.name}"`)} preset...`)
 
     try {
       // Process `targetFolder`
