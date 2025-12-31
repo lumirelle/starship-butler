@@ -8,41 +8,49 @@
 		]
 	},
 	"Import Module": {
-		"prefix": "im",
+		"prefix": "i",
 		"description": "Import module",
-		"scope": "javascript,typescript",
+		"scope": "javascript,typescript,javascriptreact,typescriptreact",
 		"body": [
-			"import ${2:*} from '${1:module}'"
+			"import '${1:module}'"
+		]
+	},
+	"Import From Module": {
+		"prefix": "im",
+		"description": "Import from module",
+		"scope": "javascript,typescript,javascriptreact,typescriptreact",
+		"body": [
+			"import ${2:module} from '${1:module}'"
 		]
 	},
 	"Import As": {
 		"prefix": "ia",
 		"description": "Import module as",
-		"scope": "javascript,typescript",
+		"scope": "javascript,typescript,javascriptreact,typescriptreact",
 		"body": [
-			"import ${2:*} as ${3:name} from '${1:module}'"
+			"import ${2:*} as ${3:module} from '${1:module}'"
 		]
 	},
 	"Import Destructured": {
-		"prefix": "id",
+		"prefix": "ix",
 		"description": "Import module destructured",
-		"scope": "javascript,typescript",
+		"scope": "javascript,typescript,javascriptreact,typescriptreact",
 		"body": [
-			"import {${2}} from '${1:module}'"
+			"import { ${2:member} } from '${1:module}'"
 		]
 	},
-	"Export": {
+	"Export Member": {
 		"prefix": "e",
 		"description": "Export member",
-		"scope": "javascript,typescript",
+		"scope": "javascript,typescript,javascriptreact,typescriptreact",
 		"body": [
-			"export ${1:member}"
+			"export { ${1:member} }"
 		]
 	},
-	"Export Const": {
-		"prefix": "ec",
-		"description": "Export const member",
-		"scope": "javascript,typescript",
+	"Export Variable": {
+		"prefix": "ev",
+		"description": "Export variable",
+		"scope": "javascript,typescript,javascriptreact,typescriptreact",
 		"body": [
 			"export const ${1:member} = ${2:value}"
 		]
@@ -50,9 +58,19 @@
 	"Export Function": {
 		"prefix": "ef",
 		"description": "Export function",
-		"scope": "javascript,typescript",
+		"scope": "javascript,typescript,javascriptreact,typescriptreact",
 		"body": [
 			"export function ${1:member}(${2:args}) {",
+			"  $0",
+			"}"
+		]
+	},
+	"Export Arrow Function": {
+		"prefix": "en",
+		"description": "Export arrow function",
+		"scope": "javascript,typescript,javascriptreact,typescriptreact",
+		"body": [
+			"export const ${1:member} = (${2:args}) => {",
 			"  $0",
 			"}"
 		]
@@ -60,47 +78,81 @@
 "Export Default": {
 		"prefix": "ed",
 		"description": "Export default",
-		"scope": "javascript,typescript",
+		"scope": "javascript,typescript,javascriptreact,typescriptreact",
 		"body": [
 			"export default ${1:member}"
 		]
 	},
-	"Export Module": {
+	"Export From Module": {
 		"prefix": "em",
-		"description": "Export module",
-		"scope": "javascript,typescript",
+		"description": "Export from module",
+		"scope": "javascript,typescript,javascriptreact,typescriptreact",
 		"body": [
 			"export ${2:*} from '${1:module}'"
+		]
+	},
+	"Export Module As": {
+		"prefix": "ea",
+		"description": "Export module as",
+		"scope": "javascript,typescript,javascriptreact,typescriptreact",
+		"body": [
+			"export * as ${2:module} from '${1:module}'"
 		]
 	},
 	"Const": {
 		"prefix": "c",
 		"description": "Const",
-		"scope": "javascript,typescript",
+		"scope": "javascript,typescript,javascriptreact,typescriptreact",
 		"body": [
-			"const ${1:name}"
+			"const ${1:name} $0"
+		]
+	},
+	"Const Variavle": {
+		"prefix": "cv",
+		"description": "Const variable",
+		"scope": "javascript,typescript,javascriptreact,typescriptreact",
+		"body": [
+			"const ${1:name} = ${2:value}"
 		]
 	},
 	"Const Destructured": {
-		"prefix": "cd",
+		"prefix": "cx",
 		"description": "Const destructured",
-		"scope": "javascript,typescript",
+		"scope": "javascript,typescript,javascriptreact,typescriptreact",
 		"body": [
 			"const { ${2:prop} } = ${1:value}"
+		]
+	},
+	"Const Arrow Function": {
+		"prefix": "cn",
+		"description": "Const arrow function",
+		"scope": "javascript,typescript,javascriptreact,typescriptreact",
+		"body": [
+			"const ${1:name} = (${2:args}) => {",
+			"  $0",
+			"}"
 		]
 	},
 	"Let": {
 		"prefix": "l",
 		"description": "Let",
-		"scope": "javascript,typescript",
+		"scope": "javascript,typescript,javascriptreact,typescriptreact",
 		"body": [
-			"let ${1:name}"
+			"let ${1:name} $0"
 		]
 	},
-	"Arrow Function1": {
-		"prefix": "f",
+	"Let Variable": {
+		"prefix": "lv",
+		"description": "Let variable",
+		"scope": "javascript,typescript,javascriptreact,typescriptreact",
+		"body": [
+			"let ${1:name} = ${2:value}"
+		]
+	},
+	"Arrow Function": {
+		"prefix": "n",
 		"description": "Arrow function",
-		"scope": "javascript,typescript",
+		"scope": "javascript,typescript,javascriptreact,typescriptreact",
 		"body": [
 			"(${1:args}) => {",
 			"  $0",
@@ -108,9 +160,9 @@
 		]
 	},
 	"Arrow Function Destructured": {
-		"prefix": "fd",
+		"prefix": "nx",
 		"description": "Arrow function with destructured args",
-		"scope": "javascript,typescript",
+		"scope": "javascript,typescript,javascriptreact,typescriptreact",
 		"body": [
 			"({ ${1:args} }) => {",
 			"  $0",
@@ -118,100 +170,67 @@
 		]
 	},
 	"Function": {
-		"prefix": "fn",
+		"prefix": "f",
 		"description": "Function",
-		"scope": "javascript,typescript",
+		"scope": "javascript,typescript,javascriptreact,typescriptreact",
 		"body": [
 			"function ${1:name}(${2:args}) {",
 			"  $0",
 			"}"
 		]
 	},
-	"Anonymous Function": {
-		"prefix": "fa",
-		"description": "Anonymous function",
-		"scope": "javascript,typescript",
-		"body": [
-			"function(${1:args}) {",
-			"  $0",
-			"}"
-		]
-	},
-	"For In": {
-		"prefix": "forin",
-		"description": "For in",
-		"scope": "javascript,typescript",
-		"body": [
-			"for (const ${1:key} in ${2:object}) {",
-			"  if (${2:object}.hasOwnProperty(${1:key})) {",
-			"    const ${3:element} = ${2:object}[${1:key}]",
-			"    $0",
-			"  }",
-			"}"
-		]
-	},
-	"For Of": {
-		"prefix": "forof",
-		"description": "For of",
-		"scope": "javascript,typescript",
-		"body": [
-			"for (const ${1:iterator} of {2:object}) {",
-			"  $0",
-			"}"
-		]
-	},
 	"Console Log": {
-		"prefix": "cl",
+		"prefix": "ol",
 		"description": "Console log",
-		"scope": "javascript,typescript",
+		"scope": "javascript,typescript,javascriptreact,typescriptreact",
 		"body": [
 			"console.log($1)"
 		]
 	},
 	"Console Debug": {
-		"prefix": "cd",
+		"prefix": "od",
 		"description": "Console debug",
-		"scope": "javascript,typescript",
+		"scope": "javascript,typescript,javascriptreact,typescriptreact",
 		"body": [
 			"console.debug($1)"
 		]
 	},
 	"Console Info": {
-		"prefix": "ci",
+		"prefix": "oi",
 		"description": "Console info",
-		"scope": "javascript,typescript",
+		"scope": "javascript,typescript,javascriptreact,typescriptreact",
 		"body": [
 			"console.info($1)"
 		]
 	},
 	"Console Warn": {
-		"prefix": "cw",
+		"prefix": "ow",
 		"description": "Console warn",
-		"scope": "javascript,typescript",
+		"scope": "javascript,typescript,javascriptreact,typescriptreact",
 		"body": [
 			"console.warn($1)"
 		]
 	},
 	"Console Error": {
-		"prefix": "ce",
+		"prefix": "oe",
 		"description": "Console error",
-		"scope": "javascript,typescript",
+		"scope": "javascript,typescript,javascriptreact,typescriptreact",
 		"body": [
 			"console.error($1)"
 		]
 	},
 	"Async": {
 		"prefix": "a",
-		"description": "Asnyc",
-		"scope": "javascript,typescript",
+		"description": "Async",
+		"scope": "javascript,typescript,javascriptreact,typescriptreact",
 		"body": [
-			"asnyc $0"
+			"async $0"
 		]
 	},
 	"Await": {
 		"prefix": "w",
 		"description": "Await",
-		"scope": "javascript,typescript",
+		"scope": "javascript,typescript,javascriptreact,typescriptreact",
 		"body": [
 			"await $0"
 		]
@@ -219,7 +238,7 @@
 	"IIFE": {
 		"prefix": "iife",
 		"description": "IIFE",
-		"scope": "javascript,typescript",
+		"scope": "javascript,typescript,javascriptreact,typescriptreact",
 		"body": [
 			";(function(${1:args}) {",
 			"  ",
@@ -229,7 +248,7 @@
 	"IIFE1": {
 		"prefix": "aiife",
 		"description": "IIFE",
-		"scope": "javascript,typescript",
+		"scope": "javascript,typescript,javascriptreact,typescriptreact",
 		"body": [
 			";(async (${1:args}) => {",
 			"  ",
@@ -270,9 +289,9 @@
 			""
 		]
 	},
-	"Vue Script": {
-		"prefix": "script",
-		"description": "Vue script",
+	"Vue Script With Options API": {
+		"prefix": "options",
+		"description": "Vue script with options API",
 		"scope": "vue",
 		"body": [
 			"<script>",
@@ -282,19 +301,9 @@
 			"</script>"
 		]
 	},
-	"Vue Script Setup": {
-		"prefix": "script-setup",
-		"description": "Vue script setup",
-		"scope": "vue",
-		"body": [
-			"<script setup>",
-			"$0",
-			"</script>"
-		]
-	},
-	"Vue Script Setup With TypeScript": {
-		"prefix": "script-ts-setup",
-		"description": "Vue script setup with TypeScript",
+	"Vue Script Setup With Composition API And TypeScript": {
+		"prefix": "setup",
+		"description": "Vue script setup with composition API and TypeScript",
 		"scope": "vue",
 		"body": [
 			"<script setup lang=\"ts\">",
@@ -315,7 +324,7 @@
 		]
 	},
 	"Vue Style Scoped": {
-		"prefix": "style-scoped",
+		"prefix": "style",
 		"description": "Vue style scoped",
 		"scope": "vue",
 		"body": [
@@ -325,7 +334,7 @@
 		]
 	},
 	"Vue Style Scoped With SCSS": {
-		"prefix": "style-scss-scoped",
+		"prefix": "style-scss",
 		"description": "Vue style scoped with SCSS",
 		"scope": "vue",
 		"body": [
@@ -334,19 +343,9 @@
 			"</style>"
 		]
 	},
-	"Vue I18n Block": {
+	"Vue I18n With YAML": {
 		"prefix": "i18n",
-		"description": "Vue i18n block",
-		"scope": "vue",
-		"body": [
-			"<i18n>",
-			"$0",
-			"</i18n>"
-		]
-	},
-	"Vue I18n Block With YAML": {
-		"prefix": "i18n-yaml",
-		"description": "Vue i18n block with YAML",
+		"description": "Vue i18n with YAML",
 		"scope": "vue",
 		"body": [
 			"<i18n lang=\"yaml\">",
@@ -361,7 +360,7 @@
 		"body": [
 			"<script>",
 			"export default {",
-			"  // ...",
+			"  // ...$0",
 			"}",
 			"</script>",
 			"",
@@ -382,32 +381,8 @@
 		"description": "Vue SFC setup",
 		"scope": "vue",
 		"body": [
-			"<script setup>",
-			"// ...",
-			"</script>",
-			"",
-			"<template>",
-			"  <div>",
-			"    <!-- ... -->",
-			"  </div>",
-			"</template>",
-			"",
-			"<style scoped>",
-			"/* ... */",
-			"</style>",
-			"",
-			"<i18n>",
-			"",
-			"</i18n>"
-		]
-	},
-	"Vue SFC Setup With TypeScript1": {
-		"prefix": "sfc-ts-setup",
-		"description": "Vue SFC setup with TypeScript",
-		"scope": "vue",
-		"body": [
 			"<script setup lang=\"ts\">",
-			"// ...",
+			"// ...$0",
 			"</script>",
 			"",
 			"<template>",
@@ -421,28 +396,29 @@
 			"</style>",
 			"",
 			"<i18n lang=\"yaml\">",
-			"# ...",
-			"</i18n>"
+			"",
+			"</i18n>",
+			""
 		]
 	},
-  "Pinia Setup Store Boilerplate": {
-    "scope": "javascript,typescript",
-    "prefix": "pinia-setup",
-    "body": [
-		"import { acceptHMRUpdate, defineStore } from 'pinia'",
-		"",
-		"export const use${TM_FILENAME_BASE/^(.*)$/${1:/pascalcase}/}Store = defineStore('$TM_FILENAME_BASE', () => {",
-		"  const ${1:state} = ${2:null}",
-		"  return {",
-		"    ${1:state},",
-		"  }",
-		"})",
-		"",
-		"if (import.meta.hot)",
-		" import.meta.hot.accept(acceptHMRUpdate(use${TM_FILENAME_BASE/^(.*)$/${1:/pascalcase}/}Store, import.meta.hot))",
-		"",
-		""
-	],
-    "description": "Bootstrap the code needed for a Vue.js Pinia Setup Store file"
-},
+	"Pinia Store With Composition API": {
+		"prefix": "pinia",
+		"description": "Pinia store with composition API",
+		"scope": "javascript,typescript",
+		"body": [
+			"import { acceptHMRUpdate, defineStore } from 'pinia'",
+			"",
+			"export const use${TM_FILENAME_BASE/^(.*)$/${1:/pascalcase}/}Store = defineStore('$TM_FILENAME_BASE', () => {",
+			"  const ${1:state} = ${2:null}$0",
+			"  return {",
+			"    ${1:state},",
+			"  }",
+			"})",
+			"",
+			"if (import.meta.hot)",
+			" import.meta.hot.accept(acceptHMRUpdate(use${TM_FILENAME_BASE/^(.*)$/${1:/pascalcase}/}Store, import.meta.hot))",
+			"",
+			""
+		]
+	},
 }
