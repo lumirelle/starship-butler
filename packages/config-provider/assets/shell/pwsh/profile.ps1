@@ -97,6 +97,9 @@ function Nr-Typecheck {
 function Nr-Usecheck {
   Nr-Wrapper usecheck @args
 }
+function Nr-Check {
+  Nr-Wrapper check @args
+}
 function Nr-Test {
   Nr-Wrapper test @args
 }
@@ -115,6 +118,7 @@ New-Alias -Name play -Value Nr-Play
 New-Alias -Name lint -Value Nr-Lint
 New-Alias -Name typecheck -Value Nr-Typecheck
 New-Alias -Name usecheck -Value Nr-Usecheck
+New-Alias -Name check -Value Nr-Check
 New-Alias -Name test -Value Nr-Test
 New-Alias -Name release -Value Nr-Release
 # For container management

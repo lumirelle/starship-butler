@@ -17,6 +17,7 @@ alias play = nr-wrapper play
 alias lint = nr-wrapper lint
 alias typecheck = nr-wrapper typecheck
 alias usecheck = nr-wrapper usecheck
+alias check = nr-wrapper check
 alias test = nr-wrapper test
 alias release = nr-wrapper release
 # For container management
