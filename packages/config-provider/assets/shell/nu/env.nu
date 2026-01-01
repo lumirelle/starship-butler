@@ -15,8 +15,9 @@ alias start = nr-wrapper start
 alias docs = nr-wrapper docs
 alias play = nr-wrapper play
 alias lint = nr-wrapper lint
-alias test = nr-wrapper test
 alias typecheck = nr-wrapper typecheck
+alias usecheck = nr-wrapper usecheck
+alias test = nr-wrapper test
 alias release = nr-wrapper release
 # For container management
 alias docker = podman

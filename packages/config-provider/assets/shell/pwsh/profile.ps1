@@ -91,11 +91,14 @@ function Nr-Start {
 function Nr-Lint {
   Nr-Wrapper lint @args
 }
-function Nr-Test {
-  Nr-Wrapper test @args
-}
 function Nr-Typecheck {
   Nr-Wrapper typecheck @args
+}
+function Nr-Usecheck {
+  Nr-Wrapper usecheck @args
+}
+function Nr-Test {
+  Nr-Wrapper test @args
 }
 function Nr-Docs {
   Nr-Wrapper docs @args
@@ -110,8 +113,9 @@ New-Alias -Name start -Value Nr-Start
 New-Alias -Name docs -Value Nr-Docs
 New-Alias -Name play -Value Nr-Play
 New-Alias -Name lint -Value Nr-Lint
-New-Alias -Name test -Value Nr-Test
 New-Alias -Name typecheck -Value Nr-Typecheck
+New-Alias -Name usecheck -Value Nr-Usecheck
+New-Alias -Name test -Value Nr-Test
 New-Alias -Name release -Value Nr-Release
 # For container management
 New-Alias -Name docker -Value podman
