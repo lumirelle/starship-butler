@@ -9,18 +9,17 @@ on:
       - main
 
 jobs:
-  lint:
+  check:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v6
-      - uses: oven-sh/setup-bun@v2
+      - uses: actions/checkout@v6.0.1
+      - uses: oven-sh/setup-bun@v2.0.2
         with:
           bun-version: latest
-      - run: bun i -g @antfu/ni
+      - run: bun install -g @antfu/ni
       - run: nci
       - run: nr build
-      - run: nr lint
-      - run: nr typecheck
+      - run: nr check
   test:
     runs-on: ${{ matrix.os }}
     strategy:
@@ -29,12 +28,12 @@ jobs:
         os: [ubuntu-latest, windows-latest, macos-latest]
       fail-fast: false
     steps:
-      - uses: actions/checkout@v6
+      - uses: actions/checkout@v6.0.1
       - name: Set bun ${{ matrix.bun }}
-        uses: oven-sh/setup-bun@v2
+        uses: oven-sh/setup-bun@v2.0.2
         with:
           bun-version: ${{ matrix.bun }}
-      - run: bun i -g @antfu/ni
+      - run: bun install -g @antfu/ni
       - run: nci
       - run: nr build
       - run: nr test --coverage --coverage-reporter=lcov

@@ -12,8 +12,8 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
-      - uses: pnpm/action-setup@v4
+      - uses: actions/checkout@v6.0.1
+      - uses: pnpm/action-setup@v4.2.0
       - run: pnpm install
       - run: pnpm build
       - run: pnpm dlx pkg-pr-new publish --pnpm
