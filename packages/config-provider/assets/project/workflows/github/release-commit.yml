@@ -1,0 +1,9 @@
+name: Release Commit
+
+on: [push, pull_request]
+
+permissions: {}
+
+jobs:
+  release-commit:
+    uses: lumirelle/workflows/.github/workflows/release-commit.yml@v1
