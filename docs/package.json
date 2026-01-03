@@ -16,6 +16,7 @@
     "pinia": "catalog:docs",
     "unocss": "catalog:docs",
     "unplugin-vue-components": "catalog:docs",
+    "vite": "catalog:docs",
     "vite-tsconfig-paths": "catalog:docs",
     "vitepress": "catalog:docs",
     "vitepress-plugin-group-icons": "catalog:docs",
