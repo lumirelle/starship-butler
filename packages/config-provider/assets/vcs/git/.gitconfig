@@ -32,8 +32,7 @@ ff = no
 [rebase]
 autostash = true
 autosquash = true
-# See https://juejin.cn/post/7267567645493674021.
-updateRefs = true
+updateRefs = true # See https://juejin.cn/post/7267567645493674021.
 [rerere]
 enabled = true
 [tag]
@@ -48,6 +47,7 @@ rebase = true
 [push]
 autoSetupRemote = true
 default = current
+followTags = true
 
 # Log
 [log]
@@ -56,310 +56,248 @@ decoration = short
 
 # Aliases
 [alias]
-# Aliases -- Setup
+# @group Setup & User Info
 setup = "!f() { \
+  if [ -z \"$1\" ]; then\
+    echo 'Please provide a user name.'; \
+    return 1; \
+  fi; \
+  if [ -z \"$2\" ]; then\
+    echo 'Please provide a user email.'; \
+    return 1; \
+  fi; \
   git config set user.name \"$1\"; \
   git config set user.email \"$2\"; \
+}; f"
+setup-blame = "!f() { \
   git config set blame.ignoreRevsFile .git-blame-ignore-revs; \
 }; f"
-me = "!f() { \
+whoami = "!f() { \
   git config get user.name; \
   git config get user.email; \
 }; f"
-
-# Aliases -- Basic Operations
-# add
-add-all = add .
-add-undo = reset HEAD --
-add-all-undo = reset HEAD -- .
-# discard
-# Accepts one or more parameters:
+me = whoami
+# @group Basic Operations
+# Change & Discard
+# @name - Discard
+# @description - Discard changes to specified file[s].
+# @parameters - One or more file paths.
 #   - If the file is tracked, then restore the file[s] to the working directory.
 #   - If the file is untracked, then delete the file[s].
 discard = "!f() { \
+  if [ -z \"$1\" ]; then \
+      echo 'Nothing specified, nothing discarded.'; \
+      YELLOW='\\e[0;33m'; \
+      NC='\\e[0m'; \
+      echo -e \"${YELLOW}hint: Maybe you wanted to say 'git disadd .'?${NC}\"; \
+      return 0; \
+    fi; \
   if git ls-files --error-unmatch -- \"$@\" >/dev/null 2>&1; then \
     git restore --staged --worktree -- \"$@\"; \
   else \
     for f in \"$@\"; do \
       if ! [ -e \"$f\" ]; then \
-        echo \"Warning: '$f' does not exist!\"; \
+        echo \"Warning: $f does not exist!\"; \
         continue; \
       fi; \
       git clean -fd -- \"$f\" >/dev/null 2>&1; \
     done; \
   fi; \
 }; f"
-discard-all = "!git restore --staged --worktree . && git clean -df"
-# commit
+x = discard
+# Add & Disadd
+a = add
+disadd = "!f() { \
+    if [ -z \"$1\" ]; then \
+      echo 'Nothing specified, nothing disadded.'; \
+      YELLOW='\\e[0;33m'; \
+      NC='\\e[0m'; \
+      echo -e \"${YELLOW}hint: Maybe you wanted to say 'git disadd .'?${NC}\"; \
+      return 0; \
+    fi; \
+    git reset HEAD -- \"$@\"; \
+}; f"
+u = disadd
+# Commit & Uncommit
+c = commit
 commit-with-message = commit --message
-commit-undo = reset --soft HEAD^ # Back to the staging area
-# add & commit
-add-all-then-commit = "!f() { \
-  git add-all; \
-  git commit; \
+cm = commit-with-message
+commit-amend = commit --amend --no-edit
+ca = commit-amend
+commit-amend-with-editing = commit --amend
+ce = commit-amend-with-editing
+uncommit = reset --soft HEAD^ # Back to the staging area
+uc = uncommit
+# Make Special Commit
+commit-work-in-progress = "!git commit-with-message 'chore: wip'"
+cwip = commit-work-in-progress
+commit-readme = "!git commit-with-message 'docs: update README.md'"
+crdm = commit-readme
+commit-dependencies = "!git commit-with-message 'chore: update dependencies'"
+cdep = commit-dependencies
+# @group Work with Branches
+b = branch
+bl = branch --list
+# @name - Branch Delete
+# @description - Delete branch with more flexible options.
+# @parameters - One branch name and optional flags:
+#   - `-h` or `--help`: Show help information.
+#   - `-o` or `--origin`: Delete the branch from remote (origin) only.
+#   - `-a` or `--all`: Delete the branch from both local and remote (origin).
+#   - `-f` or `--force`: Force delete the local branch.
+#   - If neither `-o`/`--origin` nor `-a`/`--all` is provided, delete the branch from local only.
+# @examples
+#   - `git branch-delete feature/login`: Delete the local branch `feature/login`.
+#   - `git branch-delete -o feature/login`: Delete the remote branch `feature/login`.
+#   - `git branch-delete --all feature/login`: Delete both local and remote (origin) branches `feature/login`.
+#   - `git branch-delete -a -f feature/login`: Force delete the local branch and delete the remote (origin) branch `feature/login`.
+branch-delete = "!f() { \
+    origin=false; \
+    all=false; \
+    force=false; \
+    branch_name=""; \
+    for arg in \"$@\"; do \
+      case \"$arg\" in \
+        -o|--origin) origin=true ;; \
+        -a|--all) all=true ;; \
+        -f|--force) force=true ;; \
+        *) branch_name=\"$arg\" ;; \
+      esac; \
+    done; \
+    if [ -z \"$branch_name\" ]; then \
+      echo 'Please provide a branch name to delete.'; \
+      return 1; \
+    fi; \
+    if [ \"$origin\" = true ] && [ \"$all\" = true ]; then \
+      echo 'Cannot use both --origin and --all options together.'; \
+      return 1; \
+    fi; \
+    if [ \"$all\" = true ]; then \
+      if [ \"$force\" = true ]; then \
+        git branch --delete --force \"$branch_name\"; \
+      else \
+        git branch --delete \"$branch_name\"; \
+      fi; \
+      git push origin \":refs/heads/$branch_name\"; \
+    elif [ \"$origin\" = true ]; then \
+      git push origin \":refs/heads/$branch_name\"; \
+    else \
+      if [ \"$force\" = true ]; then \
+        git branch --delete --force \"$branch_name\"; \
+      else \
+        git branch --delete \"$branch_name\"; \
+      fi; \
+    fi; \
 }; f"
-add-all-then-commit-with-message = "!f() { \
-  git add-all; \
-  git commit-with-message \"$@\"; \
-}; f"
-# amend commit
-amend-commit = commit --amend --no-edit
-add-all-then-amend-commit = "!f() { \
-  git add-all; \
-  git amend-commit; \
-}; f"
-amend-commit-with-edit = commit --amend
-add-all-then-amend-commit-with-edit = "!f() { \
-  git add-all; \
-  git amend-commit-with-edit \"$@\"; \
-}; f"
-# wip commit
-work-in-progress = "!git commit-with-message 'chore: wip'"
-# readme commit
-readme = "!git commit-with-message 'docs: update README.md'"
-# dependencies commit
-dependencies = "!git commit-with-message 'chore: update dependencies'"
-
-# Aliases -- Work with Branches
-# branch
-branch-list-localremote = branch --all
-branch-delete-local = branch --delete
-branch-force-delete-local = branch --delete --force
-# Accepts one or two parameters:
-#   - If one parameter is provided, it is treated as the branch name to be deleted from the `origin` remote.
-#   - If two parameters are provided, the first is treated as the remote name, and the second as the branch name to be
-#     deleted from that remote.
-branch-delete-remote = "!f() {\
-  if [ -z \"$2\" ]; then \
-    git push --delete origin \"$1\"; \
-  else \
-    git push --delete \"$1\" \"$2\"; \
-  fi; \
-}; f"
-# Accepts one or two parameters:
-#   - If one parameter is provided, it is treated as the branch name to be deleted both locally and from the `origin`
-#     remote.
-#   - If two parameters are provided, the first is treated as the remote name, and the second as the branch name to be
-#     deleted both locally and from that remote.
-branch-delete-localremote = "!f() { \
-  if [ -z \"$2\" ]; then \
-    git branch-delete-local \"$1\"; \
-    git branch-delete-remote \"$1\"; \
-  else \
-    git branch-delete-local \"$2\"; \
-    git branch-delete-remote \"$1\" \"$2\"; \
-  fi; \
-}; f"
-branch-move = branch --move
-# Accepts two or three parameters:
-#   - If two parameters are provided, the first is treated as the old branch name, and the second as the new branch
-#     name. The command renames the local branch and updates the remote accordingly.
-#   - If three parameters are provided, the first is treated as the remote name, the second as the old branch name, and
-#     the third as the new branch name. The command deletes the old branch from the specified remote, renames the local
-#     branch, and updates the remote accordingly.
-branch-move-localremote = "!f() { \
-  if [ -z \"$3\" ]; then \
-    git branch-delete-remote \"$1\" \"$2\"; \
-    git branch-move \"$2\" \"$3\"; \
-    git push-set-upstream; \
-  else \
-    git branch-delete-remote \"$1\"; \
-    git branch-move \"$1\" \"$2\"; \
-    git push-set-upstream; \
-  fi; \
-}; f"
-# stash
-stash-push = stash push
-stash-list = stash list
-stash-undo = stash pop
-stash-drop = stash drop
-# branch & switch
+bx = branch-delete
+# Stash
+s = stash
+sl = stash list
+ss = stash show
+sa = stash apply
+sp = stash pop
+sx = stash drop
+# Switch
+sw = switch
 switch-new = switch --create
-# merge
+swn = switch-new
+# Merge
 merge-with-default-message = "!f() { \
   current_branch=$(git branch --show-current); \
-  git merge \"$1\" --no-ff --message \"chore: merge branch '$1' into '$current_branch'\"; \
+  git merge \"$1\" --no-ff --message \"chore: merge branch $1 into $current_branch\"; \
 }; f"
+m = merge-with-default-message
 merge-abort = merge --abort
+mz = merge-abort
 merge-continue = merge --continue
-# rebase
+mc = merge-continue
+# Rebase
+r = rebase
 rebase-abort = rebase --abort
+rz = rebase-abort
 rebase-continue = rebase --continue
-# cherry-pick
+rc = rebase-continue
+# Reset
+rs = reset
+# Revert
+rv = revert
+revert-abort = revert --abort
+rvz = revert-abort
+revert-continue = revert --continue
+rvc = revert-continue
+# Cherry-pick
+cp = cherry-pick
 cherry-pick-abort = cherry-pick --abort
+cpz = cherry-pick-abort
 cherry-pick-continue = cherry-pick --continue
-# tag
-tag-new = "!f() { \
+cpc = cherry-pick-continue
+# Tag
+tag-wrapper = "!f() { \
   if [ -z \"$2\" ]; then \
-    git tag \"$1\"; \
-  else \
     git tag --annotate \"$1\" --message \"$2\"; \
-  fi; \
-}; f"
-tag-list-remote = ls-remote --tags
-tag-delete-local = tag --delete
-tag-delete-remote = "!f() { \
-  if [ -z \"$2\" ]; then \
-    git push-delete origin \"$1\"; \
   else \
-    git push-delete \"$1\" \"$2\"; \
+    git tag \"$@\"; \
   fi; \
 }; f"
-tag-delete-localremote = "!f() { \
-  if [ -z \"$2\" ]; then \
-    git tag-delete-local \"$1\"; \
-    git tag-delete-remote \"$1\"; \
+t = tag-wrapper
+tag-list = tag --list
+tl = tag-list
+tag-delete = "!f() { \
+  origin=false; \
+  all=false; \
+  tag_name=""; \
+  for $arg in \"$@\"; do \
+    case $arg in \
+      -r|--origin) origin=true ;; \
+      -a|--all) all=true ;; \
+      *) tag_name=\"$arg\" ;; \
+    esac; \
+  done; \
+  if [ -z \"$tag_name\" ] && [ \"$all\" = false ]; then \
+    echo 'Please provide a tag name to delete.'; \
+    return 1; \
+  fi; \
+  if [ \"$origin\" = true ] && [ \"$all\" = true ]; then \
+    echo 'Cannot use both --origin and --all options together.'; \
+    return 1; \
+  fi; \
+  if [ \"$all\" = true ]; then \
+    git tag --delete \"$tag_name\"; \
+    git push origin \":refs/tags/$tag_name\"; \
+  elif [ \"$origin\" = true ]; then \
+    git push origin \":refs/tags/$tag_name\"; \
   else \
-    git tag-delete-local \"$2\"; \
-    git tag-delete-remote \"$1\" \"$2\"; \
+    git tag --delete \"$tag_name\"; \
   fi; \
 }; f"
-
-# Aliases -- Work with Remote
-# remote
+tx = tag-delete
+# @region Work with Remote
+# Remote
+re = remote
 remote-new = "!f() { \
   if [ -z \"$2\" ]; then \
     git remote add origin \"$1\"; \
   else \
-    git remote add  \"$1\" \"$2\"; \
+    git remote add \"$1\" \"$2\"; \
   fi; \
 }; f"
-remote-list = remote --verbose
-remote-remove = remote remove
-# pull
-pull-set-upstream = "!f() { \
-  current_branch=$(git branch --show-current); \
-  git pull --set-upstream origin \"$current_branch\"; \
-}; f"
-# push
-push-set-upstream = "!f() { \
-  current_branch=$(git branch --show-current); \
-  git push --set-upstream origin \"$current_branch\"; \
-}; f"
-push-tag = "!f() { \
-  if [ -z \"$2\" ]; then \
-    git push origin tag \"$1\"; \
-  elif [ -z \"$1\" ]; then \
-    git push --tags; \
-  else \
-    git push \"$1\" tag \"$2\"; \
-  fi; \
-}; f"
-push-force = push --force
-push-delete = push --delete
-# pull & push
-pull-then-push = "!git pl && git ps"
-
-# Log
-graph = log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit
-logs = log -1 HEAD --stat
-
-# Aliases
-aliases = "!git config --get-regexp ^alias\\. | sed -e s/^alias\\.// -e s/\\ /\\ =\\ /"
-
-# Abbrev Alias
-# SUFFIX INTRODUCTION
-#   <TO SPECIFY ADDITIONAL BEHAVIOR>
-#   `n`:    `add | new`
-#   `s`:    `list | show`
-#   `x`:    `discard | delete | drop`, which means **drop things** we don't need any more
-#   `u`:    `undo`, which means recover the status **after an operation is completed**
-#   `mv`:   `move | rename`
-#   <TO SPECIFY TARGET>
-#   `a`:    `all`
-#   `bt`:    `both | localremote`
-#   `re`:    `remote`
-#   <TO SPECIFY PARAMETERS>
-#   `up`:   with `--set-upstream` parameter
-#   `f`:    with `--force` parameter
-#   `ms`:   with `--message` parameter
-#   `i`:    with `--edit` parameter
-#   `z`:    with `--abort` parameter
-#   `c`:    with `--continue` parameter
-# Abbrev Aliases -- Basic Operations
-# add: a
-a = add
-aa = add-all
-au = add-undo
-aau = add-all-undo
-# discard: x
-x = discard
-xa = discard-all
-# commit: cm
-cm = commit
-cmms = commit-with-message
-cmu = commit-undo
-# add & commit: adcm
-aacm = add-all-then-commit
-aacmms = add-all-then-commit-with-message
-# amend commit: md
-md = amend-commit
-mdi = amend-commit-with-edit
-aamd = add-all-then-amend-commit
-aamdi = add-all-then-amend-commit-with-edit
-# work-in-progress: wip
-wip = work-in-progress
-# readme: rdme
-rdme = readme
-# dependencies: deps
-deps = dependencies
-
-# Abbrev Aliases -- Work with Branches
-# branch: br
-brn = branch
-brs = branch-list-localremote
-brx = branch-delete-local
-brxf = branch-delete-local-force
-brxre = branch-delete-remote
-brxbt = branch-delete-localremote
-brmv = branch-move
-brmvbt = branch-move-localremote
-# stash: st
-stn = stash-push
-sts = stash-list
-stu = stash-undo
-stx = stash-drop
-# switch: sw
-sw = switch
-swn = switch-new
-# merge: mg
-mg = merge-with-default-message
-mgz = merge-abort
-mgc = merge-continue
-# rebase: rb
-rb = rebase
-rbz = rebase-abort
-rbc = rebase-continue
-# reset: rs
-rs = reset
-# revert: rv
-rv = revert
-# cherry-pick: cp
-cp = cherry-pick
-cpz = cherry-pick-abort
-cpc = cherry-pick-continue
-# tag: tg
-tgn = tag-new
-tgs = tag-list-remote
-tgx = tag-delete-local
-tgxre = tag-delete-remote
-tgxbt = tag-delete-localremote
-
-# Abbrev Aliases -- Work with Remote
-# remote: re
 ren = remote-new
-res = remote-list
+remote-list = remote --verbose
+rel = remote-list
+remote-remove = remote remove
 rex = remote-remove
-# fetch: ft
-ft = fetch
-# pull: pl
-pl = pull
-plup = pull-set-upstream
-# push: ps
-ps = push
-psup = push-set-upstream
-pstg = push-tag
-psf = push-force
-psx = push-delete
-# pull & push: plps
-plps = pull-then-push
+# Fetch
+f = fetch
+# Pull
+l = pull
+# Push
+p = push
+push-force = push --force
+pf = push-force
+push-delete = push --delete
+px = push-delete
+# @region Log
+logs = log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit
+log = log -1 HEAD --stat
+# @region Aliases
+aliases = "!git config --get-regexp ^alias\\. | sed -e s/^alias\\.// -e s/\\ /\\ =\\ /"
