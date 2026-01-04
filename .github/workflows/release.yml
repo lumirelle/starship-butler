@@ -1,32 +1,17 @@
 name: Release
 
-permissions:
-  id-token: write
-  contents: write
-
 on:
   push:
     tags:
       - 'v*'
 
+permissions: {}
+
 jobs:
   release:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v4
-        with:
-          fetch-depth: 0
-      - uses: oven-sh/setup-bun@v2
-        with:
-          bun-version: latest
-          registry-url: https://registry.npmjs.org/
-      - uses: actions/setup-node@v6
-        with:
-          node-version: lts/*
-          registry-url: https://registry.npmjs.org/
-      - run: bunx -b changelogithub
-        env:
-          GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}
-      - run: npm install npm@latest -g
-      - run: bun install --frozen-lockfile
-      - run: bun run -F '*' do-publish
+    uses: lumirelle/workflows/.github/workflows/release.yml@v1
+    with:
+      publish: true
+    permissions:
+      contents: write
+      id-token: write
