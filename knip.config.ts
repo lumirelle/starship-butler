@@ -24,6 +24,16 @@ export default {
     'packages/config-provider': {
       // @keep-sorted
       ignoreBinaries: ['nu'],
+      // @keep-sorted
+      ignoreFiles: [
+        'assets/**/*',
+      ],
+    },
+    'packages/core': {
+      // @keep-sorted
+      ignoreFiles: [
+        'test/fixture/butler.config*.ts',
+      ],
     },
     'docs': {
       // @keep-sorted

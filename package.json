@@ -56,11 +56,13 @@
         "pinia": "^3.0.4",
         "unocss": "^66.5.12",
         "unplugin-vue-components": "^30.0.0",
-        "vite": "^7.3.0",
         "vite-tsconfig-paths": "^6.0.3",
         "vitepress": "^1.6.4",
         "vitepress-plugin-group-icons": "^1.6.5",
         "vue": "^3.5.26"
+      },
+      "docs+testing": {
+        "vite": "^7.3.0"
       },
       "inlined": {
         "@antfu/utils": "^9.3.0",
@@ -98,7 +100,8 @@
     "stylelint": "catalog:dev",
     "taze": "catalog:dev",
     "tsdown": "catalog:build",
-    "typescript": "catalog:dev"
+    "typescript": "catalog:dev",
+    "vite": "catalog:docs+testing"
   },
   "simple-git-hooks": {
     "pre-commit": "bun run lint-staged"
