@@ -4,8 +4,8 @@
   "private": true,
   "scripts": {
     "prepare": "bun run simple-git-hooks",
-    "dev": "bun run -F '*' dev",
-    "build": "bun run -F '*' build",
+    "dev": "bun run --filter '*' dev",
+    "build": "bun run --filter '*' build",
     "start": "bun run --cwd packages/core start",
     "docs": "bun run --cwd docs docs:dev",
     "docs:build": "bun run --cwd docs docs:build",
@@ -15,8 +15,8 @@
     "lint:style": "bun run stylelint --cache **/*.{css,postcss,scss,sass,less,html,vue}",
     "lint": "bun run lint:js && bun run lint:style",
     "typecheck": "bun run tsc --noEmit",
-    "usecheck": "bun run knip",
-    "check": "bun run lint && bun run typecheck && bun run usecheck",
+    "usagecheck": "bun run knip",
+    "check": "bun run lint && bun run typecheck && bun run usagecheck",
     "test": "bun test",
     "prerelease": "bun run check && bun run test",
     "release": "bun run bumpp -r"

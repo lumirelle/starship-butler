@@ -94,8 +94,8 @@ function Nr-Lint {
 function Nr-Typecheck {
   Nr-Wrapper typecheck @args
 }
-function Nr-Usecheck {
-  Nr-Wrapper usecheck @args
+function Nr-Usagecheck {
+  Nr-Wrapper usagecheck @args
 }
 function Nr-Check {
   Nr-Wrapper check @args
@@ -117,7 +117,7 @@ New-Alias -Name docs -Value Nr-Docs
 New-Alias -Name play -Value Nr-Play
 New-Alias -Name lint -Value Nr-Lint
 New-Alias -Name typecheck -Value Nr-Typecheck
-New-Alias -Name usecheck -Value Nr-Usecheck
+New-Alias -Name usagecheck -Value Nr-Usagecheck
 New-Alias -Name check -Value Nr-Check
 New-Alias -Name test -Value Nr-Test
 New-Alias -Name release -Value Nr-Release

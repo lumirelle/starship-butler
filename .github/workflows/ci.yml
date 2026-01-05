@@ -10,7 +10,6 @@ permissions: {}
 
 jobs:
   ci:
-    uses: lumirelle/workflows/.github/workflows/ci.yml@v1
+    uses: lumirelle/workflows/.github/workflows/ci.yml@v2
     with:
       build-for-check: true
-      build-for-test: true
