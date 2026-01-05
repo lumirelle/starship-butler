@@ -29,8 +29,6 @@
   ],
   "scripts": {
     "dev": "bun run tsdown --watch",
-    "build": "bun run tsdown",
-    "prepublishOnly": "bun run build",
-    "do-publish": "npm publish --access public"
+    "build": "bun run tsdown"
   }
 }

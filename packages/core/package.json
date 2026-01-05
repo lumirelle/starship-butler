@@ -34,9 +34,7 @@
   "scripts": {
     "dev": "bun run tsdown --watch",
     "build": "bun run tsdown",
-    "start": "bun run ./src/cli.ts",
-    "prepublishOnly": "bun run build",
-    "do-publish": "npm publish --access public"
+    "start": "bun run ./src/cli.ts"
   },
   "dependencies": {
     "defu": "catalog:prod",

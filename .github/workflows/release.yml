@@ -12,6 +12,7 @@ jobs:
     uses: lumirelle/workflows/.github/workflows/release.yml@v2
     with:
       publish: true
+      packages: './packages/*'
     permissions:
       contents: write
       id-token: write
