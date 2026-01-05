@@ -8,7 +8,7 @@ const name = 'Git'
 const targetFolder = homedir()
 
 const configPathGenerators: ConfigPathGenerator[] = [
-  (targetFolder: string) => ({
+  ({ targetFolder }) => ({
     source: join('vcs', 'git', '.gitconfig'),
     target: join(targetFolder, '.gitconfig'),
   }),

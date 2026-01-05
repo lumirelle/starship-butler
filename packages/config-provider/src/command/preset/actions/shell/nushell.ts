@@ -15,15 +15,15 @@ const platformTargetFolderMap: PlatformTargetFolderMap = {
 }
 
 const configPathGenerators: ConfigPathGenerator[] = [
-  (targetFolder: string) => ({
+  ({ targetFolder }) => ({
     source: join('shell', 'nu', 'utils.nu'),
     target: join(targetFolder, 'utils.nu'),
   }),
-  (targetFolder: string) => ({
+  ({ targetFolder }) => ({
     source: join('shell', 'nu', 'config.nu'),
     target: join(targetFolder, 'config.nu'),
   }),
-  (targetFolder: string) => ({
+  ({ targetFolder }) => ({
     source: join('shell', 'nu', 'env.nu'),
     target: join(targetFolder, 'env.nu'),
   }),

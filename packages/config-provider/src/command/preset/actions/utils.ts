@@ -1,5 +1,5 @@
 import type { Arrayable } from '@antfu/utils'
-import type { ConfigPathGenerator, PlatformTargetFolderMap } from '../types'
+import type { ActionHandlerContext, ConfigPathGenerator, PlatformTargetFolderMap } from '../types'
 import { platform } from 'node:os'
 import { toArray } from '@antfu/utils'
 import { ensureDirectory, exists } from 'starship-butler-utils/fs'
@@ -89,10 +89,12 @@ export function ensureDirectoryExist(directory: string): boolean {
  * @returns Handler function.
  */
 export function createHandler(configPathGenerators: ConfigPathGenerator[]) {
-  return ({ options, targetFolder }: { options: Partial<any>, targetFolder: string }) => {
+  return (context: ActionHandlerContext) => {
     for (const generator of configPathGenerators) {
-      const { source, target } = generator(targetFolder)
-      processConfig(source, target, options)
+      const result = generator(context)
+      if (!result)
+        continue
+      processConfig(result.source, result.target, context.options)
     }
   }
 }

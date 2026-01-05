@@ -11,7 +11,7 @@ const applicationId = 'Microsoft.WindowsTerminal_8wekyb3d8bbwe'
 const targetFolder = localAppdata('Packages', applicationId, 'LocalState')
 
 const configPathGenerators: ConfigPathGenerator[] = [
-  (targetFolder: string) => ({
+  ({ targetFolder }) => ({
     source: join('terminal', 'windows-terminal', 'settings.json'),
     target: join(targetFolder, 'settings.json'),
   }),

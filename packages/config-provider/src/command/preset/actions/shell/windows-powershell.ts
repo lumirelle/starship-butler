@@ -9,7 +9,7 @@ const name = 'Windows PowerShell'
 const targetFolder = homedir('Documents', 'WindowsPowerShell')
 
 const configPathGenerators: ConfigPathGenerator[] = [
-  (targetFolder: string) => ({
+  ({ targetFolder }) => ({
     source: join('shell', 'pwsh', 'profile.ps1'),
     target: join(targetFolder, 'Microsoft.PowerShell_profile.ps1'),
   }),

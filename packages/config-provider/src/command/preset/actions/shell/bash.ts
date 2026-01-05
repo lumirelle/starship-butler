@@ -8,7 +8,7 @@ const name = 'Bash'
 const targetFolder = homedir()
 
 const configPathGenerators: ConfigPathGenerator[] = [
-  (targetFolder: string) => ({
+  ({ targetFolder }) => ({
     source: join('shell', 'bash', '.bash_profile'),
     target: join(targetFolder, '.bash_profile'),
   }),

@@ -1,4 +1,4 @@
-import type { Arrayable, Awaitable } from '@antfu/utils'
+import type { Arrayable, Awaitable, Nullable } from '@antfu/utils'
 import type { SystemOptions } from 'starship-butler-types'
 import type { ProcessConfigOptions } from '../../utils/types'
 
@@ -113,8 +113,12 @@ export interface Action {
  * Each generator will return source and target paths for a configuration file in the target folder.
  *
  * So a list of generators can be used to define what configuration files should be applied in a preset action.
+ *
+ * When returning `null` or `undefined`, that configuration file will be skipped.
+ *
+ * @param context Context received from action handler.
  */
-export type ConfigPathGenerator = (targetFolder: string) => {
+export type ConfigPathGenerator = (context: ActionHandlerContext) => Nullable<{
   source: string
   target: string
-}
+}>

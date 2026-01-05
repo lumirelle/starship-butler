@@ -8,7 +8,7 @@ const name = 'cSpell'
 const targetFolder = homedir()
 
 const configPathGenerators: ConfigPathGenerator[] = [
-  (targetFolder: string) => ({
+  ({ targetFolder }) => ({
     source: join('linter', 'cspell', '.cspell.common.txt'),
     target: join(targetFolder, '.cspell.common.txt'),
   }),

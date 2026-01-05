@@ -13,7 +13,7 @@ const platformTargetFolderMap: PlatformTargetFolderMap = {
 }
 
 const configPathGenerators: ConfigPathGenerator[] = [
-  (targetFolder: string) => ({
+  ({ targetFolder }) => ({
     source: join('editor', 'zed', 'settings.json'),
     target: join(targetFolder, 'settings.json'),
   }),

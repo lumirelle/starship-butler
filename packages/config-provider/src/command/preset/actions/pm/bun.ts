@@ -9,11 +9,11 @@ const name = 'Bun'
 const targetFolder = homedir()
 
 const configPathGenerators: ConfigPathGenerator[] = [
-  (targetFolder: string) => ({
+  ({ targetFolder }) => ({
     source: join('pm', 'bun', 'bunfig.toml'),
     target: join(targetFolder, '.bunfig.toml'),
   }),
-  (targetFolder: string) => ({
+  ({ targetFolder }) => ({
     source: join('pm', 'bun', 'bunfig.global-install.toml'),
     target: join(targetFolder, '.bun', 'install', 'global', 'bunfig.toml'),
   }),

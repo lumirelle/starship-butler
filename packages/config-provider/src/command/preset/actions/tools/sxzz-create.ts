@@ -8,7 +8,7 @@ const name = '@sxzz/create'
 const targetFolder = homedir('.config')
 
 const configPathGenerators: ConfigPathGenerator[] = [
-  (targetFolder: string) => ({
+  ({ targetFolder }) => ({
     source: join('tools', 'sxzz-create', 'create.config.yml'),
     target: join(targetFolder, 'create.config.yml'),
   }),

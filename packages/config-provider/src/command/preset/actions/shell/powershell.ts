@@ -13,11 +13,11 @@ const platformTargetFolderMap: PlatformTargetFolderMap = {
 }
 
 const configPathGenerators: ConfigPathGenerator[] = [
-  (targetFolder: string) => ({
+  ({ targetFolder }) => ({
     source: join('shell', 'pwsh', 'profile.ps1'),
     target: join(targetFolder, 'profile.ps1'),
   }),
-  (targetFolder: string) => ({
+  ({ targetFolder }) => ({
     source: join('shell', 'pwsh', 'powershell.config.json'),
     target: join(targetFolder, 'powershell.config.json'),
   }),

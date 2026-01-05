@@ -13,27 +13,27 @@ const platformTargetFolderMap: PlatformTargetFolderMap = {
 }
 
 const configPathGenerators: ConfigPathGenerator[] = [
-  (targetFolder: string) => ({
+  ({ targetFolder }) => ({
     source: join('editor', 'nvim', 'init.lua'),
     target: join(targetFolder, 'init.lua'),
   }),
-  (targetFolder: string) => ({
+  ({ targetFolder }) => ({
     source: join('editor', 'nvim', 'lua', 'config', 'autocmds.lua'),
     target: join(targetFolder, 'lua', 'config', 'autocmds.lua'),
   }),
-  (targetFolder: string) => ({
+  ({ targetFolder }) => ({
     source: join('editor', 'nvim', 'lua', 'config', 'autocmds_vscode.lua'),
     target: join(targetFolder, 'lua', 'config', 'autocmds_vscode.lua'),
   }),
-  (targetFolder: string) => ({
+  ({ targetFolder }) => ({
     source: join('editor', 'nvim', 'lua', 'config', 'keymaps.lua'),
     target: join(targetFolder, 'lua', 'config', 'keymaps.lua'),
   }),
-  (targetFolder: string) => ({
+  ({ targetFolder }) => ({
     source: join('editor', 'nvim', 'lua', 'config', 'keymaps_vscode.lua'),
     target: join(targetFolder, 'lua', 'config', 'keymaps_vscode.lua'),
   }),
-  (targetFolder: string) => ({
+  ({ targetFolder }) => ({
     source: join('editor', 'nvim', 'lua', 'config', 'options.lua'),
     target: join(targetFolder, 'lua', 'config', 'options.lua'),
   }),

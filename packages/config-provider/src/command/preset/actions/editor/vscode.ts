@@ -13,23 +13,23 @@ const platformTargetFolderMap: PlatformTargetFolderMap = {
 }
 
 const configPathGenerators: ConfigPathGenerator[] = [
-  (targetFolder: string) => ({
+  ({ targetFolder }) => ({
     source: join('editor', 'vscode', 'default', 'keybindings.json'),
     target: join(targetFolder, 'keybindings.json'),
   }),
-  (targetFolder: string) => ({
+  ({ targetFolder }) => ({
     source: join('editor', 'vscode', 'default', 'settings.json'),
     target: join(targetFolder, 'settings.json'),
   }),
-  (targetFolder: string) => ({
+  ({ targetFolder }) => ({
     source: join('editor', 'vscode', 'default', 'mcp.json'),
     target: join(targetFolder, 'mcp.json'),
   }),
-  (targetFolder: string) => ({
+  ({ targetFolder }) => ({
     source: join('editor', 'vscode', 'default', 'global.code-snippets'),
     target: join(targetFolder, 'snippets', 'global.code-snippets'),
   }),
-  (targetFolder: string) => ({
+  ({ targetFolder }) => ({
     source: join('editor', 'vscode', 'default', 'comment.code-snippets'),
     target: join(targetFolder, 'snippets', 'comment.code-snippets'),
   }),

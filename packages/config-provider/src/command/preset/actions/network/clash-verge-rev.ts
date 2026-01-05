@@ -14,7 +14,7 @@ const platformTargetFolderMap: PlatformTargetFolderMap = {
 }
 
 const configPathGenerators: ConfigPathGenerator[] = [
-  (targetFolder: string) => ({
+  ({ targetFolder }) => ({
     source: join('network', 'clash-verge-rev', 'Script.js'),
     target: join(targetFolder, 'Script.js'),
   }),

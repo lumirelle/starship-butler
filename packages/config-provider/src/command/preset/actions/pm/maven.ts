@@ -8,7 +8,7 @@ const name = 'Maven'
 const targetFolder = homedir('.m2')
 
 const configPathGenerators: ConfigPathGenerator[] = [
-  (targetFolder: string) => ({
+  ({ targetFolder }) => ({
     source: join('pm', 'maven', 'settings.xml'),
     target: join(targetFolder, 'settings.xml'),
   }),
