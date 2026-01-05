@@ -246,7 +246,7 @@ tag-delete = "!f() { \
   origin=false; \
   all=false; \
   tag_name=""; \
-  for $arg in \"$@\"; do \
+  for arg in \"$@\"; do \
     case $arg in \
       -r|--origin) origin=true ;; \
       -a|--all) all=true ;; \
