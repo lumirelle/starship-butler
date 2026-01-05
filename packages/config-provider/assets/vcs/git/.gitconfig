@@ -89,7 +89,7 @@ discard = "!f() { \
       echo 'Nothing specified, nothing discarded.'; \
       YELLOW='\\e[0;33m'; \
       NC='\\e[0m'; \
-      echo -e \"${YELLOW}hint: Maybe you wanted to say 'git disadd .'?${NC}\"; \
+      echo -e \"${YELLOW}hint: Maybe you wanted to say 'git discard .'?${NC}\"; \
       return 0; \
     fi; \
   if git ls-files --error-unmatch -- \"$@\" >/dev/null 2>&1; then \
