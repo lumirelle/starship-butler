@@ -1,7 +1,7 @@
 {
-	"Now": {
-		"prefix": "now",
-		"description": "Now",
+	"UTC Time Now": {
+		"prefix": "utc",
+		"description": "UTC time now",
 		"scope": "",
 		"body": [
 			"${CURRENT_YEAR}-$CURRENT_MONTH-${CURRENT_DATE}T${CURRENT_HOUR}:${CURRENT_MINUTE}${CURRENT_TIMEZONE_OFFSET}"
