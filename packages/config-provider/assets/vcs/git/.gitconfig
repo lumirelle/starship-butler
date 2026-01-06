@@ -233,8 +233,21 @@ cherry-pick-continue = cherry-pick --continue
 cpc = cherry-pick-continue
 # Tag
 tag-wrapper = "!f() { \
-  if [ -z \"$2\" ]; then \
-    git tag --annotate \"$1\" --message \"$2\"; \
+  declare -i arg_count=0; \
+  declare -i value_count=0; \
+  for arg in \"$@\"; do \
+    if [[ \"$arg\" =~ ^-.* ]]; then \
+      arg_count=arg_count+1; \
+    else \
+      value_count=value_count+1; \
+    fi; \
+  done; \
+  if [[ \"$arg_count\" -eq 0 ]]; then \
+    if [[ \"value_count\" -ge 2 ]]; then \
+      git tag --annotate \"$1\" --message \"$2\"; \
+    elif [[ \"value_count\" -ge 1 ]]; then  \
+      git tag --annotate \"$1\" --message \"$1\"; \
+    fi; \
   else \
     git tag \"$@\"; \
   fi; \
