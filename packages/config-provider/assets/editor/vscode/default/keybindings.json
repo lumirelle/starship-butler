@@ -61,7 +61,7 @@
     "when": "terminal.active && terminalFocus"
   },
   {
-    "key": "ctrl+`",
+    "key": "ctrl+shift+/",
     "command": "workbench.action.terminal.kill"
   },
   {
