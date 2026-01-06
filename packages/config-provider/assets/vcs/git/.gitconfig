@@ -261,7 +261,7 @@ tag-delete = "!f() { \
   tag_name=""; \
   for arg in \"$@\"; do \
     case $arg in \
-      -r|--origin) origin=true ;; \
+      -o|--origin) origin=true ;; \
       -a|--all) all=true ;; \
       *) tag_name=\"$arg\" ;; \
     esac; \
