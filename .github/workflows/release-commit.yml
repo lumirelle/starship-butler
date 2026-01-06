@@ -9,7 +9,7 @@ permissions: {}
 
 jobs:
   release-commit:
-    uses: lumirelle/workflows/.github/workflows/release-commit.yml@v2
+    uses: lumirelle/workflows/.github/workflows/release-commit.yml@v3
     with:
       compact: true
       packages: './packages/*'
