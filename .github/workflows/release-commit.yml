@@ -2,6 +2,7 @@ name: Release Commit
 
 on:
   push:
+    branches: ['**']
     tags-ignore: ['v*']
   pull_request: {}
 
