@@ -19,6 +19,7 @@
   ],
   "sideEffects": false,
   "exports": {
+    ".": "./dist/index.mjs",
     "./config": "./dist/config.mjs",
     "./path": "./dist/path.mjs",
     "./fs": "./dist/fs.mjs",

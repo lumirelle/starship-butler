@@ -5,13 +5,9 @@ export default {
     '.': {
       // @keep-sorted
       ignoreDependencies: [
-        '@stylistic/stylelint-config',
         'bumpp',
         'lint-staged',
         'starship-butler',
-        'stylelint-config-html',
-        'stylelint-config-recess-order',
-        'stylelint-scss',
         'taze',
       ],
     },

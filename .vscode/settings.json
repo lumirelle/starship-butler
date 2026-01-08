@@ -2,7 +2,6 @@
   // Editor Code Actions on Save
   "editor.codeActionsOnSave": {
     "source.fixAll.eslint": "explicit",
-    "source.fixAll.stylelint": "explicit",
     "source.organizeImports": "never"
   },
 
@@ -27,7 +26,12 @@
     "jsonc",
     "yaml",
     "toml",
-    "xml"
+    "xml",
+    "css",
+    "postcss",
+    "scss",
+    "sass",
+    "less"
   ],
   "eslint.rules.customizations": [
     { "rule": "style/*", "severity": "off" },
@@ -41,7 +45,6 @@
     { "rule": "*quotes", "severity": "off" },
     { "rule": "*semi", "severity": "off" }
   ],
-  "stylelint.validate": ["css", "postcss", "scss", "sass", "less", "html", "vue"],
 
   // File associations
   "files.associations": {

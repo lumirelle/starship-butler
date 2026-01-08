@@ -20,10 +20,14 @@
 /// @link https://tailwindcss.com/docs/responsive-design;
 $breakpoints: (
   'xs': 0,
-  'sm': 40rem, // 640px
-  'md': 48rem, // 768px
-  'lg': 64rem, // 1024px
-  'xl': 80rem, // 1280px
+  'sm': 40rem,
+  // 640px
+  'md': 48rem,
+  // 768px
+  'lg': 64rem,
+  // 1024px
+  'xl': 80rem,
+  // 1280px
   '2xl': 96rem, // 1536px
 ) !default;
 
@@ -75,13 +79,11 @@ $breakpoints: (
     @media (min-width: $left) {
       @content;
     }
-  }
-  @else if not $left {
+  } @else if not $left {
     @media (max-width: $right) {
       @content;
     }
-  }
-  @else {
+  } @else {
     @media (min-width: $left) and (width <= calc($right - 1px)) {
       @content;
     }

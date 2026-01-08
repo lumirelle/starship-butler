@@ -41,8 +41,7 @@ $element: null;
 
   @if string.index($selector, $modifier-separator) {
     @return true;
-  }
-  @else {
+  } @else {
     @return false;
   }
 }
@@ -53,8 +52,7 @@ $element: null;
 
   @if string.index($selector, '.' + $state-prefix) {
     @return true;
-  }
-  @else {
+  } @else {
     @return false;
   }
 }
@@ -65,8 +63,7 @@ $element: null;
 
   @if string.index($selector, ':') {
     @return true;
-  }
-  @else {
+  } @else {
     @return false;
   }
 }
@@ -184,8 +181,7 @@ $element: null;
         }
       }
     }
-  }
-  @else {
+  } @else {
     @at-root {
       #{$current-selector} {
         @content;

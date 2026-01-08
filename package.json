@@ -11,9 +11,7 @@
     "docs:build": "bun run --cwd docs docs:build",
     "docs:preview": "bun run --cwd docs docs:preview",
     "play": "bun run --cwd playground play",
-    "lint:js": "bun run eslint --cache .",
-    "lint:style": "bun run stylelint --cache **/*.{css,postcss,scss,sass,less,html,vue}",
-    "lint": "bun run lint:js && bun run lint:style",
+    "lint": "bun run eslint --cache .",
     "typecheck": "bun run tsc --noEmit",
     "usagecheck": "bun run knip",
     "check": "bun run lint && bun run typecheck && bun run usagecheck",
@@ -31,14 +29,12 @@
     "catalogs": {
       "dev": {
         "@antfu/eslint-config": "^6.7.3",
-        "@lumirelle/stylelint-config": "^4.1.5",
         "bumpp": "^10.3.2",
         "eslint": "^9.39.2",
         "eslint-plugin-format": "^1.1.0",
         "knip": "^5.79.0",
         "lint-staged": "^16.2.7",
         "simple-git-hooks": "git+https://github.com/toplenboren/simple-git-hooks.git#7625657",
-        "stylelint": "^16.26.1",
         "taze": "^19.9.2",
         "typescript": "^5.9.3"
       },
@@ -87,7 +83,6 @@
   "devDependencies": {
     "@antfu/eslint-config": "catalog:dev",
     "@arethetypeswrong/core": "catalog:build",
-    "@lumirelle/stylelint-config": "catalog:dev",
     "@types/bun": "catalog:types",
     "bumpp": "catalog:dev",
     "eslint": "catalog:dev",
@@ -97,7 +92,6 @@
     "publint": "catalog:build",
     "simple-git-hooks": "catalog:dev",
     "starship-butler": "workspace:*",
-    "stylelint": "catalog:dev",
     "taze": "catalog:dev",
     "tsdown": "catalog:build",
     "typescript": "catalog:dev",
@@ -109,9 +103,6 @@
   "lint-staged": {
     "*": [
       "bun run eslint --fix"
-    ],
-    "*.{css,postcss,scss,sass,less,html,vue}": [
-      "bun run stylelint --fix"
     ]
   },
   "patchedDependencies": {

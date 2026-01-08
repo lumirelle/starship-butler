@@ -2,6 +2,7 @@ import { defineConfig } from 'tsdown'
 
 export default defineConfig({
   entry: [
+    './src/index.ts',
     './src/config.ts',
     './src/path.ts',
     './src/fs.ts',
@@ -9,4 +10,8 @@ export default defineConfig({
     './src/consola.ts',
     './src/prompts.ts',
   ],
+  attw: {
+    profile: 'esm-only',
+  },
+  publint: true,
 })
