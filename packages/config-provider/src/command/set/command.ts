@@ -1,5 +1,6 @@
 import type { Nullable } from '@antfu/utils'
 import type { SetOptions } from './types'
+import { readFileSync } from 'node:fs'
 import process from 'node:process'
 import { upsertUserRc } from 'starship-butler-utils/config'
 import consola from 'starship-butler-utils/consola'
@@ -50,9 +51,12 @@ export async function commandSet(
   if (!sourcePattern.includes('/'))
     sourcePattern = `**/${sourcePattern}`
   consola.debug('[config-provider] Source pattern:', sourcePattern)
+  // Read ignore patterns from .setignore file
+  const ignorePatterns = readFileSync(join(assetsPath, '.setignore'), 'utf-8')?.split('\n').filter(line => line.trim() !== '') || []
   const matchedFiles = globSync(sourcePattern, {
     cwd: assetsPath,
     dot: true,
+    ignore: ignorePatterns,
   })
   consola.debug('[config-provider] Matched files:', matchedFiles)
 

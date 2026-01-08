@@ -10,5 +10,4 @@ export default antfu({
     vueVersion: 2,
   },
   unocss: true,
-  pnpm: true,
 })
