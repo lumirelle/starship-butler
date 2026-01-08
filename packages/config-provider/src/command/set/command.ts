@@ -6,7 +6,7 @@ import { upsertUserRc } from 'starship-butler-utils/config'
 import consola from 'starship-butler-utils/consola'
 import { ensureDirectory, isDirectory } from 'starship-butler-utils/fs'
 import { basename, join } from 'starship-butler-utils/path'
-import { isCancel, multiselect } from 'starship-butler-utils/prompts'
+import { isCancel, multiselect, select } from 'starship-butler-utils/prompts'
 import { globSync } from 'tinyglobby'
 import { version } from '../../../package.json'
 import { processConfig } from '../../utils/config'
@@ -52,7 +52,9 @@ export async function commandSet(
     sourcePattern = `**/${sourcePattern}`
   consola.debug('[config-provider] Source pattern:', sourcePattern)
   // Read ignore patterns from .setignore file
-  const ignorePatterns = readFileSync(join(assetsPath, '.setignore'), 'utf-8')?.split('\n').filter(line => line.trim() !== '') || []
+  const ignorePatterns = readFileSync(join(assetsPath, '.setignore'), 'utf-8')
+    ?.split('\n')
+    .filter(line => line.trim() !== '') || []
   const matchedFiles = globSync(sourcePattern, {
     cwd: assetsPath,
     dot: true,
@@ -60,28 +62,43 @@ export async function commandSet(
   })
   consola.debug('[config-provider] Matched files:', matchedFiles)
 
+  // Check if target is a directory
+  const isTargetDirectory = isDirectory(target)
+
   // Get source file
   /**
    * Source file paths, relative to assets folder
    */
   let sourceFiles: string[]
-  if (matchedFiles.length > 1) {
+  if (!matchedFiles || matchedFiles.length === 0) {
+    consola.error('No files matched the source pattern!')
+    return
+  }
+  const selectOptions = matchedFiles.map(file => ({ label: file, value: file }))
+  if (matchedFiles.length === 1) {
+    sourceFiles = matchedFiles
+  }
+  else if (!isTargetDirectory) {
     const choice = await multiselect({
       message: 'Select a file to set up:',
-      options: matchedFiles.map(file => ({ label: file, value: file })),
+      options: selectOptions,
     })
     if (isCancel(choice)) {
       consola.info('Operation cancelled by the user.')
-      process.exit(0)
+      return
     }
     sourceFiles = choice
   }
-  else if (matchedFiles.length === 1) {
-    sourceFiles = matchedFiles
-  }
   else {
-    consola.error('No files matched the source pattern!')
-    return
+    const choice = await select({
+      message: 'Multiple files matched the source pattern, please select one to set up:',
+      options: selectOptions,
+    })
+    if (isCancel(choice)) {
+      consola.info('Operation cancelled by the user.')
+      return
+    }
+    sourceFiles = [choice]
   }
   consola.debug('[config-provider] Selected source file:', sourceFiles.join(', '))
 
@@ -91,7 +108,7 @@ export async function commandSet(
 
   for (const sourceFile of sourceFiles) {
     let targetFile: Nullable<string>
-    if (isDirectory(target)) {
+    if (isTargetDirectory) {
       ensureDirectory(target)
       targetFile = join(cwd, target, basename(sourceFile))
     }

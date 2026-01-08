@@ -73,9 +73,14 @@ butler set <source_pattern> <target> [...options]
 ```
 
 If `source_pattern` does not contain `/` character, it will be automatically prefix with `**` in
-order to match files in all sub-directories simply. For example, `butler set .eslintrc.json ./project/` will be treated as `butler set **/.eslintrc.json ./project/`.
+order to match files in all sub-directories simply. In other word, `butler set .eslintrc.json ./project/` is equivalent to `butler set **/.eslintrc.json ./project/`.
 
-Notice that `target` must be a directory. If `target` is not existed yet, you must postfix it with `/` character to indicate it's a directory, or butler will treat it as a file path. For example, `butler set .eslintrc.json ./project` will copy the matched file to `.` and rename it to `project`.
+Notice that, if `target` is not exists yet, butler will judge whether it's a file path or a directory path according to the end character:
+
+- If `target` is a directory, butler will allows you to choose multiple matched files
+- ...Otherwise, butler will only allows you to choose one matched file
+
+For example, `butler set .eslintrc.json ./project/` will copy all the chosen files to `./project`, while `butler set .eslintrc.json ./project` will copy the only one chosen file to `.` and rename it to `project`.
 
 See help info for more details:
 
