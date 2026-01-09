@@ -36,18 +36,6 @@
     "command": "editor.action.moveLinesUpAction",
     "when": "editorTextFocus && !editorReadonly"
   },
-  // Avoid inline completion to conflict with VSCode Neovim extension
-  {
-    "key": "tab",
-    "command": "-vscode-neovim.send",
-    "when": "neovim.init && neovim.recording || editorTextFocus && neovim.init && neovim.mode != 'insert' && editorLangId not in 'neovim.editorLangIdExclusions'"
-  },
-  {
-    "key": "tab",
-    "command": "vscode-neovim.send",
-    "when": "neovim.init && neovim.recording || editorTextFocus && neovim.init && neovim.mode != 'insert' && editorLangId not in 'neovim.editorLangIdExclusions' && !inlineEditIsVisible",
-    "args": "<Tab>"
-  },
 
   // Terminal
   {
