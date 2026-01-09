@@ -2,7 +2,60 @@
 
 local map = vim.keymap.set
 local vscode = require("vscode")
-local vscode_neovim = require("vscode-neovim")
+
+-- Use VSCode's cursor move to handle wrapped lines correctly (compatible with fold/unfold)
+map("n", "j", function()
+  vscode.action("cursorMove", {
+    args = {
+      to = "down",
+      by = "wrappedLine",
+      value = vim.v.count1,
+    }
+  })
+end, { desc = "Down", silent = true })
+map("n", "<Down>", function()
+  vscode.action("cursorMove", {
+    args = {
+      to = "down",
+      by = "wrappedLine",
+      value = vim.v.count1,
+    }
+  })
+end, { desc = "Down", silent = true })
+map("n", "gj", function()
+  vscode.action("cursorMove", {
+    args = {
+      to = "down",
+      value = vim.v.count1,
+    }
+  })
+end, { desc = "Down (Expand Wrapped)", silent = true })
+map("n", "k", function()
+  vscode.action("cursorMove", {
+    args = {
+      to = "up",
+      by = "wrappedLine",
+      value = vim.v.count1,
+    }
+  })
+end, { desc = "Up", silent = true })
+map("n", "<Up>", function()
+  vscode.action("cursorMove", {
+    args = {
+      to = "up",
+      by = "wrappedLine",
+      value = vim.v.count1,
+    }
+  })
+end, { desc = "Up", silent = true })
+map("n", "gk", function()
+  vscode.action("cursorMove", {
+    args = {
+      to = "up",
+      value = vim.v.count1,
+    }
+  })
+end, { desc = "Up (Expand Wrapped)", silent = true })
 
 -- Use VSCode's undo/redo, as Neovim's undo break-points does not work correctly in VSCode
 map("n", "u", function()
@@ -30,60 +83,6 @@ end, { desc = "Fold All" })
 map("n", "zR", function()
   vscode.action("editor.unfoldAll")
 end, { desc = "Unfold All" })
-
--- Use VSCode's cursor move to handle wrapped lines correctly (compatible with fold/unfold)
-map("n", "j", function()
-  vscode_neovim.action("cursorMove", {
-    args = {
-      to = "down",
-      by = "wrappedLine",
-      value = vim.v.count1,
-    }
-  })
-end, { desc = "Down", silent = true })
-map("n", "<Down>", function()
-  vscode_neovim.action("cursorMove", {
-    args = {
-      to = "down",
-      by = "wrappedLine",
-      value = vim.v.count1,
-    }
-  })
-end, { desc = "Down", silent = true })
-map("n", "gj", function()
-  vscode_neovim.action("cursorMove", {
-    args = {
-      to = "down",
-      value = vim.v.count1,
-    }
-  })
-end, { desc = "Down (Expand Wrapped)", silent = true })
-map("n", "k", function()
-  vscode_neovim.action("cursorMove", {
-    args = {
-      to = "up",
-      by = "wrappedLine",
-      value = vim.v.count1,
-    }
-  })
-end, { desc = "Up", silent = true })
-map("n", "<Up>", function()
-  vscode_neovim.action("cursorMove", {
-    args = {
-      to = "up",
-      by = "wrappedLine",
-      value = vim.v.count1,
-    }
-  })
-end, { desc = "Up", silent = true })
-map("n", "gk", function()
-  vscode_neovim.action("cursorMove", {
-    args = {
-      to = "up",
-      value = vim.v.count1,
-    }
-  })
-end, { desc = "Up (Expand Wrapped)", silent = true })
 
 -- Resize window using <ctrl> arrow keys
 map("n", "<C-Up>", "<C-w>+", { desc = "Increase window height", remap = true })

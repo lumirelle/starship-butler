@@ -1,4 +1,5 @@
 [
+  // -- Basic --
   // Navigation
   {
     "key": "ctrl+numpad_divide",
@@ -8,6 +9,29 @@
     "key": "ctrl+numpad_multiply",
     "command": "workbench.action.files.openFolder"
   },
+  // Terminal
+  {
+    "key": "ctrl+shift+5",
+    "command": "-workbench.action.terminal.split",
+    "when": "terminalFocus && terminalProcessSupported || terminalFocus && terminalWebExtensionContributedProfile"
+  },
+  {
+    "key": "alt+/",
+    "command": "workbench.action.terminal.split",
+    "when": "terminalFocus && terminalProcessSupported || terminalFocus && terminalWebExtensionContributedProfile"
+  },
+  {
+    "key": "ctrl+shift+c",
+    "command": "-workbench.action.terminal.openNativeConsole",
+    "when": "!terminalFocus"
+  },
+  {
+    "key": "ctrl+shift+/",
+    "command": "workbench.action.terminal.kill"
+  },
+
+  // -- With Neovim --
+  // Navigation
   {
     "key": "ctrl+h",
     "command": "workbench.action.navigateLeft"
@@ -24,7 +48,16 @@
     "key": "ctrl+l",
     "command": "workbench.action.navigateRight"
   },
-
+  {
+    "key": "ctrl+e",
+    "command": "scrollLineDown",
+    "when": "editorTextFocus"
+  },
+  {
+    "key": "ctrl+d",
+    "command": "scrollLineUp",
+    "when": "editorTextFocus"
+  },
   // Editor
   {
     "key": "alt+j",
@@ -36,7 +69,6 @@
     "command": "editor.action.moveLinesUpAction",
     "when": "editorTextFocus && !editorReadonly"
   },
-
   // Terminal
   {
     "key": "ctrl+/",
@@ -47,24 +79,6 @@
     "key": "ctrl+`",
     "command": "-workbench.action.terminal.toggleTerminal",
     "when": "terminal.active && terminalFocus"
-  },
-  {
-    "key": "ctrl+shift+/",
-    "command": "workbench.action.terminal.kill"
-  },
-  {
-    "key": "ctrl+shift+5",
-    "command": "-workbench.action.terminal.split",
-    "when": "terminalFocus && terminalProcessSupported || terminalFocus && terminalWebExtensionContributedProfile"
-  },
-  {
-    "key": "alt+/",
-    "command": "workbench.action.terminal.split",
-    "when": "terminalFocus && terminalProcessSupported || terminalFocus && terminalWebExtensionContributedProfile"
-  },
-  {
-    "key": "ctrl+shift+c",
-    "command": "-workbench.action.terminal.openNativeConsole",
-    "when": "!terminalFocus"
   }
+
 ]
