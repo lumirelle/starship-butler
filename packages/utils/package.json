@@ -27,8 +27,6 @@
     "./consola": "./dist/consola.mjs",
     "./prompts": "./dist/prompts.mjs"
   },
-  "main": "./dist/index.mjs",
-  "module": "./dist/index.mjs",
   "types": "./dist/index.d.mts",
   "files": [
     "dist"
