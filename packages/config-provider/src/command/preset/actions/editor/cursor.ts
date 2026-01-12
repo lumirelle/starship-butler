@@ -32,7 +32,7 @@ const configPathGenerators: ConfigPathGenerator[] = [
     target: join(targetFolder, 'snippets', 'comment.code-snippets'),
   }),
   () => ({
-    source: join('editor', 'vscode', 'default', 'mcp.json'),
+    source: join('editor', 'cursor', 'mcp.json'),
     target: join(mcpTargetFolder, 'mcp.json'),
   }),
 ]
