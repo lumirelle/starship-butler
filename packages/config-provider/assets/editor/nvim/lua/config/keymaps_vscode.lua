@@ -4,58 +4,42 @@ local map = vim.keymap.set
 local vscode = require("vscode")
 
 -- Use VSCode's cursor move to handle wrapped lines correctly (compatible with fold/unfold)
-map("n", "j", function()
+map({ "n", "x" }, "j", function()
   vscode.action("cursorMove", {
     args = {
       to = "down",
-      by = "wrappedLine",
+      by = vim.v.count == 0 and "wrappedLine" or "line",
       value = vim.v.count1,
     }
   })
 end, { desc = "Down", silent = true })
-map("n", "<Down>", function()
+map({ "n", "x" }, "<Down>", function()
   vscode.action("cursorMove", {
     args = {
       to = "down",
-      by = "wrappedLine",
+      by = vim.v.count == 0 and "wrappedLine" or "line",
       value = vim.v.count1,
     }
   })
 end, { desc = "Down", silent = true })
-map("n", "gj", function()
-  vscode.action("cursorMove", {
-    args = {
-      to = "down",
-      value = vim.v.count1,
-    }
-  })
-end, { desc = "Down (Expand Wrapped)", silent = true })
-map("n", "k", function()
+map({ "n", "x" }, "k", function()
   vscode.action("cursorMove", {
     args = {
       to = "up",
-      by = "wrappedLine",
+      by = vim.v.count == 0 and "wrappedLine" or "line",
       value = vim.v.count1,
     }
   })
 end, { desc = "Up", silent = true })
-map("n", "<Up>", function()
+map({ "n", "x" }, "<Up>", function()
   vscode.action("cursorMove", {
     args = {
       to = "up",
-      by = "wrappedLine",
+      by = vim.v.count == 0 and "wrappedLine" or "line",
       value = vim.v.count1,
     }
   })
 end, { desc = "Up", silent = true })
-map("n", "gk", function()
-  vscode.action("cursorMove", {
-    args = {
-      to = "up",
-      value = vim.v.count1,
-    }
-  })
-end, { desc = "Up (Expand Wrapped)", silent = true })
 
 -- Use VSCode's undo/redo, as Neovim's undo break-points does not work correctly in VSCode
 map("n", "u", function()
