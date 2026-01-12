@@ -41,7 +41,7 @@
     },
     "packages/config-provider": {
       "name": "starship-butler-config-provider",
-      "version": "1.0.1",
+      "version": "1.0.2",
       "dependencies": {
         "starship-butler-types": "workspace:*",
         "starship-butler-utils": "workspace:*",
@@ -54,7 +54,7 @@
     },
     "packages/core": {
       "name": "starship-butler",
-      "version": "1.0.1",
+      "version": "1.0.2",
       "bin": {
         "butler": "bin/index.mjs",
       },
@@ -70,11 +70,11 @@
     },
     "packages/types": {
       "name": "starship-butler-types",
-      "version": "1.0.1",
+      "version": "1.0.2",
     },
     "packages/utils": {
       "name": "starship-butler-utils",
-      "version": "1.0.1",
+      "version": "1.0.2",
       "dependencies": {
         "@clack/prompts": "catalog:prod",
         "ansis": "catalog:prod",
