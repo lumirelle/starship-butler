@@ -54,7 +54,7 @@
     "when": "editorTextFocus"
   },
   {
-    "key": "ctrl+d",
+    "key": "ctrl+y",
     "command": "scrollLineUp",
     "when": "editorTextFocus"
   },
