@@ -5,8 +5,4 @@ export default defineConfig({
     './src/index.ts',
     './src/cli.ts',
   ],
-  attw: {
-    profile: 'esm-only',
-  },
-  publint: true,
 })

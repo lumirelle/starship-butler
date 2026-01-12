@@ -16,7 +16,7 @@
     "usagecheck": "bun run knip",
     "check": "bun run lint && bun run typecheck && bun run usagecheck",
     "test": "bun test",
-    "prerelease": "bun run build && bun run check && bun run test",
+    "prerelease": "bun run build --attw.profile esm-only --publint && bun run check && bun run test",
     "release": "bun run bumpp --all --recursive --execute \"bun update --lockfile-only starship-butler\" # See https://github.com/oven-sh/bun/issues/18906 and https://github.com/oven-sh/bun/issues/20477"
   },
   "workspaces": {

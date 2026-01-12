@@ -10,8 +10,4 @@ export default defineConfig({
     './src/consola.ts',
     './src/prompts.ts',
   ],
-  attw: {
-    profile: 'esm-only',
-  },
-  publint: true,
 })
