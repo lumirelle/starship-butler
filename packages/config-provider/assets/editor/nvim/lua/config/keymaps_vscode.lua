@@ -60,9 +60,11 @@ end, { desc = "Up (Expand Wrapped)", silent = true })
 -- Use VSCode's undo/redo, as Neovim's undo break-points does not work correctly in VSCode
 map("n", "u", function()
   vscode.action("undo")
+  vscode.action("cancelSelection")
 end, { desc = "Undo" })
 map("n", "<C-r>", function()
   vscode.action("redo")
+  vscode.action("cancelSelection")
 end, { desc = "Redo" })
 
 -- Use VSCode's toggle comment
