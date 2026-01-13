@@ -51,6 +51,7 @@ export function vscode(): Action {
     handler: createHandler(configPathGenerators),
     posthandler: () => {
       consola.info('This configuration is meant to be used by `Visual Studio Code` installed in user scope and default path.')
+      consola.info('It uses with many opinionated preset: custom fonts, `Neovim` extension, `podman` integration, etc.')
     },
   }
 }

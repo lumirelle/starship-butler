@@ -450,6 +450,8 @@
 
   /* --------------------------- Extensions Behavior -------------------------- */
   "console-ninja.featureSet": "Community",
+  "containers.containerClient": "com.microsoft.visualstudio.containers.podman",
+  "containers.orchestratorClient": "com.microsoft.visualstudio.orchestrators.podmancompose",
   "editorconfig.showMenuEntry": false,
   "extensions.experimental.affinity": {
     "asvetliakov.vscode-neovim": 1
