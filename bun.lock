@@ -19,6 +19,7 @@
         "tsdown": "catalog:build",
         "typescript": "catalog:dev",
         "vite": "catalog:docs+testing",
+        "vitest-package-exports": "catalog:dev",
       },
     },
     "docs": {
@@ -110,6 +111,7 @@
       "simple-git-hooks": "git+https://github.com/toplenboren/simple-git-hooks.git#7625657",
       "taze": "^19.9.2",
       "typescript": "^5.9.3",
+      "vitest-package-exports": "^1.1.2",
     },
     "docs": {
       "@iconify-json/svg-spinners": "^1.2.4",
@@ -1435,6 +1437,8 @@
     "vitepress": ["vitepress@1.6.4", "", { "dependencies": { "@docsearch/css": "3.8.2", "@docsearch/js": "3.8.2", "@iconify-json/simple-icons": "^1.2.21", "@shikijs/core": "^2.1.0", "@shikijs/transformers": "^2.1.0", "@shikijs/types": "^2.1.0", "@types/markdown-it": "^14.1.2", "@vitejs/plugin-vue": "^5.2.1", "@vue/devtools-api": "^7.7.0", "@vue/shared": "^3.5.13", "@vueuse/core": "^12.4.0", "@vueuse/integrations": "^12.4.0", "focus-trap": "^7.6.4", "mark.js": "8.11.1", "minisearch": "^7.1.1", "shiki": "^2.1.0", "vite": "^5.4.14", "vue": "^3.5.13" }, "peerDependencies": { "markdown-it-mathjax3": "^4", "postcss": "^8" }, "optionalPeers": ["markdown-it-mathjax3", "postcss"], "bin": { "vitepress": "bin/vitepress.js" } }, "sha512-+2ym1/+0VVrbhNyRoFFesVvBvHAVMZMK0rw60E3X/5349M1GuVdKeazuksqopEdvkKwKGs21Q729jX81/bkBJg=="],
 
     "vitepress-plugin-group-icons": ["vitepress-plugin-group-icons@1.6.5", "", { "dependencies": { "@iconify-json/logos": "^1.2.9", "@iconify-json/vscode-icons": "^1.2.32", "@iconify/utils": "^3.0.2" }, "peerDependencies": { "vite": ">=3" }, "optionalPeers": ["vite"] }, "sha512-+pg4+GKDq2fLqKb1Sat5p1p4SuIZ5tEPxu8HjpwoeecZ/VaXKy6Bdf0wyjedjaTAyZQzXbvyavJegqAcQ+B0VA=="],
+
+    "vitest-package-exports": ["vitest-package-exports@1.1.2", "", { "dependencies": { "find-up-simple": "^1.0.1", "pathe": "^2.0.3" } }, "sha512-895iRrbcsZIDMhJSftGcQkuOPZcbCbHEQHXG0MnPKsSkpJhMRYuVtjA8dcjokyygJd/IQDDO8gyKo01AIkudHQ=="],
 
     "vue": ["vue@3.5.26", "", { "dependencies": { "@vue/compiler-dom": "3.5.26", "@vue/compiler-sfc": "3.5.26", "@vue/runtime-dom": "3.5.26", "@vue/server-renderer": "3.5.26", "@vue/shared": "3.5.26" }, "peerDependencies": { "typescript": "*" }, "optionalPeers": ["typescript"] }, "sha512-SJ/NTccVyAoNUJmkM9KUqPcYlY+u8OVL1X5EW9RIs3ch5H2uERxyyIUI4MRxVCSOiEcupX9xNGde1tL9ZKpimA=="],
 

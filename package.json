@@ -36,7 +36,8 @@
         "lint-staged": "^16.2.7",
         "simple-git-hooks": "git+https://github.com/toplenboren/simple-git-hooks.git#7625657",
         "taze": "^19.9.2",
-        "typescript": "^5.9.3"
+        "typescript": "^5.9.3",
+        "vitest-package-exports": "^1.1.2"
       },
       "build": {
         "@arethetypeswrong/core": "^0.18.2",
@@ -95,7 +96,8 @@
     "taze": "catalog:dev",
     "tsdown": "catalog:build",
     "typescript": "catalog:dev",
-    "vite": "catalog:docs+testing"
+    "vite": "catalog:docs+testing",
+    "vitest-package-exports": "catalog:dev"
   },
   "simple-git-hooks": {
     "pre-commit": "bun run lint-staged"
