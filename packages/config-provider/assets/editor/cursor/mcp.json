@@ -11,12 +11,6 @@
     },
     "antfu/nuxt-mcp": {
       "url": "https://mcp.nuxt.com/sse"
-    },
-    "Playwright": {
-      "command": "npx",
-      "args": [
-        "@playwright/mcp@latest"
-      ]
     }
   }
 }
