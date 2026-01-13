@@ -52,6 +52,7 @@
     // Dev Container
     "ms-azuretools.vscode-containers",
     // AI
+    "coderabbit.coderabbit-vscode", // AI Code Reviewer
     "github.copilot", // VSCode only
     "github.copilot-chat", // VSCode only
 
@@ -72,6 +73,6 @@
     "streetsidesoftware.code-spell-checker"
   ]
   // EXTENSION COUNT
-  // >> VSCode: INDEX + 1 = 46
-  // >> Cursor: INDEX - 1 = 44
+  // >> VSCode: INDEX + 1 = 47
+  // >> Cursor: INDEX - 1 = 45
 }
