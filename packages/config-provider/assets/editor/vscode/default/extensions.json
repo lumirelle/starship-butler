@@ -37,6 +37,7 @@
     "waydotnet.minimal-git-file-history",
     "codezombiech.gitignore",
     "github.vscode-github-actions",
+    "gitHub.vscode-pull-request-github",
     // Editor
     "asvetliakov.vscode-neovim",
     "christian-kohler.path-intellisense",
@@ -73,6 +74,6 @@
     "streetsidesoftware.code-spell-checker"
   ]
   // EXTENSION COUNT
-  // >> VSCode: INDEX + 1 = 47
-  // >> Cursor: INDEX - 1 = 45
+  // >> VSCode: INDEX + 1 = 48
+  // >> Cursor: INDEX - 1 = 46
 }
