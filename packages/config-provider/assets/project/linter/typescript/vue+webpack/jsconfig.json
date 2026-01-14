@@ -1,0 +1,50 @@
+{
+  "compilerOptions": {
+    // Language and Environment
+    "target": "ESNext",
+    "jsx": "preserve",
+    "jsxImportSource": "vue",
+    "lib": [
+      "ESNext",
+      "dom",
+      "dom.iterable"
+    ],
+    "useDefineForClassFields": true,
+    "libReplacement": false,
+
+    // Modules
+    "module": "preserve",
+    "moduleResolution": "bundler",
+    "paths": {
+      "~": ["./"],
+      "~/*": ["./*"],
+      // Legacy Aliases
+      "@": ["./"],
+      "@/*": ["./*"]
+    },
+    "resolveJsonModule": true,
+    "types": [
+      "node"
+    ],
+
+    // JavaScript Support
+    "allowJs": true,
+
+    // Type Checking
+    "strict": true,
+    "noImplicitOverride": true,
+    "noImplicitThis": true,
+    "noUncheckedIndexedAccess": true,
+
+    // Emit
+    "noEmit": true,
+
+    // Interop Constraints
+    "esModuleInterop": true,
+    "forceConsistentCasingInFileNames": true,
+    "verbatimModuleSyntax": true,
+
+    // Completeness
+    "skipLibCheck": true
+  }
+}
