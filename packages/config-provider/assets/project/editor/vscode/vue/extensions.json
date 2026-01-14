@@ -5,6 +5,7 @@
     "oven.bun-vscode",
     "vue.volar",
     "lokalise.i18n-ally",
+    "humao.rest-client",
     "dbaeumer.vscode-eslint",
     "antfu.pnpm-catalog-lens",
     "antfu.goto-alias"
