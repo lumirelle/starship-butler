@@ -13,12 +13,32 @@ map({ "n", "x" }, "j", function()
     }
   })
 end, { desc = "Down", silent = true })
+map("v", "j", function()
+  vscode.action("cursorMove", {
+    args = {
+      to = "down",
+      by = vim.v.count == 0 and "wrappedLine" or "line",
+      value = vim.v.count1,
+      select = true,
+    }
+  })
+end, { desc = "Down", silent = true })
 map({ "n", "x" }, "<Down>", function()
   vscode.action("cursorMove", {
     args = {
       to = "down",
       by = vim.v.count == 0 and "wrappedLine" or "line",
       value = vim.v.count1,
+    }
+  })
+end, { desc = "Down", silent = true })
+map("v", "<Down>", function()
+  vscode.action("cursorMove", {
+    args = {
+      to = "down",
+      by = vim.v.count == 0 and "wrappedLine" or "line",
+      value = vim.v.count1,
+      select = true,
     }
   })
 end, { desc = "Down", silent = true })
@@ -31,12 +51,32 @@ map({ "n", "x" }, "k", function()
     }
   })
 end, { desc = "Up", silent = true })
+map("v", "k", function()
+  vscode.action("cursorMove", {
+    args = {
+      to = "up",
+      by = vim.v.count == 0 and "wrappedLine" or "line",
+      value = vim.v.count1,
+      select = true,
+    }
+  })
+end, { desc = "Up", silent = true })
 map({ "n", "x" }, "<Up>", function()
   vscode.action("cursorMove", {
     args = {
       to = "up",
       by = vim.v.count == 0 and "wrappedLine" or "line",
       value = vim.v.count1,
+    }
+  })
+end, { desc = "Up", silent = true })
+map("v", "<Up>", function()
+  vscode.action("cursorMove", {
+    args = {
+      to = "up",
+      by = vim.v.count == 0 and "wrappedLine" or "line",
+      value = vim.v.count1,
+      select = true,
     }
   })
 end, { desc = "Up", silent = true })
