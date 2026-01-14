@@ -79,6 +79,13 @@ MAKE SURE YOU KNOW WHAT YOU ARE DOING!
 `,
   )
   .option(
+    '-y, --agree-to-force',
+    `Automatically agree to force option. (Default: false)
+
+MAKE SURE YOU KNOW WHAT YOU ARE DOING!
+`,
+  )
+  .option(
     '-?, --verbose',
     'Show verbose output. (Default: false)\n',
   )
@@ -95,12 +102,13 @@ MAKE SURE YOU KNOW WHAT YOU ARE DOING!
     const defaultOptions: Partial<PresetOptions> = {
       mode: 'copy-paste',
       force: false,
+      agreeToForce: false,
       verbose: false,
       dryRun: false,
     }
     const mergedOptions = defu(cliOptions, cfgOptions, defaultOptions)
     consola.debug('[starship-butler] Merged options:', mergedOptions)
-    if (mergedOptions.force && !await confirm({
+    if (mergedOptions.force && !mergedOptions.agreeToForce && !await confirm({
       message: 'Are you sure you want to configure your system forcibly? This will override the existing configuration with the same name, and cannot be undone!',
     })) {
       return
@@ -128,6 +136,13 @@ MAKE SURE YOU KNOW WHAT YOU ARE DOING!
 `,
   )
   .option(
+    '-y, --agree-to-force',
+    `Automatically agree to force option. (Default: false)
+
+MAKE SURE YOU KNOW WHAT YOU ARE DOING!
+`,
+  )
+  .option(
     '-?, --verbose',
     'Show verbose output. (Default: false)\n',
   )
@@ -144,11 +159,17 @@ MAKE SURE YOU KNOW WHAT YOU ARE DOING!
     const defaultOptions: Partial<SetOptions> = {
       mode: 'copy-paste',
       force: false,
+      agreeToForce: false,
       verbose: false,
       dryRun: false,
     }
     const mergedOptions = defu(cliOptions, cfgOptions, defaultOptions)
     consola.debug('[starship-butler] Merged options:', mergedOptions)
+    if (mergedOptions.force && !mergedOptions.agreeToForce && !await confirm({
+      message: 'Are you sure you want to set matched configurations forcibly? This will override the existing configuration with the same name, and cannot be undone!',
+    })) {
+      return
+    }
     await commandSet(sourcePattern, target, mergedOptions)
   })
 

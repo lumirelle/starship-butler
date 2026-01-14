@@ -27,6 +27,14 @@ export interface ProcessConfigOptions extends BasicOptions {
    */
   force: boolean
   /**
+   * Automatically agree to force option.
+   *
+   * CAUTION: MAKE SURE YOU KNOW WHAT YOU ARE DOING!
+   *
+   * @default false
+   */
+  agreeToForce: boolean
+  /**
    * Dry run.
    *
    * @default false
