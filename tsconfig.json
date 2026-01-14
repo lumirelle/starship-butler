@@ -1,24 +1,11 @@
 {
-  "compilerOptions": {
-    "target": "ESNext",
-    "lib": [
-      "ESNext"
-    ],
-    "moduleDetection": "force",
-    "module": "preserve",
-    "paths": {
+  "references": [
+    {
+      "path": "./tsconfig.node.json"
     },
-    "types": [
-      "bun"
-    ],
-    "allowImportingTsExtensions": true,
-    "allowJs": true,
-    "strict": true,
-    "noImplicitOverride": true,
-    "noImplicitReturns": true,
-    "noEmit": true,
-    "noUncheckedSideEffectImports": true,
-    "verbatimModuleSyntax": true,
-    "skipLibCheck": true
-  }
+    {
+      "path": "./tsconfig.bun.json"
+    }
+  ],
+  "files": []
 }
