@@ -1,2 +1,7 @@
 verifyDepsBeforeRun: install
 ignoreWorkspaceRootCheck: true
+catalogMode: prefer
+cleanupUnusedCatalogs: true
+shellEmulator: true
+trustPolicy: no-downgrade
+trustPolicyExclude: []
