@@ -10,4 +10,5 @@ export default defineConfig({
     './src/consola.ts',
     './src/prompts.ts',
   ],
+  dts: { build: true },
 })
