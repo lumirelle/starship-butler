@@ -1,0 +1,12 @@
+{
+  "extends": "./tsconfig.base.json",
+  "compilerOptions": {
+    "types": [
+      "node"
+    ]
+  },
+  // Files should only include Node.js api
+  "include": [
+    "**/src/**/*"
+  ]
+}

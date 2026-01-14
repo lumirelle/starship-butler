@@ -1,0 +1,14 @@
+{
+  "extends": "./tsconfig.base.json",
+  "compilerOptions": {
+    "types": [
+      "bun"
+    ]
+  },
+  // Files should not include both Bun api
+  // TODO(Lumirelle): If we migrate to `bun build`, and bun polyfills for `node` preset are complete,
+  // then we may no longer need a separate tsconfig for Bun.
+  "exclude": [
+    "**/src/**/*"
+  ]
+}
