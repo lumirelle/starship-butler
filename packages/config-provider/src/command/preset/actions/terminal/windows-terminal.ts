@@ -30,7 +30,7 @@ export function windowsTerminal(): Action {
     },
     handler: createHandler(configPathGenerators),
     posthandler: ({ targetFolder }) => {
-      consola.info(`This configuration will use \`'"Recursive Mono Linear", "Maple Mono CN", "Symbols Nerd Font"'\` as terminal fonts, \`Nushell\` as default shell. If you don't want to use them, please edit this config \`(${join(targetFolder, 'settings.json')})\` manually.`)
+      consola.info(`This configuration will use \`'"Google Sans Code", "Maple Mono CN", "Symbols Nerd Font"'\` as terminal fonts, \`Nushell\` as default shell. If you don't want to use them, please edit this config \`(${join(targetFolder, 'settings.json')})\` manually.`)
     },
   }
 }

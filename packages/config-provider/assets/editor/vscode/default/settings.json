@@ -9,7 +9,7 @@
   // Window
   "window.autoDetectColorScheme": true,
   "window.titleBarStyle": "custom",
-  "window.zoomLevel": 0.5,
+  "window.zoomLevel": 0,
   // Workbench
   "workbench.activityBar.orientation": "vertical",
   "workbench.tree.renderIndentGuides": "always",
@@ -32,10 +32,10 @@
   "editor.wrapOnEscapedLineFeeds": true,
   "scm.diffDecorationsGutterWidth": 2,
   // Font
-  "custom-ui-style.font.monospace": "'Recursive Mono Linear', 'Maple Mono CN', 'Symbols Nerd Font Mono', monospace",
+  "custom-ui-style.font.monospace": "'Google Sans Code', 'Maple Mono CN', 'Symbols Nerd Font Mono', monospace",
   "custom-ui-style.font.sansSerif": "'Recursive Sans Linear', 'Maple Mono CN', 'Symbols Nerd Font Mono', sans-serif",
   "custom-ui-style.stylesheet": { "body": { "--vscode-font-family": "'Recursive Sans Linear', 'Maple Mono CN', 'Symbols Nerd Font Mono', monospace" } },
-  "editor.fontFamily": "'Recursive Mono Linear', 'Maple Mono CN', 'Symbols Nerd Font Mono', monospace",
+  "editor.fontFamily": "'Google Sans Code', 'Maple Mono CN', 'Symbols Nerd Font Mono', monospace",
   "editor.fontSize": 16,
   "editor.lineHeight": 1.5,
   "editor.fontLigatures": true,
