@@ -1,0 +1,9 @@
+customization:
+  distribution_code_name: Weasel
+  distribution_version: 0.17.4
+  generator: 'Weasel::UIStyleSettings'
+  modified_time: 'Fri Dec 26 21:27:43 2025'
+  rime_version: 1.13.1
+patch:
+  style/color_scheme: aqua
+  app_options: {}

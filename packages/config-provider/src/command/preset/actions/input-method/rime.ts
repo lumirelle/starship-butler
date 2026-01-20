@@ -20,6 +20,10 @@ const configPathGenerators: ConfigPathGenerator[] = [
     source: join('input-method', 'rime', 'wanxiang.custom.yaml'),
     target: join(targetFolder, 'wanxiang.custom.yaml'),
   }),
+  ({ targetFolder }) => ({
+    source: join('input-method', 'rime', 'weasel.custom.yaml'),
+    target: join(targetFolder, 'weasel.custom.yaml'),
+  }),
   ({ targetFolder, systemOptions }) => {
     if (systemOptions.platform === 'win32') {
       return {
