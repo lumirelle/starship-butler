@@ -7,20 +7,32 @@
 			"${CURRENT_YEAR}-$CURRENT_MONTH-${CURRENT_DATE}T${CURRENT_HOUR}:${CURRENT_MINUTE}${CURRENT_TIMEZONE_OFFSET}"
 		]
 	},
-	"Import Module": {
+	"Import": {
 		"prefix": "i",
+		"description": "import",
+		"scope": "javascript,typescript,javascriptreact,typescriptreact",
+		"body": [
+			"import $0"
+		]
+	},
+	"Import Immediately": {
+		"prefix": "ii",
+		"description": "Import immediately (with side effect)",
+		"scope": "javascript,typescript,javascriptreact,typescriptreact",
+		"body": [
+			"import '${1:module}'",
+			"",
+			"$0"
+		]
+	},
+	"Import Module": {
+		"prefix": "im",
 		"description": "Import module",
 		"scope": "javascript,typescript,javascriptreact,typescriptreact",
 		"body": [
-			"import '${1:module}'"
-		]
-	},
-	"Import From Module": {
-		"prefix": "im",
-		"description": "Import from module",
-		"scope": "javascript,typescript,javascriptreact,typescriptreact",
-		"body": [
-			"import ${2:module} from '${1:module}'"
+			"import ${2:module} from '${1:module}'",
+			"",
+			"$0"
 		]
 	},
 	"Import As": {
@@ -28,7 +40,9 @@
 		"description": "Import module as",
 		"scope": "javascript,typescript,javascriptreact,typescriptreact",
 		"body": [
-			"import ${2:*} as ${3:module} from '${1:module}'"
+			"import ${2:*} as ${3:module} from '${1:module}'",
+			"",
+			"$0"
 		]
 	},
 	"Import Destructured": {
@@ -36,12 +50,22 @@
 		"description": "Import module destructured",
 		"scope": "javascript,typescript,javascriptreact,typescriptreact",
 		"body": [
-			"import { ${2:member} } from '${1:module}'"
+			"import { ${2:member} } from '${1:module}'",
+			"",
+			"$0"
 		]
 	},
-	"Export Member": {
+	"Export": {
 		"prefix": "e",
-		"description": "Export member",
+		"description": "Export",
+		"scope": "javascript,typescript,javascriptreact,typescriptreact",
+		"body": [
+			"export $0"
+		]
+	},
+	"Export Existing Member": {
+		"prefix": "ee",
+		"description": "Export existing member",
 		"scope": "javascript,typescript,javascriptreact,typescriptreact",
 		"body": [
 			"export { ${1:member} }"
@@ -52,15 +76,27 @@
 		"description": "Export variable",
 		"scope": "javascript,typescript,javascriptreact,typescriptreact",
 		"body": [
-			"export const ${1:member} = ${2:value}"
+			"export const ${1:member} = ${2:value}",
+			"",
+			"$0"
 		]
 	},
 	"Export Function": {
 		"prefix": "ef",
 		"description": "Export function",
-		"scope": "javascript,typescript,javascriptreact,typescriptreact",
+		"scope": "javascript,javascriptreact",
 		"body": [
 			"export function ${1:member}(${2:args}) {",
+			"  $0",
+			"}"
+		]
+	},
+	"Export Function (TypeScript)": {
+		"prefix": "ef",
+		"description": "Export function (TypeScript)",
+		"scope": "typescript,typescriptreact",
+		"body": [
+			"export function ${1:member}(${2:args}): ${3:void} {",
 			"  $0",
 			"}"
 		]
@@ -88,7 +124,9 @@
 		"description": "Export from module",
 		"scope": "javascript,typescript,javascriptreact,typescriptreact",
 		"body": [
-			"export ${2:*} from '${1:module}'"
+			"export ${2:*} from '${1:module}'",
+			"",
+			"$0"
 		]
 	},
 	"Export Module As": {
@@ -96,7 +134,9 @@
 		"description": "Export module as",
 		"scope": "javascript,typescript,javascriptreact,typescriptreact",
 		"body": [
-			"export * as ${2:module} from '${1:module}'"
+			"export * as ${2:module} from '${1:module}'",
+			"",
+			"$0"
 		]
 	},
 	"Const": {
@@ -104,7 +144,7 @@
 		"description": "Const",
 		"scope": "javascript,typescript,javascriptreact,typescriptreact",
 		"body": [
-			"const ${1:name} $0"
+			"const $0"
 		]
 	},
 	"Const Variavle": {
@@ -112,7 +152,9 @@
 		"description": "Const variable",
 		"scope": "javascript,typescript,javascriptreact,typescriptreact",
 		"body": [
-			"const ${1:name} = ${2:value}"
+			"const ${1:name} = ${2:value}",
+			"",
+			"$0"
 		]
 	},
 	"Const Destructured": {
@@ -120,7 +162,9 @@
 		"description": "Const destructured",
 		"scope": "javascript,typescript,javascriptreact,typescriptreact",
 		"body": [
-			"const { ${2:prop} } = ${1:value}"
+			"const { ${2:prop} } = ${1:value}",
+			"",
+			"$0"
 		]
 	},
 	"Const Arrow Function": {
@@ -138,15 +182,27 @@
 		"description": "Let",
 		"scope": "javascript,typescript,javascriptreact,typescriptreact",
 		"body": [
-			"let ${1:name} $0"
+			"let $0"
 		]
 	},
 	"Let Variable": {
 		"prefix": "lv",
 		"description": "Let variable",
-		"scope": "javascript,typescript,javascriptreact,typescriptreact",
+		"scope": "javascript,javascriptreact",
 		"body": [
-			"let ${1:name} = ${2:value}"
+			"let ${1:name}",
+			"",
+			"$0"
+		]
+	},
+	"Let Variable (TypeScript)": {
+		"prefix": "lv",
+		"description": "Let variable (TypeScript)",
+		"scope": "typescript,typescriptreact",
+		"body": [
+			"let ${1:name}: ${2:type}",
+			"",
+			"$0"
 		]
 	},
 	"Arrow Function": {
@@ -157,6 +213,14 @@
 			"(${1:args}) => {",
 			"  $0",
 			"}"
+		]
+	},
+	"Arrow Function Nested": {
+		"prefix": "nn",
+		"description": "Arrow function nested",
+		"scope": "javascript,typescript,javascriptreact,typescriptreact",
+		"body": [
+			"(${1:args}) => $0"
 		]
 	},
 	"Arrow Function Destructured": {
@@ -172,9 +236,19 @@
 	"Function": {
 		"prefix": "f",
 		"description": "Function",
-		"scope": "javascript,typescript,javascriptreact,typescriptreact",
+		"scope": "javascript,javascriptreact",
 		"body": [
 			"function ${1:name}(${2:args}) {",
+			"  $0",
+			"}"
+		]
+	},
+	"Function (TypeScript)": {
+		"prefix": "f",
+		"description": "Function (TypeScript)",
+		"scope": "typescript,typescriptreact",
+		"body": [
+			"function ${1:name}(${2:args}): ${3:void} {",
 			"  $0",
 			"}"
 		]
@@ -184,7 +258,9 @@
 		"description": "Console log",
 		"scope": "javascript,typescript,javascriptreact,typescriptreact",
 		"body": [
-			"console.log($1)"
+			"console.log($1)",
+			"",
+			"$0"
 		]
 	},
 	"Console Debug": {
@@ -192,7 +268,9 @@
 		"description": "Console debug",
 		"scope": "javascript,typescript,javascriptreact,typescriptreact",
 		"body": [
-			"console.debug($1)"
+			"console.debug($1)",
+			"",
+			"$0"
 		]
 	},
 	"Console Info": {
@@ -200,7 +278,9 @@
 		"description": "Console info",
 		"scope": "javascript,typescript,javascriptreact,typescriptreact",
 		"body": [
-			"console.info($1)"
+			"console.info($1)",
+			"",
+			"$0"
 		]
 	},
 	"Console Warn": {
@@ -208,7 +288,9 @@
 		"description": "Console warn",
 		"scope": "javascript,typescript,javascriptreact,typescriptreact",
 		"body": [
-			"console.warn($1)"
+			"console.warn($1)",
+			"",
+			"$0"
 		]
 	},
 	"Console Error": {
@@ -216,7 +298,9 @@
 		"description": "Console error",
 		"scope": "javascript,typescript,javascriptreact,typescriptreact",
 		"body": [
-			"console.error($1)"
+			"console.error($1)",
+			"",
+			"$0"
 		]
 	},
 	"Async": {
@@ -241,17 +325,17 @@
 		"scope": "javascript,typescript,javascriptreact,typescriptreact",
 		"body": [
 			";(function(${1:args}) {",
-			"  ",
+			"  $0",
 			"})()"
 		]
 	},
-	"IIFE1": {
+	"Async IIFE": {
 		"prefix": "aiife",
-		"description": "IIFE",
+		"description": "Async IIFE",
 		"scope": "javascript,typescript,javascriptreact,typescriptreact",
 		"body": [
 			";(async (${1:args}) => {",
-			"  ",
+			"  $0",
 			"})()"
 		]
 	},
@@ -395,9 +479,6 @@
 			"/* ... */",
 			"</style>",
 			"",
-			"<i18n lang=\"yaml\">",
-			"",
-			"</i18n>",
 			""
 		]
 	},
@@ -416,7 +497,7 @@
 			"})",
 			"",
 			"if (import.meta.hot)",
-			" import.meta.hot.accept(acceptHMRUpdate(use${TM_FILENAME_BASE/^(.*)$/${1:/pascalcase}/}Store, import.meta.hot))",
+			"  import.meta.hot.accept(acceptHMRUpdate(use${TM_FILENAME_BASE/^(.*)$/${1:/pascalcase}/}Store, import.meta.hot))",
 			"",
 			""
 		]
