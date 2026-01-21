@@ -9,7 +9,7 @@ const targetFolder = homedir('.config')
 
 const configPathGenerators: ConfigPathGenerator[] = [
   ({ targetFolder }) => ({
-    source: join('tools', 'sxzz-create', 'create.config.yml'),
+    source: join('tools', 'sxzz_create', 'create.config.yml'),
     target: join(targetFolder, 'create.config.yml'),
   }),
 ]

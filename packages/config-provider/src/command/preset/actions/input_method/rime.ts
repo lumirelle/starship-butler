@@ -13,22 +13,22 @@ const platformTargetFolderMap: PlatformTargetFolderMap = {
 
 const configPathGenerators: ConfigPathGenerator[] = [
   ({ targetFolder }) => ({
-    source: join('input-method', 'rime', 'default.custom.yaml'),
+    source: join('input_method', 'rime', 'default.custom.yaml'),
     target: join(targetFolder, 'default.custom.yaml'),
   }),
   ({ targetFolder }) => ({
-    source: join('input-method', 'rime', 'wanxiang.custom.yaml'),
+    source: join('input_method', 'rime', 'wanxiang.custom.yaml'),
     target: join(targetFolder, 'wanxiang.custom.yaml'),
   }),
   ({ targetFolder }) => ({
-    source: join('input-method', 'rime', 'weasel.custom.yaml'),
+    source: join('input_method', 'rime', 'weasel.custom.yaml'),
     target: join(targetFolder, 'weasel.custom.yaml'),
   }),
   ({ targetFolder, systemOptions }) => {
     if (systemOptions.platform === 'win32') {
       return {
-        source: join('input-method', 'rime', 'disable-ctrl+space.reg'),
-        target: join(targetFolder, 'disable-ctrl+space.reg'),
+        source: join('input_method', 'rime', 'disable-ctrl_space.reg'),
+        target: join(targetFolder, 'disable-ctrl_space.reg'),
       }
     }
     return null
@@ -50,7 +50,7 @@ export function rime(): Action {
     posthandler: ({ targetFolder, systemOptions }) => {
       consola.info('Currently, this configuration only supports `Rime official input` method with default user configuration folder path. For Linux users, please make sure you are using `ibus-rime`. After applying the configuration, don\'t forget to deploy Rime and wait for few seconds/minutes! Just with patience :) ')
       if (systemOptions.platform === 'win32')
-        consola.info(`If you are getting in trouble with disabling Ctrl+Space (which will switch input methods), please run the \`disable-ctrl+space.reg\` file in your Rime configuration folder (${targetFolder}) to fix it. Don't forget to restart your computer after applying the registry file!`)
+        consola.info(`If you are getting in trouble with disabling Ctrl+Space (which will switch input methods), please run the \`disable-ctrl_space.reg\` file in your Rime configuration folder (${targetFolder}) to fix it. Don't forget to restart your computer after applying the registry file!`)
     },
   }
 }

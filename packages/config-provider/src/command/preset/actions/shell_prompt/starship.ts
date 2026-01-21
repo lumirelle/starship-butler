@@ -10,7 +10,7 @@ const targetFolder = homedir('.config')
 
 const configPathGenerators: ConfigPathGenerator[] = [
   ({ targetFolder }) => ({
-    source: join('shell-prompt', 'starship', 'starship.toml'),
+    source: join('shell_prompt', 'starship', 'starship.toml'),
     target: join(targetFolder, 'starship.toml'),
   }),
 ]

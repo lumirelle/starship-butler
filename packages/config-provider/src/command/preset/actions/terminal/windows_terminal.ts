@@ -12,7 +12,7 @@ const targetFolder = localAppdata('Packages', applicationId, 'LocalState')
 
 const configPathGenerators: ConfigPathGenerator[] = [
   ({ targetFolder }) => ({
-    source: join('terminal', 'windows-terminal', 'settings.json'),
+    source: join('terminal', 'windows_terminal', 'settings.json'),
     target: join(targetFolder, 'settings.json'),
   }),
 ]
