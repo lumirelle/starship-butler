@@ -17,7 +17,7 @@
     },
     "resolveJsonModule": true,
     "types": [
-      "node"
+      "bun"
     ],
     "allowImportingTsExtensions": true,
 
@@ -28,11 +28,13 @@
     "noUncheckedIndexedAccess": true,
 
     // Emit
+    "declaration": true,
     "noEmit": true,
 
     // Interop Constraints
     "esModuleInterop": true,
     "forceConsistentCasingInFileNames": true,
+    "isolatedDeclarations": true,
     "verbatimModuleSyntax": true,
 
     // Completeness
