@@ -19,21 +19,51 @@
   ],
   "sideEffects": false,
   "exports": {
-    ".": "./dist/index.js",
-    "./config": "./dist/config.js",
-    "./path": "./dist/path.js",
-    "./fs": "./dist/fs.js",
-    "./highlight": "./dist/highlight.js",
-    "./consola": "./dist/consola.js",
-    "./prompts": "./dist/prompts.js"
+    "./config": {
+      "import": {
+        "types": "./dist/config.d.ts",
+        "default": "./dist/config.js"
+      }
+    },
+    "./path": {
+      "import": {
+        "types": "./dist/path.d.ts",
+        "default": "./dist/path.js"
+      }
+    },
+    "./fs": {
+      "import": {
+        "types": "./dist/fs.d.ts",
+        "default": "./dist/fs.js"
+      }
+    },
+    "./highlight": {
+      "import": {
+        "types": "./dist/highlight.d.ts",
+        "default": "./dist/highlight.js"
+      }
+    },
+    "./consola": {
+      "import": {
+        "types": "./dist/consola.d.ts",
+        "default": "./dist/consola.js"
+      }
+    },
+    "./prompts": {
+      "import": {
+        "types": "./dist/prompts.d.ts",
+        "default": "./dist/prompts.js"
+      }
+    },
+    "./package.json": "./package.json"
   },
-  "types": "./dist/index.d.ts",
   "files": [
     "dist"
   ],
   "scripts": {
     "dev": "bunup --watch",
-    "build": "bunup"
+    "build": "bunup",
+    "distcheck": "bun attw --pack --profile esm-only && bun publint"
   },
   "dependencies": {
     "@clack/prompts": "catalog:prod",

@@ -14,8 +14,10 @@ import { processConfig } from '../../../utils'
  * @param platformTargetFolderMap Platform to target folder map.
  * @returns Target folder handler.
  */
-export function createTargetFolderHandler(platformTargetFolderMap: PlatformTargetFolderMap) {
-  return ({ systemOptions }: { systemOptions: { platform: NodeJS.Platform } }) => {
+export function createTargetFolderHandler(
+  platformTargetFolderMap: PlatformTargetFolderMap,
+): (context: Omit<ActionHandlerContext, 'targetFolder'>) => string {
+  return ({ systemOptions }) => {
     const { platform } = systemOptions
     return platformTargetFolderMap[platform] ?? ''
   }
@@ -88,7 +90,9 @@ export function ensureDirectoryExist(directory: string): boolean {
  * @param configPathGenerators Config path generators.
  * @returns Handler function.
  */
-export function createHandler(configPathGenerators: ConfigPathGenerator[]) {
+export function createHandler(
+  configPathGenerators: ConfigPathGenerator[],
+): (context: ActionHandlerContext) => void {
   return (context: ActionHandlerContext) => {
     for (const generator of configPathGenerators) {
       const result = generator(context)

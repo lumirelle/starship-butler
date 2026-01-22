@@ -19,8 +19,15 @@
   ],
   "sideEffects": false,
   "exports": {
-    ".": "./dist/index.js"
+    ".": {
+      "import": {
+        "types": "./dist/index.d.ts",
+        "default": "./dist/index.js"
+      }
+    },
+    "./package.json": "./package.json"
   },
+  "module": "./dist/index.js",
   "types": "./dist/index.d.ts",
   "files": [
     "assets",
@@ -28,7 +35,8 @@
   ],
   "scripts": {
     "dev": "bunup --watch",
-    "build": "bunup"
+    "build": "bunup",
+    "distcheck": "bun attw --pack --profile esm-only && bun publint"
   },
   "dependencies": {
     "@antfu/utils": "catalog:prod",

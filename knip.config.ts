@@ -5,8 +5,6 @@ export default {
     '.': {
       // @keep-sorted
       ignoreDependencies: [
-        'bumpp',
-        'lint-staged',
         'starship-butler',
         'taze',
       ],
@@ -29,6 +27,12 @@ export default {
       // @keep-sorted
       ignoreFiles: [
         'test/fixture/butler.config*.ts',
+      ],
+    },
+    'packages/utils': {
+      // @keep-sorted
+      ignoreFiles: [
+        'bunup.config.*',
       ],
     },
     'docs': {

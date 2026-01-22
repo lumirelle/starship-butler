@@ -5,4 +5,4 @@ export default defineConfig({
   recursive: true,
   write: true,
   peer: true,
-})
+}) as ReturnType<typeof defineConfig>

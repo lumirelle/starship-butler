@@ -6,4 +6,4 @@ export default defineButlerConfig({
     // @ts-expect-error Testing version override
     version: '0.0.0',
   },
-})
+}) as ReturnType<typeof defineButlerConfig>

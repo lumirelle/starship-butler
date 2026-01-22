@@ -11,7 +11,7 @@ export { basename } from 'pathe'
  * @returns Joined paths.
  * @throws {TypeError} if any of the path segments is not a string.
  */
-export const join = _join
+export const join: typeof _join = _join
 
 /**
  * Join all arguments together and normalize the resulting path, starting from home directory.
