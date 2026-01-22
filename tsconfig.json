@@ -1,11 +1,41 @@
 {
-  "references": [
-    {
-      "path": "./tsconfig.node.json"
+  "compilerOptions": {
+    // Language and Environment
+    "target": "ESNext",
+    "lib": [
+      "ESNext"
+    ],
+    "moduleDetection": "force",
+    "useDefineForClassFields": true,
+    "libReplacement": false,
+
+    // Modules
+    "module": "preserve",
+    "moduleResolution": "bundler",
+    "paths": {
+      // Add your path aliases here
     },
-    {
-      "path": "./tsconfig.bun.json"
-    }
-  ],
-  "files": []
+    "resolveJsonModule": true,
+    "types": [
+      "node"
+    ],
+    "allowImportingTsExtensions": true,
+
+    // Type Checking
+    "strict": true,
+    "noImplicitOverride": true,
+    "noImplicitThis": true,
+    "noUncheckedIndexedAccess": true,
+
+    // Emit
+    "noEmit": true,
+
+    // Interop Constraints
+    "esModuleInterop": true,
+    "forceConsistentCasingInFileNames": true,
+    "verbatimModuleSyntax": true,
+
+    // Completeness
+    "skipLibCheck": true
+  }
 }

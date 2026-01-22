@@ -1,4 +1,4 @@
-import { defineConfig } from 'tsdown'
+import { defineConfig } from 'bunup'
 
 export default defineConfig({
   entry: [
@@ -10,5 +10,4 @@ export default defineConfig({
     './src/consola.ts',
     './src/prompts.ts',
   ],
-  dts: { build: true },
 })

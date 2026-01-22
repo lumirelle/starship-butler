@@ -19,21 +19,21 @@
   ],
   "sideEffects": false,
   "exports": {
-    ".": "./dist/index.mjs",
-    "./config": "./dist/config.mjs",
-    "./path": "./dist/path.mjs",
-    "./fs": "./dist/fs.mjs",
-    "./highlight": "./dist/highlight.mjs",
-    "./consola": "./dist/consola.mjs",
-    "./prompts": "./dist/prompts.mjs"
+    ".": "./dist/index.js",
+    "./config": "./dist/config.js",
+    "./path": "./dist/path.js",
+    "./fs": "./dist/fs.js",
+    "./highlight": "./dist/highlight.js",
+    "./consola": "./dist/consola.js",
+    "./prompts": "./dist/prompts.js"
   },
-  "types": "./dist/index.d.mts",
+  "types": "./dist/index.d.ts",
   "files": [
     "dist"
   ],
   "scripts": {
-    "dev": "bun run tsdown --watch",
-    "build": "bun run tsdown"
+    "dev": "bunup --watch",
+    "build": "bunup"
   },
   "dependencies": {
     "@clack/prompts": "catalog:prod",

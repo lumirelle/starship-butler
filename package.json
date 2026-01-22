@@ -3,7 +3,7 @@
   "version": "1.0.3",
   "private": true,
   "scripts": {
-    "prepare": "bun run simple-git-hooks",
+    "prepare": "bun simple-git-hooks",
     "dev": "bun run --filter '*' dev",
     "build": "bun run --filter '*' build",
     "start": "bun run --cwd packages/core start",
@@ -11,13 +11,14 @@
     "docs:build": "bun run --cwd docs docs:build",
     "docs:preview": "bun run --cwd docs docs:preview",
     "play": "bun run --cwd playground play",
-    "lint": "bun run eslint --cache .",
-    "typecheck": "bun run tsc --noEmit",
-    "usagecheck": "bun run knip",
-    "check": "bun run lint && bun run typecheck && bun run usagecheck",
+    "lint": "bun eslint --cache .",
+    "typecheck": "bun tsc --noEmit",
+    "usagecheck": "bun knip",
+    "distcheck": "bun run --filter 'pkg-placeholder' distcheck",
+    "check": "bun run lint && bun run typecheck && bun run usagecheck && bun run distcheck",
     "test": "bun test",
-    "prerelease": "bun run build --attw.profile esm-only --publint && bun run check && bun run test",
-    "release": "bun run bumpp --all --recursive --execute \"bun update --lockfile-only starship-butler\" # See https://github.com/oven-sh/bun/issues/18906 and https://github.com/oven-sh/bun/issues/20477"
+    "prerelease": "bun run build && bun run check && bun run test",
+    "release": "bun bumpp --all --recursive --execute \"bun update --lockfile-only starship-butler\" # See https://github.com/oven-sh/bun/issues/18906 and https://github.com/oven-sh/bun/issues/20477"
   },
   "workspaces": {
     "packages": [
@@ -41,8 +42,8 @@
       },
       "build": {
         "@arethetypeswrong/core": "^0.18.2",
-        "publint": "^0.3.16",
-        "tsdown": "^0.19.0"
+        "bunup": "^0.16.20",
+        "publint": "^0.3.16"
       },
       "docs": {
         "@iconify-json/svg-spinners": "^1.2.4",
@@ -61,14 +62,12 @@
       "docs+testing": {
         "vite": "^7.3.1"
       },
-      "inlined": {
-        "@antfu/utils": "^9.3.0",
-        "cac": "^6.7.14"
-      },
       "prod": {
+        "@antfu/utils": "^9.3.0",
         "@clack/prompts": "^0.11.0",
         "ansis": "^4.2.0",
         "c12": "^3.3.3",
+        "cac": "^6.7.14",
         "consola": "^3.4.2",
         "defu": "^6.1.4",
         "pathe": "^2.0.3",
@@ -86,6 +85,7 @@
     "@arethetypeswrong/core": "catalog:build",
     "@types/bun": "catalog:types",
     "bumpp": "catalog:dev",
+    "bunup": "catalog:build",
     "eslint": "catalog:dev",
     "eslint-plugin-format": "catalog:dev",
     "knip": "catalog:dev",
@@ -94,7 +94,6 @@
     "simple-git-hooks": "catalog:dev",
     "starship-butler": "workspace:*",
     "taze": "catalog:dev",
-    "tsdown": "catalog:build",
     "typescript": "catalog:dev",
     "vite": "catalog:docs+testing",
     "vitest-package-exports": "catalog:dev"

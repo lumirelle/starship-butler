@@ -19,24 +19,22 @@
   ],
   "sideEffects": false,
   "exports": {
-    ".": "./dist/index.mjs"
+    ".": "./dist/index.js"
   },
-  "types": "./dist/index.d.mts",
+  "types": "./dist/index.d.ts",
   "files": [
     "assets",
     "dist"
   ],
   "scripts": {
-    "dev": "bun run tsdown --watch",
-    "build": "bun run tsdown"
+    "dev": "bunup --watch",
+    "build": "bunup"
   },
   "dependencies": {
+    "@antfu/utils": "catalog:prod",
     "starship-butler-types": "workspace:*",
     "starship-butler-utils": "workspace:*",
     "tinyexec": "catalog:prod",
     "tinyglobby": "catalog:prod"
-  },
-  "devDependencies": {
-    "@antfu/utils": "catalog:inlined"
   }
 }
