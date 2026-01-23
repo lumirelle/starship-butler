@@ -20,7 +20,6 @@
     // JavaScript / TypeScript
     "oven.bun-vscode",
     "johnsoncodehk.vscode-tsconfig-helper",
-    "typescriptteam.native-preview", // Try out ts-go for better performance
     // Vue
     "vue.volar",
     // Dotenv

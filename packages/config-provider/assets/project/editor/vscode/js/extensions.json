@@ -3,7 +3,6 @@
   "recommendations": [
     "editorconfig.editorconfig",
     "oven.bun-vscode",
-    "typescriptteam.native-preview",
     "dbaeumer.vscode-eslint",
     "antfu.pnpm-catalog-lens"
   ]
