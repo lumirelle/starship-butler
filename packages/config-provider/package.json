@@ -37,7 +37,6 @@
     "distcheck": "bun attw --pack --profile esm-only && bun publint"
   },
   "dependencies": {
-    "@antfu/utils": "catalog:prod",
     "@clack/prompts": "catalog:prod",
     "consola": "catalog:prod",
     "pathe": "catalog:prod",
@@ -47,6 +46,7 @@
     "tinyglobby": "catalog:prod"
   },
   "devDependencies": {
+    "@antfu/utils": "catalog:inlined",
     "@lumirelle/stylelint-config": "catalog:assets",
     "taze": "catalog:assets"
   }

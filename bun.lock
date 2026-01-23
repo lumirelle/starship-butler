@@ -42,7 +42,6 @@
       "name": "starship-butler-config-provider",
       "version": "1.0.3",
       "dependencies": {
-        "@antfu/utils": "catalog:prod",
         "@clack/prompts": "catalog:prod",
         "consola": "catalog:prod",
         "pathe": "catalog:prod",
@@ -52,6 +51,7 @@
         "tinyglobby": "catalog:prod",
       },
       "devDependencies": {
+        "@antfu/utils": "catalog:inlined",
         "@lumirelle/stylelint-config": "catalog:assets",
         "taze": "catalog:assets",
       },
@@ -64,12 +64,14 @@
       },
       "dependencies": {
         "@clack/prompts": "catalog:prod",
-        "cac": "catalog:prod",
         "consola": "catalog:prod",
         "defu": "catalog:prod",
         "starship-butler-config-provider": "workspace:*",
         "starship-butler-types": "workspace:*",
         "starship-butler-utils": "workspace:*",
+      },
+      "devDependencies": {
+        "cac": "catalog:inlined",
       },
     },
     "packages/types": {
@@ -132,11 +134,13 @@
       "vitepress-plugin-group-icons": "^1.7.1",
       "vue": "^3.5.27",
     },
-    "prod": {
+    "inlined": {
       "@antfu/utils": "^9.3.0",
+      "cac": "^6.7.14",
+    },
+    "prod": {
       "@clack/prompts": "^0.11.0",
       "c12": "^3.3.3",
-      "cac": "^6.7.14",
       "consola": "^3.4.2",
       "defu": "^6.1.4",
       "pathe": "^2.0.3",
