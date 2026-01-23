@@ -20,7 +20,9 @@ Your best butler, helping you manage the whole development "starship". 😃
 ## Features
 
 - 🚀 Quick management of your application configurations & local project configurations
+- 📦 Built-in presets for popular tools (Git, ESLint, Prettier, etc.)
 - 🧰 Easy to use CLI interface
+- ⚙️ Powered by Bun & TypeScript
 - 🔗 Support symlink mode (experimental)
 - 🧹 WIP: Auto cleanup when uninstalling
 
