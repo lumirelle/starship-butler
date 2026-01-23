@@ -20,40 +20,28 @@
   "sideEffects": false,
   "exports": {
     "./config": {
-      "import": {
-        "types": "./dist/config.d.ts",
-        "default": "./dist/config.js"
-      }
+      "types": "./dist/config.d.ts",
+      "default": "./dist/config.js"
     },
     "./path": {
-      "import": {
-        "types": "./dist/path.d.ts",
-        "default": "./dist/path.js"
-      }
+      "types": "./dist/path.d.ts",
+      "default": "./dist/path.js"
     },
     "./fs": {
-      "import": {
-        "types": "./dist/fs.d.ts",
-        "default": "./dist/fs.js"
-      }
+      "types": "./dist/fs.d.ts",
+      "default": "./dist/fs.js"
     },
     "./highlight": {
-      "import": {
-        "types": "./dist/highlight.d.ts",
-        "default": "./dist/highlight.js"
-      }
+      "types": "./dist/highlight.d.ts",
+      "default": "./dist/highlight.js"
     },
     "./consola": {
-      "import": {
-        "types": "./dist/consola.d.ts",
-        "default": "./dist/consola.js"
-      }
+      "types": "./dist/consola.d.ts",
+      "default": "./dist/consola.js"
     },
     "./prompts": {
-      "import": {
-        "types": "./dist/prompts.d.ts",
-        "default": "./dist/prompts.js"
-      }
+      "types": "./dist/prompts.d.ts",
+      "default": "./dist/prompts.js"
     },
     "./package.json": "./package.json"
   },
