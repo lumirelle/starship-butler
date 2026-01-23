@@ -29,12 +29,14 @@
     "textMateRules": []
   },
   "editor.wordWrap": "on",
-  "editor.wrapOnEscapedLineFeeds": true,
   "scm.diffDecorationsGutterWidth": 2,
   // Font
   "custom-ui-style.font.monospace": "'Google Sans Code', 'Maple Mono CN', 'Symbols Nerd Font Mono', monospace",
   "custom-ui-style.font.sansSerif": "'Recursive Sans Linear', 'Maple Mono CN', 'Symbols Nerd Font Mono', sans-serif",
-  "custom-ui-style.stylesheet": { "body": { "--vscode-font-family": "'Recursive Sans Linear', 'Maple Mono CN', 'Symbols Nerd Font Mono', monospace" } },
+  "custom-ui-style.stylesheet": {
+    // Font family patch for Cursor Editor
+    "body": { "--vscode-font-family": "'Recursive Sans Linear', 'Maple Mono CN', 'Symbols Nerd Font Mono', monospace" }
+  },
   "editor.fontFamily": "'Google Sans Code', 'Maple Mono CN', 'Symbols Nerd Font Mono', monospace",
   "editor.fontSize": 16,
   "editor.lineHeight": 1.5,
@@ -53,10 +55,10 @@
   "todohighlight.include": [
     // Scripts
     "**/*.sh",
-    "**/*.ps1",
     "**/*.bat",
-    "**/*.nu",
+    "**/*.ps1",
     "**/*.lua",
+    "**/*.nu",
     // Front-end Ecosystem
     "**/*.{,m,c}{j,t}s{,x}",
     "**/*.vue",
@@ -82,18 +84,31 @@
     "**/*.txt"
   ],
   "todohighlight.exclude": [
+    // Dotfolders
+    "**/.git/**",
+    "**/.github/**",
+    "**/.vscode/**",
+    "**/.output/**",
+    "**/.nuxt/**",
+    "**/.next/**",
+    "**/.pnpm/**",
+    "**/.yarn/**",
+    // Dependency & Dist Folders
     "**/node_modules/**",
     "**/bower_components/**",
     "**/dist/**",
-    "**/build/**",
-    "**/.vscode/**",
-    "**/.vscode-test/**",
-    "**/.github/**",
-    "**/_output/**",
+    "**/out/**",
+    "**/logs/**",
+    "**/temp/**",
+    "**/public/**",
+    // Dependency & Dist Files
     "**/*.min.*",
     "**/*.map",
-    "**/.next/**",
-    "**/.output/**"
+    "**/*.snap",
+    "**/package-lock.json",
+    "**/pnpm-lock.yaml",
+    "**/yarn.lock",
+    "**/bun.lock"
   ],
   "todohighlight.defaultStyle": {
     "color": "#fff",
@@ -149,19 +164,11 @@
   "window.newWindowProfile": "Default",
   // File Associations
   "files.associations": {
-    ".env*": "dotenv",
-    ".env*.js": "javascript",
-    ".env*.ts": "typescript",
-    ".simple-git-hooks.rc": "shellscript",
-    ".czrc": "json"
+    ".env.!(js|ts|mjs|cjs|mts|cts)": "dotenv"
   },
   // Prompts
   "window.dialogStyle": "custom",
   "files.simpleDialog.enable": true,
-  // Status Bar
-  "selectline.alignment": "right",
-  "selectline.displayFormat": "%d lines selected",
-  "selectline.statusbarPriority": 100.4,
   // Explorer
   "explorer.autoOpenDroppedFile": false,
   "explorer.confirmDelete": false,
@@ -169,26 +176,33 @@
   // Search
   "search.showLineNumbers": true,
   "search.exclude": {
-    "**/*.snap": true,
-    "**/*.svg": true,
+    // Dotfolders
     "**/.git": true,
     "**/.github": false,
-    "**/.nuxt": true,
-    "**/.output": true,
-    "**/.pnpm": true,
     "**/.vscode": true,
+    "**/.output": true,
+    "**/.nuxt": true,
+    "**/.next": true,
+    "**/.pnpm": true,
     "**/.yarn": true,
-    "**/bower_components": true,
-    "**/dist/**": true,
-    "**/logs": true,
+    // Dependency & Dist Folders
     "**/node_modules": true,
-    "**/out/**": true,
+    "**/bower_components": true,
+    "**/dist": true,
+    "**/out": true,
+    "**/logs": true,
+    "**/temp": true,
+    "**/public": true,
+    // Dependency & Dist Files
+    "**/*.min.*": true,
+    "**/*.map": true,
+    "**/*.snap": true,
     "**/package-lock.json": true,
     "**/pnpm-lock.yaml": true,
     "**/yarn.lock": true,
     "**/bun.lock": true,
-    "**/public": true,
-    "**/temp": true,
+    // Extra Files
+    "**/*.svg": true,
     "**/CHANGELOG*": true,
     "**/LICENSE*": true
   },
@@ -201,7 +215,6 @@
   "git.blame.editorDecoration.enabled": true,
   "git.blame.statusBarItem.enabled": true,
   // Editor Group
-  "workbench.editor.closeOnFileDelete": true,
   "workbench.editor.highlightModifiedTabs": true,
   "workbench.editor.limit.enabled": true,
   "workbench.editor.limit.perEditorGroup": true,
@@ -222,11 +235,11 @@
     "nushell": { "path": "nu" }
   },
   "terminal.integrated.profiles.windows": {
-    "Nushell": { "path": "C:\\Program Files\\nu\\bin\\nu.exe" }
+    "nushell": { "path": "nu" }
   },
   "terminal.integrated.defaultProfile.linux": "nushell",
   "terminal.integrated.defaultProfile.osx": "nushell",
-  "terminal.integrated.defaultProfile.windows": "Nushell",
+  "terminal.integrated.defaultProfile.windows": "nushell",
   "terminal.integrated.persistentSessionReviveProcess": "never",
   "terminal.integrated.rightClickBehavior": "default",
   // Inlay Hints
@@ -241,20 +254,20 @@
   "vue.inlayHints.missingProps": true,
   "vue.inlayHints.optionsWrapper": true,
   // Lens
-  "errorLens.enabledDiagnosticLevels": ["warning", "error"],
-  "errorLens.messageTemplate": "$severity$message",
-  "errorLens.severityText": ["■ ", "■ ", "■ ", "■ "],
+  "errorLens.enabledDiagnosticLevels": ["warning", "error", "info", "hint"],
+  "errorLens.messageTemplate": "[$count] $severity $message $source($code)",
   // Suggestion & Completion
-  "css.enabledLanguages": ["html", "vue"],
-  "css.styleSheets": ["**/*.{c,sc,sa,le,postc}ss"],
+  "css.enabledLanguages": ["html", "vue", "svelte"],
+  "css.styleSheets": ["**/*.{c,sc,sa,le}ss"],
   // Emmet
-  "emmet.preferences": {
-    "bem.modifierSeparator": "--"
-  },
   "emmet.showSuggestionsAsSnippets": true,
   "emmet.syntaxProfiles": {
     "html": { "filters": "bem" }
   },
+  "emmet.preferences": {
+    "bem.modifierSeparator": "--"
+  },
+  // Avoid expansion even if completion does not show up
   "emmet.triggerExpansionOnTab": false,
   // Scroll
   "workbench.list.mouseWheelScrollSensitivity": 2,
@@ -274,14 +287,13 @@
   "cursor.cpp.disabledLanguages": ["plaintext", "dotenv"],
   "github.copilot.enable": {
     "*": true,
-    "plaintext": false,
     "markdown": true,
+    "plaintext": false,
     "scminput": false,
     "dotenv": false
   },
   "github.copilot.nextEditSuggestions.enabled": true,
   "chat.mcp.gallery.enabled": true,
-  "chat.mcp.autostart": "never",
 
   /* --------------------------------- Format --------------------------------- */
   "editor.tabSize": 2,
@@ -296,42 +308,50 @@
   /* ---------------------------------- Lint ---------------------------------- */
   "cSpell.allowCompoundWords": true,
   "cSpell.customDictionaries": {
-    "common": { "name": "common", "path": "~/.cspell.common.txt", "description": "Words used in common situation.", "addWords": false },
-    "work": { "name": "work", "path": "~/.cspell.work.txt", "description": "Words used in work.", "addWords": false }
+    "common": {
+      "name": "common",
+      "path": "~/.cspell.common.txt",
+      "description": "Words used in common situation.",
+      "addWords": false
+    },
+    "work": {
+      "name": "work",
+      "path": "~/.cspell.work.txt",
+      "description": "Words used in work.",
+      "addWords": false
+    }
   },
   "cSpell.ignorePaths": [
-    // all of dotfiles & dotfolders
+    // Dotfolders
     ".*",
-    "dist",
+    // Dependency & Dist Folders
     "node_modules",
-    "package.json",
+    "bower_components",
+    "dist",
+    "out",
+    "logs",
+    "temp",
+    "public",
+    // Dependency & Dist Files
+    "*.min.*",
+    "*.map",
+    "*.snap",
     "package-lock.json",
-    "yarn.lock",
     "pnpm-lock.yaml",
-    "pnpm-workspace.yaml",
-    "bun.lockb",
-    "bun.lock"
+    "yarn.lock",
+    "bun.lock",
+    // Extra Files
+    "*.svg"
   ],
   "eslint.runtime": "bun",
   "eslint.execArgv": ["-b"],
+  // We just enable ESLint for JS/TS files in user-scope settings.
+  // For other languages who needs further configurations, we will set them in the project-scope settings.
   "eslint.validate": [
     "javascript",
     "javascriptreact",
     "typescript",
-    "typescriptreact",
-    "vue",
-    "html",
-    "markdown",
-    "json",
-    "jsonc",
-    "yaml",
-    "toml",
-    "xml",
-    "css",
-    "postcss",
-    "scss",
-    "sass",
-    "less"
+    "typescriptreact"
   ],
   "eslint.rules.customizations": [
     { "rule": "style/*", "severity": "off" },
@@ -456,7 +476,7 @@
   "extensions.experimental.affinity": {
     "asvetliakov.vscode-neovim": 1
   },
-  "fileNestingUpdater.autoUpdate": false,
+  "fileNestingUpdater.autoUpdate": true,
   "i18n-ally.autoDetection": false,
   "i18n-ally.displayLanguage": "en",
   "iconify.excludes": ["el"],

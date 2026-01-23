@@ -43,6 +43,6 @@
     "stylelint.vscode-stylelint"
   ]
   // EXTENSION COUNT
-  // >> VSCode: INDEX + 1 = 23 + {PROFILE_DEFAULT: 48} = 71
-  // >> Cursor: INDEX + 1 = 23 + {PROFILE_DEFAULT: 46} = 69
+  // >> VSCode: INDEX + 1 = 23 + {PROFILE_DEFAULT: 47} = 70
+  // >> Cursor: INDEX + 1 = 23 + {PROFILE_DEFAULT: 45} = 70
 }

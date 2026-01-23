@@ -5,6 +5,6 @@
     "rust-lang.rust-analyzer"
   ]
   // EXTENSION COUNT
-  // >> VSCode: INDEX + 1 = 1 + {PROFILE_DEFAULT: 48} = 49
-  // >> Cursor: INDEX + 1 = 1 + {PROFILE_DEFAULT: 46} = 47
+  // >> VSCode: INDEX + 1 = 1 + {PROFILE_DEFAULT: 47} = 48
+  // >> Cursor: INDEX + 1 = 1 + {PROFILE_DEFAULT: 45} = 46
 }
