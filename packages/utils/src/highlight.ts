@@ -1,11 +1,13 @@
-import { bold, cyan, magenta } from 'ansis'
+import { styleText } from 'node:util'
 
-export { bold, cyan, green, magenta, red, reset } from 'ansis'
-
-export function info(v: unknown): string {
-  return cyan(v)
+export function info(v: string): string {
+  return styleText(['cyan'], v)
 }
 
-export function important(v: unknown): string {
-  return bold(magenta(v))
+export function important(v: string): string {
+  return styleText(['bold', 'magenta'], v)
+}
+
+export function success(v: string): string {
+  return styleText(['green'], v)
 }

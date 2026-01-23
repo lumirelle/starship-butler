@@ -35,14 +35,6 @@
       "types": "./dist/highlight.d.ts",
       "default": "./dist/highlight.js"
     },
-    "./consola": {
-      "types": "./dist/consola.d.ts",
-      "default": "./dist/consola.js"
-    },
-    "./prompts": {
-      "types": "./dist/prompts.d.ts",
-      "default": "./dist/prompts.js"
-    },
     "./package.json": "./package.json"
   },
   "files": [
@@ -54,8 +46,6 @@
     "distcheck": "bun attw --pack --profile esm-only && bun publint"
   },
   "dependencies": {
-    "@clack/prompts": "catalog:prod",
-    "ansis": "catalog:prod",
     "c12": "catalog:prod",
     "consola": "catalog:prod",
     "pathe": "catalog:prod",

@@ -6,8 +6,6 @@ export default defineConfig({
     './src/path.ts',
     './src/fs.ts',
     './src/highlight.ts',
-    './src/consola.ts',
-    './src/prompts.ts',
   ],
   /**
    * Disable code splitting due to Bun's current limitations with shared code among entrypoints.

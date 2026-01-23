@@ -7,9 +7,7 @@
   writeUserRc: function
 ./path: 
   appdata: function
-  basename: function
   homedir: function
-  join: function
   localAppdata: function
 ./fs: 
   copyFile: function
@@ -21,33 +19,6 @@
   remove: function
   removeSymlink: function
 ./highlight: 
-  bold: function
-  cyan: function
-  green: function
   important: function
   info: function
-  magenta: function
-  red: function
-  reset: function
-./consola: 
-  default: object
-  LogLevels: object
-./prompts: 
-  cancel: function
-  confirm: function
-  group: function
-  groupMultiselect: function
-  intro: function
-  isCancel: function
-  log: object
-  multiselect: function
-  note: function
-  outro: function
-  password: function
-  select: function
-  selectKey: function
-  spinner: function
-  stream: object
-  tasks: function
-  text: function
-  updateSettings: function
+  success: function

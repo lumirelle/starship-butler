@@ -1,6 +1,7 @@
 import type { Action, ConfigPathGenerator, PlatformTargetFolderMap } from '../../types'
-import consola from 'starship-butler-utils/consola'
-import { homedir, join, localAppdata } from 'starship-butler-utils/path'
+import consola from 'consola'
+import { join } from 'pathe'
+import { homedir, localAppdata } from 'starship-butler-utils/path'
 import { HandlerError } from '../../error'
 import { createHandler, createTargetFolderHandler, ensureDirectoryExist, isPathExist } from '../utils'
 

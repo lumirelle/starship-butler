@@ -273,7 +273,7 @@ describe('actions', () => {
     const mockedMultiselect = mock(async () => {
       return ['nushell', 'bash']
     })
-    mock.module('starship-butler-utils/prompts', () => ({
+    mock.module('@clack/prompts', () => ({
       multiselect: mockedMultiselect,
     }))
     const filteredActions = await filterActions({

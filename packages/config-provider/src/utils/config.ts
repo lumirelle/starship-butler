@@ -1,8 +1,8 @@
 import type { ProcessConfigOptions } from './types'
-import consola from 'starship-butler-utils/consola'
+import consola from 'consola'
+import { join } from 'pathe'
 import { copyFile, createSymlink } from 'starship-butler-utils/fs'
-import { green, important } from 'starship-butler-utils/highlight'
-import { join } from 'starship-butler-utils/path'
+import { important, success } from 'starship-butler-utils/highlight'
 
 /**
  * Process config files (copy-paste or symlink).
@@ -21,7 +21,7 @@ export function processConfig(
     if (dryRun || _copyPasteConfig(source, target, options)) {
       consola.success(
         `Configuration ${important(`"${source}"`)} ${
-          dryRun ? green('will') : 'is'
+          dryRun ? success('will') : 'is'
         } copied to ${important(`"${target}"`)}.`,
       )
     }
@@ -29,7 +29,7 @@ export function processConfig(
   else if (mode === 'symlink') {
     if (dryRun || _symlinkConfig(source, target, options)) {
       consola.success(`Configuration ${important(`"${target}"`)} ${
-        dryRun ? green('will') : 'is'
+        dryRun ? success('will') : 'is'
       } symlinked to ${important(`"${source}"`)}.`)
     }
   }

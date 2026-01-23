@@ -1,17 +1,6 @@
 import { homedir as _homedir } from 'node:os'
 import process from 'node:process'
-import { join as _join } from 'pathe'
-
-export { basename } from 'pathe'
-
-/**
- * Join all arguments together and normalize the resulting path, starting from home directory.
- *
- * @param paths Paths to join.
- * @returns Joined paths.
- * @throws {TypeError} if any of the path segments is not a string.
- */
-export const join: typeof _join = _join
+import { join } from 'pathe'
 
 /**
  * Join all arguments together and normalize the resulting path, starting from home directory.

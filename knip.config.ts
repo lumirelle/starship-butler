@@ -6,7 +6,6 @@ export default {
       // @keep-sorted
       ignoreDependencies: [
         'starship-butler',
-        'taze',
       ],
     },
     'playground': {
@@ -16,6 +15,11 @@ export default {
       ],
     },
     'packages/config-provider': {
+      // @keep-sorted
+      ignoreDependencies: [
+        '@lumirelle/stylelint-config',
+        'taze',
+      ],
       // @keep-sorted
       ignoreBinaries: ['nu'],
       // @keep-sorted

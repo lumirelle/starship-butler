@@ -1,5 +1,5 @@
 import { constants, copyFileSync, lstatSync, mkdirSync, renameSync, rmSync, symlinkSync } from 'node:fs'
-import consola from './consola'
+import consola from 'consola'
 import { info } from './highlight'
 
 /**

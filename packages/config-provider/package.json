@@ -38,9 +38,16 @@
   },
   "dependencies": {
     "@antfu/utils": "catalog:prod",
+    "@clack/prompts": "catalog:prod",
+    "consola": "catalog:prod",
+    "pathe": "catalog:prod",
     "starship-butler-types": "workspace:*",
     "starship-butler-utils": "workspace:*",
     "tinyexec": "catalog:prod",
     "tinyglobby": "catalog:prod"
+  },
+  "devDependencies": {
+    "@lumirelle/stylelint-config": "catalog:assets",
+    "taze": "catalog:assets"
   }
 }

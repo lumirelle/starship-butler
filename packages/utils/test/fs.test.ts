@@ -1,6 +1,6 @@
 import { afterAll, beforeAll, describe, expect, it, mock, spyOn } from 'bun:test'
 import fs from 'node:fs'
-import consola from '../src/consola'
+import consola from 'consola'
 import { copyFile, createSymlink, ensureDirectory, exists, isDirectory, isSymbolicLink, remove, removeSymlink } from '../src/fs'
 import { info } from '../src/highlight'
 

@@ -1,5 +1,6 @@
 import type { Action, ConfigPathGenerator } from '../../types'
-import { homedir, join } from 'starship-butler-utils/path'
+import { join } from 'pathe'
+import { homedir } from 'starship-butler-utils/path'
 import { HandlerError } from '../../error'
 import { createHandler, ensureDirectoryExist, isPathExistEnv } from '../utils'
 

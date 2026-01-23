@@ -1,5 +1,5 @@
 import type { PresetOptions } from './types'
-import consola from 'starship-butler-utils/consola'
+import consola from 'consola'
 
 export function validateOptions(options: Partial<PresetOptions>): boolean {
   if (options.mode && !['copy-paste', 'symlink'].includes(options.mode)) {

@@ -40,7 +40,9 @@
     "distcheck": "bun attw --pack --profile esm-only && bun publint"
   },
   "dependencies": {
+    "@clack/prompts": "catalog:prod",
     "cac": "catalog:prod",
+    "consola": "catalog:prod",
     "defu": "catalog:prod",
     "starship-butler-config-provider": "workspace:*",
     "starship-butler-types": "workspace:*",
