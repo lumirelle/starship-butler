@@ -41,14 +41,12 @@
     "asvetliakov.vscode-neovim",
     "christian-kohler.path-intellisense",
     "agutierrezr.emmet-keybindings", // See https://marketplace.visualstudio.com/items?itemName=agutierrezr.emmet-keybindings
-    "ow.vscode-subword-navigation", // ALT+LEFT_ARROW, ALT+RIGHT_ARROW
     "cardinal90.multi-cursor-case-preserve",
     "yatki.vscode-surround", // After selection, CTRL+SHIFT+T
     // Inlay Hints
     "antfu.array-index-inlay",
     // Lens
     "usernamehw.errorlens",
-    "kisstkondoros.vscode-codemetrics",
     // Dev Container
     "ms-azuretools.vscode-containers",
     // AI
@@ -70,9 +68,10 @@
     "lumirelle.shell-format-rev",
 
     /* ----- Linter ----- */
-    "streetsidesoftware.code-spell-checker"
+    "streetsidesoftware.code-spell-checker",
+    "sonarsource.sonarlint-vscode"
   ]
   // EXTENSION COUNT
-  // >> VSCode: INDEX + 1 = 47
-  // >> Cursor: INDEX - 1 = 45
+  // >> VSCode: INDEX + 1 = 46
+  // >> Cursor: INDEX - 1 = 44
 }
