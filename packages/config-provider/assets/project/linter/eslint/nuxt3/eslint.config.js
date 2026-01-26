@@ -1,4 +1,5 @@
 // @ts-check
+/* eslint perfectionist/sort-objects: "error" */
 import antfu from '@antfu/eslint-config'
 import nuxt from './.nuxt/eslint.config.mjs'
 
