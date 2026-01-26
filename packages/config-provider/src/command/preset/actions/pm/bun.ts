@@ -11,7 +11,7 @@ const targetFolder = homedir()
 
 const configPathGenerators: ConfigPathGenerator[] = [
   ({ targetFolder }) => ({
-    source: join('pm', 'bun', 'bunfig.toml'),
+    source: join('pm', 'bun', 'bunfig.global.toml'),
     target: join(targetFolder, '.bunfig.toml'),
   }),
   ({ targetFolder }) => ({
