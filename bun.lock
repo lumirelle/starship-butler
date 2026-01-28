@@ -100,7 +100,7 @@
   },
   "catalogs": {
     "assets": {
-      "@lumirelle/stylelint-config": "^5.0.0-beta.4",
+      "@lumirelle/stylelint-config": "^5.0.0-beta.5",
       "taze": "^19.9.2",
     },
     "build": {
@@ -153,7 +153,7 @@
       "vitest-package-exports": "^1.1.2",
     },
     "types": {
-      "@types/bun": "^1.3.6",
+      "@types/bun": "^1.3.7",
     },
   },
   "packages": {
@@ -225,7 +225,7 @@
 
     "@dprint/toml": ["@dprint/toml@0.7.0", "", {}, "sha512-eFaQTcfxKHB+YyTh83x7GEv+gDPuj9q5NFOTaoj5rZmQTbj6OgjjMxUicmS1R8zYcx8YAq5oA9J3YFa5U6x2gA=="],
 
-    "@dreamsicle.io/stylelint-config-tailwindcss": ["@dreamsicle.io/stylelint-config-tailwindcss@1.1.2", "", { "peerDependencies": { "stylelint": "^16.17.0" } }, "sha512-g5nPxKyZKh139CT67tTFT3WD7kB4y4WoHLGqlmLfTjs52cvWGwFUBSiUpPnB2sSBh5efXPtw4VYv8zwPt6C19A=="],
+    "@dreamsicle.io/stylelint-config-tailwindcss": ["@dreamsicle.io/stylelint-config-tailwindcss@1.2.2", "", { "peerDependencies": { "stylelint": "^16.17.0 || ^17.0.0" } }, "sha512-MFwpR3adGHftLjFVYNd6NXepiJMXcVLhY00znLZN7rv/zhbYyOLSPzfotNOvBw647Zb9Wm/lMsMk08i4VkZI/g=="],
 
     "@emnapi/core": ["@emnapi/core@1.8.0", "", { "dependencies": { "@emnapi/wasi-threads": "1.1.0", "tslib": "^2.4.0" } }, "sha512-ryJnSmj4UhrGLZZPJ6PKVb4wNPAIkW6iyLy+0TRwazd3L1u0wzMe8RfqevAh2HbcSkoeLiSYnOVDOys4JSGYyg=="],
 
@@ -357,7 +357,7 @@
 
     "@lumirelle/defu": ["@lumirelle/defu@1.1.0", "", {}, "sha512-YZu3tcGxBTGThS+Jos/c8uqtAP+MS0e42gydT8/wFzoMx8rC8ndObk+oz/7g8imZviAc888Rlv/1SM1i8/xDjg=="],
 
-    "@lumirelle/stylelint-config": ["@lumirelle/stylelint-config@5.0.0-beta.4", "", { "dependencies": { "@antfu/install-pkg": "^1.1.0", "@antfu/utils": "^9.3.0", "@clack/prompts": "^0.11.0", "@dreamsicle.io/stylelint-config-tailwindcss": "^1.1.2", "@lumirelle/defu": "^1.1.0", "@stylistic/stylelint-config": "^4.0.0", "local-pkg": "^1.1.2", "lodash.clonedeep": "^4.5.0", "postcss-scss": "^4.0.9", "semver": "^7.7.3", "stylelint-config-html": "^1.1.0", "stylelint-config-recess-order": "^7.6.0", "stylelint-scss": "^7.0.0" }, "peerDependencies": { "postcss-less": ">=6.0.0", "stylelint": ">=17.0.0", "stylelint-less": ">=3.0.0" }, "optionalPeers": ["postcss-less", "stylelint-less"] }, "sha512-YJsQbhk8LyTPeEQ4LppzvzDwvwD2wlL+/fUDngqQUnN1POPK5+A7z42x4bghgxmFmKb04pmRyQVweQzZkQ7Iuw=="],
+    "@lumirelle/stylelint-config": ["@lumirelle/stylelint-config@5.0.0-beta.5", "", { "dependencies": { "@antfu/install-pkg": "^1.1.0", "@antfu/utils": "^9.3.0", "@clack/prompts": "^0.11.0", "@dreamsicle.io/stylelint-config-tailwindcss": "^1.2.2", "@lumirelle/defu": "^1.1.0", "@stylistic/stylelint-config": "^4.0.0", "local-pkg": "^1.1.2", "lodash.clonedeep": "^4.5.0", "postcss-scss": "^4.0.9", "semver": "^7.7.3", "stylelint-config-html": "^1.1.0", "stylelint-config-recess-order": "^7.6.0", "stylelint-scss": "^7.0.0" }, "peerDependencies": { "postcss-less": ">=6.0.0", "stylelint": ">=17.0.0", "stylelint-less": ">=3.0.0" }, "optionalPeers": ["postcss-less", "stylelint-less"] }, "sha512-r6ZbZ3LsQBLAbrpJwCI3JlE5wq6gF6X0Oe1TpndDxBRRi8t17xQ6edMlEoLMdTQ3Ek9+gjLEiw7CuC9zCla4Ww=="],
 
     "@napi-rs/wasm-runtime": ["@napi-rs/wasm-runtime@1.1.1", "", { "dependencies": { "@emnapi/core": "^1.7.1", "@emnapi/runtime": "^1.7.1", "@tybys/wasm-util": "^0.10.1" } }, "sha512-p64ah1M1ld8xjWv3qbvFwHiFVWrq1yFvV4f7w+mzaqiR4IlSgkqhcRdHwsGgomwzBH51sRY4NEowLxnaBjcW/A=="],
 
@@ -555,7 +555,7 @@
 
     "@tybys/wasm-util": ["@tybys/wasm-util@0.10.1", "", { "dependencies": { "tslib": "^2.4.0" } }, "sha512-9tTaPJLSiejZKx+Bmog4uSubteqTvFrVrURwkmHixBo0G4seD0zUxp98E1DzUBJxLQ3NPwXrGKDiVjwx/DpPsg=="],
 
-    "@types/bun": ["@types/bun@1.3.6", "", { "dependencies": { "bun-types": "1.3.6" } }, "sha512-uWCv6FO/8LcpREhenN1d1b6fcspAB+cefwD7uti8C8VffIv0Um08TKMn98FynpTiU38+y2dUO55T11NgDt8VAA=="],
+    "@types/bun": ["@types/bun@1.3.7", "", { "dependencies": { "bun-types": "1.3.7" } }, "sha512-lmNuMda+Z9b7tmhA0tohwy8ZWFSnmQm1UDWXtH5r9F7wZCfkeO3Jx7wKQ1EOiKq43yHts7ky6r8SDJQWRNupkA=="],
 
     "@types/debug": ["@types/debug@4.1.12", "", { "dependencies": { "@types/ms": "*" } }, "sha512-vIChWdVG3LG1SMxEvI/AK+FWJthlrqlTu7fbrlywTkkaONwk/UAGaULXRlf8vkzFBLVm0zkMdCquhL5aOjhXPQ=="],
 
@@ -739,7 +739,7 @@
 
     "bumpp": ["bumpp@10.4.0", "", { "dependencies": { "ansis": "^4.2.0", "args-tokenizer": "^0.3.0", "c12": "^3.3.3", "cac": "^6.7.14", "escalade": "^3.2.0", "jsonc-parser": "^3.3.1", "package-manager-detector": "^1.6.0", "semver": "^7.7.3", "tinyexec": "^1.0.2", "tinyglobby": "^0.2.15", "yaml": "^2.8.2" }, "bin": { "bumpp": "bin/bumpp.mjs" } }, "sha512-VzJhB4iyZ04w99HreEvXJY/lxzApnE/PRbcFY4cKnOUSRVbRbAf0AIU0DeavrkffW+mclJlkmnQYn9NdwcBk1g=="],
 
-    "bun-types": ["bun-types@1.3.6", "", { "dependencies": { "@types/node": "*" } }, "sha512-OlFwHcnNV99r//9v5IIOgQ9Uk37gZqrNMCcqEaExdkVq3Avwqok1bJFmvGMCkCE0FqzdY8VMOZpfpR3lwI+CsQ=="],
+    "bun-types": ["bun-types@1.3.7", "", { "dependencies": { "@types/node": "*" } }, "sha512-qyschsA03Qz+gou+apt6HNl6HnI+sJJLL4wLDke4iugsE6584CMupOtTY1n+2YC9nGVrEKUlTs99jjRLKgWnjQ=="],
 
     "bunup": ["bunup@0.16.20", "", { "dependencies": { "@bunup/dts": "^0.14.49", "@bunup/shared": "0.16.19", "chokidar": "^5.0.0", "coffi": "^0.1.37", "lightningcss": "^1.30.2", "picocolors": "^1.1.1", "tinyexec": "^1.0.2", "tree-kill": "^1.2.2", "zlye": "^0.4.4" }, "peerDependencies": { "typescript": "latest" }, "optionalPeers": ["typescript"], "bin": { "bunup": "dist/cli/index.js" } }, "sha512-a3Bu6ho8Bs7YEynHzUvwBVXXJIbSxlYMDYZrndyIIL1waUYQ4Eh9V62vS8TpVESOxcx8mQfuS5Hb1bXYE2bYkA=="],
 
