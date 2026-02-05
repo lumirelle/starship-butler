@@ -85,6 +85,8 @@ bumpp
 sconfig
 ofetch
 pinia
+unref
+unshift
 
 # DEV: JAVA
 graalvm
