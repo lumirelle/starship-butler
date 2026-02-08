@@ -38,6 +38,10 @@ const configPathGenerators: ConfigPathGenerator[] = [
     source: join('editor', 'nvim', 'lua', 'config', 'options.lua'),
     target: join(targetFolder, 'lua', 'config', 'options.lua'),
   }),
+  ({ targetFolder }) => ({
+    source: join('editor', 'nvim', 'lua', 'plugins', 'vscode_multi_cursor.lua'),
+    target: join(targetFolder, 'lua', 'plugins', 'vscode_multi_cursor.lua'),
+  }),
 ]
 
 export function neovim(): Action {
@@ -53,6 +57,9 @@ export function neovim(): Action {
       const luaConfigDir = join(targetFolder, 'lua', 'config')
       if (!ensureDirectoryExist(luaConfigDir))
         throw new HandlerError(`Failed to create Lua config directory: ${luaConfigDir}`)
+      const luaPluginsDir = join(targetFolder, 'lua', 'plugins')
+      if (!ensureDirectoryExist(luaPluginsDir))
+        throw new HandlerError(`Failed to create Lua plugins directory: ${join(targetFolder, 'lua', 'plugins')}`)
     },
     handler: createHandler(configPathGenerators),
     posthandler: () => {

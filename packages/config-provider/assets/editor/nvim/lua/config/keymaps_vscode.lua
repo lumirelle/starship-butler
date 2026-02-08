@@ -130,3 +130,8 @@ map({ "n", "x" }, "<leader>r", function()
     vscode.action("editor.action.rename")
   end)
 end, { desc = "Rename Symbol" })
+
+-- plugin: ../plugins/vscode_multi_cursor.lua for vscode
+vim.keymap.set({ "n", "x", "i" }, "<C-n>", function()
+  require("vscode-multi-cursor").addSelectionToNextFindMatch()
+end, { desc = "Add Selection To Next Find Match" })
