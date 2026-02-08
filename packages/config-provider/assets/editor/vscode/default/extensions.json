@@ -40,7 +40,6 @@
     // Editor
     "asvetliakov.vscode-neovim",
     "christian-kohler.path-intellisense",
-    "agutierrezr.emmet-keybindings", // See https://marketplace.visualstudio.com/items?itemName=agutierrezr.emmet-keybindings
     "cardinal90.multi-cursor-case-preserve",
     "yatki.vscode-surround", // After selection, CTRL+SHIFT+T
     // Inlay Hints
@@ -51,7 +50,6 @@
     "ms-azuretools.vscode-containers",
     // AI
     "coderabbit.coderabbit-vscode", // AI Code Reviewer
-    "github.copilot", // VSCode only
     "github.copilot-chat", // VSCode only
 
     /* ----- LSP ----- */
@@ -72,6 +70,6 @@
     "sonarsource.sonarlint-vscode"
   ]
   // EXTENSION COUNT
-  // >> VSCode: INDEX + 1 = 46
-  // >> Cursor: INDEX - 1 = 44
+  // >> VSCode: INDEX + 1 = 44
+  // >> Cursor: INDEX = 43
 }
