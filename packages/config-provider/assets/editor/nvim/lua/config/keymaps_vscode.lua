@@ -132,6 +132,23 @@ map({ "n", "x" }, "<leader>r", function()
 end, { desc = "Rename Symbol" })
 
 -- plugin: ../plugins/vscode_multi_cursor.lua for vscode
-vim.keymap.set({ "n", "x", "i" }, "<C-n>", function()
-  require("vscode-multi-cursor").addSelectionToNextFindMatch()
-end, { desc = "Add Selection To Next Find Match" })
+-- I don't know why when I set these keymaps in the plugin keys option,
+-- it will prevent the default keymaps from being disabled.
+-- Create/cancel multiple cursors
+map({ "n", "x" }, "<leader>mc", require("vscode-multi-cursor").create_cursor, { expr = true, desc = "Create Cursor" })
+map("x", "I", require("vscode-multi-cursor").start_left_edge, { desc = "Start cursors on the left edge" })
+map("x", "A", require("vscode-multi-cursor").start_right, { desc = "Start cursors on the right edge" })
+map("n", "<leader>mx", require("vscode-multi-cursor").cancel, { desc = "Cancel/Clear all Cursors" })
+-- Start editing
+map({ "n", "x" }, "<leader>mi", require("vscode-multi-cursor").start_left, { desc = "Start cursors on the left" })
+map("n", "<leader>mI", require("vscode-multi-cursor").start_left_edge, { desc = "Start cursors on the left edge" })
+map({ "n", "x" }, "<leader>ma", require("vscode-multi-cursor").start_right, { desc = "Start cursors on the right" })
+map("n", "<leader>mA", require("vscode-multi-cursor").start_right, { desc = "Start cursors on the right edge" })
+-- Navigate between cursors
+map({ "n", "x" }, "<leader>mh", require("vscode-multi-cursor").prev_cursor, { desc = "Goto previous cursor" })
+map({ "n", "x" }, "<leader>ml", require("vscode-multi-cursor").next_cursor, { desc = "Goto next cursor" })
+-- Using flash
+map({ "n", "x" }, "<leader>mcs", require("vscode-multi-cursor").flash_char, { desc = "Create cursor using flash" })
+map({ "n", "x" }, "<leader>mcw", require("vscode-multi-cursor").flash_word, { desc = "Create selection using flash" })
+-- Add selection to next find match (like pressing Ctrl+D in VSCode)
+map({ "n", "x", "i" }, "<C-n>", require("vscode-multi-cursor").addSelectionToNextFindMatch, { desc = "Add Selection To Next Find Match" })

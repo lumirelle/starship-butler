@@ -39,6 +39,10 @@ const configPathGenerators: ConfigPathGenerator[] = [
     target: join(targetFolder, 'lua', 'config', 'options.lua'),
   }),
   ({ targetFolder }) => ({
+    source: join('editor', 'nvim', 'lua', 'plugins', 'multicursor.lua'),
+    target: join(targetFolder, 'lua', 'plugins', 'multicursor.lua'),
+  }),
+  ({ targetFolder }) => ({
     source: join('editor', 'nvim', 'lua', 'plugins', 'vscode_multi_cursor.lua'),
     target: join(targetFolder, 'lua', 'plugins', 'vscode_multi_cursor.lua'),
   }),
