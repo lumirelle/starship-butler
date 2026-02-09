@@ -78,18 +78,7 @@ export async function commandSet(
   if (matchedFiles.length === 1) {
     sourceFiles = matchedFiles
   }
-  else if (!isTargetDirectory) {
-    const choice = await multiselect({
-      message: 'Select a file to set up:',
-      options: selectOptions,
-    })
-    if (isCancel(choice)) {
-      consola.info('Operation cancelled by the user.')
-      return
-    }
-    sourceFiles = choice
-  }
-  else {
+  else if (isTargetDirectory) {
     const choice = await select({
       message: 'Multiple files matched the source pattern, please select one to set up:',
       options: selectOptions,
@@ -99,6 +88,17 @@ export async function commandSet(
       return
     }
     sourceFiles = [choice]
+  }
+  else {
+    const choice = await multiselect({
+      message: 'Select a file to set up:',
+      options: selectOptions,
+    })
+    if (isCancel(choice)) {
+      consola.info('Operation cancelled by the user.')
+      return
+    }
+    sourceFiles = choice
   }
   consola.debug('[config-provider] Selected source file:', sourceFiles.join(', '))
 

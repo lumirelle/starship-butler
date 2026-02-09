@@ -52,5 +52,5 @@ export async function loadConfig(
     return false
   })
   const mergedConfig = defu(config, rc)
-  return Promise.resolve(mergedConfig)
+  return mergedConfig
 }

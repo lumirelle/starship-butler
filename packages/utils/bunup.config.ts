@@ -1,6 +1,6 @@
-import { defineConfig } from 'bunup'
+import type { defineConfig } from 'bunup'
 
-export default defineConfig({
+export default {
   entry: [
     './src/config.ts',
     './src/path.ts',
@@ -14,4 +14,4 @@ export default defineConfig({
    * @see https://github.com/oven-sh/bun/issues/5344
    */
   splitting: false,
-}) as ReturnType<typeof defineConfig>
+} satisfies ReturnType<typeof defineConfig> as ReturnType<typeof defineConfig>

@@ -21,7 +21,7 @@ export type RCOptions = typeof import('rc9').defaults
 export function readUserRc<RC extends Record<string, any>>(options?: RCOptions): RC {
   return readUser<RC>({
     name: RC_FILE_NAME,
-    ...(options ?? {}),
+    ...options,
   })
 }
 
@@ -36,7 +36,7 @@ export function readUserRc<RC extends Record<string, any>>(options?: RCOptions):
 export function writeUserRc(config: any, options?: RCOptions): void {
   writeUser(config, {
     name: RC_FILE_NAME,
-    ...(options ?? {}),
+    ...options,
   })
 }
 
@@ -52,7 +52,7 @@ export function writeUserRc(config: any, options?: RCOptions): void {
 export function updateUserRc(config: any, options?: RCOptions): any {
   return updateUser(config, {
     name: RC_FILE_NAME,
-    ...(options ?? {}),
+    ...options,
   })
 }
 
@@ -79,10 +79,10 @@ export function removeUserRc(options?: RCOptions): void {
  */
 export function upsertUserRc(config: any, options?: RCOptions): void {
   const rc = readUserRc(options)
-  if (!rc)
-    writeUserRc(config, options)
-  else
+  if (rc)
     updateUserRc(config, options)
+  else
+    writeUserRc(config, options)
 }
 
 /* ----- c12 ----- */
@@ -104,6 +104,6 @@ export function loadConfig<
   return _loadConfig({
     name: 'butler',
     rcFile: false,
-    ...(options ?? {}),
+    ...options,
   })
 }

@@ -1,44 +1,16 @@
 import type { KnipConfig } from 'knip'
 
 export default {
+  // @keep-sorted
   workspaces: {
+    // @keep-sorted
     '.': {
       // @keep-sorted
       ignoreDependencies: [
         'starship-butler',
       ],
     },
-    'playground': {
-      // @keep-sorted
-      ignoreDependencies: [
-        'starship-butler',
-      ],
-    },
-    'packages/config-provider': {
-      // @keep-sorted
-      ignoreDependencies: [
-        '@lumirelle/stylelint-config',
-        'taze',
-      ],
-      // @keep-sorted
-      ignoreBinaries: ['nu'],
-      // @keep-sorted
-      ignoreFiles: [
-        'assets/**/*',
-      ],
-    },
-    'packages/core': {
-      // @keep-sorted
-      ignoreFiles: [
-        'test/fixture/butler.config*.ts',
-      ],
-    },
-    'packages/utils': {
-      // @keep-sorted
-      ignoreFiles: [
-        'bunup.config.*',
-      ],
-    },
+    // @keep-sorted
     'docs': {
       // @keep-sorted
       ignoreDependencies: [
@@ -50,5 +22,41 @@ export default {
         'uno.css',
       ],
     },
+    // @keep-sorted
+    'packages/config-provider': {
+      // @keep-sorted
+      ignoreBinaries: ['nu'],
+      // @keep-sorted
+      ignoreDependencies: [
+        '@lumirelle/stylelint-config',
+        'taze',
+      ],
+      // @keep-sorted
+      ignoreFiles: [
+        'assets/**/*',
+      ],
+    },
+    // @keep-sorted
+    'packages/core': {
+      // @keep-sorted
+      ignoreFiles: [
+        'test/fixture/butler.config*.ts',
+      ],
+    },
+    // @keep-sorted
+    'packages/utils': {
+      entry: ['src/*.ts'],
+      // @keep-sorted
+      ignoreFiles: [
+        'bunup.config.*',
+      ],
+    },
+    // @keep-sorted
+    'playground': {
+      // @keep-sorted
+      ignoreDependencies: [
+        'starship-butler',
+      ],
+    },
   },
-} as KnipConfig
+} satisfies KnipConfig as KnipConfig

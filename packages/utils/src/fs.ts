@@ -11,7 +11,7 @@ import { info } from './highlight'
 export function exists(path: string): boolean {
   try {
     // If it's a file but ends with `/` or `\`, we consider it does not exist, in order to let the behavior on Windows be consistent with Unix
-    if (lstatSync(path).isFile() && path.match(/\/$|\\$/))
+    if (lstatSync(path).isFile() && /\/$|\\$/.exec(path))
       return false
     else
       return true
@@ -42,7 +42,7 @@ export function isDirectory(path: string): boolean {
   if (exists(path))
     return lstatSync(path).isDirectory()
   else
-    return (!exists(path) || lstatSync(path).isDirectory()) && path.match(/\/$|\\$/) !== null
+    return (!exists(path) || lstatSync(path).isDirectory()) && /\/$|\\$/.exec(path) !== null
 }
 
 /**

@@ -53,7 +53,7 @@ export async function isPathExistEnv(path: Arrayable<string>): Promise<boolean> 
   try {
     const command = platform() === 'win32' ? 'where' : 'which'
     const results = await Promise.all(path.map(async t => (await x(command, [t])).stdout.trim() !== ''))
-    return results.every(t => t)
+    return results.every(Boolean)
   }
   catch {
     return false
