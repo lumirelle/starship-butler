@@ -20,6 +20,7 @@
     // JavaScript / TypeScript
     "oven.bun-vscode",
     "johnsoncodehk.vscode-tsconfig-helper",
+    "npmx-dev.vscode-npmx",
     // Vue
     "vue.volar",
     // Dotenv
@@ -33,6 +34,7 @@
     // Tailwind CSS
     "bradlc.vscode-tailwindcss",
     // Nuxt
+    "nuxtr.nuxtr-vscode",
     "alimozdemir.vscode-nuxt-dx-tools",
     "antfu.goto-alias", // F12
     // Slidev
@@ -43,6 +45,6 @@
     "stylelint.vscode-stylelint"
   ]
   // EXTENSION COUNT
-  // >> VSCode: INDEX + 1 = 22 + {PROFILE_DEFAULT: 44} = 66
-  // >> Cursor: INDEX + 1 = 22 + {PROFILE_DEFAULT: 43} = 65
+  // >> VSCode: INDEX + 1 = 24 + {PROFILE_DEFAULT: 44} = 68
+  // >> Cursor: INDEX + 1 = 24 + {PROFILE_DEFAULT: 43} = 67
 }

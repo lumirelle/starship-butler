@@ -486,6 +486,8 @@
   "iconify.excludes": ["el"],
   "markdown.extension.italic.indicator": "_",
   "markdown.extension.tableFormatter.enabled": false, // Use `prettier` or `eslint-plugin-format` instead
+  "nuxtr.vueFiles.firstTag": "script",
+  "nuxtr.piniaFiles.defaultTemplate": "setup",
   "vscode-neovim.ctrlKeysForNormalMode": [
     "a",
     "b",
