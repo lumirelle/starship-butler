@@ -1,13 +1,11 @@
 {
-  // Editor Code Actions on Save
+  // Code Quality
+  "editor.defaultFormatter": "oxc.oxc-vscode",
   "editor.codeActionsOnSave": {
-    "source.fixAll.eslint": "explicit",
+    "source.fixAll.oxc": "always",
+    "source.fixAll.eslint": "always",
     "source.organizeImports": "never"
   },
-
-  // Formatter & Linter
-  "editor.formatOnSave": false,
-  "prettier.enable": false,
   "eslint.runtime": "bun",
   "eslint.execArgv": ["-b"],
   "eslint.validate": [
@@ -22,18 +20,11 @@
     "jsonc",
     "yaml",
     "toml",
-    "xml"
-  ],
-  "eslint.rules.customizations": [
-    { "rule": "style/*", "severity": "off" },
-    { "rule": "format/*", "severity": "off" },
-    { "rule": "*-indent", "severity": "off" },
-    { "rule": "*-spacing", "severity": "off" },
-    { "rule": "*-spaces", "severity": "off" },
-    { "rule": "*-order", "severity": "off" },
-    { "rule": "*-dangle", "severity": "off" },
-    { "rule": "*-newline", "severity": "off" },
-    { "rule": "*quotes", "severity": "off" },
-    { "rule": "*semi", "severity": "off" }
+    "xml",
+    "css",
+    "postcss",
+    "scss",
+    "sass",
+    "less"
   ]
 }

@@ -1,8 +1,12 @@
 // @ts-check
-/* eslint perfectionist/sort-objects: "error" */
 import antfu from '@antfu/eslint-config'
+import oxlint from 'eslint-plugin-oxlint'
 
-export default antfu({
-  formatters: true,
-  unocss: true,
-})
+export default antfu(
+  {
+    // Use `oxfmt`
+    stylistic: false,
+    unocss: true,
+  },
+  ...oxlint.configs['flat/recommended'],
+)

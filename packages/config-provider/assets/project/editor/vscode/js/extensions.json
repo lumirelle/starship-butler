@@ -3,6 +3,7 @@
   "recommendations": [
     "editorconfig.editorconfig",
     "oven.bun-vscode",
+    "oxc.oxc-vscode",
     "dbaeumer.vscode-eslint",
     "antfu.pnpm-catalog-lens"
   ]

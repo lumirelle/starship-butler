@@ -1,13 +1,17 @@
 // @ts-check
-/* eslint perfectionist/sort-objects: "error" */
 import antfu from '@antfu/eslint-config'
+import oxlint from 'eslint-plugin-oxlint'
 import nuxt from './.nuxt/eslint.config.mjs'
 
-export default antfu({
-  formatters: true,
-  unocss: true,
-})
+export default antfu(
+  {
+    // Use `oxfmt`
+    stylistic: false,
+    unocss: true,
+  },
   /**
    * Don't forget to set `standalone: false` in your Nuxt ESLint module options.
    */
-  .append(nuxt())
+  nuxt(),
+  ...oxlint.configs['flat/recommended'],
+)

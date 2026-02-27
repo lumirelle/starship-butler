@@ -2,24 +2,6 @@
   "type": "module",
   "version": "1.0.4",
   "private": true,
-  "scripts": {
-    "prepare": "bun simple-git-hooks",
-    "dev": "bun run --filter '*' dev",
-    "build": "bun run --filter '*' build",
-    "start": "bun run --cwd packages/core start",
-    "docs": "bun run --cwd docs docs:dev",
-    "docs:build": "bun run --cwd docs docs:build",
-    "docs:preview": "bun run --cwd docs docs:preview",
-    "play": "bun run --cwd playground play",
-    "lint": "bun eslint --cache .",
-    "typecheck": "bun tsc --noEmit",
-    "usagecheck": "bun knip",
-    "distcheck": "bun run --filter '*' distcheck",
-    "check": "bun run lint && bun run typecheck && bun run usagecheck && bun run distcheck",
-    "test": "bun test",
-    "prerelease": "bun run build && bun run check && bun run test",
-    "release": "bun bumpp --all --recursive --execute \"bun update --lockfile-only starship-butler\" # See https://github.com/oven-sh/bun/issues/18906 and https://github.com/oven-sh/bun/issues/20477"
-  },
   "workspaces": {
     "packages": [
       "docs",
@@ -57,9 +39,11 @@
         "@antfu/eslint-config": "^7.2.0",
         "@arethetypeswrong/cli": "^0.18.2",
         "eslint": "^9.39.2",
-        "eslint-plugin-format": "^1.3.1",
+        "eslint-plugin-oxlint": "^1.50.0",
         "knip": "^5.82.1",
         "nano-staged": "^0.9.0",
+        "oxfmt": "^0.35.0",
+        "oxlint": "^1.50.0",
         "publint": "^0.3.17"
       },
       "test": {
@@ -86,16 +70,36 @@
       }
     }
   },
+  "scripts": {
+    "prepare": "bun simple-git-hooks",
+    "dev": "bun run --filter '*' dev",
+    "build": "bun run --filter '*' build",
+    "start": "bun run --cwd packages/core start",
+    "docs": "bun run --cwd docs docs:dev",
+    "docs:build": "bun run --cwd docs docs:build",
+    "docs:preview": "bun run --cwd docs docs:preview",
+    "play": "bun run --cwd playground play",
+    "lint": "bun oxlint && bun eslint",
+    "format": "bun oxfmt",
+    "typecheck": "bun tsc --noEmit",
+    "usagecheck": "bun knip",
+    "distcheck": "bun run --filter '*' distcheck",
+    "check": "bun run lint && bun run format && bun run typecheck && bun run usagecheck && bun run distcheck",
+    "test": "bun test",
+    "prerelease": "bun run build && bun run check && bun run test",
+    "release": "bun bumpp --all --recursive --execute \"bun update --lockfile-only starship-butler\" # See https://github.com/oven-sh/bun/issues/18906 and https://github.com/oven-sh/bun/issues/20477"
+  },
   "devDependencies": {
     "@antfu/eslint-config": "catalog:check",
     "@arethetypeswrong/cli": "catalog:check",
     "@types/bun": "catalog:types",
     "bumpp": "catalog:dev",
     "bunup": "catalog:build",
-    "eslint": "catalog:check",
-    "eslint-plugin-format": "catalog:check",
+    "eslint-plugin-oxlint": "catalog:check",
     "knip": "catalog:check",
     "nano-staged": "catalog:check",
+    "oxfmt": "catalog:check",
+    "oxlint": "catalog:check",
     "publint": "catalog:check",
     "simple-git-hooks": "catalog:dev",
     "starship-butler": "workspace:*",
@@ -108,7 +112,9 @@
   },
   "nano-staged": {
     "*": [
-      "bun eslint --cache --fix"
+      "bun oxlint",
+      "bun eslint",
+      "bunx oxfmt --no-error-on-unmatched-pattern"
     ]
   },
   "patchedDependencies": {
