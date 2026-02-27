@@ -34,10 +34,8 @@
     "dist"
   ],
   "scripts": {
-    "dev": "bunup --watch",
-    "build": "bunup",
     "start": "bun run ./src/cli.ts",
-    "distcheck": "bun attw --pack --profile esm-only && bun publint"
+    "check:dist": "bun attw --pack --profile esm-only && bun publint"
   },
   "dependencies": {
     "@clack/prompts": "catalog:prod",
