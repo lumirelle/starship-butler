@@ -85,18 +85,11 @@ MAKE SURE YOU KNOW WHAT YOU ARE DOING!
 MAKE SURE YOU KNOW WHAT YOU ARE DOING!
 `,
   )
-  .option(
-    '-?, --verbose',
-    'Show verbose output. (Default: false)\n',
-  )
-  .option(
-    '-d, --dry-run',
-    'Dry run. (Default: false)\n',
-  )
+  .option('-?, --verbose', 'Show verbose output. (Default: false)\n')
+  .option('-d, --dry-run', 'Dry run. (Default: false)\n')
   .action(async (cliOptions: Partial<PresetOptions>) => {
     const cfgOptions: Partial<PresetOptions> = config['config-provider'] ?? {}
-    if (cliOptions.verbose || cfgOptions.verbose)
-      consola.level = LogLevels.debug
+    if (cliOptions.verbose || cfgOptions.verbose) consola.level = LogLevels.debug
     consola.debug('[starship-butler] Received command line interface options:', cliOptions)
     consola.debug('[starship-butler] Loaded configuration options:', cfgOptions)
     const defaultOptions: Partial<PresetOptions> = {
@@ -108,9 +101,14 @@ MAKE SURE YOU KNOW WHAT YOU ARE DOING!
     }
     const mergedOptions = defu(cliOptions, cfgOptions, defaultOptions)
     consola.debug('[starship-butler] Merged options:', mergedOptions)
-    if (mergedOptions.force && !mergedOptions.agreeToForce && !await confirm({
-      message: 'Are you sure you want to configure your system forcibly? This will override the existing configuration with the same name, and cannot be undone!',
-    })) {
+    if (
+      mergedOptions.force &&
+      !mergedOptions.agreeToForce &&
+      !(await confirm({
+        message:
+          'Are you sure you want to configure your system forcibly? This will override the existing configuration with the same name, and cannot be undone!',
+      }))
+    ) {
       return
     }
     await commandPreset(mergedOptions, systemOptions)
@@ -142,18 +140,11 @@ MAKE SURE YOU KNOW WHAT YOU ARE DOING!
 MAKE SURE YOU KNOW WHAT YOU ARE DOING!
 `,
   )
-  .option(
-    '-?, --verbose',
-    'Show verbose output. (Default: false)\n',
-  )
-  .option(
-    '-d, --dry-run',
-    'Dry run. (Default: false)\n',
-  )
+  .option('-?, --verbose', 'Show verbose output. (Default: false)\n')
+  .option('-d, --dry-run', 'Dry run. (Default: false)\n')
   .action(async (sourcePattern: string, target: string, cliOptions: Partial<SetOptions>) => {
     const cfgOptions: Partial<SetOptions> = config['config-provider'] ?? {}
-    if (cfgOptions.verbose || cliOptions.verbose)
-      consola.level = LogLevels.debug
+    if (cfgOptions.verbose || cliOptions.verbose) consola.level = LogLevels.debug
     consola.debug('[starship-butler] Received command line interface options:', cliOptions)
     consola.debug('[starship-butler] Loaded configuration options:', cfgOptions)
     const defaultOptions: Partial<SetOptions> = {
@@ -165,9 +156,14 @@ MAKE SURE YOU KNOW WHAT YOU ARE DOING!
     }
     const mergedOptions = defu(cliOptions, cfgOptions, defaultOptions)
     consola.debug('[starship-butler] Merged options:', mergedOptions)
-    if (mergedOptions.force && !mergedOptions.agreeToForce && !await confirm({
-      message: 'Are you sure you want to set matched configurations forcibly? This will override the existing configuration with the same name, and cannot be undone!',
-    })) {
+    if (
+      mergedOptions.force &&
+      !mergedOptions.agreeToForce &&
+      !(await confirm({
+        message:
+          'Are you sure you want to set matched configurations forcibly? This will override the existing configuration with the same name, and cannot be undone!',
+      }))
+    ) {
       return
     }
     await commandSet(sourcePattern, target, mergedOptions)

@@ -2,7 +2,8 @@ import type { Arrayable, Awaitable, Nullable } from '@antfu/utils'
 import type { SystemOptions } from 'starship-butler-types'
 import type { ProcessConfigOptions } from '../../utils/types'
 
-export type ActionId = 'clash-verge-rev'
+export type ActionId =
+  | 'clash-verge-rev'
   | 'windows-terminal'
   | 'nushell'
   | 'bash'
@@ -87,7 +88,9 @@ export interface Action {
    * @param context Context provided to action handler.
    * @returns The resolved target folder for the preset.
    */
-  targetFolder: string | ((context: Omit<ActionHandlerContext, 'targetFolder'>) => Awaitable<string>)
+  targetFolder:
+    | string
+    | ((context: Omit<ActionHandlerContext, 'targetFolder'>) => Awaitable<string>)
   /**
    * Prehandler for the action, if throws an error, the handler will not be executed, and this action will be considered failed.
    *

@@ -1,6 +1,10 @@
 import { describe, expect, it } from 'bun:test'
 import { exists, remove } from 'starship-butler-utils/fs'
-import { ensureDirectoryExist, isPathExist, isPathExistEnv } from '../../../../src/command/preset/actions/utils'
+import {
+  ensureDirectoryExist,
+  isPathExist,
+  isPathExistEnv,
+} from '../../../../src/command/preset/actions/utils'
 
 const fixtureDir = import.meta.dirname
 

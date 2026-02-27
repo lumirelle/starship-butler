@@ -28,12 +28,13 @@ export function zed(): Action {
     prehandler: ({ targetFolder, systemOptions }) => {
       if (!(systemOptions.platform in platformTargetFolderMap))
         throw new HandlerError(`Unsupported platform: ${systemOptions.platform}`)
-      if (!isPathExist(targetFolder))
-        throw new HandlerError(`You should install ${name} first!`)
+      if (!isPathExist(targetFolder)) throw new HandlerError(`You should install ${name} first!`)
     },
     handler: createHandler(configPathGenerators),
     posthandler: () => {
-      consola.info('This configuration is meant to be used by `Zed` installed in user scope and default path.')
+      consola.info(
+        'This configuration is meant to be used by `Zed` installed in user scope and default path.',
+      )
     },
   }
 }

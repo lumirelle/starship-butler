@@ -280,6 +280,6 @@ describe('actions', () => {
       include: [],
     })
     expect(mockedMultiselect).toHaveBeenCalledTimes(1)
-    expect(filteredActions.map(action => action.id)).toEqual(['nushell', 'bash'])
+    expect(filteredActions.map((action) => action.id)).toEqual(['nushell', 'bash'])
   })
 })

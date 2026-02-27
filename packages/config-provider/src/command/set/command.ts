@@ -24,7 +24,9 @@ export async function commandSet(
   target: string,
   options: Partial<SetOptions>,
 ): Promise<void> {
-  consola.debug(`[config-provider] Received source pattern: '${sourcePattern}', target: '${target}'`)
+  consola.debug(
+    `[config-provider] Received source pattern: '${sourcePattern}', target: '${target}'`,
+  )
   consola.debug('[config-provider] Received set options:', options)
 
   if (!validateOptions(options)) {
@@ -48,13 +50,13 @@ export async function commandSet(
   // Create source glob pattern
   // If the pattern does not contain folder part, add '**/' prefix to match
   // files in all sub-folders, this is to improve user experience
-  if (!sourcePattern.includes('/'))
-    sourcePattern = `**/${sourcePattern}`
+  if (!sourcePattern.includes('/')) sourcePattern = `**/${sourcePattern}`
   consola.debug('[config-provider] Source pattern:', sourcePattern)
   // Read ignore patterns from .setignore file
-  const ignorePatterns = readFileSync(join(assetsPath, '.setignore'), 'utf-8')
-    ?.split('\n')
-    .filter(line => line.trim() !== '') || []
+  const ignorePatterns =
+    readFileSync(join(assetsPath, '.setignore'), 'utf-8')
+      ?.split('\n')
+      .filter((line) => line.trim() !== '') || []
   const matchedFiles = globSync(sourcePattern, {
     cwd: assetsPath,
     dot: true,
@@ -74,11 +76,10 @@ export async function commandSet(
     consola.error('No files matched the source pattern!')
     return
   }
-  const selectOptions = matchedFiles.map(file => ({ label: file, value: file }))
+  const selectOptions = matchedFiles.map((file) => ({ label: file, value: file }))
   if (matchedFiles.length === 1) {
     sourceFiles = matchedFiles
-  }
-  else if (isTargetDirectory) {
+  } else if (isTargetDirectory) {
     const choice = await select({
       message: 'Multiple files matched the source pattern, please select one to set up:',
       options: selectOptions,
@@ -88,8 +89,7 @@ export async function commandSet(
       return
     }
     sourceFiles = [choice]
-  }
-  else {
+  } else {
     const choice = await multiselect({
       message: 'Select a file to set up:',
       options: selectOptions,
@@ -111,8 +111,7 @@ export async function commandSet(
     if (isTargetDirectory) {
       ensureDirectory(target)
       targetFile = join(cwd, target, basename(sourceFile))
-    }
-    else {
+    } else {
       ensureDirectory(join(cwd, target))
       targetFile = join(cwd, target)
     }

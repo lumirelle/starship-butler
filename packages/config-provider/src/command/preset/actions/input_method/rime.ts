@@ -43,15 +43,18 @@ export function rime(): Action {
     prehandler: ({ targetFolder, systemOptions }) => {
       if (!(systemOptions.platform in platformTargetFolderMap))
         throw new Error(`Unsupported platform: ${systemOptions.platform}`)
-      if (!isPathExist(targetFolder))
-        throw new Error(`You should install ${name} first!`)
+      if (!isPathExist(targetFolder)) throw new Error(`You should install ${name} first!`)
     },
     targetFolder: createTargetFolderHandler(platformTargetFolderMap),
     handler: createHandler(configPathGenerators),
     posthandler: ({ targetFolder, systemOptions }) => {
-      consola.info('Currently, this configuration only supports `Rime official input` method with default user configuration folder path. For Linux users, please make sure you are using `ibus-rime`. After applying the configuration, don\'t forget to deploy Rime and wait for few seconds/minutes! Just with patience :) ')
+      consola.info(
+        "Currently, this configuration only supports `Rime official input` method with default user configuration folder path. For Linux users, please make sure you are using `ibus-rime`. After applying the configuration, don't forget to deploy Rime and wait for few seconds/minutes! Just with patience :) ",
+      )
       if (systemOptions.platform === 'win32')
-        consola.info(`If you are getting in trouble with disabling Ctrl+Space (which will switch input methods), please run the \`disable-ctrl_space.reg\` file in your Rime configuration folder (${targetFolder}) to fix it. Don't forget to restart your computer after applying the registry file!`)
+        consola.info(
+          `If you are getting in trouble with disabling Ctrl+Space (which will switch input methods), please run the \`disable-ctrl_space.reg\` file in your Rime configuration folder (${targetFolder}) to fix it. Don't forget to restart your computer after applying the registry file!`,
+        )
     },
   }
 }

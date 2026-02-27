@@ -13,9 +13,11 @@ describe('exports-snapshot', async () => {
   for (const pkg of workspaces.packages) {
     const glob = new Glob(`${pkg}/package.json`)
     for await (const pkgJsonPath of glob.scan({ cwd: root, absolute: true })) {
-      const pkgJson = await import(pkgJsonPath).then(m => m.default) as { name?: string, private?: boolean }
-      if (!pkgJson.name || pkgJson.private)
-        continue
+      const pkgJson = (await import(pkgJsonPath).then((m) => m.default)) as {
+        name?: string
+        private?: boolean
+      }
+      if (!pkgJson.name || pkgJson.private) continue
       it(`${pkgJson.name}`, async () => {
         const manifest = await getPackageExportsManifest({
           importMode: 'src',

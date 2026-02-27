@@ -79,10 +79,8 @@ export function removeUserRc(options?: RCOptions): void {
  */
 export function upsertUserRc(config: any, options?: RCOptions): void {
   const rc = readUserRc(options)
-  if (rc)
-    updateUserRc(config, options)
-  else
-    writeUserRc(config, options)
+  if (rc) updateUserRc(config, options)
+  else writeUserRc(config, options)
 }
 
 /* ----- c12 ----- */

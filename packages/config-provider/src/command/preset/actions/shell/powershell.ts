@@ -3,7 +3,12 @@ import consola from 'consola'
 import { join } from 'pathe'
 import { homedir } from 'starship-butler-utils/path'
 import { HandlerError } from '../../error'
-import { createHandler, createTargetFolderHandler, ensureDirectoryExist, isPathExistEnv } from '../utils'
+import {
+  createHandler,
+  createTargetFolderHandler,
+  ensureDirectoryExist,
+  isPathExistEnv,
+} from '../utils'
 
 const name = 'PowerShell'
 
@@ -31,13 +36,17 @@ export function powershell(): Action {
     targetFolder: createTargetFolderHandler(platformTargetFolderMap),
     prehandler: async ({ targetFolder }) => {
       if (!(await isPathExistEnv('pwsh')))
-        throw new HandlerError(`You should install ${name} first and add it to your system's PATH environment variable!`)
+        throw new HandlerError(
+          `You should install ${name} first and add it to your system's PATH environment variable!`,
+        )
       if (!ensureDirectoryExist(targetFolder))
         throw new HandlerError(`Failed to create PowerShell profile folder: ${targetFolder}`)
     },
     handler: createHandler(configPathGenerators),
     posthandler: ({ targetFolder }) => {
-      consola.info(`This configuration will use \`Starship\` as the prompt, if you don't want to use it, please edit this config \`(${join(targetFolder, 'profile.ps1')})\` manually.`)
+      consola.info(
+        `This configuration will use \`Starship\` as the prompt, if you don't want to use it, please edit this config \`(${join(targetFolder, 'profile.ps1')})\` manually.`,
+      )
     },
   }
 }

@@ -3,7 +3,12 @@ import consola from 'consola'
 import { join } from 'pathe'
 import { appdata, homedir } from 'starship-butler-utils/path'
 import { HandlerError } from '../../error'
-import { createHandler, createTargetFolderHandler, ensureDirectoryExist, isPathExist } from '../utils'
+import {
+  createHandler,
+  createTargetFolderHandler,
+  ensureDirectoryExist,
+  isPathExist,
+} from '../utils'
 
 const name = 'Cursor'
 
@@ -46,8 +51,7 @@ export function cursor(): Action {
     prehandler: ({ targetFolder, systemOptions }) => {
       if (!(systemOptions.platform in platformTargetFolderMap))
         throw new HandlerError(`Unsupported platform: ${systemOptions.platform}`)
-      if (!isPathExist(targetFolder))
-        throw new HandlerError(`You should install ${name} first!`)
+      if (!isPathExist(targetFolder)) throw new HandlerError(`You should install ${name} first!`)
       const snippetsFolder = join(targetFolder, 'snippets')
       if (!ensureDirectoryExist(snippetsFolder))
         throw new HandlerError(`Failed to create snippets folder: ${snippetsFolder}`)
@@ -56,8 +60,12 @@ export function cursor(): Action {
     },
     handler: createHandler(configPathGenerators),
     posthandler: () => {
-      consola.info('This configuration is meant to be used by `Cursor` installed in user scope and default path.')
-      consola.info('It uses with many opinionated preset: custom fonts, `Neovim` extension, `podman` integration, etc.')
+      consola.info(
+        'This configuration is meant to be used by `Cursor` installed in user scope and default path.',
+      )
+      consola.info(
+        'It uses with many opinionated preset: custom fonts, `Neovim` extension, `podman` integration, etc.',
+      )
     },
   }
 }

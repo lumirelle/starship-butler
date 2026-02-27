@@ -48,8 +48,7 @@ class SpyUtils {
     if (times === 'once') {
       this.spiedViteNormalizePath.mockImplementationOnce((_: string) => 'Mocked')
       this.spiedEslintLoad.mockImplementationOnce(async () => undefined as any)
-    }
-    else if (times === 'always') {
+    } else if (times === 'always') {
       this.spiedViteNormalizePath.mockImplementation((_: string) => 'Mocked')
       this.spiedEslintLoad.mockImplementation(async () => undefined as any)
     }
@@ -131,8 +130,7 @@ class MockUtils {
     if (times === 'once') {
       this.mockedViteNormalizePath.mockImplementationOnce((_: string) => 'Mocked')
       this.mockedEslintLoad.mockImplementationOnce(async () => undefined as any)
-    }
-    else if (times === 'always') {
+    } else if (times === 'always') {
       this.mockedViteNormalizePath.mockImplementation((_: string) => 'Mocked')
       this.mockedEslintLoad.mockImplementation(async () => undefined as any)
     }
@@ -184,17 +182,17 @@ class MockUtils {
  */
 class ModuleUtils {
   static async expectOriginalImpl(): Promise<void> {
-    expect((await import ('vite')).normalizePath('/path/to/file/../file')).toBe('/path/to/file')
+    expect((await import('vite')).normalizePath('/path/to/file/../file')).toBe('/path/to/file')
     expect(await (await import('eslint')).loadESLint()).toBeDefined()
   }
 
   static async expectMockedImpl(): Promise<void> {
-    expect((await import ('vite')).normalizePath('/path/to/file/../file')).toBe('Mocked')
+    expect((await import('vite')).normalizePath('/path/to/file/../file')).toBe('Mocked')
     expect(await (await import('eslint')).loadESLint()).toBeUndefined()
   }
 
   static async expectNoImpl(): Promise<void> {
-    expect((await import ('vite')).normalizePath('/path/to/file/../file')).toBeUndefined()
+    expect((await import('vite')).normalizePath('/path/to/file/../file')).toBeUndefined()
     expect(await (await import('eslint')).loadESLint()).toBeUndefined()
   }
 }

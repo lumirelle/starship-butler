@@ -3,7 +3,12 @@ import consola from 'consola'
 import { join } from 'pathe'
 import { homedir, localAppdata } from 'starship-butler-utils/path'
 import { HandlerError } from '../../error'
-import { createHandler, createTargetFolderHandler, ensureDirectoryExist, isPathExist } from '../utils'
+import {
+  createHandler,
+  createTargetFolderHandler,
+  ensureDirectoryExist,
+  isPathExist,
+} from '../utils'
 
 const name = 'Neo Vim'
 
@@ -63,11 +68,15 @@ export function neovim(): Action {
         throw new HandlerError(`Failed to create Lua config directory: ${luaConfigDir}`)
       const luaPluginsDir = join(targetFolder, 'lua', 'plugins')
       if (!ensureDirectoryExist(luaPluginsDir))
-        throw new HandlerError(`Failed to create Lua plugins directory: ${join(targetFolder, 'lua', 'plugins')}`)
+        throw new HandlerError(
+          `Failed to create Lua plugins directory: ${join(targetFolder, 'lua', 'plugins')}`,
+        )
     },
     handler: createHandler(configPathGenerators),
     posthandler: () => {
-      consola.info('This configuration is meant to be used by `NeoVim` installed in user scope and default path with LazyVim.')
+      consola.info(
+        'This configuration is meant to be used by `NeoVim` installed in user scope and default path with LazyVim.',
+      )
     },
   }
 }

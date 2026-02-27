@@ -22,7 +22,9 @@ export function bash(): Action {
     targetFolder,
     handler: createHandler(configPathGenerators),
     posthandler: ({ targetFolder }) => {
-      consola.info(`This configuration will use \`Starship\` as the prompt, if you don't want to use it, please edit this config \`(${join(targetFolder, '.bash_profile')})\` manually.`)
+      consola.info(
+        `This configuration will use \`Starship\` as the prompt, if you don't want to use it, please edit this config \`(${join(targetFolder, '.bash_profile')})\` manually.`,
+      )
     },
   }
 }

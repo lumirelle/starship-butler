@@ -36,7 +36,7 @@ export function isPathExist(path: Arrayable<string>): boolean {
   if (path.length === 0) {
     return false
   }
-  return path.every(t => exists(t))
+  return path.every((t) => exists(t))
 }
 
 /**
@@ -52,10 +52,11 @@ export async function isPathExistEnv(path: Arrayable<string>): Promise<boolean> 
   }
   try {
     const command = platform() === 'win32' ? 'where' : 'which'
-    const results = await Promise.all(path.map(async t => (await x(command, [t])).stdout.trim() !== ''))
+    const results = await Promise.all(
+      path.map(async (t) => (await x(command, [t])).stdout.trim() !== ''),
+    )
     return results.every(Boolean)
-  }
-  catch {
+  } catch {
     return false
   }
 }
@@ -75,10 +76,8 @@ export async function isPathExistEnv(path: Arrayable<string>): Promise<boolean> 
  * @returns If directory exists.
  */
 export function ensureDirectoryExist(directory: string): boolean {
-  if (!directory)
-    return false
-  if (exists(directory))
-    return true
+  if (!directory) return false
+  if (exists(directory)) return true
   return ensureDirectory(directory)
 }
 
@@ -96,8 +95,7 @@ export function createHandler(
   return (context: ActionHandlerContext) => {
     for (const generator of configPathGenerators) {
       const result = generator(context)
-      if (!result)
-        continue
+      if (!result) continue
       processConfig(result.source, result.target, context.options)
     }
   }

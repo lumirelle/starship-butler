@@ -41,28 +41,17 @@ export interface UseNamespaceReturn {
 }
 
 export function useNamespace(block: string): UseNamespaceReturn {
-  const b = (blockSuffix = ''): string =>
-    _bem(block, blockSuffix, '', '')
-  const e = (element?: string): string =>
-    element ? _bem(block, '', element, '') : ''
-  const m = (modifier?: string): string =>
-    modifier ? _bem(block, '', '', modifier) : ''
+  const b = (blockSuffix = ''): string => _bem(block, blockSuffix, '', '')
+  const e = (element?: string): string => (element ? _bem(block, '', element, '') : '')
+  const m = (modifier?: string): string => (modifier ? _bem(block, '', '', modifier) : '')
   const be = (blockSuffix?: string, element?: string): string =>
-    blockSuffix && element
-      ? _bem(block, blockSuffix, element, '')
-      : ''
+    blockSuffix && element ? _bem(block, blockSuffix, element, '') : ''
   const em = (element?: string, modifier?: string): string =>
-    element && modifier
-      ? _bem(block, '', element, modifier)
-      : ''
+    element && modifier ? _bem(block, '', element, modifier) : ''
   const bm = (blockSuffix?: string, modifier?: string): string =>
-    blockSuffix && modifier
-      ? _bem(block, blockSuffix, '', modifier)
-      : ''
+    blockSuffix && modifier ? _bem(block, blockSuffix, '', modifier) : ''
   const bem = (blockSuffix?: string, element?: string, modifier?: string): string =>
-    blockSuffix && element && modifier
-      ? _bem(block, blockSuffix, element, modifier)
-      : ''
+    blockSuffix && element && modifier ? _bem(block, blockSuffix, element, modifier) : ''
   const is: {
     (name: string, state: boolean | undefined): string
     (name: string): string

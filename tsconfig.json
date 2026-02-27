@@ -2,9 +2,7 @@
   "compilerOptions": {
     // Language and Environment
     "target": "ESNext",
-    "lib": [
-      "ESNext"
-    ],
+    "lib": ["ESNext"],
     "moduleDetection": "force",
     "useDefineForClassFields": true,
     "libReplacement": false,
@@ -16,9 +14,7 @@
       // Add your path aliases here
     },
     "resolveJsonModule": true,
-    "types": [
-      "bun"
-    ],
+    "types": ["bun"],
     "allowImportingTsExtensions": true,
 
     // Type Checking
@@ -39,5 +35,6 @@
 
     // Completeness
     "skipLibCheck": true
-  }
+  },
+  "exclude": ["docs/**", "playground/**", "**/*.config.ts"]
 }

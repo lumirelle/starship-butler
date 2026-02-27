@@ -1,6 +1,13 @@
 import { afterAll, beforeAll, beforeEach, describe, expect, it } from 'bun:test'
 import { version } from '../package.json'
-import { loadConfig, readUserRc, removeUserRc, updateUserRc, upsertUserRc, writeUserRc } from '../src/config'
+import {
+  loadConfig,
+  readUserRc,
+  removeUserRc,
+  updateUserRc,
+  upsertUserRc,
+  writeUserRc,
+} from '../src/config'
 
 beforeAll(() => {
   // Backup user rc file before all test

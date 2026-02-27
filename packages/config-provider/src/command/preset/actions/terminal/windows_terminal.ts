@@ -25,13 +25,16 @@ export function windowsTerminal(): Action {
     targetFolder,
     prehandler: ({ targetFolder, systemOptions }) => {
       if (systemOptions.platform !== 'win32')
-        throw new HandlerError('Windows Terminal is only supported on Windows platform, you may never use it as you are not using Windows.')
-      if (!isPathExist(targetFolder))
-        throw new HandlerError(`You should install ${name} first!`)
+        throw new HandlerError(
+          'Windows Terminal is only supported on Windows platform, you may never use it as you are not using Windows.',
+        )
+      if (!isPathExist(targetFolder)) throw new HandlerError(`You should install ${name} first!`)
     },
     handler: createHandler(configPathGenerators),
     posthandler: ({ targetFolder }) => {
-      consola.info(`This configuration will use \`'"Google Sans Code", "Maple Mono CN", "Symbols Nerd Font"'\` as terminal fonts, \`Nushell\` as default shell. If you don't want to use them, please edit this config \`(${join(targetFolder, 'settings.json')})\` manually.`)
+      consola.info(
+        `This configuration will use \`'"Google Sans Code", "Maple Mono CN", "Symbols Nerd Font"'\` as terminal fonts, \`Nushell\` as default shell. If you don't want to use them, please edit this config \`(${join(targetFolder, 'settings.json')})\` manually.`,
+      )
     },
   }
 }

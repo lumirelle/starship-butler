@@ -22,7 +22,9 @@ export function cSpell(): Action {
     targetFolder,
     handler: createHandler(configPathGenerators),
     posthandler: () => {
-      consola.info('I prefer using cSpell as an extension for VSCode/Cursor/Zed, this configuration is meant to be used by them.')
+      consola.info(
+        'I prefer using cSpell as an extension for VSCode/Cursor/Zed, this configuration is meant to be used by them.',
+      )
     },
   }
 }

@@ -42,28 +42,16 @@ function _bem(block, blockSuffix, element, modifier) {
  * @type {(block: string) => UseNamespaceReturn}}
  */
 export function useNamespace(block) {
-  const b = (blockSuffix = '') =>
-    _bem(block, blockSuffix, '', '')
-  const e = element =>
-    element ? _bem(block, '', element, '') : ''
-  const m = modifier =>
-    modifier ? _bem(block, '', '', modifier) : ''
+  const b = (blockSuffix = '') => _bem(block, blockSuffix, '', '')
+  const e = (element) => (element ? _bem(block, '', element, '') : '')
+  const m = (modifier) => (modifier ? _bem(block, '', '', modifier) : '')
   const be = (blockSuffix, element) =>
-    blockSuffix && element
-      ? _bem(block, blockSuffix, element, '')
-      : ''
-  const em = (element, modifier) =>
-    element && modifier
-      ? _bem(block, '', element, modifier)
-      : ''
+    blockSuffix && element ? _bem(block, blockSuffix, element, '') : ''
+  const em = (element, modifier) => (element && modifier ? _bem(block, '', element, modifier) : '')
   const bm = (blockSuffix, modifier) =>
-    blockSuffix && modifier
-      ? _bem(block, blockSuffix, '', modifier)
-      : ''
+    blockSuffix && modifier ? _bem(block, blockSuffix, '', modifier) : ''
   const bem = (blockSuffix, element, modifier) =>
-    blockSuffix && element && modifier
-      ? _bem(block, blockSuffix, element, modifier)
-      : ''
+    blockSuffix && element && modifier ? _bem(block, blockSuffix, element, modifier) : ''
   const is = (name, ...args) => {
     const state = args.length >= 1 ? args[0] : true
     return name && state ? `${statePrefix}${name}` : ''

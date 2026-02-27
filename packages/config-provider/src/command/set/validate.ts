@@ -3,7 +3,9 @@ import consola from 'consola'
 
 export function validateOptions(options: Partial<SetOptions>): boolean {
   if (options.mode && !['copy-paste', 'symlink'].includes(options.mode)) {
-    consola.error(`Invalid mode "${options.mode}" detected, only "copy-paste" and "symlink" are allowed.`)
+    consola.error(
+      `Invalid mode "${options.mode}" detected, only "copy-paste" and "symlink" are allowed.`,
+    )
     return false
   }
 

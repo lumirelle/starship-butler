@@ -22,8 +22,10 @@ export function sxzzCreate(): Action {
     prehandler: async () => {
       if (!(await isPathExistEnv('create')))
         throw new HandlerError(`You should install ${name} first!`)
-      if (!(ensureDirectoryExist(targetFolder)))
-        throw new HandlerError(`Failed to create @sxzz/create configuration folder: ${targetFolder}`)
+      if (!ensureDirectoryExist(targetFolder))
+        throw new HandlerError(
+          `Failed to create @sxzz/create configuration folder: ${targetFolder}`,
+        )
     },
     handler: createHandler(configPathGenerators),
   }

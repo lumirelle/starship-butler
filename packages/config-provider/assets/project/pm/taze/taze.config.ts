@@ -1,8 +1,8 @@
-import type { defineConfig } from 'taze'
+import { defineConfig } from 'taze'
 
-export default {
+export default defineConfig({
   interactive: true,
   recursive: true,
   write: true,
   peer: true,
-} satisfies ReturnType<typeof defineConfig> as ReturnType<typeof defineConfig>
+})

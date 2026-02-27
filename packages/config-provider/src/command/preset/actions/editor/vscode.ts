@@ -3,7 +3,12 @@ import consola from 'consola'
 import { join } from 'pathe'
 import { appdata, homedir } from 'starship-butler-utils/path'
 import { HandlerError } from '../../error'
-import { createHandler, createTargetFolderHandler, ensureDirectoryExist, isPathExist } from '../utils'
+import {
+  createHandler,
+  createTargetFolderHandler,
+  ensureDirectoryExist,
+  isPathExist,
+} from '../utils'
 
 const name = 'VSCode'
 
@@ -44,15 +49,18 @@ export function vscode(): Action {
     prehandler: ({ targetFolder, systemOptions }) => {
       if (!(systemOptions.platform in platformTargetFolderMap))
         throw new HandlerError(`Unsupported platform: ${systemOptions.platform}`)
-      if (!isPathExist(targetFolder))
-        throw new HandlerError(`You should install ${name} first!`)
+      if (!isPathExist(targetFolder)) throw new HandlerError(`You should install ${name} first!`)
       if (!ensureDirectoryExist(join(targetFolder, 'snippets')))
         throw new HandlerError(`Failed to create snippets directory for ${name}!`)
     },
     handler: createHandler(configPathGenerators),
     posthandler: () => {
-      consola.info('This configuration is meant to be used by `Visual Studio Code` installed in user scope and default path.')
-      consola.info('It uses with many opinionated preset: custom fonts, `Neovim` extension, `podman` integration, etc.')
+      consola.info(
+        'This configuration is meant to be used by `Visual Studio Code` installed in user scope and default path.',
+      )
+      consola.info(
+        'It uses with many opinionated preset: custom fonts, `Neovim` extension, `podman` integration, etc.',
+      )
     },
   }
 }

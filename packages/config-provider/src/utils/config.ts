@@ -25,15 +25,15 @@ export function processConfig(
         } copied to ${important(`"${target}"`)}.`,
       )
     }
-  }
-  else if (mode === 'symlink') {
+  } else if (mode === 'symlink') {
     if (dryRun || _symlinkConfig(source, target, options)) {
-      consola.success(`Configuration ${important(`"${target}"`)} ${
-        dryRun ? success('will') : 'is'
-      } symlinked to ${important(`"${source}"`)}.`)
+      consola.success(
+        `Configuration ${important(`"${target}"`)} ${
+          dryRun ? success('will') : 'is'
+        } symlinked to ${important(`"${source}"`)}.`,
+      )
     }
-  }
-  else {
+  } else {
     throw new Error(`Unknown configure mode: ${mode}`)
   }
 }
@@ -56,11 +56,7 @@ function _copyPasteConfig(
     // TODO: Implement support for glob
     return false
   }
-  return copyFile(
-    join(import.meta.dirname, '..', 'assets', source),
-    target,
-    force,
-  )
+  return copyFile(join(import.meta.dirname, '..', 'assets', source), target, force)
 }
 
 /**
@@ -81,9 +77,5 @@ function _symlinkConfig(
     // TODO: Implement support for glob
     return false
   }
-  return createSymlink(
-    join(import.meta.dirname, '..', 'assets', source),
-    target,
-    force,
-  )
+  return createSymlink(join(import.meta.dirname, '..', 'assets', source), target, force)
 }

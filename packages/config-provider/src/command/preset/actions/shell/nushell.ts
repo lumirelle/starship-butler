@@ -38,12 +38,13 @@ export function nushell(): Action {
     prehandler: ({ targetFolder, systemOptions }) => {
       if (!(systemOptions.platform in platformTargetFolderMap))
         throw new HandlerError(`Unsupported platform: ${systemOptions.platform}`)
-      if (!isPathExist(targetFolder))
-        throw new HandlerError(`You should install ${name} first!`)
+      if (!isPathExist(targetFolder)) throw new HandlerError(`You should install ${name} first!`)
     },
     handler: createHandler(configPathGenerators),
     posthandler: ({ targetFolder }) => {
-      consola.info(`This configuration will use \`Starship\` as the prompt, if you don't want to use it, please edit this config \`(${join(targetFolder, 'config.nu')})\` manually.`)
+      consola.info(
+        `This configuration will use \`Starship\` as the prompt, if you don't want to use it, please edit this config \`(${join(targetFolder, 'config.nu')})\` manually.`,
+      )
     },
   }
 }

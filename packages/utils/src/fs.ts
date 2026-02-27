@@ -1,4 +1,12 @@
-import { constants, copyFileSync, lstatSync, mkdirSync, renameSync, rmSync, symlinkSync } from 'node:fs'
+import {
+  constants,
+  copyFileSync,
+  lstatSync,
+  mkdirSync,
+  renameSync,
+  rmSync,
+  symlinkSync,
+} from 'node:fs'
 import consola from 'consola'
 import { info } from './highlight'
 
@@ -11,19 +19,15 @@ import { info } from './highlight'
 export function exists(path: string): boolean {
   try {
     // If it's a file but ends with `/` or `\`, we consider it does not exist, in order to let the behavior on Windows be consistent with Unix
-    if (lstatSync(path).isFile() && /\/$|\\$/.exec(path))
-      return false
-    else
-      return true
-  }
-  catch (error) {
+    if (lstatSync(path).isFile() && /\/$|\\$/.exec(path)) return false
+    else return true
+  } catch (error) {
     if (
-      error instanceof Error
-      && ['ENOENT', 'ENOTDIR'].some(str => error.message.includes(str))
+      error instanceof Error &&
+      ['ENOENT', 'ENOTDIR'].some((str) => error.message.includes(str))
     ) {
       return false
-    }
-    else {
+    } else {
       throw error
     }
   }
@@ -39,10 +43,8 @@ export function exists(path: string): boolean {
  * @returns Whether the path is a directory.
  */
 export function isDirectory(path: string): boolean {
-  if (exists(path))
-    return lstatSync(path).isDirectory()
-  else
-    return (!exists(path) || lstatSync(path).isDirectory()) && /\/$|\\$/.exec(path) !== null
+  if (exists(path)) return lstatSync(path).isDirectory()
+  else return (!exists(path) || lstatSync(path).isDirectory()) && /\/$|\\$/.exec(path) !== null
 }
 
 /**
@@ -69,13 +71,11 @@ export function ensureDirectory(path: string): boolean {
   try {
     if (exists(path)) {
       return isDirectory(path)
-    }
-    else {
+    } else {
       mkdirSync(path, { recursive: true })
       return true
     }
-  }
-  catch {
+  } catch {
     return false
   }
 }
@@ -98,13 +98,14 @@ export function copyFile(sourcePath: string, targetPath: string, force: boolean 
     renameSync(targetPath, `${targetPath}.bak`)
   }
   try {
-    copyFileSync(sourcePath, targetPath, force ? constants.COPYFILE_FICLONE : constants.COPYFILE_EXCL)
-    if (isExist)
-      remove(`${targetPath}.bak`)
-  }
-  catch (error) {
-    if (isExist)
-      renameSync(`${targetPath}.bak`, targetPath)
+    copyFileSync(
+      sourcePath,
+      targetPath,
+      force ? constants.COPYFILE_FICLONE : constants.COPYFILE_EXCL,
+    )
+    if (isExist) remove(`${targetPath}.bak`)
+  } catch (error) {
+    if (isExist) renameSync(`${targetPath}.bak`, targetPath)
     throw error
   }
   return true
@@ -129,12 +130,9 @@ export function createSymlink(sourcePath: string, targetPath: string, force = fa
   }
   try {
     symlinkSync(sourcePath, targetPath, 'file')
-    if (isExist)
-      remove(`${targetPath}.bak`)
-  }
-  catch (error) {
-    if (isExist)
-      renameSync(`${targetPath}.bak`, targetPath)
+    if (isExist) remove(`${targetPath}.bak`)
+  } catch (error) {
+    if (isExist) renameSync(`${targetPath}.bak`, targetPath)
     throw error
   }
   return true

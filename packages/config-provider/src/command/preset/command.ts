@@ -50,8 +50,7 @@ export async function commandPreset(
       // Process `targetFolder`
       if (typeof action.targetFolder === 'function')
         context.targetFolder = await action.targetFolder(context)
-      else
-        context.targetFolder = action.targetFolder
+      else context.targetFolder = action.targetFolder
 
       // Run `prehandler` if exist
       if (action.prehandler) {
@@ -68,26 +67,28 @@ export async function commandPreset(
         consola.debug(`[config-provider] Running posthandler of "${important(action.name)}"...`)
         await action.posthandler(context)
       }
-    }
-    catch (error) {
+    } catch (error) {
       errorCount++
-      if (!(error instanceof Error))
-        console.error(error)
-      else if (error instanceof HandlerError)
-        consola.error(error.message)
-      else if (['EACCES', 'EPERM'].some(code => error.message.includes(code)))
-        consola.error(`Got a permission error while applying "${important(action.name)}" preset, please try running the command with admin privileges.`)
+      if (!(error instanceof Error)) console.error(error)
+      else if (error instanceof HandlerError) consola.error(error.message)
+      else if (['EACCES', 'EPERM'].some((code) => error.message.includes(code)))
+        consola.error(
+          `Got a permission error while applying "${important(action.name)}" preset, please try running the command with admin privileges.`,
+        )
       else
-        consola.error(`Got an error while applying "${important(action.name)}" preset, process stopped. Reason: ${error.message}`)
+        consola.error(
+          `Got an error while applying "${important(action.name)}" preset, process stopped. Reason: ${error.message}`,
+        )
     }
   }
 
   if (actions.length === 0)
-    consola.info('No presets to apply. Do you forget to specify include patterns with `--include` or `--all` option? For more information, please run with `--help` option.')
+    consola.info(
+      'No presets to apply. Do you forget to specify include patterns with `--include` or `--all` option? For more information, please run with `--help` option.',
+    )
   else if (errorCount === actions.length)
     consola.error('All presets applied failed. Please check the output above for notices.')
   else if (errorCount > 0)
     consola.warn('Some presets applied failed. Please check the output above for notices.')
-  else
-    consola.success('All presets applied completed. Please check the output above for notices.')
+  else consola.success('All presets applied completed. Please check the output above for notices.')
 }

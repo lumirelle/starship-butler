@@ -11,10 +11,8 @@ describe('error test', () => {
   it('should have correct name', () => {
     try {
       throw new HandlerError('This is a test error')
-    }
-    catch (error) {
-      if (!(error instanceof Error))
-        return
+    } catch (error) {
+      if (!(error instanceof Error)) return
       expect(error).toBeInstanceOf(HandlerError)
       expect(error.name).toBe('HandlerError')
     }

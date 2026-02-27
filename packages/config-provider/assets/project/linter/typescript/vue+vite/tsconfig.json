@@ -1,11 +1,44 @@
 {
-  "references": [
-    {
-      "path": "./tsconfig.node.json"
+  "compilerOptions": {
+    // Language and Environment
+    "target": "ESNext",
+    "jsx": "preserve",
+    "jsxImportSource": "vue",
+    "lib": ["ES2020", "dom", "dom.iterable"],
+    "moduleDetection": "force",
+    "useDefineForClassFields": true,
+    "libReplacement": false,
+
+    // Modules
+    "module": "preserve",
+    "moduleResolution": "bundler",
+    "paths": {
+      "~": ["./"],
+      "~/*": ["./*"],
+      // Legacy Aliases
+      "@": ["./"],
+      "@/*": ["./*"]
     },
-    {
-      "path": "./tsconfig.app.json"
-    }
-  ],
-  "files": []
+    "resolveJsonModule": true,
+    "types": ["node"],
+    "allowImportingTsExtensions": true,
+
+    // Type Checking
+    "strict": true,
+    "noImplicitOverride": true,
+    "noImplicitThis": true,
+    "noUncheckedIndexedAccess": true,
+
+    // Emit
+    "noEmit": true,
+
+    // Interop Constraints
+    "esModuleInterop": true,
+    "forceConsistentCasingInFileNames": true,
+    "verbatimModuleSyntax": true,
+
+    // Completeness
+    "skipLibCheck": true
+  },
+  "exclude": ["**/*.config.ts"]
 }

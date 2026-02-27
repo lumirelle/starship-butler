@@ -1,18 +1,13 @@
+/* eslint perfectionist/sort-objects: "error" */
 import type { KnipConfig } from 'knip'
 
 export default {
-  // @keep-sorted
   workspaces: {
-    // @keep-sorted
     '.': {
-      // @keep-sorted
-      ignoreDependencies: [
-        'starship-butler',
-      ],
+      ignoreDependencies: ['starship-butler'],
+      ignoreFiles: ['eslint.config.js'],
     },
-    // @keep-sorted
-    'docs': {
-      // @keep-sorted
+    docs: {
       ignoreDependencies: [
         '@iconify-json/svg-spinners',
         '@unocss/reset',
@@ -22,41 +17,20 @@ export default {
         'uno.css',
       ],
     },
-    // @keep-sorted
     'packages/config-provider': {
-      // @keep-sorted
       ignoreBinaries: ['nu'],
-      // @keep-sorted
-      ignoreDependencies: [
-        '@lumirelle/stylelint-config',
-        'taze',
-      ],
-      // @keep-sorted
-      ignoreFiles: [
-        'assets/**/*',
-      ],
+      ignoreDependencies: ['@lumirelle/stylelint-config', 'taze'],
+      ignoreFiles: ['assets/**/*'],
     },
-    // @keep-sorted
     'packages/core': {
-      // @keep-sorted
-      ignoreFiles: [
-        'test/fixture/butler.config*.ts',
-      ],
+      ignoreFiles: ['test/fixture/butler.config*.ts'],
     },
-    // @keep-sorted
     'packages/utils': {
       entry: ['src/*.ts'],
-      // @keep-sorted
-      ignoreFiles: [
-        'bunup.config.*',
-      ],
+      ignoreFiles: ['bunup.config.*'],
     },
-    // @keep-sorted
-    'playground': {
-      // @keep-sorted
-      ignoreDependencies: [
-        'starship-butler',
-      ],
+    playground: {
+      ignoreDependencies: ['starship-butler'],
     },
   },
-} satisfies KnipConfig as KnipConfig
+} satisfies KnipConfig

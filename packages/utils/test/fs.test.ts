@@ -1,7 +1,16 @@
 import { afterAll, beforeAll, describe, expect, it, mock, spyOn } from 'bun:test'
 import fs from 'node:fs'
 import consola from 'consola'
-import { copyFile, createSymlink, ensureDirectory, exists, isDirectory, isSymbolicLink, remove, removeSymlink } from '../src/fs'
+import {
+  copyFile,
+  createSymlink,
+  ensureDirectory,
+  exists,
+  isDirectory,
+  isSymbolicLink,
+  remove,
+  removeSymlink,
+} from '../src/fs'
 import { info } from '../src/highlight'
 
 function dirname(path: string) {
@@ -10,10 +19,7 @@ function dirname(path: string) {
 
 beforeAll(() => {
   ensureDirectory(dirname('fixture/tmp/'))
-  createSymlink(
-    dirname('fixture/butler.config.json'),
-    dirname('fixture/symlink-to-config'),
-  )
+  createSymlink(dirname('fixture/butler.config.json'), dirname('fixture/symlink-to-config'))
 })
 
 afterAll(() => {
@@ -92,7 +98,9 @@ describe('fs util tests', () => {
     )
     expect(result).toBe(false)
     expect(spied).toHaveBeenCalledTimes(1)
-    expect(spied).toHaveBeenCalledWith(`COPY: Path already exists: ${info(dirname('fixture/tmp/butler.config.json'))}, skip`)
+    expect(spied).toHaveBeenCalledWith(
+      `COPY: Path already exists: ${info(dirname('fixture/tmp/butler.config.json'))}, skip`,
+    )
     spied.mockClear()
   })
 
@@ -121,8 +129,7 @@ describe('fs util tests', () => {
         dirname('fixture/tmp/butler.config.json'),
         true,
       )
-    }
-    catch {}
+    } catch {}
     expect(spiedRenameSync).toHaveBeenCalledTimes(2)
     expect(exists(dirname('fixture/tmp/butler.config.json'))).toBe(true)
     spiedRenameSync.mockClear()
@@ -151,7 +158,9 @@ describe('fs util tests', () => {
     )
     expect(result).toBe(false)
     expect(spy).toHaveBeenCalledTimes(1)
-    expect(spy).toHaveBeenCalledWith(`LINK: Path already exists: ${info(dirname('fixture/tmp/symlink-to-config'))}, skip`)
+    expect(spy).toHaveBeenCalledWith(
+      `LINK: Path already exists: ${info(dirname('fixture/tmp/symlink-to-config'))}, skip`,
+    )
     spy.mockClear()
   })
 
@@ -180,8 +189,7 @@ describe('fs util tests', () => {
         dirname('fixture/tmp/symlink-to-config'),
         true,
       )
-    }
-    catch {}
+    } catch {}
     expect(spiedRenameSync).toHaveBeenCalledTimes(2)
     expect(exists(dirname('fixture/tmp/symlink-to-config'))).toBe(true)
     spiedRenameSync.mockClear()
@@ -208,7 +216,9 @@ describe('fs util tests', () => {
     const result = remove(dirname('fixture/tmp/non-existent-path'))
     expect(result).toBe(false)
     expect(spied).toHaveBeenCalledTimes(1)
-    expect(spied).toHaveBeenCalledWith(`REMOVE: Path not exists: ${info(dirname('fixture/tmp/non-existent-path'))}, skip`)
+    expect(spied).toHaveBeenCalledWith(
+      `REMOVE: Path not exists: ${info(dirname('fixture/tmp/non-existent-path'))}, skip`,
+    )
     spied.mockClear()
   })
 
@@ -227,7 +237,9 @@ describe('fs util tests', () => {
     const result = removeSymlink(dirname('fixture/butler.config.json'))
     expect(result).toBe(false)
     expect(spied).toHaveBeenCalledTimes(1)
-    expect(spied).toHaveBeenCalledWith(`REMOVE: Path is not a symlink: ${info(dirname('fixture/butler.config.json'))}, skip`)
+    expect(spied).toHaveBeenCalledWith(
+      `REMOVE: Path is not a symlink: ${info(dirname('fixture/butler.config.json'))}, skip`,
+    )
     expect(exists(dirname('fixture/butler.config.json'))).toBe(true)
     spied.mockClear()
   })

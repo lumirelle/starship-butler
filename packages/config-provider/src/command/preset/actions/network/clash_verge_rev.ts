@@ -29,8 +29,7 @@ export function clashVergeRev(): Action {
     prehandler: ({ targetFolder, systemOptions }) => {
       if (!(systemOptions.platform in platformTargetFolderMap))
         throw new HandlerError(`Unsupported platform: ${systemOptions.platform}`)
-      if (!isPathExist(targetFolder))
-        throw new HandlerError(`You should install ${name} first!`)
+      if (!isPathExist(targetFolder)) throw new HandlerError(`You should install ${name} first!`)
     },
     handler: createHandler(configPathGenerators),
   }

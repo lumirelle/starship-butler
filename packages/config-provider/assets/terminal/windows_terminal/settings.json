@@ -8,85 +8,79 @@
   "defaultProfile": "{47302f9c-1ac4-566c-aa3e-8cf29889d6ab}",
   "initialCols": 120,
   "initialRows": 30,
-  "keybindings":
-    [
-      {
-        "id": "Terminal.DuplicatePaneAuto",
-        "keys": "alt+shift+d"
-      },
-      // Send Ctrl+. correctly (Used by Neovim for Quickfix List).
-      {
-        "keys": "ctrl+.",
-        "command": {
-          "action": "sendInput",
-          "input": "\u001b[46;5u"
-        }
-      }
-    ],
-  "launchMode": "default",
-  "newTabMenu":
-   [
-     {
-       "type": "remainingProfiles"
-     }
-   ],
-  "profiles":
+  "keybindings": [
     {
-      "defaults":
-        {
-          "backgroundImage": "desktopWallpaper",
-          "backgroundImageOpacity": 0.25,
-          "colorScheme": "Tango Dark",
-          "experimental.retroTerminalEffect": false,
-          "experimental.rightClickContextMenu": true,
-          "font":
-            {
-              "builtinGlyphs": false,
-              "face": "'Google Sans Code', 'Maple Mono CN', 'Symbols Nerd Font'",
-              "size": 12
-            },
-          "opacity": 85,
-          "padding": "12",
-          "useAcrylic": true,
-          "startingDirectory": "%USERPROFILE%"
-        },
-      "list":
-        [
-          {
-            "guid": "{47302f9c-1ac4-566c-aa3e-8cf29889d6ab}",
-            "hidden": false,
-            "name": "Nushell",
-            "source": "nu"
-          },
-          {
-            "commandline": "\"%SystemRoot%\\System32\\WindowsPowerShell\\v1.0\\powershell.exe\"  -nologo",
-            "guid": "{61c54bbd-c2c6-5271-96e7-009a87ff44bf}",
-            "hidden": false,
-            "name": "PowerShell"
-          },
-          {
-            "commandline": "%SystemRoot%\\System32\\cmd.exe",
-            "guid": "{0caa0dad-35be-5f56-a8ff-afceeeaa6101}",
-            "hidden": false,
-            "name": "CMD"
-          },
-          {
-            "commandline": "ubuntu.exe",
-            "cursorShape": "filledBox",
-            "guid": "{49ca7d08-09ce-4f2e-ad1f-42ba704a3111}",
-            "hidden": false,
-            "icon": "https://assets.ubuntu.com/v1/49a1a858-favicon-32x32.png",
-            "name": "Ubuntu",
-            "tabTitle": "Ubuntu"
-          },
-          {
-            "guid": "{b453ae62-4e3d-5e58-b989-0a998ec441b8}",
-            "hidden": true, // Hidden Azure Cloud Shell in dropdown menu as it's not often used
-            "name": "Azure Cloud Shell",
-            "source": "Windows.Terminal.Azure"
-          }
-        ]
+      "id": "Terminal.DuplicatePaneAuto",
+      "keys": "alt+shift+d"
     },
+    // Send Ctrl+. correctly (Used by Neovim for Quickfix List).
+    {
+      "keys": "ctrl+.",
+      "command": {
+        "action": "sendInput",
+        "input": "\u001b[46;5u"
+      }
+    }
+  ],
+  "launchMode": "default",
+  "newTabMenu": [
+    {
+      "type": "remainingProfiles"
+    }
+  ],
+  "profiles": {
+    "defaults": {
+      "backgroundImage": "desktopWallpaper",
+      "backgroundImageOpacity": 0.25,
+      "colorScheme": "Tango Dark",
+      "experimental.retroTerminalEffect": false,
+      "experimental.rightClickContextMenu": true,
+      "font": {
+        "builtinGlyphs": false,
+        "face": "'Google Sans Code', 'Maple Mono CN', 'Symbols Nerd Font'",
+        "size": 12
+      },
+      "opacity": 85,
+      "padding": "12",
+      "useAcrylic": true,
+      "startingDirectory": "%USERPROFILE%"
+    },
+    "list": [
+      {
+        "guid": "{47302f9c-1ac4-566c-aa3e-8cf29889d6ab}",
+        "hidden": false,
+        "name": "Nushell",
+        "source": "nu"
+      },
+      {
+        "commandline": "\"%SystemRoot%\\System32\\WindowsPowerShell\\v1.0\\powershell.exe\"  -nologo",
+        "guid": "{61c54bbd-c2c6-5271-96e7-009a87ff44bf}",
+        "hidden": false,
+        "name": "PowerShell"
+      },
+      {
+        "commandline": "%SystemRoot%\\System32\\cmd.exe",
+        "guid": "{0caa0dad-35be-5f56-a8ff-afceeeaa6101}",
+        "hidden": false,
+        "name": "CMD"
+      },
+      {
+        "commandline": "ubuntu.exe",
+        "cursorShape": "filledBox",
+        "guid": "{49ca7d08-09ce-4f2e-ad1f-42ba704a3111}",
+        "hidden": false,
+        "icon": "https://assets.ubuntu.com/v1/49a1a858-favicon-32x32.png",
+        "name": "Ubuntu",
+        "tabTitle": "Ubuntu"
+      },
+      {
+        "guid": "{b453ae62-4e3d-5e58-b989-0a998ec441b8}",
+        "hidden": true, // Hidden Azure Cloud Shell in dropdown menu as it's not often used
+        "name": "Azure Cloud Shell",
+        "source": "Windows.Terminal.Azure"
+      }
+    ]
+  },
   "schemes": [],
   "theme": "system",
   "themes": [],

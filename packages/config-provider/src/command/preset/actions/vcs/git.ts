@@ -22,7 +22,9 @@ export function git(): Action {
     targetFolder,
     handler: createHandler(configPathGenerators),
     posthandler: () => {
-      consola.info(`This config use \`Neovim\` as editor for Git commit messages. If you don't want to use it, please edit this configuration \`(${join(targetFolder, '.gitconfig')})\`.`)
+      consola.info(
+        `This config use \`Neovim\` as editor for Git commit messages. If you don't want to use it, please edit this configuration \`(${join(targetFolder, '.gitconfig')})\`.`,
+      )
     },
   }
 }

@@ -5,7 +5,10 @@ import UnoCSS from 'unocss/vite'
 import Components from 'unplugin-vue-components/vite'
 import Tsconfig from 'vite-tsconfig-paths'
 import { defineConfig } from 'vitepress'
-import { groupIconMdPlugin, groupIconVitePlugin as GroupIconVitePlugin } from 'vitepress-plugin-group-icons'
+import {
+  groupIconMdPlugin,
+  groupIconVitePlugin as GroupIconVitePlugin,
+} from 'vitepress-plugin-group-icons'
 import { version } from '../../package.json'
 
 const GUIDES: DefaultTheme.NavItemWithLink[] & DefaultTheme.SidebarItem[] = [
@@ -16,7 +19,10 @@ const GUIDES: DefaultTheme.NavItemWithLink[] & DefaultTheme.SidebarItem[] = [
 const VERSIONS: (DefaultTheme.NavItemWithLink | DefaultTheme.NavItemChildren)[] = [
   { text: `v${version} (current)`, link: '/' },
   { text: `Release Notes`, link: 'https://github.com/antfu/pkg-placeholder/releases' },
-  { text: `Contributing`, link: 'https://github.com/antfu/pkg-placeholder/blob/main/CONTRIBUTING.md' },
+  {
+    text: `Contributing`,
+    link: 'https://github.com/antfu/pkg-placeholder/blob/main/CONTRIBUTING.md',
+  },
 ]
 
 export default defineConfig({
@@ -31,7 +37,10 @@ export default defineConfig({
     // ['meta', { property: 'og:description', content: '_description_' }],
     // ['meta', { name: 'twitter:card', content: 'summary_large_image' }],
     // ['meta', { name: 'twitter:image', content: '' }],
-    ['meta', { name: 'viewport', content: 'width=device-width, initial-scale=1.0, viewport-fit=cover' }],
+    [
+      'meta',
+      { name: 'viewport', content: 'width=device-width, initial-scale=1.0, viewport-fit=cover' },
+    ],
   ],
 
   themeConfig: {
@@ -41,9 +50,7 @@ export default defineConfig({
       { text: `v${version}`, items: VERSIONS },
     ],
     sidebar: {
-      '/': [
-        { text: 'Guide', items: GUIDES },
-      ],
+      '/': [{ text: 'Guide', items: GUIDES }],
     },
     editLink: {
       pattern: 'https://github.com/antfu/pkg-placeholder/edit/main/docs/:path',
@@ -52,9 +59,7 @@ export default defineConfig({
     search: {
       provider: 'local',
     },
-    socialLinks: [
-      { icon: 'github', link: 'https://github.com/antfu/pkg-placeholder' },
-    ],
+    socialLinks: [{ icon: 'github', link: 'https://github.com/antfu/pkg-placeholder' }],
     footer: {
       message: 'Released under the MIT License.',
       copyright: 'Copyright © 2025-PRESENT Anthony Fu.',
@@ -66,21 +71,15 @@ export default defineConfig({
   vite: {
     plugins: [
       Tsconfig({
-        projects: [
-          fileURLToPath(new URL('../../tsconfig.json', import.meta.url)),
-        ],
+        projects: [fileURLToPath(new URL('../../tsconfig.json', import.meta.url))],
       }),
       Components({
-        dirs: [
-          fileURLToPath(new URL('./components', import.meta.url)),
-        ],
+        dirs: [fileURLToPath(new URL('./components', import.meta.url))],
         dts: fileURLToPath(new URL('../components.d.ts', import.meta.url)),
         include: [/\.vue$/, /\.vue\?vue/, /\.md$/],
         extensions: ['vue', 'md'],
       }),
-      UnoCSS(
-        fileURLToPath(new URL('./uno.config.ts', import.meta.url)),
-      ),
+      UnoCSS(fileURLToPath(new URL('./uno.config.ts', import.meta.url))),
       GroupIconVitePlugin(),
     ],
   },
@@ -90,9 +89,7 @@ export default defineConfig({
       light: 'vitesse-light',
       dark: 'vitesse-dark',
     },
-    codeTransformers: [
-      transformerTwoslash(),
-    ],
+    codeTransformers: [transformerTwoslash()],
     languages: ['js', 'jsx', 'ts', 'tsx'],
     config: (md) => {
       md.use(groupIconMdPlugin)

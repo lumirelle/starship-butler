@@ -1,12 +1,7 @@
-import type { defineConfig } from 'bunup'
+import { defineConfig } from 'bunup'
 
-export default {
-  entry: [
-    './src/config.ts',
-    './src/path.ts',
-    './src/fs.ts',
-    './src/highlight.ts',
-  ],
+export default defineConfig({
+  entry: ['./src/config.ts', './src/path.ts', './src/fs.ts', './src/highlight.ts'],
   /**
    * Disable code splitting due to Bun's current limitations with shared code among entrypoints.
    *
@@ -14,4 +9,4 @@ export default {
    * @see https://github.com/oven-sh/bun/issues/5344
    */
   splitting: false,
-} satisfies ReturnType<typeof defineConfig> as ReturnType<typeof defineConfig>
+})
