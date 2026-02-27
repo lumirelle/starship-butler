@@ -87,6 +87,9 @@ ofetch
 pinia
 unref
 unshift
+bunx
+oxlint
+oxfmt
 
 # DEV: JAVA
 graalvm
