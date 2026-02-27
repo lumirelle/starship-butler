@@ -6,7 +6,7 @@ export default antfu(
   {
     type: 'lib',
     stylistic: false,
-    ignores: ['test/exports/**'],
+    ignores: ['README.md', 'test/exports/**'],
   },
   ...oxlint.configs['flat/recommended'],
 ).override('antfu/perfectionist/setup', {
