@@ -1,50 +1,52 @@
+// cspell:disable
 {
-  // cspell:disable
   "recommendations": [
-    /* ----- Behavior ----- */
-    // Lens
+    //#region Lens & Hint
     "yoavbls.pretty-ts-errors",
     "hyrious.import-cost",
     "antfu.pnpm-catalog-lens",
     "wallabyjs.console-ninja",
-    // Editor
     "antfu.iconify",
-    "mariusalchimavicius.json-to-ts", // CTRL+ALT+V
-    "soulfriends.html-tag-wrap-vscode", // ALT+W/ALT+D
-    // Suggestion & Completion
-    "ecmel.vscode-html-css",
-    // Command
-    "jasonnutter.search-node-modules", // CTRL+K CTRL+N
+    //#endregion
 
-    /* ----- LSP ----- */
+    //#region Behavior
+    "soulfriends.html-tag-wrap-vscode", // ALT+W/ALT+D
+    "jasonnutter.search-node-modules", // CTRL+K CTRL+N
+    //#endregion
+
+    //#region Language Support
     // JavaScript / TypeScript
     "oven.bun-vscode",
     "johnsoncodehk.vscode-tsconfig-helper",
     "npmx-dev.vscode-npmx",
     // Vue
     "vue.volar",
-    // Dotenv
-    "mikestead.dotenv",
-    // REST Client
-    "humao.rest-client",
+    // Nuxt
+    "nuxtr.nuxtr-vscode",
+    "alimozdemir.vscode-nuxt-dx-tools",
+    "antfu.goto-alias", // F12
     // I18n
     "lokalise.i18n-ally",
     // UnoCSS
     "antfu.unocss",
     // Tailwind CSS
     "bradlc.vscode-tailwindcss",
-    // Nuxt
-    "nuxtr.nuxtr-vscode",
-    "alimozdemir.vscode-nuxt-dx-tools",
-    "antfu.goto-alias", // F12
     // Slidev
     "antfu.slidev",
+    // REST Client
+    "humao.rest-client",
+    //#endregion
 
-    /* ----- Linter ----- */
+    //#region Code Quality
     "dbaeumer.vscode-eslint",
-    "stylelint.vscode-stylelint"
+    "stylelint.vscode-stylelint",
+    //#endregion
+
+    //#region Practice
+    "yrm.type-challenges"
+    //#endregion
   ]
-  // EXTENSION COUNT
-  // >> VSCode: INDEX + 1 = 24 + {PROFILE_DEFAULT: 44} = 68
-  // >> Cursor: INDEX + 1 = 24 + {PROFILE_DEFAULT: 43} = 67
+  // Summary
+  // VSCode: $INDEX + 1 = 22 + ${PROFILE_DEFAULT: 39} = 61
+  // Cursor: $INDEX + 1 = 22 + ${PROFILE_DEFAULT: 38} = 60
 }

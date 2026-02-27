@@ -1,15 +1,8 @@
 [
-  // -- Basic --
-  // Navigation
-  {
-    "key": "ctrl+numpad_divide",
-    "command": "workbench.action.files.openFile"
-  },
-  {
-    "key": "ctrl+numpad_multiply",
-    "command": "workbench.action.files.openFolder"
-  },
-  // Editor
+  //#region Basic
+  // Open & Edit
+  { "key": "ctrl+numpad_divide", "command": "workbench.action.files.openFile" },
+  { "key": "ctrl+numpad_multiply", "command": "workbench.action.files.openFolder" },
   {
     "key": "tab",
     "command": "-editor.action.inlineSuggest.commit",
@@ -40,8 +33,9 @@
     "key": "ctrl+shift+/",
     "command": "workbench.action.terminal.kill"
   },
+  //#endregion
 
-  // -- With Neovim --
+  //#region With Neovim
   // Navigation
   {
     "key": "ctrl+h",
@@ -69,7 +63,7 @@
     "command": "scrollLineUp",
     "when": "editorTextFocus"
   },
-  // Editor
+  // Edit
   {
     "key": "alt+j",
     "command": "editor.action.moveLinesDownAction",
@@ -91,4 +85,5 @@
     "command": "-workbench.action.terminal.toggleTerminal",
     "when": "terminal.active && terminalFocus"
   }
+  //#endregion
 ]

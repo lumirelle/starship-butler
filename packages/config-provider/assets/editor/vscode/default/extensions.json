@@ -1,75 +1,74 @@
+// cspell:disable
 {
-  // cspell:disable
   "recommendations": [
-    /* ----- Visual ----- */
+    //#region UI
     // Theme
     "github.github-vscode-theme",
     "antfu.icons-carbon",
     "catppuccin.catppuccin-vsc-icons",
+    // File Nesting
+    "antfu.file-nesting",
     // Highlight
     "jgclark.vscode-todo-highlight",
-    "naumovs.color-highlight",
     "ibm.output-colorizer",
-    "vincaslt.highlight-matching-tag",
-    // Custom UI
-    "subframe7536.custom-ui-style",
     // Markdown Preview
     "bierner.markdown-checkbox",
     "bierner.markdown-emoji",
     "bierner.markdown-footnotes",
     "bierner.markdown-preview-github-styles",
     "bierner.markdown-yaml-preamble",
-    // File Nesting
-    "antfu.file-nesting",
+    // Custom
+    "subframe7536.custom-ui-style",
+    //#endregion
 
-    /* ----- Behavior ----- */
-    // Status Bar
-    "antfu.where-am-i",
-    "mkxml.vscode-filesize",
+    //#region Lens & Hint
+    // Lens
     "johnpapa.read-time",
-    "tombonnike.vscode-status-bar-format-toggle",
-    // Main Bar
-    "zjffun.snippetsmanager",
-    // Explorer
+    "mkxml.vscode-filesize",
+    "usernamehw.errorlens",
+    // Hint
+    "antfu.array-index-inlay",
+    //#endregion
+
+    //#region Behavior
+    // Open & Edit
     "sandcastle.vscode-open",
+    "ms-vscode.hexeditor",
+    "asvetliakov.vscode-neovim",
+    "cardinal90.multi-cursor-case-preserve",
+    "yatki.vscode-surround", // After selection, CTRL+SHIFT+T
+    // Format
+    "tombonnike.vscode-status-bar-format-toggle",
+    // Snippet
+    "zjffun.snippetsmanager",
+    // AI
+    "coderabbit.coderabbit-vscode", // AI Code Reviewer
+    "github.copilot-chat", // VSCode only
     // Git
     "waydotnet.minimal-git-file-history",
     "codezombiech.gitignore",
     "github.vscode-github-actions",
     "gitHub.vscode-pull-request-github",
-    // Editor
-    "asvetliakov.vscode-neovim",
-    "christian-kohler.path-intellisense",
-    "cardinal90.multi-cursor-case-preserve",
-    "yatki.vscode-surround", // After selection, CTRL+SHIFT+T
-    // Inlay Hints
-    "antfu.array-index-inlay",
-    // Lens
-    "usernamehw.errorlens",
     // Dev Container
     "ms-azuretools.vscode-containers",
-    // AI
-    "coderabbit.coderabbit-vscode", // AI Code Reviewer
-    "github.copilot-chat", // VSCode only
+    //#endregion
 
-    /* ----- LSP ----- */
+    //#region Language Support
     "yzhang.markdown-all-in-one",
-    "redhat.vscode-yaml",
     "tamasfe.even-better-toml",
     "somewhatstationery.some-sass",
     "thenuprojectcontributors.vscode-nushell-lang",
-    "ms-vscode.hexeditor",
+    //#endregion
 
-    /* ----- Formatter ----- */
+    //#region Code Quality
+    "oxc.oxc-vscode",
     "editorconfig.editorconfig",
-    "esbenp.prettier-vscode",
     "lumirelle.shell-format-rev",
-
-    /* ----- Linter ----- */
     "streetsidesoftware.code-spell-checker",
     "sonarsource.sonarlint-vscode"
+    //#endregion
   ]
-  // EXTENSION COUNT
-  // >> VSCode: INDEX + 1 = 44
-  // >> Cursor: INDEX = 43
+  // Summary
+  // VSCode: $INDEX + 1 = 39
+  // Cursor: $INDEX = 38
 }

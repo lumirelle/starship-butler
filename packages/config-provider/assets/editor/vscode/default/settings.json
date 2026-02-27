@@ -1,372 +1,27 @@
+// cSpell:disable
 {
-  // cSpell:disable
-  /* --------------------------------- Visual --------------------------------- */
+  //#region UI
   // Theme
+  "window.autoDetectColorScheme": true,
   "workbench.preferredDarkColorTheme": "GitHub Dark",
   "workbench.preferredLightColorTheme": "GitHub Light",
   "workbench.productIconTheme": "icons-carbon",
   "workbench.iconTheme": "catppuccin-mocha",
-  // Window
-  "window.autoDetectColorScheme": true,
-  "window.titleBarStyle": "custom",
+  // Layout
   "window.zoomLevel": 0,
-  // Workbench
+  "window.titleBarStyle": "custom",
+  "window.dialogStyle": "custom",
+  "files.simpleDialog.enable": true,
   "workbench.activityBar.orientation": "vertical",
   "workbench.tree.renderIndentGuides": "always",
   "workbench.tree.indent": 16,
-  // Editor
-  "editor.guides.bracketPairs": true,
-  "editor.renderWhitespace": "boundary",
-  "editor.rulers": [80, 120, 160, 200],
   "editor.lineNumbers": "relative",
-  "editor.tokenColorCustomizations": {
-    "[*Light*]": {
-      "textMateRules": []
-    },
-    "[*Dark*]": {
-      "textMateRules": []
-    },
-    "textMateRules": []
-  },
-  "editor.wordWrap": "on",
   "scm.diffDecorationsGutterWidth": 2,
-  // Font
-  "custom-ui-style.font.monospace": "'Google Sans Code', 'Maple Mono CN', 'Symbols Nerd Font Mono', monospace",
-  "custom-ui-style.font.sansSerif": "'Recursive Sans Linear', 'Maple Mono CN', 'Symbols Nerd Font Mono', sans-serif",
-  "custom-ui-style.stylesheet": {
-    // Font family patch for Cursor Editor
-    "body": { "--vscode-font-family": "'Recursive Sans Linear', 'Maple Mono CN', 'Symbols Nerd Font Mono', monospace" }
-  },
-  "editor.fontFamily": "'Google Sans Code', 'Maple Mono CN', 'Symbols Nerd Font Mono', monospace",
-  "editor.fontSize": 16,
-  "editor.lineHeight": 1.5,
-  "editor.fontLigatures": true,
-  "terminal.integrated.fontSize": 14,
-  "terminal.integrated.fontLigatures.enabled": true,
-  "markdown.preview.fontFamily": "'Recursive Sans Linear', 'Maple Mono CN', 'Symbols Nerd Font Mono', monospace",
-  "markdown.preview.fontSize": 14,
-  // Cursor
-  "editor.cursorBlinking": "smooth",
-  "editor.cursorSmoothCaretAnimation": "on",
-  // Highlight
-  "highlight-matching-tag.styles": {
-    "opening": { "name": { "highlight": "rgb(104 148 92 / 80%)" } }
-  },
-  "todohighlight.include": [
-    // Scripts
-    "**/*.sh",
-    "**/*.bat",
-    "**/*.ps1",
-    "**/*.lua",
-    "**/*.nu",
-    // Front-end Ecosystem
-    "**/*.{,m,c}{j,t}s{,x}",
-    "**/*.vue",
-    "**/*.svelte",
-    "**/*.htm{,l}",
-    "**/*.{c,sc,le}ss",
-    // Back-end Ecosystem
-    "**/*.zig",
-    "**/*.rs",
-    "**/*.go",
-    "**/*.java",
-    "**/*.kt",
-    "**/*.py",
-    "**/*.php",
-    "**/*.sql",
-    "**/{d,D}ockerfile",
-    // Data & Configurations
-    "**/*.{x,y,ya,to}ml",
-    "**/*.json{,c}",
-    "**/.*rc",
-    // Texts
-    "**/*.md{,c,x}",
-    "**/*.txt"
-  ],
-  "todohighlight.exclude": [
-    // Dotfolders
-    "**/.git/**",
-    "**/.github/**",
-    "**/.vscode/**",
-    "**/.output/**",
-    "**/.nuxt/**",
-    "**/.next/**",
-    "**/.pnpm/**",
-    "**/.yarn/**",
-    // Dependency & Dist Folders
-    "**/node_modules/**",
-    "**/bower_components/**",
-    "**/dist/**",
-    "**/out/**",
-    "**/logs/**",
-    "**/temp/**",
-    "**/public/**",
-    // Dependency & Dist Files
-    "**/*.min.*",
-    "**/*.map",
-    "**/*.snap",
-    "**/package-lock.json",
-    "**/pnpm-lock.yaml",
-    "**/yarn.lock",
-    "**/bun.lock"
-  ],
-  "todohighlight.defaultStyle": {
-    "color": "#fff",
-    "borderRadius": "4px"
-  },
-  "todohighlight.keywords": [
-    {
-      "text": "BUG(string):",
-      "regex": { "pattern": "(?<=^|\"|\\s)(BUG|CAUTION)(\\(\\w+\\))?:" },
-      "backgroundColor": "#ab372f",
-      "overviewRulerColor": "rgb(171 55 47 / 80%)"
-    },
-    {
-      "text": "FIXME(string):",
-      "regex": { "pattern": "(?<=^|\"|\\s)(FIXME|SHAMELESSLY DISABLED)(\\(\\w+\\))?:" },
-      "backgroundColor": "#e18a3b",
-      "overviewRulerColor": "rgb(225 138 59 / 80%)"
-    },
-    {
-      "text": "TODO(string):",
-      "regex": { "pattern": "(?<=^|\"|\\s)(TODO)(\\(\\w+\\))?:" },
-      "backgroundColor": "#3271ae",
-      "overviewRulerColor": "rgb(50 113 174 / 80%)"
-    },
-    {
-      "text": "[ ]",
-      "backgroundColor": "#3271ae",
-      "overviewRulerColor": "rgb(50 113 174 / 80%)"
-    },
-    {
-      "text": "DONE(string):",
-      "regex": { "pattern": "(?<=^|\"|\\s)(DONE|RECOMMENDED)(\\(\\w+\\))?:" },
-      "backgroundColor": "#68945c",
-      "overviewRulerColor": "rgb(104 148 92 / 80%)"
-    },
-    {
-      "text": "[x]",
-      "backgroundColor": "#68945c",
-      "overviewRulerColor": "rgb(104 148 92 / 80%)"
-    },
-    {
-      "text": "NOTE(string):",
-      "regex": { "pattern": "(?<=^|\"|\\s)(NOTE|NOTICE)(\\(\\w+\\))?:" },
-      "backgroundColor": "#cf929e",
-      "overviewRulerColor": "rgb(207 146 158 / 80%)"
-    }
-  ],
-
-  /* -------------------------------- Behavior -------------------------------- */
-  // Security
-  "security.workspace.trust.enabled": false,
-  // Profile
-  "window.newWindowProfile": "Default",
-  // File Associations
-  "files.associations": {
-    ".env.!(js|ts|mjs|cjs|mts|cts)": "dotenv"
-  },
-  // Prompts
-  "window.dialogStyle": "custom",
-  "files.simpleDialog.enable": true,
-  // Explorer
-  "explorer.autoOpenDroppedFile": false,
-  "explorer.confirmDelete": false,
-  "explorer.confirmDragAndDrop": false,
-  // Search
-  "search.showLineNumbers": true,
-  "search.exclude": {
-    // Dotfolders
-    "**/.git": true,
-    "**/.github": false,
-    "**/.vscode": true,
-    "**/.output": true,
-    "**/.nuxt": true,
-    "**/.next": true,
-    "**/.pnpm": true,
-    "**/.yarn": true,
-    // Dependency & Dist Folders
-    "**/node_modules": true,
-    "**/bower_components": true,
-    "**/dist": true,
-    "**/out": true,
-    "**/logs": true,
-    "**/temp": true,
-    "**/public": true,
-    // Dependency & Dist Files
-    "**/*.min.*": true,
-    "**/*.map": true,
-    "**/*.snap": true,
-    "**/package-lock.json": true,
-    "**/pnpm-lock.yaml": true,
-    "**/yarn.lock": true,
-    "**/bun.lock": true,
-    // Extra Files
-    "**/*.svg": true,
-    "**/CHANGELOG*": true,
-    "**/LICENSE*": true
-  },
-  // Git
-  "git.autofetch": true,
-  "git.confirmSync": true,
-  "git.enableSmartCommit": true,
-  "git.openRepositoryInParentFolders": "always",
-  "git.untrackedChanges": "separate",
-  "git.blame.editorDecoration.enabled": true,
-  "git.blame.statusBarItem.enabled": true,
-  // Editor Group
-  "workbench.editor.highlightModifiedTabs": true,
-  "workbench.editor.limit.enabled": true,
-  "workbench.editor.limit.perEditorGroup": true,
-  "workbench.editor.limit.value": 5,
-  "workbench.startupEditor": "none",
-  // Editor
-  "editor.minimap.enabled": true,
-  "editor.accessibilitySupport": "off",
-  "editor.unusualLineTerminators": "auto",
-  // Diff Editor
-  "diffEditor.ignoreTrimWhitespace": false,
-  // Terminal
-  "terminal.integrated.env.windows": {},
-  "terminal.integrated.profiles.linux": {
-    "nushell": { "path": "nu" }
-  },
-  "terminal.integrated.profiles.osx": {
-    "nushell": { "path": "nu" }
-  },
-  "terminal.integrated.profiles.windows": {
-    "nushell": { "path": "nu" }
-  },
-  "terminal.integrated.defaultProfile.linux": "nushell",
-  "terminal.integrated.defaultProfile.osx": "nushell",
-  "terminal.integrated.defaultProfile.windows": "nushell",
-  "terminal.integrated.persistentSessionReviveProcess": "never",
-  "terminal.integrated.rightClickBehavior": "default",
-  // Inlay Hints
-  "arrayIndexInlay.minLength": 5,
-  "javascript.inlayHints.parameterNames.enabled": "all",
-  "javascript.inlayHints.parameterTypes.enabled": true,
-  "typescript.inlayHints.enumMemberValues.enabled": true,
-  "typescript.inlayHints.parameterNames.enabled": "all",
-  "typescript.inlayHints.parameterTypes.enabled": true,
-  "vue.inlayHints.destructuredProps": true,
-  "vue.inlayHints.inlineHandlerLeading": true,
-  "vue.inlayHints.missingProps": true,
-  "vue.inlayHints.optionsWrapper": true,
-  // Lens
-  "errorLens.enabledDiagnosticLevels": ["warning", "error", "info", "hint"],
-  "errorLens.messageTemplate": "[$count] $severity $message $source($code)",
-  // Suggestion & Completion
-  "css.enabledLanguages": ["html", "vue", "svelte"],
-  "css.styleSheets": ["**/*.{c,sc,sa,le}ss"],
-  // Emmet
-  "emmet.showSuggestionsAsSnippets": true,
-  "emmet.syntaxProfiles": {
-    "html": { "filters": "bem" }
-  },
-  "emmet.preferences": {
-    "bem.modifierSeparator": "--"
-  },
-  // Avoid expansion even if completion does not show up
-  "emmet.triggerExpansionOnTab": false,
-  // Scroll
-  "workbench.list.mouseWheelScrollSensitivity": 2,
-  "workbench.list.fastScrollSensitivity": 3,
-  "workbench.list.smoothScrolling": true,
-  "editor.mouseWheelScrollSensitivity": 2,
-  "editor.fastScrollSensitivity": 3,
-  "editor.smoothScrolling": true,
-  "terminal.integrated.mouseWheelScrollSensitivity": 2,
-  "terminal.integrated.fastScrollSensitivity": 3,
-  "terminal.integrated.smoothScrolling": true,
-  // Zoom
-  "editor.mouseWheelZoom": true,
-  // Goto
-  "editor.gotoLocation.multipleDefinitions": "goto",
-  // AI
-  "cursor.cpp.disabledLanguages": ["plaintext", "dotenv"],
-  "github.copilot.enable": {
-    "*": true,
-    "markdown": true,
-    "plaintext": false,
-    "scminput": false,
-    "dotenv": false
-  },
-  "github.copilot.nextEditSuggestions.enabled": true,
-  "chat.mcp.gallery.enabled": true,
-
-  /* --------------------------------- Format --------------------------------- */
-  "editor.tabSize": 2,
-  "files.insertFinalNewline": true,
-  "editor.detectIndentation": false,
-  "editor.defaultFormatter": "esbenp.prettier-vscode",
-  "editor.formatOnSave": false,
-  "editor.formatOnPaste": false,
-  "editor.formatOnType": false,
-  "shellformat.useEditorConfig": true,
-
-  /* ---------------------------------- Lint ---------------------------------- */
-  "cSpell.allowCompoundWords": true,
-  "cSpell.customDictionaries": {
-    "common": {
-      "name": "common",
-      "path": "~/.cspell.common.txt",
-      "description": "Words used in common situation.",
-      "addWords": false
-    },
-    "work": {
-      "name": "work",
-      "path": "~/.cspell.work.txt",
-      "description": "Words used in work.",
-      "addWords": false
-    }
-  },
-  "cSpell.ignorePaths": [
-    // Dotfolders
-    ".*",
-    // Dependency & Dist Folders
-    "node_modules",
-    "bower_components",
-    "dist",
-    "out",
-    "logs",
-    "temp",
-    "public",
-    // Dependency & Dist Files
-    "*.min.*",
-    "*.map",
-    "*.snap",
-    "package-lock.json",
-    "pnpm-lock.yaml",
-    "yarn.lock",
-    "bun.lock",
-    // Extra Files
-    "*.svg"
-  ],
-  "eslint.runtime": "bun",
-  "eslint.execArgv": ["-b"],
-  // We just enable ESLint for JS/TS files in user-scope settings.
-  // For other languages who needs further configurations, we will set them in the project-scope settings.
-  "eslint.validate": [
-    "javascript",
-    "javascriptreact",
-    "typescript",
-    "typescriptreact"
-  ],
-  "eslint.rules.customizations": [
-    { "rule": "style/*", "severity": "off" },
-    { "rule": "format/*", "severity": "off" },
-    { "rule": "*-indent", "severity": "off" },
-    { "rule": "*-spacing", "severity": "off" },
-    { "rule": "*-spaces", "severity": "off" },
-    { "rule": "*-order", "severity": "off" },
-    { "rule": "*-dangle", "severity": "off" },
-    { "rule": "*-newline", "severity": "off" },
-    { "rule": "*quotes", "severity": "off" },
-    { "rule": "*semi", "severity": "off" }
-  ],
-
-  /* ------------------------------ File Nesting ------------------------------ */
+  "editor.wordWrap": "on",
+  "editor.rulers": [100, 200],
+  "editor.renderWhitespace": "boundary",
+  "editor.guides.bracketPairs": true,
+  // File Nesting
   "explorer.fileNesting.enabled": true,
   "explorer.fileNesting.expand": false,
   "explorer.fileNesting.patterns": {
@@ -472,21 +127,273 @@
     "*.wat": "$(capture).wasm",
     "*.xaml": "$(capture).xaml.cs"
   },
+  // Font
+  "custom-ui-style.font.monospace": "'Google Sans Code', 'Maple Mono CN', 'Symbols Nerd Font Mono', monospace",
+  "custom-ui-style.font.sansSerif": "'Recursive Sans Linear', 'Maple Mono CN', 'Symbols Nerd Font Mono', sans-serif",
+  "custom-ui-style.stylesheet": {
+    // Font family patch for Cursor Editor
+    "body": {
+      "--vscode-font-family": "'Recursive Sans Linear', 'Maple Mono CN', 'Symbols Nerd Font Mono', monospace"
+    }
+  },
+  "editor.fontFamily": "'Google Sans Code', 'Maple Mono CN', 'Symbols Nerd Font Mono', monospace",
+  "markdown.preview.fontFamily": "'Recursive Sans Linear', 'Maple Mono CN', 'Symbols Nerd Font Mono', monospace",
+  "editor.fontSize": 16,
+  "terminal.integrated.fontSize": 14,
+  "markdown.preview.fontSize": 14,
+  "editor.lineHeight": 1.5,
+  "editor.fontLigatures": true,
+  "terminal.integrated.fontLigatures.enabled": true,
+  // Cursor
+  "editor.cursorBlinking": "smooth",
+  "editor.cursorSmoothCaretAnimation": "on",
+  // Highlight
+  "workbench.editor.highlightModifiedTabs": true,
+  "todohighlight.include": [
+    // Scripts
+    "**/*.sh",
+    "**/*.bat",
+    "**/*.ps1",
+    "**/*.lua",
+    "**/*.nu",
+    // Front-end Ecosystem
+    "**/*.{,m,c}{j,t}s{,x}",
+    "**/*.vue",
+    "**/*.svelte",
+    "**/*.htm{,l}",
+    "**/*.{c,sc,le}ss",
+    // Back-end Ecosystem
+    "**/*.zig",
+    "**/*.rs",
+    "**/*.go",
+    "**/*.java",
+    "**/*.kt",
+    "**/*.py",
+    "**/*.php",
+    "**/*.sql",
+    // DevOps Ecosystem
+    "**/{d,D}ockerfile",
+    // Data & Configurations
+    "**/*.{x,y,ya,to}ml",
+    "**/*.json{,c}",
+    "**/.*rc",
+    // Texts
+    "**/*.md{,c,x}",
+    "**/*.txt"
+  ],
+  "todohighlight.exclude": [
+    // Dotfolders
+    "**/.git/**",
+    "**/.github/**",
+    "**/.vscode/**",
+    "**/.output/**",
+    "**/.nuxt/**",
+    "**/.next/**",
+    "**/.pnpm/**",
+    "**/.yarn/**",
+    // Dependency & Dist Folders
+    "**/node_modules/**",
+    "**/bower_components/**",
+    "**/dist/**",
+    "**/out/**",
+    "**/logs/**",
+    "**/temp/**",
+    "**/public/**",
+    // Dependency & Dist Files
+    "**/*.min.*",
+    "**/*.map",
+    "**/*.snap",
+    "**/package-lock.json",
+    "**/pnpm-lock.yaml",
+    "**/yarn.lock",
+    "**/bun.lock"
+  ],
+  "todohighlight.defaultStyle": {
+    "color": "#fff",
+    "borderRadius": "4px"
+  },
+  "todohighlight.keywords": [
+    {
+      "text": "BUG(string):",
+      "regex": { "pattern": "(?<=^|\"|\\s)(BUG|CAUTION)(\\(\\w+\\))?:" },
+      "backgroundColor": "#ab372f",
+      "overviewRulerColor": "rgb(171 55 47 / 80%)"
+    },
+    {
+      "text": "FIXME(string):",
+      "regex": { "pattern": "(?<=^|\"|\\s)(FIXME|SHAMELESSLY DISABLED)(\\(\\w+\\))?:" },
+      "backgroundColor": "#e18a3b",
+      "overviewRulerColor": "rgb(225 138 59 / 80%)"
+    },
+    {
+      "text": "TODO(string):",
+      "regex": { "pattern": "(?<=^|\"|\\s)(TODO)(\\(\\w+\\))?:" },
+      "backgroundColor": "#3271ae",
+      "overviewRulerColor": "rgb(50 113 174 / 80%)"
+    },
+    {
+      "text": "[ ]",
+      "backgroundColor": "#3271ae",
+      "overviewRulerColor": "rgb(50 113 174 / 80%)"
+    },
+    {
+      "text": "DONE(string):",
+      "regex": { "pattern": "(?<=^|\"|\\s)(DONE|RECOMMENDED)(\\(\\w+\\))?:" },
+      "backgroundColor": "#68945c",
+      "overviewRulerColor": "rgb(104 148 92 / 80%)"
+    },
+    {
+      "text": "[x]",
+      "backgroundColor": "#68945c",
+      "overviewRulerColor": "rgb(104 148 92 / 80%)"
+    },
+    {
+      "text": "NOTE(string):",
+      "regex": { "pattern": "(?<=^|\"|\\s)(NOTE|NOTICE)(\\(\\w+\\))?:" },
+      "backgroundColor": "#cf929e",
+      "overviewRulerColor": "rgb(207 146 158 / 80%)"
+    }
+  ],
+  //#endregion
 
-  /* --------------------------- Extensions Behavior -------------------------- */
+  //#region Lens & Hint
+  // Lens
+  "errorLens.enabledDiagnosticLevels": ["warning", "error", "info", "hint"],
+  "errorLens.messageTemplate": "[$count] $severity $message $source($code)",
+  // Hint
+  "arrayIndexInlay.minLength": 5,
+  "javascript.inlayHints.parameterNames.enabled": "all",
+  "javascript.inlayHints.parameterTypes.enabled": true,
+  "typescript.inlayHints.enumMemberValues.enabled": true,
+  "typescript.inlayHints.parameterNames.enabled": "all",
+  "typescript.inlayHints.parameterTypes.enabled": true,
+  "vue.inlayHints.destructuredProps": true,
+  "vue.inlayHints.inlineHandlerLeading": true,
+  "vue.inlayHints.missingProps": true,
+  "vue.inlayHints.optionsWrapper": true,
+  //#endregion
+
+  //#region Behavior
+  // Trust
+  "security.workspace.trust.enabled": false,
+  // Profile
+  "window.newWindowProfile": "Default",
+  // File Association
+  "files.associations": {
+    ".env.!(js|ts|mjs|cjs|mts|cts)": "dotenv"
+  },
+  // Explorer
+  "explorer.autoOpenDroppedFile": false,
+  "explorer.confirmDelete": false,
+  "explorer.confirmDragAndDrop": false,
+  // Search
+  "search.showLineNumbers": true,
+  "search.exclude": {
+    // Dotfolders
+    "**/.git": true,
+    "**/.github": false,
+    "**/.vscode": true,
+    "**/.output": true,
+    "**/.nuxt": true,
+    "**/.next": true,
+    "**/.pnpm": true,
+    "**/.yarn": true,
+    // Dependency & Dist Folders
+    "**/node_modules": true,
+    "**/bower_components": true,
+    "**/dist": true,
+    "**/out": true,
+    "**/logs": true,
+    "**/temp": true,
+    "**/public": true,
+    // Dependency & Dist Files
+    "**/*.min.*": true,
+    "**/*.map": true,
+    "**/*.snap": true,
+    "**/package-lock.json": true,
+    "**/pnpm-lock.yaml": true,
+    "**/yarn.lock": true,
+    "**/bun.lock": true,
+    // Extra Files
+    "**/*.svg": true,
+    "**/CHANGELOG*": true,
+    "**/LICENSE*": true
+  },
+  // Git
+  "git.autofetch": true,
+  "git.confirmSync": true,
+  "git.enableSmartCommit": true,
+  "git.openRepositoryInParentFolders": "always",
+  "git.untrackedChanges": "separate",
+  "git.blame.editorDecoration.enabled": true,
+  "git.blame.statusBarItem.enabled": true,
+  // Editor
+  "workbench.startupEditor": "none",
+  "workbench.editor.limit.enabled": true,
+  "workbench.editor.limit.perEditorGroup": true,
+  "workbench.editor.limit.value": 5,
+  "editor.minimap.enabled": true,
+  "editor.accessibilitySupport": "off",
+  "editor.unusualLineTerminators": "auto",
+  "diffEditor.ignoreTrimWhitespace": false,
+  // Terminal
+  "terminal.integrated.profiles.linux": { "nushell": { "path": "nu" } },
+  "terminal.integrated.profiles.osx": { "nushell": { "path": "nu" } },
+  "terminal.integrated.profiles.windows": { "nushell": { "path": "nu" } },
+  "terminal.integrated.defaultProfile.linux": "nushell",
+  "terminal.integrated.defaultProfile.osx": "nushell",
+  "terminal.integrated.defaultProfile.windows": "nushell",
+  "terminal.integrated.persistentSessionReviveProcess": "never",
+  "terminal.integrated.rightClickBehavior": "default",
+  // Emmet
+  "emmet.showSuggestionsAsSnippets": true,
+  "emmet.syntaxProfiles": {
+    "html": { "filters": "bem" }
+  },
+  "emmet.preferences": {
+    "bem.modifierSeparator": "--"
+  },
+  "emmet.triggerExpansionOnTab": false,
+  // Scroll
+  "workbench.list.mouseWheelScrollSensitivity": 2,
+  "editor.mouseWheelScrollSensitivity": 2,
+  "terminal.integrated.mouseWheelScrollSensitivity": 2,
+  "workbench.list.fastScrollSensitivity": 3,
+  "editor.fastScrollSensitivity": 3,
+  "terminal.integrated.fastScrollSensitivity": 3,
+  "workbench.list.smoothScrolling": true,
+  "editor.smoothScrolling": true,
+  "terminal.integrated.smoothScrolling": true,
+  // Zoom
+  "editor.mouseWheelZoom": true,
+  // Goto
+  "editor.gotoLocation.multipleDefinitions": "goto",
+  // AI
+  "github.copilot.enable": {
+    "*": true,
+    "markdown": true,
+    "plaintext": false,
+    "scminput": false,
+    "dotenv": false
+  },
+  "github.copilot.nextEditSuggestions.enabled": true,
+  "chat.mcp.gallery.enabled": true,
+  "cursor.cpp.disabledLanguages": ["plaintext", "dotenv"],
+  //#endregion
+
+  //#region Extension Behavior
+  "extensions.experimental.affinity": {
+    "asvetliakov.vscode-neovim": 1
+  },
   "console-ninja.featureSet": "Community",
   "containers.containerClient": "com.microsoft.visualstudio.containers.podman",
   "containers.orchestratorClient": "com.microsoft.visualstudio.orchestrators.podmancompose",
   "editorconfig.showMenuEntry": false,
-  "extensions.experimental.affinity": {
-    "asvetliakov.vscode-neovim": 1
-  },
   "fileNestingUpdater.autoUpdate": true,
   "i18n-ally.autoDetection": false,
   "i18n-ally.displayLanguage": "en",
-  "iconify.excludes": ["el"],
   "markdown.extension.italic.indicator": "_",
-  "markdown.extension.tableFormatter.enabled": false, // Use `prettier` or `eslint-plugin-format` instead
+  "markdown.extension.tableFormatter.enabled": false,
   "nuxtr.vueFiles.firstTag": "script",
   "nuxtr.piniaFiles.defaultTemplate": "setup",
   "vscode-neovim.ctrlKeysForNormalMode": [
@@ -533,21 +440,54 @@
     "u",
     "w"
   ],
-  "redhat.telemetry.enabled": false,
   "rest-client.enableTelemetry": false,
-  "where-am-i.colorful": false,
+  //#endregion
 
-  /* ----------------------- Language Specific Settings ----------------------- */
-  "[dockerfile]": {
-    "editor.defaultFormatter": "ms-azuretools.vscode-containers"
+  //#region Code Quality
+  "editor.defaultFormatter": "oxc.oxc-vscode",
+  "editor.formatOnSave": true,
+  "shellformat.useEditorConfig": true,
+  "cSpell.allowCompoundWords": true,
+  "cSpell.customDictionaries": {
+    "common": {
+      "name": "common",
+      "path": "~/.cspell.common.txt",
+      "description": "Words used in common situation.",
+      "addWords": false
+    },
+    "work": {
+      "name": "work",
+      "path": "~/.cspell.work.txt",
+      "description": "Words used in work.",
+      "addWords": false
+    }
   },
-  "[ignore]": {
-    "editor.defaultFormatter": "lumirelle.shell-format-rev"
-  },
-  "[properties]": {
-    "editor.defaultFormatter": "lumirelle.shell-format-rev"
-  },
-  "[shellscript]": {
-    "editor.defaultFormatter": "lumirelle.shell-format-rev"
-  }
+  "cSpell.ignorePaths": [
+    // Dotfolders
+    ".*",
+    // Dependency & Dist Folders
+    "node_modules",
+    "bower_components",
+    "dist",
+    "out",
+    "logs",
+    "temp",
+    "public",
+    // Dependency & Dist Files
+    "*.min.*",
+    "*.map",
+    "*.snap",
+    "package-lock.json",
+    "pnpm-lock.yaml",
+    "yarn.lock",
+    "bun.lock",
+    // Extra Files
+    "*.svg"
+  ],
+  "[shellscript]": { "editor.defaultFormatter": "lumirelle.shell-format-rev" },
+  "[properties]": { "editor.defaultFormatter": "lumirelle.shell-format-rev" },
+  "[dotenv]": { "editor.defaultFormatter": "lumirelle.shell-format-rev" },
+  "[ignore]": { "editor.defaultFormatter": "lumirelle.shell-format-rev" },
+  "[dockerfile]": { "editor.defaultFormatter": "ms-azuretools.vscode-containers" }
+  //#endregion
 }
