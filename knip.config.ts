@@ -5,6 +5,7 @@ export default {
   workspaces: {
     '.': {
       ignoreDependencies: ['starship-butler'],
+      ignoreFiles: ['bunup.config.ts'],
     },
     docs: {
       ignoreDependencies: [
@@ -26,7 +27,6 @@ export default {
     },
     'packages/utils': {
       entry: ['src/*.ts'],
-      ignoreFiles: ['bunup.config.*'],
     },
     playground: {
       ignoreDependencies: ['starship-butler'],

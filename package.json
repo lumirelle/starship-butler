@@ -82,7 +82,7 @@
     "format": "bunx oxfmt",
     "lint": "bun --parallel oxlint eslint",
     "lint:fix": "bun --sequential 'oxlint --fix' 'eslint --fix'",
-    "check:type": "bun tsc --noEmit",
+    "check:type": "bun run --parallel --filter '*' check:type",
     "check:usage": "bun knip",
     "check:dist": "bun run --parallel --filter '*' check:dist",
     "check": "bun run --parallel lint check:type check:usage check:dist",

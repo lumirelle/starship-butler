@@ -41,6 +41,7 @@
     "dist"
   ],
   "scripts": {
+    "check:type": "bun tsc --noEmit",
     "check:dist": "bun attw --pack --profile esm-only && bun publint"
   },
   "dependencies": {
