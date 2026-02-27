@@ -15,7 +15,7 @@ Provide the configuring ability for the butler.
 
 <p align="center">
   <a href="https://cdn.jsdelivr.net/gh/lumirelle/static/sponsors.svg">
-    <img src='https://cdn.jsdelivr.net/gh/lumirelle/static/sponsors.svg'/>
+    <img src='https://cdn.jsdelivr.net/gh/lumirelle/static/sponsors.svg' alt="Sponsors"/>
   </a>
 </p>
 

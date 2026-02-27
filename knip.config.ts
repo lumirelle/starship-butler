@@ -5,7 +5,6 @@ export default {
   workspaces: {
     '.': {
       ignoreDependencies: ['starship-butler'],
-      ignoreFiles: ['eslint.config.js'],
     },
     docs: {
       ignoreDependencies: [

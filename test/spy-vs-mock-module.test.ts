@@ -30,8 +30,8 @@ type Eslint = typeof originalEslint
  * Utilities for creating, mocking, calling, testing spies.
  */
 class SpyUtils {
-  private spiedViteNormalizePath: ReturnType<typeof spyOn<Vite, 'normalizePath'>>
-  private spiedEslintLoad: ReturnType<typeof spyOn<Eslint, 'loadESLint'>>
+  private readonly spiedViteNormalizePath: ReturnType<typeof spyOn<Vite, 'normalizePath'>>
+  private readonly spiedEslintLoad: ReturnType<typeof spyOn<Eslint, 'loadESLint'>>
 
   private constructor() {
     // Create spies on module members, at that time, the implementation is still the original one
@@ -94,8 +94,8 @@ class SpyUtils {
  * Utilities for creating, mocking, calling, testing mocks.
  */
 class MockUtils {
-  private mockedViteNormalizePath: ReturnType<typeof mock<Vite['normalizePath']>>
-  private mockedEslintLoad: ReturnType<typeof mock<Eslint['loadESLint']>>
+  private readonly mockedViteNormalizePath: ReturnType<typeof mock<Vite['normalizePath']>>
+  private readonly mockedEslintLoad: ReturnType<typeof mock<Eslint['loadESLint']>>
 
   private constructor() {
     // Create mocks of module members, we should manually set the implementation to original one

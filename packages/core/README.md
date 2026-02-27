@@ -115,7 +115,7 @@ butler set --help
 
 <p align="center">
   <a href="https://cdn.jsdelivr.net/gh/lumirelle/static/sponsors.svg">
-    <img src='https://cdn.jsdelivr.net/gh/lumirelle/static/sponsors.svg'/>
+    <img src='https://cdn.jsdelivr.net/gh/lumirelle/static/sponsors.svg' alt="Sponsors"/>
   </a>
 </p>
 
