@@ -39,7 +39,6 @@
 
     //#region Code Quality
     "dbaeumer.vscode-eslint",
-    "stylelint.vscode-stylelint",
     //#endregion
 
     //#region Practice
@@ -47,6 +46,6 @@
     //#endregion
   ]
   // Summary
-  // VSCode: $INDEX + 1 = 22 + ${PROFILE_DEFAULT: 39} = 61
-  // Cursor: $INDEX + 1 = 22 + ${PROFILE_DEFAULT: 38} = 60
+  // VSCode: $INDEX + 1 = 21 + ${PROFILE_DEFAULT: 39} = 60
+  // Cursor: $INDEX + 1 = 21 + ${PROFILE_DEFAULT: 38} = 59
 }
