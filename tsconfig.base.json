@@ -35,5 +35,6 @@
 
     // Completeness
     "skipLibCheck": true
-  }
+  },
+  "include": ["test/**/*"]
 }
