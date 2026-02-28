@@ -32,6 +32,6 @@
   ],
   "scripts": {
     "check:type": "bun tsc --noEmit",
-    "check:dist": "bun attw --pack --profile esm-only && bun publint"
+    "check:dist": "bun --parallel 'attw --pack --profile esm-only' publint"
   }
 }

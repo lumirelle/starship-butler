@@ -4,7 +4,7 @@ import type { KnipConfig } from 'knip'
 export default {
   workspaces: {
     '.': {
-      ignoreDependencies: ['starship-butler'],
+      ignoreDependencies: ['starship-butler', '@arethetypeswrong/cli', 'publint'],
       ignoreFiles: ['bunup.config.ts'],
     },
     docs: {
