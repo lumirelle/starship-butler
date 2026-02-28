@@ -32,7 +32,7 @@
     "dist"
   ],
   "scripts": {
-    "check:type": "bun tsc --noEmit",
+    "check:type": "bun tsgo --noEmit",
     "check:dist": "bun --parallel 'attw --pack --profile esm-only' publint"
   },
   "dependencies": {

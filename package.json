@@ -38,6 +38,7 @@
       "check": {
         "@antfu/eslint-config": "^7.6.1",
         "@arethetypeswrong/cli": "^0.18.2",
+        "@typescript/native-preview": "^7.0.0-dev.20260227.1",
         "eslint": "^9.39.3",
         "eslint-plugin-oxlint": "^1.50.0",
         "knip": "^5.85.0",
@@ -94,6 +95,7 @@
     "@antfu/eslint-config": "catalog:check",
     "@arethetypeswrong/cli": "catalog:check",
     "@types/bun": "catalog:types",
+    "@typescript/native-preview": "catalog:check",
     "bumpp": "catalog:dev",
     "bunup": "catalog:build",
     "eslint": "catalog:check",
