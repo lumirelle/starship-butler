@@ -47,18 +47,6 @@ dirname-parent() {
   return 1
 }
 
-# Wrapper for running node packages' scripts
-nr-wrapper() {
-  if not any-path-exists-parent package.json; then
-    return
-  fi
-  if [ -x "$(command -v nr)" ]; then
-    nr -- "$@"
-  else
-    echo "Warning: \`@antfu/ni\` is not installed as a global node package."
-  fi
-}
-
 # ------------------------------------ ENV ----------------------------------- #
 
 # UI
@@ -67,18 +55,6 @@ eval "$(starship init bash)"
 export PODMAN_COMPOSE_WARNING_LOGS=false
 
 # Commands Aliases
-# For running node packages' scripts
-alias dev='nr-wrapper dev'
-alias build='nr-wrapper build'
-alias start='nr-wrapper start'
-alias docs='nr-wrapper docs'
-alias play='nr-wrapper play'
-alias lint='nr-wrapper lint'
-alias typecheck='nr-wrapper typecheck'
-alias usagecheck='nr-wrapper usagecheck'
-alias check='nr-wrapper check'
-alias test='nr-wrapper test'
-alias release='nr-wrapper release'
 # For container management
 alias docker='podman'
 alias compose='podman compose'

@@ -36,15 +36,3 @@ export def dirname-parent [] {
   }
   return ''
 }
-
-# Wrapper for running node packages' scripts
-export def --wrapped nr-wrapper [...rest] {
-  if not (['package.json'] | any-path-exists-parent ) {
-    return
-  }
-  if (which nr | is-not-empty) {
-    nr ...$rest
-  } else {
-    echo $'(ansi y)Warning: `@antfu/ni` is not installed as a global node package.(ansi reset)'
-  }
-}
