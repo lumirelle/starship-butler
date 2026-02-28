@@ -20,7 +20,7 @@
       "@/*": ["./*"]
     },
     "resolveJsonModule": true,
-    "types": ["node"],
+    "types": ["node", "vite/client"],
     "allowImportingTsExtensions": true,
 
     // Type Checking
@@ -40,5 +40,5 @@
     // Completeness
     "skipLibCheck": true
   },
-  "exclude": ["**/*.config.ts"]
+  "include": ["src/**/*", "test/**/*"]
 }

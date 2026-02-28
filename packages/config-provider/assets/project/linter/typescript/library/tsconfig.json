@@ -36,5 +36,5 @@
     // Completeness
     "skipLibCheck": true
   },
-  "exclude": ["docs/**", "playground/**", "**/*.config.ts"]
+  "include": ["src/**/*", "test/**/*"]
 }
