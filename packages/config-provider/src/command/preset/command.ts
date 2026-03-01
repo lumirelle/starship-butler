@@ -79,7 +79,7 @@ export async function commandPreset(
         )
       } else {
         consola.error(
-          `Got an error while applying "${important(action.name)}" preset, process stopped. Reason: ${error instanceof Error ? error.message : error}`,
+          `Got an error while applying "${important(action.name)}" preset, process stopped. Reason: ${error instanceof Error ? error.message : String(error)}`,
         )
       }
     }

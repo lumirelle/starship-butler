@@ -57,10 +57,9 @@ export async function commandSet(
   }
   consola.debug('[config-provider] Source pattern:', processedSourcePattern)
   // Read ignore patterns from .setignore file
-  const ignorePatterns =
-    readFileSync(join(assetsPath, '.setignore'), 'utf8')
-      ?.split('\n')
-      .filter((line) => line.trim() !== '') || []
+  const ignorePatterns = readFileSync(join(assetsPath, '.setignore'), 'utf8')
+    .split('\n')
+    .filter((line) => line.trim() !== '')
   const matchedFiles = globSync(processedSourcePattern, {
     cwd: assetsPath,
     dot: true,
@@ -76,7 +75,7 @@ export async function commandSet(
    * Source file paths, relative to assets folder
    */
   let sourceFiles: string[] | undefined
-  if (!matchedFiles || matchedFiles.length === 0) {
+  if (matchedFiles.length === 0) {
     consola.error('No files matched the source pattern!')
     return
   }

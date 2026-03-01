@@ -1,5 +1,5 @@
 import type { ConfigProviderOptions } from 'starship-butler-config-provider'
-import type { ConfigLayerMeta, LoadConfigOptions, RCOptions } from 'starship-butler-utils/config'
+import type { LoadConfigOptions, RCOptions } from 'starship-butler-utils/config'
 import { createDefu } from 'defu'
 import { loadConfig as _loadConfig, readUserRc } from 'starship-butler-utils/config'
 
@@ -31,7 +31,6 @@ export function defineButlerConfig(config: SafeButlerConfig): Partial<SafeButler
 }
 
 type LoadConfigT = Partial<ButlerConfig>
-type LoadConfigMT = ConfigLayerMeta
 
 /**
  * Load user's configuration.
@@ -40,10 +39,10 @@ type LoadConfigMT = ConfigLayerMeta
  * @returns Configuration.
  */
 export async function loadConfig(
-  options?: RCOptions & LoadConfigOptions<LoadConfigT, LoadConfigMT>,
+  options?: RCOptions & LoadConfigOptions<LoadConfigT>,
 ): Promise<LoadConfigT> {
   const rc = readUserRc(options)
-  const { config } = await _loadConfig<LoadConfigT, LoadConfigMT>(options)
+  const { config } = await _loadConfig<LoadConfigT>(options)
   const defu = createDefu((obj, key) => {
     // Ignore `config-provider.version` from `config`
     if (key === 'version') {

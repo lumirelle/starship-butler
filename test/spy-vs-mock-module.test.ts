@@ -1,4 +1,6 @@
-// oxlint-disable max-classes-per-file
+// oxlint-disable typescript/no-unsafe-return
+// oxlint-disable typescript/no-unsafe-type-assertion
+
 /**
  * @file A test file to compare the behavior of spying on module members and mocking the whole module.
  * @summary The simplest way is to use spy instead of mocking the whole module. If you still want to mock modules, you have to store a copy of the original implementation before you do the mocking, then re-mock it with this copy to restore to the original one, and the limitation is: it can only works synchronously.
@@ -49,7 +51,7 @@ class SpyUtils {
     if (times === 'once') {
       this.spiedViteNormalizePath.mockImplementationOnce((_: string) => 'Mocked')
       this.spiedEslintLoad.mockImplementationOnce(() => undefined as any)
-    } else if (times === 'always') {
+    } else {
       this.spiedViteNormalizePath.mockImplementation((_: string) => 'Mocked')
       this.spiedEslintLoad.mockImplementation(() => undefined as any)
     }
@@ -103,26 +105,27 @@ class MockUtils {
     // If we need the ability to restore to original implementation
     this.mockedViteNormalizePath = mock(vite.normalizePath)
     this.mockedEslintLoad = mock(eslint.loadESLint)
+  }
+
+  public static async mockModule(): Promise<MockUtils> {
+    const ins = new MockUtils()
     // Mock the modules with these mocks
-    mock.module('vite', () => ({
+    await mock.module('vite', () => ({
       ...originalVite,
-      normalizePath: this.mockedViteNormalizePath,
+      normalizePath: ins.mockedViteNormalizePath,
     }))
-    mock.module('eslint', () => ({
+    await mock.module('eslint', () => ({
       ...originalEslint,
-      loadESLint: this.mockedEslintLoad,
+      loadESLint: ins.mockedEslintLoad,
     }))
+    return ins
   }
 
-  public static mockModule(): MockUtils {
-    return new MockUtils()
-  }
-
-  public static mockModuleOriginal(): void {
-    mock.module('vite', () => ({
+  public static async mockModuleOriginal(): Promise<void> {
+    await mock.module('vite', () => ({
       ...originalVite,
     }))
-    mock.module('eslint', () => ({
+    await mock.module('eslint', () => ({
       ...originalEslint,
     }))
   }
@@ -131,7 +134,7 @@ class MockUtils {
     if (times === 'once') {
       this.mockedViteNormalizePath.mockImplementationOnce((_: string) => 'Mocked')
       this.mockedEslintLoad.mockImplementationOnce(() => undefined as any)
-    } else if (times === 'always') {
+    } else {
       this.mockedViteNormalizePath.mockImplementation((_: string) => 'Mocked')
       this.mockedEslintLoad.mockImplementation(() => undefined as any)
     }
@@ -147,9 +150,9 @@ class MockUtils {
     this.mockedEslintLoad.mockRestore()
   }
 
-  public mockRestoreWithModuleOriginal(): void {
+  public async mockRestoreWithModuleOriginal(): Promise<void> {
     this.mockRestore()
-    MockUtils.mockModuleOriginal()
+    await MockUtils.mockModuleOriginal()
   }
 
   public async call(): Promise<void> {
@@ -354,12 +357,12 @@ describe('spy-vs-mock-module', () => {
   })
 
   describe('mock on module', () => {
-    afterEach(() => {
-      MockUtils.mockModuleOriginal()
+    afterEach(async () => {
+      await MockUtils.mockModuleOriginal()
     })
 
     it('should mock implementation on module once', async () => {
-      const mocks = MockUtils.mockModule()
+      const mocks = await MockUtils.mockModule()
       // Mock once
       mocks.mockImplementation('once')
       await ModuleUtils.expectMockedImpl()
@@ -368,7 +371,7 @@ describe('spy-vs-mock-module', () => {
     })
 
     it('should mock implementation on module always', async () => {
-      const mocks = MockUtils.mockModule()
+      const mocks = await MockUtils.mockModule()
       // Mock always
       mocks.mockImplementation('always')
       await ModuleUtils.expectMockedImpl()
@@ -377,7 +380,7 @@ describe('spy-vs-mock-module', () => {
     })
 
     it('can clear called history by `mocked.mockClear()`', async () => {
-      const mocks = MockUtils.mockModule()
+      const mocks = await MockUtils.mockModule()
 
       mocks.mockImplementation('always')
       mocks.expectBeenCalledTimes(0)
@@ -392,7 +395,7 @@ describe('spy-vs-mock-module', () => {
     })
 
     it('can clear called history by `mocked.mockClear()` without affecting implementation on module', async () => {
-      const mocks = MockUtils.mockModule()
+      const mocks = await MockUtils.mockModule()
 
       mocks.mockImplementation('always')
       mocks.expectBeenCalledTimes(0)
@@ -407,7 +410,7 @@ describe('spy-vs-mock-module', () => {
     })
 
     it('should clear called history by global `mock.clearAllMocks()`', async () => {
-      const mocks = MockUtils.mockModule()
+      const mocks = await MockUtils.mockModule()
 
       mocks.mockImplementation('always')
       mocks.expectBeenCalledTimes(0)
@@ -422,7 +425,7 @@ describe('spy-vs-mock-module', () => {
     })
 
     it('should clear called history by global `mock.clearAllMocks()` without affecting implementation on module', async () => {
-      const mocks = MockUtils.mockModule()
+      const mocks = await MockUtils.mockModule()
 
       mocks.mockImplementation('always')
       mocks.expectBeenCalledTimes(0)
@@ -437,7 +440,7 @@ describe('spy-vs-mock-module', () => {
     })
 
     it.failing('should fail to restore `mock module` by `mocked.mockRestore()`', async () => {
-      const mocks = MockUtils.mockModule()
+      const mocks = await MockUtils.mockModule()
 
       // When `mock module`, calls on module are recorded
       mocks.expectBeenCalledTimes(0)
@@ -452,7 +455,7 @@ describe('spy-vs-mock-module', () => {
     })
 
     it.failing('should fail to restore `mock module` by global `mock.restore()`', async () => {
-      const mocks = MockUtils.mockModule()
+      const mocks = await MockUtils.mockModule()
 
       // When `mock module`, calls on module are recorded
       mocks.expectBeenCalledTimes(0)
@@ -467,7 +470,7 @@ describe('spy-vs-mock-module', () => {
     })
 
     it('should restore `mock module` by re-mocking module with original implementation', async () => {
-      const mocks = MockUtils.mockModule()
+      const mocks = await MockUtils.mockModule()
 
       // When `mock module`, calls on module are recorded
       mocks.expectBeenCalledTimes(0)
@@ -475,14 +478,14 @@ describe('spy-vs-mock-module', () => {
       mocks.expectBeenCalledTimes(1)
 
       // After restore `mock module`, calls on module are still recorded
-      mocks.mockRestoreWithModuleOriginal()
+      await mocks.mockRestoreWithModuleOriginal()
       mocks.expectBeenCalledTimes(0)
       await ModuleUtils.expectOriginalImpl()
       mocks.expectBeenCalledTimes(0)
     })
 
     it('should restore to previous mocked implementation by `mocked.mockRestore()`', async () => {
-      const mocks = MockUtils.mockModule()
+      const mocks = await MockUtils.mockModule()
 
       mocks.mockImplementation('always')
       mocks.expectBeenCalledTimes(0)
@@ -497,7 +500,7 @@ describe('spy-vs-mock-module', () => {
     })
 
     it.todo('should restore to previous mocked implementation by global `mock.restore()`', async () => {
-      const mocks = MockUtils.mockModule()
+      const mocks = await MockUtils.mockModule()
 
       mocks.mockImplementation('always')
       mocks.expectBeenCalledTimes(0)

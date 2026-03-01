@@ -263,7 +263,7 @@ describe('actions', () => {
 
   it('should prompt user to select actions when include option is empty', async () => {
     const mockedMultiselect = mock(() => ['nushell', 'bash'])
-    mock.module('@clack/prompts', () => ({
+    await mock.module('@clack/prompts', () => ({
       multiselect: mockedMultiselect,
     }))
     const filteredActions = await filterActions({

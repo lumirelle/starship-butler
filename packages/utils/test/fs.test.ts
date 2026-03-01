@@ -105,7 +105,7 @@ describe('fs util tests', () => {
     spied.mockClear()
   })
 
-  it('should create backup when copying file with force', () => {
+  it('should create backup when copying file with force', async () => {
     if (!exists(dirname('fixture/tmp/butler.config.json'))) {
       const result = copyFile(
         dirname('fixture/butler.config.json'),
@@ -117,7 +117,7 @@ describe('fs util tests', () => {
     const spiedCopyFileSync = spyOn(fs, 'copyFileSync').mockImplementationOnce(() => {
       throw new Error('Throw an error to test rollback')
     })
-    mock.module('node:fs', () => ({
+    await mock.module('node:fs', () => ({
       ...fs,
       renameSync: spiedRenameSync,
       copyFileSync: spiedCopyFileSync,
@@ -165,7 +165,7 @@ describe('fs util tests', () => {
     spy.mockClear()
   })
 
-  it('should create backup when creating symlink with force', () => {
+  it('should create backup when creating symlink with force', async () => {
     if (!exists(dirname('fixture/tmp/symlink-to-config'))) {
       const result = createSymlink(
         dirname('fixture/tmp/butler.config.json'),
@@ -177,7 +177,7 @@ describe('fs util tests', () => {
     const spiedSymlinkSync = spyOn(fs, 'symlinkSync').mockImplementationOnce(() => {
       throw new Error('Throw an error to test rollback')
     })
-    mock.module('node:fs', () => ({
+    await mock.module('node:fs', () => ({
       ...fs,
       renameSync: spiedRenameSync,
       symlinkSync: spiedSymlinkSync,

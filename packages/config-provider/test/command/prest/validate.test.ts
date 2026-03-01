@@ -6,6 +6,7 @@ describe('validator', () => {
     expect(validateOptions({})).toBe(true)
   })
   it('should return false with invalid mode', () => {
-    expect(validateOptions({ mode: 'invalid' as any })).toBe(false)
+    // @ts-expect-error Testing invalid mode
+    expect(validateOptions({ mode: 'invalid' })).toBe(false)
   })
 })

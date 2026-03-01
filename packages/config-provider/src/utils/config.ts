@@ -61,23 +61,17 @@ export function processConfig(
   options: Partial<ProcessConfigOptions> = {},
 ): void {
   const { mode = 'copy-paste', dryRun = false } = options
-  if (mode === 'copy-paste') {
-    if (dryRun || _copyPasteConfig(source, target, options)) {
-      consola.success(
-        `Configuration ${important(source)} ${
-          dryRun ? success('will') : 'is'
-        } copied to ${important(target)}.`,
-      )
-    }
-  } else if (mode === 'symlink') {
-    if (dryRun || _symlinkConfig(source, target, options)) {
-      consola.success(
-        `Configuration ${important(target)} ${
-          dryRun ? success('will') : 'is'
-        } symlinked to ${important(source)}.`,
-      )
-    }
-  } else {
-    throw new Error(`Unknown configure mode: ${mode}`)
+  if ((mode === 'copy-paste' && dryRun) || _copyPasteConfig(source, target, options)) {
+    consola.success(
+      `Configuration ${important(source)} ${
+        dryRun ? success('will') : 'is'
+      } copied to ${important(target)}.`,
+    )
+  } else if (dryRun || _symlinkConfig(source, target, options)) {
+    consola.success(
+      `Configuration ${important(target)} ${
+        dryRun ? success('will') : 'is'
+      } symlinked to ${important(source)}.`,
+    )
   }
 }

@@ -45,6 +45,7 @@
         "nano-staged": "^0.9.0",
         "oxfmt": "^0.35.0",
         "oxlint": "^1.50.0",
+        "oxlint-tsgolint": "^0.15.0",
         "publint": "^0.3.17"
       },
       "test": {
@@ -62,8 +63,7 @@
         "unplugin-vue-components": "^31.0.0",
         "vite-tsconfig-paths": "^6.1.1",
         "vitepress": "^2.0.0-alpha.16",
-        "vitepress-plugin-group-icons": "^1.7.1",
-        "vue": "^3.5.29"
+        "vitepress-plugin-group-icons": "^1.7.1"
       },
       "assets": {
         "@lumirelle/stylelint-config": "^5.0.0-beta.5",
@@ -81,8 +81,8 @@
     "docs:preview": "bun run --cwd docs docs:preview",
     "play": "bun run --cwd playground play",
     "format": "bunx oxfmt",
-    "lint": "bun --parallel oxlint eslint",
-    "lint:fix": "bun --sequential 'oxlint --fix' 'eslint --fix'",
+    "lint": "bun --parallel 'oxlint --type-aware' eslint",
+    "lint:fix": "bun --sequential 'oxlint --type-aware --fix' 'eslint --fix'",
     "check:type": "bun run --parallel --filter '*' check:type",
     "check:usage": "bun knip",
     "check:dist": "bun run --parallel --filter '*' check:dist",
@@ -104,6 +104,7 @@
     "nano-staged": "catalog:check",
     "oxfmt": "catalog:check",
     "oxlint": "catalog:check",
+    "oxlint-tsgolint": "catalog:check",
     "publint": "catalog:check",
     "simple-git-hooks": "catalog:dev",
     "starship-butler": "workspace:*",
@@ -116,7 +117,7 @@
   },
   "nano-staged": {
     "*": [
-      "bun oxlint",
+      "bun oxlint --type-aware",
       "bun eslint",
       "bunx oxfmt --no-error-on-unmatched-pattern"
     ]

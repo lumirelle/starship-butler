@@ -1,6 +1,6 @@
 import type { defaults } from 'rc9'
 import { readUser, updateUser, writeUser } from 'rc9'
-import { remove } from '../fs'
+import { exists, remove } from '../fs'
 import { homedir } from '../path'
 
 export type RCOptions = typeof defaults
@@ -48,7 +48,7 @@ export function writeUserRc(config: RC, options?: RCOptions): void {
  * @param options Options for rc9.
  * @returns The updated rc content.
  */
-export function updateUserRc(config: RC, options?: RCOptions): any {
+export function updateUserRc(config: RC, options?: RCOptions): RC {
   return updateUser(config, {
     name: RC_FILE_NAME,
     ...options,
@@ -77,8 +77,7 @@ export function removeUserRc(options?: RCOptions): void {
  * @param options Options for rc9.
  */
 export function upsertUserRc(config: RC, options?: RCOptions): void {
-  const rc = readUserRc(options)
-  if (rc) {
+  if (exists(homedir(options?.name ?? RC_FILE_NAME))) {
     updateUserRc(config, options)
   } else {
     writeUserRc(config, options)

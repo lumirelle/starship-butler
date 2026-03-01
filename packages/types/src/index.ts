@@ -1,1 +1,1 @@
-export * from './options'
+export type * from './options'

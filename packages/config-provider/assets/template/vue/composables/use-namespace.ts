@@ -13,7 +13,7 @@ const statePrefix = 'is-'
  * @returns The bem class
  */
 function _bem(block: string, blockSuffix: string, element: string, modifier: string): string {
-  let cls = `${block}`
+  let cls = block
   if (blockSuffix) {
     cls += `-${blockSuffix}`
   }
