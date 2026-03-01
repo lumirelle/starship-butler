@@ -90,6 +90,8 @@ unshift
 bunx
 oxlint
 oxfmt
+bunup
+tsgolint
 
 # DEV: JAVA
 graalvm
