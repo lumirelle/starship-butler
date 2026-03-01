@@ -38,7 +38,6 @@
       "check": {
         "@antfu/eslint-config": "^7.6.1",
         "@arethetypeswrong/cli": "^0.18.2",
-        "@typescript/native-preview": "^7.0.0-dev.20260228.1",
         "eslint": "^9.39.3",
         "eslint-plugin-oxlint": "^1.50.0",
         "knip": "^5.85.0",
@@ -81,12 +80,11 @@
     "docs:preview": "bun run --cwd docs docs:preview",
     "play": "bun run --cwd playground play",
     "format": "bunx oxfmt",
-    "lint": "bun --parallel 'oxlint --type-aware' eslint",
-    "lint:fix": "bun --sequential 'oxlint --type-aware --fix' 'eslint --fix'",
-    "check:type": "bun run --parallel --filter '*' check:type",
+    "lint": "bun --parallel 'oxlint --type-aware --type-check' eslint",
+    "lint:fix": "bun --sequential 'oxlint --type-aware --type-check --fix' 'eslint --fix'",
     "check:usage": "bun knip",
     "check:dist": "bun run --parallel --filter '*' check:dist",
-    "check": "bun run --parallel lint check:type check:usage check:dist",
+    "check": "bun run --parallel lint check:usage check:dist",
     "test": "bun test",
     "prerelease": "bun run --sequential build check test",
     "release": "bun bumpp --all --recursive --execute \"bun update --lockfile-only starship-butler\" # See https://github.com/oven-sh/bun/issues/18906 and https://github.com/oven-sh/bun/issues/20477"
@@ -95,7 +93,6 @@
     "@antfu/eslint-config": "catalog:check",
     "@arethetypeswrong/cli": "catalog:check",
     "@types/bun": "catalog:types",
-    "@typescript/native-preview": "catalog:check",
     "bumpp": "catalog:dev",
     "bunup": "catalog:build",
     "eslint": "catalog:check",
@@ -117,7 +114,7 @@
   },
   "nano-staged": {
     "*": [
-      "bun oxlint --type-aware",
+      "bun oxlint --type-aware --type-check",
       "bun eslint",
       "bunx oxfmt --no-error-on-unmatched-pattern"
     ]

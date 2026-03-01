@@ -31,7 +31,6 @@
     "dist"
   ],
   "scripts": {
-    "check:type": "bun tsgo --noEmit",
     "check:dist": "bun --parallel 'attw --pack --profile esm-only' publint"
   }
 }
