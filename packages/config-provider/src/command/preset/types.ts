@@ -1,6 +1,6 @@
 import type { Arrayable, Awaitable, Nullable } from '@antfu/utils'
 import type { SystemOptions } from 'starship-butler-types'
-import type { ProcessConfigOptions } from '../../utils/types'
+import type { ProcessConfigOptions } from '../utils/types'
 
 export type ActionId =
   | 'clash-verge-rev'

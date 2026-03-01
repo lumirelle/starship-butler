@@ -10,7 +10,7 @@ import { upsertUserRc } from 'starship-butler-utils/config'
 import { ensureDirectory, isDirectory } from 'starship-butler-utils/fs'
 import { globSync } from 'tinyglobby'
 import { version } from '../../../package.json'
-import { processConfig } from '../../utils/config'
+import { processConfig } from '../utils/config'
 import { validateOptions } from './validate'
 
 /**

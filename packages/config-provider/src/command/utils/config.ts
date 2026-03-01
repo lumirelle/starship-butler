@@ -23,7 +23,7 @@ function _copyPasteConfig(
     // TODO: Implement support for glob
     return false
   }
-  return copyFile(join(import.meta.dirname, '..', 'assets', source), target, force)
+  return copyFile(join(import.meta.dirname, '..', '..', 'assets', source), target, force)
 }
 
 /**
@@ -45,7 +45,7 @@ function _symlinkConfig(
     // TODO: Implement support for glob
     return false
   }
-  return createSymlink(join(import.meta.dirname, '..', 'assets', source), target, force)
+  return createSymlink(join(import.meta.dirname, '..', '..', 'assets', source), target, force)
 }
 
 /**

@@ -1,4 +1,4 @@
-import type { ProcessConfigOptions } from '../../utils/types'
+import type { ProcessConfigOptions } from '../utils/types'
 
 /**
  * (Configuration and Command-line) Options for set command.

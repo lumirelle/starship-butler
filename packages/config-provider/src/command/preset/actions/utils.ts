@@ -4,7 +4,7 @@ import { platform } from 'node:os'
 import { toArray } from '@antfu/utils'
 import { ensureDirectory, exists } from 'starship-butler-utils/fs'
 import { x } from 'tinyexec'
-import { processConfig } from '../../../utils'
+import { processConfig } from '../../utils'
 
 /* Target folder handler utilities */
 
