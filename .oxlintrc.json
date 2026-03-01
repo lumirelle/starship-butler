@@ -5,6 +5,7 @@
     "browser": true
   },
   "plugins": ["eslint", "typescript", "unicorn", "oxc", "import", "jsdoc", "node", "promise"],
+  "ignorePatterns": ["README.md"],
   "categories": {
     "correctness": "error",
     "nursery": "error",

@@ -2,6 +2,5 @@
   "$schema": "./node_modules/oxfmt/configuration_schema.json",
   "semi": false,
   "singleQuote": true,
-  "sortPackageJson": false,
-  "ignorePatterns": ["README.md"]
+  "sortPackageJson": false
 }

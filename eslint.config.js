@@ -4,9 +4,9 @@ import oxlint from 'eslint-plugin-oxlint'
 
 export default antfu(
   {
-    ignores: ['README.md', 'test/exports/**'],
     stylistic: false,
     type: 'lib',
+    ignores: ['README.md'],
   },
   ...oxlint.buildFromOxlintConfigFile('.oxlintrc.json'),
 ).override('antfu/perfectionist/setup', {

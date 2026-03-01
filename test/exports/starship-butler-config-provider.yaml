@@ -1,4 +1,2 @@
-".": 
-  commandPreset: function
-  commandSet: function
+.:
   processConfig: function
