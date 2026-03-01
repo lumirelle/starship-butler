@@ -1,12 +1,14 @@
-import type { PresetOptions, SetOptions } from 'starship-butler-config-provider'
+import type { PresetOptions } from 'starship-butler-config-provider/command/preset'
+import type { SetOptions } from 'starship-butler-config-provider/command/set'
 import type { SystemOptions } from 'starship-butler-types'
 import { platform } from 'node:os'
 import process from 'node:process'
 import { confirm } from '@clack/prompts'
-import cac from 'cac'
-import consola, { LogLevels } from 'consola'
-import defu from 'defu'
-import { commandPreset, commandSet } from 'starship-butler-config-provider'
+import { cac } from 'cac'
+import { consola, LogLevels } from 'consola'
+import { defu } from 'defu'
+import { commandPreset } from 'starship-butler-config-provider/command/preset'
+import { commandSet } from 'starship-butler-config-provider/command/set'
 import { version } from '../package.json'
 import { loadConfig } from './config'
 
@@ -89,7 +91,9 @@ MAKE SURE YOU KNOW WHAT YOU ARE DOING!
   .option('-d, --dry-run', 'Dry run. (Default: false)\n')
   .action(async (cliOptions: Partial<PresetOptions>) => {
     const cfgOptions: Partial<PresetOptions> = config['config-provider'] ?? {}
-    if (cliOptions.verbose || cfgOptions.verbose) consola.level = LogLevels.debug
+    if (cliOptions.verbose || cfgOptions.verbose) {
+      consola.level = LogLevels.debug
+    }
     consola.debug('[starship-butler] Received command line interface options:', cliOptions)
     consola.debug('[starship-butler] Loaded configuration options:', cfgOptions)
     const defaultOptions: Partial<PresetOptions> = {
@@ -144,7 +148,9 @@ MAKE SURE YOU KNOW WHAT YOU ARE DOING!
   .option('-d, --dry-run', 'Dry run. (Default: false)\n')
   .action(async (sourcePattern: string, target: string, cliOptions: Partial<SetOptions>) => {
     const cfgOptions: Partial<SetOptions> = config['config-provider'] ?? {}
-    if (cfgOptions.verbose || cliOptions.verbose) consola.level = LogLevels.debug
+    if (cfgOptions.verbose || cliOptions.verbose) {
+      consola.level = LogLevels.debug
+    }
     consola.debug('[starship-butler] Received command line interface options:', cliOptions)
     consola.debug('[starship-butler] Loaded configuration options:', cfgOptions)
     const defaultOptions: Partial<SetOptions> = {

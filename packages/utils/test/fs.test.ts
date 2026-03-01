@@ -1,6 +1,6 @@
 import { afterAll, beforeAll, describe, expect, it, mock, spyOn } from 'bun:test'
 import fs from 'node:fs'
-import consola from 'consola'
+import { consola } from 'consola'
 import {
   copyFile,
   createSymlink,
@@ -13,7 +13,7 @@ import {
 } from '../src/fs'
 import { info } from '../src/highlight'
 
-function dirname(path: string) {
+function dirname(path: string): string {
   return `${import.meta.dirname}/${path}`
 }
 
@@ -25,12 +25,13 @@ beforeAll(() => {
 afterAll(() => {
   remove(dirname('fixture/tmp/'), true)
   remove(dirname('fixture/symlink-to-config'))
-  if (exists(dirname('fixture/ensuring-directory/')))
+  if (exists(dirname('fixture/ensuring-directory/'))) {
     remove(dirname('fixture/ensuring-directory/'), true)
+  }
 })
 
 describe('fs util tests', () => {
-  it('should check path exists correctly', async () => {
+  it('should check path exists correctly', () => {
     // Existent paths
     expect(exists(dirname('fixture'))).toBe(true)
     expect(exists(dirname('fixture/'))).toBe(true)
@@ -74,7 +75,7 @@ describe('fs util tests', () => {
     // TODO(Lumirelle): Add test case for permission denied
   })
 
-  it('should copy file correctly', async () => {
+  it('should copy file correctly', () => {
     const result = copyFile(
       dirname('fixture/butler.config.json'),
       dirname('fixture/tmp/butler.config.json'),
@@ -83,7 +84,7 @@ describe('fs util tests', () => {
     expect(exists(dirname('fixture/tmp/butler.config.json'))).toBe(true)
   })
 
-  it('should copy file and warn if file is exist', async () => {
+  it('should copy file and warn if file is exist', () => {
     const spied = spyOn(consola, 'warn')
     if (!exists(dirname('fixture/tmp/butler.config.json'))) {
       const result = copyFile(
@@ -104,7 +105,7 @@ describe('fs util tests', () => {
     spied.mockClear()
   })
 
-  it('should create backup when copying file with force', async () => {
+  it('should create backup when copying file with force', () => {
     if (!exists(dirname('fixture/tmp/butler.config.json'))) {
       const result = copyFile(
         dirname('fixture/butler.config.json'),
@@ -116,20 +117,20 @@ describe('fs util tests', () => {
     const spiedCopyFileSync = spyOn(fs, 'copyFileSync').mockImplementationOnce(() => {
       throw new Error('Throw an error to test rollback')
     })
-    mock.module('node:fs', () => {
-      return {
-        ...fs,
-        renameSync: spiedRenameSync,
-        copyFileSync: spiedCopyFileSync,
-      }
-    })
+    mock.module('node:fs', () => ({
+      ...fs,
+      renameSync: spiedRenameSync,
+      copyFileSync: spiedCopyFileSync,
+    }))
     try {
       copyFile(
         dirname('fixture/butler.config.json'),
         dirname('fixture/tmp/butler.config.json'),
         true,
       )
-    } catch {}
+    } catch {
+      /* Do nothing */
+    }
     expect(spiedRenameSync).toHaveBeenCalledTimes(2)
     expect(exists(dirname('fixture/tmp/butler.config.json'))).toBe(true)
     spiedRenameSync.mockClear()
@@ -164,7 +165,7 @@ describe('fs util tests', () => {
     spy.mockClear()
   })
 
-  it('should create backup when creating symlink with force', async () => {
+  it('should create backup when creating symlink with force', () => {
     if (!exists(dirname('fixture/tmp/symlink-to-config'))) {
       const result = createSymlink(
         dirname('fixture/tmp/butler.config.json'),
@@ -176,26 +177,26 @@ describe('fs util tests', () => {
     const spiedSymlinkSync = spyOn(fs, 'symlinkSync').mockImplementationOnce(() => {
       throw new Error('Throw an error to test rollback')
     })
-    mock.module('node:fs', () => {
-      return {
-        ...fs,
-        renameSync: spiedRenameSync,
-        symlinkSync: spiedSymlinkSync,
-      }
-    })
+    mock.module('node:fs', () => ({
+      ...fs,
+      renameSync: spiedRenameSync,
+      symlinkSync: spiedSymlinkSync,
+    }))
     try {
       createSymlink(
         dirname('fixture/tmp/butler.config.json'),
         dirname('fixture/tmp/symlink-to-config'),
         true,
       )
-    } catch {}
+    } catch {
+      /* Do nothing */
+    }
     expect(spiedRenameSync).toHaveBeenCalledTimes(2)
     expect(exists(dirname('fixture/tmp/symlink-to-config'))).toBe(true)
     spiedRenameSync.mockClear()
   })
 
-  it('should remove file or directory correctly', async () => {
+  it('should remove file or directory correctly', () => {
     // File
     copyFile(
       dirname('fixture/butler.config.json'),
@@ -211,7 +212,7 @@ describe('fs util tests', () => {
     expect(exists(dirname('fixture/tmp/directory-to-delete'))).toBe(false)
   })
 
-  it('should warn when remove path which is not exist', async () => {
+  it('should warn when remove path which is not exist', () => {
     const spied = spyOn(consola, 'warn')
     const result = remove(dirname('fixture/tmp/non-existent-path'))
     expect(result).toBe(false)
@@ -222,7 +223,7 @@ describe('fs util tests', () => {
     spied.mockClear()
   })
 
-  it('should remove symlink correctly', async () => {
+  it('should remove symlink correctly', () => {
     createSymlink(
       dirname('fixture/butler.config.json'),
       dirname('fixture/tmp/symlink-to-config-to-delete'),
@@ -232,7 +233,7 @@ describe('fs util tests', () => {
     expect(exists(dirname('fixture/tmp/symlink-to-config-to-delete'))).toBe(false)
   })
 
-  it('should warn when remove path which is not symlink', async () => {
+  it('should warn when remove path which is not symlink', () => {
     const spied = spyOn(consola, 'warn')
     const result = removeSymlink(dirname('fixture/butler.config.json'))
     expect(result).toBe(false)

@@ -7,7 +7,7 @@ import {
   rmSync,
   symlinkSync,
 } from 'node:fs'
-import consola from 'consola'
+import { consola } from 'consola'
 import { info } from './highlight'
 
 /**
@@ -19,17 +19,18 @@ import { info } from './highlight'
 export function exists(path: string): boolean {
   try {
     // If it's a file but ends with `/` or `\`, we consider it does not exist, in order to let the behavior on Windows be consistent with Unix
-    if (lstatSync(path).isFile() && /\/$|\\$/.exec(path)) return false
-    else return true
+    if (lstatSync(path).isFile() && /\/$|\\$/.exec(path)) {
+      return false
+    }
+    return true
   } catch (error) {
     if (
       error instanceof Error &&
       ['ENOENT', 'ENOTDIR'].some((str) => error.message.includes(str))
     ) {
       return false
-    } else {
-      throw error
     }
+    throw error
   }
 }
 
@@ -43,8 +44,10 @@ export function exists(path: string): boolean {
  * @returns Whether the path is a directory.
  */
 export function isDirectory(path: string): boolean {
-  if (exists(path)) return lstatSync(path).isDirectory()
-  else return (!exists(path) || lstatSync(path).isDirectory()) && /\/$|\\$/.exec(path) !== null
+  if (exists(path)) {
+    return lstatSync(path).isDirectory()
+  }
+  return (!exists(path) || lstatSync(path).isDirectory()) && /\/$|\\$/.exec(path) !== null
 }
 
 /**
@@ -71,13 +74,28 @@ export function ensureDirectory(path: string): boolean {
   try {
     if (exists(path)) {
       return isDirectory(path)
-    } else {
-      mkdirSync(path, { recursive: true })
-      return true
     }
+    mkdirSync(path, { recursive: true })
+    return true
   } catch {
     return false
   }
+}
+
+/**
+ * Remove a path.
+ *
+ * @param path The path to remove.
+ * @param recursive Whether to remove (directories) recursively. If `false`, removing a directory will fail with an error.
+ * @returns `true` if the file was removed, `false` otherwise.
+ */
+export function remove(path: string, recursive = false): boolean {
+  if (!exists(path)) {
+    consola.warn(`REMOVE: Path not exists: ${info(path)}, skip`)
+    return false
+  }
+  rmSync(path, { recursive })
+  return true
 }
 
 /**
@@ -88,7 +106,7 @@ export function ensureDirectory(path: string): boolean {
  * @param force Whether to force overwrite the target file.
  * @returns Whether the file was copied.
  */
-export function copyFile(sourcePath: string, targetPath: string, force: boolean = false): boolean {
+export function copyFile(sourcePath: string, targetPath: string, force = false): boolean {
   const isExist = exists(targetPath)
   if (isExist) {
     if (!force) {
@@ -103,9 +121,13 @@ export function copyFile(sourcePath: string, targetPath: string, force: boolean 
       targetPath,
       force ? constants.COPYFILE_FICLONE : constants.COPYFILE_EXCL,
     )
-    if (isExist) remove(`${targetPath}.bak`)
+    if (isExist) {
+      remove(`${targetPath}.bak`)
+    }
   } catch (error) {
-    if (isExist) renameSync(`${targetPath}.bak`, targetPath)
+    if (isExist) {
+      renameSync(`${targetPath}.bak`, targetPath)
+    }
     throw error
   }
   return true
@@ -130,27 +152,15 @@ export function createSymlink(sourcePath: string, targetPath: string, force = fa
   }
   try {
     symlinkSync(sourcePath, targetPath, 'file')
-    if (isExist) remove(`${targetPath}.bak`)
+    if (isExist) {
+      remove(`${targetPath}.bak`)
+    }
   } catch (error) {
-    if (isExist) renameSync(`${targetPath}.bak`, targetPath)
+    if (isExist) {
+      renameSync(`${targetPath}.bak`, targetPath)
+    }
     throw error
   }
-  return true
-}
-
-/**
- * Remove a path.
- *
- * @param path The path to remove.
- * @param recursive Whether to remove (directories) recursively. If `false`, removing a directory will fail with an error.
- * @returns `true` if the file was removed, `false` otherwise.
- */
-export function remove(path: string, recursive: boolean = false): boolean {
-  if (!exists(path)) {
-    consola.warn(`REMOVE: Path not exists: ${info(path)}, skip`)
-    return false
-  }
-  rmSync(path, { recursive })
   return true
 }
 

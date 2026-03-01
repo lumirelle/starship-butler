@@ -1,6 +1,6 @@
 import type { SystemOptions } from 'starship-butler-types'
 import type { ActionHandlerContext, PresetOptions } from './types'
-import consola from 'consola'
+import { consola } from 'consola'
 import { upsertUserRc } from 'starship-butler-utils/config'
 import { important } from 'starship-butler-utils/highlight'
 import { version } from '../../../package.json'
@@ -43,14 +43,16 @@ export async function commandPreset(
       systemOptions,
       targetFolder: '',
     }
-    consola.log('') // New line
-    consola.start(`Applying ${important(`"${action.name}"`)} preset...`)
+    // New line
+    consola.log('')
+    consola.start(`Applying ${important(action.name)} preset...`)
 
     try {
       // Process `targetFolder`
-      if (typeof action.targetFolder === 'function')
-        context.targetFolder = await action.targetFolder(context)
-      else context.targetFolder = action.targetFolder
+      context.targetFolder =
+        typeof action.targetFolder === 'function'
+          ? await action.targetFolder(context)
+          : action.targetFolder
 
       // Run `prehandler` if exist
       if (action.prehandler) {
@@ -69,26 +71,29 @@ export async function commandPreset(
       }
     } catch (error) {
       errorCount++
-      if (!(error instanceof Error)) console.error(error)
-      else if (error instanceof HandlerError) consola.error(error.message)
-      else if (['EACCES', 'EPERM'].some((code) => error.message.includes(code)))
+      if (error instanceof HandlerError) {
+        consola.error(error.message)
+      } else if (error instanceof Error && /EACCES|EPERM/.test(error.message)) {
         consola.error(
           `Got a permission error while applying "${important(action.name)}" preset, please try running the command with admin privileges.`,
         )
-      else
+      } else {
         consola.error(
-          `Got an error while applying "${important(action.name)}" preset, process stopped. Reason: ${error.message}`,
+          `Got an error while applying "${important(action.name)}" preset, process stopped. Reason: ${error instanceof Error ? error.message : error}`,
         )
+      }
     }
   }
 
-  if (actions.length === 0)
+  if (actions.length === 0) {
     consola.info(
       'No presets to apply. Do you forget to specify include patterns with `--include` or `--all` option? For more information, please run with `--help` option.',
     )
-  else if (errorCount === actions.length)
+  } else if (errorCount === actions.length) {
     consola.error('All presets applied failed. Please check the output above for notices.')
-  else if (errorCount > 0)
+  } else if (errorCount > 0) {
     consola.warn('Some presets applied failed. Please check the output above for notices.')
-  else consola.success('All presets applied completed. Please check the output above for notices.')
+  } else {
+    consola.success('All presets applied completed. Please check the output above for notices.')
+  }
 }

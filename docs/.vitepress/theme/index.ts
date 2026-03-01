@@ -12,7 +12,7 @@ import 'virtual:group-icons.css'
 
 export default {
   extends: Theme,
-  enhanceApp({ app }: EnhanceAppContext) {
+  enhanceApp({ app }: EnhanceAppContext): void {
     app.use(TwoslashFloatingVue)
   },
 }

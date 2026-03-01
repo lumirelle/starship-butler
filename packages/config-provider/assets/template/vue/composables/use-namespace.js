@@ -39,7 +39,8 @@ function _bem(block, blockSuffix, element, modifier) {
  */
 
 /**
- * @type {(block: string) => UseNamespaceReturn}}
+ * @param {string} block - The block to use
+ * @returns {UseNamespaceReturn} The namespace helper functions
  */
 export function useNamespace(block) {
   const b = (blockSuffix = '') => _bem(block, blockSuffix, '', '')
@@ -52,10 +53,7 @@ export function useNamespace(block) {
     blockSuffix && modifier ? _bem(block, blockSuffix, '', modifier) : ''
   const bem = (blockSuffix, element, modifier) =>
     blockSuffix && element && modifier ? _bem(block, blockSuffix, element, modifier) : ''
-  const is = (name, ...args) => {
-    const state = args.length >= 1 ? args[0] : true
-    return name && state ? `${statePrefix}${name}` : ''
-  }
+  const is = (name, state = true) => (name && state ? `${statePrefix}${name}` : '')
 
   return {
     b,

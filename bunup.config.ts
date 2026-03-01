@@ -8,6 +8,9 @@ export default defineWorkspace([
   {
     name: 'config-provider',
     root: 'packages/config-provider',
+    config: {
+      entry: ['./src/index.ts', './src/command/*/index.ts'],
+    },
   },
   {
     name: 'types',

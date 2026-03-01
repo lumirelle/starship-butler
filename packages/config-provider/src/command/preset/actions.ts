@@ -1,7 +1,7 @@
 import type { Action, PresetOptions } from './types'
 import { toArray } from '@antfu/utils'
 import { multiselect } from '@clack/prompts'
-import consola from 'consola'
+import { consola } from 'consola'
 import { important } from 'starship-butler-utils/highlight'
 import { cursor } from './actions/editor/cursor'
 import { neovim } from './actions/editor/neovim'

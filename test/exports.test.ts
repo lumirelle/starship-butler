@@ -17,7 +17,9 @@ describe('exports-snapshot', async () => {
         name?: string
         private?: boolean
       }
-      if (!pkgJson.name || pkgJson.private) continue
+      if (!pkgJson.name || pkgJson.private) {
+        continue
+      }
       it(`${pkgJson.name}`, async () => {
         const manifest = await getPackageExportsManifest({
           importMode: 'src',
@@ -30,7 +32,7 @@ describe('exports-snapshot', async () => {
         const output = join(root, 'test', 'exports', ...pkgPaths)
         await fs.mkdir(dirname(output), { recursive: true })
         await fs.writeFile(output, exports)
-        expect(exports).toEqual(await fs.readFile(output, { encoding: 'utf-8' }))
+        expect(exports).toEqual(await fs.readFile(output, { encoding: 'utf8' }))
       })
     }
   }

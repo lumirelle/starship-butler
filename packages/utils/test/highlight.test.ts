@@ -12,9 +12,7 @@ describe('highlight util tests', () => {
   })
 
   it('should show success text with green color', () => {
-    const success = (v: string): string => {
-      return styleText(['green'], v)
-    }
+    const success = (v: string): string => styleText(['green'], v)
     expect(success('test')).toBe(styleText(['green'], 'test'))
   })
 })

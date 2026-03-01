@@ -48,9 +48,7 @@ export interface PresetOptions extends ProcessConfigOptions {
 /**
  * A map from platform to target folder, useful for multi-platform support.
  */
-export type PlatformTargetFolderMap = {
-  [platform in NodeJS.Platform]?: string
-}
+export type PlatformTargetFolderMap = Partial<Record<NodeJS.Platform, string>>
 
 /**
  * Context provided to the preset action handlers.

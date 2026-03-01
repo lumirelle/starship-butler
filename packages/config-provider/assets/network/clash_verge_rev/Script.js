@@ -5,26 +5,41 @@
 
 /**
  * Custom DNS configuration
+ *
+ * @returns {object} DNS configuration
  */
 function customDns() {
   // Default nameservers, used to resolve other dns servers
   const defaultNameservers = [
-    '223.5.5.5', // AliDNS
-    '119.29.29.29', // DNSPod
-    '114.114.114.114', // 114DNS
-    '1.1.1.1', // Cloudflare DNS
-    '8.8.8.8', // Google DNS
+    // AliDNS
+    '223.5.5.5',
+    // DNSPod
+    '119.29.29.29',
+    // 114DNS
+    '114.114.114.114',
+    // Cloudflare DNS
+    '1.1.1.1',
+    // Google DNS
+    '8.8.8.8',
   ]
   // Nameservers
   const nameservers = [
-    'https://dns.alidns.com/dns-query', // AliDNS DoH
-    'https://doh.pub/dns-query', // DNSPod DoH
-    'https://dns.cloudflare.com/dns-query', // Cloudflare DoH
-    'https://dns.google/dns-query', // Google DoH
-    'tls://dns.alidns.com:853', // AliDNS DoT
-    'tls://dot.pub:853', // DNSPod DoT
-    'tls://dns.cloudflare.com:853', // Cloudflare DoT
-    'tls://dns.google:853', // Google DoT
+    // AliDNS DoH
+    'https://dns.alidns.com/dns-query',
+    // DNSPod DoH
+    'https://doh.pub/dns-query',
+    // Cloudflare DoH
+    'https://dns.cloudflare.com/dns-query',
+    // Google DoH
+    'https://dns.google/dns-query',
+    // AliDNS DoT
+    'tls://dns.alidns.com:853',
+    // DNSPod DoT
+    'tls://dot.pub:853',
+    // Cloudflare DoT
+    'tls://dns.cloudflare.com:853',
+    // Google DoT
+    'tls://dns.google:853',
   ]
   // DNS configuration
   const dns = {
@@ -67,6 +82,9 @@ function customDns() {
 
 /**
  * Custom proxy groups
+ *
+ * @param {object} config Original config object
+ * @returns {object} Custom proxy groups
  */
 function customProxyGroups(config) {
   const reg = /剩余|套餐|导航/
@@ -202,12 +220,14 @@ function customProxyGroups(config) {
 
 /**
  * Custom rule providers & rules
+ *
+ * @returns {object} Custom rule providers & rules
  */
 function customRules() {
   const ruleProviderCommon = {
     type: 'http',
     format: 'yaml',
-    interval: 86400,
+    interval: 86_400,
   }
   const ruleProviders = {
     reject: {

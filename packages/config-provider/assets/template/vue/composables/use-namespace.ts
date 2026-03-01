@@ -34,10 +34,7 @@ export interface UseNamespaceReturn {
   em: (element?: string, modifier?: string) => string
   bm: (blockSuffix?: string, modifier?: string) => string
   bem: (blockSuffix?: string, element?: string, modifier?: string) => string
-  is: {
-    (name: string, state: boolean | undefined): string
-    (name: string): string
-  }
+  is: (name: string, state?: boolean) => string
 }
 
 export function useNamespace(block: string): UseNamespaceReturn {
@@ -52,13 +49,7 @@ export function useNamespace(block: string): UseNamespaceReturn {
     blockSuffix && modifier ? _bem(block, blockSuffix, '', modifier) : ''
   const bem = (blockSuffix?: string, element?: string, modifier?: string): string =>
     blockSuffix && element && modifier ? _bem(block, blockSuffix, element, modifier) : ''
-  const is: {
-    (name: string, state: boolean | undefined): string
-    (name: string): string
-  } = (name: string, ...args: [boolean | undefined] | []) => {
-    const state = args.length >= 1 ? args[0]! : true
-    return name && state ? `${statePrefix}${name}` : ''
-  }
+  const is = (name: string, state = true): string => (name && state ? `${statePrefix}${name}` : '')
 
   return {
     b,

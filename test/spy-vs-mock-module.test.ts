@@ -1,5 +1,6 @@
+// oxlint-disable max-classes-per-file
 /**
- * @fileoverview A test file to compare the behavior of spying on module members and mocking the whole module.
+ * @file A test file to compare the behavior of spying on module members and mocking the whole module.
  * @summary The simplest way is to use spy instead of mocking the whole module. If you still want to mock modules, you have to store a copy of the original implementation before you do the mocking, then re-mock it with this copy to restore to the original one, and the limitation is: it can only works synchronously.
  * @see https://github.com/oven-sh/bun/issues/7823
  * @author Lumirelle
@@ -47,10 +48,10 @@ class SpyUtils {
   public mockImplementation(times: 'once' | 'always'): void {
     if (times === 'once') {
       this.spiedViteNormalizePath.mockImplementationOnce((_: string) => 'Mocked')
-      this.spiedEslintLoad.mockImplementationOnce(async () => undefined as any)
+      this.spiedEslintLoad.mockImplementationOnce(() => undefined as any)
     } else if (times === 'always') {
       this.spiedViteNormalizePath.mockImplementation((_: string) => 'Mocked')
-      this.spiedEslintLoad.mockImplementation(async () => undefined as any)
+      this.spiedEslintLoad.mockImplementation(() => undefined as any)
     }
   }
 
@@ -129,10 +130,10 @@ class MockUtils {
   public mockImplementation(times: 'once' | 'always'): void {
     if (times === 'once') {
       this.mockedViteNormalizePath.mockImplementationOnce((_: string) => 'Mocked')
-      this.mockedEslintLoad.mockImplementationOnce(async () => undefined as any)
+      this.mockedEslintLoad.mockImplementationOnce(() => undefined as any)
     } else if (times === 'always') {
       this.mockedViteNormalizePath.mockImplementation((_: string) => 'Mocked')
-      this.mockedEslintLoad.mockImplementation(async () => undefined as any)
+      this.mockedEslintLoad.mockImplementation(() => undefined as any)
     }
   }
 
@@ -198,13 +199,13 @@ class ModuleUtils {
 }
 
 describe('spy-vs-mock-module', () => {
-  describe('module by default', async () => {
+  describe('module by default', () => {
     it('should be original implementation', async () => {
       await ModuleUtils.expectOriginalImpl()
     })
   })
 
-  describe('spy on module', async () => {
+  describe('spy on module', () => {
     afterEach(() => {
       mock.restore()
     })
@@ -352,7 +353,7 @@ describe('spy-vs-mock-module', () => {
     })
   })
 
-  describe('mock on module', async () => {
+  describe('mock on module', () => {
     afterEach(() => {
       MockUtils.mockModuleOriginal()
     })

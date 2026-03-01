@@ -4,17 +4,18 @@ import { appdata, homedir } from 'starship-butler-utils/path'
 import { HandlerError } from '../../error'
 import { createHandler, createTargetFolderHandler, isPathExist } from '../utils'
 
-const name = 'Clash Verge Rev'
+const APP_NAME = 'Clash Verge Rev'
 
-const applicationId = 'io.github.clash-verge-rev.clash-verge-rev'
+const TARGET_FOLDERS: PlatformTargetFolderMap = (() => {
+  const APP_ID = 'io.github.clash-verge-rev.clash-verge-rev'
+  return {
+    win32: appdata(APP_ID, 'profiles'),
+    linux: homedir('.local', 'shared', APP_ID, 'profiles'),
+    darwin: homedir('Library', 'Application Support', APP_ID, 'profiles'),
+  }
+})()
 
-const platformTargetFolderMap: PlatformTargetFolderMap = {
-  win32: appdata(applicationId, 'profiles'),
-  linux: homedir('.local', 'shared', applicationId, 'profiles'),
-  darwin: homedir('Library', 'Application Support', applicationId, 'profiles'),
-}
-
-const configPathGenerators: ConfigPathGenerator[] = [
+const CONFIG_PATH_GENERATORS: ConfigPathGenerator[] = [
   ({ targetFolder }) => ({
     source: join('network', 'clash_verge_rev', 'Script.js'),
     target: join(targetFolder, 'Script.js'),
@@ -24,13 +25,16 @@ const configPathGenerators: ConfigPathGenerator[] = [
 export function clashVergeRev(): Action {
   return {
     id: 'clash-verge-rev',
-    name,
-    targetFolder: createTargetFolderHandler(platformTargetFolderMap),
+    name: APP_NAME,
+    targetFolder: createTargetFolderHandler(TARGET_FOLDERS),
     prehandler: ({ targetFolder, systemOptions }) => {
-      if (!(systemOptions.platform in platformTargetFolderMap))
+      if (!(systemOptions.platform in TARGET_FOLDERS)) {
         throw new HandlerError(`Unsupported platform: ${systemOptions.platform}`)
-      if (!isPathExist(targetFolder)) throw new HandlerError(`You should install ${name} first!`)
+      }
+      if (!isPathExist(targetFolder)) {
+        throw new HandlerError(`You should install ${APP_NAME} first!`)
+      }
     },
-    handler: createHandler(configPathGenerators),
+    handler: createHandler(CONFIG_PATH_GENERATORS),
   }
 }

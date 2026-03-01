@@ -7,12 +7,10 @@ describe('actions', () => {
       include: ['nushell'],
     })
     // Extract only `id` and `name` for comparison
-    const simpleFilteredActions = filteredActions.map((item) => {
-      return {
-        id: item.id,
-        name: item.name,
-      }
-    })
+    const simpleFilteredActions = filteredActions.map((item) => ({
+      id: item.id,
+      name: item.name,
+    }))
     expect(simpleFilteredActions).toMatchInlineSnapshot(`
       [
         {
@@ -26,12 +24,10 @@ describe('actions', () => {
     const filteredActions = await filterActions({
       include: ['.*'],
     })
-    const simpleFilteredActions = filteredActions.map((item) => {
-      return {
-        id: item.id,
-        name: item.name,
-      }
-    })
+    const simpleFilteredActions = filteredActions.map((item) => ({
+      id: item.id,
+      name: item.name,
+    }))
     expect(simpleFilteredActions).toMatchInlineSnapshot(`
       [
         {
@@ -109,12 +105,10 @@ describe('actions', () => {
     const filteredActions = await filterActions({
       all: true,
     })
-    const simpleFilteredActions = filteredActions.map((item) => {
-      return {
-        id: item.id,
-        name: item.name,
-      }
-    })
+    const simpleFilteredActions = filteredActions.map((item) => ({
+      id: item.id,
+      name: item.name,
+    }))
     expect(simpleFilteredActions).toMatchInlineSnapshot(`
       [
         {
@@ -193,12 +187,10 @@ describe('actions', () => {
       include: ['.*'],
       exclude: ['nushell'],
     })
-    const simpleFilteredActions = filteredActions.map((item) => {
-      return {
-        id: item.id,
-        name: item.name,
-      }
-    })
+    const simpleFilteredActions = filteredActions.map((item) => ({
+      id: item.id,
+      name: item.name,
+    }))
     expect(simpleFilteredActions).toMatchInlineSnapshot(`
       [
         {
@@ -270,9 +262,7 @@ describe('actions', () => {
   })
 
   it('should prompt user to select actions when include option is empty', async () => {
-    const mockedMultiselect = mock(async () => {
-      return ['nushell', 'bash']
-    })
+    const mockedMultiselect = mock(() => ['nushell', 'bash'])
     mock.module('@clack/prompts', () => ({
       multiselect: mockedMultiselect,
     }))

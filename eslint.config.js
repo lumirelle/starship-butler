@@ -1,14 +1,14 @@
 // @ts-check
-import antfu from '@antfu/eslint-config'
+import { antfu } from '@antfu/eslint-config'
 import oxlint from 'eslint-plugin-oxlint'
 
 export default antfu(
   {
-    type: 'lib',
-    stylistic: false,
     ignores: ['README.md', 'test/exports/**'],
+    stylistic: false,
+    type: 'lib',
   },
-  ...oxlint.configs['flat/recommended'],
+  ...oxlint.buildFromOxlintConfigFile('.oxlintrc.json'),
 ).override('antfu/perfectionist/setup', {
   rules: {
     'perfectionist/sort-imports': [

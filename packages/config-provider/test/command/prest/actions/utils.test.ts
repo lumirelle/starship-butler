@@ -26,7 +26,7 @@ describe('action utils', () => {
     expect(await isPathExistEnv(nonExistingCommand)).toBe(false)
   })
 
-  it('ensureDirectoryExist should work', async () => {
+  it('ensureDirectoryExist should work', () => {
     const testDir = `${fixtureDir}/temp-test-dir/subdir`
 
     // Ensure the directory does not exist before the test

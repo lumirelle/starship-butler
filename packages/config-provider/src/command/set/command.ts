@@ -1,10 +1,11 @@
+// oxlint-disable import/max-dependencies
 import type { Nullable } from '@antfu/utils'
 import type { SetOptions } from './types'
 import { readFileSync } from 'node:fs'
 import { basename, join } from 'node:path'
 import process from 'node:process'
 import { isCancel, multiselect, select } from '@clack/prompts'
-import consola from 'consola'
+import { consola } from 'consola'
 import { upsertUserRc } from 'starship-butler-utils/config'
 import { ensureDirectory, isDirectory } from 'starship-butler-utils/fs'
 import { globSync } from 'tinyglobby'
@@ -47,17 +48,20 @@ export async function commandSet(
   const assetsPath = join(import.meta.dirname, '..', 'assets')
   consola.debug('[config-provider] Assets path:', assetsPath)
 
+  let processedSourcePattern = sourcePattern
   // Create source glob pattern
   // If the pattern does not contain folder part, add '**/' prefix to match
-  // files in all sub-folders, this is to improve user experience
-  if (!sourcePattern.includes('/')) sourcePattern = `**/${sourcePattern}`
-  consola.debug('[config-provider] Source pattern:', sourcePattern)
+  // Files in all sub-folders, this is to improve user experience
+  if (!processedSourcePattern.includes('/')) {
+    processedSourcePattern = `**/${processedSourcePattern}`
+  }
+  consola.debug('[config-provider] Source pattern:', processedSourcePattern)
   // Read ignore patterns from .setignore file
   const ignorePatterns =
-    readFileSync(join(assetsPath, '.setignore'), 'utf-8')
+    readFileSync(join(assetsPath, '.setignore'), 'utf8')
       ?.split('\n')
       .filter((line) => line.trim() !== '') || []
-  const matchedFiles = globSync(sourcePattern, {
+  const matchedFiles = globSync(processedSourcePattern, {
     cwd: assetsPath,
     dot: true,
     ignore: ignorePatterns,
@@ -71,7 +75,7 @@ export async function commandSet(
   /**
    * Source file paths, relative to assets folder
    */
-  let sourceFiles: string[]
+  let sourceFiles: string[] | undefined
   if (!matchedFiles || matchedFiles.length === 0) {
     consola.error('No files matched the source pattern!')
     return

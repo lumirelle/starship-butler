@@ -4,11 +4,11 @@ import { homedir } from 'starship-butler-utils/path'
 import { HandlerError } from '../../error'
 import { createHandler, ensureDirectoryExist, isPathExistEnv } from '../utils'
 
-const name = '@sxzz/create'
+const APP_NAME = '@sxzz/create'
 
-const targetFolder = homedir('.config')
+const TARGET_FOLDER = homedir('.config')
 
-const configPathGenerators: ConfigPathGenerator[] = [
+const CONFIG_PATH_GENERATORS: ConfigPathGenerator[] = [
   ({ targetFolder }) => ({
     source: join('tools', 'sxzz_create', 'create.config.yml'),
     target: join(targetFolder, 'create.config.yml'),
@@ -17,16 +17,18 @@ const configPathGenerators: ConfigPathGenerator[] = [
 export function sxzzCreate(): Action {
   return {
     id: '@sxzz/create',
-    name,
-    targetFolder,
+    name: APP_NAME,
+    targetFolder: TARGET_FOLDER,
     prehandler: async () => {
-      if (!(await isPathExistEnv('create')))
-        throw new HandlerError(`You should install ${name} first!`)
-      if (!ensureDirectoryExist(targetFolder))
+      if (!(await isPathExistEnv('create'))) {
+        throw new HandlerError(`You should install ${APP_NAME} first!`)
+      }
+      if (!ensureDirectoryExist(TARGET_FOLDER)) {
         throw new HandlerError(
-          `Failed to create @sxzz/create configuration folder: ${targetFolder}`,
+          `Failed to create @sxzz/create configuration folder: ${TARGET_FOLDER}`,
         )
+      }
     },
-    handler: createHandler(configPathGenerators),
+    handler: createHandler(CONFIG_PATH_GENERATORS),
   }
 }

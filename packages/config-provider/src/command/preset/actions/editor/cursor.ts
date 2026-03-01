@@ -1,5 +1,5 @@
 import type { Action, ConfigPathGenerator, PlatformTargetFolderMap } from '../../types'
-import consola from 'consola'
+import { consola } from 'consola'
 import { join } from 'pathe'
 import { appdata, homedir } from 'starship-butler-utils/path'
 import { HandlerError } from '../../error'
@@ -10,17 +10,16 @@ import {
   isPathExist,
 } from '../utils'
 
-const name = 'Cursor'
+const APP_NAME = 'Cursor'
 
-const platformTargetFolderMap: PlatformTargetFolderMap = {
+const TARGET_FOLDERS: PlatformTargetFolderMap = {
   win32: appdata('Cursor', 'User'),
   linux: homedir('.config', 'Cursor', 'User'),
   darwin: homedir('Library', 'Application Support', 'Cursor', 'User'),
 }
+const MCP_TARGET_FOLDER = homedir('.cursor')
 
-const mcpTargetFolder = homedir('.cursor')
-
-const configPathGenerators: ConfigPathGenerator[] = [
+const CONFIG_PATH_GENERATORS: ConfigPathGenerator[] = [
   ({ targetFolder }) => ({
     source: join('editor', 'vscode', 'default', 'keybindings.json'),
     target: join(targetFolder, 'keybindings.json'),
@@ -39,26 +38,31 @@ const configPathGenerators: ConfigPathGenerator[] = [
   }),
   () => ({
     source: join('editor', 'cursor', 'mcp.json'),
-    target: join(mcpTargetFolder, 'mcp.json'),
+    target: join(MCP_TARGET_FOLDER, 'mcp.json'),
   }),
 ]
 
 export function cursor(): Action {
   return {
     id: 'cursor',
-    name: 'Cursor',
-    targetFolder: createTargetFolderHandler(platformTargetFolderMap),
+    name: APP_NAME,
+    targetFolder: createTargetFolderHandler(TARGET_FOLDERS),
     prehandler: ({ targetFolder, systemOptions }) => {
-      if (!(systemOptions.platform in platformTargetFolderMap))
+      if (!(systemOptions.platform in TARGET_FOLDERS)) {
         throw new HandlerError(`Unsupported platform: ${systemOptions.platform}`)
-      if (!isPathExist(targetFolder)) throw new HandlerError(`You should install ${name} first!`)
+      }
+      if (!isPathExist(targetFolder)) {
+        throw new HandlerError(`You should install ${APP_NAME} first!`)
+      }
       const snippetsFolder = join(targetFolder, 'snippets')
-      if (!ensureDirectoryExist(snippetsFolder))
+      if (!ensureDirectoryExist(snippetsFolder)) {
         throw new HandlerError(`Failed to create snippets folder: ${snippetsFolder}`)
-      if (!ensureDirectoryExist(mcpTargetFolder))
-        throw new HandlerError(`Failed to create MCP folder: ${mcpTargetFolder}`)
+      }
+      if (!ensureDirectoryExist(MCP_TARGET_FOLDER)) {
+        throw new HandlerError(`Failed to create MCP folder: ${MCP_TARGET_FOLDER}`)
+      }
     },
-    handler: createHandler(configPathGenerators),
+    handler: createHandler(CONFIG_PATH_GENERATORS),
     posthandler: () => {
       consola.info(
         'This configuration is meant to be used by `Cursor` installed in user scope and default path.',

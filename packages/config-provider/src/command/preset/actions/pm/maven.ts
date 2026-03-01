@@ -4,11 +4,11 @@ import { homedir } from 'starship-butler-utils/path'
 import { HandlerError } from '../../error'
 import { createHandler, ensureDirectoryExist, isPathExistEnv } from '../utils'
 
-const name = 'Maven'
+const APP_NAME = 'Maven'
 
-const targetFolder = homedir('.m2')
+const TARGET_FOLDER = homedir('.m2')
 
-const configPathGenerators: ConfigPathGenerator[] = [
+const CONFIG_PATH_GENERATORS: ConfigPathGenerator[] = [
   ({ targetFolder }) => ({
     source: join('pm', 'maven', 'settings.xml'),
     target: join(targetFolder, 'settings.xml'),
@@ -17,14 +17,16 @@ const configPathGenerators: ConfigPathGenerator[] = [
 export function maven(): Action {
   return {
     id: 'maven',
-    name,
-    targetFolder,
+    name: APP_NAME,
+    targetFolder: TARGET_FOLDER,
     prehandler: async ({ targetFolder }) => {
-      if (!(await isPathExistEnv('mvn')))
-        throw new HandlerError(`You should install ${name} first!`)
-      if (!ensureDirectoryExist(targetFolder))
+      if (!(await isPathExistEnv('mvn'))) {
+        throw new HandlerError(`You should install ${APP_NAME} first!`)
+      }
+      if (!ensureDirectoryExist(targetFolder)) {
         throw new HandlerError(`Failed to create maven folder: ${targetFolder}`)
+      }
     },
-    handler: createHandler(configPathGenerators),
+    handler: createHandler(CONFIG_PATH_GENERATORS),
   }
 }

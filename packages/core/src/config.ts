@@ -42,7 +42,7 @@ type LoadConfigMT = ConfigLayerMeta
 export async function loadConfig(
   options?: RCOptions & LoadConfigOptions<LoadConfigT, LoadConfigMT>,
 ): Promise<LoadConfigT> {
-  const rc = readUserRc<LoadConfigT>(options)
+  const rc = readUserRc(options)
   const { config } = await _loadConfig<LoadConfigT, LoadConfigMT>(options)
   const defu = createDefu((obj, key) => {
     // Ignore `config-provider.version` from `config`

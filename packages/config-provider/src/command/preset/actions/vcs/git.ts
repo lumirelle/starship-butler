@@ -1,14 +1,14 @@
 import type { Action, ConfigPathGenerator } from '../../types'
-import consola from 'consola'
+import { consola } from 'consola'
 import { join } from 'pathe'
 import { homedir } from 'starship-butler-utils/path'
 import { createHandler } from '../utils'
 
-const name = 'Git'
+const APP_NAME = 'Git'
 
-const targetFolder = homedir()
+const TARGET_FOLDER = homedir()
 
-const configPathGenerators: ConfigPathGenerator[] = [
+const CONFIG_PATH_GENERATORS: ConfigPathGenerator[] = [
   ({ targetFolder }) => ({
     source: join('vcs', 'git', '.gitconfig'),
     target: join(targetFolder, '.gitconfig'),
@@ -18,12 +18,12 @@ const configPathGenerators: ConfigPathGenerator[] = [
 export function git(): Action {
   return {
     id: 'git',
-    name,
-    targetFolder,
-    handler: createHandler(configPathGenerators),
+    name: APP_NAME,
+    targetFolder: TARGET_FOLDER,
+    handler: createHandler(CONFIG_PATH_GENERATORS),
     posthandler: () => {
       consola.info(
-        `This config use \`Neovim\` as editor for Git commit messages. If you don't want to use it, please edit this configuration \`(${join(targetFolder, '.gitconfig')})\`.`,
+        `This config use \`Neovim\` as editor for Git commit messages. If you don't want to use it, please edit this configuration \`(${join(TARGET_FOLDER, '.gitconfig')})\`.`,
       )
     },
   }

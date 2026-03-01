@@ -1,5 +1,5 @@
 import type { Action, ConfigPathGenerator, PlatformTargetFolderMap } from '../../types'
-import consola from 'consola'
+import { consola } from 'consola'
 import { join } from 'pathe'
 import { homedir, localAppdata } from 'starship-butler-utils/path'
 import { HandlerError } from '../../error'
@@ -10,15 +10,15 @@ import {
   isPathExist,
 } from '../utils'
 
-const name = 'Neo Vim'
+const APP_NAME = 'Neo Vim'
 
-const platformTargetFolderMap: PlatformTargetFolderMap = {
+const TARGET_FOLDERS: PlatformTargetFolderMap = {
   win32: localAppdata('nvim'),
   linux: homedir('.config', 'nvim'),
   darwin: homedir('.config', 'nvim'),
 }
 
-const configPathGenerators: ConfigPathGenerator[] = [
+const CONFIG_PATH_GENERATORS: ConfigPathGenerator[] = [
   ({ targetFolder }) => ({
     source: join('editor', 'nvim', 'init.lua'),
     target: join(targetFolder, 'init.lua'),
@@ -56,23 +56,27 @@ const configPathGenerators: ConfigPathGenerator[] = [
 export function neovim(): Action {
   return {
     id: 'nvim',
-    name,
-    targetFolder: createTargetFolderHandler(platformTargetFolderMap),
+    name: APP_NAME,
+    targetFolder: createTargetFolderHandler(TARGET_FOLDERS),
     prehandler: ({ targetFolder, systemOptions }) => {
-      if (!(systemOptions.platform in platformTargetFolderMap))
+      if (!(systemOptions.platform in TARGET_FOLDERS)) {
         throw new HandlerError(`Unsupported platform: ${systemOptions.platform}`)
-      if (!isPathExist([targetFolder, join(targetFolder, 'lazyvim.json')]))
-        throw new HandlerError(`You should install ${name} and LazyVim first!`)
+      }
+      if (!isPathExist([targetFolder, join(targetFolder, 'lazyvim.json')])) {
+        throw new HandlerError(`You should install ${APP_NAME} and LazyVim first!`)
+      }
       const luaConfigDir = join(targetFolder, 'lua', 'config')
-      if (!ensureDirectoryExist(luaConfigDir))
+      if (!ensureDirectoryExist(luaConfigDir)) {
         throw new HandlerError(`Failed to create Lua config directory: ${luaConfigDir}`)
+      }
       const luaPluginsDir = join(targetFolder, 'lua', 'plugins')
-      if (!ensureDirectoryExist(luaPluginsDir))
+      if (!ensureDirectoryExist(luaPluginsDir)) {
         throw new HandlerError(
           `Failed to create Lua plugins directory: ${join(targetFolder, 'lua', 'plugins')}`,
         )
+      }
     },
-    handler: createHandler(configPathGenerators),
+    handler: createHandler(CONFIG_PATH_GENERATORS),
     posthandler: () => {
       consola.info(
         'This configuration is meant to be used by `NeoVim` installed in user scope and default path with LazyVim.',

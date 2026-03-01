@@ -17,10 +17,7 @@ import { processConfig } from '../../../utils'
 export function createTargetFolderHandler(
   platformTargetFolderMap: PlatformTargetFolderMap,
 ): (context: Omit<ActionHandlerContext, 'targetFolder'>) => string {
-  return ({ systemOptions }) => {
-    const { platform } = systemOptions
-    return platformTargetFolderMap[platform] ?? ''
-  }
+  return ({ systemOptions }) => platformTargetFolderMap[systemOptions.platform] ?? ''
 }
 
 /* ----- Prehandler utilities ----- */
@@ -32,11 +29,11 @@ export function createTargetFolderHandler(
  * @returns If path(s) exist.
  */
 export function isPathExist(path: Arrayable<string>): boolean {
-  path = toArray(path)
-  if (path.length === 0) {
+  const paths = toArray(path)
+  if (paths.length === 0) {
     return false
   }
-  return path.every((t) => exists(t))
+  return paths.every((t) => exists(t))
 }
 
 /**
@@ -46,14 +43,14 @@ export function isPathExist(path: Arrayable<string>): boolean {
  * @returns If path(s) exist in system's PATH environment variable.
  */
 export async function isPathExistEnv(path: Arrayable<string>): Promise<boolean> {
-  path = toArray(path)
-  if (path.length === 0) {
+  const paths = toArray(path)
+  if (paths.length === 0) {
     return false
   }
   try {
     const command = platform() === 'win32' ? 'where' : 'which'
     const results = await Promise.all(
-      path.map(async (t) => (await x(command, [t])).stdout.trim() !== ''),
+      paths.map(async (t) => (await x(command, [t])).stdout.trim() !== ''),
     )
     return results.every(Boolean)
   } catch {
@@ -76,8 +73,12 @@ export async function isPathExistEnv(path: Arrayable<string>): Promise<boolean> 
  * @returns If directory exists.
  */
 export function ensureDirectoryExist(directory: string): boolean {
-  if (!directory) return false
-  if (exists(directory)) return true
+  if (!directory) {
+    return false
+  }
+  if (exists(directory)) {
+    return true
+  }
   return ensureDirectory(directory)
 }
 
@@ -95,7 +96,9 @@ export function createHandler(
   return (context: ActionHandlerContext) => {
     for (const generator of configPathGenerators) {
       const result = generator(context)
-      if (!result) continue
+      if (!result) {
+        continue
+      }
       processConfig(result.source, result.target, context.options)
     }
   }

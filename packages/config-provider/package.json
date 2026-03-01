@@ -23,6 +23,10 @@
       "types": "./dist/index.d.ts",
       "default": "./dist/index.js"
     },
+    "./command/*": {
+      "types": "./dist/command/*/index.d.ts",
+      "default": "./dist/command/*/index.js"
+    },
     "./package.json": "./package.json"
   },
   "module": "./dist/index.js",

@@ -11,7 +11,7 @@ describe('.setignore files', () => {
   })
 
   it('should match snapshot', () => {
-    const content = readFileSync(ignoreFilePath, 'utf-8')
+    const content = readFileSync(ignoreFilePath, 'utf8')
     expect(content).toMatchInlineSnapshot(`
       "**/README.md
       **/.nuxt/eslint.config.*
