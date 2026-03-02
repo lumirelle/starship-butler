@@ -72,5 +72,11 @@
     "import/prefer-default-export": "off",
     "jsdoc/require-param-type": "off",
     "jsdoc/require-returns-type": "off"
-  }
+  },
+  "overrides": [
+    {
+      "files": ["**/*.?([cm])ts", "**/*.?([cm])tsx", "**/*.vue"],
+      "rules": { "eslint/no-undef": "error" }
+    }
+  ]
 }
