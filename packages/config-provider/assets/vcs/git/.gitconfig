@@ -310,7 +310,8 @@ pf = push-force
 push-delete = push --delete
 px = push-delete
 # @region Log
-logs = log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit
-log = log -1 HEAD --stat
+graph = log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit
+logs = log HEAD --stat
+log1 = log -1 HEAD --stat
 # @region Aliases
 aliases = "!git config --get-regexp ^alias\\. | sed -e s/^alias\\.// -e s/\\ /\\ =\\ /"
