@@ -10,6 +10,9 @@ codezombiech
 Loong
 Merlion
 
+# THINGS
+qrcode
+
 # HARDWARES
 Aigo
 
@@ -91,7 +94,10 @@ bunx
 oxlint
 oxfmt
 bunup
+tsgo
 tsgolint
+iconify
+takumi
 
 # DEV: JAVA
 graalvm

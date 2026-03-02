@@ -4,7 +4,17 @@
     "node": true,
     "browser": true
   },
-  "plugins": ["eslint", "typescript", "unicorn", "oxc", "import", "jsdoc", "node", "promise"],
+  "plugins": [
+    "eslint",
+    "typescript",
+    "unicorn",
+    "oxc",
+    "import",
+    "jsdoc",
+    "node",
+    "promise",
+    "vue"
+  ],
   "categories": {
     "correctness": "error",
     "nursery": "error",
@@ -27,6 +37,7 @@
     "eslint/max-statements": "off",
     "eslint/new-cap": "off",
     "eslint/no-await-in-loop": "off",
+    "eslint/no-console": ["error", { "allow": ["info", "warn", "error"] }],
     "eslint/no-continue": "off",
     "eslint/no-duplicate-imports": ["error", { "allowSeparateTypeImports": true }],
     "eslint/no-eq-null": "off",
@@ -73,7 +84,10 @@
     "import/prefer-default-export": "off",
     "jsdoc/check-tag-names": ["error", { "definedTags": ["credits", "experimental"] }],
     "jsdoc/require-param-type": "off",
-    "jsdoc/require-returns-type": "off"
+    "jsdoc/require-returns-type": "off",
+    // See https://github.com/oxc-project/oxc/issues/19458
+    "vue/define-props-destructuring": "off",
+    "vue/max-props": "off"
   },
   "overrides": [
     {
