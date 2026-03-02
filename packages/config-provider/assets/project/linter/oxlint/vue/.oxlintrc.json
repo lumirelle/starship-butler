@@ -91,7 +91,7 @@
   },
   "overrides": [
     {
-      "files": ["**/*.?([cm])ts", "**/*.?([cm])tsx", "**/*.vue"],
+      "files": ["**/*.{,c,m}ts", "**/*.{,c,m}tsx", "**/*.vue"],
       "rules": { "eslint/no-undef": "off" }
     }
   ]
