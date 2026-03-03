@@ -36,24 +36,24 @@
   {
     "key": "ctrl+down",
     "command": "workbench.action.decreaseViewHeight",
-    "when": "!isAuxiliaryWindowFocusedContext && !terminalFocus && neovim.mode != 'cmdline'"
+    "when": "editorFocus && !isAuxiliaryWindowFocusedContext && !terminalFocus && neovim.mode != 'cmdline'"
   },
   {
     "key": "ctrl+up",
     "command": "workbench.action.increaseViewHeight",
-    "when": "!isAuxiliaryWindowFocusedContext && !terminalFocus && neovim.mode != 'cmdline'"
+    "when": "editorFocus && !isAuxiliaryWindowFocusedContext && !terminalFocus && neovim.mode != 'cmdline'"
   },
   {
     "key": "ctrl+left",
     "command": "workbench.action.decreaseViewWidth",
-    "when": "!isAuxiliaryWindowFocusedContext && !terminalFocus && neovim.mode != 'cmdline'"
+    "when": "editorFocus && !isAuxiliaryWindowFocusedContext && !terminalFocus && neovim.mode != 'cmdline'"
   },
   {
     "key": "ctrl+right",
     "command": "workbench.action.increaseViewWidth",
-    "when": "!isAuxiliaryWindowFocusedContext && !terminalFocus && neovim.mode != 'cmdline'"
+    "when": "editorFocus && !isAuxiliaryWindowFocusedContext && !terminalFocus && neovim.mode != 'cmdline'"
   },
-  // Navigation
+  // Window navigation
   {
     "key": "ctrl+h",
     "command": "workbench.action.navigateLeft"
@@ -70,6 +70,7 @@
     "key": "ctrl+l",
     "command": "workbench.action.navigateRight"
   },
+  // Scroll
   {
     "key": "ctrl+e",
     "command": "scrollLineDown",
@@ -80,7 +81,7 @@
     "command": "scrollLineUp",
     "when": "editorTextFocus"
   },
-  // Edit
+  // Move line
   {
     "key": "alt+j",
     "command": "editor.action.moveLinesDownAction",
@@ -91,28 +92,29 @@
     "command": "editor.action.moveLinesUpAction",
     "when": "editorTextFocus && !editorReadonly"
   },
+  // Undo breakpoints (Does not apply to multi-cursor)
   {
     "key": "space",
     "command": "vscode-neovim.send",
-    "when": "editorTextFocus && neovim.init && neovim.mode == 'insert'",
+    "when": "editorTextFocus && neovim.init && neovim.mode == 'insert' && !editorHasMultipleSelections",
     "args": " "
   },
   {
     "key": "oem_comma",
     "command": "vscode-neovim.send",
-    "when": "editorTextFocus && neovim.init && neovim.mode == 'insert'",
+    "when": "editorTextFocus && neovim.init && neovim.mode == 'insert' && !editorHasMultipleSelections",
     "args": ","
   },
   {
     "key": "oem_period",
     "command": "vscode-neovim.send",
-    "when": "editorTextFocus && neovim.init && neovim.mode == 'insert'",
+    "when": "editorTextFocus && neovim.init && neovim.mode == 'insert' && !editorHasMultipleSelections",
     "args": "."
   },
   {
     "key": "oem_1",
     "command": "vscode-neovim.send",
-    "when": "editorTextFocus && neovim.init && neovim.mode == 'insert'",
+    "when": "editorTextFocus && neovim.init && neovim.mode == 'insert' && !editorHasMultipleSelections",
     "args": ";"
   },
   // Terminal
