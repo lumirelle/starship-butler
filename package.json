@@ -102,6 +102,9 @@
     "publint": "catalog:check",
     "simple-git-hooks": "catalog:dev",
     "starship-butler": "workspace:*",
+    "starship-butler-config-provider": "workspace:*",
+    "starship-butler-types": "workspace:*",
+    "starship-butler-utils": "workspace:*",
     "typescript": "catalog:dev",
     "vite": "catalog:test",
     "vitest-package-exports": "catalog:test"

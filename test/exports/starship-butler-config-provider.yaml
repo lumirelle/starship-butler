@@ -1,1 +1,7 @@
 .: {}
+./command/utils:
+  processConfig: function
+./command/set:
+  commandSet: function
+./command/preset:
+  commandPreset: function
