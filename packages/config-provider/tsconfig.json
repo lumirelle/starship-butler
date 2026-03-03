@@ -1,4 +1,10 @@
 {
   "extends": "../../tsconfig.base.json",
+  "compilerOptions": {
+    "paths": {
+      "@lumirelle/stylelint-config": ["./assets/fixtures/@lumirelle/stylelint-config.d.ts"],
+      "taze": ["./assets/fixtures/taze.d.ts"]
+    }
+  },
   "include": ["src/**/*", "test/**/*"]
 }

@@ -48,8 +48,6 @@
     "tinyglobby": "catalog:prod"
   },
   "devDependencies": {
-    "@antfu/utils": "catalog:inlined",
-    "@lumirelle/stylelint-config": "catalog:assets",
-    "taze": "catalog:assets"
+    "@antfu/utils": "catalog:inlined"
   }
 }

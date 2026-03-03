@@ -20,7 +20,6 @@ export default {
     'packages/config-provider': {
       entry: ['src/index.ts', 'src/command/*/index.ts'],
       ignoreBinaries: ['nu'],
-      ignoreDependencies: ['@lumirelle/stylelint-config', 'taze'],
       ignoreFiles: ['assets/**/*'],
     },
     'packages/core': {

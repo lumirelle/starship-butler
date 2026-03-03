@@ -1,4 +1,7 @@
 import type { TypedFlatConfigItem } from '@antfu/eslint-config'
 
-declare function config(): TypedFlatConfigItem
-export default config
+/**
+ * Mocked exported `nuxt` function from `eslint-config` for placeholder purpose.
+ */
+declare function nuxt(): TypedFlatConfigItem
+export default nuxt
