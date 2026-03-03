@@ -20,20 +20,28 @@
   "sideEffects": false,
   "exports": {
     "./config": {
-      "types": "./dist/config.d.ts",
-      "default": "./dist/config.js"
+      "import": {
+        "types": "./dist/config.d.ts",
+        "default": "./dist/config.js"
+      }
     },
     "./path": {
-      "types": "./dist/path.d.ts",
-      "default": "./dist/path.js"
+      "import": {
+        "types": "./dist/path.d.ts",
+        "default": "./dist/path.js"
+      }
     },
     "./fs": {
-      "types": "./dist/fs.d.ts",
-      "default": "./dist/fs.js"
+      "import": {
+        "types": "./dist/fs.d.ts",
+        "default": "./dist/fs.js"
+      }
     },
     "./highlight": {
-      "types": "./dist/highlight.d.ts",
-      "default": "./dist/highlight.js"
+      "import": {
+        "types": "./dist/highlight.d.ts",
+        "default": "./dist/highlight.js"
+      }
     },
     "./package.json": "./package.json"
   },

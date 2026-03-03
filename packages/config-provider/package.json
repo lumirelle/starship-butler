@@ -20,12 +20,28 @@
   "sideEffects": false,
   "exports": {
     ".": {
-      "types": "./dist/index.d.ts",
-      "default": "./dist/index.js"
+      "import": {
+        "types": "./dist/index.d.ts",
+        "default": "./dist/index.js"
+      }
     },
-    "./command/*": {
-      "types": "./dist/command/*/index.d.ts",
-      "default": "./dist/command/*/index.js"
+    "./command/utils": {
+      "import": {
+        "types": "./dist/command/utils/index.d.ts",
+        "default": "./dist/command/utils/index.js"
+      }
+    },
+    "./command/set": {
+      "import": {
+        "types": "./dist/command/set/index.d.ts",
+        "default": "./dist/command/set/index.js"
+      }
+    },
+    "./command/preset": {
+      "import": {
+        "types": "./dist/command/preset/index.d.ts",
+        "default": "./dist/command/preset/index.js"
+      }
     },
     "./package.json": "./package.json"
   },

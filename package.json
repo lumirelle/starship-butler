@@ -67,9 +67,10 @@
     }
   },
   "scripts": {
+    "prepack": "bun run build",
     "prepare": "bun simple-git-hooks",
     "dev": "bunup --watch",
-    "build": "bunup",
+    "build": "bunup --exports",
     "start": "bun run --cwd packages/core start",
     "docs": "bun run --cwd docs docs:dev",
     "docs:build": "bun run --cwd docs docs:build",
