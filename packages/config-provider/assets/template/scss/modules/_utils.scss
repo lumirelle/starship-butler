@@ -6,7 +6,7 @@
 /// @author Lumirelle
 ////
 
-/// Clearfix
+/// Clearfix.
 ///
 /// @example
 ///   @include clearfix;
@@ -25,11 +25,10 @@
   }
 }
 
-/// Text Ellipsis
+/// Text ellipsis.
 ///
-/// @param {Number} $line-clamp - Line clamp, default is 1
+/// @param { Number } $line-clamp [1] Line clamp
 /// @content Text ellipsis content
-/// @output Text ellipsis definition
 /// @example
 ///   @include text-ellipsis(2);
 @mixin text-ellipsis($line-clamp: 1) {
@@ -41,21 +40,19 @@
   -webkit-box-orient: vertical;
 }
 
-/// Gradient Border
+/// Gradient border with hover effect and border radius support.
 ///
-/// Limitation: This mixin uses the `after` & `before` pseudo elements under the hood, so it may not suitable for all
-/// cases.
+/// Limitation: Background not solid is not supported.
 ///
-/// @param {Number} $border-margin Border margin
-/// @param {Color} $border-color Border color, can be gradient color
-/// @param {Color} $hover-border-color [null] Hover border color, can be gradient color, if null, use $border-color
+/// @param { Number } $margin Border margin
+/// @param { Color } $color Border color, can be gradient color
+/// @param { Color } $hover-color [null] Hover border color, can be gradient color, if null, use $border-color
 /// instead
-/// @param {Number} $border-radius [0] Border radius
-/// @param {Color} $bg-color [#fff] Background color, must be solid color
-/// @param {String} $transition [all 0.3s ease] Transition
-/// @param {Boolean} $isolation [false] Isolation
+/// @param { Number } $radius [0] Border radius
+/// @param { Color } $bg-color [#fff] Background color, must be solid color
+/// @param { String } $transition [all 0.3s ease] Transition for hover effect
+/// @param { Boolean } $isolation [false] Isolation stacking context
 /// @content Gradient border content
-/// @output Gradient border definition
 /// @example
 ///   // SCSS
 ///   .test-block {
@@ -98,42 +95,42 @@
 ///     opacity: 1;
 ///   }
 @mixin gradient-border(
-  $border-margin,
-  $border-color,
-  $hover-border-color: null,
+  $margin,
+  $color,
+  $hover-color: null,
   $bg-color: #fff,
-  $border-radius: 0,
+  $radius: 0,
   $transition: all 0.3s ease,
   $isolation: false
 ) {
   $selector: &;
 
   position: relative;
-  margin: $border-margin;
+  margin: $margin;
   background: $bg-color;
   background-clip: padding-box;
   border: 0 solid transparent;
-  border-radius: $border-radius;
+  border-radius: $radius;
 
   &::before,
   &::after {
     position: absolute;
-    inset: -$border-margin;
+    inset: -$margin;
     z-index: -1;
-    padding: $border-margin;
+    padding: $margin;
     pointer-events: none;
     content: '';
-    border-radius: $border-radius + $border-margin;
+    border-radius: $radius + $margin;
     transition: $transition;
   }
 
   &::before {
-    background: $border-color;
+    background: $color;
     opacity: 1;
   }
 
   &::after {
-    background: if($hover-border-color == null, $border-color, $hover-border-color);
+    background: if($hover-color == null, $color, $hover-color);
     opacity: 0;
   }
 
