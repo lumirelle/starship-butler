@@ -52,7 +52,6 @@
     "dist"
   ],
   "scripts": {
-    "prepack": "bun run build",
     "check:dist": "bun --parallel 'attw --pack --profile esm-only' publint"
   },
   "dependencies": {
