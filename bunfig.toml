@@ -5,5 +5,9 @@ linker = "isolated"
 bun = true
 
 [test]
-coveragePathIgnorePatterns = ["**/dist/**", "**/command/preset/actions/**", "**/*.{test,spec}.ts"]
+coveragePathIgnorePatterns = [
+  "**/dist/**",
+  "**/command/preset/actions/**",
+  "**/*.{test,spec,bench,benchmark}.ts",
+]
 coverageReporter = ["text", "lcov"]
