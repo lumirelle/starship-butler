@@ -3,45 +3,93 @@
 local map = vim.keymap.set
 local vscode = require("vscode")
 
--- Use VSCode's undo/redo, as Neovim's undo break-points does not work correctly in VSCode
-map("n", "u", function()
-  vscode.action("undo")
-  vscode.action("cancelSelection")
-end, { desc = "Undo" })
-map("n", "<C-r>", function()
-  vscode.action("redo")
-  vscode.action("cancelSelection")
-end, { desc = "Redo" })
+-- Better up and down in normal mode
+-- Fix folds were automatically opening when navigating with j, k
+--
+-- This does not applicable to visual mode, as it will break visual selection
+map("n", "j", function()
+  if vim.v.count == 0 then
+    vscode.call("cursorMove", { args = { to = "down", by = "wrappedLine", value = 1 } })
+  else
+    return "j"
+  end
+end, { silent = true })
+map("n", "k", function()
+  if vim.v.count == 0 then
+    vscode.call("cursorMove", { args = { to = "up", by = "wrappedLine", value = 1 } })
+  else
+    return "k"
+  end
+end, { silent = true })
+map("n", "<down>", function()
+  if vim.v.count == 0 then
+    vscode.call("cursorMove", { args = { to = "down", by = "wrappedLine", value = 1 } })
+  else
+    return "j"
+  end
+end, { silent = true })
+map("n", "<up>", function()
+  if vim.v.count == 0 then
+    vscode.call("cursorMove", { args = { to = "up", by = "wrappedLine", value = 1 } })
+  else
+    return "k"
+  end
+end, { silent = true })
 
--- Use VSCode's fold/unfold, as Neovim's fold commands do not work in VSCode
--- It's sad that `gj` and `gk` do not work with vscode's folding
--- `zm` and `zr` are also not supported
-map("n", "za", function()
+-- Use VSCode's fold/unfold, as Neovim's fold commands do not work in VSCode,
+-- `zm` and `zr` are not supported by VSCode.
+--
+-- It's sad that `gj` and `gk` in Neovim do not work with vscode's folding, and we cannot use
+-- VSCode's move to implement them, because they will break multi-cursor feature.
+map({ "n", "x" }, "zc", function()
+  vscode.action("editor.fold")
+end, { desc = "Fold" })
+map({ "n", "x" }, "zC", function()
+  vscode.action("editor.foldRecursively")
+end, { desc = "Fold Recursively" })
+map({ "n", "x" }, "zo", function()
+  vscode.action("editor.unfold")
+end, { desc = "Unfold" })
+map({ "n", "x" }, "zO", function()
+  vscode.action("editor.unfoldRecursively")
+end, { desc = "Unfold Recursively" })
+map({ "n", "x" }, "za", function()
   vscode.action("editor.toggleFold")
 end, { desc = "Toggle Fold" })
-map("n", "zA", function()
+map({ "n", "x" }, "zA", function()
   vscode.action("editor.toggleFoldRecursively")
 end, { desc = "Toggle Fold Recursively" })
-map("n", "zM", function()
+map({ "n", "x" }, "zM", function()
   vscode.action("editor.foldAll")
 end, { desc = "Fold All" })
-map("n", "zR", function()
+map({ "n", "x" }, "zR", function()
   vscode.action("editor.unfoldAll")
 end, { desc = "Unfold All" })
 
--- Resize window using <ctrl> arrow keys
-map("n", "<C-Up>", "<C-w>+", { desc = "Increase window height", remap = true })
-map("n", "<C-Down>", "<C-w>-", { desc = "Decrease window height", remap = true })
-map("n", "<C-Left>", "<C-w><", { desc = "Decrease window width", remap = true })
-map("n", "<C-Right>", "<C-w>>", { desc = "Increase window width", remap = true })
+-- Goto
+map({ "n", "x" }, "gf", "<nop>", { noremap = true })
+map({ "n", "x" }, "gF", "<nop>", { noremap = true })
+map({ "n", "x" }, "gh", "<nop>", { noremap = true })
+map({ "n", "x" }, "gH", "<nop>", { noremap = true })
+map({ "n", "x" }, "gr", function()
+  vscode.action("editor.action.referenceSearch.trigger")
+end, { noremap = true })
 
 -- Diagnostics
-map("n", "]e", function()
-  vscode.action("editor.action.marker.nextInFiles")
+map("n", "]d", function()
+  vscode.action("editor.action.marker.next")
 end, { desc = "Go to Next Problem" })
-map("n", "[e", function()
-  vscode.action("editor.action.marker.prevInFiles")
+map("n", "[d", function()
+  vscode.action("editor.action.marker.prev")
 end, { desc = "Go to Previous Problem" })
+map("n", "<leader>xq", function()
+  vscode.action("editor.action.quickFix")
+end, { desc = "Quickfix List" })
+
+-- Quit
+map("n", "<leader>qq", function()
+  vscode.action("workbench.action.closeWindow")
+end, { desc = "Close Window" })
 
 -- plugin: extras/editor/refactoring.lua implementation in vscode
 map({ "n", "x" }, "<leader>r", function()
@@ -50,24 +98,20 @@ map({ "n", "x" }, "<leader>r", function()
   end)
 end, { desc = "Rename Symbol" })
 
--- plugin: ../plugins/vscode_multi_cursor.lua implementation in vscode
--- I don't know why when I set these keymaps in the plugin keys option,
+-- plugin: ../plugins/vscode_multi_cursor.lua keymaps
+-- I don't know why setting these keymaps in the plugin keys option,
 -- it will prevent the default keymaps from being disabled.
 -- Create/cancel multiple cursors
 map({ "n", "x" }, "<leader>mc", require("vscode-multi-cursor").create_cursor, { expr = true, desc = "Create Cursor" })
-map("x", "I", require("vscode-multi-cursor").start_left_edge, { desc = "Start cursors on the left edge" })
-map("x", "A", require("vscode-multi-cursor").start_right, { desc = "Start cursors on the right edge" })
 map("n", "<leader>mx", require("vscode-multi-cursor").cancel, { desc = "Cancel/Clear all Cursors" })
 -- Start editing
-map({ "n", "x" }, "<leader>mi", require("vscode-multi-cursor").start_left, { desc = "Start cursors on the left" })
-map("n", "<leader>mI", require("vscode-multi-cursor").start_left_edge, { desc = "Start cursors on the left edge" })
-map({ "n", "x" }, "<leader>ma", require("vscode-multi-cursor").start_right, { desc = "Start cursors on the right" })
-map("n", "<leader>mA", require("vscode-multi-cursor").start_right, { desc = "Start cursors on the right edge" })
+map("x", "I", require("vscode-multi-cursor").start_left_edge, { desc = "Start cursors on the left edge" })
+map("x", "A", require("vscode-multi-cursor").start_right, { desc = "Start cursors on the right edge" })
 -- Navigate between cursors
 map({ "n", "x" }, "<leader>mh", require("vscode-multi-cursor").prev_cursor, { desc = "Goto previous cursor" })
 map({ "n", "x" }, "<leader>ml", require("vscode-multi-cursor").next_cursor, { desc = "Goto next cursor" })
+-- Add selection & create cursor to next find match
+map({ "n", "x", "i" }, "<C-n>", require("vscode-multi-cursor").addSelectionToNextFindMatch, { desc = "Add Selection To Next Find Match" })
 -- Using flash
 map({ "n", "x" }, "<leader>mcs", require("vscode-multi-cursor").flash_char, { desc = "Create cursor using flash" })
 map({ "n", "x" }, "<leader>mcw", require("vscode-multi-cursor").flash_word, { desc = "Create selection using flash" })
--- Add selection to next find match (like pressing Ctrl+D in VSCode)
-map({ "n", "x", "i" }, "<C-n>", require("vscode-multi-cursor").addSelectionToNextFindMatch, { desc = "Add Selection To Next Find Match" })

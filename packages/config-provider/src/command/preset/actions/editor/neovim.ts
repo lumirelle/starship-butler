@@ -40,6 +40,10 @@ const CONFIG_PATH_GENERATORS: ConfigPathGenerator[] = [
     target: join(targetFolder, 'lua', 'config', 'keymaps_vscode.lua'),
   }),
   ({ targetFolder }) => ({
+    source: join('editor', 'nvim', 'lua', 'config', 'keymaps_not_vscode.lua'),
+    target: join(targetFolder, 'lua', 'config', 'keymaps_not_vscode.lua'),
+  }),
+  ({ targetFolder }) => ({
     source: join('editor', 'nvim', 'lua', 'config', 'options.lua'),
     target: join(targetFolder, 'lua', 'config', 'options.lua'),
   }),

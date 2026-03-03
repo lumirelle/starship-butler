@@ -1,8 +1,8 @@
 [
   //#region Basic
-  // Open & Edit
-  { "key": "ctrl+numpad_divide", "command": "workbench.action.files.openFile" },
+  // Open
   { "key": "ctrl+numpad_multiply", "command": "workbench.action.files.openFolder" },
+  // Tab completion
   {
     "key": "tab",
     "command": "-editor.action.inlineSuggest.commit",
@@ -29,13 +29,30 @@
     "command": "-workbench.action.terminal.openNativeConsole",
     "when": "!terminalFocus"
   },
-  {
-    "key": "ctrl+shift+/",
-    "command": "workbench.action.terminal.kill"
-  },
   //#endregion
 
   //#region With Neovim
+  // Editor Size
+  {
+    "key": "ctrl+down",
+    "command": "workbench.action.decreaseViewHeight",
+    "when": "!isAuxiliaryWindowFocusedContext && !terminalFocus && neovim.mode != 'cmdline'"
+  },
+  {
+    "key": "ctrl+up",
+    "command": "workbench.action.increaseViewHeight",
+    "when": "!isAuxiliaryWindowFocusedContext && !terminalFocus && neovim.mode != 'cmdline'"
+  },
+  {
+    "key": "ctrl+left",
+    "command": "workbench.action.decreaseViewWidth",
+    "when": "!isAuxiliaryWindowFocusedContext && !terminalFocus && neovim.mode != 'cmdline'"
+  },
+  {
+    "key": "ctrl+right",
+    "command": "workbench.action.increaseViewWidth",
+    "when": "!isAuxiliaryWindowFocusedContext && !terminalFocus && neovim.mode != 'cmdline'"
+  },
   // Navigation
   {
     "key": "ctrl+h",
@@ -74,16 +91,40 @@
     "command": "editor.action.moveLinesUpAction",
     "when": "editorTextFocus && !editorReadonly"
   },
-  // Terminal
   {
-    "key": "ctrl+/",
-    "command": "workbench.action.terminal.toggleTerminal",
-    "when": "terminal.active"
+    "key": "space",
+    "command": "vscode-neovim.send",
+    "when": "editorTextFocus && neovim.init && neovim.mode == 'insert'",
+    "args": " "
   },
+  {
+    "key": "oem_comma",
+    "command": "vscode-neovim.send",
+    "when": "editorTextFocus && neovim.init && neovim.mode == 'insert'",
+    "args": ","
+  },
+  {
+    "key": "oem_period",
+    "command": "vscode-neovim.send",
+    "when": "editorTextFocus && neovim.init && neovim.mode == 'insert'",
+    "args": "."
+  },
+  {
+    "key": "oem_1",
+    "command": "vscode-neovim.send",
+    "when": "editorTextFocus && neovim.init && neovim.mode == 'insert'",
+    "args": ";"
+  },
+  // Terminal
   {
     "key": "ctrl+`",
     "command": "-workbench.action.terminal.toggleTerminal",
     "when": "terminal.active && terminalFocus"
+  },
+  {
+    "key": "ctrl+/",
+    "command": "workbench.action.terminal.toggleTerminal",
+    "when": "terminal.active"
   }
   //#endregion
 ]

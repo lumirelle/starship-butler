@@ -8,10 +8,9 @@ local unmap = vim.keymap.del
 -- Add undo break-points
 map("i", " ", " <C-g>u")
 
--- FIXME(Lumirelle): Not only quickfix list, actually code action list
-map("n", "<C-.>", "<leader>xq", { desc = "Quickfix List", remap = true })
-
--- Keymaps for Neovim when running inside VSCode
+-- Keymaps for Neovim when running inside/outside VSCode
 if vim.g.vscode then
   require("config.keymaps_vscode")
+else
+  require("config.keymaps_not_vscode")
 end
