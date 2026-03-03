@@ -6,3 +6,4 @@ bun = true
 
 [test]
 coveragePathIgnorePatterns = ["**/dist/**", "**/*.{test,spec}.ts"]
+coverageReporter = ["text", "lcov"]
