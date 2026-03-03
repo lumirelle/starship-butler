@@ -36,6 +36,7 @@
     "dist"
   ],
   "scripts": {
+    "prepack": "bun run build",
     "start": "bun run ./src/cli.ts",
     "check:dist": "bun --parallel 'attw --pack --profile esm-only' publint"
   },
