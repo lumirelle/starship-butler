@@ -67,6 +67,7 @@
     "unicorn/no-await-expression-member": "off",
     "unicorn/no-null": "off",
     "unicorn/no-static-only-class": "off",
+    "unicorn/number-literal-case": "off",
     "oxc/no-async-await": "off",
     "oxc/no-optional-chaining": "off",
     "oxc/no-rest-spread-properties": "off",
@@ -85,6 +86,7 @@
     "jsdoc/check-tag-names": ["error", { "definedTags": ["credits", "experimental"] }],
     "jsdoc/require-param-type": "off",
     "jsdoc/require-returns-type": "off",
+    "node/no-process-env": "off",
     // See https://github.com/oxc-project/oxc/issues/19458
     "vue/define-props-destructuring": "off",
     "vue/max-props": "off"

@@ -36,3 +36,10 @@ export default antfu(
       ],
     },
   })
+  .removeRules(
+    'unicorn/number-literal-case',
+    'vue/html-indent',
+    'vue/html-closing-bracket-newline',
+    'vue/html-self-closing',
+    'vue/singleline-html-element-content-newline',
+  )

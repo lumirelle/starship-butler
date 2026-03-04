@@ -36,3 +36,4 @@ export default antfu(
       ],
     },
   })
+  .removeRules('unicorn/number-literal-case')
