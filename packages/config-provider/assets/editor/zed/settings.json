@@ -14,10 +14,10 @@
   },
   "wrap_guides": [80, 120, 160, 200],
   // Font
-  "ui_font_family": "Recursive Sans Linear",
+  "ui_font_family": "Geist",
   "ui_font_fallbacks": ["Maple Mono CN", "Symbols Nerd Font Mono"],
   "ui_font_size": 16,
-  "buffer_font_family": "Google Sans Code",
+  "buffer_font_family": "Geist Mono",
   "buffer_font_fallbacks": ["Maple Mono CN", "Symbols Nerd Font Mono"],
   "buffer_font_size": 16,
   "buffer_font_features": {

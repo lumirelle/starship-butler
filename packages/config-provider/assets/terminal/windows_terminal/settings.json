@@ -37,7 +37,7 @@
       "experimental.rightClickContextMenu": true,
       "font": {
         "builtinGlyphs": false,
-        "face": "'Google Sans Code', 'Maple Mono CN', 'Symbols Nerd Font'",
+        "face": "'Geist Mono', 'Maple Mono CN', 'Symbols Nerd Font'",
         "size": 12
       },
       "opacity": 85,

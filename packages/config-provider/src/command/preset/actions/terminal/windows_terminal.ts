@@ -38,7 +38,7 @@ export function windowsTerminal(): Action {
     handler: createHandler(CONFIG_PATH_GENERATORS),
     posthandler: ({ targetFolder }) => {
       consola.info(
-        `This configuration will use \`'"Google Sans Code", "Maple Mono CN", "Symbols Nerd Font"'\` as terminal fonts, \`Nushell\` as default shell. If you don't want to use them, please edit this config \`(${join(targetFolder, 'settings.json')})\` manually.`,
+        `This configuration will use \`'"Geist Mono", "Maple Mono CN", "Symbols Nerd Font"'\` as terminal fonts, \`Nushell\` as default shell. If you don't want to use them, please edit this config \`(${join(targetFolder, 'settings.json')})\` manually.`,
       )
     },
   }
