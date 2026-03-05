@@ -11,7 +11,7 @@
     ],
     "catalogs": {
       "prod": {
-        "@clack/prompts": "^1.0.1",
+        "@clack/prompts": "^1.1.0",
         "c12": "^4.0.0-beta.3",
         "consola": "^3.4.2",
         "defu": "^6.1.4",
@@ -30,7 +30,7 @@
         "typescript": "^5.9.3"
       },
       "types": {
-        "@types/bun": "^1.3.9"
+        "@types/bun": "^1.3.10"
       },
       "build": {
         "bunup": "^0.16.31"
@@ -39,13 +39,13 @@
         "@antfu/eslint-config": "^7.6.1",
         "@arethetypeswrong/cli": "^0.18.2",
         "eslint": "^9.39.3",
-        "eslint-plugin-oxlint": "^1.50.0",
+        "eslint-plugin-oxlint": "^1.51.0",
         "knip": "^5.85.0",
         "nano-staged": "^0.9.0",
-        "oxfmt": "^0.35.0",
-        "oxlint": "^1.50.0",
-        "oxlint-tsgolint": "^0.15.0",
-        "publint": "^0.3.17"
+        "oxfmt": "^0.36.0",
+        "oxlint": "^1.51.0",
+        "oxlint-tsgolint": "^0.16.0",
+        "publint": "^0.3.18"
       },
       "test": {
         "vite": "^7.3.1",
@@ -53,12 +53,12 @@
       },
       "docs": {
         "@iconify-json/svg-spinners": "^1.2.4",
-        "@shikijs/vitepress-twoslash": "^4.0.0",
-        "@unocss/reset": "^66.6.2",
+        "@shikijs/vitepress-twoslash": "^4.0.1",
+        "@unocss/reset": "^66.6.5",
         "@vueuse/core": "^14.2.1",
         "floating-vue": "^5.2.2",
         "pinia": "^3.0.4",
-        "unocss": "^66.6.2",
+        "unocss": "^66.6.5",
         "unplugin-vue-components": "^31.0.0",
         "vite-tsconfig-paths": "^6.1.1",
         "vitepress": "^2.0.0-alpha.16",
@@ -67,7 +67,7 @@
     }
   },
   "scripts": {
-    "prepare": "bun simple-git-hooks",
+    "prepare": "simple-git-hooks",
     "dev": "bunup --watch",
     "build": "bunup --exports",
     "start": "bun run --cwd packages/core start",
@@ -75,15 +75,15 @@
     "docs:build": "bun run --cwd docs docs:build",
     "docs:preview": "bun run --cwd docs docs:preview",
     "play": "bun run --cwd playground play",
-    "format": "bunx oxfmt",
-    "lint": "bun --parallel 'oxlint --type-aware --type-check' eslint",
-    "lint:fix": "bun --sequential 'oxlint --type-aware --type-check --fix' 'eslint --fix'",
-    "check:usage": "bun knip",
+    "format": "oxfmt",
+    "lint": "bun run --parallel 'oxlint --type-aware --type-check' eslint",
+    "lint:fix": "oxlint --type-aware --type-check --fix && eslint --fix",
+    "check:usage": "knip",
     "check:dist": "bun run --parallel --filter '*' check:dist",
     "check": "bun run --parallel lint check:usage check:dist",
     "test": "bun test",
-    "prerelease": "bun run --sequential build check test",
-    "release": "bun bumpp --all --recursive --execute \"bun update --lockfile-only starship-butler\" # See https://github.com/oven-sh/bun/issues/18906 and https://github.com/oven-sh/bun/issues/20477"
+    "prerelease": "bun run build && bun run --parallel check test",
+    "release": "bumpp --all --recursive --execute \"bun update --lockfile-only starship-butler\" # See https://github.com/oven-sh/bun/issues/18906 and https://github.com/oven-sh/bun/issues/20477"
   },
   "devDependencies": {
     "@antfu/eslint-config": "catalog:check",
@@ -109,13 +109,13 @@
     "vitest-package-exports": "catalog:test"
   },
   "simple-git-hooks": {
-    "pre-commit": "bun nano-staged"
+    "pre-commit": "bunx nano-staged"
   },
   "nano-staged": {
     "*": [
-      "bun oxlint --type-aware --type-check",
-      "bun eslint",
-      "bunx oxfmt --no-error-on-unmatched-pattern"
+      "oxlint --type-aware --type-check",
+      "eslint",
+      "oxfmt --no-error-on-unmatched-pattern"
     ]
   },
   "patchedDependencies": {

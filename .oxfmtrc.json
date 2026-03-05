@@ -3,5 +3,5 @@
   "semi": false,
   "singleQuote": true,
   "sortPackageJson": false,
-  "ignorePatterns": ["README.md"]
+  "ignorePatterns": ["README.md", "test/exports/**"]
 }
