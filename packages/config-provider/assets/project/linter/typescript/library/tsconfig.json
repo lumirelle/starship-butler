@@ -10,9 +10,6 @@
     // Modules
     "module": "preserve",
     "moduleResolution": "bundler",
-    "paths": {
-      // Add your path aliases here
-    },
     "resolveJsonModule": true,
     "types": ["node"],
     "allowImportingTsExtensions": true,
