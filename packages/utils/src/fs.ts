@@ -10,7 +10,7 @@ import {
 import { consola } from 'consola'
 import { info } from './highlight'
 
-const PATH_SEP_REGEX = /[/\\]/
+const PATH_SEP_REGEX = /[/\\]$/
 
 /**
  * Check if a path exists. Does not dereference symlinks.

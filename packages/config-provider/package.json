@@ -21,7 +21,7 @@
   "exports": {
     ".": {
       "import": {
-        "types": "./dist/index.d.xts",
+        "types": "./dist/index.d.ts",
         "default": "./dist/index.js"
       }
     },

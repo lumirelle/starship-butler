@@ -4,5 +4,8 @@
   processConfig: function
 ./command/set: 
   commandSet: function
+  validateOptions: function
 ./command/preset: 
   commandPreset: function
+  HandlerError: function
+  validateOptions: function

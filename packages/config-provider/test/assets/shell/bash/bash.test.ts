@@ -10,7 +10,7 @@ describe('bash profile tests', () => {
     'should pass',
     async () => {
       $.cwd(import.meta.dirname)
-      const proc = $`nu ./test.nu --silent`
+      const proc = $`bash ./test.sh --silent`
       const result = (await proc.text()).split('\n')
       expect(result[0]).toBe(result[1])
       expect(result[2]).toBe('0')
