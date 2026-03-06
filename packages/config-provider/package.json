@@ -21,7 +21,7 @@
   "exports": {
     ".": {
       "import": {
-        "types": "./dist/index.d.ts",
+        "types": "./dist/index.d.xts",
         "default": "./dist/index.js"
       }
     },
@@ -52,7 +52,7 @@
     "dist"
   ],
   "scripts": {
-    "check:dist": "bun run --parallel 'attw --pack --profile esm-only' publint"
+    "pubcheck": "bun run --parallel 'attw --pack --profile esm-only' publint"
   },
   "dependencies": {
     "@clack/prompts": "catalog:prod",

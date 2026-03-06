@@ -1,24 +1,7 @@
-import type { ConfigProviderOptions } from 'starship-butler-config-provider'
 import type { LoadConfigOptions, RCOptions } from 'starship-butler-utils/config'
+import type { ButlerConfig, SafeButlerConfig } from './types'
 import { createDefu } from 'defu'
 import { loadConfig as _loadConfig, readUserRc } from 'starship-butler-utils/config'
-
-/**
- * Type definition for Butler configuration.
- */
-export interface ButlerConfig {
-  /**
-   * Configuration for `config-provider` package.
-   */
-  'config-provider': Partial<ConfigProviderOptions>
-}
-
-/**
- * Type definition for Butler configuration, excludes auto-generated fields.
- */
-type SafeButlerConfig = Omit<Partial<ButlerConfig>, 'config-provider'> & {
-  'config-provider'?: Omit<Partial<ConfigProviderOptions>, 'version'>
-}
 
 /**
  * Type helper for define butler config.
@@ -30,8 +13,6 @@ export function defineButlerConfig(config: SafeButlerConfig): Partial<SafeButler
   return config
 }
 
-type LoadConfigT = Partial<ButlerConfig>
-
 /**
  * Load user's configuration.
  *
@@ -39,11 +20,11 @@ type LoadConfigT = Partial<ButlerConfig>
  * @returns Configuration.
  */
 export async function loadConfig(
-  options?: RCOptions & LoadConfigOptions<LoadConfigT>,
-): Promise<LoadConfigT> {
+  options?: RCOptions & LoadConfigOptions<Partial<ButlerConfig>>,
+): Promise<Partial<ButlerConfig>> {
   const rc = readUserRc(options)
-  const { config } = await _loadConfig<LoadConfigT>(options)
-  const defu = createDefu((obj, key) => {
+  const { config } = await _loadConfig<Partial<ButlerConfig>>(options)
+  const defu = createDefu((_, key) => {
     // Ignore `config-provider.version` from `config`
     if (key === 'version') {
       return true

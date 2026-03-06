@@ -1,6 +1,6 @@
 // cSpell:disable
 {
-  //#region UI
+  // #region UI
   // Theme
   "window.autoDetectColorScheme": true,
   "workbench.preferredDarkColorTheme": "GitHub Dark",
@@ -254,9 +254,9 @@
       "overviewRulerColor": "rgb(207 146 158 / 80%)"
     }
   ],
-  //#endregion
+  // #endregion
 
-  //#region Lens & Hint
+  // #region Lens & Hint
   // Lens
   "errorLens.enabledDiagnosticLevels": ["warning", "error", "info", "hint"],
   "errorLens.messageTemplate": "[$count] $severity $message $source($code)",
@@ -271,9 +271,9 @@
   "vue.inlayHints.inlineHandlerLeading": true,
   "vue.inlayHints.missingProps": true,
   "vue.inlayHints.optionsWrapper": true,
-  //#endregion
+  // #endregion
 
-  //#region Behavior
+  // #region Behavior
   // Trust
   "security.workspace.trust.enabled": false,
   // Profile
@@ -379,9 +379,9 @@
   "github.copilot.nextEditSuggestions.enabled": true,
   "chat.mcp.gallery.enabled": true,
   "cursor.cpp.disabledLanguages": ["plaintext", "dotenv"],
-  //#endregion
+  // #endregion
 
-  //#region Extension Behavior
+  // #region Extension Behavior
   "extensions.experimental.affinity": {
     "asvetliakov.vscode-neovim": 1
   },
@@ -441,9 +441,9 @@
     "w"
   ],
   "rest-client.enableTelemetry": false,
-  //#endregion
+  // #endregion
 
-  //#region Code Quality
+  // #region Code Quality
   "editor.defaultFormatter": "oxc.oxc-vscode",
   "editor.formatOnSave": true,
   "shellformat.useEditorConfig": true,
@@ -489,5 +489,5 @@
   "[dotenv]": { "editor.defaultFormatter": "lumirelle.shell-format-rev" },
   "[ignore]": { "editor.defaultFormatter": "lumirelle.shell-format-rev" },
   "[dockerfile]": { "editor.defaultFormatter": "ms-azuretools.vscode-containers" }
-  //#endregion
+  // #endregion
 }

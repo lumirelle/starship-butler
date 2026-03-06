@@ -1,5 +1,9 @@
 {
   "extends": "../../tsconfig.base.json",
+  "compilerOptions": {
+    "declaration": true,
+    "isolatedDeclarations": true
+  },
   "include": ["src/**/*", "test/**/*"],
-  "exclude": ["**/test/fixture/**"]
+  "exclude": ["test/fixture/**"]
 }

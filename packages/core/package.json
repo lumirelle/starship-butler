@@ -37,7 +37,7 @@
   ],
   "scripts": {
     "start": "bun run ./src/cli.ts",
-    "check:dist": "bun run --parallel 'attw --pack --profile esm-only' publint"
+    "pubcheck": "bun run --parallel 'attw --pack --profile esm-only' publint"
   },
   "dependencies": {
     "@clack/prompts": "catalog:prod",

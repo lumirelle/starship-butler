@@ -1,20 +1,20 @@
 // cspell:disable
 {
   "recommendations": [
-    //#region Lens & Hint
+    // #region Lens & Hint
     "yoavbls.pretty-ts-errors",
     "hyrious.import-cost",
     "antfu.pnpm-catalog-lens",
     "wallabyjs.console-ninja",
     "antfu.iconify",
-    //#endregion
+    // #endregion
 
-    //#region Behavior
+    // #region Behavior
     "soulfriends.html-tag-wrap-vscode", // ALT+W/ALT+D
     "jasonnutter.search-node-modules", // CTRL+K CTRL+N
-    //#endregion
+    // #endregion
 
-    //#region Language Support
+    // #region Language Support
     // JavaScript / TypeScript
     "oven.bun-vscode",
     "johnsoncodehk.vscode-tsconfig-helper",
@@ -35,15 +35,15 @@
     "antfu.slidev",
     // REST Client
     "humao.rest-client",
-    //#endregion
+    // #endregion
 
-    //#region Code Quality
+    // #region Code Quality
     "dbaeumer.vscode-eslint",
-    //#endregion
+    // #endregion
 
-    //#region Practice
+    // #region Practice
     "yrm.type-challenges"
-    //#endregion
+    // #endregion
   ]
   // Summary
   // VSCode: $INDEX + 1 = 21 + ${PROFILE_DEFAULT: 39} = 60

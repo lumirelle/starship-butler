@@ -7,7 +7,7 @@ export default {
       ignoreDependencies: [/^starship-butler/, '@arethetypeswrong/cli', 'publint'],
       ignoreFiles: ['bunup.config.ts'],
     },
-    docs: {
+    'docs': {
       ignoreDependencies: [
         '@iconify-json/svg-spinners',
         '@unocss/reset',
@@ -28,7 +28,7 @@ export default {
     'packages/utils': {
       entry: ['src/*.ts'],
     },
-    playground: {
+    'playground': {
       ignoreDependencies: ['starship-butler'],
     },
   },

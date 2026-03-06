@@ -2,5 +2,11 @@
 linker = "isolated"
 
 [test]
-coveragePathIgnorePatterns = ["**/dist/**", "**/*.{test,spec,bench,benchmark}.ts"]
-coverageReporter = ["text", "lcov"]
+coveragePathIgnorePatterns = [
+  "**/dist/**",
+  "**/*.{test,spec,bench,benchmark}.ts"
+]
+coverageReporter = [
+  "text",
+  "lcov"
+]

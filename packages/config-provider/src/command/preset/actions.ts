@@ -70,11 +70,11 @@ export async function filterActions(options: Partial<PresetOptions>): Promise<Ac
   if (include.length === 0) {
     include = (await multiselect({
       message: 'No actions specified to include. Please select the actions you want to include:',
-      options: _ACTIONS.map((action) => ({ value: action.id, label: action.name })),
+      options: _ACTIONS.map(action => ({ value: action.id, label: action.name })),
     })) as string[]
   }
   const includedActions = _ACTIONS.filter((action) => {
-    const isIncluded = include.some((pattern) => new RegExp(pattern).test(action.id))
+    const isIncluded = include.some(pattern => new RegExp(pattern).test(action.id))
     if (!isIncluded) {
       consola.debug(`[config-provider] Skip "${important(action.name)}" as it's not included.`)
       return false
@@ -82,7 +82,7 @@ export async function filterActions(options: Partial<PresetOptions>): Promise<Ac
     return true
   })
   const notExcludedActions = includedActions.filter((action) => {
-    const isNotExcluded = !exclude.some((pattern) => new RegExp(pattern).test(action.id))
+    const isNotExcluded = !exclude.some(pattern => new RegExp(pattern).test(action.id))
     if (!isNotExcluded) {
       consola.debug(`[config-provider] Skip "${important(action.name)}" as it's excluded.`)
       return false

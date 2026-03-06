@@ -1,9 +1,9 @@
 // cspell:disable
 {
   "recommendations": [
-    //#region Language Support
+    // #region Language Support
     "ziglang.vscode-zig"
-    //#endregion
+    // #endregion
   ]
   // Summary
   // VSCode: $INDEX + 1 = 1 + ${PROFILE_DEFAULT: 38} = 39

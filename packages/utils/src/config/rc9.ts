@@ -79,7 +79,8 @@ export function removeUserRc(options?: RCOptions): void {
 export function upsertUserRc(config: RC, options?: RCOptions): void {
   if (exists(homedir(options?.name ?? RC_FILE_NAME))) {
     updateUserRc(config, options)
-  } else {
+  }
+  else {
     writeUserRc(config, options)
   }
 }

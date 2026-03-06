@@ -1,7 +1,7 @@
 // cspell:disable
 {
   "recommendations": [
-    //#region UI
+    // #region UI
     // Theme
     "github.github-vscode-theme",
     "antfu.icons-carbon",
@@ -19,18 +19,18 @@
     "bierner.markdown-yaml-preamble",
     // Custom
     "subframe7536.custom-ui-style",
-    //#endregion
+    // #endregion
 
-    //#region Lens & Hint
+    // #region Lens & Hint
     // Lens
     "johnpapa.read-time",
     "mkxml.vscode-filesize",
     "usernamehw.errorlens",
     // Hint
     "antfu.array-index-inlay",
-    //#endregion
+    // #endregion
 
-    //#region Behavior
+    // #region Behavior
     // Open & Edit
     "sandcastle.vscode-open",
     "ms-vscode.hexeditor",
@@ -51,22 +51,22 @@
     "gitHub.vscode-pull-request-github",
     // Dev Container
     "ms-azuretools.vscode-containers",
-    //#endregion
+    // #endregion
 
-    //#region Language Support
+    // #region Language Support
     "yzhang.markdown-all-in-one",
     "tamasfe.even-better-toml",
     "somewhatstationery.some-sass",
     "thenuprojectcontributors.vscode-nushell-lang",
-    //#endregion
+    // #endregion
 
-    //#region Code Quality
+    // #region Code Quality
     "oxc.oxc-vscode",
     "editorconfig.editorconfig",
     "lumirelle.shell-format-rev",
     "streetsidesoftware.code-spell-checker",
     "sonarsource.sonarlint-vscode"
-    //#endregion
+    // #endregion
   ]
   // Summary
   // VSCode: $INDEX + 1 = 39

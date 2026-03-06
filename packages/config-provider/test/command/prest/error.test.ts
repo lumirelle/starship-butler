@@ -11,7 +11,8 @@ describe('error test', () => {
   it('should have correct name', () => {
     try {
       throw new HandlerError('This is a test error')
-    } catch (error) {
+    }
+    catch (error) {
       if (!(error instanceof Error)) {
         return
       }

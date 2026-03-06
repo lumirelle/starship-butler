@@ -4,8 +4,6 @@ import oxlint from 'eslint-plugin-oxlint'
 
 export default antfu(
   {
-    // Use `oxfmt`
-    stylistic: false,
     unocss: true,
     /**
      * Still requires `@vue/compiler-sfc@^3` as dev dependency

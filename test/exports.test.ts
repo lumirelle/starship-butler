@@ -22,7 +22,7 @@ async function collectPackages(): Promise<PkgInfo> {
     const glob = new Glob(`${pkgPattern}/package.json`)
     for await (const pkgJsonPath of glob.scan({ cwd: root, absolute: true })) {
       const pkgJson = await (import(pkgJsonPath) as Promise<{ default: PkgJson }>).then(
-        (m) => m.default,
+        m => m.default,
       )
       if (!pkgJson.name || pkgJson.private) {
         continue

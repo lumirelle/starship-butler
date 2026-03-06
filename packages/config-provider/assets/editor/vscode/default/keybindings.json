@@ -1,5 +1,5 @@
 [
-  //#region Basic
+  // #region Basic
   // Open
   { "key": "ctrl+numpad_multiply", "command": "workbench.action.files.openFolder" },
   // Tab completion
@@ -29,9 +29,9 @@
     "command": "-workbench.action.terminal.openNativeConsole",
     "when": "!terminalFocus"
   },
-  //#endregion
+  // #endregion
 
-  //#region With Neovim
+  // #region With Neovim
   // Editor Size
   {
     "key": "ctrl+down",
@@ -128,5 +128,5 @@
     "command": "workbench.action.terminal.toggleTerminal",
     "when": "terminal.active"
   }
-  //#endregion
+  // #endregion
 ]

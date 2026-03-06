@@ -59,7 +59,7 @@ export async function commandSet(
   // Read ignore patterns from .setignore file
   const ignorePatterns = readFileSync(join(assetsPath, '.setignore'), 'utf8')
     .split('\n')
-    .filter((line) => line.trim() !== '')
+    .filter(line => line.trim() !== '')
   const matchedFiles = globSync(processedSourcePattern, {
     cwd: assetsPath,
     dot: true,
@@ -79,10 +79,11 @@ export async function commandSet(
     consola.error('No files matched the source pattern!')
     return
   }
-  const selectOptions = matchedFiles.map((file) => ({ label: file, value: file }))
+  const selectOptions = matchedFiles.map(file => ({ label: file, value: file }))
   if (matchedFiles.length === 1) {
     sourceFiles = matchedFiles
-  } else if (isTargetDirectory) {
+  }
+  else if (isTargetDirectory) {
     const choice = await select({
       message: 'Multiple files matched the source pattern, please select one to set up:',
       options: selectOptions,
@@ -92,7 +93,8 @@ export async function commandSet(
       return
     }
     sourceFiles = [choice]
-  } else {
+  }
+  else {
     const choice = await multiselect({
       message: 'Select a file to set up:',
       options: selectOptions,
@@ -114,7 +116,8 @@ export async function commandSet(
     if (isTargetDirectory) {
       ensureDirectory(target)
       targetFile = join(cwd, target, basename(sourceFile))
-    } else {
+    }
+    else {
       ensureDirectory(join(cwd, target))
       targetFile = join(cwd, target)
     }

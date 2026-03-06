@@ -99,6 +99,9 @@ tsgolint
 iconify
 takumi
 oxlintrc
+attw
+defu
+butlerrc
 
 # DEV: JAVA
 graalvm

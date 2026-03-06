@@ -67,7 +67,8 @@ export function processConfig(
         dryRun ? success('will') : 'is'
       } copied to ${important(target)}.`,
     )
-  } else if (dryRun || _symlinkConfig(source, target, options)) {
+  }
+  else if (dryRun || _symlinkConfig(source, target, options)) {
     consola.success(
       `Configuration ${important(target)} ${
         dryRun ? success('will') : 'is'

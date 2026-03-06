@@ -10,6 +10,8 @@ import {
 import { consola } from 'consola'
 import { info } from './highlight'
 
+const PATH_SEP_REGEX = /[/\\]/
+
 /**
  * Check if a path exists. Does not dereference symlinks.
  *
@@ -19,14 +21,15 @@ import { info } from './highlight'
 export function exists(path: string): boolean {
   try {
     // If it's a file but ends with `/` or `\`, we consider it does not exist, in order to let the behavior on Windows be consistent with Unix
-    if (lstatSync(path).isFile() && /\/$|\\$/.exec(path)) {
+    if (lstatSync(path).isFile() && PATH_SEP_REGEX.test(path)) {
       return false
     }
     return true
-  } catch (error) {
+  }
+  catch (error) {
     if (
-      error instanceof Error &&
-      ['ENOENT', 'ENOTDIR'].some((str) => error.message.includes(str))
+      error instanceof Error
+      && ['ENOENT', 'ENOTDIR'].some(str => error.message.includes(str))
     ) {
       return false
     }
@@ -47,7 +50,7 @@ export function isDirectory(path: string): boolean {
   if (exists(path)) {
     return lstatSync(path).isDirectory()
   }
-  return (!exists(path) || lstatSync(path).isDirectory()) && /\/$|\\$/.exec(path) !== null
+  return (!exists(path) || lstatSync(path).isDirectory()) && PATH_SEP_REGEX.exec(path) !== null
 }
 
 /**
@@ -77,7 +80,8 @@ export function ensureDirectory(path: string): boolean {
     }
     mkdirSync(path, { recursive: true })
     return true
-  } catch {
+  }
+  catch {
     return false
   }
 }
@@ -124,7 +128,8 @@ export function copyFile(sourcePath: string, targetPath: string, force = false):
     if (isExist) {
       remove(`${targetPath}.bak`)
     }
-  } catch (error) {
+  }
+  catch (error) {
     if (isExist) {
       renameSync(`${targetPath}.bak`, targetPath)
     }
@@ -155,7 +160,8 @@ export function createSymlink(sourcePath: string, targetPath: string, force = fa
     if (isExist) {
       remove(`${targetPath}.bak`)
     }
-  } catch (error) {
+  }
+  catch (error) {
     if (isExist) {
       renameSync(`${targetPath}.bak`, targetPath)
     }

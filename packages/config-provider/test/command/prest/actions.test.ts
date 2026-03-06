@@ -7,7 +7,7 @@ describe('actions', () => {
       include: ['nushell'],
     })
     // Extract only `id` and `name` for comparison
-    const simpleFilteredActions = filteredActions.map((item) => ({
+    const simpleFilteredActions = filteredActions.map(item => ({
       id: item.id,
       name: item.name,
     }))
@@ -24,7 +24,7 @@ describe('actions', () => {
     const filteredActions = await filterActions({
       include: ['.*'],
     })
-    const simpleFilteredActions = filteredActions.map((item) => ({
+    const simpleFilteredActions = filteredActions.map(item => ({
       id: item.id,
       name: item.name,
     }))
@@ -105,7 +105,7 @@ describe('actions', () => {
     const filteredActions = await filterActions({
       all: true,
     })
-    const simpleFilteredActions = filteredActions.map((item) => ({
+    const simpleFilteredActions = filteredActions.map(item => ({
       id: item.id,
       name: item.name,
     }))
@@ -187,7 +187,7 @@ describe('actions', () => {
       include: ['.*'],
       exclude: ['nushell'],
     })
-    const simpleFilteredActions = filteredActions.map((item) => ({
+    const simpleFilteredActions = filteredActions.map(item => ({
       id: item.id,
       name: item.name,
     }))
@@ -270,6 +270,6 @@ describe('actions', () => {
       include: [],
     })
     expect(mockedMultiselect).toHaveBeenCalledTimes(1)
-    expect(filteredActions.map((action) => action.id)).toEqual(['nushell', 'bash'])
+    expect(filteredActions.map(action => action.id)).toEqual(['nushell', 'bash'])
   })
 })

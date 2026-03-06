@@ -51,7 +51,8 @@ class SpyUtils {
     if (times === 'once') {
       this.spiedViteNormalizePath.mockImplementationOnce((_: string) => 'Mocked')
       this.spiedEslintLoad.mockImplementationOnce(() => undefined as any)
-    } else {
+    }
+    else {
       this.spiedViteNormalizePath.mockImplementation((_: string) => 'Mocked')
       this.spiedEslintLoad.mockImplementation(() => undefined as any)
     }
@@ -134,7 +135,8 @@ class MockUtils {
     if (times === 'once') {
       this.mockedViteNormalizePath.mockImplementationOnce((_: string) => 'Mocked')
       this.mockedEslintLoad.mockImplementationOnce(() => undefined as any)
-    } else {
+    }
+    else {
       this.mockedViteNormalizePath.mockImplementation((_: string) => 'Mocked')
       this.mockedEslintLoad.mockImplementation(() => undefined as any)
     }

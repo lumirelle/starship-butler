@@ -4,8 +4,6 @@ import oxlint from 'eslint-plugin-oxlint'
 
 export default antfu(
   {
-    // Use `oxfmt`
-    stylistic: false,
     type: 'lib',
   },
   ...oxlint.buildFromOxlintConfigFile('.oxlintrc.json'),

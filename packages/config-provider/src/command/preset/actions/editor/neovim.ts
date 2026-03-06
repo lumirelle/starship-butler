@@ -2,13 +2,13 @@ import type { Action, ConfigPathGenerator, PlatformTargetFolderMap } from '../..
 import { consola } from 'consola'
 import { join } from 'pathe'
 import { homedir, localAppdata } from 'starship-butler-utils/path'
-import { HandlerError } from '../../error'
 import {
   createHandler,
   createTargetFolderHandler,
   ensureDirectoryExist,
   isPathExist,
-} from '../utils'
+} from '../../actions/utils'
+import { HandlerError } from '../../error'
 
 const APP_NAME = 'Neo Vim'
 

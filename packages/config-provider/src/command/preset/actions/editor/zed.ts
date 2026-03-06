@@ -2,8 +2,8 @@ import type { Action, ConfigPathGenerator, PlatformTargetFolderMap } from '../..
 import { consola } from 'consola'
 import { join } from 'pathe'
 import { appdata, homedir } from 'starship-butler-utils/path'
+import { createHandler, createTargetFolderHandler, isPathExist } from '../../actions/utils'
 import { HandlerError } from '../../error'
-import { createHandler, createTargetFolderHandler, isPathExist } from '../utils'
 
 const APP_NAME = 'Zed'
 

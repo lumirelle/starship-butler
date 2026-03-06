@@ -2,7 +2,7 @@ import type { Action, ConfigPathGenerator } from '../../types'
 import { consola } from 'consola'
 import { join } from 'pathe'
 import { homedir } from 'starship-butler-utils/path'
-import { createHandler } from '../utils'
+import { createHandler } from '../../actions/utils'
 
 const APP_NAME = 'cSpell'
 

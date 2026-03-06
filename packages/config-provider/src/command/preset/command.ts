@@ -8,6 +8,8 @@ import { filterActions } from './actions'
 import { HandlerError } from './error'
 import { validateOptions } from './validate'
 
+const PERMISSION_ERROR_REGEX = /EACCES|EPERM/
+
 /**
  * Preset application configurations.
  *
@@ -49,8 +51,8 @@ export async function commandPreset(
 
     try {
       // Process `targetFolder`
-      context.targetFolder =
-        typeof action.targetFolder === 'function'
+      context.targetFolder
+        = typeof action.targetFolder === 'function'
           ? await action.targetFolder(context)
           : action.targetFolder
 
@@ -69,15 +71,18 @@ export async function commandPreset(
         consola.debug(`[config-provider] Running posthandler of "${important(action.name)}"...`)
         await action.posthandler(context)
       }
-    } catch (error) {
+    }
+    catch (error) {
       errorCount++
       if (error instanceof HandlerError) {
         consola.error(error.message)
-      } else if (error instanceof Error && /EACCES|EPERM/.test(error.message)) {
+      }
+      else if (error instanceof Error && PERMISSION_ERROR_REGEX.test(error.message)) {
         consola.error(
           `Got a permission error while applying "${important(action.name)}" preset, please try running the command with admin privileges.`,
         )
-      } else {
+      }
+      else {
         consola.error(
           `Got an error while applying "${important(action.name)}" preset, process stopped. Reason: ${error instanceof Error ? error.message : String(error)}`,
         )
@@ -89,11 +94,14 @@ export async function commandPreset(
     consola.info(
       'No presets to apply. Do you forget to specify include patterns with `--include` or `--all` option? For more information, please run with `--help` option.',
     )
-  } else if (errorCount === actions.length) {
+  }
+  else if (errorCount === actions.length) {
     consola.error('All presets applied failed. Please check the output above for notices.')
-  } else if (errorCount > 0) {
+  }
+  else if (errorCount > 0) {
     consola.warn('Some presets applied failed. Please check the output above for notices.')
-  } else {
+  }
+  else {
     consola.success('All presets applied completed. Please check the output above for notices.')
   }
 }

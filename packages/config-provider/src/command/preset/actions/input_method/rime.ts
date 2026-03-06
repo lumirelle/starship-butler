@@ -2,7 +2,7 @@ import type { Action, ConfigPathGenerator, PlatformTargetFolderMap } from '../..
 import { consola } from 'consola'
 import { join } from 'pathe'
 import { appdata, homedir } from 'starship-butler-utils/path'
-import { createHandler, createTargetFolderHandler, isPathExist } from '../utils'
+import { createHandler, createTargetFolderHandler, isPathExist } from '../../actions/utils'
 
 const APP_NAME = 'rime'
 
@@ -50,7 +50,7 @@ export function rime(): Action {
     handler: createHandler(CONFIG_PATH_GENERATORS),
     posthandler: ({ targetFolder, systemOptions }) => {
       consola.info(
-        "Currently, this configuration only supports `Rime official input` method with default user configuration folder path. For Linux users, please make sure you are using `ibus-rime`. After applying the configuration, don't forget to deploy Rime and wait for few seconds/minutes! Just with patience :) ",
+        'Currently, this configuration only supports `Rime official input` method with default user configuration folder path. For Linux users, please make sure you are using `ibus-rime`. After applying the configuration, don\'t forget to deploy Rime and wait for few seconds/minutes! Just with patience :) ',
       )
       if (systemOptions.platform === 'win32') {
         consola.info(

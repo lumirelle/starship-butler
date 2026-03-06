@@ -128,7 +128,8 @@ describe('fs util tests', () => {
         dirname('fixture/tmp/butler.config.json'),
         true,
       )
-    } catch {
+    }
+    catch {
       /* Do nothing */
     }
     expect(spiedRenameSync).toHaveBeenCalledTimes(2)
@@ -188,7 +189,8 @@ describe('fs util tests', () => {
         dirname('fixture/tmp/symlink-to-config'),
         true,
       )
-    } catch {
+    }
+    catch {
       /* Do nothing */
     }
     expect(spiedRenameSync).toHaveBeenCalledTimes(2)

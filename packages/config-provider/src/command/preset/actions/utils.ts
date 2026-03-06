@@ -33,7 +33,7 @@ export function isPathExist(path: Arrayable<string>): boolean {
   if (paths.length === 0) {
     return false
   }
-  return paths.every((t) => exists(t))
+  return paths.every(t => exists(t))
 }
 
 /**
@@ -50,10 +50,11 @@ export async function isPathExistEnv(path: Arrayable<string>): Promise<boolean> 
   try {
     const command = platform() === 'win32' ? 'where' : 'which'
     const results = await Promise.all(
-      paths.map(async (t) => (await x(command, [t])).stdout.trim() !== ''),
+      paths.map(async t => (await x(command, [t])).stdout.trim() !== ''),
     )
     return results.every(Boolean)
-  } catch {
+  }
+  catch {
     return false
   }
 }

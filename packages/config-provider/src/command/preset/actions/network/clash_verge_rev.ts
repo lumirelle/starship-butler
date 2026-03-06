@@ -1,8 +1,8 @@
 import type { Action, ConfigPathGenerator, PlatformTargetFolderMap } from '../../types'
 import { join } from 'pathe'
 import { appdata, homedir } from 'starship-butler-utils/path'
+import { createHandler, createTargetFolderHandler, isPathExist } from '../../actions/utils'
 import { HandlerError } from '../../error'
-import { createHandler, createTargetFolderHandler, isPathExist } from '../utils'
 
 const APP_NAME = 'Clash Verge Rev'
 

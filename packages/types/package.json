@@ -33,6 +33,6 @@
     "dist"
   ],
   "scripts": {
-    "check:dist": "bun run --parallel 'attw --pack --profile esm-only' publint"
+    "pubcheck": "bun run --parallel 'attw --pack --profile esm-only' publint"
   }
 }

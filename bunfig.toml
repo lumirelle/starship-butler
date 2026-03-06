@@ -7,4 +7,7 @@ coveragePathIgnorePatterns = [
   "**/command/preset/actions/**",
   "**/*.{test,spec,bench,benchmark}.ts",
 ]
-coverageReporter = ["text", "lcov"]
+coverageReporter = [
+  "text",
+  "lcov"
+]

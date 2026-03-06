@@ -4,7 +4,6 @@ import oxlint from 'eslint-plugin-oxlint'
 
 export default antfu(
   {
-    stylistic: false,
     type: 'lib',
     ignores: ['README.md'],
   },

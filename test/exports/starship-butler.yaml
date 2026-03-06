@@ -1,3 +1,2 @@
 ".": 
   defineButlerConfig: function
-  loadConfig: function
