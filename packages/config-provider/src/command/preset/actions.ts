@@ -10,7 +10,6 @@ import { zed } from './actions/editor/zed'
 import { rime } from './actions/input_method/rime'
 import { cSpell } from './actions/linter/c_spell'
 import { clashVergeRev } from './actions/network/clash_verge_rev'
-import { bun } from './actions/pm/bun'
 import { maven } from './actions/pm/maven'
 import { bash } from './actions/shell/bash'
 import { nushell } from './actions/shell/nushell'
@@ -41,7 +40,6 @@ const _ACTIONS: Action[] = [
   // VCS
   git(),
   // Package Manager
-  bun(),
   maven(),
   // Tools
   sxzzCreate(),

@@ -11,7 +11,6 @@ export type ActionId
     | 'windows-powershell'
     | 'starship'
     | 'git'
-    | 'bun'
     | 'maven'
     | '@sxzz/create'
     | 'vscode'

@@ -67,10 +67,6 @@ describe('actions', () => {
           "name": "Git",
         },
         {
-          "id": "bun",
-          "name": "Bun",
-        },
-        {
           "id": "maven",
           "name": "Maven",
         },
@@ -148,10 +144,6 @@ describe('actions', () => {
           "name": "Git",
         },
         {
-          "id": "bun",
-          "name": "Bun",
-        },
-        {
           "id": "maven",
           "name": "Maven",
         },
@@ -224,10 +216,6 @@ describe('actions', () => {
         {
           "id": "git",
           "name": "Git",
-        },
-        {
-          "id": "bun",
-          "name": "Bun",
         },
         {
           "id": "maven",
