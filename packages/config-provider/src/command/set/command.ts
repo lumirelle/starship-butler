@@ -1,4 +1,3 @@
-// oxlint-disable import/max-dependencies
 import type { Nullable } from '@antfu/utils'
 import type { SetOptions } from './types'
 import { readFileSync } from 'node:fs'
