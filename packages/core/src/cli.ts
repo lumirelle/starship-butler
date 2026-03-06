@@ -21,9 +21,6 @@ const cli = cac('butler')
 
 cli
   .command('preset', 'Let butler preset application configurations for you.')
-  // Aliases for backward compatibility, will be removed in next major version
-  .alias('configure-system')
-  .alias('cfsys')
   .option(
     '-i, --include <regex1,regex2,...>',
     'Presets that you want to include, accepts JavaScript regex pattern string(s). Multiple value can be specified by separating them with commas.',
@@ -98,8 +95,6 @@ cli
 
 cli
   .command('set <source_pattern> <target>', 'Let butler set matched configurations for you.')
-  .alias('configure')
-  .alias('cf')
   .option(
     '-m, --mode <mode>',
     'STILL EXPERIMENTAL! Symlink or copy-paste configurations.',
