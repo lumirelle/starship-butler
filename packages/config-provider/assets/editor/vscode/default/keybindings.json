@@ -92,29 +92,30 @@
     "command": "editor.action.moveLinesUpAction",
     "when": "editorTextFocus && !editorReadonly"
   },
-  // Undo breakpoints (Does not apply when has selection)
+  // Undo breakpoints
+  // Disable when has selection or multiple cursors, because these will break them
   {
     "key": "space",
     "command": "vscode-neovim.send",
-    "when": "editorTextFocus && neovim.init && neovim.mode == 'insert' && !editorHasSelection",
+    "when": "editorTextFocus && neovim.init && neovim.mode == 'insert' && !editorHasSelection && !editorHasMultipleSelections",
     "args": " "
   },
   {
     "key": "oem_comma",
     "command": "vscode-neovim.send",
-    "when": "editorTextFocus && neovim.init && neovim.mode == 'insert' && !editorHasSelection",
+    "when": "editorTextFocus && neovim.init && neovim.mode == 'insert' && !editorHasSelection && !editorHasMultipleSelections",
     "args": ","
   },
   {
     "key": "oem_period",
     "command": "vscode-neovim.send",
-    "when": "editorTextFocus && neovim.init && neovim.mode == 'insert' && !editorHasSelection",
+    "when": "editorTextFocus && neovim.init && neovim.mode == 'insert' && !editorHasSelection && !editorHasMultipleSelections",
     "args": "."
   },
   {
     "key": "oem_1",
     "command": "vscode-neovim.send",
-    "when": "editorTextFocus && neovim.init && neovim.mode == 'insert' && !editorHasSelection",
+    "when": "editorTextFocus && neovim.init && neovim.mode == 'insert' && !editorHasSelection && !editorHasMultipleSelections",
     "args": ";"
   },
   // Terminal
