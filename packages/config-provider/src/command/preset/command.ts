@@ -4,6 +4,7 @@ import { consola } from 'consola'
 import { upsertUserRc } from 'starship-butler-utils/config'
 import { important } from 'starship-butler-utils/highlight'
 import { version } from '../../../package.json'
+import { ASSETS_FOLDER } from '../../constants'
 import { filterActions } from './actions'
 import { HandlerError } from './error'
 import { validateOptions } from './validate'
@@ -20,6 +21,7 @@ export async function commandPreset(
   options: Partial<PresetOptions>,
   systemOptions: SystemOptions,
 ): Promise<void> {
+  consola.debug('[config-provider] Assets folder path:', ASSETS_FOLDER)
   consola.debug('[config-provider] Received preset options:', options)
   consola.debug('[config-provider] Received user system options:', systemOptions)
 

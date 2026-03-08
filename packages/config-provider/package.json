@@ -25,12 +25,6 @@
         "default": "./dist/index.js"
       }
     },
-    "./command/utils": {
-      "import": {
-        "types": "./dist/command/utils/index.d.ts",
-        "default": "./dist/command/utils/index.js"
-      }
-    },
     "./command/set": {
       "import": {
         "types": "./dist/command/set/index.d.ts",
@@ -41,6 +35,18 @@
       "import": {
         "types": "./dist/command/preset/index.d.ts",
         "default": "./dist/command/preset/index.js"
+      }
+    },
+    "./command/utils": {
+      "import": {
+        "types": "./dist/command/utils/index.d.ts",
+        "default": "./dist/command/utils/index.js"
+      }
+    },
+    "./constants": {
+      "import": {
+        "types": "./dist/constants.d.ts",
+        "default": "./dist/constants.js"
       }
     },
     "./package.json": "./package.json"

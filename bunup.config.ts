@@ -9,7 +9,7 @@ export default defineWorkspace([
     name: 'config-provider',
     root: 'packages/config-provider',
     config: {
-      entry: ['./src/index.ts', './src/command/*/index.ts'],
+      entry: ['./src/index.ts', './src/constants.ts', './src/command/*/index.ts'],
     },
   },
   {
@@ -21,13 +21,6 @@ export default defineWorkspace([
     root: 'packages/utils',
     config: {
       entry: ['./src/config.ts', './src/path.ts', './src/fs.ts', './src/highlight.ts'],
-      /**
-       * Disable code splitting due to Bun's current limitations with shared code among entrypoints.
-       *
-       * @see https://github.com/bunup/bunup/issues/93
-       * @see https://github.com/oven-sh/bun/issues/5344
-       */
-      splitting: false,
     },
   },
 ])

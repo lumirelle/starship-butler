@@ -1,7 +1,5 @@
 ".": 
   {}
-./command/utils: 
-  processConfig: function
 ./command/set: 
   commandSet: function
   validateOptions: function
@@ -9,3 +7,8 @@
   commandPreset: function
   HandlerError: function
   validateOptions: function
+./command/utils: 
+  processConfig: function
+./constants: 
+  ASSETS_FOLDER: string
+  PKG_ROOT: string

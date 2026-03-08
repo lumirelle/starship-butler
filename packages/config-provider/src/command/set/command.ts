@@ -9,6 +9,7 @@ import { upsertUserRc } from 'starship-butler-utils/config'
 import { ensureDirectory, isDirectory } from 'starship-butler-utils/fs'
 import { globSync } from 'tinyglobby'
 import { version } from '../../../package.json'
+import { ASSETS_FOLDER } from '../../constants'
 import { processConfig } from '../utils/config'
 import { validateOptions } from './validate'
 
@@ -24,6 +25,7 @@ export async function commandSet(
   target: string,
   options: Partial<SetOptions>,
 ): Promise<void> {
+  consola.debug('[config-provider] Assets folder path:', ASSETS_FOLDER)
   consola.debug(
     `[config-provider] Received source pattern: '${sourcePattern}', target: '${target}'`,
   )
@@ -41,12 +43,6 @@ export async function commandSet(
     },
   })
 
-  /**
-   * Assets folder path
-   */
-  const assetsPath = join(import.meta.dirname, '..', '..', '..', 'assets')
-  consola.debug('[config-provider] Assets path:', assetsPath)
-
   let processedSourcePattern = sourcePattern
   // Create source glob pattern
   // If the pattern does not contain folder part, add '**/' prefix to match
@@ -56,11 +52,11 @@ export async function commandSet(
   }
   consola.debug('[config-provider] Source pattern:', processedSourcePattern)
   // Read ignore patterns from .setignore file
-  const ignorePatterns = readFileSync(join(assetsPath, '.setignore'), 'utf8')
+  const ignorePatterns = readFileSync(join(ASSETS_FOLDER, '.setignore'), 'utf8')
     .split('\n')
     .filter(line => line.trim() !== '')
   const matchedFiles = globSync(processedSourcePattern, {
-    cwd: assetsPath,
+    cwd: ASSETS_FOLDER,
     dot: true,
     ignore: ignorePatterns,
   })

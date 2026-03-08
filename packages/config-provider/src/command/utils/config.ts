@@ -3,6 +3,7 @@ import { consola } from 'consola'
 import { join } from 'pathe'
 import { copyFile, createSymlink } from 'starship-butler-utils/fs'
 import { important, success } from 'starship-butler-utils/highlight'
+import { ASSETS_FOLDER } from '../../constants'
 
 /**
  * Copy config to target path.
@@ -23,7 +24,7 @@ function _copyPasteConfig(
     // TODO: Implement support for glob
     return false
   }
-  return copyFile(join(import.meta.dirname, '..', '..', 'assets', source), target, force)
+  return copyFile(join(ASSETS_FOLDER, source), target, force)
 }
 
 /**
@@ -45,7 +46,7 @@ function _symlinkConfig(
     // TODO: Implement support for glob
     return false
   }
-  return createSymlink(join(import.meta.dirname, '..', '..', 'assets', source), target, force)
+  return createSymlink(join(ASSETS_FOLDER, source), target, force)
 }
 
 /**
