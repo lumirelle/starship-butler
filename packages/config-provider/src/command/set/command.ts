@@ -44,7 +44,7 @@ export async function commandSet(
   /**
    * Assets folder path
    */
-  const assetsPath = join(import.meta.dirname, '..', 'assets')
+  const assetsPath = join(import.meta.dirname, '..', '..', '..', 'assets')
   consola.debug('[config-provider] Assets path:', assetsPath)
 
   let processedSourcePattern = sourcePattern
