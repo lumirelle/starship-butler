@@ -1,2 +1,2 @@
-export { defineButlerConfig } from './config'
+export * from './config'
 export type * from './types'
