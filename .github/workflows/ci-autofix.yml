@@ -1,0 +1,14 @@
+name: CI Autofix
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+permissions: {}
+
+jobs:
+  autofix:
+    uses: lumirelle/workflows/.github/workflows/ci-autofix.yml@v3
+    permissions:
+      contents: read
