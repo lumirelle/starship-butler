@@ -20,11 +20,11 @@ Your best butler, helping you manage the whole development "starship". 😃
 ## Features
 
 - 🚀 Quick management of your application configurations & local project configurations
-- 📦 Built-in presets for popular tools (Git, ESLint, Prettier, etc.)
+- 📦 Built-in presets for popular tools (Git, Oxlint, ESLint, etc.)
 - 🧰 Easy to use CLI interface
 - ⚙️ Powered by Bun & TypeScript
 - 🔗 Support symlink mode (experimental)
-- 🧹 WIP: Auto cleanup when uninstalling
+- ...
 
 ## Usage
 
@@ -110,6 +110,19 @@ bun -b butler set --help
 # Using Node.js runtime
 butler set --help
 ```
+
+## Todos
+
+### Preset
+
+- [ ] List all built-in presets using `--list` flag
+- [ ] Backup before applying
+- [ ] Restore backup using `--restore` flag
+- [ ] Restore backup when uninstalling (Prompt to user whether to restore backup or not)
+
+### Set
+
+- [ ] Better default target file name, for example, for source `assets/project/linter/eslint/library/_eslint.config.js`, the default target file name should be `eslint.config.js`, not `_eslint.config.js` (without the leading underscore)
 
 ## Sponsors
 
