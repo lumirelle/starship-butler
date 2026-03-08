@@ -1,4 +1,4 @@
-name: CI Autofix
+name: autofix.ci
 
 on:
   push:
