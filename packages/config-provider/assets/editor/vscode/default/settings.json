@@ -265,7 +265,6 @@
   "js/ts.inlayHints.enumMemberValues.enabled": true,
   "js/ts.inlayHints.parameterNames.enabled": "all",
   "js/ts.inlayHints.parameterTypes.enabled": true,
-  "js/ts.inlayHints.variableTypes.enabled": true,
   "vue.autoInsert.dotValue": true,
   "vue.hover.rich": true,
   "vue.inlayHints.destructuredProps": true,
