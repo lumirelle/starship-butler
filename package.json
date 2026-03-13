@@ -105,6 +105,9 @@
     "vite": "catalog:test",
     "vitest-package-exports": "catalog:test"
   },
+  "overrides": {
+    "vite": "^8.0.0"
+  },
   "simple-git-hooks": {
     "pre-commit": "bunx nano-staged"
   },
