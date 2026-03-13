@@ -390,6 +390,7 @@
   "containers.orchestratorClient": "com.microsoft.visualstudio.orchestrators.podmancompose",
   "editorconfig.showMenuEntry": false,
   "fileNestingUpdater.autoUpdate": true,
+  "html.autoClosingTags": false,
   "i18n-ally.autoDetection": false,
   "i18n-ally.displayLanguage": "en",
   "markdown.extension.italic.indicator": "_",

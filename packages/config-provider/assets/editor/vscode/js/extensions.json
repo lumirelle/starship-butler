@@ -10,7 +10,6 @@
     // #endregion
 
     // #region Behavior
-    "soulfriends.html-tag-wrap-vscode", // ALT+W/ALT+D
     "jasonnutter.search-node-modules", // CTRL+K CTRL+N
     // #endregion
 
@@ -46,6 +45,6 @@
     // #endregion
   ]
   // Summary
-  // VSCode: $INDEX + 1 = 21 + ${PROFILE_DEFAULT: 39} = 60
-  // Cursor: $INDEX + 1 = 21 + ${PROFILE_DEFAULT: 38} = 59
+  // VSCode: $INDEX + 1 = 20 + ${PROFILE_DEFAULT: 41} = 61
+  // Cursor: $INDEX + 1 = 20 + ${PROFILE_DEFAULT: 40} = 60
 }

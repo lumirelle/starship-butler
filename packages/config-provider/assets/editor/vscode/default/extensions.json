@@ -55,6 +55,8 @@
 
     // #region Language Support
     "yzhang.markdown-all-in-one",
+    "remcohaszing.schemastore",
+    "redhat.vscode-yaml",
     "tamasfe.even-better-toml",
     "somewhatstationery.some-sass",
     "thenuprojectcontributors.vscode-nushell-lang",
@@ -69,6 +71,6 @@
     // #endregion
   ]
   // Summary
-  // VSCode: $INDEX + 1 = 39
-  // Cursor: $INDEX = 38
+  // VSCode: $INDEX + 1 = 41
+  // Cursor: $INDEX = 40
 }
