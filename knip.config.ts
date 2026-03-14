@@ -1,13 +1,14 @@
-/* eslint perfectionist/sort-objects: "error" */
 import type { KnipConfig } from 'knip'
 
 export default {
   workspaces: {
     '.': {
-      ignoreDependencies: [/^starship-butler/, '@arethetypeswrong/cli', 'publint'],
+      /// keep-sorted
+      ignoreDependencies: ['@arethetypeswrong/cli', 'publint', /^starship-butler/],
       ignoreFiles: ['bunup.config.ts'],
     },
     'docs': {
+      /// keep-sorted
       ignoreDependencies: [
         '@iconify-json/svg-spinners',
         '@unocss/reset',
@@ -18,18 +19,20 @@ export default {
       ],
     },
     'packages/config-provider': {
-      entry: ['src/index.ts', 'src/command/*/index.ts'],
+      /// keep-sorted
+      entry: ['src/command/*/index.ts', 'src/index.ts'],
+      /// keep-sorted
       ignoreBinaries: ['nu'],
+      /// keep-sorted
       ignoreFiles: ['assets/**/*'],
     },
     'packages/core': {
+      /// keep-sorted
       ignoreFiles: ['test/fixture/butler.config*.ts'],
     },
     'packages/utils': {
+      /// keep-sorted
       entry: ['src/*.ts'],
-    },
-    'playground': {
-      ignoreDependencies: ['starship-butler'],
     },
   },
 } satisfies KnipConfig
