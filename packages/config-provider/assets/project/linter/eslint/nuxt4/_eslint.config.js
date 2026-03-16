@@ -5,6 +5,7 @@ import nuxt from './.nuxt/eslint.config.mjs'
 
 export default antfu(
   {
+    // If you are not using `unocss`, you can remove this.
     unocss: true,
   },
   /* Don't forget to set `standalone: false` in your Nuxt ESLint module options. */
@@ -37,10 +38,3 @@ export default antfu(
       ],
     },
   })
-  .removeRules(
-    'unicorn/number-literal-case',
-    'vue/html-indent',
-    'vue/html-closing-bracket-newline',
-    'vue/html-self-closing',
-    'vue/singleline-html-element-content-newline',
-  )

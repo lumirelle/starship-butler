@@ -4,6 +4,7 @@ import oxlint from 'eslint-plugin-oxlint'
 
 export default antfu(
   {
+    // If you are not using `unocss`, you can remove this.
     unocss: true,
   },
   ...oxlint.buildFromOxlintConfigFile('.oxlintrc.json'),
@@ -34,10 +35,3 @@ export default antfu(
       ],
     },
   })
-  .removeRules(
-    'unicorn/number-literal-case',
-    'vue/html-indent',
-    'vue/html-closing-bracket-newline',
-    'vue/html-self-closing',
-    'vue/singleline-html-element-content-newline',
-  )
