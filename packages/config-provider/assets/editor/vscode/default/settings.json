@@ -213,18 +213,7 @@
     "borderRadius": "4px"
   },
   "todohighlight.keywords": [
-    {
-      "text": "BUG(string):",
-      "regex": { "pattern": "(?<=^|\"|\\s)(BUG|CAUTION)(\\(\\w+\\))?:" },
-      "backgroundColor": "#ab372f",
-      "overviewRulerColor": "rgb(171 55 47 / 80%)"
-    },
-    {
-      "text": "FIXME(string):",
-      "regex": { "pattern": "(?<=^|\"|\\s)(FIXME|SHAMELESSLY DISABLED)(\\(\\w+\\))?:" },
-      "backgroundColor": "#e18a3b",
-      "overviewRulerColor": "rgb(225 138 59 / 80%)"
-    },
+    // Uncompleted tasks.
     {
       "text": "TODO(string):",
       "regex": { "pattern": "(?<=^|\"|\\s)(TODO)(\\(\\w+\\))?:" },
@@ -236,17 +225,27 @@
       "backgroundColor": "#3271ae",
       "overviewRulerColor": "rgb(50 113 174 / 80%)"
     },
-    {
-      "text": "DONE(string):",
-      "regex": { "pattern": "(?<=^|\"|\\s)(DONE|RECOMMENDED)(\\(\\w+\\))?:" },
-      "backgroundColor": "#68945c",
-      "overviewRulerColor": "rgb(104 148 92 / 80%)"
-    },
+    // Completed tasks.
     {
       "text": "[x]",
       "backgroundColor": "#68945c",
       "overviewRulerColor": "rgb(104 148 92 / 80%)"
     },
+    // Possible to be optimized or improved.
+    {
+      "text": "XXX(string):",
+      "regex": { "pattern": "(?<=^|\"|\\s)(XXX)(\\(\\w+\\))?:" },
+      "backgroundColor": "#e18a3b",
+      "overviewRulerColor": "rgb(225 138 59 / 80%)"
+    },
+    // Need to be fixed or rewritten.
+    {
+      "text": "FIXME(string):",
+      "regex": { "pattern": "(?<=^|\"|\\s)(FIXME)(\\(\\w+\\))?:" },
+      "backgroundColor": "#ab372f",
+      "overviewRulerColor": "rgb(171 55 47 / 80%)"
+    },
+    // Some notices or hints.
     {
       "text": "NOTE(string):",
       "regex": { "pattern": "(?<=^|\"|\\s)(NOTE|NOTICE)(\\(\\w+\\))?:" },
