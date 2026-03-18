@@ -28,10 +28,6 @@ const CONFIG_PATH_GENERATORS: ConfigPathGenerator[] = [
     target: join(targetFolder, 'settings.json'),
   }),
   ({ targetFolder }) => ({
-    source: join('editor', 'vscode', 'default', 'mcp.json'),
-    target: join(targetFolder, 'mcp.json'),
-  }),
-  ({ targetFolder }) => ({
     source: join('editor', 'vscode', 'default', 'global.code-snippets'),
     target: join(targetFolder, 'snippets', 'global.code-snippets'),
   }),

@@ -36,10 +36,6 @@ const CONFIG_PATH_GENERATORS: ConfigPathGenerator[] = [
     source: join('editor', 'vscode', 'default', 'comment.code-snippets'),
     target: join(targetFolder, 'snippets', 'comment.code-snippets'),
   }),
-  () => ({
-    source: join('editor', 'cursor', 'mcp.json'),
-    target: join(MCP_TARGET_FOLDER, 'mcp.json'),
-  }),
 ]
 
 export function cursor(): Action {
