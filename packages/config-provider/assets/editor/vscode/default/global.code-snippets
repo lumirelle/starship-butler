@@ -1,21 +1,21 @@
 {
-  "UTC Time Now": {
-    "prefix": "utc",
-    "description": "UTC time now",
-    "scope": "",
-    "body": [
-      "${CURRENT_YEAR}-$CURRENT_MONTH-${CURRENT_DATE}T${CURRENT_HOUR}:${CURRENT_MINUTE}${CURRENT_TIMEZONE_OFFSET}",
-    ],
-  },
-  "Import": {
+	"Now UTC": {
+		"prefix": "nowutc",
+		"description": "Now UTC",
+		"scope": "",
+		"body": [
+			"${CURRENT_YEAR}-$CURRENT_MONTH-${CURRENT_DATE}T${CURRENT_HOUR}:${CURRENT_MINUTE}${CURRENT_TIMEZONE_OFFSET}"
+		]
+	},
+	"Import": {
     "prefix": "im",
-    "description": "import",
+    "description": "Import",
     "scope": "javascript,typescript,javascriptreact,typescriptreact",
     "body": ["import $0"],
 },
-"Import Effect": {
-	"prefix": "ime",
-	"description": "Import Effect",
+"Import Side Effect": {
+	"prefix": "imsideeffect",
+	"description": "Import Side Effect",
 	"scope": "javascript,typescript,javascriptreact,typescriptreact",
 	"body": [
 		"import '${1:module}'",
@@ -23,9 +23,9 @@
 		"$0"
 	]
 },
-"Import Module Default": {
-	"prefix": "imd",
-	"description": " Import module default",
+"Import Default": {
+	"prefix": "imdefault",
+	"description": "Import Default",
 	"scope": "javascript,typescript,javascriptreact,typescriptreact",
 	"body": [
 		"import ${2:module} from '${1:module}'",
@@ -33,9 +33,9 @@
 		"$0"
 	]
 },
-"Import Module Namespace": {
-	"prefix": "imn",
-	"description": "Import module namespace",
+"Import Namespace": {
+	"prefix": "imnamespace",
+	"description": "Import Namespace",
 	"scope": "javascript,typescript,javascriptreact,typescriptreact",
 	"body": [
 		"import ${2:*} as ${3:module} from '${1:module}'",
@@ -43,9 +43,9 @@
 		"$0"
 	]
 },
-"Import Module Destructuring": {
+"Import Destructuring": {
 	"prefix": "imx",
-	"description": "Import module destructuring",
+	"description": "Import Destructuring",
 	"scope": "javascript,typescript,javascriptreact,typescriptreact",
 	"body": [
 		"import { ${2:member} } from '${1:module}'",
@@ -61,21 +61,21 @@
 },
 "Export Structuring": {
 	"prefix": "exs",
-	"description": "Export structuring",
+	"description": "Export Structuring",
 	"scope": "javascript,typescript,javascriptreact,typescriptreact",
 	"body": [
 		"export { ${1:member} }"
 	]
 },
   "Export Variable": {
-    "prefix": "exv",
-    "description": "Export variable",
+    "prefix": "exvar",
+    "description": "Export Variable",
     "scope": "javascript,javascriptreact",
     "body": ["export const ${1:member} = ${2:value}", "", "$0"],
 },
 "Export Variable (TypeScript)": {
-	"prefix": "exv",
-	"description": "Export variable (TypeScript)",
+	"prefix": "exvar",
+	"description": "Export Variable (TypeScript)",
 	"scope": "typescript,typescriptreact",
 	"body": [
 		"export const ${1:member}: ${2:Type} = ${3:value}",
@@ -84,26 +84,26 @@
 	]
 },
   "Export Function": {
-    "prefix": "exf",
-    "description": "Export function",
+    "prefix": "exfn",
+    "description": "Export Function",
     "scope": "javascript,javascriptreact",
     "body": ["export function ${1:member}(${2:args}) {", "  $0", "}"],
   },
   "Export Function (TypeScript)": {
-    "prefix": "exf",
-    "description": "Export function (TypeScript)",
+    "prefix": "exfn",
+    "description": "Export Function (TypeScript)",
     "scope": "typescript,typescriptreact",
     "body": ["export function ${1:member}(${2:args}): ${3:void} {", "  $0", "}"],
   },
   "Export Arrow Function": {
-    "prefix": "exn",
-    "description": "Export arrow function",
+    "prefix": "exan",
+    "description": "Export Arrow Function",
     "scope": "javascript,javascriptreact",
     "body": ["export const ${1:member} = (${2:args}) => {", "  $0", "}"],
 },
 "Export Arrow Function (TypeScript)": {
-	"prefix": "exn",
-	"description": "Export arrow function (TypeScript)",
+	"prefix": "exan",
+	"description": "Export Arrow Function (TypeScript)",
 	"scope": "typescript,typescriptreact",
 	"body": [
 		"export const ${1:member}: ${2:Type} = (${3:args}) => {",
@@ -112,14 +112,14 @@
 	]
 },
   "Export Default": {
-    "prefix": "exd",
-    "description": "Export default",
+    "prefix": "exdefault",
+    "description": "Export Default",
     "scope": "javascript,typescript,javascriptreact,typescriptreact",
     "body": ["export default ${1:member}"],
 },
-"Export Another": {
-	"prefix": "exa",
-	"description": "Export another",
+"Export From": {
+	"prefix": "exfrom",
+	"description": "Export From",
 	"scope": "javascript,typescript,javascriptreact,typescriptreact",
 	"body": [
 		"export ${2|*,* as name,{ member }|} from '${1:module}'",
@@ -128,20 +128,24 @@
 	]
 },
   "Const": {
-    "prefix": "ct",
+    "prefix": "cst",
     "description": "Const",
     "scope": "javascript,typescript,javascriptreact,typescriptreact",
     "body": ["const $0"],
-  },
-  "Const Variavle": {
-    "prefix": "ctv",
-    "description": "Const variable",
-    "scope": "javascript,javascriptreact",
-    "body": ["const ${1:name} = ${2:value}", "", "$0"],
 },
-"Const Variavle1": {
-	"prefix": "ctv",
-	"description": "Const variable",
+"Const Variable": {
+	"prefix": "cstvar",
+	"description": "Const Variable",
+	"scope": "javascript,javascriptreact",
+	"body": [
+		"const ${1:name} = ${2:value}",
+		"",
+		"$0"
+	]
+},
+"Const Variable (TypeScript)": {
+	"prefix": "cstvar",
+	"description": "Const Variable (TypeScript)",
 	"scope": "typescript,typescriptreact",
 	"body": [
 		"const ${1:name}: ${2:Type} = ${3:value}",
@@ -149,9 +153,9 @@
 		"$0"
 	]
 },
-"Const Destructuring": {
-	"prefix": "cyx",
-	"description": "Const destructuring",
+"Const Variable Destructuring": {
+	"prefix": "cstvarx",
+	"description": "Const Variable Destructuring",
 	"scope": "javascript,typescript,javascriptreact,typescriptreact",
 	"body": [
 		"const { ${2:prop} } = ${1:value}",
@@ -160,55 +164,69 @@
 	]
 },
   "Const Arrow Function": {
-    "prefix": "ctn",
-    "description": "Const arrow function",
-    "scope": "javascript,typescript,javascriptreact,typescriptreact",
+    "prefix": "cstan",
+    "description": "Const Arrow Function",
+    "scope": "javascript,javascriptreact",
     "body": ["const ${1:name} = (${2:args}) => {", "  $0", "}"],
-  },
+},
+"Const Arrow Function (TypeScript)": {
+	"prefix": "cstan",
+	"description": "Const Arrow Function (TypeScript)",
+	"scope": "typescript,typescriptreact",
+	"body": [
+		"const ${1:name}: ${2:Type} = (${3:args}) => {",
+		"  $0",
+		"}"
+	]
+},
   "Let": {
-    "prefix": "lt",
+    "prefix": "let",
     "description": "Let",
     "scope": "javascript,typescript,javascriptreact,typescriptreact",
     "body": ["let $0"],
   },
   "Let Variable": {
-    "prefix": "ltv",
-    "description": "Let variable",
+    "prefix": "letvar",
+    "description": "Let Variable",
     "scope": "javascript,javascriptreact",
     "body": ["let ${1:name}", "", "$0"],
   },
   "Let Variable (TypeScript)": {
-    "prefix": "ltv",
-    "description": "Let variable (TypeScript)",
+    "prefix": "letvar",
+    "description": "Let Variable (TypeScript)",
     "scope": "typescript,typescriptreact",
     "body": ["let ${1:name}: ${2:type}", "", "$0"],
   },
   "Arrow Function": {
-    "prefix": "n",
-    "description": "Arrow function",
+    "prefix": "an",
+    "description": "Arrow Function",
     "scope": "javascript,typescript,javascriptreact,typescriptreact",
     "body": ["(${1:args}) => {", "  $0", "}"],
   },
   "Arrow Function Nested": {
-    "prefix": "nn",
-    "description": "Arrow function nested",
+    "prefix": "ann",
+    "description": "Arrow Function Nested",
     "scope": "javascript,typescript,javascriptreact,typescriptreact",
     "body": ["(${1:args}) => $0"],
-  },
-  "Arrow Function Destructured": {
-    "prefix": "nx",
-    "description": "Arrow function with destructured args",
-    "scope": "javascript,typescript,javascriptreact,typescriptreact",
-    "body": ["({ ${1:args} }) => {", "  $0", "}"],
-  },
+},
+"Arrow Function with Destructuring Args": {
+	"prefix": "anx",
+	"description": "Arrow Function with Destructuring Args",
+	"scope": "javascript,typescript,javascriptreact,typescriptreact",
+	"body": [
+		"({ ${1:args} }) => {",
+		"  $0",
+		"}"
+	]
+},
   "Function": {
-    "prefix": "f",
+    "prefix": "fn",
     "description": "Function",
     "scope": "javascript,javascriptreact",
     "body": ["function ${1:name}(${2:args}) {", "  $0", "}"],
   },
   "Function (TypeScript)": {
-    "prefix": "f",
+    "prefix": "fn",
     "description": "Function (TypeScript)",
     "scope": "typescript,typescriptreact",
     "body": ["function ${1:name}(${2:args}): ${3:void} {", "  $0", "}"],
@@ -244,13 +262,13 @@
     "body": ["console.error($1)", "", "$0"],
   },
   "Async": {
-    "prefix": "a",
+    "prefix": "asy",
     "description": "Async",
     "scope": "javascript,typescript,javascriptreact,typescriptreact",
     "body": ["async $0"],
   },
   "Await": {
-    "prefix": "w",
+    "prefix": "awa",
     "description": "Await",
     "scope": "javascript,typescript,javascriptreact,typescriptreact",
     "body": ["await $0"],
@@ -338,7 +356,7 @@
     "body": ["<i18n lang=\"yaml\">", "$0", "</i18n>"],
   },
   "Vue SFC": {
-    "prefix": "sfc",
+    "prefix": "sfcoptions",
     "description": "Vue SFC",
     "scope": "vue",
     "body": [
@@ -361,7 +379,7 @@
     ],
   },
   "Vue SFC Setup": {
-    "prefix": "sfc-setup",
+    "prefix": "sfcsetup",
     "description": "Vue SFC setup",
     "scope": "vue",
     "body": [
