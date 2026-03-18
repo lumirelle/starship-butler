@@ -84,9 +84,6 @@
       }
     }
   },
-  "dependencies": {
-    "@typescript/native-preview": "^7.0.0-dev.20260317.1"
-  },
   "devDependencies": {
     "@antfu/eslint-config": "catalog:check",
     "@arethetypeswrong/cli": "catalog:check",
