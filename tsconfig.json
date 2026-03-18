@@ -1,0 +1,11 @@
+{
+  "extends": "./tsconfig.base.json",
+  "references": [
+    { "path": "./packages/config-provider" },
+    { "path": "./packages/core" },
+    { "path": "./packages/types" },
+    { "path": "./packages/utils" },
+    { "path": "./playground" }
+  ],
+  "files": []
+}

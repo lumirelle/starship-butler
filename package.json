@@ -11,11 +11,12 @@
     "docs:build": "bun run --cwd docs docs:build",
     "docs:start": "bun run --cwd docs docs:start",
     "play": "bun run --cwd playground play",
-    "lint": "bun run --parallel 'oxlint --type-aware --type-check' eslint",
-    "lint:fix": "oxlint --type-aware --type-check --fix && eslint --fix",
+    "typecheck": "bunx tsc -b",
+    "lint": "bun run --parallel oxlint eslint",
+    "lint:fix": "oxlint --fix && eslint --fix",
     "unused": "knip",
     "pubcheck": "bun run --parallel --filter '*' pubcheck",
-    "check": "bun run --parallel lint unused pubcheck",
+    "check": "bun run --parallel lint typecheck unused pubcheck",
     "test": "bun test",
     "prerelease": "bun run build && bun run --parallel check test",
     "release": "bumpp --all --recursive --execute \"bun update --lockfile-only starship-butler\" # See https://github.com/oven-sh/bun/issues/18906 and https://github.com/oven-sh/bun/issues/20477"
@@ -30,7 +31,7 @@
     "catalogs": {
       "prod": {
         "@clack/prompts": "^1.1.0",
-        "c12": "^4.0.0-beta.3",
+        "c12": "^4.0.0-beta.4",
         "consola": "^3.4.2",
         "defu": "^6.1.4",
         "pathe": "^2.0.3",
@@ -43,7 +44,7 @@
         "cac": "^7.0.0"
       },
       "dev": {
-        "bumpp": "^10.4.1",
+        "bumpp": "^11.0.1",
         "simple-git-hooks": "git+https://github.com/toplenboren/simple-git-hooks.git#7625657",
         "typescript": "^5.9.3"
       },
@@ -54,14 +55,14 @@
         "bunup": "^0.16.31"
       },
       "check": {
-        "@antfu/eslint-config": "^7.7.2",
+        "@antfu/eslint-config": "^7.7.3",
         "@arethetypeswrong/cli": "^0.18.2",
         "eslint": "^10.0.3",
-        "eslint-plugin-oxlint": "^1.55.0",
-        "knip": "^5.86.0",
+        "eslint-plugin-oxlint": "^1.56.0",
+        "knip": "^5.87.0",
         "nano-staged": "^0.9.0",
-        "oxlint": "^1.55.0",
-        "oxlint-tsgolint": "^0.16.0",
+        "oxlint": "^1.56.0",
+        "oxlint-tsgolint": "^0.17.0",
         "publint": "^0.3.18"
       },
       "test": {
@@ -83,9 +84,13 @@
       }
     }
   },
+  "dependencies": {
+    "@typescript/native-preview": "^7.0.0-dev.20260317.1"
+  },
   "devDependencies": {
     "@antfu/eslint-config": "catalog:check",
     "@arethetypeswrong/cli": "catalog:check",
+    "@lumirelle/oxlint-config": "^0.0.3",
     "@types/bun": "catalog:types",
     "bumpp": "catalog:dev",
     "bunup": "catalog:build",
@@ -113,7 +118,7 @@
   },
   "nano-staged": {
     "*": [
-      "oxlint --type-aware --type-check",
+      "oxlint",
       "eslint"
     ]
   }
