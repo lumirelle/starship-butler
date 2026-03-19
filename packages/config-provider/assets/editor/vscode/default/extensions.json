@@ -3,7 +3,7 @@
   "recommendations": [
     // #region UI
     // Theme
-    "github.github-vscode-theme",
+    "antfu.theme-vitesse",
     "antfu.icons-carbon",
     "catppuccin.catppuccin-vsc-icons",
     // File Nesting
