@@ -1,3 +1,4 @@
 **/README.md
 **/.nuxt/eslint.config.d.mts
-**/fixtures/**/*
+**/__internal__/**/*
+tsconfig.json
