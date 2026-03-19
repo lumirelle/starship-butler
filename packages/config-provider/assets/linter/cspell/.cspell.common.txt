@@ -102,6 +102,7 @@ oxlintrc
 attw
 defu
 butlerrc
+vite
 
 # DEV: JAVA
 graalvm
