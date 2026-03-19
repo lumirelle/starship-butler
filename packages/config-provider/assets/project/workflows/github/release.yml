@@ -2,16 +2,15 @@ name: Release
 
 on:
   push:
-    tags:
-      - 'v*'
+    tags: ['v*']
 
 permissions: {}
 
 jobs:
   release:
-    uses: lumirelle/workflows/.github/workflows/release.yml@v1
-    with:
-      publish: true
+    uses: lumirelle/workflows/.github/workflows/release.yml@v3
     permissions:
       contents: write
       id-token: write
+    with:
+      publish: true
