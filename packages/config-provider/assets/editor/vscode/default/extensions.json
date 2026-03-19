@@ -37,6 +37,8 @@
     "asvetliakov.vscode-neovim",
     "cardinal90.multi-cursor-case-preserve",
     "yatki.vscode-surround", // After selection, CTRL+SHIFT+T
+    // Rename
+    "jannisx11.batch-rename-extension",
     // Format
     "tombonnike.vscode-status-bar-format-toggle",
     // Snippet
@@ -71,6 +73,6 @@
     // #endregion
   ]
   // Summary
-  // VSCode: $INDEX + 1 = 41
-  // Cursor: $INDEX = 40
+  // VSCode: $INDEX + 1 = 42
+  // Cursor: $INDEX = 41
 }
