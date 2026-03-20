@@ -13,7 +13,7 @@
     "play": "bun run --cwd playground play",
     "lint": "bun run --parallel oxlint eslint",
     "lint:fix": "oxlint --fix && eslint --fix",
-    "typecheck": "tsc -b",
+    "typecheck": "tsc -b --noEmit",
     "unused": "knip-bun",
     "pubcheck": "bun run --parallel --filter '*' pubcheck",
     "check": "bun run --parallel lint typecheck unused pubcheck",
@@ -44,6 +44,7 @@
         "cac": "^7.0.0"
       },
       "dev": {
+        "@lumirelle/tsconfig": "^0.0.1",
         "bumpp": "^11.0.1",
         "simple-git-hooks": "git+https://github.com/toplenboren/simple-git-hooks.git#7625657",
         "typescript": "^5.9.3"
@@ -63,7 +64,7 @@
         "knip": "^6.0.0",
         "nano-staged": "^0.9.0",
         "oxlint": "^1.56.0",
-        "oxlint-tsgolint": "^0.17.1",
+        "oxlint-tsgolint": "0.17.0",
         "publint": "^0.3.18"
       },
       "test": {
@@ -89,6 +90,7 @@
     "@antfu/eslint-config": "catalog:check",
     "@arethetypeswrong/cli": "catalog:check",
     "@lumirelle/oxlint-config": "catalog:check",
+    "@lumirelle/tsconfig": "catalog:dev",
     "@types/bun": "catalog:types",
     "bumpp": "catalog:dev",
     "bunup": "catalog:build",

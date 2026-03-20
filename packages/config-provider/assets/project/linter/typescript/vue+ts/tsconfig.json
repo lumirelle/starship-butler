@@ -1,0 +1,15 @@
+{
+  "extends": "@lumirelle/tsconfig/vue",
+  "compilerOptions": {
+    // Please adjust the path aliases to match your bundler's configuration.
+    "paths": {
+      "~": ["./"],
+      "~/*": ["./*"]
+    },
+    // Only include types you need, if you are using Vite, you can leave below as is, otherwise, please replace "vite/client" with the types you need.
+    "types": ["vite/client"]
+  },
+  // Only include your project's source files and their tests, not the config files, e.g. `vite.config.ts`.
+  "include": ["src/**/*", "test/**/*"],
+  "exclude": ["test/fixture/**/*"]
+}

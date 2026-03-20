@@ -1,4 +1,9 @@
 {
-  "extends": "../tsconfig.base.json",
+  "extends": "@lumirelle/tsconfig/lib",
+  "compilerOptions": {
+    "types": ["bun"],
+    "declaration": true,
+    "isolatedDeclarations": true
+  },
   "include": ["src/**/*"]
 }
