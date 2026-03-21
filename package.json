@@ -44,7 +44,7 @@
         "cac": "^7.0.0"
       },
       "dev": {
-        "@lumirelle/tsconfig": "^0.0.1",
+        "@lumirelle/tsconfig": "^0.0.2",
         "bumpp": "^11.0.1",
         "simple-git-hooks": "git+https://github.com/toplenboren/simple-git-hooks.git#7625657",
         "typescript": "^5.9.3"
@@ -59,9 +59,9 @@
         "@antfu/eslint-config": "^7.7.3",
         "@arethetypeswrong/cli": "^0.18.2",
         "@lumirelle/oxlint-config": "^0.0.5",
-        "eslint": "^10.0.3",
+        "eslint": "^10.1.0",
         "eslint-plugin-oxlint": "^1.56.0",
-        "knip": "^6.0.0",
+        "knip": "^6.0.1",
         "nano-staged": "^0.9.0",
         "oxlint": "^1.56.0",
         "oxlint-tsgolint": "0.17.0",
