@@ -34,7 +34,7 @@
 	"description": "Comment XXX",
 	"scope": "javascript,javascriptreact,typescript,typescriptreact,scss,java,go,python,c,cpp,rust,jsonc,zig",
 	"body": [
-		"// BUG(Lumirelle): $0"
+		"// XXX(Lumirelle): $0"
 	]
 },
 "Commnet XXX in HTML": {
@@ -50,7 +50,7 @@
 	"description": "Commnet XXX in CSS",
 	"scope": "css",
 	"body": [
-		"/* BUG(Lumirelle): $0 */"
+		"/* XXX(Lumirelle): $0 */"
 	]
 },
 "Commnet XXX Block": {
@@ -59,7 +59,7 @@
 	"scope": "javascript,javascriptreact,typescript,typescriptreact,java,go,python,c,cpp,rust",
 	"body": [
 		"/**",
-		" * BUG(Lumirelle): $0",
+		" * XXX(Lumirelle): $0",
 		" */"
 	]
 },
@@ -69,7 +69,7 @@
 	"scope": "scss,zig",
 	"body": [
 		"///",
-		"/// BUG(Lumirelle): $0",
+		"/// XXX(Lumirelle): $0",
 		"///"
 	]
 },
