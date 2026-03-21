@@ -15,7 +15,8 @@ describe('.setignore files', () => {
     expect(content).toMatchInlineSnapshot(`
       "**/README.md
       **/.nuxt/eslint.config.d.mts
-      **/fixtures/**/*
+      **/__internal__/**/*
+      tsconfig.json
       "
     `)
   })
