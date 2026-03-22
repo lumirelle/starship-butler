@@ -358,8 +358,8 @@ mergex = "!f() { \
   if [[ \"$arg_command\" == \"merge --no-ff\" ]]; then \
     current_branch=$(git branch --show-current); \
     merge_branches=$(echo ${values[*]} | awk -v OFS=\", \" '{ $1=$1; print }'); \
-    if git $arg_command --message \"chore: merge branch $merge_branches into $current_branch\" \"$@\"; then \
-      echo \"Merging commit(s) \"$merge_branches\" into current branch $current_branch with default message...\"; \
+    if git $arg_command --message \"chore: merge $merge_branches into $current_branch\" \"$@\"; then \
+      echo \"Merging \"$merge_branches\" into current $current_branch with default message...\"; \
     fi; \
   else \
     git $arg_command; \
