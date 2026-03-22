@@ -11,8 +11,8 @@ provider = generic
 ignorecase = false
 editor = nvim # Or replace with your preferred editor.
 [feature]
-# Will enable some default configurations to better handle a large number of files, include `index.version=4`. See
-# https://git-scm.com/docs/git-config#Documentation/git-config.txt-featuremanyFiles.
+# Will enable some default configurations to better handle a large number of files, include `index.version=4`.
+# See https://git-scm.com/docs/git-config#Documentation/git-config.txt-featuremanyFiles.
 manyFiles = true
 
 # Repository Initialization
@@ -32,7 +32,8 @@ ff = no
 [rebase]
 autostash = true
 autosquash = true
-updateRefs = true # See https://juejin.cn/post/7267567645493674021.
+# See https://juejin.cn/post/7267567645493674021.
+updateRefs = true
 [rerere]
 enabled = true
 [tag]
@@ -55,186 +56,337 @@ date = short
 decoration = short
 
 # Aliases
+# We use -?/--? to trigger the help message for each alias, which is implemented in the corresponding shell function.
 [alias]
-# @group Setup & User Info
-setup = "!f() { \
-  if [ -z \"$1\" ]; then\
+# @aliasGroup User Info
+me = "!f() { \
+  echo Username: $(git config get user.name); \
+  echo Email: $(git config get user.email); \
+}; f"
+iam = "!f() { \
+  arg_help=false; \
+  declare -i value_count=0; \
+  \
+  for arg in \"$@\"; do \
+    case \"$arg\" in \
+      -\\?|--\\?) arg_help=true ;; \
+      *) value_count=value_count+1 ;; \
+    esac; \
+  done; \
+  \
+  if \"$arg_help\"; then \
+    echo 'Usage: git iam <user-name> <user-email>'; \
+    return 0; \
+  fi; \
+  \
+  if [[ \"$value_count\" -lt 1 ]]; then\
     echo 'Please provide a user name.'; \
     return 1; \
-  fi; \
-  if [ -z \"$2\" ]; then\
+  elif [[ \"$value_count\" -lt 2 ]]; then\
     echo 'Please provide a user email.'; \
     return 1; \
   fi; \
+  \
   git config set user.name \"$1\"; \
   git config set user.email \"$2\"; \
 }; f"
-setup-blame = "!f() { \
-  git config set blame.ignoreRevsFile .git-blame-ignore-revs; \
-}; f"
-whoami = "!f() { \
-  git config get user.name; \
-  git config get user.email; \
-}; f"
-me = whoami
-# @group Basic Operations
-# Change & Discard
-# @name - Discard
-# @description - Discard changes to specified file[s].
-# @parameters - One or more file paths.
-#   - If the file is tracked, then restore the file[s] to the working directory.
-#   - If the file is untracked, then delete the file[s].
+# @aliasGroup Discard
+# @alias Discard
+# @description Discard changes from specified file path(s).
+#   - If a file under this path is tracked, then restore it to the index.
+#   - If a file under this path is untracked, then remove it.
+# @parameters One or more paths.
 discard = "!f() { \
-  if [ -z \"$1\" ]; then \
-      echo 'Nothing specified, nothing discarded.'; \
-      YELLOW='\\e[0;33m'; \
-      NC='\\e[0m'; \
-      echo -e \"${YELLOW}hint: Maybe you wanted to say 'git discard .'?${NC}\"; \
-      return 0; \
-    fi; \
-  if git ls-files --error-unmatch -- \"$@\" >/dev/null 2>&1; then \
-    git restore --staged --worktree -- \"$@\"; \
-  else \
-    for f in \"$@\"; do \
-      if ! [ -e \"$f\" ]; then \
-        echo \"Warning: $f does not exist!\"; \
-        continue; \
-      fi; \
-      git clean -fd -- \"$f\" >/dev/null 2>&1; \
-    done; \
+  arg_help=false; \
+  declare -i value_count=0; \
+  \
+  for arg in \"$@\"; do \
+    case \"$arg\" in \
+      -\\?|--\\?) arg_help=true ;; \
+      *) value_count=value_count+1 ;; \
+    esac; \
+  done; \
+  \
+  if \"$arg_help\"; then \
+    echo 'Usage: git discard <file-path(s)>'; \
+    return 0; \
   fi; \
+  \
+  if [[ \"$value_count\" -eq 0 ]]; then \
+    echo 'Nothing specified, nothing discarded.'; \
+    YELLOW='\\e[0;33m'; \
+    NC='\\e[0m'; \
+    echo -e \"${YELLOW}hint: Maybe you wanted to say 'git discard .'?${NC}\"; \
+    return 0; \
+  fi; \
+  \
+  for path in \"$@\"; do \
+    if git ls-files --error-unmatch -- \"$path\" >/dev/null 2>&1; then \
+      if git restore --staged --worktree -- \"$path\" >/dev/null 2>&1; then \
+        echo \"Restoring tracked file(s) from path: $path\"; \
+      fi; \
+    fi; \
+    if [[ -e \"$path\" ]]; then \
+      if git clean -fd -- \"$path\" >/dev/null 2>&1; then \
+        echo \"Removing untracked file(s) from path: $path\"; \
+      fi; \
+    else \
+      echo \"Path does not exist: $path\"; \
+    fi; \
+  done; \
 }; f"
 x = discard
-# Add & Disadd
+# @aliasGroup Add & Unadd
 a = add
-disadd = "!f() { \
-    if [ -z \"$1\" ]; then \
-      echo 'Nothing specified, nothing disadded.'; \
-      YELLOW='\\e[0;33m'; \
-      NC='\\e[0m'; \
-      echo -e \"${YELLOW}hint: Maybe you wanted to say 'git disadd .'?${NC}\"; \
-      return 0; \
-    fi; \
-    git reset HEAD -- \"$@\"; \
+unadd = "!f() { \
+  arg_help=false; \
+  declare -i value_count=0; \
+  \
+  for arg in \"$@\"; do \
+    case \"$arg\" in \
+      -\\?|--\\?) arg_help=true ;; \
+      *) value_count=value_count+1 ;; \
+    esac; \
+  done; \
+  \
+  if \"$arg_help\"; then \
+    echo 'Usage: git unadd <file-path(s)>'; \
+    return 0; \
+  fi; \
+  \
+  if [[ \"$value_count\" -eq 0 ]]; then \
+    echo 'Nothing specified, nothing unadded.'; \
+    YELLOW='\\e[0;33m'; \
+    NC='\\e[0m'; \
+    echo -e \"${YELLOW}hint: Maybe you wanted to say 'git unadd .'?${NC}\"; \
+    return 0; \
+  fi; \
+  \
+  git reset HEAD -- \"$@\"; \
 }; f"
-u = disadd
-# Commit & Uncommit
-c = commit
-commit-with-message = commit --message
-cm = commit-with-message
-commit-amend = commit --amend --no-edit
-ca = commit-amend
-commit-amend-with-editing = commit --amend
-ce = commit-amend-with-editing
+ua = unadd
+# @aliasGroup Commit & Uncommit
+# Notice, `commit -m '123' -m '456'` will create a commit with message '123\n\n456'.
+commitx = "!f() {\
+  arg_help=false; \
+  arg_command=commit; \
+  values=(); \
+  \
+  for arg in \"$@\"; do \
+    case \"$arg\" in \
+      -\\?|--\\?) arg_help=true ;; \
+      -a|--amend) arg_command=\"commit --amend --no-edit\" ;; \
+      -e|--edit) arg_command=\"commit --amend\" ;; \
+      *) values+=(\"$arg\") ;; \
+    esac; \
+  done; \
+  \
+  if \"$arg_help\"; then \
+    echo 'Usage: git commitx [<options>] [<message>]'; \
+    echo '   Or: git commitx --amend [<options>]'; \
+    echo '   Or: git commitx --edit [<options>] [<message>]'; \
+    echo 'Options:'; \
+    echo '  -a, --amend     Amend the previous commit with the new changes and reuse the previous commit message.'; \
+    echo '  -e, --edit      Amend the previous commit with the new changes and edit the previous commit message.'; \
+    echo '  ... See `git commit --help` for more options.'; \
+    return 0; \
+  fi; \
+  \
+  git $arg_command \"${values[@]}\"; \
+}; f"
+c = commitx
+commitx-with-message = "!f() {\
+  arg_help=false; \
+  arg_command=\"commitx --message\"; \
+  arg_not_allow_amend=false; \
+  values=(); \
+  \
+  for arg in \"$@\"; do \
+    case \"$arg\" in \
+      -\\?|--\\?) arg_help=true ;; \
+      -e|--edit) arg_command=\"commitx --edit --message\" ;; \
+      -a|--amend) arg_not_allow_amend=true ;; \
+      *) values+=(\"$arg\") ;; \
+    esac; \
+  done; \
+  \
+  if \"$arg_help\"; then \
+    echo 'Usage: git commitx-with-message [options] <message>'; \
+    echo '   Or: git commitx-with-message --edit'; \
+    echo 'Options:'; \
+    echo '  -e, --edit     Amend the previous commit with the new changes and edit the previous commit message.'; \
+    echo '  ... See `git commitx --?` for more options.'; \
+    return 0; \
+  fi; \
+  \
+  if \"$arg_not_allow_amend\"; then \
+    echo 'Cannot use --amend option together with command `commitx-with-message`.';\
+    echo 'Command `commitx-with-message` is designed to always require a new commit message, while --amend is used to reuse the previous commit message. They are conflicting.'; \
+    return 1; \
+  fi; \
+  \
+  git commitx --message \"${values[@]}\"; \
+}; f"
+cm = commitx-with-message
 uncommit = reset --soft HEAD^ # Back to the staging area
 uc = uncommit
-# Make Special Commit
-commit-work-in-progress = "!git commit-with-message 'chore: wip'"
+commit-work-in-progress = "!git commitx-with-message 'chore: wip'"
 cwip = commit-work-in-progress
-commit-readme = "!git commit-with-message 'docs: update README.md'"
+commit-readme = "!git commitx-with-message 'docs: update README.md'"
 crdm = commit-readme
-commit-dependencies = "!git commit-with-message 'chore: update dependencies'"
+commit-dependencies = "!git commitx-with-message 'chore: update dependencies'"
 cdep = commit-dependencies
-# @group Work with Branches
+# @aliasGroup Work with Branches
 b = branch
-bl = branch --list
-# @name - Branch Delete
-# @description - Delete branch with more flexible options.
-# @parameters - One branch name and optional flags:
-#   - `-h` or `--help`: Show help information.
-#   - `-o` or `--origin`: Delete the branch from remote (origin) only.
-#   - `-a` or `--all`: Delete the branch from both local and remote (origin).
+# @alias Branch Delete
+# @description Delete branch with more flexible options.
+# @parameters One branch name and optional flags:
+#   - `-o` or `--origin`: Delete the branch from origin remote only.
+#   - `-a` or `--all`: Delete the branch from both local and origin remote.
 #   - `-f` or `--force`: Force delete the local branch.
-#   - If neither `-o`/`--origin` nor `-a`/`--all` is provided, delete the branch from local only.
-# @examples
-#   - `git branch-delete feature/login`: Delete the local branch `feature/login`.
-#   - `git branch-delete -o feature/login`: Delete the remote branch `feature/login`.
-#   - `git branch-delete --all feature/login`: Delete both local and remote (origin) branches `feature/login`.
-#   - `git branch-delete -a -f feature/login`: Force delete the local branch and delete the remote (origin) branch `feature/login`.
+#   - If neither `-o` / `--origin` nor `-a` / `--all` is provided, delete the branch from local only.
 branch-delete = "!f() { \
-    origin=false; \
-    all=false; \
-    force=false; \
-    branch_name=""; \
-    for arg in \"$@\"; do \
-      case \"$arg\" in \
-        -o|--origin) origin=true ;; \
-        -a|--all) all=true ;; \
-        -f|--force) force=true ;; \
-        *) branch_name=\"$arg\" ;; \
-      esac; \
-    done; \
-    if [ -z \"$branch_name\" ]; then \
-      echo 'Please provide a branch name to delete.'; \
-      return 1; \
-    fi; \
-    if [ \"$origin\" = true ] && [ \"$all\" = true ]; then \
-      echo 'Cannot use both --origin and --all options together.'; \
-      return 1; \
-    fi; \
-    if [ \"$all\" = true ]; then \
-      if [ \"$force\" = true ]; then \
-        git branch --delete --force \"$branch_name\"; \
-      else \
-        git branch --delete \"$branch_name\"; \
-      fi; \
-      git push origin \":refs/heads/$branch_name\"; \
-    elif [ \"$origin\" = true ]; then \
-      git push origin \":refs/heads/$branch_name\"; \
+  arg_help=false; \
+  arg_range=local; \
+  arg_force=false; \
+  branch_name=""; \
+  \
+  for arg in \"$@\"; do \
+    case \"$arg\" in \
+      -\\?|--\\?) arg_help=true ;; \
+      -o|--origin) arg_range=origin ;; \
+      -a|--all) arg_range=all ;; \
+      -f|--force) arg_force=true ;; \
+      *) branch_name=\"$arg\" ;; \
+    esac; \
+  done; \
+  \
+  if \"$arg_help\"; then \
+    echo 'Usage: git branch-delete [options] <branch-name>'; \
+    echo 'Options:'; \
+    echo '  -o, --origin    Delete the branch from origin remote only.'; \
+    echo '  -a, --all       Delete the branch from both local and origin remote.'; \
+    echo '  -f, --force     Force delete the local branch.'; \
+    return 0; \
+  fi; \
+  \
+  if [[ -z \"$branch_name\" ]]; then \
+    echo 'Please provide a branch name to delete.'; \
+    return 1; \
+  fi; \
+  \
+  if [[ \"$arg_range\" == all ]]; then \
+    if [[ \"$arg_force\" == true ]]; then \
+      git branch --delete --force \"$branch_name\"; \
     else \
-      if [ \"$force\" = true ]; then \
-        git branch --delete --force \"$branch_name\"; \
-      else \
-        git branch --delete \"$branch_name\"; \
-      fi; \
+      git branch --delete \"$branch_name\"; \
     fi; \
+    git push origin \":refs/heads/$branch_name\"; \
+  elif [[ \"$arg_range\" == origin ]]; then \
+    git push origin \":refs/heads/$branch_name\"; \
+  else \
+    if [[ \"$arg_force\" == true ]]; then \
+      git branch --delete --force \"$branch_name\"; \
+    else \
+      git branch --delete \"$branch_name\"; \
+    fi; \
+  fi; \
 }; f"
 bx = branch-delete
-# Stash
-s = stash
-sl = stash list
-ss = stash show
-sa = stash apply
-sp = stash pop
-sx = stash drop
-# Switch
-sw = switch
-switch-new = switch --create
-swn = switch-new
-# Merge
-merge-with-default-message = "!f() { \
-  current_branch=$(git branch --show-current); \
-  git merge \"$1\" --no-ff --message \"chore: merge branch $1 into $current_branch\"; \
+# @aliasGroup Stash
+stashx = "!f() { \
+  arg_help=false; \
+  arg_command=stash; \
+  values=(); \
+  \
+  for arg in \"$@\"; do \
+    case \"$arg\" in \
+      -\\?|--\\?) arg_help=true ;; \
+      -l|--list) arg_command=\"stash list\" ;; \
+      -s|--show) arg_command=\"stash show\" ;; \
+      -a|--apply) arg_command=\"stash apply\" ;; \
+      -p|--pop) arg_command=\"stash pop\" ;; \
+      -x|--drop) arg_command=\"stash drop\" ;; \
+      *) values+=(\"$arg\") ;; \
+    esac; \
+  done; \
+  \
+  if \"$arg_help\"; then \
+    echo 'Usage: git stashx [options] [<message>]'; \
+    echo 'Options:'; \
+    echo '  -l, --list      List all stashes.'; \
+    echo '  -s, --show      Show the changes recorded in the stash as a diff between the stashed state and its original parent.'; \
+    echo '  -a, --apply     Apply the changes recorded in the stash to the working directory.'; \
+    echo '  -p, --pop       Apply the changes recorded in the stash to the working directory and remove the stash from the stash list.'; \
+    echo '  -x, --drop      Remove a single stash from the stash list.'; \
+    echo '  ... See `git $arg_command --help` for more options.'; \
+    return 0; \
+  fi; \
+  \
+  git $arg_command \"${values[@]}\"; \
 }; f"
-m = merge-with-default-message
-merge-abort = merge --abort
-mz = merge-abort
-merge-continue = merge --continue
-mc = merge-continue
-# Rebase
-r = rebase
-rebase-abort = rebase --abort
-rz = rebase-abort
-rebase-continue = rebase --continue
-rc = rebase-continue
-# Reset
+s = stashx
+# @aliasGroup Switch
+w = switch
+# @aliasGroup Merge
+# Notice, like commit, multiple `-m` options will be concatenated with `\n\n` as separator to form the final merge commit message.
+mergex = "!f() { \
+  arg_help=false; \
+  arg_command=\"merge --no-ff\"; \
+  values=(); \
+  \
+  for arg in \"$@\"; do \
+    case \"$arg\" in \
+      -\\?|--\\?) arg_help=true ;; \
+      -z|--abort) arg_command=\"merge --abort\" ;; \
+      -c|--continue) arg_command=\"merge --continue\" ;; \
+      *) values+=(\"$arg\") ;; \
+    esac; \
+  done; \
+  \
+  if \"$arg_help\"; then \
+    echo 'Usage: git mergex [<options>] [<commit>]'; \
+    echo '   Or: git mergex --abort'; \
+    echo '   Or: git mergex --continue'; \
+    echo 'Options:'; \
+    echo '  -z, --abort     Abort the merge operation.'; \
+    echo '  -c, --continue  Continue the merge operation.'; \
+    echo '  ... See `git merge --help` for more options.'; \
+    return 0; \
+  fi; \
+  \
+  if [[ \"$arg_command\" == \"merge --no-ff\" ]]; then \
+    current_branch=$(git branch --show-current); \
+    merge_branches=$(echo ${values[*]} | awk -v OFS=\", \" '{ $1=$1; print }'); \
+    if git $arg_command --message \"chore: merge branch $merge_branches into $current_branch\" \"$@\"; then \
+      echo \"Merging commit(s) \"$merge_branches\" into current branch $current_branch with default message...\"; \
+    fi; \
+  else \
+    git $arg_command; \
+  fi; \
+}; f"
+m = mergex
+mz = mergex --abort
+mc = mergex --continue
+# @aliasGroup Rebase
+n = rebase
+nz = rebase --abort
+nc = rebase --continue
+# @aliasGroup Reset
 rs = reset
-# Revert
+# @aliasGroup Revert
 rv = revert
-revert-abort = revert --abort
-rvz = revert-abort
-revert-continue = revert --continue
-rvc = revert-continue
-# Cherry-pick
+rvz = revert --abort
+rvc = revert --continue
+# @aliasGroup Cherry-pick
 cp = cherry-pick
-cherry-pick-abort = cherry-pick --abort
-cpz = cherry-pick-abort
-cherry-pick-continue = cherry-pick --continue
-cpc = cherry-pick-continue
-# Tag
-tag-wrapper = "!f() { \
+cpz = cherry-pick --abort
+cpc = cherry-pick --continue
+# @aliasGroup Tag
+tagx = "!f() { \
   declare -i arg_count=0; \
   declare -i value_count=0; \
+  \
   for arg in \"$@\"; do \
     if [[ \"$arg\" =~ ^-.* ]]; then \
       arg_count=arg_count+1; \
@@ -242,6 +394,7 @@ tag-wrapper = "!f() { \
       value_count=value_count+1; \
     fi; \
   done; \
+  \
   if [[ \"$arg_count\" -eq 0 ]]; then \
     if [[ \"value_count\" -ge 2 ]]; then \
       git tag --annotate \"$1\" --message \"$2\"; \
@@ -252,41 +405,36 @@ tag-wrapper = "!f() { \
     git tag \"$@\"; \
   fi; \
 }; f"
-t = tag-wrapper
-tag-list = tag --list
-tl = tag-list
+t = tagx
 tag-delete = "!f() { \
-  origin=false; \
-  all=false; \
+  arg_range=local; \
   tag_name=""; \
+  \
   for arg in \"$@\"; do \
     case $arg in \
-      -o|--origin) origin=true ;; \
-      -a|--all) all=true ;; \
+      -o|--origin) arg_range=origin ;; \
+      -a|--all) arg_range=all ;; \
       *) tag_name=\"$arg\" ;; \
     esac; \
   done; \
-  if [ -z \"$tag_name\" ] && [ \"$all\" = false ]; then \
+  \
+  if [[ -z \"$tag_name\" ]]; then \
     echo 'Please provide a tag name to delete.'; \
     return 1; \
   fi; \
-  if [ \"$origin\" = true ] && [ \"$all\" = true ]; then \
-    echo 'Cannot use both --origin and --all options together.'; \
-    return 1; \
-  fi; \
-  if [ \"$all\" = true ]; then \
+  \
+  if [ \"$arg_range\" == all ]; then \
     git tag --delete \"$tag_name\"; \
     git push origin \":refs/tags/$tag_name\"; \
-  elif [ \"$origin\" = true ]; then \
+  elif [ \"$arg_range\" == origin ]; then \
     git push origin \":refs/tags/$tag_name\"; \
   else \
     git tag --delete \"$tag_name\"; \
   fi; \
 }; f"
 tx = tag-delete
-# @region Work with Remote
-# Remote
-re = remote
+# @aliasGroup Remote
+r = remote
 remote-new = "!f() { \
   if [ -z \"$2\" ]; then \
     git remote add origin \"$1\"; \
@@ -294,24 +442,20 @@ remote-new = "!f() { \
     git remote add \"$1\" \"$2\"; \
   fi; \
 }; f"
-ren = remote-new
-remote-list = remote --verbose
-rel = remote-list
+rn = remote-new
 remote-remove = remote remove
-rex = remote-remove
-# Fetch
+rx = remote-remove
+# @aliasGroup Fetch
 f = fetch
-# Pull
+# @aliasGroup Pull
 l = pull
-# Push
+# @aliasGroup Push
 p = push
-push-force = push --force
-pf = push-force
 push-delete = push --delete
 px = push-delete
-# @region Log
+# @aliasGroup Log
 graph = log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit
 logs = log HEAD --stat
 log1 = log -1 HEAD --stat
-# @region Aliases
+# @aliasGroup Aliases
 aliases = "!git config --get-regexp ^alias\\. | sed -e s/^alias\\.// -e s/\\ /\\ =\\ /"
