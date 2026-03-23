@@ -237,11 +237,11 @@ commitx-with-message = "!f() {\
 cm = commitx-with-message
 uncommit = reset --soft HEAD^ # Back to the staging area
 uc = uncommit
-commit-work-in-progress = "!git commitx-with-message 'chore: wip'"
+commit-work-in-progress = "!git commitx-with-message chore 'wip'"
 cwip = commit-work-in-progress
-commit-readme = "!git commitx-with-message 'docs: update README.md'"
+commit-readme = "!git commitx-with-message docs 'update README.md'"
 crdm = commit-readme
-commit-dependencies = "!git commitx-with-message 'chore: update dependencies'"
+commit-dependencies = "!git commitx-with-message chore 'update dependencies'"
 cdep = commit-dependencies
 # @aliasGroup Work with Branches
 b = branch
