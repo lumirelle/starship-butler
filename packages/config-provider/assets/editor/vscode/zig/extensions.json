@@ -6,6 +6,6 @@
     // #endregion
   ]
   // Summary
-  // VSCode: $INDEX + 1 = 1 + ${PROFILE_DEFAULT: 42} = 43
-  // Cursor: $INDEX + 1 = 1 + ${PROFILE_DEFAULT: 41} = 42
+  // VSCode: $INDEX + 1 = 1 + ${PROFILE_DEFAULT: 40} = 41
+  // Cursor: $INDEX + 1 = 1 + ${PROFILE_DEFAULT: 39} = 40
 }
