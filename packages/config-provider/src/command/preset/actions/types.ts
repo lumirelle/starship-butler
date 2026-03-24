@@ -1,5 +1,4 @@
 import type { Awaitable, Nullable } from '@antfu/utils'
-import type { SystemOptions } from 'starship-butler-types'
 import type { PresetOptions } from '../types'
 
 type ActionId
@@ -48,12 +47,7 @@ export interface ActionHandlerContext extends ActionBase {
   /**
    * Configuration and command-line options.
    */
-  options: Partial<PresetOptions>
-  /**
-   * Options contains user's system information.
-   * @deprecated
-   */
-  systemOptions: SystemOptions
+  options: PresetOptions
 }
 export type DestinationHandler = (context: Omit<ActionHandlerContext, 'destination'>) => Awaitable<string | undefined>
 export type ActionHandler = (context: ActionHandlerContext) => Awaitable<void>

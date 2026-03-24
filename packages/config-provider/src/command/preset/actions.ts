@@ -52,7 +52,7 @@ const _ACTIONS: (Action | undefined)[] = [
   cSpell(),
 ]
 
-export async function filterActions(options: Partial<PresetOptions>): Promise<Action[]> {
+export async function filterActions(options: PresetOptions): Promise<Action[]> {
   const actions = _ACTIONS.filter(Boolean) as Action[]
 
   let include = toArray(options.include)

@@ -1,7 +1,5 @@
 import type { PresetOptions } from 'starship-butler-config-provider/command/preset'
 import type { SetOptions } from 'starship-butler-config-provider/command/set'
-import type { SystemOptions } from 'starship-butler-types'
-import { platform } from 'node:os'
 import process from 'node:process'
 import { confirm } from '@clack/prompts'
 import { cac } from 'cac'
@@ -13,9 +11,6 @@ import { version } from '../package.json'
 import { loadConfig } from './config'
 
 const userConfig = await loadConfig()
-const systemOptions: SystemOptions = {
-  platform: platform(),
-}
 
 const cli = cac('butler')
 
@@ -64,14 +59,14 @@ cli
   .example('butler preset -a -x clash-verge-rev')
   .example('butler preset -a -x clash-verge-rev -x maven')
   .example('butler preset -af')
-  .action(async (cliOptions: Partial<PresetOptions>) => {
-    const cfgOptions: Partial<PresetOptions> = userConfig['config-provider']?.preset ?? {}
+  .action(async (cliOptions: PresetOptions) => {
+    const cfgOptions: PresetOptions = userConfig['config-provider']?.preset ?? {}
     if (cliOptions.verbose || cfgOptions.verbose) {
       consola.level = LogLevels.debug
     }
     consola.debug('[core] Received command line interface options:', cliOptions)
     consola.debug('[core] Loaded configuration options:', cfgOptions)
-    const defaultOptions: Partial<PresetOptions> = {
+    const defaultOptions: PresetOptions = {
       mode: 'copy-paste',
       force: false,
       agreeToForce: false,
@@ -90,7 +85,7 @@ cli
     ) {
       return
     }
-    await commandPreset(mergedOptions, systemOptions)
+    await commandPreset(mergedOptions)
   })
 
 cli
@@ -128,14 +123,14 @@ cli
     'Dry run.',
     { default: false },
   )
-  .action(async (sourcePattern: string, target: string, cliOptions: Partial<SetOptions>) => {
-    const cfgOptions: Partial<SetOptions> = userConfig['config-provider']?.set ?? {}
+  .action(async (sourcePattern: string, target: string, cliOptions: SetOptions) => {
+    const cfgOptions: SetOptions = userConfig['config-provider']?.set ?? {}
     if (cfgOptions.verbose || cliOptions.verbose) {
       consola.level = LogLevels.debug
     }
     consola.debug('[core] Received command line interface options:', cliOptions)
     consola.debug('[core] Loaded configuration options:', cfgOptions)
-    const defaultOptions: Partial<SetOptions> = {
+    const defaultOptions: SetOptions = {
       mode: 'copy-paste',
       force: false,
       agreeToForce: false,

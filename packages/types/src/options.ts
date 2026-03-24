@@ -7,21 +7,11 @@ export interface BasicOptions {
    *
    * @default false
    */
-  verbose: boolean
+  verbose?: boolean
   /**
    * Dry run.
    *
    * @default false
    */
-  dryRun: boolean
-}
-
-/**
- * Options contains user's system information.
- */
-export interface SystemOptions {
-  /**
-   * User's platform (e.g. 'win32', 'linux', 'darwin').
-   */
-  platform: NodeJS.Platform
+  dryRun?: boolean
 }

@@ -1,4 +1,3 @@
-import type { SystemOptions } from 'starship-butler-types'
 import type { ActionHandlerContext, PresetOptions } from './types'
 import { consola } from 'consola'
 import { important } from 'starship-butler-utils/highlight'
@@ -15,15 +14,10 @@ const PERMISSION_ERROR_REGEX = /EACCES|EPERM/
  * Preset application configurations.
  *
  * @param options Configuration and command line interface options.
- * @param systemOptions Options contains user's system information.
  */
-export async function commandPreset(
-  options: Partial<PresetOptions>,
-  systemOptions: SystemOptions,
-): Promise<void> {
+export async function commandPreset(options: PresetOptions): Promise<void> {
   consola.debug('[config-provider] Assets folder path:', ASSETS_FOLDER)
   consola.debug('[config-provider] Received preset options:', options)
-  consola.debug('[config-provider] Received user system options:', systemOptions)
 
   if (!validateOptions(options)) {
     consola.debug('[config-provider] Invalid options detected, aborting configuration.')
@@ -43,7 +37,6 @@ export async function commandPreset(
       name: action.name,
       base: action.base,
       options,
-      systemOptions,
       destination: '',
     }
     // New line

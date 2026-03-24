@@ -12,17 +12,17 @@ export interface PresetOptions extends ProcessConfigOptions {
    *
    * @default undefined
    */
-  include: Arrayable<string>
+  include?: Arrayable<string>
   /**
    * Presets that you want to exclude (apply on included presets), accepts JavaScript regex pattern string(s).
    *
    * @default undefined
    */
-  exclude: Arrayable<string>
+  exclude?: Arrayable<string>
   /**
    * Applying all presets, overrides `include` and `exclude` options with `[*]` and `[]` whatever they are provided.
    *
    * @default false
    */
-  all: boolean
+  all?: boolean
 }

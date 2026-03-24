@@ -1,7 +1,7 @@
 import type { SetOptions } from './types'
 import { consola } from 'consola'
 
-export function validateOptions(options: Partial<SetOptions>): boolean {
+export function validateOptions(options: SetOptions): boolean {
   if (options.mode && !['copy-paste', 'symlink'].includes(options.mode)) {
     consola.error(
       `Invalid mode "${options.mode}" detected, only "copy-paste" and "symlink" are allowed.`,

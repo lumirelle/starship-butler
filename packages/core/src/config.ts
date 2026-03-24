@@ -9,7 +9,7 @@ import { loadConfig as _loadConfig, readUserRc } from 'starship-butler-utils/con
  * @param config Configuration.
  * @returns Configuration as it is.
  */
-export function defineButlerConfig(config: SafeButlerConfig): Partial<SafeButlerConfig> {
+export function defineButlerConfig(config: SafeButlerConfig): SafeButlerConfig {
   return config
 }
 
@@ -20,10 +20,10 @@ export function defineButlerConfig(config: SafeButlerConfig): Partial<SafeButler
  * @returns Configuration.
  */
 export async function loadConfig(
-  options?: RCOptions & LoadConfigOptions<Partial<ButlerConfig>>,
-): Promise<Partial<ButlerConfig>> {
+  options?: RCOptions & LoadConfigOptions<ButlerConfig>,
+): Promise<ButlerConfig> {
   const rc = readUserRc(options)
-  const { config } = await _loadConfig<Partial<ButlerConfig>>(options)
+  const { config } = await _loadConfig<ButlerConfig>(options)
   const defu = createDefu((_, key) => {
     // Ignore `config-provider.version` from `config`
     if (key === 'version') {

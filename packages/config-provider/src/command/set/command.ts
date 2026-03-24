@@ -20,11 +20,7 @@ import { validateOptions } from './validate'
  * @param target Target file or folder path
  * @param options Configuration and command line options
  */
-export async function commandSet(
-  sourcePattern: string,
-  target: string,
-  options: Partial<SetOptions>,
-): Promise<void> {
+export async function commandSet(sourcePattern: string, target: string, options: SetOptions): Promise<void> {
   consola.debug('[config-provider] Assets folder path:', ASSETS_FOLDER)
   consola.debug(
     `[config-provider] Received source pattern: '${sourcePattern}', target: '${target}'`,

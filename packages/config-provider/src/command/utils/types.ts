@@ -8,7 +8,7 @@ export interface ProcessConfigOptions extends BasicOptions {
    *
    * @default 'copy-paste'
    */
-  mode: 'copy-paste' | 'symlink'
+  mode?: 'copy-paste' | 'symlink'
   /**
    * Use glob pattern matching.
    *
@@ -16,7 +16,7 @@ export interface ProcessConfigOptions extends BasicOptions {
    *
    * @default false
    */
-  useGlob: boolean
+  useGlob?: boolean
   /**
    * Preset application configurations forcibly, will override the existing
    * configuration with the same name.
@@ -25,7 +25,7 @@ export interface ProcessConfigOptions extends BasicOptions {
    *
    * @default false
    */
-  force: boolean
+  force?: boolean
   /**
    * Automatically agree to force option.
    *
@@ -33,11 +33,11 @@ export interface ProcessConfigOptions extends BasicOptions {
    *
    * @default false
    */
-  agreeToForce: boolean
+  agreeToForce?: boolean
   /**
    * Dry run.
    *
    * @default false
    */
-  dryRun: boolean
+  dryRun?: boolean
 }

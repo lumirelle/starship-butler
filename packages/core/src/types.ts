@@ -9,18 +9,15 @@ export interface ButlerConfig {
   /**
    * Configuration for `config-provider` package.
    */
-  'config-provider': Partial<ConfigProviderOptions>
+  'config-provider'?: ConfigProviderOptions
 }
 
 /**
  * Type definition for Butler configuration, excludes auto-generated fields.
  */
-export type SafeButlerConfig = Omit<
-  Partial<ButlerConfig>,
-  'config-provider'
->
-& {
-  'config-provider'?: Omit<Partial<ConfigProviderOptions>, 'version'>
-}
+export type SafeButlerConfig = Omit<ButlerConfig, 'config-provider'>
+  & {
+    'config-provider'?: Omit<ConfigProviderOptions, 'version'>
+  }
 
 // #endregion

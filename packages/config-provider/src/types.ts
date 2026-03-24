@@ -2,13 +2,13 @@ import type { PresetOptions } from './command/preset/types'
 import type { SetOptions } from './command/set/types'
 
 export interface ConfigProviderOptions {
-  preset: PresetOptions & {
+  preset?: PresetOptions & {
     /** Rime input method special config. */
-    rime: {
+    rime?: {
       /** Whether Ctrl+Space has been disabled. */
-      ctrlSpaceDisabled: boolean
+      ctrlSpaceDisabled?: boolean
     }
   }
-  set: SetOptions
-  version: string
+  set?: SetOptions
+  version?: string
 }

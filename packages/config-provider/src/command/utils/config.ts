@@ -17,7 +17,7 @@ import { ASSETS_FOLDER } from '../../constants'
 function _copyPasteConfig(
   source: string,
   target: string,
-  options: Omit<Partial<ProcessConfigOptions>, 'mode'> = {},
+  options: Omit<ProcessConfigOptions, 'mode'> = {},
 ): boolean {
   const { useGlob, force } = options
   if (useGlob) {
@@ -39,7 +39,7 @@ function _copyPasteConfig(
 function _symlinkConfig(
   source: string,
   target: string,
-  options: Omit<Partial<ProcessConfigOptions>, 'mode'> = {},
+  options: Omit<ProcessConfigOptions, 'mode'> = {},
 ): boolean {
   const { useGlob, force } = options
   if (useGlob) {
@@ -59,7 +59,7 @@ function _symlinkConfig(
 export function processConfig(
   source: string,
   target: string,
-  options: Partial<ProcessConfigOptions> = {},
+  options: ProcessConfigOptions = {},
 ): void {
   const { mode = 'copy-paste', dryRun = false } = options
   if ((mode === 'copy-paste' && dryRun) || _copyPasteConfig(source, target, options)) {
