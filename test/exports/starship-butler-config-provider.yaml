@@ -10,6 +10,8 @@
   validateOptions: function
 ./command/utils: 
   processConfig: function
+  readUserRc: function
+  upsertUserRc: function
 ./constants: 
   ASSETS_FOLDER: string
   PKG_ROOT: string

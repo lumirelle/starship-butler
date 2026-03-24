@@ -65,7 +65,7 @@ cli
   .example('butler preset -a -x clash-verge-rev -x maven')
   .example('butler preset -af')
   .action(async (cliOptions: Partial<PresetOptions>) => {
-    const cfgOptions: Partial<PresetOptions> = userConfig['config-provider'] ?? {}
+    const cfgOptions: Partial<PresetOptions> = userConfig['config-provider']?.preset ?? {}
     if (cliOptions.verbose || cfgOptions.verbose) {
       consola.level = LogLevels.debug
     }
@@ -129,7 +129,7 @@ cli
     { default: false },
   )
   .action(async (sourcePattern: string, target: string, cliOptions: Partial<SetOptions>) => {
-    const cfgOptions: Partial<SetOptions> = userConfig['config-provider'] ?? {}
+    const cfgOptions: Partial<SetOptions> = userConfig['config-provider']?.set ?? {}
     if (cfgOptions.verbose || cliOptions.verbose) {
       consola.level = LogLevels.debug
     }
