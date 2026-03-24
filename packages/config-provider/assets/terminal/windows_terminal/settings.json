@@ -1,6 +1,7 @@
 {
   "$help": "https://aka.ms/terminal-documentation",
   "$schema": "https://aka.ms/terminal-profiles-schema",
+  // Use `Ctrl+Insert` and `Shift+Insert` for copy and paste.
   "actions": [],
   "centerOnLaunch": true,
   "copyFormatting": "none",
