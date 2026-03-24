@@ -1,4 +1,5 @@
 import { describe, expect, it, mock } from 'bun:test'
+import process from 'node:process'
 import { filterActions } from '../../../src/command/preset/actions'
 
 describe('actions', () => {
@@ -20,7 +21,9 @@ describe('actions', () => {
       ]
     `)
   })
-  it('should include all actions with include option set to ".*"', async () => {
+
+  // Win 32
+  it.if(process.platform === 'win32')('should include all actions with include option set to ".*"', async () => {
     const filteredActions = await filterActions({
       include: ['.*'],
     })
@@ -97,7 +100,7 @@ describe('actions', () => {
       ]
     `)
   })
-  it('should include all actions with "all" option set to true', async () => {
+  it.if(process.platform === 'win32')('should include all actions with "all" option set to true', async () => {
     const filteredActions = await filterActions({
       all: true,
     })
@@ -174,7 +177,7 @@ describe('actions', () => {
       ]
     `)
   })
-  it('should exclude "nushell" action with include option set to ".*" and exclude option set to "nushell"', async () => {
+  it.if(process.platform === 'win32')('should exclude "nushell" action with include option set to ".*" and exclude option set to "nushell"', async () => {
     const filteredActions = await filterActions({
       include: ['.*'],
       exclude: ['nushell'],
@@ -208,6 +211,418 @@ describe('actions', () => {
         {
           "id": "windows-powershell",
           "name": "Windows PowerShell",
+        },
+        {
+          "id": "starship",
+          "name": "Starship",
+        },
+        {
+          "id": "git",
+          "name": "Git",
+        },
+        {
+          "id": "maven",
+          "name": "Maven",
+        },
+        {
+          "id": "@sxzz/create",
+          "name": "@sxzz/create",
+        },
+        {
+          "id": "vscode",
+          "name": "VSCode",
+        },
+        {
+          "id": "cursor",
+          "name": "Cursor",
+        },
+        {
+          "id": "zed",
+          "name": "Zed",
+        },
+        {
+          "id": "nvim",
+          "name": "Neo Vim",
+        },
+        {
+          "id": "cspell",
+          "name": "cSpell",
+        },
+      ]
+    `)
+  })
+
+  // Linux
+  it.if(process.platform === 'linux')('should include all actions with include option set to ".*"', async () => {
+    const filteredActions = await filterActions({
+      include: ['.*'],
+    })
+    const simpleFilteredActions = filteredActions.map(item => ({
+      id: item.id,
+      name: item.name,
+    }))
+    expect(simpleFilteredActions).toMatchInlineSnapshot(`
+      [
+        {
+          "id": "clash-verge-rev",
+          "name": "Clash Verge Rev",
+        },
+        {
+          "id": "rime",
+          "name": "rime",
+        },
+        {
+          "id": "nushell",
+          "name": "Nushell",
+        },
+        {
+          "id": "bash",
+          "name": "Bash",
+        },
+        {
+          "id": "powershell",
+          "name": "PowerShell",
+        },
+        {
+          "id": "starship",
+          "name": "Starship",
+        },
+        {
+          "id": "git",
+          "name": "Git",
+        },
+        {
+          "id": "maven",
+          "name": "Maven",
+        },
+        {
+          "id": "@sxzz/create",
+          "name": "@sxzz/create",
+        },
+        {
+          "id": "vscode",
+          "name": "VSCode",
+        },
+        {
+          "id": "cursor",
+          "name": "Cursor",
+        },
+        {
+          "id": "zed",
+          "name": "Zed",
+        },
+        {
+          "id": "nvim",
+          "name": "Neo Vim",
+        },
+        {
+          "id": "cspell",
+          "name": "cSpell",
+        },
+      ]
+    `)
+  })
+  it.if(process.platform === 'linux')('should include all actions with "all" option set to true', async () => {
+    const filteredActions = await filterActions({
+      all: true,
+    })
+    const simpleFilteredActions = filteredActions.map(item => ({
+      id: item.id,
+      name: item.name,
+    }))
+    expect(simpleFilteredActions).toMatchInlineSnapshot(`
+      [
+        {
+          "id": "clash-verge-rev",
+          "name": "Clash Verge Rev",
+        },
+        {
+          "id": "rime",
+          "name": "rime",
+        },
+        {
+          "id": "nushell",
+          "name": "Nushell",
+        },
+        {
+          "id": "bash",
+          "name": "Bash",
+        },
+        {
+          "id": "powershell",
+          "name": "PowerShell",
+        },
+        {
+          "id": "starship",
+          "name": "Starship",
+        },
+        {
+          "id": "git",
+          "name": "Git",
+        },
+        {
+          "id": "maven",
+          "name": "Maven",
+        },
+        {
+          "id": "@sxzz/create",
+          "name": "@sxzz/create",
+        },
+        {
+          "id": "vscode",
+          "name": "VSCode",
+        },
+        {
+          "id": "cursor",
+          "name": "Cursor",
+        },
+        {
+          "id": "zed",
+          "name": "Zed",
+        },
+        {
+          "id": "nvim",
+          "name": "Neo Vim",
+        },
+        {
+          "id": "cspell",
+          "name": "cSpell",
+        },
+      ]
+    `)
+  })
+  it.if(process.platform === 'linux')('should exclude "nushell" action with include option set to ".*" and exclude option set to "nushell"', async () => {
+    const filteredActions = await filterActions({
+      include: ['.*'],
+      exclude: ['nushell'],
+    })
+    const simpleFilteredActions = filteredActions.map(item => ({
+      id: item.id,
+      name: item.name,
+    }))
+    expect(simpleFilteredActions).toMatchInlineSnapshot(`
+      [
+        {
+          "id": "clash-verge-rev",
+          "name": "Clash Verge Rev",
+        },
+        {
+          "id": "rime",
+          "name": "rime",
+        },
+        {
+          "id": "bash",
+          "name": "Bash",
+        },
+        {
+          "id": "powershell",
+          "name": "PowerShell",
+        },
+        {
+          "id": "starship",
+          "name": "Starship",
+        },
+        {
+          "id": "git",
+          "name": "Git",
+        },
+        {
+          "id": "maven",
+          "name": "Maven",
+        },
+        {
+          "id": "@sxzz/create",
+          "name": "@sxzz/create",
+        },
+        {
+          "id": "vscode",
+          "name": "VSCode",
+        },
+        {
+          "id": "cursor",
+          "name": "Cursor",
+        },
+        {
+          "id": "zed",
+          "name": "Zed",
+        },
+        {
+          "id": "nvim",
+          "name": "Neo Vim",
+        },
+        {
+          "id": "cspell",
+          "name": "cSpell",
+        },
+      ]
+    `)
+  })
+
+  // MacOS
+  it.if(process.platform === 'darwin')('should include all actions with include option set to ".*"', async () => {
+    const filteredActions = await filterActions({
+      include: ['.*'],
+    })
+    const simpleFilteredActions = filteredActions.map(item => ({
+      id: item.id,
+      name: item.name,
+    }))
+    expect(simpleFilteredActions).toMatchInlineSnapshot(`
+      [
+        {
+          "id": "clash-verge-rev",
+          "name": "Clash Verge Rev",
+        },
+        {
+          "id": "rime",
+          "name": "rime",
+        },
+        {
+          "id": "nushell",
+          "name": "Nushell",
+        },
+        {
+          "id": "bash",
+          "name": "Bash",
+        },
+        {
+          "id": "powershell",
+          "name": "PowerShell",
+        },
+        {
+          "id": "starship",
+          "name": "Starship",
+        },
+        {
+          "id": "git",
+          "name": "Git",
+        },
+        {
+          "id": "maven",
+          "name": "Maven",
+        },
+        {
+          "id": "@sxzz/create",
+          "name": "@sxzz/create",
+        },
+        {
+          "id": "vscode",
+          "name": "VSCode",
+        },
+        {
+          "id": "cursor",
+          "name": "Cursor",
+        },
+        {
+          "id": "zed",
+          "name": "Zed",
+        },
+        {
+          "id": "nvim",
+          "name": "Neo Vim",
+        },
+        {
+          "id": "cspell",
+          "name": "cSpell",
+        },
+      ]
+    `)
+  })
+  it.if(process.platform === 'darwin')('should include all actions with "all" option set to true', async () => {
+    const filteredActions = await filterActions({
+      all: true,
+    })
+    const simpleFilteredActions = filteredActions.map(item => ({
+      id: item.id,
+      name: item.name,
+    }))
+    expect(simpleFilteredActions).toMatchInlineSnapshot(`
+      [
+        {
+          "id": "clash-verge-rev",
+          "name": "Clash Verge Rev",
+        },
+        {
+          "id": "rime",
+          "name": "rime",
+        },
+        {
+          "id": "nushell",
+          "name": "Nushell",
+        },
+        {
+          "id": "bash",
+          "name": "Bash",
+        },
+        {
+          "id": "powershell",
+          "name": "PowerShell",
+        },
+        {
+          "id": "starship",
+          "name": "Starship",
+        },
+        {
+          "id": "git",
+          "name": "Git",
+        },
+        {
+          "id": "maven",
+          "name": "Maven",
+        },
+        {
+          "id": "@sxzz/create",
+          "name": "@sxzz/create",
+        },
+        {
+          "id": "vscode",
+          "name": "VSCode",
+        },
+        {
+          "id": "cursor",
+          "name": "Cursor",
+        },
+        {
+          "id": "zed",
+          "name": "Zed",
+        },
+        {
+          "id": "nvim",
+          "name": "Neo Vim",
+        },
+        {
+          "id": "cspell",
+          "name": "cSpell",
+        },
+      ]
+    `)
+  })
+  it.if(process.platform === 'darwin')('should exclude "nushell" action with include option set to ".*" and exclude option set to "nushell"', async () => {
+    const filteredActions = await filterActions({
+      include: ['.*'],
+      exclude: ['nushell'],
+    })
+    const simpleFilteredActions = filteredActions.map(item => ({
+      id: item.id,
+      name: item.name,
+    }))
+    expect(simpleFilteredActions).toMatchInlineSnapshot(`
+      [
+        {
+          "id": "clash-verge-rev",
+          "name": "Clash Verge Rev",
+        },
+        {
+          "id": "rime",
+          "name": "rime",
+        },
+        {
+          "id": "bash",
+          "name": "Bash",
+        },
+        {
+          "id": "powershell",
+          "name": "PowerShell",
         },
         {
           "id": "starship",
