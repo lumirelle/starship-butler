@@ -5,6 +5,7 @@
   validateOptions: function
 ./command/preset: 
   commandPreset: function
+  filterActions: function
   HandlerError: function
   validateOptions: function
 ./command/utils: 
