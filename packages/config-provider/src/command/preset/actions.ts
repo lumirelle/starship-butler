@@ -25,7 +25,7 @@ import { git } from './actions/vcs/git'
  *
  * @private
  */
-const _ACTIONS: Action[] = [
+const _ACTIONS: (Action | undefined)[] = [
   // Network
   clashVergeRev(),
   // Input Methods
@@ -53,25 +53,25 @@ const _ACTIONS: Action[] = [
 ]
 
 export async function filterActions(options: Partial<PresetOptions>): Promise<Action[]> {
+  const actions = _ACTIONS.filter(Boolean) as Action[]
+
   let include = toArray(options.include)
   let exclude = toArray(options.exclude)
   if (options.all) {
     // TODO(Lumirelle): Use glob instead regex?
     include = ['.*']
     exclude = []
-    consola.debug(
-      '[config-provider] "all" option is set, overriding include and exclude options accordingly.',
-    )
+    consola.debug('[config-provider] "all" option is set, overriding include and exclude options accordingly.')
     consola.debug('[config-provider] Updated include and exclude:', { include, exclude })
   }
   // If include is empty, then prompt user to select actions...
   if (include.length === 0) {
     include = (await multiselect({
       message: 'No actions specified to include. Please select the actions you want to include:',
-      options: _ACTIONS.map(action => ({ value: action.id, label: action.name })),
+      options: actions.map(action => ({ value: action.id, label: action.name })),
     })) as string[]
   }
-  const includedActions = _ACTIONS.filter((action) => {
+  const includedActions = actions.filter((action) => {
     const isIncluded = include.some(pattern => new RegExp(pattern).test(action.id))
     if (!isIncluded) {
       consola.debug(`[config-provider] Skip "${important(action.name)}" as it's not included.`)

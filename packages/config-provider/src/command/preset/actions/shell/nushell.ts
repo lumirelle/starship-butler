@@ -1,53 +1,30 @@
-import type { Action, ConfigPathGenerator, PlatformTargetFolderMap } from '../../types'
+import type { ActionFactory } from '../types'
 import { consola } from 'consola'
 import { join } from 'pathe'
 import { appdata, homedir } from 'starship-butler-utils/path'
-import { createHandler, createTargetFolderHandler, isPathExist } from '../../actions/utils'
-import { HandlerError } from '../../error'
+import { createConfigPathGenerator, createDestinationHandler, createHandler, createPrehandler } from '../utils'
 
-const APP_NAME = 'Nushell'
+const APP_ID = 'nushell'
 
-const platformTargetFolderMap: PlatformTargetFolderMap = (() => {
-  const APP_ID = 'nushell'
-  return {
-    win32: appdata(APP_ID),
-    linux: homedir('.config', APP_ID),
-    darwin: homedir('Library', 'Application Support', APP_ID),
-  }
-})()
-
-const CONFIG_PATH_GENERATORS: ConfigPathGenerator[] = [
-  ({ targetFolder }) => ({
-    source: join('shell', 'nu', 'utils.nu'),
-    target: join(targetFolder, 'utils.nu'),
-  }),
-  ({ targetFolder }) => ({
-    source: join('shell', 'nu', 'config.nu'),
-    target: join(targetFolder, 'config.nu'),
-  }),
-  ({ targetFolder }) => ({
-    source: join('shell', 'nu', 'env.nu'),
-    target: join(targetFolder, 'env.nu'),
-  }),
-]
-
-export function nushell(): Action {
+export const nushell: ActionFactory = () => {
   return {
     id: 'nushell',
-    name: APP_NAME,
-    targetFolder: createTargetFolderHandler(platformTargetFolderMap),
-    prehandler: ({ targetFolder, systemOptions }) => {
-      if (!(systemOptions.platform in platformTargetFolderMap)) {
-        throw new HandlerError(`Unsupported platform: ${systemOptions.platform}`)
-      }
-      if (!isPathExist(targetFolder)) {
-        throw new HandlerError(`You should install ${APP_NAME} first!`)
-      }
-    },
-    handler: createHandler(CONFIG_PATH_GENERATORS),
-    posthandler: ({ targetFolder }) => {
+    name: 'Nushell',
+    base: join('shell', 'nu'),
+    destination: createDestinationHandler({
+      win32: appdata(APP_ID),
+      linux: homedir('.config', APP_ID),
+      darwin: homedir('Library', 'Application Support', APP_ID),
+    }),
+    prehandler: createPrehandler('destination-exist'),
+    handler: createHandler([
+      createConfigPathGenerator('utils.nu'),
+      createConfigPathGenerator('config.nu'),
+      createConfigPathGenerator('env.nu'),
+    ]),
+    posthandler: ({ destination }) => {
       consola.info(
-        `This configuration will use \`Starship\` as the prompt, if you don't want to use it, please edit this config \`(${join(targetFolder, 'config.nu')})\` manually.`,
+        `This configuration will use \`Starship\` as the prompt, if you don't want to use it, please edit this config \`(${join(destination, 'config.nu')})\` manually, or consider not to include this action.`,
       )
     },
   }

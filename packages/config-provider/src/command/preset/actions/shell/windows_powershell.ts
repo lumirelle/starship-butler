@@ -1,44 +1,25 @@
-import type { Action, ConfigPathGenerator } from '../../types'
+import type { ActionFactory } from '../types'
+import process from 'node:process'
 import { consola } from 'consola'
 import { join } from 'pathe'
 import { homedir } from 'starship-butler-utils/path'
-import { createHandler, ensureDirectoryExist } from '../../actions/utils'
-import { HandlerError } from '../../error'
+import { createConfigPathGenerator, createHandler, createPrehandler } from '../utils'
 
-const APP_NAME = 'Windows PowerShell'
-
-const TARGET_FOLDER = homedir('Documents', 'WindowsPowerShell')
-
-const CONFIG_PATH_GENERATORS: ConfigPathGenerator[] = [
-  ({ targetFolder }) => ({
-    source: join('shell', 'pwsh', 'profile.ps1'),
-    target: join(targetFolder, 'Microsoft.PowerShell_profile.ps1'),
-  }),
-]
-
-export function windowsPowerShell(): Action {
+export const windowsPowerShell: ActionFactory = () => {
+  if (process.platform !== 'win32')
+    return
   return {
     id: 'windows-powershell',
-    name: APP_NAME,
-    targetFolder: TARGET_FOLDER,
-    prehandler: ({ systemOptions, targetFolder }) => {
-      // Return false for non-win32 platform
-      if (systemOptions.platform !== 'win32') {
-        throw new HandlerError(
-          'Windows PowerShell is the legacy version of PowerShell and bundled in Windows, you may never use it as you are not using Windows.',
-        )
-      }
-      // Ensure directory exist
-      if (!ensureDirectoryExist(targetFolder)) {
-        throw new HandlerError(
-          `Failed to create Windows PowerShell profile folder: ${targetFolder}`,
-        )
-      }
-    },
-    handler: createHandler(CONFIG_PATH_GENERATORS),
-    posthandler: () => {
+    name: 'Windows PowerShell',
+    base: join('shell', 'pwsh'),
+    destination: homedir('Documents', 'WindowsPowerShell'),
+    prehandler: createPrehandler('env-exist', { executable: 'powershell' }),
+    handler: createHandler([
+      createConfigPathGenerator('profile.ps1', 'Microsoft.PowerShell_profile.ps1'),
+    ]),
+    posthandler: ({ destination }) => {
       consola.info(
-        `Please running \`Set-ExecutionPolicy RemoteSigned -Scope CurrentUser\` to allow local scripts! This configuration will use \`Starship\` as the prompt, if you don't want to use it, please edit this config \`(${join(TARGET_FOLDER, 'Microsoft.PowerShell_profile.ps1')})\` manually.`,
+        `Please running \`Set-ExecutionPolicy RemoteSigned -Scope CurrentUser\` to allow local scripts! This configuration will use \`Starship\` as the prompt, if you don't want to use it, please edit this config \`(${join(destination, 'Microsoft.PowerShell_profile.ps1')})\` manually.`,
       )
     },
   }

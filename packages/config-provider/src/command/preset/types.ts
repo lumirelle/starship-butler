@@ -1,24 +1,7 @@
-import type { Arrayable, Awaitable, Nullable } from '@antfu/utils'
-import type { SystemOptions } from 'starship-butler-types'
-import type { ProcessConfigOptions } from '../utils/types'
+import type { Arrayable } from '@antfu/utils'
+import type { ProcessConfigOptions } from '../utils'
 
-export type ActionId
-  = | 'clash-verge-rev'
-    | 'windows-terminal'
-    | 'nushell'
-    | 'bash'
-    | 'powershell'
-    | 'windows-powershell'
-    | 'starship'
-    | 'git'
-    | 'maven'
-    | '@sxzz/create'
-    | 'vscode'
-    | 'cursor'
-    | 'zed'
-    | 'nvim'
-    | 'cspell'
-    | 'rime'
+export type * from './actions/types'
 
 /**
  * (Configuration and Command-line) Options for preset command.
@@ -43,82 +26,3 @@ export interface PresetOptions extends ProcessConfigOptions {
    */
   all: boolean
 }
-
-/**
- * A map from platform to target folder, useful for multi-platform support.
- */
-export type PlatformTargetFolderMap = Partial<Record<NodeJS.Platform, string>>
-
-/**
- * Context provided to the preset action handlers.
- */
-export interface ActionHandlerContext {
-  /**
-   * Configuration and command-line options.
-   */
-  options: Partial<PresetOptions>
-  /**
-   * Options contains user's system information.
-   */
-  systemOptions: SystemOptions
-  /**
-   * The resolved target folder for the preset.
-   */
-  targetFolder: string
-}
-
-/**
- * Preset action definition.
- */
-export interface Action {
-  /**
-   * Action identifier.
-   */
-  id: ActionId
-  /**
-   * Action name.
-   */
-  name: string
-  /**
-   * Preset configuration target folder. Accepts a string or a action handler function that returns a string.
-   *
-   * @param context Context provided to action handler.
-   * @returns The resolved target folder for the preset.
-   */
-  targetFolder:
-    | string
-    | ((context: Omit<ActionHandlerContext, 'targetFolder'>) => Awaitable<string>)
-  /**
-   * Prehandler for the action, if throws an error, the handler will not be executed, and this action will be considered failed.
-   *
-   * @param context Context provided to action handler.
-   * @throws {Error} When precondition is not met.
-   */
-  prehandler?: (context: ActionHandlerContext) => Awaitable<void>
-  /**
-   * Handler for the action. All the logic of applying the preset should be implemented here.
-   *
-   * @param context Context provided to action handler.
-   */
-  handler: (context: ActionHandlerContext) => Awaitable<void>
-  /**
-   * Run after handler is executed, useful for cleanup or prompt the additional but essential message to the user.
-   *
-   * @param context Context provided to action handler.
-   */
-  posthandler?: (context: ActionHandlerContext) => Awaitable<void>
-}
-
-/**
- * Each generator will return source and target paths for a configuration file in the target folder.
- *
- * So a list of generators can be used to define what configuration files should be applied in a preset action.
- *
- * When returning `null` or `undefined`, that configuration file will be skipped.
- *
- * @param context Context received from action handler.
- */
-export type ConfigPathGenerator = (context: ActionHandlerContext) => Nullable<{
-  source: string
-  target: string
-}>

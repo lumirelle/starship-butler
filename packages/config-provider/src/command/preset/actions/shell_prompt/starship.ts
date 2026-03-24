@@ -1,33 +1,19 @@
-import type { Action, ConfigPathGenerator } from '../../types'
+import type { ActionFactory } from '../types'
 import { consola } from 'consola'
 import { join } from 'pathe'
 import { homedir } from 'starship-butler-utils/path'
-import { createHandler, ensureDirectoryExist } from '../../actions/utils'
-import { HandlerError } from '../../error'
+import { createConfigPathGenerator, createHandler, createPrehandler } from '../utils'
 
-const APP_NAME = 'Starship'
-
-const TARGET_FOLDER = homedir('.config')
-
-const CONFIG_PATH_GENERATORS: ConfigPathGenerator[] = [
-  ({ targetFolder }) => ({
-    source: join('shell_prompt', 'starship', 'starship.toml'),
-    target: join(targetFolder, 'starship.toml'),
-  }),
-]
-
-export function starship(): Action {
+export const starship: ActionFactory = () => {
   return {
     id: 'starship',
-    name: APP_NAME,
-    targetFolder: TARGET_FOLDER,
-    prehandler: ({ targetFolder }) => {
-      // As Starship is necessary to my shells' configuration, so we ensure it's configurations are always usable.
-      if (!ensureDirectoryExist(targetFolder)) {
-        throw new HandlerError(`Failed to create Starship configuration folder: ${targetFolder}`)
-      }
-    },
-    handler: createHandler(CONFIG_PATH_GENERATORS),
+    name: 'Starship',
+    base: join('shell_prompt', 'starship'),
+    destination: homedir('.config'),
+    prehandler: createPrehandler('env-exist', { executable: 'starship' }),
+    handler: createHandler([
+      createConfigPathGenerator('starship.toml'),
+    ]),
     posthandler: () => {
       consola.info('Nerd Fonts is required to display all icons correctly in Starship prompt.')
     },
