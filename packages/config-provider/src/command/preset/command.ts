@@ -1,10 +1,10 @@
 import type { SystemOptions } from 'starship-butler-types'
 import type { ActionHandlerContext, PresetOptions } from './types'
 import { consola } from 'consola'
-import { upsertUserRc } from 'starship-butler-utils/config'
 import { important } from 'starship-butler-utils/highlight'
 import { version } from '../../../package.json'
 import { ASSETS_FOLDER } from '../../constants'
+import { upsertUserRc } from '../utils'
 import { filterActions } from './actions'
 import { HandlerError } from './error'
 import { validateOptions } from './validate'
@@ -31,11 +31,7 @@ export async function commandPreset(
   }
 
   // Update the version of preset
-  upsertUserRc({
-    'config-provider': {
-      version,
-    },
-  })
+  upsertUserRc({ version })
 
   const actions = await filterActions(options)
   consola.debug(`[config-provider] Found ${actions.length} preset${actions.length > 1 ? 's' : ''}.`)

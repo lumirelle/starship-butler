@@ -1,4 +1,5 @@
 import type { Arrayable } from '@antfu/utils'
+import type { RC, RCOptions } from 'starship-butler-utils/config'
 import type { ActionHandler, ConfigPathGenerator, DestinationHandler, PlatformDestinationMap } from './types'
 import { platform } from 'node:os'
 import process from 'node:process'
@@ -6,7 +7,35 @@ import { toArray } from '@antfu/utils'
 import { join } from 'pathe'
 import { ensureDirectory, exists } from 'starship-butler-utils/fs'
 import { x } from 'tinyexec'
-import { processConfig } from '../../utils'
+import { readUserRc as _readUserRc, upsertUserRc as _upsertUserRc, processConfig } from '../../utils'
+
+/* Rc9 utilities */
+
+/**
+ * Updates or creates a user rc file, within `config-provider.preset` field (rc file under home directory).
+ *
+ * Default rc file name is ".butlerrc".
+ *
+ * @param config The config to upsert to the `config-provider.preset` field of rc file.
+ * @param options Options for rc9.
+ */
+export function upsertUserRc(config: RC, options?: RCOptions): void {
+  return _upsertUserRc({
+    preset: config,
+  }, options)
+}
+
+/**
+ * Reads the `config-provider.preset` field from the user rc file (rc file under home directory).
+ *
+ * Default rc file name is ".butlerrc".
+ *
+ * @param options Options for rc9.
+ * @returns The `config-provider.preset` field from the rc content.
+ */
+export function readUserRc(options?: RCOptions): RC {
+  return _readUserRc(options)?.preset ?? {}
+}
 
 /* Destination handler utilities */
 

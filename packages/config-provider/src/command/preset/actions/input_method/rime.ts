@@ -5,7 +5,7 @@ import { consola } from 'consola'
 import { join } from 'pathe'
 import { appdata, homedir } from 'starship-butler-utils/path'
 import { x } from 'tinyexec'
-import { createConfigPathGenerator, createDestinationHandler, createHandler, createPrehandler } from '../utils'
+import { createConfigPathGenerator, createDestinationHandler, createHandler, createPrehandler, readUserRc, upsertUserRc } from '../utils'
 
 export const rime: ActionFactory = () => {
   return {
@@ -32,13 +32,17 @@ export const rime: ActionFactory = () => {
         consola.info(
           `If you are getting in trouble with disabling Ctrl+Space (which will switch input methods), please run the \`disable-ctrl_space.reg\` file in your Rime configuration folder (${destination}) to fix it. Don't forget to restart your computer after applying the registry file!`,
         )
-        if (await confirm({ message: 'Run Powershell script to disable Ctrl+Space?' })) {
+        const ctrlSpaceDisabled: boolean = await readUserRc()?.rime?.ctrlSpaceDisabled ?? false
+        if (!ctrlSpaceDisabled && await confirm({ message: 'Run Powershell script to disable Ctrl+Space?' })) {
           const regFilePath = join(destination, 'disable-ctrl_space.reg')
           const result = await x('reg', ['import', regFilePath])
-          if (result.exitCode === 0)
+          if (result.exitCode === 0) {
             consola.success('Successfully applied the registry file to disable Ctrl+Space!')
-          else
+            upsertUserRc({ rime: { ctrlSpaceDisabled: true } })
+          }
+          else {
             consola.error('Failed to apply the registry file. Please try to run it with administrator privileges.')
+          }
         }
       }
     },

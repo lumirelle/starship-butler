@@ -5,7 +5,7 @@ import { homedir } from '../path'
 
 export type RCOptions = typeof defaults
 
-type RC = Record<string, any>
+export type RC = Record<string, any>
 
 const RC_FILE_NAME = '.butlerrc'
 

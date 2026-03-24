@@ -43,6 +43,8 @@ Huorong
 Weixin
 MSVC
 Svgl
+ibus
+wanxiang
 
 # GAMES
 Honkai
