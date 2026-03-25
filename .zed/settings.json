@@ -1,14 +1,12 @@
 {
-  // Editor Code Actions on Save
-  "code_actions_on_format": {
-    "source.fixAll.eslint": true,
-    "source.fixAll.stylelint": true,
-    "source.organizeImports": false
-  },
-
-  // Formatter & Linter
+  // Code Quality
   "formatter": [],
   "prettier": { "allowed": false },
+  "code_actions_on_format": {
+    "source.fixAll.oxc": true,
+    "source.fixAll.eslint": true,
+    "source.organizeImports": false
+  },
   "lsp": {
     "eslint": {
       "settings": {
@@ -26,26 +24,19 @@
           "jsonc",
           "yaml",
           "toml",
-          "xml"
-        ],
-        "rulesCustomizations": [
-          { "rule": "style/*", "severity": "off" },
-          { "rule": "format/*", "severity": "off" },
-          { "rule": "*-indent", "severity": "off" },
-          { "rule": "*-spacing", "severity": "off" },
-          { "rule": "*-spaces", "severity": "off" },
-          { "rule": "*-order", "severity": "off" },
-          { "rule": "*-dangle", "severity": "off" },
-          { "rule": "*-newline", "severity": "off" },
-          { "rule": "*quotes", "severity": "off" },
-          { "rule": "*semi", "severity": "off" }
+          "xml",
+          "css",
+          "postcss",
+          "scss",
+          "sass",
+          "less"
         ]
       }
-    },
-    "stylelint": {
-      "settings": {
-        "validate": ["css", "postcss", "scss", "sass", "less", "html", "vue"]
-      }
     }
+  },
+
+  // File associations
+  "file_types": {
+    "JSONC": ["**/*.json"]
   }
 }

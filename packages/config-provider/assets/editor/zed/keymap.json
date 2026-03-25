@@ -1,0 +1,15 @@
+[
+  {
+    "context": "Workspace",
+    "bindings": {
+      "ctrl-/": "terminal_panel::Toggle",
+      "ctrl-`": null
+    }
+  },
+  {
+    "context": "Editor",
+    "bindings": {
+      "ctrl-/": "terminal_panel::Toggle"
+    }
+  }
+]

@@ -17,6 +17,7 @@ export const zed: ActionFactory = () => {
     prehandler: createPrehandler('destination-exist'),
     handler: createHandler([
       createConfigPathGenerator('settings.json'),
+      createConfigPathGenerator('keymap.json'),
     ]),
     posthandler: () => {
       consola.info('This configuration is meant to be used by `Zed` installed in user scope and default path.')

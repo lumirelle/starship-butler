@@ -129,7 +129,7 @@
   },
   // Font
   "custom-ui-style.font.monospace": "'Geist Mono', 'Maple Mono CN', 'Symbols Nerd Font Mono', monospace",
-  "custom-ui-style.font.sansSerif": "'Geist', 'Maple Mono CN', 'Symbols Nerd Font Mono', sans-serif",
+  "custom-ui-style.font.sansSerif": "'Geist', 'Maple Mono CN', 'Symbols Nerd Font', sans-serif",
   "custom-ui-style.stylesheet": {
     // Font family patch for Cursor Editor
     "body": {
@@ -137,7 +137,7 @@
     }
   },
   "editor.fontFamily": "'Geist Mono', 'Maple Mono CN', 'Symbols Nerd Font Mono', monospace",
-  "markdown.preview.fontFamily": "'Geist', 'Maple Mono CN', 'Symbols Nerd Font Mono', monospace",
+  "markdown.preview.fontFamily": "'Geist', 'Maple Mono CN', 'Symbols Nerd Font', monospace",
   "editor.fontSize": 16,
   "terminal.integrated.fontSize": 14,
   "markdown.preview.fontSize": 14,

@@ -1,42 +1,69 @@
+// cSpell:disable
 {
-  // cSpell:disable
-  /* --------------------------------- Visual --------------------------------- */
+  // #region UI
   // Theme
+  "code_actions_on_format": {
+    "source.fixAll.oxc": true
+  },
   "theme": {
     "mode": "system",
     "light": "Vitesse Light",
     "dark": "Vitesse Dark"
   },
   "icon_theme": "Catppuccin Mocha",
-  // Editor
+  // Layout
+  "use_system_prompts": false,
+  "use_system_path_prompts": false,
   "indent_guides": {
     "coloring": "indent_aware"
   },
-  "wrap_guides": [80, 120, 160, 200],
+  "relative_line_numbers": "enabled",
+  "soft_wrap": "editor_width",
+  "wrap_guides": [
+    100,
+    200
+  ],
+  "show_whitespaces": "boundary",
+  "colorize_brackets": true,
   // Font
   "ui_font_family": "Geist",
-  "ui_font_fallbacks": ["Maple Mono CN", "Symbols Nerd Font Mono"],
+  "ui_font_fallbacks": [
+    "Maple Mono CN",
+    "Symbols Nerd Font"
+  ],
   "ui_font_size": 16,
   "buffer_font_family": "Geist Mono",
-  "buffer_font_fallbacks": ["Maple Mono CN", "Symbols Nerd Font Mono"],
+  "buffer_font_fallbacks": [
+    "Maple Mono CN",
+    "Symbols Nerd Font Mono"
+  ],
   "buffer_font_size": 16,
   "buffer_font_features": {
     "calt": true,
     "liga": true
   },
+  // #endregion
+  // #region Lens & Hint
+  // Hint
+  "inlay_hints": {
+    "enabled": true,
+    "show_type_hints": false
+  },
+  // #endregion
 
-  /* -------------------------------- Behavior -------------------------------- */
+  // #region Behavior
+  // Trust
+  "session": {
+    "trust_all_worktrees": true
+  },
+  // Vim Mode
+  "vim_mode": true,
   // File Associations
   "file_types": {
-    "env": [".env*"],
-    "JavaScript": [".env*.js"],
-    "TypeScript": [".env*.ts"],
-    "Shell Script": [".simple-git-hooks.rc"],
-    "JSON": [".czrc"]
+    "env": [
+      ".env.!(js|ts|mhs|cjs|mts|cts)"
+    ]
   },
-  // Prompts
-  "use_system_prompts": false,
-  "use_system_path_prompts": false,
   // Editor
   "close_on_file_delete": true,
   // Terminal
@@ -50,17 +77,15 @@
     "display_in": "all_editors",
     "show": "always"
   },
-  // Inlay Hints
-  "inlay_hints": {
-    "enabled": true,
-    "show_type_hints": false
-  },
   // Scroll
   "scroll_sensitivity": 2,
   "fast_scroll_sensitivity": 3,
+  // #endregion
 
-  /* --------------------------------- Format --------------------------------- */
-  "tab_size": 2,
-  "auto_indent": false,
-  "auto_indent_on_paste": false
+  // #region Code Quality
+  "formatter": [
+    { "language_server": { "name": "oxlint" } }
+  ],
+  "format_on_save": "on"
+  // #endregion
 }

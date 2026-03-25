@@ -1,32 +1,23 @@
+// cspell:disable
 {
-  // cspell:disable
   "recommendations": [
-    /* ----- Visual ----- */
+    // #region UI
     // Theme
     "vitesse",
     "catppuccin-icons",
-    // Highlight
-    "log",
+    // #endregion
 
-    /* ----- Behavior ----- */
-    // Emmet
-    "emmet",
-
-    /* ----- LSP ----- */
-    "xml",
-    "toml",
-    "csv",
-    "ini",
+    // #region Language Support
+    "editorconfig",
     "html",
-    "scss",
-    "env",
     "vue",
-    "dockerfile",
-    "nu",
+    "zig",
+    // #endregion
 
-    /* ----- Linter ----- */
-    "stylelint"
+    // #region Code Quality
+    "oxc"
+    // #endregion
   ]
   // EXTENSION COUNT
-  // >> INDEX + 1 = 15
+  // >> INDEX + 1 = 7
 }
