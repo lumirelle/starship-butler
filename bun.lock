@@ -120,7 +120,7 @@
       "publint": "^0.3.18",
     },
     "dev": {
-      "@lumirelle/tsconfig": "^0.1.0",
+      "@lumirelle/tsconfig": "^0.1.2",
       "bumpp": "^11.0.1",
       "simple-git-hooks": "git+https://github.com/toplenboren/simple-git-hooks.git#7625657",
       "typescript": "^6.0.2",
@@ -271,7 +271,7 @@
 
     "@lumirelle/oxlint-config": ["@lumirelle/oxlint-config@0.0.5", "", {}, "sha512-b68gJv0iAmgxck2nW/BSGwwkx6raMEnRx8+gVAPGtVZSJHWK3hGUnN79in8iYNZfwYTHXPZNNVJI3OXBMsULaw=="],
 
-    "@lumirelle/tsconfig": ["@lumirelle/tsconfig@0.1.0", "", { "peerDependencies": { "typescript": ">= 6.0.0" } }, "sha512-zOe+gK+hEapnIhn+3TlzK5aAflZca0ZLd5yCo2BbncMFdcZaj58HZf/aCe0p/FP2rFjt3BrAwwbzxg570lyhpg=="],
+    "@lumirelle/tsconfig": ["@lumirelle/tsconfig@0.1.2", "", { "peerDependencies": { "typescript": ">= 6.0.0" } }, "sha512-1sTTnDVIpaEO0RNHzwT/f1SjRRWaO7RrNIhzT7tAR58S+s60y4Ju5Td5ftocP9RgH+cQyGYK4ut8CcJQN0/BIQ=="],
 
     "@napi-rs/wasm-runtime": ["@napi-rs/wasm-runtime@1.1.1", "", { "dependencies": { "@emnapi/core": "^1.7.1", "@emnapi/runtime": "^1.7.1", "@tybys/wasm-util": "^0.10.1" } }, "sha512-p64ah1M1ld8xjWv3qbvFwHiFVWrq1yFvV4f7w+mzaqiR4IlSgkqhcRdHwsGgomwzBH51sRY4NEowLxnaBjcW/A=="],
 
