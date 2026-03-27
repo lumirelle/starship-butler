@@ -28,7 +28,7 @@ export default {
     },
     'packages/core': {
       /// keep-sorted
-      ignoreFiles: ['test/fixture/butler.config*.ts'],
+      ignoreFiles: ['test/fixtures/butler.config*.ts'],
     },
     'packages/utils': {
       /// keep-sorted

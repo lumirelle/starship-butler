@@ -4,7 +4,8 @@
     { "path": "./packages/core" },
     { "path": "./packages/types" },
     { "path": "./packages/utils" },
-    { "path": "./playground" }
+    { "path": "./playground" },
+    { "path": "./tsconfig.node.json" }
   ],
   "files": []
 }
