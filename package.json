@@ -14,7 +14,7 @@
     "play": "bun run --cwd playground play",
     "lint": "bun run --parallel oxlint eslint",
     "lint:fix": "oxlint --fix && eslint --fix",
-    "typecheck": "tsc -b --noEmit",
+    "typecheck": "tsc --build --noEmit",
     "unused": "knip-bun",
     "pubcheck": "bun run --parallel --filter '*' pubcheck",
     "check": "bun run --parallel lint typecheck unused pubcheck",
