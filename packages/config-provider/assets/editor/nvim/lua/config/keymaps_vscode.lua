@@ -3,8 +3,7 @@
 local map = vim.keymap.set
 local vscode = require("vscode")
 
--- Better up and down in normal mode
--- Fix folds were automatically opening when navigating with j, k
+-- Better up and down in normal mode, align with LazyVim's default
 --
 -- This does not applicable to visual mode, as it will break visual selection
 map("n", "j", function()
@@ -13,28 +12,28 @@ map("n", "j", function()
   else
     return "j"
   end
-end, { silent = true })
+end, { silent = true, expr = true })
 map("n", "k", function()
   if vim.v.count == 0 then
     vscode.call("cursorMove", { args = { to = "up", by = "wrappedLine", value = 1 } })
   else
     return "k"
   end
-end, { silent = true })
+end, { silent = true, expr = true })
 map("n", "<down>", function()
   if vim.v.count == 0 then
     vscode.call("cursorMove", { args = { to = "down", by = "wrappedLine", value = 1 } })
   else
     return "j"
   end
-end, { silent = true })
+end, { silent = true, expr = true })
 map("n", "<up>", function()
   if vim.v.count == 0 then
     vscode.call("cursorMove", { args = { to = "up", by = "wrappedLine", value = 1 } })
   else
     return "k"
   end
-end, { silent = true })
+end, { silent = true, expr = true })
 
 -- Use VSCode's fold/unfold, as Neovim's fold commands do not work in VSCode,
 -- `zm` and `zr` are not supported by VSCode.
