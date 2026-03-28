@@ -67,8 +67,10 @@ map("n", "gH", "<nop>", { noremap = true })
 map("n", "gf", "<nop>", { noremap = true })
 map("n", "gF", "<nop>", { noremap = true })
 map("n", "gD", function()
-  vscode.action("editor.action.revealDeclaration")
-end, { noremap = true, desc = "Go to Declaration" })
+  if vim.bo.filetype == "javascript" or vim.bo.filetype == "typescript" or vim.bo.filetype == "javascriptreact" or vim.bo.filetype == "typescriptreact" or vim.bo.filetype == "vue" then
+    vscode.action("typescript.goToSourceDefinition")
+  end
+end, { noremap = true, desc = "Go to Source Definition" })
 map("n", "gI", function()
   vscode.action("editor.action.goToImplementation")
 end, { noremap = true, desc = "Go to Implementation" })
