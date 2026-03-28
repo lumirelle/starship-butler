@@ -12,5 +12,5 @@
   },
   // Only include your project's source files and their tests, not the config files, e.g. `vite.config.ts`.
   "include": ["src/**/*", "test/**/*"],
-  "exclude": ["test/fixture/**/*"]
+  "exclude": ["test/fixtures/**/*"]
 }

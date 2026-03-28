@@ -7,5 +7,5 @@
     "isolatedDeclarations": true
   },
   "include": ["src/**/*", "test/**/*"],
-  "exclude": ["test/fixture/**/*"]
+  "exclude": ["test/fixtures/**/*"]
 }
