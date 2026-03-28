@@ -1,0 +1,14 @@
+{
+  "extends": "@lumirelle/tsconfig/ts",
+  "compilerOptions": {
+    "tsBuildInfoFile": "./node_modules/.tmp/tsconfig.lib.tsbuildinfo",
+    // Include types you need, if you are using Node.js, please replace "bun" with "node".
+    "types": ["bun"],
+    // Enable isolated declarations to speed up type checking & generation
+    "declaration": true,
+    "isolatedDeclarations": true
+  },
+  // Only include your project's source files who are expected to run with `isolatedDeclarations`, also test files who are related to source files.
+  "include": ["src/**/*", "test/**/*"],
+  "exclude": ["test/fixture/**/*"]
+}

@@ -1,0 +1,12 @@
+{
+  "extends": "@lumirelle/tsconfig/ts",
+  "compilerOptions": {
+    "tsBuildInfoFile": "./node_modules/.tmp/tsconfig.node.tsbuildinfo",
+    // Include types you need, if you are using Node.js, please replace "bun" with "node".
+    "types": ["bun"],
+    // Allow checking JavaScript files
+    "allowJs": true
+  },
+  // Only include your project's script files & config files who are expected to run without `isolatedDeclarations`.
+  "include": ["scripts/**/*", "*.config.js", "*.config.ts"]
+}
