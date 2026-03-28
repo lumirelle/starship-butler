@@ -21,7 +21,7 @@
       }
     }
   ],
-  "launchMode": "maximizedFocus",
+  "launchMode": "maximized",
   "newTabMenu": [
     {
       "type": "remainingProfiles"
