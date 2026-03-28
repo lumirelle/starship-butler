@@ -5,9 +5,6 @@
 local map = vim.keymap.set
 local unmap = vim.keymap.del
 
--- Add undo break-points
-map("i", " ", " <C-g>u")
-
 -- Keymaps for Neovim when running inside/outside VSCode
 if vim.g.vscode then
   require("config.keymaps_vscode")
