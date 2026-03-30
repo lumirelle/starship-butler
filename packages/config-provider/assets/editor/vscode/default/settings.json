@@ -15,6 +15,7 @@
   "workbench.activityBar.orientation": "vertical",
   "workbench.tree.renderIndentGuides": "always",
   "workbench.tree.indent": 16,
+  "workbench.secondarySideBar.defaultVisibility": "hidden",
   "editor.lineNumbers": "relative",
   "scm.diffDecorationsGutterWidth": 2,
   "editor.wordWrap": "on",
