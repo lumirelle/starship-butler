@@ -11,3 +11,8 @@ opt.startofline = true
 if vim.fn.executable("nu") == 1 then
   opt.shell = "nu"
 end
+
+-- Temporary fix before https://github.com/vscode-neovim/vscode-neovim/pull/2515 gets merged and released.
+if vim.g.vscode then
+  opt.cmdheight = 5
+end
