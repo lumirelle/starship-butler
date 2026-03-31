@@ -8,12 +8,12 @@
   {
     "key": "ctrl+b",
     "command": "workbench.action.focusSideBar",
-    "when": "!sideBarVisible"
+    "when": "!editorFocus && !sideBarVisible"
   },
   {
     "key": "ctrl+b",
     "command": "workbench.action.toggleSidebarVisibility",
-    "when": "sideBarVisible"
+    "when": "!editorFocus && sideBarVisible"
   },
   {
     "key": "ctrl+alt+b",
@@ -22,12 +22,12 @@
   {
     "key": "ctrl+alt+b",
     "command": "workbench.action.focusAuxiliaryBar",
-    "when": "!auxiliaryBarVisible"
+    "when": "!editorFocus && !auxiliaryBarVisible"
   },
   {
     "key": "ctrl+alt+b",
     "command": "workbench.action.toggleAuxiliaryBar",
-    "when": "auxiliaryBarVisible"
+    "when": "!editorFocus && auxiliaryBarVisible"
   },
   // Tab completion
   {
