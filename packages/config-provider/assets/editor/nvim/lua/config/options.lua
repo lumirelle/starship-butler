@@ -14,5 +14,5 @@ end
 
 -- Temporary fix before https://github.com/vscode-neovim/vscode-neovim/pull/2515 gets merged and released.
 if vim.g.vscode then
-  opt.cmdheight = 5
+  opt.cmdheight = 99999
 end
