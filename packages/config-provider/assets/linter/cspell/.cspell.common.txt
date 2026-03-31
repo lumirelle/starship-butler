@@ -38,6 +38,8 @@ DISM++
 gsudo
 NanaZip
 nvim
+startofline
+cmdheight
 Navicat
 Huorong
 Weixin
