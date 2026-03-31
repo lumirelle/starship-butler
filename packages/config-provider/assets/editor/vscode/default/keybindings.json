@@ -1,34 +1,5 @@
 [
   // #region Basic
-  // Sidebar
-  {
-    "key": "ctrl+b",
-    "command": "-workbench.action.toggleSidebarVisibility"
-  },
-  {
-    "key": "ctrl+b",
-    "command": "workbench.action.focusSideBar",
-    "when": "!editorFocus && !sideBarVisible"
-  },
-  {
-    "key": "ctrl+b",
-    "command": "workbench.action.toggleSidebarVisibility",
-    "when": "!editorFocus && sideBarVisible"
-  },
-  {
-    "key": "ctrl+alt+b",
-    "command": "-workbench.action.toggleAuxiliaryBar"
-  },
-  {
-    "key": "ctrl+alt+b",
-    "command": "workbench.action.focusAuxiliaryBar",
-    "when": "!editorFocus && !auxiliaryBarVisible"
-  },
-  {
-    "key": "ctrl+alt+b",
-    "command": "workbench.action.toggleAuxiliaryBar",
-    "when": "!editorFocus && auxiliaryBarVisible"
-  },
   // Tab completion
   {
     "key": "tab",
@@ -49,6 +20,35 @@
   // #endregion
 
   // #region With Neovim
+  // Sidebar
+  {
+    "key": "ctrl+b",
+    "command": "-workbench.action.toggleSidebarVisibility"
+  },
+  {
+    "key": "space e",
+    "command": "workbench.action.toggleSidebarVisibility",
+    "when": "!editorFocus && !terminalFocus && sideBarVisible"
+  },
+  {
+    "key": "space e",
+    "command": "workbench.action.focusSideBar",
+    "when": "!editorFocus && !terminalFocus && !sideBarVisible"
+  },
+  {
+    "key": "ctrl+alt+b",
+    "command": "-workbench.action.toggleAuxiliaryBar"
+  },
+  {
+    "key": "space shift+e",
+    "command": "workbench.action.toggleAuxiliaryBar",
+    "when": "!editorFocus && !terminalFocus && auxiliaryBarVisible"
+  },
+  {
+    "key": "space shift+e",
+    "command": "workbench.action.toggleAuxiliaryBar",
+    "when": "!editorFocus && !terminalFocus && !auxiliaryBarVisible"
+  },
   // Editor Size
   {
     "key": "ctrl+down",

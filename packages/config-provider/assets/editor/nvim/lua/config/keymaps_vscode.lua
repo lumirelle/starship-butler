@@ -101,10 +101,15 @@ map({ "n", "x" }, "<leader>r", function()
 end, { desc = "Rename Symbol" })
 -- View
 -- Primary Sidebar
--- VSCode's primary sidebar has multiple views, not only file explorer, and it doesn't have a command to toggle file explorer specifically, so we just toggle the primary sidebar.
-map("n", "<leader>e", function()
-  vscode.action("workbench.action.toggleSidebarVisibility")
+-- Cannot detect whether the primary sidebar is visible or not, so we just toggle it.
+map({ "n", "x" }, "<leader>e", function()
+  vscode.action("workbench.action.focusSideBar")
 end, { desc = "Toggle Primary Sidebar" })
+-- Secondary Sidebar
+-- Cannot detect whether the secondary sidebar is visible or not, so we just toggle it.
+map({ "n", "x" }, "<leader>E", function()
+  vscode.action("workbench.action.focusAuxiliaryBar")
+end, { desc = "Toggle Secondary Sidebar" })
 -- Notification
 map("n", "<leader>n", function()
   vscode.action("notifications.showList")
