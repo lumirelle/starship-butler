@@ -20,6 +20,12 @@
   // #endregion
 
   // #region With Neovim
+  // Session
+  {
+    "key": "space q q",
+    "command": "workbench.action.closeWindow",
+    "when": "!editorFocus && !terminalFocus"
+  },
   // Sidebar
   {
     "key": "ctrl+b",
