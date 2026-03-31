@@ -1,7 +1,5 @@
 [
   // #region Basic
-  // Open
-  { "key": "ctrl+numpad_multiply", "command": "workbench.action.files.openFolder" },
   // Sidebar
   {
     "key": "ctrl+b",
