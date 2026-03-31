@@ -372,6 +372,7 @@
   // Zen Mode
   "zenMode.hideLineNumbers": false,
   // AI
+  "git.addAICoAuthor": "chatAndAgent",
   "github.copilot.enable": {
     "*": true,
     "markdown": true,
