@@ -369,6 +369,8 @@
   "editor.mouseWheelZoom": true,
   // Goto
   "editor.gotoLocation.multipleDefinitions": "goto",
+  // Zen Mode
+  "zenMode.hideLineNumbers": false,
   // AI
   "github.copilot.enable": {
     "*": true,
