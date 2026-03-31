@@ -2,6 +2,35 @@
   // #region Basic
   // Open
   { "key": "ctrl+numpad_multiply", "command": "workbench.action.files.openFolder" },
+  // Sidebar
+  {
+    "key": "ctrl+b",
+    "command": "-workbench.action.toggleSidebarVisibility"
+  },
+  {
+    "key": "ctrl+b",
+    "command": "workbench.action.focusSideBar",
+    "when": "!sideBarVisible"
+  },
+  {
+    "key": "ctrl+b",
+    "command": "workbench.action.toggleSidebarVisibility",
+    "when": "sideBarVisible"
+  },
+  {
+    "key": "ctrl+alt+b",
+    "command": "-workbench.action.toggleAuxiliaryBar"
+  },
+  {
+    "key": "ctrl+alt+b",
+    "command": "workbench.action.focusAuxiliaryBar",
+    "when": "!auxiliaryBarVisible"
+  },
+  {
+    "key": "ctrl+alt+b",
+    "command": "workbench.action.toggleAuxiliaryBar",
+    "when": "auxiliaryBarVisible"
+  },
   // Tab completion
   {
     "key": "tab",
