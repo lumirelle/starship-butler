@@ -1,8 +1,6 @@
 # User Information
 [user]
-# NOTICE: Please replace the following with your own information.
-name = Lumirelle
-email = shabbyacc@outlook.com
+# NOTICE: username and email are handled by `~/.gitcloneinit` script.
 [credential "https://gitee.com"]
 provider = generic
 
@@ -18,6 +16,7 @@ manyFiles = true
 # Repository Initialization
 [init]
 defaultBranch = main
+templatedir = ~/.config/git/templates
 
 # Working with Branches
 [branch]
