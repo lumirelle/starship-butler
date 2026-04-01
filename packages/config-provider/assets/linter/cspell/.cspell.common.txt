@@ -38,6 +38,7 @@ DISM++
 gsudo
 NanaZip
 nvim
+noremap
 startofline
 cmdheight
 Navicat
@@ -107,6 +108,7 @@ attw
 defu
 butlerrc
 vite
+twemoji
 
 # DEV: JAVA
 graalvm
