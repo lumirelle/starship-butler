@@ -57,11 +57,13 @@
   },
   {
     "key": "ctrl+pagedown",
-    "command": "workbench.action.nextSideBarView"
+    "command": "workbench.action.nextSideBarView",
+    "when": "sideBarFocus"
   },
   {
     "key": "ctrl+pageup",
-    "command": "workbench.action.previousSideBarView"
+    "command": "workbench.action.previousSideBarView",
+    "when": "sideBarFocus"
   },
   // Window navigation
   {
