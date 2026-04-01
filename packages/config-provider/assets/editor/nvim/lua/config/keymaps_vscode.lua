@@ -103,12 +103,12 @@ end, { desc = "Rename Symbol" })
 -- Primary Sidebar
 -- Cannot detect whether the primary sidebar is visible or not, so we just toggle it.
 map({ "n", "x" }, "<leader>e", function()
-  vscode.action("workbench.action.focusSideBar")
+  vscode.action("workbench.action.toggleSidebarVisibility")
 end, { desc = "Toggle Primary Sidebar" })
 -- Secondary Sidebar
 -- Cannot detect whether the secondary sidebar is visible or not, so we just toggle it.
 map({ "n", "x" }, "<leader>E", function()
-  vscode.action("workbench.action.focusAuxiliaryBar")
+  vscode.action("workbench.action.toggleAuxiliaryBarVisibility")
 end, { desc = "Toggle Secondary Sidebar" })
 -- Notification
 map("n", "<leader>n", function()

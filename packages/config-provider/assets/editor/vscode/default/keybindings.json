@@ -24,7 +24,7 @@
   {
     "key": "space q q",
     "command": "workbench.action.closeWindow",
-    "when": "!editorFocus && !terminalFocus"
+    "when": "!editorFocus && !inputFocus && !terminalFocus"
   },
   // Sidebar
   {
@@ -34,12 +34,12 @@
   {
     "key": "space e",
     "command": "workbench.action.toggleSidebarVisibility",
-    "when": "!editorFocus && !terminalFocus && sideBarVisible"
+    "when": "!editorFocus && !inputFocus && !terminalFocus && sideBarVisible"
   },
   {
     "key": "space e",
     "command": "workbench.action.focusSideBar",
-    "when": "!editorFocus && !terminalFocus && !sideBarVisible"
+    "when": "!editorFocus && !inputFocus && !terminalFocus && !sideBarVisible"
   },
   {
     "key": "ctrl+alt+b",
@@ -48,12 +48,46 @@
   {
     "key": "space shift+e",
     "command": "workbench.action.toggleAuxiliaryBar",
-    "when": "!editorFocus && !terminalFocus && auxiliaryBarVisible"
+    "when": "!editorFocus && !inputFocus && !terminalFocus && auxiliaryBarVisible"
   },
   {
     "key": "space shift+e",
     "command": "workbench.action.toggleAuxiliaryBar",
-    "when": "!editorFocus && !terminalFocus && !auxiliaryBarVisible"
+    "when": "!editorFocus && !inputFocus && !terminalFocus && !auxiliaryBarVisible"
+  },
+  {
+    "key": "ctrl+pagedown",
+    "command": "workbench.action.nextSideBarView"
+  },
+  {
+    "key": "ctrl+pageup",
+    "command": "workbench.action.previousSideBarView"
+  },
+  // Window navigation
+  {
+    "key": "ctrl+h",
+    "command": "workbench.action.navigateLeft"
+  },
+  {
+    "key": "ctrl+k",
+    "command": "workbench.action.navigateUp"
+  },
+  {
+    "key": "ctrl+j",
+    "command": "workbench.action.navigateDown"
+  },
+  {
+    "key": "ctrl+l",
+    "command": "workbench.action.navigateRight"
+  },
+  // Tab navigation
+  {
+    "key": "ctrl+pageup",
+    "command": "-workbench.action.previousEditor"
+  },
+  {
+    "key": "ctrl+pagedown",
+    "command": "-workbench.action.nextEditor"
   },
   // Editor Size
   {
@@ -75,23 +109,6 @@
     "key": "ctrl+right",
     "command": "workbench.action.increaseViewWidth",
     "when": "editorFocus && !isAuxiliaryWindowFocusedContext && !terminalFocus && neovim.mode != 'cmdline'"
-  },
-  // Window navigation
-  {
-    "key": "ctrl+h",
-    "command": "workbench.action.navigateLeft"
-  },
-  {
-    "key": "ctrl+k",
-    "command": "workbench.action.navigateUp"
-  },
-  {
-    "key": "ctrl+j",
-    "command": "workbench.action.navigateDown"
-  },
-  {
-    "key": "ctrl+l",
-    "command": "workbench.action.navigateRight"
   },
   // Scroll
   {
