@@ -31,12 +31,12 @@
     ],
     "catalogs": {
       "prod": {
-        "@clack/prompts": "^1.1.0",
+        "@clack/prompts": "^1.2.0",
         "c12": "^4.0.0-beta.4",
         "consola": "^3.4.2",
-        "defu": "^6.1.4",
+        "defu": "^6.1.6",
         "pathe": "^2.0.3",
-        "rc9": "^3.0.0",
+        "rc9": "^3.0.1",
         "tinyexec": "^1.0.4",
         "tinyglobby": "^0.2.15"
       },
@@ -57,14 +57,14 @@
         "bunup": "^0.16.31"
       },
       "check": {
-        "@antfu/eslint-config": "^7.7.3",
+        "@antfu/eslint-config": "^8.0.0",
         "@arethetypeswrong/cli": "^0.18.2",
-        "@lumirelle/oxlint-config": "^0.0.5",
-        "eslint": "^10.1.0",
-        "eslint-plugin-oxlint": "^1.57.0",
-        "knip": "^6.0.6",
+        "@lumirelle/oxlint-config": "^0.1.0",
+        "eslint": "^10.2.0",
+        "eslint-plugin-oxlint": "^1.58.0",
+        "knip": "^6.3.0",
         "nano-staged": "^0.9.0",
-        "oxlint": "^1.57.0",
+        "oxlint": "^1.58.0",
         "oxlint-tsgolint": "0.17.0",
         "publint": "^0.3.18"
       },
@@ -80,7 +80,7 @@
         "floating-vue": "^5.2.2",
         "pinia": "^3.0.4",
         "unocss": "^66.6.7",
-        "unplugin-vue-components": "^31.1.0",
+        "unplugin-vue-components": "^32.0.0",
         "vite-tsconfig-paths": "^6.1.1",
         "vitepress": "^2.0.0-alpha.17",
         "vitepress-plugin-group-icons": "^1.7.3"
