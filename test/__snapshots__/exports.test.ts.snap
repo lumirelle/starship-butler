@@ -1,0 +1,59 @@
+// Bun Snapshot v1, https://bun.sh/docs/test/snapshots
+
+exports[`exports-snapshot starship-butler-utils 1`] = `
+"./config: 
+  loadConfig: function
+  readUserRc: function
+  removeUserRc: function
+  updateUserRc: function
+  upsertUserRc: function
+  writeUserRc: function
+./path: 
+  appdata: function
+  homedir: function
+  localAppdata: function
+./fs: 
+  copyFile: function
+  createSymlink: function
+  ensureDirectory: function
+  exists: function
+  isDirectory: function
+  isSymbolicLink: function
+  remove: function
+  removeSymlink: function
+./highlight: 
+  important: function
+  info: function
+  success: function"
+`;
+
+exports[`exports-snapshot starship-butler-types 1`] = `
+"".": 
+  {}"
+`;
+
+exports[`exports-snapshot starship-butler 1`] = `
+"".": 
+  defineButlerConfig: function
+  loadConfig: function"
+`;
+
+exports[`exports-snapshot starship-butler-config-provider 1`] = `
+"".": 
+  {}
+./command/set: 
+  commandSet: function
+  validateOptions: function
+./command/preset: 
+  commandPreset: function
+  filterActions: function
+  HandlerError: function
+  validateOptions: function
+./command/utils: 
+  processConfig: function
+  readUserRc: function
+  upsertUserRc: function
+./constants: 
+  ASSETS_FOLDER: string
+  PKG_ROOT: string"
+`;
