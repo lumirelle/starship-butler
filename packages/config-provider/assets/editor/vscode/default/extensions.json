@@ -26,8 +26,6 @@
     "johnpapa.read-time",
     "mkxml.vscode-filesize",
     "usernamehw.errorlens",
-    // Hint
-    "antfu.array-index-inlay",
     // #endregion
 
     // #region Behavior
@@ -71,6 +69,6 @@
     // #endregion
   ]
   // Summary
-  // VSCode: $INDEX + 1 = 40
-  // Cursor: $INDEX = 39
+  // VSCode: $INDEX + 1 = 39
+  // Cursor: $INDEX = 38
 }
