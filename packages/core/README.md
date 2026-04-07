@@ -37,9 +37,6 @@ bun install starship-butler -g
 Run the cli and get help info with `--help` flag:
 
 ```sh
-# Using Bun runtime
-bun -b butler --help
-# Using Node.js runtime
 butler --help
 ```
 
@@ -48,36 +45,24 @@ butler --help
 Command `preset` helps you to preset your application configurations.
 
 ```sh
-# Using Bun runtime
-bun -b butler preset [...options]
-# Using Node.js runtime
 butler preset [...options]
 ```
 
 Applying all presets:
 
 ```sh
-# Using Bun runtime
-bun -b butler preset --all
-# Using Node.js runtime
 butler preset --all
 ```
 
 Specifying included preset id pattern:
 
 ```sh
-# Using Bun runtime
-bun -b butler preset --include <preset_id_pattern>
-# Using Node.js runtime
 butler preset --include <preset_id_pattern>
 ```
 
 See help info for more details:
 
 ```sh
-# Using Bun runtime
-bun -b butler preset --help
-# Using Node.js runtime
 butler preset --help
 ```
 
@@ -86,9 +71,6 @@ butler preset --help
 Command `Set` helps you to set local project configurations.
 
 ```sh
-# Using Bun runtime
-bun -b butler set <source_pattern> <target> [...options]
-# Using Node.js runtime
 butler set <source_pattern> <target> [...options]
 ```
 
@@ -105,9 +87,6 @@ For example, `butler set .eslintrc.json ./project/` will copy all the chosen fil
 See help info for more details:
 
 ```sh
-# Using Bun runtime
-bun -b butler set --help
-# Using Node.js runtime
 butler set --help
 ```
 
