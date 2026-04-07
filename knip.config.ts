@@ -4,7 +4,7 @@ export default {
   workspaces: {
     '.': {
       /// keep-sorted
-      ignoreDependencies: ['@arethetypeswrong/cli', '@lumirelle/oxlint-config', 'publint', /^starship-butler/],
+      ignoreDependencies: ['@arethetypeswrong/cli', '@lumirelle/oxlint-config', 'publint'],
       ignoreFiles: ['bunup.config.ts'],
     },
     'docs': {

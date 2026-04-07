@@ -1,5 +1,11 @@
 import type { ConfigProviderOptions } from 'starship-butler-config-provider'
 
+// #region Types from `starship-butler-types`
+
+export type * from 'starship-butler-types'
+
+// #endregion
+
 // #region Config
 
 /**
