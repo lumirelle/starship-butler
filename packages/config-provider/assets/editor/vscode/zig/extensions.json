@@ -5,7 +5,7 @@
     "ziglang.vscode-zig"
     // #endregion
   ]
-  // Summary
-  // VSCode: $INDEX + 1 = 1 + ${PROFILE_DEFAULT: 39} = 40
-  // Cursor: $INDEX + 1 = 1 + ${PROFILE_DEFAULT: 38} = 39
+  // Extension Count
+  // VSCODE: 1 + $DEFAULT_VSCODE = 40
+  // CURSOR: 1 + $DEFAULT_CURSOR = 39
 }

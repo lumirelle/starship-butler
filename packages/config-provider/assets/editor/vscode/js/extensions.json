@@ -44,7 +44,7 @@
     "yrm.type-challenges"
     // #endregion
   ]
-  // Summary
-  // VSCode: $INDEX + 1 = 20 + ${PROFILE_DEFAULT: 39} = 59
-  // Cursor: $INDEX + 1 = 20 + ${PROFILE_DEFAULT: 38} = 58
+  // Extension Count
+  // VSCODE: 20 + $DEFAULT_VSCODE = 59
+  // CURSOR: 20 + $DEFAULT_CURSOR = 58
 }

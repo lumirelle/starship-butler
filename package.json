@@ -6,6 +6,7 @@
   "scripts": {
     "prepare": "simple-git-hooks",
     "dev": "bunup --watch",
+    "count-vscode-extensions": "bun run ./scripts/count-vscode-extensions.ts",
     "build": "bunup --exports",
     "start": "bun run --cwd packages/core start",
     "docs": "bun run --cwd docs docs:dev",
@@ -95,6 +96,7 @@
     "@types/bun": "catalog:types",
     "bumpp": "catalog:dev",
     "bunup": "catalog:build",
+    "consola": "catalog:prod",
     "eslint": "catalog:check",
     "eslint-plugin-oxlint": "catalog:check",
     "knip": "catalog:check",

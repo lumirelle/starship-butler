@@ -11,6 +11,7 @@
         "@types/bun": "catalog:types",
         "bumpp": "catalog:dev",
         "bunup": "catalog:build",
+        "consola": "catalog:prod",
         "eslint": "catalog:check",
         "eslint-plugin-oxlint": "catalog:check",
         "knip": "catalog:check",
