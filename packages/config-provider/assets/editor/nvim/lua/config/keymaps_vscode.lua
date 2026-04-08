@@ -108,7 +108,7 @@ end, { desc = "Toggle Primary Sidebar" })
 -- Secondary Sidebar
 -- Cannot detect whether the secondary sidebar is visible or not, so we just toggle it.
 map({ "n", "x" }, "<leader>E", function()
-  vscode.action("workbench.action.toggleAuxiliaryBarVisibility")
+  vscode.action("workbench.action.toggleAuxiliaryBar")
 end, { desc = "Toggle Secondary Sidebar" })
 -- Notification
 map("n", "<leader>n", function()
