@@ -33,7 +33,7 @@
       "backgroundImageOpacity": 0.3,
       "experimental.rightClickContextMenu": true,
       "font": {
-        "face": "'Geist Mono', 'Maple Mono CN', 'Symbols Nerd Font Mono'"
+        "face": "'Recursive Mono Linear', 'Maple Mono CN', 'Symbols Nerd Font Mono'"
       },
       "intenseTextStyle": "all",
       "useAcrylic": true

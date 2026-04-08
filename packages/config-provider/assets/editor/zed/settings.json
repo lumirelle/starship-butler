@@ -26,13 +26,13 @@
   "show_whitespaces": "boundary",
   "colorize_brackets": true,
   // Font
-  "ui_font_family": "Geist",
+  "ui_font_family": "Recursive Sans Linear",
   "ui_font_fallbacks": [
     "Maple Mono CN",
     "Symbols Nerd Font"
   ],
   "ui_font_size": 16,
-  "buffer_font_family": "Geist Mono",
+  "buffer_font_family": "Recursive Mono Linear",
   "buffer_font_fallbacks": [
     "Maple Mono CN",
     "Symbols Nerd Font Mono"
