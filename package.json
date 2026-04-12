@@ -2,7 +2,7 @@
   "type": "module",
   "version": "4.0.0",
   "private": true,
-  "packageManager": "bun@1.3.11",
+  "packageManager": "bun@1.3.12",
   "scripts": {
     "prepare": "simple-git-hooks",
     "dev": "bunup --watch",
@@ -40,7 +40,7 @@
         "pathe": "^2.0.3",
         "rc9": "^3.0.1",
         "tinyexec": "^1.1.1",
-        "tinyglobby": "^0.2.15"
+        "tinyglobby": "^0.2.16"
       },
       "inlined": {
         "@antfu/utils": "^9.3.0"
@@ -52,35 +52,35 @@
         "typescript": "^6.0.2"
       },
       "types": {
-        "@types/bun": "^1.3.11"
+        "@types/bun": "^1.3.12"
       },
       "build": {
         "bunup": "^0.16.31"
       },
       "check": {
-        "@antfu/eslint-config": "^8.0.0",
+        "@antfu/eslint-config": "^8.1.1",
         "@arethetypeswrong/cli": "^0.18.2",
-        "@lumirelle/oxlint-config": "^0.2.1",
+        "@lumirelle/oxlint-config": "^0.2.2",
         "eslint": "^10.2.0",
-        "eslint-plugin-oxlint": "^1.58.0",
-        "knip": "^6.3.0",
-        "nano-staged": "^0.9.0",
+        "eslint-plugin-oxlint": "^1.59.0",
+        "knip": "^6.4.0",
+        "nano-staged": "^1.0.2",
         "oxlint": "^1.59.0",
         "oxlint-tsgolint": "^0.20.0",
         "publint": "^0.3.18"
       },
       "test": {
-        "vite": "^8.0.6",
+        "vite": "^8.0.8",
         "vitest-package-exports": "^1.2.0"
       },
       "docs": {
         "@iconify-json/svg-spinners": "^1.2.4",
         "@shikijs/vitepress-twoslash": "^4.0.2",
-        "@unocss/reset": "^66.6.7",
+        "@unocss/reset": "^66.6.8",
         "@vueuse/core": "^14.2.1",
         "floating-vue": "^5.2.2",
         "pinia": "^3.0.4",
-        "unocss": "^66.6.7",
+        "unocss": "^66.6.8",
         "unplugin-vue-components": "^32.0.0",
         "vite-tsconfig-paths": "^6.1.1",
         "vitepress": "^2.0.0-alpha.17",
