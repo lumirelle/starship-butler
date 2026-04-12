@@ -25,4 +25,10 @@ export interface PresetOptions extends ProcessConfigOptions {
    * @default false
    */
   all?: boolean
+  /**
+   * Whether to only list the available presets without applying them.
+   *
+   * @default false
+   */
+  list?: boolean
 }

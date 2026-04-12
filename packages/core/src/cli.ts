@@ -17,6 +17,11 @@ const cli = cac('butler')
 cli
   .command('preset', 'Let butler preset application configurations for you.')
   .option(
+    '-l, --list',
+    'List available presets without applying them.',
+    { default: false },
+  )
+  .option(
     '-i, --include <regex1,regex2,...>',
     'Presets that you want to include, accepts JavaScript regex pattern string(s). Multiple value can be specified by separating them with commas.',
   )
@@ -66,14 +71,7 @@ cli
     }
     consola.debug('[core] Received command line interface options:', cliOptions)
     consola.debug('[core] Loaded configuration options:', cfgOptions)
-    const defaultOptions: PresetOptions = {
-      mode: 'copy-paste',
-      force: false,
-      agreeToForce: false,
-      verbose: false,
-      dryRun: false,
-    }
-    const mergedOptions = defu(cliOptions, cfgOptions, defaultOptions)
+    const mergedOptions = defu(cliOptions, cfgOptions)
     consola.debug('[core] Merged options:', mergedOptions)
     if (
       mergedOptions.force
@@ -130,14 +128,7 @@ cli
     }
     consola.debug('[core] Received command line interface options:', cliOptions)
     consola.debug('[core] Loaded configuration options:', cfgOptions)
-    const defaultOptions: SetOptions = {
-      mode: 'copy-paste',
-      force: false,
-      agreeToForce: false,
-      verbose: false,
-      dryRun: false,
-    }
-    const mergedOptions = defu(cliOptions, cfgOptions, defaultOptions)
+    const mergedOptions = defu(cliOptions, cfgOptions)
     consola.debug('[core] Merged options:', mergedOptions)
     if (
       mergedOptions.force

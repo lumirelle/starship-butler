@@ -94,7 +94,7 @@ butler set --help
 
 ### Preset
 
-- [ ] List all built-in presets using `--list` flag
+- [x] List all built-in presets using `--list` flag
 - [ ] Backup before applying
 - [ ] Restore backup using `--restore` flag
 - [ ] Restore backup when uninstalling (Prompt to user whether to restore backup or not)

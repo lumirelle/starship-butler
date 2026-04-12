@@ -57,7 +57,8 @@ export async function filterActions(options: PresetOptions): Promise<Action[]> {
 
   let include = toArray(options.include)
   let exclude = toArray(options.exclude)
-  if (options.all) {
+  // If user wants to list / apply all available presets, we filter out them without regard to include and exclude options
+  if (options.all || options.list) {
     // TODO(Lumirelle): Use glob instead regex?
     include = ['.*']
     exclude = []
