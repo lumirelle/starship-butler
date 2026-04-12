@@ -1,4 +1,5 @@
 import type { Action } from '../actions/types'
+import { styleText } from 'node:util'
 import consola from 'consola'
 
 export function list(actions: Action[]): void {
@@ -8,7 +9,7 @@ export function list(actions: Action[]): void {
   else {
     consola.info('Available presets:')
     actions.forEach((action, index) => {
-      consola.info(`${index + 1}. ${action.name}`)
+      consola.info(`${index + 1}. ${styleText('green', `<${action.id}>`)} - ${action.name}`)
     })
   }
 }
