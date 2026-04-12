@@ -21,7 +21,7 @@
     "check": "bun run --parallel lint typecheck unused pubcheck",
     "test": "bun test",
     "prerelease": "bun run build && bun run --parallel check test",
-    "release": "bumpp --all --recursive --execute \"bun update --lockfile-only\" # See https://github.com/oven-sh/bun/issues/18906 and https://github.com/oven-sh/bun/issues/20477"
+    "release": "bumpp --all --recursive --execute \"bun run ./scripts/update-lockfile.sh\" # See https://github.com/oven-sh/bun/issues/18906 and https://github.com/oven-sh/bun/issues/20477"
   },
   "workspaces": {
     "packages": [
