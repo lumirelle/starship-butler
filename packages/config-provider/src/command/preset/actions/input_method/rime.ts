@@ -20,8 +20,8 @@ export const rime: ActionFactory = () => {
     prehandler: createPrehandler('destination-exist'),
     handler: createHandler([
       createConfigPathGenerator('default.custom.yaml'),
-      createConfigPathGenerator('wanxiang.custom.yaml'),
       createConfigPathGenerator('weasel.custom.yaml'),
+      createConfigPathGenerator('wanxiang.custom.yaml'),
       process.platform === 'win32' && createConfigPathGenerator('disable-ctrl_space.reg'),
     ]),
     posthandler: async ({ destination }) => {

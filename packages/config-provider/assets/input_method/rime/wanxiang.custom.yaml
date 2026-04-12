@@ -80,8 +80,45 @@ patch:
     down: 'Control+k' # 下移
     reset: 'Control+l' # 重置
     pin: 'Control+p' # 置顶
-  key_binder/bindings/+:
-    - {when: always, accept: Shift+space, send: space}
+  # 只是移除 Shift+space 的映射，因为除了全量覆盖，Rime 不支持移除某个映射
+  key_binder/bindings:
+    - {accept: 'Control+k', toggle: xxxxx, when: composing}
+    - {accept: KP_0, send: 0, when: composing}
+    - {accept: KP_1, send: 1, when: composing}
+    - {accept: KP_2, send: 2, when: composing}
+    - {accept: KP_3, send: 3, when: composing}
+    - {accept: KP_4, send: 4, when: composing}
+    - {accept: KP_5, send: 5, when: composing}
+    - {accept: KP_6, send: 6, when: composing}
+    - {accept: KP_7, send: 7, when: composing}
+    - {accept: KP_8, send: 8, when: composing}
+    - {accept: KP_9, send: 9, when: composing}
+    - {accept: KP_Decimal, send: period, when: composing}
+    - {accept: KP_Multiply, send: asterisk, when: composing}
+    - {accept: KP_Add, send: plus, when: composing}
+    - {accept: KP_Subtract, send: minus, when: composing}
+    - {accept: KP_Divide, send: slash, when: composing}
+    - {accept: KP_Enter, send: Return, when: composing}
+    - {accept: 'Release+Escape', toggle: ascii_mode, when: always}
+    - {accept: minus, send: Page_Up, when: has_menu}
+    - {accept: equal, send: Page_Down, when: has_menu}
+    - {accept: 'Control+Shift+3', toggle: ascii_punct, when: always}
+    - {accept: 'Control+Shift+numbersign', toggle: ascii_punct, when: always}
+    - {accept: 'Control+Shift+4', toggle: s2t, when: always}
+    - {accept: 'Control+Shift+dollar', toggle: s2t, when: always}
+    - {accept: 'Alt+Left', send: 'Shift+Left', when: composing}
+    - {accept: 'Alt+Right', send: 'Shift+Right', when: composing}
+    - {accept: 'Control+w', send: 'Control+BackSpace', when: composing}
+    - {accept: 'Control+e', toggle: chinese_english, when: has_menu}
+    - {accept: 'Control+a', toggle: tone_hint, when: has_menu}
+    - {accept: 'Control+s', toggle: tone_display, when: has_menu}
+    - {accept: 'Control+t', toggle: super_tips, when: has_menu}
+    - {accept: 'Control+g', toggle: charset_filter, when: has_menu}
+    - {accept: 'Control+g', toggle: charset_filter, when: composing}
+    - {accept: Tab, send: 'Control+Right', when: has_menu}
+    - {accept: Tab, send: 'Control+Right', when: composing}
+    - {accept: 'Control+Tab', send_sequence: '{Home}{Shift+Right}{1}{Shift+Right}', when: composing}
+    - {accept: /, match: ^/$, send_sequence: '{space}'}
   # 快符功能：
   # a/、单字母组合，触发预设编码自动上屏快符，支持将值设为"repeat" 以支持对应按键重复上屏功能，custom>schema>lua最终合并键值
   # 现在就支持26字母快符，结合成对符号输入，这边的压力小一些
