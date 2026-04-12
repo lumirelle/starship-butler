@@ -129,16 +129,16 @@
     "*.xaml": "$(capture).xaml.cs"
   },
   // Font
-  "custom-ui-style.font.monospace": "'Drafting* Mono', 'Maple Mono CN', 'Symbols Nerd Font Mono', monospace",
-  "custom-ui-style.font.sansSerif": "'Drafting* Mono', 'Maple Mono CN', 'Symbols Nerd Font', sans-serif",
+  "custom-ui-style.font.monospace": "'Caslon OS', 'Maple Mono CN', 'Symbols Nerd Font Mono', monospace",
+  "custom-ui-style.font.sansSerif": "'Caslon OS', 'Maple Mono CN', 'Symbols Nerd Font', sans-serif",
   "custom-ui-style.stylesheet": {
     // Font family patch for Cursor Editor
     "body": {
-      "--vscode-font-family": "'Drafting* Mono', 'Maple Mono CN', 'Symbols Nerd Font Mono', monospace"
+      "--vscode-font-family": "'Caslon OS', 'Maple Mono CN', 'Symbols Nerd Font Mono', monospace"
     }
   },
   "editor.fontFamily": "'Drafting* Mono', 'Maple Mono CN', 'Symbols Nerd Font Mono', monospace",
-  "markdown.preview.fontFamily": "'Drafting* Mono', 'Maple Mono CN', 'Symbols Nerd Font', monospace",
+  "markdown.preview.fontFamily": "'Caslon OS', 'Maple Mono CN', 'Symbols Nerd Font', monospace",
   "editor.fontSize": 16,
   "terminal.integrated.fontSize": 14,
   "markdown.preview.fontSize": 14,

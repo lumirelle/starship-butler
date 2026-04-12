@@ -5,7 +5,7 @@
 local opt = vim.opt
 
 opt.wrap = true
-opt.guifont = { "Drafting* Mono", "Maple Mono CN", "Symbols Nerd Font" }
+opt.guifont = { "Caslon OS", "Maple Mono CN", "Symbols Nerd Font" }
 opt.startofline = true
 
 if vim.fn.executable("nu") == 1 then

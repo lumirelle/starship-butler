@@ -26,7 +26,7 @@
   "show_whitespaces": "boundary",
   "colorize_brackets": true,
   // Font
-  "ui_font_family": "Drafting* Mono",
+  "ui_font_family": "Caslon OS",
   "ui_font_fallbacks": [
     "Maple Mono CN",
     "Symbols Nerd Font"
