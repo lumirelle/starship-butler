@@ -70,8 +70,8 @@
         "publint": "^0.3.18"
       },
       "test": {
-        "vite": "^8.0.8",
-        "vitest-package-exports": "^1.2.0"
+        "tsnapi": "^0.1.2",
+        "vite": "^8.0.8"
       },
       "docs": {
         "@iconify-json/svg-spinners": "^1.2.4",
@@ -105,9 +105,9 @@
     "oxlint-tsgolint": "catalog:check",
     "publint": "catalog:check",
     "simple-git-hooks": "catalog:dev",
+    "tsnapi": "catalog:test",
     "typescript": "catalog:dev",
-    "vite": "catalog:test",
-    "vitest-package-exports": "catalog:test"
+    "vite": "catalog:test"
   },
   "overrides": {
     "typescript": "$typescript",

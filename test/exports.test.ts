@@ -1,47 +1,55 @@
-import { Glob, YAML } from 'bun'
+import { Glob } from 'bun'
 import { describe, expect, it } from 'bun:test'
+import { existsSync } from 'node:fs'
 import { dirname, join } from 'node:path'
-import { getPackageExportsManifest } from 'vitest-package-exports'
+import { generateApiSnapshot } from 'tsnapi'
 import { workspaces } from '../package.json'
 
 interface PkgJson {
   name?: string
   private?: boolean
+  exports?: Record<string, unknown>
 }
-type PkgInfo = [pkgName: string, pkgPath: string][]
-async function collectPackages(): Promise<PkgInfo> {
-  const pkgs: PkgInfo = []
+type TestCase = [pkgName: string, pkgRoot: string, pkgEntry: string][]
+/** Generate test cases from all entries of all packages in the workspace */
+async function genTestCases(): Promise<TestCase> {
+  const entries: TestCase = []
   /**
    * FIXME: If `bun` support command like `pnpm ls --only-projects`, we may no longer need this, see https://github.com/oven-sh/bun/issues/25114
    */
   for (const pkgPattern of workspaces.packages) {
     const glob = new Glob(`${pkgPattern}/package.json`)
-    for await (const pkgJsonPath of glob.scan({ cwd: join(import.meta.dir, '..'), absolute: true })) {
+    for await (const pkgJsonPath of glob.scan({ absolute: true })) {
       const pkgJson: PkgJson = await import(pkgJsonPath).then(m => m.default)
-      if (!pkgJson.name || pkgJson.private)
+      const pkgName = pkgJson.name
+      if (!pkgName || pkgJson.private || !pkgJson.exports)
         continue
-      pkgs.push([pkgJson.name, dirname(pkgJsonPath)])
+      const pkgRoot = dirname(pkgJsonPath)
+      const pkgEntries = Object.keys(pkgJson.exports).filter(key => !key.endsWith('.json'))
+      for (const pkgEntry of pkgEntries) {
+        entries.push([pkgName, pkgRoot, pkgEntry])
+      }
     }
   }
-  return pkgs
+  return entries
 }
-const pkgs = await collectPackages()
 
-describe('exports-snapshot', () => {
-  it.each(pkgs)('%s', async (_, pkgPath) => {
-    const manifest = await getPackageExportsManifest({
-      importMode: 'src',
-      cwd: pkgPath,
-      resolveSourcePath: (element: any) => {
-        let dist = ''
-        if (typeof element === 'object')
-          dist = element.default || element.require || element.import || ''
-        else
-          dist = element
-        return dist.replace('dist', 'src').replace(/\.[mc]?js$/, '')
-      },
-    })
-    // TODO: Workaround. Bun currently does not support file snapshot like Vitest, see https://github.com/oven-sh/bun/issues/13096
-    expect(YAML.stringify(manifest.exports, null, 2)).toMatchSnapshot()
+const testCases = await genTestCases()
+
+describe.each(testCases)('exports-snapshot/%s', (pkgName, pkgRoot, pkgEntry) => {
+  const isDistExists = existsSync(join(pkgRoot, 'dist'))
+
+  it(`${pkgName} - dist should exist`, () => {
+    expect(isDistExists, 'dist directory does not exist, please run `bun run build` first').toBe(true)
+  })
+
+  it.if(isDistExists)(`${pkgName}/${pkgEntry}/runtime`, () => {
+    const api = generateApiSnapshot(pkgRoot)
+    expect(api[pkgEntry]!.runtime).toMatchSnapshot()
+  })
+
+  it.if(isDistExists)(`${pkgName}/${pkgEntry}/dts`, () => {
+    const api = generateApiSnapshot(pkgRoot)
+    expect(api[pkgEntry]!.dts).toMatchSnapshot()
   })
 })
