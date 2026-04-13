@@ -1,4 +1,8 @@
 /**
+ * FIXME(Lumirelle): Move this test to standlone repo.
+ */
+
+/**
  * @file A test file to compare the behavior of spying on module members and mocking the whole module.
  * @summary The simplest way is to use spy instead of mocking the whole module. If you still want to mock modules, you have to store a copy of the original implementation before you do the mocking, then re-mock it with this copy to restore to the original one, and the limitation is: it can only works synchronously.
  * @see https://github.com/oven-sh/bun/issues/7823
