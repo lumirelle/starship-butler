@@ -109,6 +109,7 @@ defu
 butlerrc
 vite
 twemoji
+primevue
 
 # DEV: JAVA
 graalvm
