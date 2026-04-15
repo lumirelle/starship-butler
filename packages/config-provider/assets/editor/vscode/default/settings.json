@@ -287,6 +287,8 @@
   "explorer.autoOpenDroppedFile": false,
   "explorer.confirmDelete": false,
   "explorer.confirmDragAndDrop": false,
+  "explorer.copyPathSeparator": "/",
+  "explorer.copyRelativePathSeparator": "/",
   // Search
   "search.showLineNumbers": true,
   "search.exclude": {
