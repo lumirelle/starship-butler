@@ -62,15 +62,15 @@
         "@arethetypeswrong/cli": "^0.18.2",
         "@lumirelle/oxlint-config": "^0.2.2",
         "eslint": "^10.2.0",
-        "eslint-plugin-oxlint": "^1.59.0",
+        "eslint-plugin-oxlint": "^1.60.0",
         "knip": "^6.4.1",
         "nano-staged": "^1.0.2",
         "oxlint": "^1.60.0",
-        "oxlint-tsgolint": "^0.20.0",
+        "oxlint-tsgolint": "^0.21.0",
         "publint": "^0.3.18"
       },
       "test": {
-        "tsnapi": "^0.1.2",
+        "tsnapi": "^0.2.0",
         "vite": "^8.0.8"
       },
       "docs": {
@@ -84,7 +84,7 @@
         "unplugin-vue-components": "^32.0.0",
         "vite-tsconfig-paths": "^6.1.1",
         "vitepress": "^2.0.0-alpha.17",
-        "vitepress-plugin-group-icons": "^1.7.3"
+        "vitepress-plugin-group-icons": "^1.7.5"
       }
     }
   },
