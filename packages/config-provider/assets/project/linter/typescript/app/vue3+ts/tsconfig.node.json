@@ -2,9 +2,9 @@
   "extends": "@lumirelle/tsconfig/ts",
   "compilerOptions": {
     "tsBuildInfoFile": "./node_modules/.tmp/tsconfig.node.tsbuildinfo",
-    // Include types you need, if you are using Node.js, please replace "bun" with "node".
-    "types": ["bun"],
-    // Allow checking JavaScript files
+    // Include types you need, if you are using Node.js, please replace "bun-types" with "node".
+    "types": ["bun-types"],
+    // Allow importing JavaScript files
     "allowJs": true
   },
   // Only include your project's scripts & config files who are expected to run / used in the Node.js environment.
