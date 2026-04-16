@@ -245,9 +245,11 @@ uc = uncommit
 commit-work-in-progress = "!git commitx-with-message chore 'wip'"
 cwip = commit-work-in-progress
 commit-readme = "!git commitx-with-message docs 'update README.md'"
-crdm = commit-readme
+creadme = commit-readme
 commit-dependencies = "!git commitx-with-message chore 'update dependencies'"
 cdep = commit-dependencies
+commit-snapshots = "!git commitx-with-message test 'update snapshots'"
+csnap = commit-snapshots
 # @aliasGroup Work with Branches
 b = branch
 # @alias Branch Delete
