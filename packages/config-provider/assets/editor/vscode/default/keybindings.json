@@ -26,6 +26,12 @@
     "command": "workbench.action.closeWindow",
     "when": "!editorFocus && !inputFocus && !terminalFocus"
   },
+  // Workbench
+  {
+    "key": "space z",
+    "command": "workbench.action.toggleZenMode",
+    "when": "!editorFocus && !inputFocus && !terminalFocus"
+  },
   // Sidebar
   {
     "key": "ctrl+b",

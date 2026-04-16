@@ -100,6 +100,10 @@ map({ "n", "x" }, "<leader>r", function()
   end)
 end, { desc = "Rename Symbol" })
 -- View
+-- Workbench
+map({ "n", "x" }, "<leader>z", function()
+  vscode.action("workbench.action.toggleZenMode")
+end, { desc = "Toggle Zen Mode" })
 -- Primary Sidebar
 -- Cannot detect whether the primary sidebar is visible or not, so we just toggle it.
 map({ "n", "x" }, "<leader>e", function()
