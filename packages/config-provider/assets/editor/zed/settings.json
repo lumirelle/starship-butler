@@ -2,9 +2,6 @@
 {
   // #region UI
   // Theme
-  "code_actions_on_format": {
-    "source.fixAll.oxc": true
-  },
   "theme": {
     "mode": "system",
     "light": "Vitesse Light",
@@ -58,6 +55,9 @@
   },
   // Vim Mode
   "vim_mode": true,
+  "which_key": {
+    "enabled": true
+  },
   // File Associations
   "file_types": {
     "env": [
@@ -84,7 +84,7 @@
 
   // #region Code Quality
   "formatter": [
-    { "language_server": { "name": "oxlint" } }
+    { "language_server": { "name": "oxfmt" } }
   ],
   "format_on_save": "on"
   // #endregion

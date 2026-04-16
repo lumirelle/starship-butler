@@ -9,7 +9,11 @@
 
     // #region Language Support
     "editorconfig",
+    "xml",
     "html",
+    "toml",
+    "scss",
+    "less",
     "vue",
     "zig",
     // #endregion

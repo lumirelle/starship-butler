@@ -1,45 +1,60 @@
 {
-  // Editor Code Actions on Save
+  // Code Quality
+  "formatter": [],
+  "prettier": { "allowed": false },
   "code_actions_on_format": {
+    "source.fixAll.oxc": true,
     "source.fixAll.eslint": true,
     "source.organizeImports": false
   },
-
-  // Formatter & Linter
-  "formatter": [],
-  "prettier": { "allowed": false },
   "lsp": {
     "eslint": {
       "settings": {
         "runtime": "bun",
-        "execArgv": ["-b"],
-        "validate": [
-          "javascript",
-          "javascriptreact",
-          "typescript",
-          "typescriptreact",
-          "vue",
-          "html",
-          "markdown",
-          "json",
-          "jsonc",
-          "yaml",
-          "toml",
-          "xml"
-        ],
-        "rulesCustomizations": [
-          { "rule": "style/*", "severity": "off" },
-          { "rule": "format/*", "severity": "off" },
-          { "rule": "*-indent", "severity": "off" },
-          { "rule": "*-spacing", "severity": "off" },
-          { "rule": "*-spaces", "severity": "off" },
-          { "rule": "*-order", "severity": "off" },
-          { "rule": "*-dangle", "severity": "off" },
-          { "rule": "*-newline", "severity": "off" },
-          { "rule": "*quotes", "severity": "off" },
-          { "rule": "*semi", "severity": "off" }
-        ]
+        "execArgv": ["-b"]
       }
+    }
+  },
+
+  // File associations
+  "file_types": {
+    "JSONC": ["**/*.json"]
+  },
+
+  // Language specific
+  "languages": {
+    "HTML": {
+      "language_servers": ["eslint", "..."]
+    },
+    "Markdown": {
+      "language_servers": ["eslint", "..."]
+    },
+    "JSON": {
+      "language_servers": ["eslint", "..."]
+    },
+    "JSONC": {
+      "language_servers": ["eslint", "..."]
+    },
+    "YAML": {
+      "language_servers": ["eslint", "..."]
+    },
+    "TOML": {
+      "language_servers": ["eslint", "..."]
+    },
+    "XML": {
+      "language_servers": ["eslint", "..."]
+    },
+    "CSS": {
+      "language_servers": ["eslint", "..."]
+    },
+    "SCSS": {
+      "language_servers": ["eslint", "..."]
+    },
+    "SASS": {
+      "language_servers": ["eslint", "..."]
+    },
+    "LESS": {
+      "language_servers": ["eslint", "..."]
     }
   }
 }
