@@ -8,5 +8,6 @@
     "allowJs": true
   },
   // Only include your project's script files & config files who are expected to run without `isolatedDeclarations`.
-  "include": ["scripts/**/*", "*.config.js", "*.config.ts"]
+  // Also root test cases which does not belong to any package.
+  "include": ["scripts/**/*", "test/**/*", "*.config.js", "*.config.ts"]
 }
