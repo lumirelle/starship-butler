@@ -110,6 +110,7 @@ butlerrc
 vite
 twemoji
 primevue
+tsnapi
 
 # DEV: JAVA
 graalvm
