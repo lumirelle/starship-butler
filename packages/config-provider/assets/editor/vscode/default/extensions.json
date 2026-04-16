@@ -42,7 +42,6 @@
     "zjffun.snippetsmanager",
     // AI
     "coderabbit.coderabbit-vscode", // AI Code Reviewer
-    "github.copilot-chat", // VSCode only
     // Git
     "waydotnet.minimal-git-file-history",
     "codezombiech.gitignore",
@@ -57,7 +56,6 @@
     "remcohaszing.schemastore",
     "redhat.vscode-yaml",
     "tamasfe.even-better-toml",
-    "somewhatstationery.some-sass",
     "thenuprojectcontributors.vscode-nushell-lang",
     // #endregion
 
@@ -69,6 +67,6 @@
     // #endregion
   ]
   // Extension Count
-  // VSCODE: 39
-  // CURSOR: $VSCODE - 1 = 38
+  // VSCODE: 37
+  // CURSOR: 37
 }

@@ -39,14 +39,13 @@ const PROFILES: Profiles = {
   Default: {
     count: {
       VSCODE: defaultRecommendations.length,
-      CURSOR: defaultRecommendations.length - 1,
+      CURSOR: defaultRecommendations.length,
     },
     source: join(import.meta.dir, '../packages/config-provider/assets/editor/vscode/default/extensions.json'),
     replacer: (profiles) => {
       const countByApp = profiles.Default.count
       return (_, app) => {
-        const count = app === 'VSCODE' ? countByApp[app] : `$VSCODE - 1 = ${countByApp[app]}`
-        return `  // ${app}: ${count}\n`
+        return `  // ${app}: ${countByApp[app]}\n`
       }
     },
   },
