@@ -111,6 +111,8 @@ vite
 twemoji
 primevue
 tsnapi
+unhead
+scroller
 
 # DEV: JAVA
 graalvm
