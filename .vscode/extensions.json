@@ -1,72 +1,10 @@
-// cspell:disable
 {
+  // cspell:disable
   "recommendations": [
-    // #region UI
-    // Theme
-    "antfu.theme-vitesse",
-    "antfu.icons-carbon",
-    "catppuccin.catppuccin-vsc-icons",
-    // File Nesting
-    "antfu.file-nesting",
-    // Highlight
-    "jgclark.vscode-todo-highlight",
-    "ibm.output-colorizer",
-    // Markdown Preview
-    "bierner.markdown-checkbox",
-    "bierner.markdown-emoji",
-    "bierner.markdown-footnotes",
-    "bierner.markdown-preview-github-styles",
-    "bierner.markdown-yaml-preamble",
-    // Custom
-    "subframe7536.custom-ui-style",
-    // #endregion
-
-    // #region Lens & Hint
-    // Lens
-    "johnpapa.read-time",
-    "mkxml.vscode-filesize",
-    "usernamehw.errorlens",
-    // #endregion
-
-    // #region Behavior
-    // Open & Edit
-    "sandcastle.vscode-open",
-    "ms-vscode.hexeditor",
-    "asvetliakov.vscode-neovim",
-    "cardinal90.multi-cursor-case-preserve",
-    // Rename
-    "jannisx11.batch-rename-extension",
-    // Format
-    "tombonnike.vscode-status-bar-format-toggle",
-    // Snippet
-    "zjffun.snippetsmanager",
-    // AI
-    "coderabbit.coderabbit-vscode", // AI Code Reviewer
-    // Git
-    "waydotnet.minimal-git-file-history",
-    "codezombiech.gitignore",
-    "github.vscode-github-actions",
-    "gitHub.vscode-pull-request-github",
-    // Dev Container
-    "ms-azuretools.vscode-containers",
-    // #endregion
-
-    // #region Language Support
-    "yzhang.markdown-all-in-one",
-    "remcohaszing.schemastore",
-    "redhat.vscode-yaml",
-    "tamasfe.even-better-toml",
-    "thenuprojectcontributors.vscode-nushell-lang",
-    // #endregion
-
-    // #region Code Quality
-    "oxc.oxc-vscode",
     "editorconfig.editorconfig",
-    "lumirelle.shell-format-rev",
-    "streetsidesoftware.code-spell-checker"
-    // #endregion
+    "oven.bun-vscode",
+    "oxc.oxc-vscode",
+    "dbaeumer.vscode-eslint",
+    "antfu.pnpm-catalog-lens"
   ]
-  // Extension Count
-  // VSCODE: 37
-  // CURSOR: 37
 }
