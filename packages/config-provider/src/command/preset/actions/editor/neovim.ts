@@ -24,7 +24,7 @@ export const neovim: ActionFactory = () => {
     prehandler: ({ destination: targetFolder, name }) => {
       // FIXME(Lumirelle): Better prehandler?
       if (!isPathExist([targetFolder, join(targetFolder, 'lazyvim.json')])) {
-        throw new HandlerError(`You should install ${name} and LazyVim first!`)
+        throw new HandlerError(`You should install and open ${name} and LazyVim one time first!`)
       }
       const luaConfigDir = join(targetFolder, 'lua', 'config')
       if (!ensureDirectoryExist(luaConfigDir)) {

@@ -24,7 +24,7 @@ export const vscode: ActionFactory = () => {
     prehandler: ({ destination, name }) => {
       // FIXME(Lumirelle): Better prehandler?
       if (!isPathExist(destination))
-        throw new HandlerError(`You should install ${name} first!`)
+        throw new HandlerError(`You should install and open ${name} one time first!`)
       const snippetsFolder = join(destination, 'snippets')
       if (!ensureDirectoryExist(snippetsFolder))
         throw new HandlerError(`Failed to create snippets directory ${snippetsFolder} for ${name}!`)

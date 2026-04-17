@@ -63,7 +63,7 @@ export function createPrehandler(type: 'destination-exist' | 'env-exist', option
   if (type === 'destination-exist') {
     return async ({ destination, name }) => {
       if (!isPathExist(destination))
-        throw new Error(`Destination path ${destination} does not exist. You may need to install ${name} first!`)
+        throw new Error(`Destination path ${destination} does not exist. You may need to install and ${name} one time first!`)
     }
   }
   else if (type === 'env-exist' && options?.executable) {
