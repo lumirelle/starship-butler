@@ -1,3 +1,4 @@
+# # REAL WORLD # #
 # PEOPLE
 Lumirelle
 shabbyacc
@@ -5,65 +6,60 @@ antfu
 sxzz
 gerardog
 codezombiech
-
 # ANIMALS
 Loong
 Merlion
-
-# THINGS
-qrcode
-
-# HARDWARES
+# COMPANIES & BRANDS & THIRD PARTY PLATFORMS
 Aigo
+iconfont
+aliyun
+opencollective
+ITELLYOU
+taobao
+Gitee
+Bilibili
 
-# OS: WINDOWS
+# # COMPUTER WORLD # #
+# FONTS
+monaspace
+unhinted
+Adwaita
+Inconsolata
+Iosevka
+# WINDOWS
 LTSC
 LOCALAPPDATA
 setx
-
-# FONTS
-monaspace
-Inconsolata
-Iosevka
-unhinted
-Adwaita
-
-# SHELLS & TERMINALS
+# TERMINALS & SHELLS
 pwsh
-
-# TOOLS
-winget
+# SOFTWARES
 Ventoy
 DISM++
-gsudo
+Huorong
+winget
+ibus
+wanxiang
 NanaZip
+Weixin
+gsudo
+Navicat
+MSVC
+Svgl
+# GAMES
+Honkai
+Bronya
+# VIM
 nvim
 noremap
 startofline
 cmdheight
-Navicat
-Huorong
-Weixin
-MSVC
-Svgl
-ibus
-wanxiang
-
-# GAMES
-Honkai
-Bronya
-
-# DEV: COMMON
-breakline
-amde
-
-# DEV: BASH
+# BASH ECOSYSTEM
 elif
 esac
 punct
 xdigit
-
-# DEV: JS
+# JS ECOSYSTEM
+npmx
 jquery
 vueuse
 nuxt
@@ -113,8 +109,7 @@ primevue
 tsnapi
 unhead
 scroller
-
-# DEV: JAVA
+# JAVA ECOSYSTEM
 graalvm
 javax
 projectlombok
@@ -126,12 +121,11 @@ thymeleaf
 pagehelper
 fastjson
 webapps
+# MISC
+qrcode
+breakline
+amde
 
-# THIRD PARTY PLATFORMS
-iconfont
-aliyun
-opencollective
-ITELLYOU
-taobao
-Gitee
-Bilibili
+# # BROWSERS # #
+# EXTENSIONS
+Vimium
