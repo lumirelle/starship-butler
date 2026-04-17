@@ -36,8 +36,7 @@ export const vscode: ActionFactory = () => {
       createConfigPathGenerator('comment.code-snippets', join('snippets', 'comment.code-snippets')),
     ]),
     posthandler: () => {
-      consola.info('This configuration is meant to be used by `Visual Studio Code` installed in user scope and default path.')
-      consola.info('It uses with many opinionated preset: custom fonts, `Neovim` extension, `podman` integration, etc.')
+      consola.info('This configuration uses with many opinionated preset: custom fonts, `Neovim` extension, `podman` integration, etc.')
     },
   }
 }

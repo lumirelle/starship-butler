@@ -1,5 +1,4 @@
 import type { ActionFactory } from '../types'
-import { consola } from 'consola'
 import { join } from 'pathe'
 import { appdata, homedir } from 'starship-butler-utils/path'
 import { createConfigPathGenerator, createDestinationHandler, createHandler, createPrehandler } from '../utils'
@@ -19,8 +18,5 @@ export const zed: ActionFactory = () => {
       createConfigPathGenerator('settings.json'),
       createConfigPathGenerator('keymap.json'),
     ]),
-    posthandler: () => {
-      consola.info('This configuration is meant to be used by `Zed` installed in user scope and default path.')
-    },
   }
 }
