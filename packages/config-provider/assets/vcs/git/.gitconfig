@@ -59,8 +59,7 @@ decoration = short
 [alias]
 # @aliasGroup User Info
 me = "!f() { \
-  echo Username: $(git config get user.name); \
-  echo Email: $(git config get user.email); \
+  echo \"Local identity for $(basename $PWD) is set to \\\"$(git config get user.name) <$(git config get user.email)>\\\".\"; \
 }; f"
 iam = "!f() { \
   arg_help=false; \
@@ -88,6 +87,7 @@ iam = "!f() { \
   \
   git config set user.name \"$1\"; \
   git config set user.email \"$2\"; \
+  echo \"Local identity for $(basename $PWD) set to \\\"$1 <$2>\\\".\"; \
 }; f"
 # @aliasGroup Discard
 # @alias Discard
