@@ -82,10 +82,6 @@ describe('actions', () => {
           "name": "VSCode",
         },
         {
-          "id": "cursor",
-          "name": "Cursor",
-        },
-        {
           "id": "zed",
           "name": "Zed",
         },
@@ -159,10 +155,6 @@ describe('actions', () => {
           "name": "VSCode",
         },
         {
-          "id": "cursor",
-          "name": "Cursor",
-        },
-        {
           "id": "zed",
           "name": "Zed",
         },
@@ -231,10 +223,6 @@ describe('actions', () => {
         {
           "id": "vscode",
           "name": "VSCode",
-        },
-        {
-          "id": "cursor",
-          "name": "Cursor",
         },
         {
           "id": "zed",
