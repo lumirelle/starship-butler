@@ -263,7 +263,7 @@ branch-delete = "!f() { \
   arg_help=false; \
   arg_range=local; \
   arg_force=false; \
-  branch_name=""; \
+  branches=(); \
   \
   for arg in \"$@\"; do \
     case \"$arg\" in \
@@ -271,12 +271,12 @@ branch-delete = "!f() { \
       -o|--origin) arg_range=origin ;; \
       -a|--all) arg_range=all ;; \
       -f|--force) arg_force=true ;; \
-      *) branch_name=\"$arg\" ;; \
+      *) branches+=(\"$arg\") ;; \
     esac; \
   done; \
   \
   if \"$arg_help\"; then \
-    echo 'Usage: git branch-delete [options] <branch-name>'; \
+    echo 'Usage: git branch-delete [options] <branch-name...>'; \
     echo 'Options:'; \
     echo '  -o, --origin    Delete the branch from origin remote only.'; \
     echo '  -a, --all       Delete the branch from both local and origin remote.'; \
@@ -284,27 +284,29 @@ branch-delete = "!f() { \
     return 0; \
   fi; \
   \
-  if [[ -z \"$branch_name\" ]]; then \
+  if [[ ${#branches[@]} -eq 0 ]]; then \
     echo 'Please provide a branch name to delete.'; \
     return 1; \
   fi; \
   \
-  if [[ \"$arg_range\" == all ]]; then \
-    if [[ \"$arg_force\" == true ]]; then \
-      git branch --delete --force \"$branch_name\"; \
+  for branch_name in \"${branches[@]}\"; do \
+    if [[ \"$arg_range\" == all ]]; then \
+      if [[ \"$arg_force\" == true ]]; then \
+        git branch --delete --force \"$branch_name\"; \
+      else \
+        git branch --delete \"$branch_name\"; \
+      fi; \
+      git push origin \":refs/heads/$branch_name\"; \
+    elif [[ \"$arg_range\" == origin ]]; then \
+      git push origin \":refs/heads/$branch_name\"; \
     else \
-      git branch --delete \"$branch_name\"; \
+      if [[ \"$arg_force\" == true ]]; then \
+        git branch --delete --force \"$branch_name\"; \
+      else \
+        git branch --delete \"$branch_name\"; \
+      fi; \
     fi; \
-    git push origin \":refs/heads/$branch_name\"; \
-  elif [[ \"$arg_range\" == origin ]]; then \
-    git push origin \":refs/heads/$branch_name\"; \
-  else \
-    if [[ \"$arg_force\" == true ]]; then \
-      git branch --delete --force \"$branch_name\"; \
-    else \
-      git branch --delete \"$branch_name\"; \
-    fi; \
-  fi; \
+  done; \
 }; f"
 bx = branch-delete
 # @aliasGroup Stash
@@ -380,93 +382,225 @@ mergex = "!f() { \
   fi; \
 }; f"
 m = mergex
-mz = mergex --abort
-mc = mergex --continue
 # @aliasGroup Rebase
-n = rebase
-nz = rebase --abort
-nc = rebase --continue
+rebasex = "!f() { \
+  arg_help=false; \
+  arg_command=\"rebase\"; \
+  rebase_branch=\"\"; \
+  \
+  for arg in \"$@\"; do \
+    case \"$arg\" in \
+      -\\?|--\\?) arg_help=true ;; \
+      -z|--abort) arg_command=\"rebase --abort\" ;; \
+      -c|--continue) arg_command=\"rebase --continue\" ;; \
+      *) rebase_branch=\"$arg\" ;; \
+    esac; \
+  done; \
+  \
+  if \"$arg_help\"; then \
+    echo 'Usage: git rebasex [<options>] [<commit>]'; \
+    echo '   Or: git rebasex --abort'; \
+    echo '   Or: git rebasex --continue'; \
+    echo 'Options:'; \
+    echo '  -z, --abort     Abort the rebase operation.'; \
+    echo '  -c, --continue  Continue the rebase operation.'; \
+    echo '  ... See `git rebase --help` for more options.'; \
+    return 0; \
+  fi; \
+  \
+  if [[ \"$arg_command\" == \"rebase\" ]]; then \
+    git $arg_command \"${values[@]}\"; \
+  else \
+    git $arg_command; \
+  fi; \
+}; f"
+n = rebasex
 # @aliasGroup Reset
 rs = reset
 # @aliasGroup Revert
-rv = revert
-rvz = revert --abort
-rvc = revert --continue
-# @aliasGroup Cherry-pick
-cp = cherry-pick
-cpz = cherry-pick --abort
-cpc = cherry-pick --continue
-# @aliasGroup Tag
-tagx = "!f() { \
-  declare -i arg_count=0; \
-  declare -i value_count=0; \
+revertx = "!f() { \
+  arg_help=false; \
+  arg_command=\"revert\"; \
+  values=(); \
   \
   for arg in \"$@\"; do \
-    if [[ \"$arg\" =~ ^-.* ]]; then \
-      arg_count=arg_count+1; \
-    else \
-      value_count=value_count+1; \
-    fi; \
+    case \"$arg\" in \
+      -\\?|--\\?) arg_help=true ;; \
+      -z|--abort) arg_command=\"revert --abort\" ;; \
+      -c|--continue) arg_command=\"revert --continue\" ;; \
+      *) values+=(\"$arg\") ;; \
+    esac; \
   done; \
   \
+  if \"$arg_help\"; then \
+    echo 'Usage: git revertx [<options>] [<commit>]'; \
+    echo '   Or: git revertx --abort'; \
+    echo '   Or: git revertx --continue'; \
+    echo 'Options:'; \
+    echo '  -z, --abort     Abort the revert operation.'; \
+    echo '  -c, --continue  Continue the revert operation.'; \
+    echo '  ... See `git revert --help` for more options.'; \
+    return 0; \
+  fi; \
+  \
+  if [[ \"$arg_command\" == \"revert\" ]]; then \
+    git $arg_command \"${values[@]}\"; \
+  else \
+    git $arg_command; \
+  fi; \
+}; f"
+rv = revertx
+# @aliasGroup Cherry-pick
+cherry-pickx = "!f() { \
+  arg_help=false; \
+  arg_command=\"cherry-pick\"; \
+  values=(); \
+  \
+  for arg in \"$@\"; do \
+    case \"$arg\" in \
+      -\\?|--\\?) arg_help=true ;; \
+      -z|--abort) arg_command=\"cherry-pick --abort\" ;; \
+      -c|--continue) arg_command=\"cherry-pick --continue\" ;; \
+      *) values+=(\"$arg\") ;; \
+    esac; \
+  done; \
+  \
+  if \"$arg_help\"; then \
+    echo 'Usage: git cherry-pickx [<options>] [<commit>]'; \
+    echo '   Or: git cherry-pickx --abort'; \
+    echo '   Or: git cherry-pickx --continue'; \
+    echo 'Options:'; \
+    echo '  -z, --abort     Abort the cherry-pick operation.'; \
+    echo '  -c, --continue  Continue the cherry-pick operation.'; \
+    echo '  ... See `git cherry-pick --help` for more options.'; \
+    return 0; \
+  fi; \
+  \
+  if [[ \"$arg_command\" == \"cherry-pick\" ]]; then \
+    git $arg_command \"${values[@]}\"; \
+  else \
+    git $arg_command; \
+  fi; \
+}; f"
+cp = cherry-pickx
+# @aliasGroup Tag
+tagx = "!f() { \
+  arg_help=false; \
+  declare -i arg_count=0; \
+  values=(); \
+  \
+  for arg in \"$@\"; do \
+    case \"$arg\" in \
+      -\\?|--\\?) arg_help=true ;; \
+      -a|--annotate|-m|--message) arg_count=arg_count+1 ;; \
+      -*|--*) arg_count=arg_count+1; values+=(\"$arg\") ;; \
+      *) values+=(\"$arg\") ;; \
+    esac; \
+  done; \
+  \
+  if \"$arg_help\"; then \
+    echo 'Usage: git tagx [options] <tag-name> [<tag-message>]'; \
+    echo 'Options:'; \
+    echo '  ... See `git tag --help` for more options.'; \
+    return 0; \
+  fi; \
+  \
   if [[ \"$arg_count\" -eq 0 ]]; then \
-    if [[ \"value_count\" -ge 2 ]]; then \
-      git tag --annotate \"$1\" --message \"$2\"; \
-    elif [[ \"value_count\" -ge 1 ]]; then  \
-      git tag --annotate \"$1\" --message \"$1\"; \
+    if [[ ${#values[@]} -ge 2 ]]; then \
+      git tag --annotate \"${values[0]}\" --message \"${values[@]}\"; \
+    elif [[ ${#values[@]} -eq 1 ]]; then  \
+      git tag --annotate \"${values[0]}\" --message \"${values[0]}\"; \
     fi; \
   else \
-    git tag \"$@\"; \
+    git tag \"${values[@]}\"; \
   fi; \
 }; f"
 t = tagx
 tag-delete = "!f() { \
+  arg_help=false; \
   arg_range=local; \
-  tag_name=""; \
+  tags=(); \
   \
   for arg in \"$@\"; do \
     case $arg in \
+      -\\?|--\\?) arg_help=true ;; \
       -o|--origin) arg_range=origin ;; \
       -a|--all) arg_range=all ;; \
-      *) tag_name=\"$arg\" ;; \
+      *) tags+=(\"$arg\") ;; \
     esac; \
   done; \
   \
-  if [[ -z \"$tag_name\" ]]; then \
+  if \"$arg_help\"; then \
+    echo 'Usage: git tag-delete [options] <tag-name>'; \
+    echo '   Or: git tag-delete --origin <tag-name>'; \
+    echo '   Or: git tag-delete --all <tag-name>'; \
+    echo 'Options:'; \
+    echo '  -o, --origin    Delete the tag from origin remote only.'; \
+    echo '  -a, --all       Delete the tag from both local and origin remote.'; \
+    return 0; \
+  fi; \
+  \
+  if [[ ${#tags[@]} -eq 0 ]]; then \
     echo 'Please provide a tag name to delete.'; \
     return 1; \
   fi; \
   \
-  if [ \"$arg_range\" == all ]; then \
-    git tag --delete \"$tag_name\"; \
-    git push origin \":refs/tags/$tag_name\"; \
-  elif [ \"$arg_range\" == origin ]; then \
-    git push origin \":refs/tags/$tag_name\"; \
-  else \
-    git tag --delete \"$tag_name\"; \
-  fi; \
+  for tag_name in \"${tags[@]}\"; do \
+    if [[ \"$arg_range\" == "all" ]]; then \
+      git tag --delete \"$tag_name\"; \
+      git push origin \":refs/tags/$tag_name\"; \
+    elif [[ \"$arg_range\" == "origin" ]]; then \
+      git push origin \":refs/tags/$tag_name\"; \
+    else \
+      git tag --delete \"$tag_name\"; \
+    fi; \
+  done; \
 }; f"
 tx = tag-delete
 # @aliasGroup Remote
-r = remote
-remote-new = "!f() { \
-  if [ -z \"$2\" ]; then \
-    git remote add origin \"$1\"; \
+remotex = "!f() { \
+  arg_help=false; \
+  subcommand=\"\"; \
+  values=(); \
+  \
+  for arg in \"$@\"; do \
+    case $arg in \
+      -\\?|--\\?) arg_help=true ;; \
+      -a|--add) subcommand=\"add\" ;; \
+      -x|--remove) subcommand=\"remove\" ;; \
+      *) values+=(\"$arg\") ;; \
+    esac; \
+  done; \
+  \
+  if \"$arg_help\"; then \
+    echo 'Usage: git remotex [subcommand] [options]'; \
+    echo '   Or: git remotex --add [remote-name:-origin] <remote-url>'; \
+    echo '   Or: git remotex --remove <remote-name>'; \
+    echo 'Options:'; \
+    echo '  -a, --add       Add a new remote.'; \
+    echo '  -x, --remove    Remove a remote.'; \
+    return 0; \
+  fi; \
+  \
+  if [[ \"$subcommand\" == "add" ]]; then \
+    if [[ ${#values[@]} -eq 1 ]]; then \
+      git remote add origin \"${values[0]}\"; \
+    else \
+      git remote add \"${values[@]}\"; \
+    fi; \
+  elif [[ \"$subcommand\" == "remove" ]]; then \
+    git remote remove \"${values[@]}\"; \
   else \
-    git remote add \"$1\" \"$2\"; \
+    git remote \"$@\"; \
   fi; \
 }; f"
-rn = remote-new
-remote-remove = remote remove
-rx = remote-remove
+r = remotex
 # @aliasGroup Fetch
 f = fetch
 # @aliasGroup Pull
 l = pull
 # @aliasGroup Push
 p = push
-push-delete = push --delete
-px = push-delete
 # @aliasGroup Log
 graph = log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit
 logs = log HEAD --stat
