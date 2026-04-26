@@ -353,9 +353,6 @@
   "emmet.syntaxProfiles": {
     "html": { "filters": "bem" }
   },
-  "emmet.preferences": {
-    "bem.modifierSeparator": "--"
-  },
   "emmet.triggerExpansionOnTab": false,
   // Scroll
   "workbench.list.mouseWheelScrollSensitivity": 2,
