@@ -43,13 +43,13 @@ describe.each(testCases)('exports-snapshot/%s', (pkgName, pkgRoot, pkgEntry) => 
     expect(isDistExists, 'dist directory does not exist, please run `bun run build` first').toBe(true)
   })
 
-  it.if(isDistExists)(`${pkgName}/${pkgEntry}/runtime`, () => {
-    const api = generateApiSnapshot(pkgRoot)
+  it.if(isDistExists)(`${pkgName}/${pkgEntry}/runtime`, async () => {
+    const api = await generateApiSnapshot(pkgRoot)
     expect(api[pkgEntry]!.runtime).toMatchSnapshot()
   })
 
-  it.if(isDistExists)(`${pkgName}/${pkgEntry}/dts`, () => {
-    const api = generateApiSnapshot(pkgRoot)
+  it.if(isDistExists)(`${pkgName}/${pkgEntry}/dts`, async () => {
+    const api = await generateApiSnapshot(pkgRoot)
     expect(api[pkgEntry]!.dts).toMatchSnapshot()
   })
 })
