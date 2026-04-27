@@ -1,6 +1,6 @@
 # Docker compose for data services (MySQL and Redis)
 services:
-  sql:
+  sql-dev:
     profiles:
       - dev
     image: mysql:lts
@@ -12,7 +12,7 @@ services:
       - 3306:3306
     volumes:
       - ./data/mysql/:/var/lib/mysql
-  redis:
+  redis-dev:
     profiles:
       - dev
     image: redis:alpine

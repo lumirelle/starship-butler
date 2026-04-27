@@ -3,7 +3,9 @@ services:
     profiles:
       - dev
     image: your_frontend_app_image_name:dev
-    build: ./dev-dockerfile
+    build:
+      context: .
+      dockerfile: Dockerfile.dev
     command: npm run dev
     ports:
       - 8080:8080
