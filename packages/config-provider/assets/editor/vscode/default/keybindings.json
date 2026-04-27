@@ -1,6 +1,18 @@
 [
   // #region Basic
   // Tab completion
+  // Disable tab for editor suggestions, use <enter> only.
+  {
+    "key": "tab",
+    "command": "-acceptSelectedSuggestion",
+    "when": "suggestWidgetHasFocusedSuggestion && suggestWidgetVisible && textInputFocus"
+  },
+  {
+    "key": "tab",
+    "command": "-workbench.action.terminal.acceptSelectedSuggestion",
+    "when": "simpleSuggestWidgetHasFocusedSuggestion && terminalFocus && terminalHasBeenCreated && terminalIsOpen && terminalSuggestWidgetVisible || simpleSuggestWidgetHasFocusedSuggestion && terminalFocus && terminalIsOpen && terminalProcessSupported && terminalSuggestWidgetVisible"
+  },
+  // Refine tab for inline suggestions in user scope, to make it higher priority.
   {
     "key": "tab",
     "command": "-editor.action.inlineSuggest.commit",
@@ -12,6 +24,7 @@
     "when": "inlineEditIsVisible && tabShouldAcceptInlineEdit && !editorHoverFocused && !editorTabMovesFocus && !suggestWidgetVisible || inlineEditIsVisible && inlineSuggestionVisible && tabShouldAcceptInlineEdit && !editorHoverFocused && !editorTabMovesFocus && !suggestWidgetVisible || inlineSuggestionHasIndentationLessThanTabSize && inlineSuggestionVisible && !editor.hasSelection && !editorHoverFocused && !editorTabMovesFocus && !suggestWidgetVisible || inlineEditIsVisible && inlineSuggestionHasIndentationLessThanTabSize && inlineSuggestionVisible && !editor.hasSelection && !editorHoverFocused && !editorTabMovesFocus && !suggestWidgetVisible"
   },
   // Terminal
+  // Confuse with browser's inspect element shortcut and not so useful, so disable it.
   {
     "key": "ctrl+shift+c",
     "command": "-workbench.action.terminal.openNativeConsole",
@@ -19,20 +32,23 @@
   },
   // #endregion
 
-  // #region With Neovim
+  // #region With Neovim (When Editor Not Focused)
   // Session
+  // Use space+q+q to close session, to be consistent with Neovim + Lazyvim.
   {
     "key": "space q q",
     "command": "workbench.action.closeWindow",
     "when": "!editorFocus && !inputFocus && !terminalFocus"
   },
   // Workbench
+  // Use space+z to toggle VSCode zen mode.
   {
     "key": "space z",
     "command": "workbench.action.toggleZenMode",
     "when": "!editorFocus && !inputFocus && !terminalFocus"
   },
   // Sidebar
+  // Use space+e / space+shift+e to toggle sidebar/auxiliary bar, to be consistent with Neovim + Lazyvim.
   {
     "key": "ctrl+b",
     "command": "-workbench.action.toggleSidebarVisibility"
@@ -72,6 +88,7 @@
     "when": "sideBarFocus"
   },
   // Window navigation
+  // Use ctrl+h/j/k/l for window navigation, to be consistent with Neovim + Lazyvim.
   {
     "key": "ctrl+h",
     "command": "workbench.action.navigateLeft"
@@ -89,6 +106,7 @@
     "command": "workbench.action.navigateRight"
   },
   // Tab navigation
+  // Free up ctrl+pageup/pagedown for sidebar navigation, use HJKL to be consistent with Neovim + Lazyvim.
   {
     "key": "ctrl+pageup",
     "command": "-workbench.action.previousEditor"
@@ -98,6 +116,7 @@
     "command": "-workbench.action.nextEditor"
   },
   // Editor Size
+  // Use ctrl+arrow keys to resize editor, to be consistent with Neovim + Lazyvim.
   {
     "key": "ctrl+down",
     "command": "workbench.action.decreaseViewHeight",
@@ -119,6 +138,7 @@
     "when": "editorFocus && !isAuxiliaryWindowFocusedContext && !terminalFocus && neovim.mode != 'cmdline'"
   },
   // Scroll
+  // Use ctrl+e/y for scrolling line, to be consistent with Neovim + Lazyvim.
   {
     "key": "ctrl+e",
     "command": "scrollLineDown",
@@ -130,6 +150,7 @@
     "when": "editorTextFocus"
   },
   // Move line
+  // Use alt+j/k to move line down/up, to be consistent with Neovim + Lazyvim.
   {
     "key": "alt+j",
     "command": "editor.action.moveLinesDownAction",
@@ -141,7 +162,8 @@
     "when": "editorTextFocus && !editorReadonly"
   },
   // Undo breakpoints
-  // Disable when has selection or multiple cursors, because these will break them
+  // Workaround to trigger undo breakpoint for Neovim in VSCode.
+  // Disable when has selection or multiple cursors, because these will break them.
   {
     "key": "space",
     "command": "vscode-neovim.send",
@@ -167,6 +189,7 @@
     "args": ";"
   },
   // Terminal
+  // Use ctrl+/ to toggle terminal, to be consistent with Neovim + Lazyvim.
   {
     "key": "ctrl+`",
     "command": "-workbench.action.terminal.toggleTerminal",
@@ -182,6 +205,7 @@
     "command": "workbench.action.terminal.toggleTerminal",
     "when": "terminal.active"
   },
+  // XXX(Lumirelle): Get a consistent experience with Neovim + Lazyvim.
   {
     "key": "ctrl+shift+/",
     "command": "workbench.action.terminal.new",
