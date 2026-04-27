@@ -1,6 +1,6 @@
 # User Information
 [user]
-# NOTICE: username and email are handled by `~/.gitcloneinit` script.
+# NOTICE: username and email are handled by "~/.gitcloneinit" script.
 [credential "https://gitee.com"]
 provider = generic
 
@@ -9,7 +9,7 @@ provider = generic
 ignorecase = false
 editor = nvim # Or replace with your preferred editor.
 [feature]
-# Will enable some default configurations to better handle a large number of files, include `index.version=4`.
+# Will enable some default configurations to better handle a large number of files, include "index.version=4".
 # See https://git-scm.com/docs/git-config#Documentation/git-config.txt-featuremanyFiles.
 manyFiles = true
 
@@ -165,7 +165,7 @@ unadd = "!f() { \
 }; f"
 ua = unadd
 # @aliasGroup Commit & Uncommit
-# Notice, `commit -m '123' -m '456'` will create a commit with message '123\n\n456'.
+# Notice, "commit -m '123' -m '456'" will create a commit with message '123\n\n456'.
 commitx = "!f() {\
   arg_help=false; \
   arg_command=commit; \
@@ -187,7 +187,7 @@ commitx = "!f() {\
     echo 'Options:'; \
     echo '  -a, --amend     Amend the previous commit with the new changes and reuse the previous commit message.'; \
     echo '  -e, --edit      Amend the previous commit with the new changes and edit the previous commit message.'; \
-    echo '  ... See `git commit --help` for more options.'; \
+    echo '  ... See \"git commit --help\" for more options.'; \
     return 0; \
   fi; \
   \
@@ -214,13 +214,13 @@ commitx-with-message = "!f() {\
     echo '   Or: git commitx-with-message --edit'; \
     echo 'Options:'; \
     echo '  -e, --edit     Amend the previous commit with the new changes and edit the previous commit message.'; \
-    echo '  ... See `git commitx --?` for more options.'; \
+    echo '  ... See \"git commitx --?\" for more options.'; \
     return 0; \
   fi; \
   \
   if \"$arg_not_allow_amend\"; then \
-    echo 'Cannot use --amend option together with command `commitx-with-message`.';\
-    echo 'Command `commitx-with-message` is designed to always require a new commit message, while --amend is used to reuse the previous commit message. They are conflicting.'; \
+    echo 'Cannot use --amend option together with command \"commitx-with-message\".';\
+    echo 'Command \"commitx-with-message\" is designed to always require a new commit message, while --amend is used to reuse the previous commit message. They are conflicting.'; \
     return 1; \
   fi; \
   \
@@ -255,10 +255,10 @@ b = branch
 # @alias Branch Delete
 # @description Delete branch with more flexible options.
 # @parameters One branch name and optional flags:
-#   - `-o` or `--origin`: Delete the branch from origin remote only.
-#   - `-a` or `--all`: Delete the branch from both local and origin remote.
-#   - `-f` or `--force`: Force delete the local branch.
-#   - If neither `-o` / `--origin` nor `-a` / `--all` is provided, delete the branch from local only.
+#   - "-o" or "--origin": Delete the branch from origin remote only.
+#   - "-a" or "--all": Delete the branch from both local and origin remote.
+#   - "-f" or "--force": Force delete the local branch.
+#   - If neither "-o" / "--origin" nor "-a" / "--all" is provided, delete the branch from local only.
 branch-delete = "!f() { \
   arg_help=false; \
   arg_range=local; \
@@ -335,7 +335,7 @@ stashx = "!f() { \
     echo '  -a, --apply     Apply the changes recorded in the stash to the working directory.'; \
     echo '  -p, --pop       Apply the changes recorded in the stash to the working directory and remove the stash from the stash list.'; \
     echo '  -x, --drop      Remove a single stash from the stash list.'; \
-    echo '  ... See `git $arg_command --help` for more options.'; \
+    echo '  ... See \"git $arg_command --help\" for more options.'; \
     return 0; \
   fi; \
   \
@@ -345,7 +345,7 @@ s = stashx
 # @aliasGroup Switch
 w = switch
 # @aliasGroup Merge
-# Notice, like commit, multiple `-m` options will be concatenated with `\n\n` as separator to form the final merge commit message.
+# Notice, like commit, multiple "-m" options will be concatenated with "\n\n" as separator to form the final merge commit message.
 mergex = "!f() { \
   arg_help=false; \
   arg_command=\"merge --no-ff\"; \
@@ -367,7 +367,7 @@ mergex = "!f() { \
     echo 'Options:'; \
     echo '  -z, --abort     Abort the merge operation.'; \
     echo '  -c, --continue  Continue the merge operation.'; \
-    echo '  ... See `git merge --help` for more options.'; \
+    echo '  ... See \"git merge --help\" for more options.'; \
     return 0; \
   fi; \
   \
@@ -404,7 +404,7 @@ rebasex = "!f() { \
     echo 'Options:'; \
     echo '  -z, --abort     Abort the rebase operation.'; \
     echo '  -c, --continue  Continue the rebase operation.'; \
-    echo '  ... See `git rebase --help` for more options.'; \
+    echo '  ... See \"git rebase --help\" for more options.'; \
     return 0; \
   fi; \
   \
@@ -439,7 +439,7 @@ revertx = "!f() { \
     echo 'Options:'; \
     echo '  -z, --abort     Abort the revert operation.'; \
     echo '  -c, --continue  Continue the revert operation.'; \
-    echo '  ... See `git revert --help` for more options.'; \
+    echo '  ... See \"git revert --help\" for more options.'; \
     return 0; \
   fi; \
   \
@@ -472,7 +472,7 @@ cherry-pickx = "!f() { \
     echo 'Options:'; \
     echo '  -z, --abort     Abort the cherry-pick operation.'; \
     echo '  -c, --continue  Continue the cherry-pick operation.'; \
-    echo '  ... See `git cherry-pick --help` for more options.'; \
+    echo '  ... See \"git cherry-pick --help\" for more options.'; \
     return 0; \
   fi; \
   \
@@ -501,7 +501,7 @@ tagx = "!f() { \
   if \"$arg_help\"; then \
     echo 'Usage: git tagx [options] <tag-name> [<tag-message>]'; \
     echo 'Options:'; \
-    echo '  ... See `git tag --help` for more options.'; \
+    echo '  ... See \"git tag --help\" for more options.'; \
     return 0; \
   fi; \
   \
