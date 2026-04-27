@@ -105,15 +105,15 @@ map({ "n", "x" }, "<leader>z", function()
   vscode.action("workbench.action.toggleZenMode")
 end, { desc = "Toggle Zen Mode" })
 -- Primary Sidebar
--- Cannot detect whether the primary sidebar is visible or not, so we just toggle it.
+-- Cannot detect whether the primary sidebar is visible or not, so we just focus it.
 map({ "n", "x" }, "<leader>e", function()
-  vscode.action("workbench.action.toggleSidebarVisibility")
-end, { desc = "Toggle Primary Sidebar" })
+  vscode.action("workbench.action.focusSideBar")
+end, { desc = "Focus Primary Sidebar" })
 -- Secondary Sidebar
--- Cannot detect whether the secondary sidebar is visible or not, so we just toggle it.
+-- Cannot detect whether the secondary sidebar is visible or not, so we just focus it.
 map({ "n", "x" }, "<leader>E", function()
-  vscode.action("workbench.action.toggleAuxiliaryBar")
-end, { desc = "Toggle Secondary Sidebar" })
+  vscode.action("workbench.action.focusAuxiliaryBar")
+end, { desc = "Focus Secondary Sidebar" })
 -- Notification
 map("n", "<leader>n", function()
   vscode.action("notifications.showList")
