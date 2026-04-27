@@ -104,6 +104,10 @@ end, { desc = "Rename Symbol" })
 map({ "n", "x" }, "<leader>z", function()
   vscode.action("workbench.action.toggleZenMode")
 end, { desc = "Toggle Zen Mode" })
+-- Popup
+map("n", "<leader><backspace>", function()
+  vscode.action("workbench.action.files.openFolder")
+end, { desc = "Open File Explorer" })
 -- Primary Sidebar
 -- Cannot detect whether the primary sidebar is visible or not, so we just focus it.
 map({ "n", "x" }, "<leader>e", function()

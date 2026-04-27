@@ -54,6 +54,12 @@
     "command": "workbench.action.quickOpen",
     "when": "!editorFocus && !inputFocus && !terminalFocus"
   },
+  // Use space+backspace to open folder, enhance DX.
+  {
+    "key": "space backspace",
+    "command": "workbench.action.files.openFolder",
+    "when": "!editorFocus && !inputFocus && !terminalFocus"
+  },
   // Sidebar
   // Use space+e / space+shift+e to toggle sidebar/auxiliary bar, to be consistent with Neovim + Lazyvim.
   {
