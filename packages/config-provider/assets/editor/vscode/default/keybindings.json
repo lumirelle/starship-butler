@@ -1,5 +1,6 @@
 [
   // #region Basic
+  // Editor
   // Tab completion
   // Disable tab for editor suggestions, use <enter> only.
   {
@@ -161,6 +162,12 @@
     "key": "ctrl+y",
     "command": "scrollLineUp",
     "when": "editorTextFocus"
+  },
+  // Disable markdown extension's backspace keybinding, avoid conflict with Neovim's backspace behavior and to be consistent with Neovim + Lazyvim.
+  {
+    "key": "backspace",
+    "command": "-markdown.extension.onBackspaceKey",
+    "when": "editorTextFocus && !editorHasMultipleSelections && !editorReadonly && !markdown.extension.editor.cursor.inFencedCodeBlock && !markdown.extension.editor.cursor.inMathEnv && !suggestWidgetVisible && vim.mode != 'CommandlineInProgress' && vim.mode != 'EasyMotionInputMode' && vim.mode != 'EasyMotionMode' && vim.mode != 'Normal' && vim.mode != 'Replace' && vim.mode != 'SearchInProgressMode' && vim.mode != 'SurroundInputMode' && vim.mode != 'Visual' && vim.mode != 'VisualBlock' && vim.mode != 'VisualLine' && editorLangId =~ /^markdown$|^rmd$|^quarto$/"
   },
   // Move line
   // Use alt+j/k to move line down/up, to be consistent with Neovim + Lazyvim.
