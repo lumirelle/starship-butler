@@ -47,6 +47,7 @@
     "codezombiech.gitignore",
     "github.vscode-github-actions",
     "gitHub.vscode-pull-request-github",
+    "letmaik.git-tree-compare",
     // Dev Container
     "ms-azuretools.vscode-containers",
     // #endregion
@@ -67,6 +68,6 @@
     // #endregion
   ]
   // Extension Count
-  // VSCODE: 37
-  // CURSOR: 37
+  // VSCODE: 38
+  // CURSOR: 38
 }
