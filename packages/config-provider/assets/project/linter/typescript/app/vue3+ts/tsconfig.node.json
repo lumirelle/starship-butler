@@ -7,6 +7,6 @@
     // Allow importing JavaScript files
     "allowJs": true
   },
-  // Only include your project's scripts & config files who are expected to run / used in the Node.js environment.
-  "include": ["scripts/**/*", "*.config.js", "*.config.ts"]
+  // Your project files others than source & test files who are need type support
+  "include": ["scripts/**/*", "*.ts", "*.js"]
 }

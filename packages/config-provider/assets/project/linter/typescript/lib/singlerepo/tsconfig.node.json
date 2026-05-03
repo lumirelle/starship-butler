@@ -7,6 +7,6 @@
     // Allow importing JavaScript files
     "allowJs": true
   },
-  // Only include your project's script files & config files who are expected to run without `isolatedDeclarations`.
-  "include": ["scripts/**/*", "*.config.js", "*.config.ts"]
+  // Your project files others than source & test files who are need type support
+  "include": ["scripts/**/*", "*.ts", "*.js"]
 }
