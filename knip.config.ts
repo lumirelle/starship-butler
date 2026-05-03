@@ -3,12 +3,10 @@ import type { KnipConfig } from 'knip'
 export default {
   workspaces: {
     '.': {
-      /// keep-sorted
+      entry: ['./bunup.config.ts'],
       ignoreDependencies: ['@arethetypeswrong/cli', '@lumirelle/oxlint-config', 'publint'],
-      ignoreFiles: ['bunup.config.ts'],
     },
     'docs': {
-      /// keep-sorted
       ignoreDependencies: [
         '@iconify-json/svg-spinners',
         '@unocss/reset',
@@ -19,20 +17,15 @@ export default {
       ],
     },
     'packages/config-provider': {
-      /// keep-sorted
-      entry: ['src/command/*/index.ts', 'src/index.ts'],
-      /// keep-sorted
+      entry: ['./src/index.ts', './src/constants.ts', './src/command/*/index.ts'],
       ignoreBinaries: ['nu'],
-      /// keep-sorted
-      ignoreFiles: ['assets/**/*'],
+      ignoreFiles: ['./assets/**/*'],
     },
     'packages/core': {
-      /// keep-sorted
-      ignoreFiles: ['test/fixtures/butler.config*.ts'],
+      ignoreFiles: ['./test/fixtures/butler.config*.ts'],
     },
     'packages/utils': {
-      /// keep-sorted
-      entry: ['src/*.ts'],
+      entry: ['./src/*.ts'],
     },
   },
 } satisfies KnipConfig

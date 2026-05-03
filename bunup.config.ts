@@ -24,7 +24,7 @@ export default defineWorkspace([
     name: 'utils',
     root: 'packages/utils',
     config: {
-      entry: ['./src/config.ts', './src/path.ts', './src/fs.ts', './src/highlight.ts'],
+      entry: ['./src/*.ts'],
     },
   },
 ])
