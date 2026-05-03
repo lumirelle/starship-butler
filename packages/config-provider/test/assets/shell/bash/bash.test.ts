@@ -1,4 +1,3 @@
-import { $ } from 'bun'
 import { describe, expect, it } from 'bun:test'
 import { platform } from 'node:os'
 import { x } from 'tinyexec'
@@ -8,10 +7,13 @@ const isBashAvailable = await isPathExistEnv('bash')
 
 describe('bash profile tests', () => {
   it.if(isBashAvailable)('should pass', async () => {
-    $.cwd(import.meta.dirname)
     // XXX(Lumirelle): Because of Bun's shell cannot find bash.exe in Windows,
     // we have to use tinyexec to test the bash profile.
-    const proc = await x('bash', ['./test.sh', '--silent'])
+    const proc = await x('bash', ['./test.sh', '--silent'], {
+      nodeOptions: {
+        cwd: import.meta.dirname,
+      },
+    })
     const result = proc.stdout.split('\n')
     expect(result[0]).toBe(result[1])
     expect(result[2]).toBe('0')
