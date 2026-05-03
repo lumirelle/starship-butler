@@ -1,6 +1,6 @@
 {
   "Commnet Todo": {
-    "prefix": "todd",
+    "prefix": "todo",
     "description": "Commnet Todo",
     "scope": "javascript,javascriptreact,typescript,typescriptreact,scss,java,go,python,c,cpp,rust,jsonc,zig",
     "body": ["// TODO(Lumirelle): $0"],
