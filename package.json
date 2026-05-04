@@ -19,7 +19,7 @@
     "unused": "knip-bun",
     "pubcheck": "bun run --parallel --filter '*' pubcheck",
     "check": "bun run --parallel lint typecheck unused pubcheck",
-    "test": "bun test",
+    "test": "bun test --isolate",
     "prerelease": "bun run build && bun run --parallel check test",
     "release": "bumpp --all --recursive --execute \"bun run ./scripts/update-lockfile.sh\" # See https://github.com/oven-sh/bun/issues/18906 and https://github.com/oven-sh/bun/issues/20477"
   },

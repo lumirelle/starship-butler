@@ -10,7 +10,7 @@ describe('.setignore files', () => {
     expect(exists(ignoreFilePath)).toBe(true)
   })
 
-  it('should match snapshot', () => {
+  it('should match inline snapshot', () => {
     const content = readFileSync(ignoreFilePath, 'utf8')
     expect(content).toMatchInlineSnapshot(`
       "**/README.md

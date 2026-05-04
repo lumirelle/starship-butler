@@ -1,23 +1,24 @@
 import { describe, expect, it } from 'bun:test'
 import { HandlerError } from '../../../src/command/preset/error'
 
-describe('error test', () => {
-  it('should throw error', () => {
-    expect(() => {
-      throw new HandlerError('This is a test error')
-    }).toThrow('This is a test error')
-  })
+describe('error', () => {
+  describe('class HandlerError', () => {
+    it('should be throwable', () => {
+      expect(() => {
+        throw new HandlerError('This is a test error')
+      }).toThrow('This is a test error')
+    })
 
-  it('should have correct name', () => {
-    try {
-      throw new HandlerError('This is a test error')
-    }
-    catch (error) {
-      if (!(error instanceof Error)) {
-        return
+    it('should have correct name', () => {
+      try {
+        throw new HandlerError('This is a test error')
       }
-      expect(error).toBeInstanceOf(HandlerError)
-      expect(error.name).toBe('HandlerError')
-    }
+      catch (error) {
+        if (!(error instanceof Error))
+          return
+        expect(error).toBeInstanceOf(HandlerError)
+        expect(error.name).toBe('HandlerError')
+      }
+    })
   })
 })

@@ -1,18 +1,19 @@
-import { describe, expect, it, mock } from 'bun:test'
+import { describe, expect, it, spyOn } from 'bun:test'
 import process from 'node:process'
 import { filterActions } from '../../../src/command/preset/actions'
 
 describe('actions', () => {
-  it('should include only "nushell" action', async () => {
-    const filteredActions = await filterActions({
-      include: ['nushell'],
-    })
-    // Extract only `id` and `name` for comparison
-    const simpleFilteredActions = filteredActions.map(item => ({
-      id: item.id,
-      name: item.name,
-    }))
-    expect(simpleFilteredActions).toMatchInlineSnapshot(`
+  describe('filterActions()', () => {
+    it('should include only "nushell" action', async () => {
+      const filteredActions = await filterActions({
+        include: ['nushell'],
+      })
+      // Extract only `id` and `name` for comparison
+      const simpleFilteredActions = filteredActions.map(item => ({
+        id: item.id,
+        name: item.name,
+      }))
+      expect(simpleFilteredActions).toMatchInlineSnapshot(`
       [
         {
           "id": "nushell",
@@ -20,18 +21,18 @@ describe('actions', () => {
         },
       ]
     `)
-  })
-
-  // Win 32
-  it.if(process.platform === 'win32')('should include all actions with include option set to ".*"', async () => {
-    const filteredActions = await filterActions({
-      include: ['.*'],
     })
-    const simpleFilteredActions = filteredActions.map(item => ({
-      id: item.id,
-      name: item.name,
-    }))
-    expect(simpleFilteredActions).toMatchInlineSnapshot(`
+
+    // Win 32
+    it.if(process.platform === 'win32')('should include all actions with include option set to ".*"', async () => {
+      const filteredActions = await filterActions({
+        include: ['.*'],
+      })
+      const simpleFilteredActions = filteredActions.map(item => ({
+        id: item.id,
+        name: item.name,
+      }))
+      expect(simpleFilteredActions).toMatchInlineSnapshot(`
       [
         {
           "id": "clash-verge-rev",
@@ -95,16 +96,16 @@ describe('actions', () => {
         },
       ]
     `)
-  })
-  it.if(process.platform === 'win32')('should include all actions with "all" option set to true', async () => {
-    const filteredActions = await filterActions({
-      all: true,
     })
-    const simpleFilteredActions = filteredActions.map(item => ({
-      id: item.id,
-      name: item.name,
-    }))
-    expect(simpleFilteredActions).toMatchInlineSnapshot(`
+    it.if(process.platform === 'win32')('should include all actions with "all" option set to true', async () => {
+      const filteredActions = await filterActions({
+        all: true,
+      })
+      const simpleFilteredActions = filteredActions.map(item => ({
+        id: item.id,
+        name: item.name,
+      }))
+      expect(simpleFilteredActions).toMatchInlineSnapshot(`
       [
         {
           "id": "clash-verge-rev",
@@ -168,17 +169,17 @@ describe('actions', () => {
         },
       ]
     `)
-  })
-  it.if(process.platform === 'win32')('should exclude "nushell" action with include option set to ".*" and exclude option set to "nushell"', async () => {
-    const filteredActions = await filterActions({
-      include: ['.*'],
-      exclude: ['nushell'],
     })
-    const simpleFilteredActions = filteredActions.map(item => ({
-      id: item.id,
-      name: item.name,
-    }))
-    expect(simpleFilteredActions).toMatchInlineSnapshot(`
+    it.if(process.platform === 'win32')('should exclude "nushell" action with include option set to ".*" and exclude option set to "nushell"', async () => {
+      const filteredActions = await filterActions({
+        include: ['.*'],
+        exclude: ['nushell'],
+      })
+      const simpleFilteredActions = filteredActions.map(item => ({
+        id: item.id,
+        name: item.name,
+      }))
+      expect(simpleFilteredActions).toMatchInlineSnapshot(`
       [
         {
           "id": "clash-verge-rev",
@@ -238,18 +239,18 @@ describe('actions', () => {
         },
       ]
     `)
-  })
+    })
 
-  // Linux
-  it.if(process.platform === 'linux')('should include all actions with include option set to ".*"', async () => {
-    const filteredActions = await filterActions({
-      include: ['.*'],
-    })
-    const simpleFilteredActions = filteredActions.map(item => ({
-      id: item.id,
-      name: item.name,
-    }))
-    expect(simpleFilteredActions).toMatchInlineSnapshot(`
+    // Linux
+    it.if(process.platform === 'linux')('should include all actions with include option set to ".*"', async () => {
+      const filteredActions = await filterActions({
+        include: ['.*'],
+      })
+      const simpleFilteredActions = filteredActions.map(item => ({
+        id: item.id,
+        name: item.name,
+      }))
+      expect(simpleFilteredActions).toMatchInlineSnapshot(`
       [
         {
           "id": "clash-verge-rev",
@@ -305,16 +306,16 @@ describe('actions', () => {
         },
       ]
     `)
-  })
-  it.if(process.platform === 'linux')('should include all actions with "all" option set to true', async () => {
-    const filteredActions = await filterActions({
-      all: true,
     })
-    const simpleFilteredActions = filteredActions.map(item => ({
-      id: item.id,
-      name: item.name,
-    }))
-    expect(simpleFilteredActions).toMatchInlineSnapshot(`
+    it.if(process.platform === 'linux')('should include all actions with "all" option set to true', async () => {
+      const filteredActions = await filterActions({
+        all: true,
+      })
+      const simpleFilteredActions = filteredActions.map(item => ({
+        id: item.id,
+        name: item.name,
+      }))
+      expect(simpleFilteredActions).toMatchInlineSnapshot(`
       [
         {
           "id": "clash-verge-rev",
@@ -370,17 +371,17 @@ describe('actions', () => {
         },
       ]
     `)
-  })
-  it.if(process.platform === 'linux')('should exclude "nushell" action with include option set to ".*" and exclude option set to "nushell"', async () => {
-    const filteredActions = await filterActions({
-      include: ['.*'],
-      exclude: ['nushell'],
     })
-    const simpleFilteredActions = filteredActions.map(item => ({
-      id: item.id,
-      name: item.name,
-    }))
-    expect(simpleFilteredActions).toMatchInlineSnapshot(`
+    it.if(process.platform === 'linux')('should exclude "nushell" action with include option set to ".*" and exclude option set to "nushell"', async () => {
+      const filteredActions = await filterActions({
+        include: ['.*'],
+        exclude: ['nushell'],
+      })
+      const simpleFilteredActions = filteredActions.map(item => ({
+        id: item.id,
+        name: item.name,
+      }))
+      expect(simpleFilteredActions).toMatchInlineSnapshot(`
       [
         {
           "id": "clash-verge-rev",
@@ -432,18 +433,18 @@ describe('actions', () => {
         },
       ]
     `)
-  })
+    })
 
-  // MacOS
-  it.if(process.platform === 'darwin')('should include all actions with include option set to ".*"', async () => {
-    const filteredActions = await filterActions({
-      include: ['.*'],
-    })
-    const simpleFilteredActions = filteredActions.map(item => ({
-      id: item.id,
-      name: item.name,
-    }))
-    expect(simpleFilteredActions).toMatchInlineSnapshot(`
+    // MacOS
+    it.if(process.platform === 'darwin')('should include all actions with include option set to ".*"', async () => {
+      const filteredActions = await filterActions({
+        include: ['.*'],
+      })
+      const simpleFilteredActions = filteredActions.map(item => ({
+        id: item.id,
+        name: item.name,
+      }))
+      expect(simpleFilteredActions).toMatchInlineSnapshot(`
       [
         {
           "id": "clash-verge-rev",
@@ -499,16 +500,16 @@ describe('actions', () => {
         },
       ]
     `)
-  })
-  it.if(process.platform === 'darwin')('should include all actions with "all" option set to true', async () => {
-    const filteredActions = await filterActions({
-      all: true,
     })
-    const simpleFilteredActions = filteredActions.map(item => ({
-      id: item.id,
-      name: item.name,
-    }))
-    expect(simpleFilteredActions).toMatchInlineSnapshot(`
+    it.if(process.platform === 'darwin')('should include all actions with "all" option set to true', async () => {
+      const filteredActions = await filterActions({
+        all: true,
+      })
+      const simpleFilteredActions = filteredActions.map(item => ({
+        id: item.id,
+        name: item.name,
+      }))
+      expect(simpleFilteredActions).toMatchInlineSnapshot(`
       [
         {
           "id": "clash-verge-rev",
@@ -564,17 +565,17 @@ describe('actions', () => {
         },
       ]
     `)
-  })
-  it.if(process.platform === 'darwin')('should exclude "nushell" action with include option set to ".*" and exclude option set to "nushell"', async () => {
-    const filteredActions = await filterActions({
-      include: ['.*'],
-      exclude: ['nushell'],
     })
-    const simpleFilteredActions = filteredActions.map(item => ({
-      id: item.id,
-      name: item.name,
-    }))
-    expect(simpleFilteredActions).toMatchInlineSnapshot(`
+    it.if(process.platform === 'darwin')('should exclude "nushell" action with include option set to ".*" and exclude option set to "nushell"', async () => {
+      const filteredActions = await filterActions({
+        include: ['.*'],
+        exclude: ['nushell'],
+      })
+      const simpleFilteredActions = filteredActions.map(item => ({
+        id: item.id,
+        name: item.name,
+      }))
+      expect(simpleFilteredActions).toMatchInlineSnapshot(`
       [
         {
           "id": "clash-verge-rev",
@@ -626,17 +627,19 @@ describe('actions', () => {
         },
       ]
     `)
-  })
+    })
 
-  it('should prompt user to select actions when include option is empty', async () => {
-    const mockedMultiselect = mock(() => ['nushell', 'bash'])
-    await mock.module('@clack/prompts', () => ({
-      multiselect: mockedMultiselect,
-    }))
-    const filteredActions = await filterActions({
-      include: [],
+    it('should prompt user to select actions when include option is empty', async () => {
+      const clackPrompts = await import('@clack/prompts')
+      const spy = spyOn(clackPrompts, 'multiselect').mockImplementation(async () => ['nushell', 'bash'] as any)
+
+      const filteredActions = await filterActions({
+        include: [],
+      })
+      expect(spy).toHaveBeenCalledTimes(1)
+      expect(filteredActions.map(action => action.id)).toEqual(['nushell', 'bash'])
+
+      spy.mockRestore()
     })
-    expect(mockedMultiselect).toHaveBeenCalledTimes(1)
-    expect(filteredActions.map(action => action.id)).toEqual(['nushell', 'bash'])
   })
 })

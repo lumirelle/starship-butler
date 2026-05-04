@@ -14,7 +14,7 @@ import { ASSETS_FOLDER } from '../../constants'
  * @param options Processing options.
  * @returns Whether operation success or not.
  */
-export function _copyPasteConfig(
+export function copyPasteConfig(
   source: string,
   target: string,
   options: Omit<ProcessConfigOptions, 'mode'> = {},
@@ -36,7 +36,7 @@ export function _copyPasteConfig(
  * @param options Processing options.
  * @returns Whether operation success or not.
  */
-export function _symlinkConfig(
+export function symlinkConfig(
   source: string,
   target: string,
   options: Omit<ProcessConfigOptions, 'mode'> = {},
@@ -63,7 +63,7 @@ export function processConfig(
 ): void {
   const { mode = 'copy-paste', dryRun = false } = options
   if (mode === 'copy-paste') {
-    if (dryRun || _copyPasteConfig(source, target, options)) {
+    if (dryRun || copyPasteConfig(source, target, options)) {
       consola.success(
         `Configuration ${important(source)} ${
           dryRun ? success('will') : 'is'
@@ -71,7 +71,7 @@ export function processConfig(
       )
     }
   }
-  else if (dryRun || _symlinkConfig(source, target, options)) {
+  else if (dryRun || symlinkConfig(source, target, options)) {
     consola.success(
       `Configuration ${important(target)} ${
         dryRun ? success('will') : 'is'

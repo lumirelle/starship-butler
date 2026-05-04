@@ -2,17 +2,23 @@ import { describe, expect, it } from 'bun:test'
 import { styleText } from 'node:util'
 import { important, info } from '../src/highlight'
 
-describe('highlight util tests', () => {
-  it('should show info text with cyan color', () => {
-    expect(info('test')).toBe(styleText(['cyan'], 'test'))
+describe('highlight util', () => {
+  describe('info()', () => {
+    it('should display text with cyan color', () => {
+      expect(info('test')).toBe(styleText(['cyan'], 'test'))
+    })
   })
 
-  it('should show important text with magenta and bold', () => {
-    expect(important('test')).toBe(styleText(['bold', 'magenta'], 'test'))
+  describe('important()', () => {
+    it('should display text with magenta color and bold weight', () => {
+      expect(important('test')).toBe(styleText(['bold', 'magenta'], 'test'))
+    })
   })
 
-  it('should show success text with green color', () => {
-    const success = (v: string): string => styleText(['green'], v)
-    expect(success('test')).toBe(styleText(['green'], 'test'))
+  describe('success()', () => {
+    it('should display text with green color', () => {
+      const success = (v: string): string => styleText(['green'], v)
+      expect(success('test')).toBe(styleText(['green'], 'test'))
+    })
   })
 })

@@ -1,5 +1,6 @@
 import type { defaults } from 'rc9'
-import { readUser, updateUser, writeUser } from 'rc9'
+import process from 'node:process'
+import { readUserConfig, updateUserConfig, writeUserConfig } from 'rc9'
 import { exists, remove } from '../fs'
 import { homedir } from '../path'
 
@@ -18,7 +19,7 @@ const RC_FILE_NAME = '.butlerrc'
  * @returns The rc content.
  */
 export function readUserRc(options?: RCOptions): RC {
-  return readUser({
+  return readUserConfig({
     name: RC_FILE_NAME,
     ...options,
   })
@@ -33,7 +34,7 @@ export function readUserRc(options?: RCOptions): RC {
  * @param options Options for rc9.
  */
 export function writeUserRc(config: RC, options?: RCOptions): void {
-  writeUser(config, {
+  writeUserConfig(config, {
     name: RC_FILE_NAME,
     ...options,
   })
@@ -49,7 +50,7 @@ export function writeUserRc(config: RC, options?: RCOptions): void {
  * @returns The updated rc content.
  */
 export function updateUserRc(config: RC, options?: RCOptions): RC {
-  return updateUser(config, {
+  return updateUserConfig(config, {
     name: RC_FILE_NAME,
     ...options,
   })
@@ -63,9 +64,10 @@ export function updateUserRc(config: RC, options?: RCOptions): RC {
  * @param options Options for rc9.
  */
 export function removeUserRc(options?: RCOptions): void {
-  const { dir, name = RC_FILE_NAME } = options ?? {}
+  const defaultDir = process.env.XDG_CONFIG_HOME ? process.env.XDG_CONFIG_HOME : homedir('.config')
+  const { dir = defaultDir, name = RC_FILE_NAME } = options ?? {}
   const rcPath = dir ? `${dir}/${name}` : name
-  remove(homedir(rcPath))
+  remove(rcPath)
 }
 
 /**
@@ -77,7 +79,10 @@ export function removeUserRc(options?: RCOptions): void {
  * @param options Options for rc9.
  */
 export function upsertUserRc(config: RC, options?: RCOptions): void {
-  if (exists(homedir(options?.name ?? RC_FILE_NAME))) {
+  const defaultDir = process.env.XDG_CONFIG_HOME ? process.env.XDG_CONFIG_HOME : homedir('.config')
+  const { dir = defaultDir, name = RC_FILE_NAME } = options ?? {}
+  const rcPath = dir ? `${dir}/${name}` : name
+  if (exists(rcPath)) {
     updateUserRc(config, options)
   }
   else {

@@ -5,7 +5,7 @@ import { isPathExistEnv } from '../../../../src/command/preset/actions/utils'
 
 const isBashAvailable = await isPathExistEnv('bash')
 
-describe('bash profile tests', () => {
+describe('bash profile', () => {
   it.if(isBashAvailable)('should pass', async () => {
     // XXX(Lumirelle): Because of Bun's shell cannot find bash.exe in Windows,
     // we have to use tinyexec to test the bash profile.

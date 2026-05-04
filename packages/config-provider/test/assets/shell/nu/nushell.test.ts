@@ -4,7 +4,7 @@ import { isPathExistEnv } from '../../../../src/command/preset/actions/utils'
 
 const isNuAvailable = await isPathExistEnv('nu')
 
-describe('nushell profile tests', () => {
+describe('nushell profile', () => {
   it.if(isNuAvailable)('should pass', async () => {
     $.cwd(import.meta.dirname)
     const proc = $`nu ./test.nu --silent`

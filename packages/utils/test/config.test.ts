@@ -1,4 +1,4 @@
-import { afterAll, beforeAll, beforeEach, describe, expect, it } from 'bun:test'
+import { afterEach, beforeEach, describe, expect, it } from 'bun:test'
 import { version } from '../package.json'
 import {
   loadConfig,
@@ -9,89 +9,135 @@ import {
   writeUserRc,
 } from '../src/config'
 
-beforeAll(() => {
-  // Backup user rc file before all test
-  const rc = readUserRc()
-  writeUserRc(rc, { name: '.butlerrc.bak' })
-})
+const configFileName = '.testbutlerrc'
 
-beforeEach(() => {
-  // Initialize an example rc file for testing
-  writeUserRc({ 'config-provider': { version } })
-})
-
-afterAll(() => {
-  // Restore user rc file after all tests
-  const rc = readUserRc({ name: '.butlerrc.bak' })
-  writeUserRc(rc)
-  removeUserRc({ name: '.butlerrc.bak' })
-})
-
-describe('config utils', () => {
-  it('should load user rc file correctly', () => {
-    const rc = readUserRc()
-    expect(rc).toMatchInlineSnapshot(`
-      {
-        "config-provider": {
-          "version": "${version}",
-        },
-      }
-    `)
+describe('config util', () => {
+  beforeEach(() => {
+    // Initialize an example rc file for testing
+    writeUserRc({ 'config-provider': { version } }, { name: configFileName })
+  })
+  afterEach(() => {
+    // Remove the example rc file after each test
+    removeUserRc({ name: configFileName })
   })
 
-  it('should write user rc file correctly', () => {
-    writeUserRc({ test: 123 })
-    const rc = readUserRc()
-    expect(rc).toMatchInlineSnapshot(`
-      {
-        "test": 123,
-      }
-    `)
-  })
-
-  it('should update user rc file correctly', () => {
-    const updatedRc = updateUserRc({ foo: 'bar' })
-    expect(updatedRc).toMatchInlineSnapshot(`
-      {
-        "config-provider": {
-          "version": "${version}",
-        },
-        "foo": "bar",
-      }
-    `)
-  })
-
-  it('should remove user rc file correctly', () => {
-    removeUserRc()
-    expect(readUserRc()).toEqual({})
-  })
-
-  it('should upsert user rc file correctly', () => {
-    removeUserRc()
-    upsertUserRc({ test: 123 })
-    expect(readUserRc()).toMatchInlineSnapshot(`
-      {
-        "test": 123,
-      }
-    `)
-    upsertUserRc({ foo: 'bar' })
-    expect(readUserRc()).toMatchInlineSnapshot(`
-      {
-        "foo": "bar",
-        "test": 123,
-      }
-    `)
-  })
-
-  it('should load user config without user rc file by default', async () => {
-    const { config } = await loadConfig({
-      configFile: './fixtures/butler.config.json',
-      cwd: import.meta.dirname,
+  describe('rc9', () => {
+    describe('readUserRc()', () => {
+      it('should load user rc file', () => {
+        expect(readUserRc({ name: configFileName })).toMatchInlineSnapshot(`
+          {
+            "config-provider": {
+              "version": "${version}",
+            },
+          }
+        `)
+      })
     })
-    expect(config).toMatchInlineSnapshot(`
-        {
-          "test": 123,
-        }
-      `)
+
+    describe('writeUserRc()', () => {
+      it('should write to user rc file', () => {
+        expect(readUserRc({ name: configFileName })).toMatchInlineSnapshot(`
+          {
+            "config-provider": {
+              "version": "${version}",
+            },
+          }
+        `)
+        writeUserRc({ test: 123 }, { name: configFileName })
+        expect(readUserRc({ name: configFileName })).toMatchInlineSnapshot(`
+          {
+            "test": 123,
+          }
+        `)
+      })
+    })
+
+    describe('updateUserRc()', () => {
+      it('should update user rc file correctly', () => {
+        expect(readUserRc({ name: configFileName })).toMatchInlineSnapshot(`
+          {
+            "config-provider": {
+              "version": "${version}",
+            },
+          }
+        `)
+        expect(updateUserRc({ foo: 'bar' }, { name: configFileName })).toMatchInlineSnapshot(`
+          {
+            "config-provider": {
+              "version": "${version}",
+            },
+            "foo": "bar",
+          }
+        `)
+      })
+    })
+
+    describe('removeUserRc()', () => {
+      it('should remove user rc file correctly', () => {
+        expect(readUserRc({ name: configFileName })).toMatchInlineSnapshot(`
+          {
+            "config-provider": {
+              "version": "${version}",
+            },
+          }
+        `)
+        removeUserRc({ name: configFileName })
+        expect(readUserRc({ name: configFileName })).toEqual({})
+      })
+    })
+
+    describe('upsertUserRc()', () => {
+      it('should upsert user rc file correctly', () => {
+        expect(readUserRc({ name: configFileName })).toMatchInlineSnapshot(`
+          {
+            "config-provider": {
+              "version": "${version}",
+            },
+          }
+        `)
+
+        removeUserRc({ name: configFileName })
+        expect(readUserRc({ name: configFileName })).toEqual({})
+
+        upsertUserRc({ test: 123 }, { name: configFileName })
+        expect(readUserRc({ name: configFileName })).toMatchInlineSnapshot(`
+          {
+            "test": 123,
+          }
+        `)
+
+        upsertUserRc({ foo: 'bar' }, { name: configFileName })
+        expect(readUserRc({ name: configFileName })).toMatchInlineSnapshot(`
+          {
+            "foo": "bar",
+            "test": 123,
+          }
+        `)
+      })
+    })
+  })
+
+  describe('c12', () => {
+    describe('loadConfig()', () => {
+      it('should load user config & ignore user rc file', async () => {
+        expect(readUserRc({ name: configFileName })).toMatchInlineSnapshot(`
+          {
+            "config-provider": {
+              "version": "${version}",
+            },
+          }
+        `)
+
+        const { config } = await loadConfig({
+          configFile: './fixtures/butler.config.json',
+          cwd: import.meta.dirname,
+        })
+        expect(config).toMatchInlineSnapshot(`
+          {
+            "test": 123,
+          }
+        `)
+      })
+    })
   })
 })
