@@ -48,6 +48,7 @@
     "codezombiech.gitignore",
     "github.vscode-github-actions",
     "gitHub.vscode-pull-request-github",
+    "eamodio.gitlens",
     // Dev Container
     "ms-azuretools.vscode-containers",
     // #endregion
@@ -66,6 +67,6 @@
     // #endregion
   ]
   // Extension Count
-  // VSCODE: 35
-  // CURSOR: 35
+  // VSCODE: 36
+  // CURSOR: 36
 }
