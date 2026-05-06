@@ -72,8 +72,7 @@
         "publint": "^0.3.18"
       },
       "test": {
-        "tsnapi": "^0.3.2",
-        "vite": "^8.0.10"
+        "tsnapi": "^0.3.2"
       },
       "docs": {
         "@iconify-json/svg-spinners": "^1.2.4",
@@ -110,12 +109,11 @@
     "simple-git-hooks": "catalog:dev",
     "std-env": "catalog:build",
     "tsnapi": "catalog:test",
-    "typescript": "catalog:dev",
-    "vite": "catalog:test"
+    "typescript": "catalog:dev"
   },
   "overrides": {
     "typescript": "$typescript",
-    "vite": "$vite"
+    "vite": "^8.0.10"
   },
   "simple-git-hooks": {
     "pre-commit": "bunx nano-staged"
