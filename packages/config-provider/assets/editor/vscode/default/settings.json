@@ -338,8 +338,18 @@
   "git.enableSmartCommit": true,
   "git.openRepositoryInParentFolders": "always",
   "git.untrackedChanges": "separate",
-  "git.blame.editorDecoration.enabled": true,
-  "git.blame.statusBarItem.enabled": true,
+  // We use GitLens instead, because it respects .git-blame-ignore-revs without extra configuration.
+  "git.blame.editorDecoration.enabled": false,
+  "git.blame.statusBarItem.enabled": false,
+  "gitlens.plusFeatures.enabled": false,
+  "gitlens.defaultCurrentUserNameStyle": "nameAndYou",
+  "gitlens.graph.dimMergeCommits": true,
+  "gitlens.launchpad.indicator.enabled": false,
+  "gitlens.cloudPatches.enabled": false,
+  "gitlens.views.scm.grouped.hiddenViews": {
+    "worktrees": true
+  },
+  "gitlens.views.formats.commits.label": "${(tips|11?) > }${message}",
   // Editor
   "workbench.startupEditor": "none",
   "workbench.editor.limit.enabled": true,

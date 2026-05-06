@@ -45,11 +45,9 @@
     // AI
     "coderabbit.coderabbit-vscode", // AI Code Reviewer
     // Git
-    "waydotnet.minimal-git-file-history",
     "codezombiech.gitignore",
     "github.vscode-github-actions",
     "gitHub.vscode-pull-request-github",
-    "letmaik.git-tree-compare",
     // Dev Container
     "ms-azuretools.vscode-containers",
     // #endregion
