@@ -3,14 +3,18 @@
   // #region UI
   // Theme
   "window.autoDetectColorScheme": true,
-  "workbench.preferredLightColorTheme": "Vitesse Light",
-  "workbench.preferredDarkColorTheme": "Vitesse Dark",
+  "workbench.preferredLightColorTheme": "Rosé Pine Moon",
+  "workbench.preferredDarkColorTheme": "Rosé Pine",
   "workbench.productIconTheme": "icons-carbon",
   "workbench.iconTheme": "catppuccin-mocha",
+  "workbench.colorCustomizations": {
+    "editorCursor.foreground": "#FFC0CB"
+  },
   // Layout
   "window.zoomLevel": 0,
   "window.titleBarStyle": "custom",
   "window.dialogStyle": "custom",
+  "window.controlsStyle": "custom",
   "files.simpleDialog.enable": true,
   "workbench.activityBar.orientation": "vertical",
   "workbench.tree.renderIndentGuides": "always",
@@ -253,6 +257,12 @@
       "backgroundColor": "#cf929e",
       "overviewRulerColor": "rgb(207 146 158 / 80%)"
     }
+  ],
+  // GPU Acceleration
+  "terminal.integrated.gpuAcceleration": "off",
+  // Custom UI
+  "custom-ui-style.external.imports": [
+    "file://${userHome}/.vscode/extensions/30d98f9b2.neovide-cursor-1.0.1/neovide-cursor.js"
   ],
   // #endregion
 

@@ -3,7 +3,7 @@
   "recommendations": [
     // #region UI
     // Theme
-    "antfu.theme-vitesse",
+    "mvllow.rose-pine",
     "antfu.icons-carbon",
     "catppuccin.catppuccin-vsc-icons",
     // File Nesting
@@ -17,7 +17,9 @@
     "bierner.markdown-footnotes",
     "bierner.markdown-preview-github-styles",
     "bierner.markdown-yaml-preamble",
-    // Custom
+    // Cursor
+    "30d98f9b2.neovide-cursor",
+    // Custom UI
     "subframe7536.custom-ui-style",
     // #endregion
 
@@ -54,8 +56,6 @@
 
     // #region Language Support
     "yzhang.markdown-all-in-one",
-    "remcohaszing.schemastore",
-    "redhat.vscode-yaml",
     "tamasfe.even-better-toml",
     "thenuprojectcontributors.vscode-nushell-lang",
     // #endregion
@@ -68,6 +68,6 @@
     // #endregion
   ]
   // Extension Count
-  // VSCODE: 38
-  // CURSOR: 38
+  // VSCODE: 36
+  // CURSOR: 36
 }

@@ -29,6 +29,7 @@
   ],
   "profiles": {
     "defaults": {
+      "colorScheme": "rose-pine",
       "backgroundImage": "desktopWallpaper",
       "backgroundImageOpacity": 0.3,
       "experimental.rightClickContextMenu": true,
@@ -76,7 +77,51 @@
       }
     ]
   },
-  "schemes": [],
-  "theme": "system",
-  "themes": []
+  "schemes": [
+    {
+      "name": "rose-pine",
+
+      "cursorColor": "#6e6a86",
+      "selectionBackground": "#403d52",
+
+      "background": "#191724",
+      "foreground": "#e0def4",
+
+      "black": "#26233a",
+      "blue": "#9ccfd8",
+      "cyan": "#ebbcba",
+      "green": "#31748f",
+      "purple": "#c4a7e7",
+      "red": "#eb6f92",
+      "white": "#e0def4",
+      "yellow": "#f6c177",
+      "brightBlack": "#908caa",
+      "brightBlue": "#9ccfd8",
+      "brightCyan": "#ebbcba",
+      "brightGreen": "#31748f",
+      "brightPurple": "#c4a7e7",
+      "brightRed": "#eb6f92",
+      "brightWhite": "#e0def4",
+      "brightYellow": "#f6c177"
+    }
+  ],
+  "themes": [
+    {
+      "name": "rose-pine",
+      "tab": {
+        "background": "#191724FF",
+        "showCloseButton": "always",
+        "unfocusedBackground": null
+      },
+      "tabRow": {
+        "background": "#26233AFF",
+        "unfocusedBackground": "#1F1D2EFF"
+      },
+      "window": {
+        "applicationTheme": "dark",
+        "useMica": false
+      }
+    }
+  ],
+  "theme": "rose-pine"
 }
