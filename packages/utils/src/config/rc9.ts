@@ -1,91 +1,89 @@
 import type { defaults } from 'rc9'
 import process from 'node:process'
-import { readUserConfig, updateUserConfig, writeUserConfig } from 'rc9'
+import { readUserConfig as _readUserConfig, updateUserConfig as _updateUserConfig, writeUserConfig as _writeUserConfig } from 'rc9'
 import { exists, remove } from '../fs'
 import { homedir } from '../path'
 
+export type RC = Record<string, any>
 export type RCOptions = typeof defaults
 
-export type RC = Record<string, any>
-
-const RC_FILE_NAME = '.butlerrc'
+const DEFAULT_NAME = '.butlerrc'
 
 /**
- * Reads the user rc file (rc file under home directory).
+ * Reads a user configuration file from `$XDG_CONFIG_HOME` or `$HOME/.config` and parses its contents.
  *
- * Default rc file name is ".butlerrc".
+ * Default user configuration file name is ".butlerrc".
  *
- * @param options Options for rc9.
- * @returns The rc content.
+ * @param options Options for reading the configuration file. See {@link RCOptions}.
+ * @returns The parsed configuration object.
  */
-export function readUserRc(options?: RCOptions): RC {
-  return readUserConfig({
-    name: RC_FILE_NAME,
+export function readUserConfig(options?: RCOptions): RC {
+  return _readUserConfig({
+    name: DEFAULT_NAME,
     ...options,
   })
 }
 
 /**
- * Writes a user rc file (rc file under home directory).
+ * Writes a configuration object to a file in `$XDG_CONFIG_HOME` or `$HOME/.config`.
  *
- * Default rc file name is ".butlerrc".
+ * Default user configuration file name is ".butlerrc".
  *
- * @param config The config to be written to rc file.
- * @param options Options for rc9.
+ * @param config The configuration object to write. See {@link RC}.
+ * @param options Options for writing the configuration file. See {@link RCOptions}.
  */
-export function writeUserRc(config: RC, options?: RCOptions): void {
-  writeUserConfig(config, {
-    name: RC_FILE_NAME,
+export function writeUserConfig(config: RC, options?: RCOptions): void {
+  _writeUserConfig(config, {
+    name: DEFAULT_NAME,
     ...options,
   })
 }
 
 /**
- * Updates a user rc file (rc file under home directory).
+ * Updates a configuration object in `$XDG_CONFIG_HOME` or `$HOME/.config` by merging and writing the result.
  *
- * Default rc file name is ".butlerrc".
+ * Default user configuration file name is ".butlerrc".
  *
- * @param config The config to update the rc file.
- * @param options Options for rc9.
- * @returns The updated rc content.
+ * @param config The configuration object to update. See {@link RC}.
+ * @param options Options for updating the configuration file. See {@link RCOptions}.
+ * @returns The updated configuration object.
  */
-export function updateUserRc(config: RC, options?: RCOptions): RC {
-  return updateUserConfig(config, {
-    name: RC_FILE_NAME,
+export function updateUserConfig(config: RC, options?: RCOptions): RC {
+  return _updateUserConfig(config, {
+    name: DEFAULT_NAME,
     ...options,
   })
 }
 
 /**
- * Removes the user rc file (rc file under home directory).
+ * Updates or writes a configuration object to a file in `$XDG_CONFIG_HOME` or `$HOME/.config`.
  *
- * Default rc file name is ".butlerrc".
+ * Default user configuration file name is ".butlerrc".
  *
- * @param options Options for rc9.
+ * @param config The configuration object to update or write. See {@link RC}.
+ * @param options Options for updating or writing the configuration file. See {@link RCOptions}.
+ * @returns The updated configuration object if the file existed, otherwise void.
  */
-export function removeUserRc(options?: RCOptions): void {
-  const defaultDir = process.env.XDG_CONFIG_HOME ? process.env.XDG_CONFIG_HOME : homedir('.config')
-  const { dir = defaultDir, name = RC_FILE_NAME } = options ?? {}
+export function upsertUserConfig(config: RC, options?: RCOptions): RC | void {
+  const DEFAULT_DIR = process.env.XDG_CONFIG_HOME ? process.env.XDG_CONFIG_HOME : homedir('.config')
+  const { dir = DEFAULT_DIR, name = DEFAULT_NAME } = options ?? {}
+  const rcPath = dir ? `${dir}/${name}` : name
+  if (exists(rcPath))
+    return updateUserConfig(config, options)
+  else
+    return writeUserConfig(config, options)
+}
+
+/**
+ * Removes a user configuration file from `$XDG_CONFIG_HOME` or `$HOME/.config`.
+ *
+ * Default user configuration file name is ".butlerrc".
+ *
+ * @param options Options for removing the configuration file. See {@link RCOptions}.
+ */
+export function removeUserConfig(options?: RCOptions): void {
+  const DEFAULT_DIR = process.env.XDG_CONFIG_HOME ? process.env.XDG_CONFIG_HOME : homedir('.config')
+  const { dir = DEFAULT_DIR, name = DEFAULT_NAME } = options ?? {}
   const rcPath = dir ? `${dir}/${name}` : name
   remove(rcPath)
-}
-
-/**
- * Updates or creates a user rc file (rc file under home directory).
- *
- * Default rc file name is ".butlerrc".
- *
- * @param config The config to upsert to the rc file.
- * @param options Options for rc9.
- */
-export function upsertUserRc(config: RC, options?: RCOptions): void {
-  const defaultDir = process.env.XDG_CONFIG_HOME ? process.env.XDG_CONFIG_HOME : homedir('.config')
-  const { dir = defaultDir, name = RC_FILE_NAME } = options ?? {}
-  const rcPath = dir ? `${dir}/${name}` : name
-  if (exists(rcPath)) {
-    updateUserRc(config, options)
-  }
-  else {
-    writeUserRc(config, options)
-  }
 }

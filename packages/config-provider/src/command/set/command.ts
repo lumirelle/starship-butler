@@ -5,7 +5,7 @@ import { basename, join } from 'node:path'
 import process from 'node:process'
 import { isCancel, multiselect, select } from '@clack/prompts'
 import { consola } from 'consola'
-import { upsertUserRc } from 'starship-butler-utils/config'
+import { upsertUserConfig } from 'starship-butler-utils/config'
 import { ensureDirectory, isDirectory } from 'starship-butler-utils/fs'
 import { globSync } from 'tinyglobby'
 import { version } from '../../../package.json'
@@ -33,7 +33,7 @@ export async function commandSet(sourcePattern: string, target: string, options:
   }
 
   // Update the version of preset
-  upsertUserRc({
+  upsertUserConfig({
     'config-provider': {
       version,
     },

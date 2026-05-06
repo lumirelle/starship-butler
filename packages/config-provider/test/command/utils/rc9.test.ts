@@ -1,23 +1,31 @@
-import { afterEach, beforeEach, describe, expect, it } from 'bun:test'
-import { removeUserRc, writeUserRc } from 'starship-butler-utils/config'
-import { readUserRc, upsertUserRc } from '../../../src/command/utils'
+import { afterEach, beforeAll, beforeEach, describe, expect, it } from 'bun:test'
+import { removeUserConfig, writeUserConfig } from 'starship-butler-utils/config'
+import { ensureDirectory } from 'starship-butler-utils/fs'
+import { homedir } from 'starship-butler-utils/path'
+import { isCI } from 'std-env'
+import { readUserConfig, upsertUserConfig } from '../../../src/command/utils'
 
 // Avoid name conflict with the test in the utils package
 const configFileName = '.testbutlerrc2'
 
+beforeAll(() => {
+  // Some CI environments (like GitHub Actions) may not have a config directory, which will cause the test to fail. So we need to ensure the config directory exist before testing.
+  if (isCI)
+    ensureDirectory(homedir('.config'))
+})
 beforeEach(() => {
   // Initialize an example rc file for testing
-  writeUserRc({ 'config-provider': { version: '1.0.0' } }, { name: configFileName })
+  writeUserConfig({ 'config-provider': { version: '1.0.0' } }, { name: configFileName })
 })
 afterEach(() => {
   // Remove the example rc file after each test
-  removeUserRc({ name: configFileName })
+  removeUserConfig({ name: configFileName })
 })
 
 describe('rc9', () => {
-  describe('readUserRc()', () => {
+  describe('readUserConfig()', () => {
     it('should load user rc file', () => {
-      expect(readUserRc({ name: configFileName })).toMatchInlineSnapshot(`
+      expect(readUserConfig({ name: configFileName })).toMatchInlineSnapshot(`
           {
             "version": "1.0.0",
           }
@@ -25,26 +33,26 @@ describe('rc9', () => {
     })
   })
 
-  describe('upsertUserRc()', () => {
+  describe('upsertUserConfig()', () => {
     it('should upsert user rc file correctly', () => {
-      expect(readUserRc({ name: configFileName })).toMatchInlineSnapshot(`
+      expect(readUserConfig({ name: configFileName })).toMatchInlineSnapshot(`
           {
             "version": "1.0.0",
           }
         `)
 
-      removeUserRc({ name: configFileName })
-      expect(readUserRc({ name: configFileName })).toEqual({})
+      removeUserConfig({ name: configFileName })
+      expect(readUserConfig({ name: configFileName })).toEqual({})
 
-      upsertUserRc({ test: 123 }, { name: configFileName })
-      expect(readUserRc({ name: configFileName })).toMatchInlineSnapshot(`
+      upsertUserConfig({ test: 123 }, { name: configFileName })
+      expect(readUserConfig({ name: configFileName })).toMatchInlineSnapshot(`
           {
             "test": 123,
           }
         `)
 
-      upsertUserRc({ foo: 'bar' }, { name: configFileName })
-      expect(readUserRc({ name: configFileName })).toMatchInlineSnapshot(`
+      upsertUserConfig({ foo: 'bar' }, { name: configFileName })
+      expect(readUserConfig({ name: configFileName })).toMatchInlineSnapshot(`
           {
             "foo": "bar",
             "test": 123,

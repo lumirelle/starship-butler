@@ -1,21 +1,27 @@
 import { afterAll, beforeAll, beforeEach, describe, expect, it } from 'bun:test'
-import { readUserRc, removeUserRc, writeUserRc } from 'starship-butler-utils/config'
+import { readUserConfig, removeUserConfig, writeUserConfig } from 'starship-butler-utils/config'
+import { ensureDirectory } from 'starship-butler-utils/fs'
+import { homedir } from 'starship-butler-utils/path'
+import { isCI } from 'std-env'
 import { loadConfig } from '../src/config'
 
 beforeAll(() => {
+  // Some CI environments (like GitHub Actions) may not have a config directory, which will cause the test to fail. So we need to ensure the config directory exist before testing.
+  if (isCI)
+    ensureDirectory(homedir('.config'))
   // Backup user rc file before all test
-  const rc = readUserRc()
-  writeUserRc(rc, { name: '.butlerrc.bak' })
+  const rc = readUserConfig()
+  writeUserConfig(rc, { name: '.butlerrc.bak' })
 })
 beforeEach(() => {
   // Initialize an example rc file for testing
-  writeUserRc({ 'config-provider': { preset: { version: '0.0.0' } } })
+  writeUserConfig({ 'config-provider': { preset: { version: '0.0.0' } } })
 })
 afterAll(() => {
   // Restore user rc file after all tests
-  const rc = readUserRc({ name: '.butlerrc.bak' })
-  writeUserRc(rc)
-  removeUserRc({ name: '.butlerrc.bak' })
+  const rc = readUserConfig({ name: '.butlerrc.bak' })
+  writeUserConfig(rc)
+  removeUserConfig({ name: '.butlerrc.bak' })
 })
 
 describe('config', () => {

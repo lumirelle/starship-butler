@@ -6,11 +6,11 @@ exports[`exports-snapshot/starship-butler-utils starship-butler-utils/./config/r
  */
 // #region Functions
 export function loadConfig(_) {}
-export function readUserRc(_) {}
-export function removeUserRc(_) {}
-export function updateUserRc(_, _) {}
-export function upsertUserRc(_, _) {}
-export function writeUserRc(_, _) {}
+export function readUserConfig(_) {}
+export function removeUserConfig(_) {}
+export function updateUserConfig(_, _) {}
+export function upsertUserConfig(_, _) {}
+export function writeUserConfig(_, _) {}
 // #endregion"
 `;
 
@@ -33,11 +33,11 @@ export declare function loadConfig<
 	M extends UserInputConfig = UserInputConfig,
 	MT extends ConfigLayerMeta = ConfigLayerMeta
 >(_?: LoadConfigOptions<M, MT>): Promise<ResolvedConfig<M, MT>>;
-export declare function readUserRc(_?: RCOptions): RC;
-export declare function removeUserRc(_?: RCOptions): void;
-export declare function updateUserRc(_: RC, _?: RCOptions): RC;
-export declare function upsertUserRc(_: RC, _?: RCOptions): void;
-export declare function writeUserRc(_: RC, _?: RCOptions): void;
+export declare function readUserConfig(_?: RCOptions): RC;
+export declare function removeUserConfig(_?: RCOptions): void;
+export declare function updateUserConfig(_: RC, _?: RCOptions): RC;
+export declare function upsertUserConfig(_: RC, _?: RCOptions): RC | void;
+export declare function writeUserConfig(_: RC, _?: RCOptions): void;
 // #endregion"
 `;
 
@@ -287,9 +287,9 @@ exports[`exports-snapshot/starship-butler-config-provider starship-butler-config
 // #region Other
 export { copyPasteConfig }
 export { processConfig }
-export { readUserRc }
+export { readUserConfig }
 export { symlinkConfig }
-export { upsertUserRc }
+export { upsertUserConfig }
 // #endregion"
 `;
 
@@ -310,9 +310,9 @@ export interface ProcessConfigOptions extends BasicOptions {
 // #region Functions
 export declare function copyPasteConfig(_: string, _: string, _?: Omit<ProcessConfigOptions, "mode">): boolean;
 export declare function processConfig(_: string, _: string, _?: ProcessConfigOptions): void;
-export declare function readUserRc(_?: RCOptions): RC;
+export declare function readUserConfig(_?: RCOptions): RC;
 export declare function symlinkConfig(_: string, _: string, _?: Omit<ProcessConfigOptions, "mode">): boolean;
-export declare function upsertUserRc(_: RC, _?: RCOptions): void;
+export declare function upsertUserConfig(_: RC, _?: RCOptions): RC | void;
 // #endregion"
 `;
 

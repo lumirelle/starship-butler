@@ -7,34 +7,35 @@ import { toArray } from '@antfu/utils'
 import { join } from 'pathe'
 import { ensureDirectory, exists } from 'starship-butler-utils/fs'
 import { x } from 'tinyexec'
-import { readUserRc as _readUserRc, upsertUserRc as _upsertUserRc, processConfig } from '../../utils'
+import { processConfig, readUserConfig, upsertUserConfig } from '../../utils'
 
 /* Rc9 utilities */
 
 /**
- * Updates or creates a user rc file, within `config-provider.preset` field (rc file under home directory).
+ * Reads the `config-provider.preset` field from a user configuration file from `$XDG_CONFIG_HOME` or `$HOME/.config` and parses its contents.
  *
- * Default rc file name is ".butlerrc".
+ * Default user configuration file name is ".butlerrc".
  *
- * @param config The config to upsert to the `config-provider.preset` field of rc file.
- * @param options Options for rc9.
+ * @param options Options for reading the `config-provider.preset` field from the configuration file. See {@link RCOptions}.
+ * @returns The parsed configuration object.
  */
-export function upsertUserRc(config: RC, options?: RCOptions): void {
-  return _upsertUserRc({
-    preset: config,
-  }, options)
+export function readPresetCommandUserConfig(options?: RCOptions): RC {
+  return readUserConfig(options).preset ?? {}
 }
 
 /**
- * Reads the `config-provider.preset` field from the user rc file (rc file under home directory).
+ * Updates or writes a configuration object to the 'config-provider.preset' field in a file in `$XDG_CONFIG_HOME` or `$HOME/.config`.
  *
- * Default rc file name is ".butlerrc".
+ * Default user configuration file name is ".butlerrc".
  *
- * @param options Options for rc9.
- * @returns The `config-provider.preset` field from the rc content.
+ * @param config The configuration object to update or write to the 'config-provider.preset' field. See {@link RC}.
+ * @param options Options for updating or writing the configuration file. See {@link RCOptions}.
+ * @returns The updated configuration object if the file existed, otherwise void.
  */
-export function readUserRc(options?: RCOptions): RC {
-  return _readUserRc(options)?.preset ?? {}
+export function upsertPresetCommandUserConfig(config: RC, options?: RCOptions): RC | void {
+  return upsertUserConfig({
+    preset: config,
+  }, options)
 }
 
 /* Destination handler utilities */
