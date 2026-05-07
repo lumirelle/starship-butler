@@ -1,19 +1,20 @@
-import { describe, expect, it, spyOn } from 'bun:test'
+import { afterAll, beforeAll, describe, expect, it, spyOn } from 'bun:test'
 import process from 'node:process'
 import { filterActions } from '../../../src/command/preset/actions'
 
 describe('actions', () => {
   describe('filterActions()', () => {
-    it('should include only "nushell" action', async () => {
-      const filteredActions = await filterActions({
-        include: ['nushell'],
-      })
-      // Extract only `id` and `name` for comparison
-      const simpleFilteredActions = filteredActions.map(item => ({
-        id: item.id,
-        name: item.name,
-      }))
-      expect(simpleFilteredActions).toMatchInlineSnapshot(`
+    describe('general', () => {
+      it('should include only "nushell" action', async () => {
+        const filteredActions = await filterActions({
+          include: ['nushell'],
+        })
+        // Extract only `id` and `name` for comparison
+        const simpleFilteredActions = filteredActions.map(item => ({
+          id: item.id,
+          name: item.name,
+        }))
+        expect(simpleFilteredActions).toMatchInlineSnapshot(`
       [
         {
           "id": "nushell",
@@ -21,18 +22,44 @@ describe('actions', () => {
         },
       ]
     `)
+      })
+      it('should prompt user to select actions when include option is empty', async () => {
+        const clackPrompts = await import('@clack/prompts')
+        const spy = spyOn(clackPrompts, 'multiselect').mockImplementation(async () => ['nushell', 'bash'] as any)
+
+        const filteredActions = await filterActions({
+          include: [],
+        })
+        expect(spy).toHaveBeenCalledTimes(1)
+        expect(filteredActions.map(action => action.id)).toEqual(['nushell', 'bash'])
+
+        spy.mockRestore()
+      })
     })
 
-    // Win 32
-    it.if(process.platform === 'win32')('should include all actions with include option set to ".*"', async () => {
-      const filteredActions = await filterActions({
-        include: ['.*'],
+    describe('win32', () => {
+      let originalPlatform: NodeJS.Platform
+      beforeAll(() => {
+        originalPlatform = process.platform
+        Object.defineProperty(process, 'platform', {
+          value: 'win32',
+        })
       })
-      const simpleFilteredActions = filteredActions.map(item => ({
-        id: item.id,
-        name: item.name,
-      }))
-      expect(simpleFilteredActions).toMatchInlineSnapshot(`
+      afterAll(() => {
+        Object.defineProperty(process, 'platform', {
+          value: originalPlatform,
+        })
+      })
+
+      it('should include all actions with include option set to ".*"', async () => {
+        const filteredActions = await filterActions({
+          include: ['.*'],
+        })
+        const simpleFilteredActions = filteredActions.map(item => ({
+          id: item.id,
+          name: item.name,
+        }))
+        expect(simpleFilteredActions).toMatchInlineSnapshot(`
       [
         {
           "id": "clash-verge-rev",
@@ -83,6 +110,10 @@ describe('actions', () => {
           "name": "VSCode",
         },
         {
+          "id": "cursor",
+          "name": "Cursor",
+        },
+        {
           "id": "zed",
           "name": "Zed",
         },
@@ -96,16 +127,16 @@ describe('actions', () => {
         },
       ]
     `)
-    })
-    it.if(process.platform === 'win32')('should include all actions with "all" option set to true', async () => {
-      const filteredActions = await filterActions({
-        all: true,
       })
-      const simpleFilteredActions = filteredActions.map(item => ({
-        id: item.id,
-        name: item.name,
-      }))
-      expect(simpleFilteredActions).toMatchInlineSnapshot(`
+      it('should include all actions with "all" option set to true', async () => {
+        const filteredActions = await filterActions({
+          all: true,
+        })
+        const simpleFilteredActions = filteredActions.map(item => ({
+          id: item.id,
+          name: item.name,
+        }))
+        expect(simpleFilteredActions).toMatchInlineSnapshot(`
       [
         {
           "id": "clash-verge-rev",
@@ -156,6 +187,10 @@ describe('actions', () => {
           "name": "VSCode",
         },
         {
+          "id": "cursor",
+          "name": "Cursor",
+        },
+        {
           "id": "zed",
           "name": "Zed",
         },
@@ -169,17 +204,17 @@ describe('actions', () => {
         },
       ]
     `)
-    })
-    it.if(process.platform === 'win32')('should exclude "nushell" action with include option set to ".*" and exclude option set to "nushell"', async () => {
-      const filteredActions = await filterActions({
-        include: ['.*'],
-        exclude: ['nushell'],
       })
-      const simpleFilteredActions = filteredActions.map(item => ({
-        id: item.id,
-        name: item.name,
-      }))
-      expect(simpleFilteredActions).toMatchInlineSnapshot(`
+      it('should exclude "nushell" action with include option set to ".*" and exclude option set to "nushell"', async () => {
+        const filteredActions = await filterActions({
+          include: ['.*'],
+          exclude: ['nushell'],
+        })
+        const simpleFilteredActions = filteredActions.map(item => ({
+          id: item.id,
+          name: item.name,
+        }))
+        expect(simpleFilteredActions).toMatchInlineSnapshot(`
       [
         {
           "id": "clash-verge-rev",
@@ -226,6 +261,10 @@ describe('actions', () => {
           "name": "VSCode",
         },
         {
+          "id": "cursor",
+          "name": "Cursor",
+        },
+        {
           "id": "zed",
           "name": "Zed",
         },
@@ -239,18 +278,32 @@ describe('actions', () => {
         },
       ]
     `)
+      })
     })
 
-    // Linux
-    it.if(process.platform === 'linux')('should include all actions with include option set to ".*"', async () => {
-      const filteredActions = await filterActions({
-        include: ['.*'],
+    describe('linux', () => {
+      let originalPlatform: NodeJS.Platform
+      beforeAll(() => {
+        originalPlatform = process.platform
+        Object.defineProperty(process, 'platform', {
+          value: 'linux',
+        })
       })
-      const simpleFilteredActions = filteredActions.map(item => ({
-        id: item.id,
-        name: item.name,
-      }))
-      expect(simpleFilteredActions).toMatchInlineSnapshot(`
+      afterAll(() => {
+        Object.defineProperty(process, 'platform', {
+          value: originalPlatform,
+        })
+      })
+
+      it('should include all actions with include option set to ".*"', async () => {
+        const filteredActions = await filterActions({
+          include: ['.*'],
+        })
+        const simpleFilteredActions = filteredActions.map(item => ({
+          id: item.id,
+          name: item.name,
+        }))
+        expect(simpleFilteredActions).toMatchInlineSnapshot(`
       [
         {
           "id": "clash-verge-rev",
@@ -259,6 +312,10 @@ describe('actions', () => {
         {
           "id": "rime",
           "name": "rime",
+        },
+        {
+          "id": "windows-terminal",
+          "name": "Windows Terminal",
         },
         {
           "id": "nushell",
@@ -273,6 +330,10 @@ describe('actions', () => {
           "name": "PowerShell",
         },
         {
+          "id": "windows-powershell",
+          "name": "Windows PowerShell",
+        },
+        {
           "id": "starship",
           "name": "Starship",
         },
@@ -293,6 +354,10 @@ describe('actions', () => {
           "name": "VSCode",
         },
         {
+          "id": "cursor",
+          "name": "Cursor",
+        },
+        {
           "id": "zed",
           "name": "Zed",
         },
@@ -306,16 +371,16 @@ describe('actions', () => {
         },
       ]
     `)
-    })
-    it.if(process.platform === 'linux')('should include all actions with "all" option set to true', async () => {
-      const filteredActions = await filterActions({
-        all: true,
       })
-      const simpleFilteredActions = filteredActions.map(item => ({
-        id: item.id,
-        name: item.name,
-      }))
-      expect(simpleFilteredActions).toMatchInlineSnapshot(`
+      it('should include all actions with "all" option set to true', async () => {
+        const filteredActions = await filterActions({
+          all: true,
+        })
+        const simpleFilteredActions = filteredActions.map(item => ({
+          id: item.id,
+          name: item.name,
+        }))
+        expect(simpleFilteredActions).toMatchInlineSnapshot(`
       [
         {
           "id": "clash-verge-rev",
@@ -324,6 +389,10 @@ describe('actions', () => {
         {
           "id": "rime",
           "name": "rime",
+        },
+        {
+          "id": "windows-terminal",
+          "name": "Windows Terminal",
         },
         {
           "id": "nushell",
@@ -338,6 +407,10 @@ describe('actions', () => {
           "name": "PowerShell",
         },
         {
+          "id": "windows-powershell",
+          "name": "Windows PowerShell",
+        },
+        {
           "id": "starship",
           "name": "Starship",
         },
@@ -358,6 +431,10 @@ describe('actions', () => {
           "name": "VSCode",
         },
         {
+          "id": "cursor",
+          "name": "Cursor",
+        },
+        {
           "id": "zed",
           "name": "Zed",
         },
@@ -371,17 +448,17 @@ describe('actions', () => {
         },
       ]
     `)
-    })
-    it.if(process.platform === 'linux')('should exclude "nushell" action with include option set to ".*" and exclude option set to "nushell"', async () => {
-      const filteredActions = await filterActions({
-        include: ['.*'],
-        exclude: ['nushell'],
       })
-      const simpleFilteredActions = filteredActions.map(item => ({
-        id: item.id,
-        name: item.name,
-      }))
-      expect(simpleFilteredActions).toMatchInlineSnapshot(`
+      it('should exclude "nushell" action with include option set to ".*" and exclude option set to "nushell"', async () => {
+        const filteredActions = await filterActions({
+          include: ['.*'],
+          exclude: ['nushell'],
+        })
+        const simpleFilteredActions = filteredActions.map(item => ({
+          id: item.id,
+          name: item.name,
+        }))
+        expect(simpleFilteredActions).toMatchInlineSnapshot(`
       [
         {
           "id": "clash-verge-rev",
@@ -390,6 +467,10 @@ describe('actions', () => {
         {
           "id": "rime",
           "name": "rime",
+        },
+        {
+          "id": "windows-terminal",
+          "name": "Windows Terminal",
         },
         {
           "id": "bash",
@@ -400,6 +481,10 @@ describe('actions', () => {
           "name": "PowerShell",
         },
         {
+          "id": "windows-powershell",
+          "name": "Windows PowerShell",
+        },
+        {
           "id": "starship",
           "name": "Starship",
         },
@@ -420,6 +505,10 @@ describe('actions', () => {
           "name": "VSCode",
         },
         {
+          "id": "cursor",
+          "name": "Cursor",
+        },
+        {
           "id": "zed",
           "name": "Zed",
         },
@@ -433,18 +522,32 @@ describe('actions', () => {
         },
       ]
     `)
+      })
     })
 
-    // MacOS
-    it.if(process.platform === 'darwin')('should include all actions with include option set to ".*"', async () => {
-      const filteredActions = await filterActions({
-        include: ['.*'],
+    describe('mac os', () => {
+      let originalPlatform: NodeJS.Platform
+      beforeAll(() => {
+        originalPlatform = process.platform
+        Object.defineProperty(process, 'platform', {
+          value: 'darwin',
+        })
       })
-      const simpleFilteredActions = filteredActions.map(item => ({
-        id: item.id,
-        name: item.name,
-      }))
-      expect(simpleFilteredActions).toMatchInlineSnapshot(`
+      afterAll(() => {
+        Object.defineProperty(process, 'platform', {
+          value: originalPlatform,
+        })
+      })
+
+      it('should include all actions with include option set to ".*"', async () => {
+        const filteredActions = await filterActions({
+          include: ['.*'],
+        })
+        const simpleFilteredActions = filteredActions.map(item => ({
+          id: item.id,
+          name: item.name,
+        }))
+        expect(simpleFilteredActions).toMatchInlineSnapshot(`
       [
         {
           "id": "clash-verge-rev",
@@ -453,6 +556,10 @@ describe('actions', () => {
         {
           "id": "rime",
           "name": "rime",
+        },
+        {
+          "id": "windows-terminal",
+          "name": "Windows Terminal",
         },
         {
           "id": "nushell",
@@ -467,6 +574,10 @@ describe('actions', () => {
           "name": "PowerShell",
         },
         {
+          "id": "windows-powershell",
+          "name": "Windows PowerShell",
+        },
+        {
           "id": "starship",
           "name": "Starship",
         },
@@ -487,6 +598,10 @@ describe('actions', () => {
           "name": "VSCode",
         },
         {
+          "id": "cursor",
+          "name": "Cursor",
+        },
+        {
           "id": "zed",
           "name": "Zed",
         },
@@ -500,16 +615,16 @@ describe('actions', () => {
         },
       ]
     `)
-    })
-    it.if(process.platform === 'darwin')('should include all actions with "all" option set to true', async () => {
-      const filteredActions = await filterActions({
-        all: true,
       })
-      const simpleFilteredActions = filteredActions.map(item => ({
-        id: item.id,
-        name: item.name,
-      }))
-      expect(simpleFilteredActions).toMatchInlineSnapshot(`
+      it('should include all actions with "all" option set to true', async () => {
+        const filteredActions = await filterActions({
+          all: true,
+        })
+        const simpleFilteredActions = filteredActions.map(item => ({
+          id: item.id,
+          name: item.name,
+        }))
+        expect(simpleFilteredActions).toMatchInlineSnapshot(`
       [
         {
           "id": "clash-verge-rev",
@@ -518,6 +633,10 @@ describe('actions', () => {
         {
           "id": "rime",
           "name": "rime",
+        },
+        {
+          "id": "windows-terminal",
+          "name": "Windows Terminal",
         },
         {
           "id": "nushell",
@@ -532,6 +651,10 @@ describe('actions', () => {
           "name": "PowerShell",
         },
         {
+          "id": "windows-powershell",
+          "name": "Windows PowerShell",
+        },
+        {
           "id": "starship",
           "name": "Starship",
         },
@@ -552,6 +675,10 @@ describe('actions', () => {
           "name": "VSCode",
         },
         {
+          "id": "cursor",
+          "name": "Cursor",
+        },
+        {
           "id": "zed",
           "name": "Zed",
         },
@@ -565,17 +692,17 @@ describe('actions', () => {
         },
       ]
     `)
-    })
-    it.if(process.platform === 'darwin')('should exclude "nushell" action with include option set to ".*" and exclude option set to "nushell"', async () => {
-      const filteredActions = await filterActions({
-        include: ['.*'],
-        exclude: ['nushell'],
       })
-      const simpleFilteredActions = filteredActions.map(item => ({
-        id: item.id,
-        name: item.name,
-      }))
-      expect(simpleFilteredActions).toMatchInlineSnapshot(`
+      it('should exclude "nushell" action with include option set to ".*" and exclude option set to "nushell"', async () => {
+        const filteredActions = await filterActions({
+          include: ['.*'],
+          exclude: ['nushell'],
+        })
+        const simpleFilteredActions = filteredActions.map(item => ({
+          id: item.id,
+          name: item.name,
+        }))
+        expect(simpleFilteredActions).toMatchInlineSnapshot(`
       [
         {
           "id": "clash-verge-rev",
@@ -586,12 +713,20 @@ describe('actions', () => {
           "name": "rime",
         },
         {
+          "id": "windows-terminal",
+          "name": "Windows Terminal",
+        },
+        {
           "id": "bash",
           "name": "Bash",
         },
         {
           "id": "powershell",
           "name": "PowerShell",
+        },
+        {
+          "id": "windows-powershell",
+          "name": "Windows PowerShell",
         },
         {
           "id": "starship",
@@ -614,6 +749,10 @@ describe('actions', () => {
           "name": "VSCode",
         },
         {
+          "id": "cursor",
+          "name": "Cursor",
+        },
+        {
           "id": "zed",
           "name": "Zed",
         },
@@ -627,19 +766,7 @@ describe('actions', () => {
         },
       ]
     `)
-    })
-
-    it('should prompt user to select actions when include option is empty', async () => {
-      const clackPrompts = await import('@clack/prompts')
-      const spy = spyOn(clackPrompts, 'multiselect').mockImplementation(async () => ['nushell', 'bash'] as any)
-
-      const filteredActions = await filterActions({
-        include: [],
       })
-      expect(spy).toHaveBeenCalledTimes(1)
-      expect(filteredActions.map(action => action.id)).toEqual(['nushell', 'bash'])
-
-      spy.mockRestore()
     })
   })
 })
