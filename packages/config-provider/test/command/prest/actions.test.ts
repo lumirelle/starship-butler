@@ -15,13 +15,13 @@ describe('actions', () => {
           name: item.name,
         }))
         expect(simpleFilteredActions).toMatchInlineSnapshot(`
-      [
-        {
-          "id": "nushell",
-          "name": "Nushell",
-        },
-      ]
-    `)
+          [
+            {
+              "id": "nushell",
+              "name": "Nushell",
+            },
+          ]
+        `)
       })
       it('should prompt user to select actions when include option is empty', async () => {
         const clackPrompts = await import('@clack/prompts')
@@ -60,73 +60,73 @@ describe('actions', () => {
           name: item.name,
         }))
         expect(simpleFilteredActions).toMatchInlineSnapshot(`
-      [
-        {
-          "id": "clash-verge-rev",
-          "name": "Clash Verge Rev",
-        },
-        {
-          "id": "rime",
-          "name": "rime",
-        },
-        {
-          "id": "windows-terminal",
-          "name": "Windows Terminal",
-        },
-        {
-          "id": "nushell",
-          "name": "Nushell",
-        },
-        {
-          "id": "bash",
-          "name": "Bash",
-        },
-        {
-          "id": "powershell",
-          "name": "PowerShell",
-        },
-        {
-          "id": "windows-powershell",
-          "name": "Windows PowerShell",
-        },
-        {
-          "id": "starship",
-          "name": "Starship",
-        },
-        {
-          "id": "git",
-          "name": "Git",
-        },
-        {
-          "id": "maven",
-          "name": "Maven",
-        },
-        {
-          "id": "@sxzz/create",
-          "name": "@sxzz/create",
-        },
-        {
-          "id": "vscode",
-          "name": "VSCode",
-        },
-        {
-          "id": "cursor",
-          "name": "Cursor",
-        },
-        {
-          "id": "zed",
-          "name": "Zed",
-        },
-        {
-          "id": "nvim",
-          "name": "Neo Vim",
-        },
-        {
-          "id": "cspell",
-          "name": "cSpell",
-        },
-      ]
-    `)
+          [
+            {
+              "id": "clash-verge-rev",
+              "name": "Clash Verge Rev",
+            },
+            {
+              "id": "rime",
+              "name": "rime",
+            },
+            {
+              "id": "windows-terminal",
+              "name": "Windows Terminal",
+            },
+            {
+              "id": "nushell",
+              "name": "Nushell",
+            },
+            {
+              "id": "bash",
+              "name": "Bash",
+            },
+            {
+              "id": "powershell",
+              "name": "PowerShell",
+            },
+            {
+              "id": "windows-powershell",
+              "name": "Windows PowerShell",
+            },
+            {
+              "id": "starship",
+              "name": "Starship",
+            },
+            {
+              "id": "git",
+              "name": "Git",
+            },
+            {
+              "id": "maven",
+              "name": "Maven",
+            },
+            {
+              "id": "@sxzz/create",
+              "name": "@sxzz/create",
+            },
+            {
+              "id": "vscode",
+              "name": "VSCode",
+            },
+            {
+              "id": "cursor",
+              "name": "Cursor",
+            },
+            {
+              "id": "zed",
+              "name": "Zed",
+            },
+            {
+              "id": "nvim",
+              "name": "Neo Vim",
+            },
+            {
+              "id": "cspell",
+              "name": "cSpell",
+            },
+          ]
+        `)
       })
       it('should include all actions with "all" option set to true', async () => {
         const filteredActions = await filterActions({
@@ -137,73 +137,73 @@ describe('actions', () => {
           name: item.name,
         }))
         expect(simpleFilteredActions).toMatchInlineSnapshot(`
-      [
-        {
-          "id": "clash-verge-rev",
-          "name": "Clash Verge Rev",
-        },
-        {
-          "id": "rime",
-          "name": "rime",
-        },
-        {
-          "id": "windows-terminal",
-          "name": "Windows Terminal",
-        },
-        {
-          "id": "nushell",
-          "name": "Nushell",
-        },
-        {
-          "id": "bash",
-          "name": "Bash",
-        },
-        {
-          "id": "powershell",
-          "name": "PowerShell",
-        },
-        {
-          "id": "windows-powershell",
-          "name": "Windows PowerShell",
-        },
-        {
-          "id": "starship",
-          "name": "Starship",
-        },
-        {
-          "id": "git",
-          "name": "Git",
-        },
-        {
-          "id": "maven",
-          "name": "Maven",
-        },
-        {
-          "id": "@sxzz/create",
-          "name": "@sxzz/create",
-        },
-        {
-          "id": "vscode",
-          "name": "VSCode",
-        },
-        {
-          "id": "cursor",
-          "name": "Cursor",
-        },
-        {
-          "id": "zed",
-          "name": "Zed",
-        },
-        {
-          "id": "nvim",
-          "name": "Neo Vim",
-        },
-        {
-          "id": "cspell",
-          "name": "cSpell",
-        },
-      ]
-    `)
+          [
+            {
+              "id": "clash-verge-rev",
+              "name": "Clash Verge Rev",
+            },
+            {
+              "id": "rime",
+              "name": "rime",
+            },
+            {
+              "id": "windows-terminal",
+              "name": "Windows Terminal",
+            },
+            {
+              "id": "nushell",
+              "name": "Nushell",
+            },
+            {
+              "id": "bash",
+              "name": "Bash",
+            },
+            {
+              "id": "powershell",
+              "name": "PowerShell",
+            },
+            {
+              "id": "windows-powershell",
+              "name": "Windows PowerShell",
+            },
+            {
+              "id": "starship",
+              "name": "Starship",
+            },
+            {
+              "id": "git",
+              "name": "Git",
+            },
+            {
+              "id": "maven",
+              "name": "Maven",
+            },
+            {
+              "id": "@sxzz/create",
+              "name": "@sxzz/create",
+            },
+            {
+              "id": "vscode",
+              "name": "VSCode",
+            },
+            {
+              "id": "cursor",
+              "name": "Cursor",
+            },
+            {
+              "id": "zed",
+              "name": "Zed",
+            },
+            {
+              "id": "nvim",
+              "name": "Neo Vim",
+            },
+            {
+              "id": "cspell",
+              "name": "cSpell",
+            },
+          ]
+        `)
       })
       it('should exclude "nushell" action with include option set to ".*" and exclude option set to "nushell"', async () => {
         const filteredActions = await filterActions({
@@ -215,69 +215,69 @@ describe('actions', () => {
           name: item.name,
         }))
         expect(simpleFilteredActions).toMatchInlineSnapshot(`
-      [
-        {
-          "id": "clash-verge-rev",
-          "name": "Clash Verge Rev",
-        },
-        {
-          "id": "rime",
-          "name": "rime",
-        },
-        {
-          "id": "windows-terminal",
-          "name": "Windows Terminal",
-        },
-        {
-          "id": "bash",
-          "name": "Bash",
-        },
-        {
-          "id": "powershell",
-          "name": "PowerShell",
-        },
-        {
-          "id": "windows-powershell",
-          "name": "Windows PowerShell",
-        },
-        {
-          "id": "starship",
-          "name": "Starship",
-        },
-        {
-          "id": "git",
-          "name": "Git",
-        },
-        {
-          "id": "maven",
-          "name": "Maven",
-        },
-        {
-          "id": "@sxzz/create",
-          "name": "@sxzz/create",
-        },
-        {
-          "id": "vscode",
-          "name": "VSCode",
-        },
-        {
-          "id": "cursor",
-          "name": "Cursor",
-        },
-        {
-          "id": "zed",
-          "name": "Zed",
-        },
-        {
-          "id": "nvim",
-          "name": "Neo Vim",
-        },
-        {
-          "id": "cspell",
-          "name": "cSpell",
-        },
-      ]
-    `)
+          [
+            {
+              "id": "clash-verge-rev",
+              "name": "Clash Verge Rev",
+            },
+            {
+              "id": "rime",
+              "name": "rime",
+            },
+            {
+              "id": "windows-terminal",
+              "name": "Windows Terminal",
+            },
+            {
+              "id": "bash",
+              "name": "Bash",
+            },
+            {
+              "id": "powershell",
+              "name": "PowerShell",
+            },
+            {
+              "id": "windows-powershell",
+              "name": "Windows PowerShell",
+            },
+            {
+              "id": "starship",
+              "name": "Starship",
+            },
+            {
+              "id": "git",
+              "name": "Git",
+            },
+            {
+              "id": "maven",
+              "name": "Maven",
+            },
+            {
+              "id": "@sxzz/create",
+              "name": "@sxzz/create",
+            },
+            {
+              "id": "vscode",
+              "name": "VSCode",
+            },
+            {
+              "id": "cursor",
+              "name": "Cursor",
+            },
+            {
+              "id": "zed",
+              "name": "Zed",
+            },
+            {
+              "id": "nvim",
+              "name": "Neo Vim",
+            },
+            {
+              "id": "cspell",
+              "name": "cSpell",
+            },
+          ]
+        `)
       })
     })
 
@@ -304,73 +304,73 @@ describe('actions', () => {
           name: item.name,
         }))
         expect(simpleFilteredActions).toMatchInlineSnapshot(`
-      [
-        {
-          "id": "clash-verge-rev",
-          "name": "Clash Verge Rev",
-        },
-        {
-          "id": "rime",
-          "name": "rime",
-        },
-        {
-          "id": "windows-terminal",
-          "name": "Windows Terminal",
-        },
-        {
-          "id": "nushell",
-          "name": "Nushell",
-        },
-        {
-          "id": "bash",
-          "name": "Bash",
-        },
-        {
-          "id": "powershell",
-          "name": "PowerShell",
-        },
-        {
-          "id": "windows-powershell",
-          "name": "Windows PowerShell",
-        },
-        {
-          "id": "starship",
-          "name": "Starship",
-        },
-        {
-          "id": "git",
-          "name": "Git",
-        },
-        {
-          "id": "maven",
-          "name": "Maven",
-        },
-        {
-          "id": "@sxzz/create",
-          "name": "@sxzz/create",
-        },
-        {
-          "id": "vscode",
-          "name": "VSCode",
-        },
-        {
-          "id": "cursor",
-          "name": "Cursor",
-        },
-        {
-          "id": "zed",
-          "name": "Zed",
-        },
-        {
-          "id": "nvim",
-          "name": "Neo Vim",
-        },
-        {
-          "id": "cspell",
-          "name": "cSpell",
-        },
-      ]
-    `)
+          [
+            {
+              "id": "clash-verge-rev",
+              "name": "Clash Verge Rev",
+            },
+            {
+              "id": "rime",
+              "name": "rime",
+            },
+            {
+              "id": "windows-terminal",
+              "name": "Windows Terminal",
+            },
+            {
+              "id": "nushell",
+              "name": "Nushell",
+            },
+            {
+              "id": "bash",
+              "name": "Bash",
+            },
+            {
+              "id": "powershell",
+              "name": "PowerShell",
+            },
+            {
+              "id": "windows-powershell",
+              "name": "Windows PowerShell",
+            },
+            {
+              "id": "starship",
+              "name": "Starship",
+            },
+            {
+              "id": "git",
+              "name": "Git",
+            },
+            {
+              "id": "maven",
+              "name": "Maven",
+            },
+            {
+              "id": "@sxzz/create",
+              "name": "@sxzz/create",
+            },
+            {
+              "id": "vscode",
+              "name": "VSCode",
+            },
+            {
+              "id": "cursor",
+              "name": "Cursor",
+            },
+            {
+              "id": "zed",
+              "name": "Zed",
+            },
+            {
+              "id": "nvim",
+              "name": "Neo Vim",
+            },
+            {
+              "id": "cspell",
+              "name": "cSpell",
+            },
+          ]
+        `)
       })
       it('should include all actions with "all" option set to true', async () => {
         const filteredActions = await filterActions({
@@ -381,73 +381,73 @@ describe('actions', () => {
           name: item.name,
         }))
         expect(simpleFilteredActions).toMatchInlineSnapshot(`
-      [
-        {
-          "id": "clash-verge-rev",
-          "name": "Clash Verge Rev",
-        },
-        {
-          "id": "rime",
-          "name": "rime",
-        },
-        {
-          "id": "windows-terminal",
-          "name": "Windows Terminal",
-        },
-        {
-          "id": "nushell",
-          "name": "Nushell",
-        },
-        {
-          "id": "bash",
-          "name": "Bash",
-        },
-        {
-          "id": "powershell",
-          "name": "PowerShell",
-        },
-        {
-          "id": "windows-powershell",
-          "name": "Windows PowerShell",
-        },
-        {
-          "id": "starship",
-          "name": "Starship",
-        },
-        {
-          "id": "git",
-          "name": "Git",
-        },
-        {
-          "id": "maven",
-          "name": "Maven",
-        },
-        {
-          "id": "@sxzz/create",
-          "name": "@sxzz/create",
-        },
-        {
-          "id": "vscode",
-          "name": "VSCode",
-        },
-        {
-          "id": "cursor",
-          "name": "Cursor",
-        },
-        {
-          "id": "zed",
-          "name": "Zed",
-        },
-        {
-          "id": "nvim",
-          "name": "Neo Vim",
-        },
-        {
-          "id": "cspell",
-          "name": "cSpell",
-        },
-      ]
-    `)
+          [
+            {
+              "id": "clash-verge-rev",
+              "name": "Clash Verge Rev",
+            },
+            {
+              "id": "rime",
+              "name": "rime",
+            },
+            {
+              "id": "windows-terminal",
+              "name": "Windows Terminal",
+            },
+            {
+              "id": "nushell",
+              "name": "Nushell",
+            },
+            {
+              "id": "bash",
+              "name": "Bash",
+            },
+            {
+              "id": "powershell",
+              "name": "PowerShell",
+            },
+            {
+              "id": "windows-powershell",
+              "name": "Windows PowerShell",
+            },
+            {
+              "id": "starship",
+              "name": "Starship",
+            },
+            {
+              "id": "git",
+              "name": "Git",
+            },
+            {
+              "id": "maven",
+              "name": "Maven",
+            },
+            {
+              "id": "@sxzz/create",
+              "name": "@sxzz/create",
+            },
+            {
+              "id": "vscode",
+              "name": "VSCode",
+            },
+            {
+              "id": "cursor",
+              "name": "Cursor",
+            },
+            {
+              "id": "zed",
+              "name": "Zed",
+            },
+            {
+              "id": "nvim",
+              "name": "Neo Vim",
+            },
+            {
+              "id": "cspell",
+              "name": "cSpell",
+            },
+          ]
+        `)
       })
       it('should exclude "nushell" action with include option set to ".*" and exclude option set to "nushell"', async () => {
         const filteredActions = await filterActions({
@@ -459,69 +459,69 @@ describe('actions', () => {
           name: item.name,
         }))
         expect(simpleFilteredActions).toMatchInlineSnapshot(`
-      [
-        {
-          "id": "clash-verge-rev",
-          "name": "Clash Verge Rev",
-        },
-        {
-          "id": "rime",
-          "name": "rime",
-        },
-        {
-          "id": "windows-terminal",
-          "name": "Windows Terminal",
-        },
-        {
-          "id": "bash",
-          "name": "Bash",
-        },
-        {
-          "id": "powershell",
-          "name": "PowerShell",
-        },
-        {
-          "id": "windows-powershell",
-          "name": "Windows PowerShell",
-        },
-        {
-          "id": "starship",
-          "name": "Starship",
-        },
-        {
-          "id": "git",
-          "name": "Git",
-        },
-        {
-          "id": "maven",
-          "name": "Maven",
-        },
-        {
-          "id": "@sxzz/create",
-          "name": "@sxzz/create",
-        },
-        {
-          "id": "vscode",
-          "name": "VSCode",
-        },
-        {
-          "id": "cursor",
-          "name": "Cursor",
-        },
-        {
-          "id": "zed",
-          "name": "Zed",
-        },
-        {
-          "id": "nvim",
-          "name": "Neo Vim",
-        },
-        {
-          "id": "cspell",
-          "name": "cSpell",
-        },
-      ]
-    `)
+          [
+            {
+              "id": "clash-verge-rev",
+              "name": "Clash Verge Rev",
+            },
+            {
+              "id": "rime",
+              "name": "rime",
+            },
+            {
+              "id": "windows-terminal",
+              "name": "Windows Terminal",
+            },
+            {
+              "id": "bash",
+              "name": "Bash",
+            },
+            {
+              "id": "powershell",
+              "name": "PowerShell",
+            },
+            {
+              "id": "windows-powershell",
+              "name": "Windows PowerShell",
+            },
+            {
+              "id": "starship",
+              "name": "Starship",
+            },
+            {
+              "id": "git",
+              "name": "Git",
+            },
+            {
+              "id": "maven",
+              "name": "Maven",
+            },
+            {
+              "id": "@sxzz/create",
+              "name": "@sxzz/create",
+            },
+            {
+              "id": "vscode",
+              "name": "VSCode",
+            },
+            {
+              "id": "cursor",
+              "name": "Cursor",
+            },
+            {
+              "id": "zed",
+              "name": "Zed",
+            },
+            {
+              "id": "nvim",
+              "name": "Neo Vim",
+            },
+            {
+              "id": "cspell",
+              "name": "cSpell",
+            },
+          ]
+        `)
       })
     })
 
@@ -548,73 +548,73 @@ describe('actions', () => {
           name: item.name,
         }))
         expect(simpleFilteredActions).toMatchInlineSnapshot(`
-      [
-        {
-          "id": "clash-verge-rev",
-          "name": "Clash Verge Rev",
-        },
-        {
-          "id": "rime",
-          "name": "rime",
-        },
-        {
-          "id": "windows-terminal",
-          "name": "Windows Terminal",
-        },
-        {
-          "id": "nushell",
-          "name": "Nushell",
-        },
-        {
-          "id": "bash",
-          "name": "Bash",
-        },
-        {
-          "id": "powershell",
-          "name": "PowerShell",
-        },
-        {
-          "id": "windows-powershell",
-          "name": "Windows PowerShell",
-        },
-        {
-          "id": "starship",
-          "name": "Starship",
-        },
-        {
-          "id": "git",
-          "name": "Git",
-        },
-        {
-          "id": "maven",
-          "name": "Maven",
-        },
-        {
-          "id": "@sxzz/create",
-          "name": "@sxzz/create",
-        },
-        {
-          "id": "vscode",
-          "name": "VSCode",
-        },
-        {
-          "id": "cursor",
-          "name": "Cursor",
-        },
-        {
-          "id": "zed",
-          "name": "Zed",
-        },
-        {
-          "id": "nvim",
-          "name": "Neo Vim",
-        },
-        {
-          "id": "cspell",
-          "name": "cSpell",
-        },
-      ]
-    `)
+          [
+            {
+              "id": "clash-verge-rev",
+              "name": "Clash Verge Rev",
+            },
+            {
+              "id": "rime",
+              "name": "rime",
+            },
+            {
+              "id": "windows-terminal",
+              "name": "Windows Terminal",
+            },
+            {
+              "id": "nushell",
+              "name": "Nushell",
+            },
+            {
+              "id": "bash",
+              "name": "Bash",
+            },
+            {
+              "id": "powershell",
+              "name": "PowerShell",
+            },
+            {
+              "id": "windows-powershell",
+              "name": "Windows PowerShell",
+            },
+            {
+              "id": "starship",
+              "name": "Starship",
+            },
+            {
+              "id": "git",
+              "name": "Git",
+            },
+            {
+              "id": "maven",
+              "name": "Maven",
+            },
+            {
+              "id": "@sxzz/create",
+              "name": "@sxzz/create",
+            },
+            {
+              "id": "vscode",
+              "name": "VSCode",
+            },
+            {
+              "id": "cursor",
+              "name": "Cursor",
+            },
+            {
+              "id": "zed",
+              "name": "Zed",
+            },
+            {
+              "id": "nvim",
+              "name": "Neo Vim",
+            },
+            {
+              "id": "cspell",
+              "name": "cSpell",
+            },
+          ]
+        `)
       })
       it('should include all actions with "all" option set to true', async () => {
         const filteredActions = await filterActions({
@@ -625,73 +625,73 @@ describe('actions', () => {
           name: item.name,
         }))
         expect(simpleFilteredActions).toMatchInlineSnapshot(`
-      [
-        {
-          "id": "clash-verge-rev",
-          "name": "Clash Verge Rev",
-        },
-        {
-          "id": "rime",
-          "name": "rime",
-        },
-        {
-          "id": "windows-terminal",
-          "name": "Windows Terminal",
-        },
-        {
-          "id": "nushell",
-          "name": "Nushell",
-        },
-        {
-          "id": "bash",
-          "name": "Bash",
-        },
-        {
-          "id": "powershell",
-          "name": "PowerShell",
-        },
-        {
-          "id": "windows-powershell",
-          "name": "Windows PowerShell",
-        },
-        {
-          "id": "starship",
-          "name": "Starship",
-        },
-        {
-          "id": "git",
-          "name": "Git",
-        },
-        {
-          "id": "maven",
-          "name": "Maven",
-        },
-        {
-          "id": "@sxzz/create",
-          "name": "@sxzz/create",
-        },
-        {
-          "id": "vscode",
-          "name": "VSCode",
-        },
-        {
-          "id": "cursor",
-          "name": "Cursor",
-        },
-        {
-          "id": "zed",
-          "name": "Zed",
-        },
-        {
-          "id": "nvim",
-          "name": "Neo Vim",
-        },
-        {
-          "id": "cspell",
-          "name": "cSpell",
-        },
-      ]
-    `)
+          [
+            {
+              "id": "clash-verge-rev",
+              "name": "Clash Verge Rev",
+            },
+            {
+              "id": "rime",
+              "name": "rime",
+            },
+            {
+              "id": "windows-terminal",
+              "name": "Windows Terminal",
+            },
+            {
+              "id": "nushell",
+              "name": "Nushell",
+            },
+            {
+              "id": "bash",
+              "name": "Bash",
+            },
+            {
+              "id": "powershell",
+              "name": "PowerShell",
+            },
+            {
+              "id": "windows-powershell",
+              "name": "Windows PowerShell",
+            },
+            {
+              "id": "starship",
+              "name": "Starship",
+            },
+            {
+              "id": "git",
+              "name": "Git",
+            },
+            {
+              "id": "maven",
+              "name": "Maven",
+            },
+            {
+              "id": "@sxzz/create",
+              "name": "@sxzz/create",
+            },
+            {
+              "id": "vscode",
+              "name": "VSCode",
+            },
+            {
+              "id": "cursor",
+              "name": "Cursor",
+            },
+            {
+              "id": "zed",
+              "name": "Zed",
+            },
+            {
+              "id": "nvim",
+              "name": "Neo Vim",
+            },
+            {
+              "id": "cspell",
+              "name": "cSpell",
+            },
+          ]
+        `)
       })
       it('should exclude "nushell" action with include option set to ".*" and exclude option set to "nushell"', async () => {
         const filteredActions = await filterActions({
@@ -703,69 +703,69 @@ describe('actions', () => {
           name: item.name,
         }))
         expect(simpleFilteredActions).toMatchInlineSnapshot(`
-      [
-        {
-          "id": "clash-verge-rev",
-          "name": "Clash Verge Rev",
-        },
-        {
-          "id": "rime",
-          "name": "rime",
-        },
-        {
-          "id": "windows-terminal",
-          "name": "Windows Terminal",
-        },
-        {
-          "id": "bash",
-          "name": "Bash",
-        },
-        {
-          "id": "powershell",
-          "name": "PowerShell",
-        },
-        {
-          "id": "windows-powershell",
-          "name": "Windows PowerShell",
-        },
-        {
-          "id": "starship",
-          "name": "Starship",
-        },
-        {
-          "id": "git",
-          "name": "Git",
-        },
-        {
-          "id": "maven",
-          "name": "Maven",
-        },
-        {
-          "id": "@sxzz/create",
-          "name": "@sxzz/create",
-        },
-        {
-          "id": "vscode",
-          "name": "VSCode",
-        },
-        {
-          "id": "cursor",
-          "name": "Cursor",
-        },
-        {
-          "id": "zed",
-          "name": "Zed",
-        },
-        {
-          "id": "nvim",
-          "name": "Neo Vim",
-        },
-        {
-          "id": "cspell",
-          "name": "cSpell",
-        },
-      ]
-    `)
+          [
+            {
+              "id": "clash-verge-rev",
+              "name": "Clash Verge Rev",
+            },
+            {
+              "id": "rime",
+              "name": "rime",
+            },
+            {
+              "id": "windows-terminal",
+              "name": "Windows Terminal",
+            },
+            {
+              "id": "bash",
+              "name": "Bash",
+            },
+            {
+              "id": "powershell",
+              "name": "PowerShell",
+            },
+            {
+              "id": "windows-powershell",
+              "name": "Windows PowerShell",
+            },
+            {
+              "id": "starship",
+              "name": "Starship",
+            },
+            {
+              "id": "git",
+              "name": "Git",
+            },
+            {
+              "id": "maven",
+              "name": "Maven",
+            },
+            {
+              "id": "@sxzz/create",
+              "name": "@sxzz/create",
+            },
+            {
+              "id": "vscode",
+              "name": "VSCode",
+            },
+            {
+              "id": "cursor",
+              "name": "Cursor",
+            },
+            {
+              "id": "zed",
+              "name": "Zed",
+            },
+            {
+              "id": "nvim",
+              "name": "Neo Vim",
+            },
+            {
+              "id": "cspell",
+              "name": "cSpell",
+            },
+          ]
+        `)
       })
     })
   })
