@@ -5,7 +5,7 @@
 local opt = vim.opt
 
 opt.wrap = true
-opt.guifont = { "Comic Sans MS", "Maple Mono CN", "Symbols Nerd Font" }
+opt.guifont = { "Comic Sans MS", "Symbols Nerd Font", "三极露融体" }
 opt.startofline = true
 
 if vim.fn.executable("nu") == 1 then
