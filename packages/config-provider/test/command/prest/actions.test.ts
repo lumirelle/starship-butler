@@ -1,3 +1,4 @@
+// oxlint-disable no-console
 import { afterAll, beforeAll, describe, expect, it, spyOn } from 'bun:test'
 import process from 'node:process'
 import { filterActions } from '../../../src/command/preset/actions'
@@ -314,10 +315,6 @@ describe('actions', () => {
               "name": "rime",
             },
             {
-              "id": "windows-terminal",
-              "name": "Windows Terminal",
-            },
-            {
               "id": "nushell",
               "name": "Nushell",
             },
@@ -328,10 +325,6 @@ describe('actions', () => {
             {
               "id": "powershell",
               "name": "PowerShell",
-            },
-            {
-              "id": "windows-powershell",
-              "name": "Windows PowerShell",
             },
             {
               "id": "starship",
@@ -391,10 +384,6 @@ describe('actions', () => {
               "name": "rime",
             },
             {
-              "id": "windows-terminal",
-              "name": "Windows Terminal",
-            },
-            {
               "id": "nushell",
               "name": "Nushell",
             },
@@ -405,10 +394,6 @@ describe('actions', () => {
             {
               "id": "powershell",
               "name": "PowerShell",
-            },
-            {
-              "id": "windows-powershell",
-              "name": "Windows PowerShell",
             },
             {
               "id": "starship",
@@ -469,20 +454,12 @@ describe('actions', () => {
               "name": "rime",
             },
             {
-              "id": "windows-terminal",
-              "name": "Windows Terminal",
-            },
-            {
               "id": "bash",
               "name": "Bash",
             },
             {
               "id": "powershell",
               "name": "PowerShell",
-            },
-            {
-              "id": "windows-powershell",
-              "name": "Windows PowerShell",
             },
             {
               "id": "starship",
@@ -558,10 +535,6 @@ describe('actions', () => {
               "name": "rime",
             },
             {
-              "id": "windows-terminal",
-              "name": "Windows Terminal",
-            },
-            {
               "id": "nushell",
               "name": "Nushell",
             },
@@ -572,10 +545,6 @@ describe('actions', () => {
             {
               "id": "powershell",
               "name": "PowerShell",
-            },
-            {
-              "id": "windows-powershell",
-              "name": "Windows PowerShell",
             },
             {
               "id": "starship",
@@ -635,10 +604,6 @@ describe('actions', () => {
               "name": "rime",
             },
             {
-              "id": "windows-terminal",
-              "name": "Windows Terminal",
-            },
-            {
               "id": "nushell",
               "name": "Nushell",
             },
@@ -649,10 +614,6 @@ describe('actions', () => {
             {
               "id": "powershell",
               "name": "PowerShell",
-            },
-            {
-              "id": "windows-powershell",
-              "name": "Windows PowerShell",
             },
             {
               "id": "starship",
@@ -713,20 +674,12 @@ describe('actions', () => {
               "name": "rime",
             },
             {
-              "id": "windows-terminal",
-              "name": "Windows Terminal",
-            },
-            {
               "id": "bash",
               "name": "Bash",
             },
             {
               "id": "powershell",
               "name": "PowerShell",
-            },
-            {
-              "id": "windows-powershell",
-              "name": "Windows PowerShell",
             },
             {
               "id": "starship",

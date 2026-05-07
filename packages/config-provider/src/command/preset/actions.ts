@@ -21,38 +21,52 @@ import { sxzzCreate } from './actions/tools/sxzz_create'
 import { git } from './actions/vcs/git'
 
 /**
- * Preset actions.
- *
+ * Create actions.
  * @private
  */
-const _ACTIONS: (Action | undefined)[] = [
-  // Network
-  clashVergeRev(),
-  // Input Methods
-  rime(),
-  // Terminal & Shell & Prompt
-  windowsTerminal(),
-  nushell(),
-  bash(),
-  powershell(),
-  windowsPowerShell(),
-  starship(),
-  // VCS
-  git(),
-  // Package Manager
-  maven(),
-  // Tools
-  sxzzCreate(),
-  // Editors
-  vscode(),
-  cursor(),
-  zed(),
-  neovim(),
-  // Linters
-  cSpell(),
-]
+function _createActions(): (Action | undefined)[] {
+  return [
+    // Network
+    clashVergeRev(),
+    // Input Methods
+    rime(),
+    // Terminal & Shell & Prompt
+    windowsTerminal(),
+    nushell(),
+    bash(),
+    powershell(),
+    windowsPowerShell(),
+    starship(),
+    // VCS
+    git(),
+    // Package Manager
+    maven(),
+    // Tools
+    sxzzCreate(),
+    // Editors
+    vscode(),
+    cursor(),
+    zed(),
+    neovim(),
+    // Linters
+    cSpell(),
+  ]
+}
+
+/**
+ * Preset actions.
+ * @private
+ */
+const _ACTIONS: (Action | undefined)[] = _createActions()
 
 export async function filterActions(options: PresetOptions): Promise<Action[]> {
+  // In test environment, we need to recreate actions to
+  // test different platforms.
+  if (import.meta.env.NODE_ENV === 'test') {
+    _ACTIONS.length = 0
+    _ACTIONS.push(..._createActions())
+  }
+
   const actions = _ACTIONS.filter(Boolean) as Action[]
 
   let include = toArray(options.include)
