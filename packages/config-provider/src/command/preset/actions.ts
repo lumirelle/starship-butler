@@ -3,6 +3,7 @@ import { toArray } from '@antfu/utils'
 import { multiselect } from '@clack/prompts'
 import { consola } from 'consola'
 import { important } from 'starship-butler-utils/highlight'
+import { cursor } from './actions/editor/cursor'
 import { neovim } from './actions/editor/neovim'
 import { vscode } from './actions/editor/vscode'
 import { zed } from './actions/editor/zed'
@@ -44,6 +45,7 @@ const _ACTIONS: (Action | undefined)[] = [
   sxzzCreate(),
   // Editors
   vscode(),
+  cursor(),
   zed(),
   neovim(),
   // Linters

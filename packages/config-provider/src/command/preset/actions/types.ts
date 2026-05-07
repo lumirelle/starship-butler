@@ -13,6 +13,7 @@ type ActionId
     | 'maven'
     | '@sxzz/create'
     | 'vscode'
+    | 'cursor'
     | 'zed'
     | 'nvim'
     | 'cspell'
