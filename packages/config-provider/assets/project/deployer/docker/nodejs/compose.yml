@@ -1,14 +1,18 @@
 services:
-  dev:
+  app-dev:
     profiles:
       - dev
-    image: your_frontend_app_image_name:dev
+    # Change the image name to match your Node.js application
+    image: YOUR_NODEJS_APP:dev
     build:
       context: .
       dockerfile: Dockerfile.dev
+    # Change the container name to match your Node.js application
+    container_name: YOUR_NODEJS_APP:dev
     command: npm run dev
+    # Change the port to match your Node.js application
     ports:
-      - 8080:8080
+      - 80:80
     develop:
       watch:
         - path: .

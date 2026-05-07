@@ -1,24 +1,26 @@
-# Docker compose for data services (MySQL and Redis)
 services:
   sql-dev:
     profiles:
       - dev
     image: mysql:lts
+    container_name: sql:dev
     environment:
       MYSQL_ROOT_PASSWORD: root # Or your custom root password
       MYSQL_DATABASE: database # Or your custom database name
-      TZ: Asia/Shanghai
+      TZ: Asia/Shanghai # Or your preferred timezone
     ports:
       - 3306:3306
     volumes:
       - ./data/mysql/:/var/lib/mysql
+
   redis-dev:
     profiles:
       - dev
     image: redis:alpine
+    container_name: redis:dev
     # command: --requirepass "12345678"  # Uncomment if you need a password
     environment:
-      TZ: Asia/Shanghai
+      TZ: Asia/Shanghai # Or your preferred timezone
     ports:
       - 6379:6379
     volumes:

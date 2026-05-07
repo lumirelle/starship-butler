@@ -1,11 +1,15 @@
+# Change the Node.js version to match your application's requirements
 FROM node:lts-alpine
 
 WORKDIR /app
 
+# Change the lockfile name to match the package manager your application is using
 COPY package.json package-lock.json ./
 
+# Change the install command to match the package manager your application is using
 RUN npm ci
 
 COPY . .
 
-EXPOSE 8080
+# Change the port to match your Node.js application
+EXPOSE 80
