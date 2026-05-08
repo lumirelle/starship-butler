@@ -1,8 +1,19 @@
 {
-  "references": [
-    { "path": "./packages/a/tsconfig.json" },
-    { "path": "./packages/b/tsconfig.json" },
-    { "path": "./tsconfig.node.json" }
-  ],
-  "files": []
+  "extends": "@lumirelle/tsconfig/ts",
+  "compilerOptions": {
+    "tsBuildInfoFile": "./node_modules/.tmp/tsconfig.node.tsbuildinfo",
+    // Path aliases for your monorepo packages
+    "paths": {
+      "@monorepo/a": ["./packages/a/src/index"],
+      "@monorepo/a/*": ["./packages/a/src/*"],
+      "@monorepo/b": ["./packages/b/src/index"],
+      "@monorepo/b/*": ["./packages/b/src/*"]
+    },
+    // Include types you need, if you are using Node.js, please replace "bun-types" with "node".
+    "types": ["bun-types"],
+    // Allow importing JavaScript files
+    "allowJs": true
+  },
+  // Your project files others than source & test files who are need type support
+  "include": ["scripts/**/*", "*.ts", "*.js"]
 }
