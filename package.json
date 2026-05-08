@@ -33,7 +33,7 @@
     "catalogs": {
       "prod": {
         "@clack/prompts": "^1.3.0",
-        "c12": "^4.0.0-beta.4",
+        "c12": "^4.0.0-beta.5",
         "cac": "^7.0.0",
         "consola": "^3.4.2",
         "defu": "^6.1.7",
@@ -46,12 +46,12 @@
         "@antfu/utils": "^9.3.0"
       },
       "dev": {
-        "bumpp": "^11.0.1",
+        "bumpp": "^11.1.0",
         "simple-git-hooks": "git+https://github.com/toplenboren/simple-git-hooks.git#7625657"
       },
       "types": {
         "@lumirelle/tsconfig": "^0.1.3",
-        "@types/node": "^25.6.0",
+        "@types/node": "^25.6.2",
         "bun-types": "^1.3.13",
         "typescript": "^6.0.3"
       },
@@ -65,11 +65,11 @@
         "@lumirelle/oxlint-config": "^0.3.0",
         "eslint": "^10.3.0",
         "eslint-plugin-oxlint": "^1.63.0",
-        "knip": "^6.11.0",
+        "knip": "^6.12.1",
         "nano-staged": "^1.0.2",
         "oxlint": "^1.63.0",
         "oxlint-tsgolint": "^0.22.1",
-        "publint": "^0.3.19"
+        "publint": "^0.3.20"
       },
       "test": {
         "tsnapi": "^0.3.2"
@@ -83,7 +83,7 @@
         "pinia": "^3.0.4",
         "unocss": "^66.6.8",
         "unplugin-vue-components": "^32.0.0",
-        "vite": "^7.3.3",
+        "vite": "^8.0.11",
         "vite-tsconfig-paths": "^6.1.1",
         "vitepress": "^2.0.0-alpha.17",
         "vitepress-plugin-group-icons": "^1.7.5",
