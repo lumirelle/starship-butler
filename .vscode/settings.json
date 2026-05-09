@@ -28,6 +28,9 @@
     "less"
   ],
 
+  // JavaScript / TypeScript
+  "js/ts.tsdk.path": "node_modules\\typescript\\lib",
+
   // File associations
   "files.associations": {
     ".butlerrc": "properties",
