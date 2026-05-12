@@ -133,16 +133,16 @@
     "*.xaml": "$(capture).xaml.cs"
   },
   // Font
-  "custom-ui-style.font.monospace": "'Comic Sans MS', 'Symbols Nerd Font Mono', '三极露融体', monospace",
-  "custom-ui-style.font.sansSerif": "'Comic Sans MS', 'Symbols Nerd Font', '三极露融体', sans-serif",
+  "custom-ui-style.font.monospace": "'Comic Sans MS', 'Symbols Nerd Font Mono', 'Maple Mono CN', monospace",
+  "custom-ui-style.font.sansSerif": "'Comic Sans MS', 'Symbols Nerd Font', 'Maple Mono CN', sans-serif",
   "custom-ui-style.stylesheet": {
     // Font family patch for Cursor Editor
     "body": {
-      "--vscode-font-family": "'Comic Sans MS', 'Symbols Nerd Font Mono', '三极露融体',  monospace"
+      "--vscode-font-family": "'Comic Sans MS', 'Symbols Nerd Font Mono', 'Maple Mono CN',  monospace"
     }
   },
-  "editor.fontFamily": "'Comic Mono', 'Symbols Nerd Font Mono', '三极露融体', monospace",
-  "markdown.preview.fontFamily": "'Comic Sans MS', 'Symbols Nerd Font', '三极露融体', monospace",
+  "editor.fontFamily": "'Comic Mono', 'Symbols Nerd Font Mono', 'Maple Mono CN', monospace",
+  "markdown.preview.fontFamily": "'Comic Sans MS', 'Symbols Nerd Font', 'Maple Mono CN', monospace",
   "editor.fontSize": 16,
   "terminal.integrated.fontSize": 14,
   "markdown.preview.fontSize": 14,

@@ -34,7 +34,7 @@
       "backgroundImageOpacity": 0.3,
       "experimental.rightClickContextMenu": true,
       "font": {
-        "face": "'Comic Mono', 'Symbols Nerd Font Mono', '三极露融体'"
+        "face": "'Comic Mono', 'Symbols Nerd Font Mono', 'Maple Mono CN'"
       },
       "intenseTextStyle": "all",
       "useAcrylic": true

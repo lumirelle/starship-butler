@@ -19,7 +19,7 @@ export const windowsTerminal: ActionFactory = () => {
     ]),
     posthandler: ({ destination }) => {
       consola.info(
-        `This configuration will use \`'"Comic Mono", "Symbols Nerd Font Mono", "三极露融体"'\` as terminal fonts, \`Nushell\` as default shell. If you don't want to use them, please edit this config \`(${join(destination, 'settings.json')})\` manually or consider not to include this action.`,
+        `This configuration will use \`'"Comic Mono", "Symbols Nerd Font Mono", "Maple Mono CN"'\` as terminal fonts, \`Nushell\` as default shell. If you don't want to use them, please edit this config \`(${join(destination, 'settings.json')})\` manually or consider not to include this action.`,
       )
     },
   }
