@@ -21,26 +21,26 @@
   "exports": {
     "./config": {
       "import": {
-        "types": "./dist/config.d.ts",
-        "default": "./dist/config.js"
+        "types": "./dist/config.d.mts",
+        "default": "./dist/config.mjs"
       }
     },
     "./path": {
       "import": {
-        "types": "./dist/path.d.ts",
-        "default": "./dist/path.js"
+        "types": "./dist/path.d.mts",
+        "default": "./dist/path.mjs"
       }
     },
     "./fs": {
       "import": {
-        "types": "./dist/fs.d.ts",
-        "default": "./dist/fs.js"
+        "types": "./dist/fs.d.mts",
+        "default": "./dist/fs.mjs"
       }
     },
     "./highlight": {
       "import": {
-        "types": "./dist/highlight.d.ts",
-        "default": "./dist/highlight.js"
+        "types": "./dist/highlight.d.mts",
+        "default": "./dist/highlight.mjs"
       }
     },
     "./package.json": "./package.json"
@@ -49,7 +49,9 @@
     "dist"
   ],
   "scripts": {
-    "pubcheck": "bun run --parallel 'attw --pack --profile esm-only' publint"
+    "dev": "tsdown --watch",
+    "build": "tsdown --publint --attw.profile esm-only",
+    "typecheck": "tsc --noEmit"
   },
   "dependencies": {
     "c12": "catalog:prod",

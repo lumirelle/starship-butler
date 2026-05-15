@@ -2,16 +2,6 @@
   "extends": "@lumirelle/tsconfig/ts",
   "compilerOptions": {
     "tsBuildInfoFile": "./node_modules/.tmp/tsconfig.node.tsbuildinfo",
-    "paths": {
-      "starship-butler-config-provider": ["./packages/config-provider/src/index"],
-      "starship-butler-config-provider/*": ["./packages/config-provider/src/*"],
-      "starship-butler": ["./packages/core/src/index"],
-      "starship-butler/*": ["./packages/core/src/*"],
-      "starship-butler-types": ["./packages/types/src/index"],
-      "starship-butler-types/*": ["./packages/types/src/*"],
-      "starship-butler-utils": ["./packages/utils/src/index"],
-      "starship-butler-utils/*": ["./packages/utils/src/*"]
-    },
     "types": ["bun-types"],
     "allowJs": true
   },

@@ -3,8 +3,7 @@ import type { KnipConfig } from 'knip'
 export default {
   workspaces: {
     '.': {
-      entry: ['./bunup.config.ts'],
-      ignoreDependencies: ['@arethetypeswrong/cli', '@lumirelle/oxlint-config', 'publint'],
+      ignoreDependencies: ['@lumirelle/oxlint-config'],
     },
     'docs': {
       ignoreDependencies: [

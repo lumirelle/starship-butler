@@ -21,44 +21,46 @@
   "exports": {
     ".": {
       "import": {
-        "types": "./dist/index.d.ts",
-        "default": "./dist/index.js"
+        "types": "./dist/index.d.mts",
+        "default": "./dist/index.mjs"
       }
     },
     "./command/set": {
       "import": {
-        "types": "./dist/command/set/index.d.ts",
-        "default": "./dist/command/set/index.js"
+        "types": "./dist/command/set/index.d.mts",
+        "default": "./dist/command/set/index.mjs"
       }
     },
     "./command/preset": {
       "import": {
-        "types": "./dist/command/preset/index.d.ts",
-        "default": "./dist/command/preset/index.js"
+        "types": "./dist/command/preset/index.d.mts",
+        "default": "./dist/command/preset/index.mjs"
       }
     },
     "./command/utils": {
       "import": {
-        "types": "./dist/command/utils/index.d.ts",
-        "default": "./dist/command/utils/index.js"
+        "types": "./dist/command/utils/index.d.mts",
+        "default": "./dist/command/utils/index.mjs"
       }
     },
     "./constants": {
       "import": {
-        "types": "./dist/constants.d.ts",
-        "default": "./dist/constants.js"
+        "types": "./dist/constants.d.mts",
+        "default": "./dist/constants.mjs"
       }
     },
     "./package.json": "./package.json"
   },
-  "module": "./dist/index.js",
-  "types": "./dist/index.d.ts",
+  "module": "./dist/index.mjs",
+  "types": "./dist/index.d.mts",
   "files": [
     "assets",
     "dist"
   ],
   "scripts": {
-    "pubcheck": "bun run --parallel 'attw --pack --profile esm-only' publint"
+    "dev": "tsdown --watch",
+    "build": "tsdown --publint --attw.profile esm-only",
+    "typecheck": "tsc --noEmit"
   },
   "dependencies": {
     "@clack/prompts": "catalog:prod",
