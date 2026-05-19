@@ -46,7 +46,7 @@
     },
     "packages/config-provider": {
       "name": "starship-butler-config-provider",
-      "version": "6.0.1",
+      "version": "7.0.0",
       "dependencies": {
         "@clack/prompts": "catalog:prod",
         "consola": "catalog:prod",
@@ -62,7 +62,7 @@
     },
     "packages/core": {
       "name": "starship-butler",
-      "version": "6.0.1",
+      "version": "7.0.0",
       "bin": {
         "butler": "bin/index.mjs",
       },
@@ -78,11 +78,11 @@
     },
     "packages/types": {
       "name": "starship-butler-types",
-      "version": "6.0.1",
+      "version": "7.0.0",
     },
     "packages/utils": {
       "name": "starship-butler-utils",
-      "version": "6.0.1",
+      "version": "7.0.0",
       "dependencies": {
         "c12": "catalog:prod",
         "consola": "catalog:prod",
@@ -246,11 +246,11 @@
 
     "@iconify-json/logos": ["@iconify-json/logos@1.2.11", "", { "dependencies": { "@iconify/types": "*" } }, "sha512-fOo4pGEatuyuCFNL+cwquYMa2Im0oJHRHV7lt/Qqs5Ode/lPImHCQcfTtPzZj7qYMPb/h8YHN3TG54uEowrjNQ=="],
 
-    "@iconify-json/simple-icons": ["@iconify-json/simple-icons@1.2.82", "", { "dependencies": { "@iconify/types": "*" } }, "sha512-4p978qHx8eD/QBOhgBzp/p7uS3OO2KCnVpFPJTUvuhuDXv1Hr4RcxcZ5MWc6ptkf/3Dlb1xb23068OtPyx10mA=="],
+    "@iconify-json/simple-icons": ["@iconify-json/simple-icons@1.2.83", "", { "dependencies": { "@iconify/types": "*" } }, "sha512-6Pp9V++XisT9RKH7FB4RLPqUDzcmLtSma0ovOEIoEWGrXtHwBFsH7oN1z8vvCVCb95fb87QgR46/zRLyN9Y3kg=="],
 
     "@iconify-json/svg-spinners": ["@iconify-json/svg-spinners@1.2.4", "", { "dependencies": { "@iconify/types": "*" } }, "sha512-ayn0pogFPwJA1WFZpDnoq9/hjDxN+keeCMyThaX4d3gSJ3y0mdKUxIA/b1YXWGtY9wVtZmxwcvOIeEieG4+JNg=="],
 
-    "@iconify-json/vscode-icons": ["@iconify-json/vscode-icons@1.2.49", "", { "dependencies": { "@iconify/types": "*" } }, "sha512-kPSF7NYMEepp/YxM/Sz9AK3+8tEb4Vz94N67OH4Xw9PetIs6at9iETVAAD47WR1sV+VkQo+Uynd8IMKw3J5NGQ=="],
+    "@iconify-json/vscode-icons": ["@iconify-json/vscode-icons@1.2.50", "", { "dependencies": { "@iconify/types": "*" } }, "sha512-XqG9nO1m+IiY8/RvT5BJjM/eG3CDRXBGRRPqR/MAcVi734yZ0Pa+jqObshZfnpUeIsuDKNn9C/7ZW00ART6kog=="],
 
     "@iconify/types": ["@iconify/types@2.0.0", "", {}, "sha512-+wluvCrRhXrhyOmRDJ3q8mux9JkKy5SJ/v8ol2tu4FVjyYvtEzkc/3pK15ET6RKg4b4w4BmTk1+gsCUhf21Ykg=="],
 
@@ -732,7 +732,7 @@
 
     "duplexer": ["duplexer@0.1.2", "", {}, "sha512-jtD6YG370ZCIi/9GTaJKQxWTZD045+4R4hTk/x1UyoqadyJ9x9CgSi1RlVDQF8U2sxLLSnFkCaMihqljHIWgMg=="],
 
-    "electron-to-chromium": ["electron-to-chromium@1.5.357", "", {}, "sha512-NHlTIQDK8fmVwHwuIzmXYEJ1Ewq3D9wDNc0cWXxDGysP6Pb21giwGNkxiTifyKy/4SoPuN5l6GLP1W9Sv7zB2g=="],
+    "electron-to-chromium": ["electron-to-chromium@1.5.359", "", {}, "sha512-8lPELWuYZIWk7NDvCNthtmMw/7Q5Wu25NpM4djFMHBmk8DubPAtL4YTOp7ou0e7HyJtwkVlWv8XMLURnrtgJQw=="],
 
     "empathic": ["empathic@2.0.1", "", {}, "sha512-YGRs8knHhKHVShLkFET/rWAU8kmHbOV5LwN938RHI0pljAJ1Gf6SzXsSmRaEzcXTtOOmVqJ5+WtQPL5uigY50Q=="],
 
