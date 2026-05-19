@@ -23,7 +23,7 @@
     // Nuxt
     "nuxtr.nuxtr-vscode",
     "alimozdemir.vscode-nuxt-dx-tools",
-    "antfu.goto-alias", // F12
+    "antfu.goto-alias", // F12 / gd (With Neovim)
     // I18n
     "lokalise.i18n-ally",
     // UnoCSS

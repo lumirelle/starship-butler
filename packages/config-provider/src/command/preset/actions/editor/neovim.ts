@@ -45,7 +45,7 @@ export const neovim: ActionFactory = () => {
       createConfigPathGenerator(join('lua', 'config', 'keymaps_vscode.lua')),
       createConfigPathGenerator(join('lua', 'config', 'keymaps_not_vscode.lua')),
       createConfigPathGenerator(join('lua', 'config', 'options.lua')),
-      createConfigPathGenerator(join('lua', 'plugins', 'rose_pine.lua')),
+      createConfigPathGenerator(join('lua', 'plugins', 'theme.lua')),
       createConfigPathGenerator(join('lua', 'plugins', 'multicursor.lua')),
       createConfigPathGenerator(join('lua', 'plugins', 'vscode_multi_cursor.lua')),
     ]),

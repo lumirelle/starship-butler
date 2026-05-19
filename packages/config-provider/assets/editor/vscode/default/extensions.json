@@ -3,7 +3,8 @@
   "recommendations": [
     // #region UI
     // Theme
-    "mvllow.rose-pine",
+    "github.github-vscode-theme",
+    "wicked-labs.sequoia",
     "antfu.icons-carbon",
     "catppuccin.catppuccin-vsc-icons",
     // File Nesting
@@ -32,7 +33,6 @@
 
     // #region Behavior
     // Open & Edit
-    "sandcastle.vscode-open",
     "ms-vscode.hexeditor",
     "asvetliakov.vscode-neovim",
     "cardinal90.multi-cursor-case-preserve",
