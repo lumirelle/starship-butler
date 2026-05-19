@@ -115,6 +115,7 @@
     "typescript": "catalog:types"
   },
   "overrides": {
+    "fflate": "0.8.2",
     "typescript": "catalog:types",
     "vite": "catalog:docs",
     "vue": "catalog:docs"
