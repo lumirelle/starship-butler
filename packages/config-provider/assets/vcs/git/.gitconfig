@@ -73,7 +73,7 @@ iam = "!f() { \
   done; \
   \
   if \"$arg_help\"; then \
-    echo 'Usage: git iam <user-name> <user-email>'; \
+    echo 'Usage: git iam <user_name> <user_email>'; \
     return 0; \
   fi; \
   \
@@ -107,7 +107,7 @@ discard = "!f() { \
   done; \
   \
   if \"$arg_help\"; then \
-    echo 'Usage: git discard <file-path(s)>'; \
+    echo 'Usage: git discard <...path>'; \
     return 0; \
   fi; \
   \
@@ -149,7 +149,7 @@ unadd = "!f() { \
   done; \
   \
   if \"$arg_help\"; then \
-    echo 'Usage: git unadd <file-path(s)>'; \
+    echo 'Usage: git unadd <...path>'; \
     return 0; \
   fi; \
   \
@@ -181,9 +181,9 @@ commitx = "!f() {\
   done; \
   \
   if \"$arg_help\"; then \
-    echo 'Usage: git commitx [<options>] [<message>]'; \
-    echo '   Or: git commitx --amend [<options>]'; \
-    echo '   Or: git commitx --edit [<options>] [<message>]'; \
+    echo 'Usage: git commitx [options] [message]'; \
+    echo '   Or: git commitx --amend [other_options]'; \
+    echo '   Or: git commitx --edit [other_options] [message]'; \
     echo 'Options:'; \
     echo '  -a, --amend     Amend the previous commit with the new changes and reuse the previous commit message.'; \
     echo '  -e, --edit      Amend the previous commit with the new changes and edit the previous commit message.'; \
@@ -210,8 +210,8 @@ commitx-with-message = "!f() {\
   done; \
   \
   if \"$arg_help\"; then \
-    echo 'Usage: git commitx-with-message [options] <category> [<scope>] <subject_and_body>'; \
-    echo '   Or: git commitx-with-message --edit'; \
+    echo 'Usage: git commitx-with-message <msg_category> [msg_scope] <msg_subject_and_body> [options]'; \
+    echo '   Or: git commitx-with-message --edit [other_options]'; \
     echo 'Options:'; \
     echo '  -e, --edit     Amend the previous commit with the new changes and edit the previous commit message.'; \
     echo '  ... See \"git commitx --?\" for more options.'; \
@@ -230,8 +230,8 @@ commitx-with-message = "!f() {\
     values[0]=${values[0]//!/}; \
   fi; \
   \
-  if [[ ${#values[@]} -eq 3 ]]; then \
-    git $arg_command \"${values[0]}(${values[1]})$([[ "$has_breaking_change" == true ]] && echo "!"): ${values[2]}\"; \
+  if [[ ${#values[@]} -ge 3 ]]; then \
+    git $arg_command \"${values[0]}(${values[1]})$([[ "$has_breaking_change" == true ]] && echo "!"): ${values[2]}\" \"${values[@]:3}\"; \
   elif [[ ${#values[@]} -eq 2 ]]; then \
     git $arg_command \"${values[0]}$([[ "$has_breaking_change" == true ]] && echo "!"): ${values[1]}\"; \
   else \
@@ -242,11 +242,11 @@ commitx-with-message = "!f() {\
 cm = commitx-with-message
 uncommit = reset --soft HEAD^ # Back to the staging area
 uc = uncommit
-commit-work-in-progress = "!git commitx-with-message chore 'wip'"
+commit-work-in-progress = "!git commitx-with-message feat wip"
 cwip = commit-work-in-progress
 commit-readme = "!git commitx-with-message docs 'update README.md'"
 creadme = commit-readme
-commit-dependencies = "!git commitx-with-message chore 'update dependencies'"
+commit-dependencies = "!git commitx-with-message chore 'update non-major dependencies'"
 cdep = commit-dependencies
 commit-snapshots = "!git commitx-with-message test 'update snapshots'"
 csnap = commit-snapshots
@@ -276,7 +276,7 @@ branch-delete = "!f() { \
   done; \
   \
   if \"$arg_help\"; then \
-    echo 'Usage: git branch-delete [options] <branch-name...>'; \
+    echo 'Usage: git branch-delete [options] <...branch_name>'; \
     echo 'Options:'; \
     echo '  -o, --origin    Delete the branch from origin remote only.'; \
     echo '  -a, --all       Delete the branch from both local and origin remote.'; \
@@ -328,7 +328,7 @@ stashx = "!f() { \
   done; \
   \
   if \"$arg_help\"; then \
-    echo 'Usage: git stashx [options] [<message>]'; \
+    echo 'Usage: git stashx [options] [message]'; \
     echo 'Options:'; \
     echo '  -l, --list      List all stashes.'; \
     echo '  -s, --show      Show the changes recorded in the stash as a diff between the stashed state and its original parent.'; \
@@ -361,7 +361,7 @@ mergex = "!f() { \
   done; \
   \
   if \"$arg_help\"; then \
-    echo 'Usage: git mergex [<options>] [<commit>]'; \
+    echo 'Usage: git mergex [options] [commit]'; \
     echo '   Or: git mergex --abort'; \
     echo '   Or: git mergex --continue'; \
     echo 'Options:'; \
@@ -398,7 +398,7 @@ rebasex = "!f() { \
   done; \
   \
   if \"$arg_help\"; then \
-    echo 'Usage: git rebasex [<options>] [<commit>]'; \
+    echo 'Usage: git rebasex [options] [commit]'; \
     echo '   Or: git rebasex --abort'; \
     echo '   Or: git rebasex --continue'; \
     echo 'Options:'; \
@@ -433,7 +433,7 @@ revertx = "!f() { \
   done; \
   \
   if \"$arg_help\"; then \
-    echo 'Usage: git revertx [<options>] [<commit>]'; \
+    echo 'Usage: git revertx [options] [commit]'; \
     echo '   Or: git revertx --abort'; \
     echo '   Or: git revertx --continue'; \
     echo 'Options:'; \
@@ -466,7 +466,7 @@ cherry-pickx = "!f() { \
   done; \
   \
   if \"$arg_help\"; then \
-    echo 'Usage: git cherry-pickx [<options>] [<commit>]'; \
+    echo 'Usage: git cherry-pickx [options] [commit]'; \
     echo '   Or: git cherry-pickx --abort'; \
     echo '   Or: git cherry-pickx --continue'; \
     echo 'Options:'; \
@@ -499,7 +499,7 @@ tagx = "!f() { \
   done; \
   \
   if \"$arg_help\"; then \
-    echo 'Usage: git tagx [options] <tag-name> [<tag-message>]'; \
+    echo 'Usage: git tagx [options] <tag_name> [<tag_message>]'; \
     echo 'Options:'; \
     echo '  ... See \"git tag --help\" for more options.'; \
     return 0; \
@@ -531,9 +531,9 @@ tag-delete = "!f() { \
   done; \
   \
   if \"$arg_help\"; then \
-    echo 'Usage: git tag-delete [options] <tag-name>'; \
-    echo '   Or: git tag-delete --origin <tag-name>'; \
-    echo '   Or: git tag-delete --all <tag-name>'; \
+    echo 'Usage: git tag-delete [options] <tag_name>'; \
+    echo '   Or: git tag-delete --origin <tag_name>'; \
+    echo '   Or: git tag-delete --all <tag_name>'; \
     echo 'Options:'; \
     echo '  -o, --origin    Delete the tag from origin remote only.'; \
     echo '  -a, --all       Delete the tag from both local and origin remote.'; \
@@ -574,8 +574,8 @@ remotex = "!f() { \
   \
   if \"$arg_help\"; then \
     echo 'Usage: git remotex [subcommand] [options]'; \
-    echo '   Or: git remotex --add [remote-name:-origin] <remote-url>'; \
-    echo '   Or: git remotex --remove <remote-name>'; \
+    echo '   Or: git remotex --add [remote_name:-origin] <remote_url>'; \
+    echo '   Or: git remotex --remove <remote_name>'; \
     echo 'Options:'; \
     echo '  -a, --add       Add a new remote.'; \
     echo '  -x, --remove    Remove a remote.'; \
