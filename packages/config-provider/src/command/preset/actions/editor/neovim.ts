@@ -23,12 +23,18 @@ export const neovim: ActionFactory = () => {
     }),
     prehandler: ({ destination: targetFolder, name }) => {
       // FIXME(Lumirelle): Better prehandler?
-      if (!isPathExist([targetFolder, join(targetFolder, 'lazyvim.json')])) {
-        throw new HandlerError(`You should install and open ${name} and LazyVim one time first!`)
+      if (!isPathExist(targetFolder)) {
+        throw new HandlerError(`You should install and open ${name} one time first!`)
       }
       const luaConfigDir = join(targetFolder, 'lua', 'config')
       if (!ensureDirectoryExist(luaConfigDir)) {
         throw new HandlerError(`Failed to create Lua config directory: ${luaConfigDir}`)
+      }
+      const lazyVimStarterFile = join(luaConfigDir, 'lazy.lua')
+      if (!isPathExist(lazyVimStarterFile)) {
+        throw new HandlerError(
+          `This configuration is meant to be used with LazyVim, but it seems you haven't installed it yet! Please follow the instructions in https://www.lazyvim.org/ to install it first!`,
+        )
       }
       const luaPluginsDir = join(targetFolder, 'lua', 'plugins')
       if (!ensureDirectoryExist(luaPluginsDir)) {
