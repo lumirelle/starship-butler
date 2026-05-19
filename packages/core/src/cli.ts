@@ -59,10 +59,10 @@ cli
     'Dry run.',
     { default: false },
   )
-  .example('butler preset -i clash-verge-rev,maven')
-  .example('butler preset -i clash-verge-rev -i maven')
-  .example('butler preset -a -x clash-verge-rev')
-  .example('butler preset -a -x clash-verge-rev -x maven')
+  .example('butler preset -i nushell,maven')
+  .example('butler preset -i nushell -i maven')
+  .example('butler preset -a -x nushell')
+  .example('butler preset -a -x nushell -x maven')
   .example('butler preset -af')
   .action(async (cliOptions: PresetOptions) => {
     const cfgOptions: PresetOptions = userConfig['config-provider']?.preset ?? {}
