@@ -50,7 +50,7 @@
   ],
   "scripts": {
     "dev": "tsdown --watch",
-    "build": "tsdown --publint --attw.profile esm-only",
+    "build": "tsdown --publint --attw.profile esm-only --config-loader native",
     "typecheck": "tsc --noEmit"
   },
   "dependencies": {
