@@ -111,12 +111,12 @@
     "check": {
       "@antfu/eslint-config": "^9.0.0",
       "@arethetypeswrong/core": "^0.18.2",
-      "@lumirelle/oxlint-config": "^0.5.0",
+      "@lumirelle/oxlint-config": "^0.6.0",
       "eslint": "^10.4.0",
-      "eslint-plugin-oxlint": "^1.65.0",
+      "eslint-plugin-oxlint": "^1.66.0",
       "knip": "^6.14.1",
       "nano-staged": "^1.0.2",
-      "oxlint": "^1.65.0",
+      "oxlint": "^1.66.0",
       "oxlint-tsgolint": "^0.23.0",
       "publint": "^0.3.21",
       "simple-git-hooks": "git+https://github.com/toplenboren/simple-git-hooks.git#7625657",
@@ -126,13 +126,13 @@
     },
     "docs": {
       "@iconify-json/svg-spinners": "^1.2.4",
-      "@shikijs/vitepress-twoslash": "^4.0.2",
+      "@shikijs/vitepress-twoslash": "^4.1.0",
       "@unocss/reset": "^66.6.8",
       "@vueuse/core": "^14.3.0",
       "floating-vue": "^5.2.2",
       "pinia": "^3.0.4",
       "unocss": "^66.6.8",
-      "unplugin-vue-components": "^32.0.0",
+      "unplugin-vue-components": "^32.1.0",
       "vite": "^8.0.13",
       "vite-tsconfig-paths": "^6.1.1",
       "vitepress": "^2.0.0-alpha.17",
@@ -158,7 +158,7 @@
     },
     "types": {
       "@lumirelle/tsconfig": "^0.1.4",
-      "@types/node": "^25.9.0",
+      "@types/node": "^25.9.1",
       "bun-types": "^1.3.14",
       "typescript": "^6.0.3",
     },
@@ -268,7 +268,7 @@
 
     "@loaderkit/resolve": ["@loaderkit/resolve@1.0.6", "", { "dependencies": { "@braidai/lang": "^1.0.0" } }, "sha512-G8FdIoF5CypfwmD9rl8BXod5HDn8JqB0CCNBXDTaRZ+yRYhARrrSToX1zg1zy9jX3zLqigsELwhT4gNtkdQAUg=="],
 
-    "@lumirelle/oxlint-config": ["@lumirelle/oxlint-config@0.5.0", "", { "peerDependencies": { "@antfu/eslint-config": ">=9.0.0", "eslint-plugin-oxlint": ">=1.65.0", "oxlint": ">=1.65.0", "oxlint-tsgolint": ">=0.22.0" }, "optionalPeers": ["@antfu/eslint-config", "eslint-plugin-oxlint", "oxlint-tsgolint"] }, "sha512-77/Uk+9kTdmFjG5aWEuXFt0cGHEz8coQQAZQFWuRM5vp5Cevm9fJwOuYhCXRg85433z0iYYf0b1a0SDnIM1Zzg=="],
+    "@lumirelle/oxlint-config": ["@lumirelle/oxlint-config@0.6.0", "", { "peerDependencies": { "@antfu/eslint-config": ">=9.0.0", "eslint-plugin-oxlint": ">=1.66.0", "oxlint": ">=1.66.0", "oxlint-tsgolint": ">=0.22.0" }, "optionalPeers": ["@antfu/eslint-config", "eslint-plugin-oxlint", "oxlint-tsgolint"] }, "sha512-Sd1FyL4QFpWbrz1UmTkrnr9+tpxiXOmrbCVwUFrEauaxyWv6nZrMiP07jHMIL0N91GAKZTWZ/hWUgUWS/TXw+w=="],
 
     "@lumirelle/tsconfig": ["@lumirelle/tsconfig@0.1.4", "", { "peerDependencies": { "typescript": ">=6.0.2" } }, "sha512-XiYyicrLyEUpX6L4nUhHsTEBR7330WxQYcU/vt5lm4K380O+1OiiHFgkWflPv2ubiRF003e2qQ+8y7YQTlq9JQ=="],
 
@@ -1320,7 +1320,7 @@
 
     "unplugin-utils": ["unplugin-utils@0.3.1", "", { "dependencies": { "pathe": "^2.0.3", "picomatch": "^4.0.3" } }, "sha512-5lWVjgi6vuHhJ526bI4nlCOmkCIF3nnfXkCMDeMJrtdvxTs6ZFCM8oNufGTsDbKv/tJ/xj8RpvXjRuPBZJuJog=="],
 
-    "unplugin-vue-components": ["unplugin-vue-components@32.0.0", "", { "dependencies": { "chokidar": "^5.0.0", "local-pkg": "^1.1.2", "magic-string": "^0.30.21", "mlly": "^1.8.2", "obug": "^2.1.1", "picomatch": "^4.0.3", "tinyglobby": "^0.2.15", "unplugin": "^3.0.0", "unplugin-utils": "^0.3.1" }, "peerDependencies": { "@nuxt/kit": "^3.2.2 || ^4.0.0", "vue": "^3.0.0" }, "optionalPeers": ["@nuxt/kit"] }, "sha512-uLdccgS7mf3pv1bCCP20y/hm+u1eOjAmygVkh+Oa70MPkzgl1eQv1L0CwdHNM3gscO8/GDMGIET98Ja47CBbZg=="],
+    "unplugin-vue-components": ["unplugin-vue-components@32.1.0", "", { "dependencies": { "chokidar": "^5.0.0", "local-pkg": "^1.2.0", "magic-string": "^0.30.21", "mlly": "^1.8.2", "obug": "^2.1.1", "picomatch": "^4.0.4", "tinyglobby": "^0.2.16", "unplugin": "^3.0.0", "unplugin-utils": "^0.3.1" }, "peerDependencies": { "@nuxt/kit": "^3.2.2 || ^4.0.0", "vue": "^3.0.0" }, "optionalPeers": ["@nuxt/kit"] }, "sha512-YiUkSxuRjab18XFOrX5VsIxXzccrfmHVGsGeJgSgklb829DQmCy9E4vvDUE4tuvZZdxyFJZX0Oc4TPnnxiiMyg=="],
 
     "update-browserslist-db": ["update-browserslist-db@1.2.3", "", { "dependencies": { "escalade": "^3.2.0", "picocolors": "^1.1.1" }, "peerDependencies": { "browserslist": ">= 4.21.0" }, "bin": { "update-browserslist-db": "cli.js" } }, "sha512-Js0m9cx+qOgDxo0eMiFGEueWztz+d4+M3rGlmKPT+T4IS/jP4ylw3Nwpu6cpTTP8R1MAC1kF4VbdLt3ARf209w=="],
 
