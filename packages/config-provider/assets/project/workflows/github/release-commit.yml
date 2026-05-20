@@ -6,6 +6,6 @@ permissions: {}
 
 jobs:
   release-commit:
-    uses: lumirelle/workflows/.github/workflows/release-commit.yml@v3
+    uses: lumirelle/workflows/.github/workflows/release-commit.yml@v4
     with:
       compact: true

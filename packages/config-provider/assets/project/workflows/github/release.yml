@@ -8,7 +8,7 @@ permissions: {}
 
 jobs:
   release:
-    uses: lumirelle/workflows/.github/workflows/release.yml@v3
+    uses: lumirelle/workflows/.github/workflows/release.yml@v4
     permissions:
       contents: write
       id-token: write
