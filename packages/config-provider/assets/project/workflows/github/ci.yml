@@ -10,4 +10,4 @@ permissions: {}
 
 jobs:
   ci:
-    uses: lumirelle/workflows/.github/workflows/ci.yml@v4
+    uses: lumirelle/workflows/.github/workflows/ci.yml@v5
