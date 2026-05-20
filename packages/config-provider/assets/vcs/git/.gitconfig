@@ -198,6 +198,7 @@ commitx-with-message = "!f() {\
   arg_help=false; \
   arg_command=\"commitx --message\"; \
   arg_not_allow_amend=false; \
+  args=(); \
   values=(); \
   \
   for arg in \"$@\"; do \
@@ -205,6 +206,7 @@ commitx-with-message = "!f() {\
       -\\?|--\\?) arg_help=true ;; \
       -e|--edit) arg_command=\"commitx --edit --message\" ;; \
       -a|--amend) arg_not_allow_amend=true ;; \
+      -[![:space:]]*|--[![:space:]]*) args+=(\"$arg\") ;; \
       *) values+=(\"$arg\") ;; \
     esac; \
   done; \
@@ -231,9 +233,9 @@ commitx-with-message = "!f() {\
   fi; \
   \
   if [[ ${#values[@]} -ge 3 ]]; then \
-    git $arg_command \"${values[0]}(${values[1]})$([[ "$has_breaking_change" == true ]] && echo "!"): ${values[2]}\" \"${values[@]:3}\"; \
+    git $arg_command \"${values[0]}(${values[1]})$([[ "$has_breaking_change" == true ]] && echo "!"): ${values[2]}\" \"${args[@]}\"; \
   elif [[ ${#values[@]} -eq 2 ]]; then \
-    git $arg_command \"${values[0]}$([[ "$has_breaking_change" == true ]] && echo "!"): ${values[1]}\"; \
+    git $arg_command \"${values[0]}$([[ "$has_breaking_change" == true ]] && echo "!"): ${values[1]} ${args[@]}\"; \
   else \
     echo 'Please provide a valid conventional commit message.'; \
     return 1; \
