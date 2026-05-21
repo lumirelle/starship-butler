@@ -374,8 +374,10 @@ function customProvidersAndRules() {
   }
   // Rules
   const rules = [
-    // Custom rules
+    // Forza Horizon 4
     'PROCESS-NAME,ForzaHorizon4.exe,全局直连',
+    // half-life launcher
+    'PROCESS-NAME,hl.exe,全局直连',
     // blackmatrix7 rule set
     'RULE-SET,openai,ChatGPT',
     // Loyalsoldier rule set
