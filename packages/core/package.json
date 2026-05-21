@@ -25,6 +25,12 @@
         "default": "./dist/index.mjs"
       }
     },
+    "./cli": {
+      "import": {
+        "types": "./dist/cli.d.mts",
+        "default": "./dist/cli.mjs"
+      }
+    },
     "./package.json": "./package.json"
   },
   "module": "./dist/index.mjs",
