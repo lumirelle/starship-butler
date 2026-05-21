@@ -2,7 +2,8 @@ import type { Awaitable, Nullable } from '@antfu/utils'
 import type { PresetOptions } from '../types'
 
 type ActionId
-  = | 'windows-terminal'
+  = | 'clash-verge-rev'
+    | 'windows-terminal'
     | 'nushell'
     | 'bash'
     | 'powershell'

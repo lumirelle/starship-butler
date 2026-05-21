@@ -9,6 +9,7 @@ import { vscode } from './actions/editor/vscode'
 import { zed } from './actions/editor/zed'
 import { rime } from './actions/input_method/rime'
 import { cSpell } from './actions/linter/c_spell'
+import { clashVergeRev } from './actions/network/clash_verge_rev'
 import { maven } from './actions/pm/maven'
 import { bash } from './actions/shell/bash'
 import { nushell } from './actions/shell/nushell'
@@ -25,6 +26,8 @@ import { git } from './actions/vcs/git'
  */
 function _createActions(): (Action | undefined)[] {
   return [
+    // Network
+    clashVergeRev(),
     // Input Methods
     rime(),
     // Terminal & Shell & Prompt

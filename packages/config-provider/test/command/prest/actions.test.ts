@@ -63,6 +63,10 @@ describe('actions', () => {
         expect(simpleFilteredActions).toMatchInlineSnapshot(`
           [
             {
+              "id": "clash-verge-rev",
+              "name": "Clash Verge Rev",
+            },
+            {
               "id": "rime",
               "name": "rime",
             },
@@ -135,6 +139,10 @@ describe('actions', () => {
         }))
         expect(simpleFilteredActions).toMatchInlineSnapshot(`
           [
+            {
+              "id": "clash-verge-rev",
+              "name": "Clash Verge Rev",
+            },
             {
               "id": "rime",
               "name": "rime",
@@ -209,6 +217,10 @@ describe('actions', () => {
         }))
         expect(simpleFilteredActions).toMatchInlineSnapshot(`
           [
+            {
+              "id": "clash-verge-rev",
+              "name": "Clash Verge Rev",
+            },
             {
               "id": "rime",
               "name": "rime",
@@ -295,6 +307,10 @@ describe('actions', () => {
         expect(simpleFilteredActions).toMatchInlineSnapshot(`
           [
             {
+              "id": "clash-verge-rev",
+              "name": "Clash Verge Rev",
+            },
+            {
               "id": "rime",
               "name": "rime",
             },
@@ -359,6 +375,10 @@ describe('actions', () => {
         }))
         expect(simpleFilteredActions).toMatchInlineSnapshot(`
           [
+            {
+              "id": "clash-verge-rev",
+              "name": "Clash Verge Rev",
+            },
             {
               "id": "rime",
               "name": "rime",
@@ -425,6 +445,10 @@ describe('actions', () => {
         }))
         expect(simpleFilteredActions).toMatchInlineSnapshot(`
           [
+            {
+              "id": "clash-verge-rev",
+              "name": "Clash Verge Rev",
+            },
             {
               "id": "rime",
               "name": "rime",
@@ -503,6 +527,10 @@ describe('actions', () => {
         expect(simpleFilteredActions).toMatchInlineSnapshot(`
           [
             {
+              "id": "clash-verge-rev",
+              "name": "Clash Verge Rev",
+            },
+            {
               "id": "rime",
               "name": "rime",
             },
@@ -567,6 +595,10 @@ describe('actions', () => {
         }))
         expect(simpleFilteredActions).toMatchInlineSnapshot(`
           [
+            {
+              "id": "clash-verge-rev",
+              "name": "Clash Verge Rev",
+            },
             {
               "id": "rime",
               "name": "rime",
@@ -633,6 +665,10 @@ describe('actions', () => {
         }))
         expect(simpleFilteredActions).toMatchInlineSnapshot(`
           [
+            {
+              "id": "clash-verge-rev",
+              "name": "Clash Verge Rev",
+            },
             {
               "id": "rime",
               "name": "rime",
