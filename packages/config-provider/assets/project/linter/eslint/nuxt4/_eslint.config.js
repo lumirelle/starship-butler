@@ -7,6 +7,7 @@ export default antfu(
   {
     // If you are not using `unocss`, you can remove this.
     unocss: true,
+    vue: { a11y: true },
   },
   /* Don't forget to set `standalone: false` in your Nuxt ESLint module options. */
   nuxt(),

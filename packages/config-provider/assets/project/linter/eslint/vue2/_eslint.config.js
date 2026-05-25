@@ -9,7 +9,7 @@ export default antfu(
     /**
      * Still requires `@vue/compiler-sfc@^3` as dev dependency
      */
-    vue: { vueVersion: 2 },
+    vue: { vueVersion: 2, a11y: true },
   },
   ...oxlint.buildFromOxlintConfigFile('.oxlintrc.json'),
 )

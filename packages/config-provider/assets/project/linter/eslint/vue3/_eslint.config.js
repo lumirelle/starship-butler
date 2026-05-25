@@ -6,6 +6,7 @@ export default antfu(
   {
     // If you are not using `unocss`, you can remove this.
     unocss: true,
+    vue: { a11y: true },
   },
   ...oxlint.buildFromOxlintConfigFile('.oxlintrc.json'),
 )
