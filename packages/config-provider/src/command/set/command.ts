@@ -10,6 +10,7 @@ import { ensureDirectory, isDirectory } from 'starship-butler-utils/fs'
 import { globSync } from 'tinyglobby'
 import { version } from '../../../package.json'
 import { ASSETS_FOLDER } from '../../constants'
+import { normalizeAssetFilename } from '../utils/assets'
 import { processConfig } from '../utils/config'
 import { validateOptions } from './validate'
 
@@ -70,7 +71,8 @@ export async function commandSet(sourcePattern: string, target: string, options:
     consola.error('No files matched the source pattern!')
     return
   }
-  const selectOptions = matchedFiles.map(file => ({ label: file, value: file }))
+  const selectOptions = matchedFiles.map(file => ({ label: normalizeAssetFilename(file), value: file }))
+  consola.debug('[config-provider] Select options for source files:', selectOptions)
   if (matchedFiles.length === 1) {
     sourceFiles = matchedFiles
   }
@@ -113,6 +115,8 @@ export async function commandSet(sourcePattern: string, target: string, options:
       targetFile = join(cwd, target)
     }
     consola.debug('[config-provider] Target file path:', targetFile)
-    processConfig(sourceFile, targetFile, options)
+    const normalizedTargetFile = normalizeAssetFilename(targetFile)
+    consola.debug('[config-provider] Normalized target file path:', normalizedTargetFile)
+    processConfig(sourceFile, normalizedTargetFile, options)
   }
 }

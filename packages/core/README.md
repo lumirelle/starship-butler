@@ -95,13 +95,14 @@ butler set --help
 ### Preset
 
 - [x] List all built-in presets using `--list` flag
+- [x] Better default target file name, for example, for source `assets/project/linter/eslint/library/_eslint.config.js`, the default target file name should be `eslint.config.js`, not `_eslint.config.js` (without the leading underscore)
 - [ ] Backup before applying
 - [ ] Restore backup using `--restore` flag
 - [ ] Restore backup when uninstalling (Prompt to user whether to restore backup or not)
 
 ### Set
 
-- [ ] Better default target file name, for example, for source `assets/project/linter/eslint/library/_eslint.config.js`, the default target file name should be `eslint.config.js`, not `_eslint.config.js` (without the leading underscore)
+- [x] Better default target file name, for example, for source `assets/project/linter/eslint/library/_eslint.config.js`, the default target file name should be `eslint.config.js`, not `_eslint.config.js` (without the leading underscore)
 
 ## Sponsors
 

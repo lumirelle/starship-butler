@@ -8,6 +8,7 @@ import { join } from 'pathe'
 import { ensureDirectory, exists } from 'starship-butler-utils/fs'
 import { x } from 'tinyexec'
 import { processConfig, readUserConfig, upsertUserConfig } from '../../utils'
+import { normalizeAssetFilename } from '../../utils/assets'
 
 /* Rc9 utilities */
 
@@ -171,7 +172,8 @@ export function createHandler(
       const result = generator(context)
       if (!result)
         continue
-      processConfig(result.source, result.target, context.options)
+      const normalizedTarget = normalizeAssetFilename(result.target)
+      processConfig(result.source, normalizedTarget, context.options)
     }
   }
 }
