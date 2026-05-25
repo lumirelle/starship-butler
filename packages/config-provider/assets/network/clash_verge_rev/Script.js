@@ -17,7 +17,7 @@ function main(config) {
   return config
 }
 
-const NO_STANDARD_PROXY_REG = /官网|说明|提示|剩余|套餐|导航/
+const NO_STANDARD_PROXY_REG = /官\s*网|说明|提示|剩余|套餐|导航/
 /**
  * Custom proxy groups
  *
@@ -37,51 +37,21 @@ function customProxiesAndGroups(config) {
     'max-failed-times': 3,
     'hidden': false,
   }
-  const BASIC_GROUP_OPTIONS_URL_TEST = {
-    ...BASIC_GROUP_OPTIONS,
-    'type': 'url-test',
-    'tolerance': 50,
-    'include-all': true,
-  }
-  const BASIC_GROUP_OPTIONS_FALLBACK = {
-    ...BASIC_GROUP_OPTIONS,
-    'type': 'fallback',
-    'include-all': true,
-  }
-  const BASIC_GROUP_OPTIONS_LOAD_BALANCE_HASHING = {
-    ...BASIC_GROUP_OPTIONS,
-    'type': 'load-balance',
-    'strategy': 'consistent-hashing',
-    'include-all': true,
-  }
-  const BASIC_GROUP_OPTIONS_LOAD_BALANCE_ROBIN = {
-    ...BASIC_GROUP_OPTIONS,
-    'type': 'load-balance',
-    'strategy': 'round-robin',
-    'include-all': true,
-  }
 
   // Proxy groups
   const COUNTRY_REGION_CONFIG = [
-    { name: '🇹🇼 台湾', filter: 'TW|🇹🇼' },
-    { name: '🇭🇰 香港', filter: 'HK|🇭🇰' },
-    { name: '🇸🇬 新加坡', filter: 'SG|🇸🇬' },
-    { name: '🇯🇵 日本', filter: 'JP|🇯🇵' },
-    { name: '🇺🇸 美国', filter: 'US|🇺🇸' },
+    { name: '🇹🇼 台湾', filter: 'TW|🇹🇼|台湾' },
+    { name: '🇭🇰 香港', filter: 'HK|🇭🇰|香港' },
+    { name: '🇸🇬 新加坡', filter: 'SG|🇸🇬|新加坡' },
+    { name: '🇯🇵 日本', filter: 'JP|🇯🇵|日本' },
+    { name: '🇺🇸 美国', filter: 'US|🇺🇸|美国' },
   ]
-  // TODO(Lumirelle): Filter proxies by country/region and create groups for them, currently we just create empty groups with different names
-  const BASIC_GROUPS = COUNTRY_REGION_CONFIG.flatMap(({ name }) => [{
-    ...BASIC_GROUP_OPTIONS_URL_TEST,
-    name: `${name}延迟选优`,
-  }, {
-    ...BASIC_GROUP_OPTIONS_FALLBACK,
-    name: `${name}故障转移`,
-  }, {
-    ...BASIC_GROUP_OPTIONS_LOAD_BALANCE_HASHING,
-    name: `${name}负载均衡(散列)`,
-  }, {
-    ...BASIC_GROUP_OPTIONS_LOAD_BALANCE_ROBIN,
-    name: `${name}负载均衡(轮询)`,
+  const BASIC_GROUPS = COUNTRY_REGION_CONFIG.flatMap(({ name, filter }) => [{
+    ...BASIC_GROUP_OPTIONS,
+    'type': 'select',
+    'include-all-proxies': true,
+    name,
+    filter,
   }])
   const BASIC_GROUP_NAMES = BASIC_GROUPS.map(g => g.name)
 
@@ -92,7 +62,7 @@ function customProxiesAndGroups(config) {
       'name': '节点选择',
       'type': 'select',
       'proxies': ['延迟选优', '故障转移', '负载均衡(散列)', '负载均衡(轮询)', ...BASIC_GROUP_NAMES],
-      'include-all': true,
+      'include-all-proxies': true,
       'icon': 'https://fastly.jsdelivr.net/gh/clash-verge-rev/clash-verge-rev.github.io@main/docs/assets/icons/adjust.svg',
     },
     {
@@ -100,7 +70,7 @@ function customProxiesAndGroups(config) {
       'name': '微软服务',
       'type': 'select',
       'proxies': ['全局直连', '节点选择', '延迟选优', '故障转移', '负载均衡(散列)', '负载均衡(轮询)', ...BASIC_GROUP_NAMES],
-      'include-all': true,
+      'include-all-proxies': true,
       'icon': 'https://fastly.jsdelivr.net/gh/clash-verge-rev/clash-verge-rev.github.io@main/docs/assets/icons/microsoft.svg',
     },
     {
@@ -108,7 +78,7 @@ function customProxiesAndGroups(config) {
       'name': '谷歌服务',
       'type': 'select',
       'proxies': ['节点选择', '延迟选优', '故障转移', '负载均衡(散列)', '负载均衡(轮询)', '全局直连', ...BASIC_GROUP_NAMES],
-      'include-all': true,
+      'include-all-proxies': true,
       'icon': 'https://fastly.jsdelivr.net/gh/clash-verge-rev/clash-verge-rev.github.io@main/docs/assets/icons/google.svg',
     },
     {
@@ -116,7 +86,7 @@ function customProxiesAndGroups(config) {
       'name': '苹果服务',
       'type': 'select',
       'proxies': ['节点选择', '延迟选优', '故障转移', '负载均衡(散列)', '负载均衡(轮询)', '全局直连', ...BASIC_GROUP_NAMES],
-      'include-all': true,
+      'include-all-proxies': true,
       'icon': 'https://fastly.jsdelivr.net/gh/clash-verge-rev/clash-verge-rev.github.io@main/docs/assets/icons/apple.svg',
     },
     {
@@ -124,7 +94,7 @@ function customProxiesAndGroups(config) {
       'name': '国外媒体',
       'type': 'select',
       'proxies': ['节点选择', '延迟选优', '故障转移', '负载均衡(散列)', '负载均衡(轮询)', '全局直连', ...BASIC_GROUP_NAMES],
-      'include-all': true,
+      'include-all-proxies': true,
       'icon': 'https://fastly.jsdelivr.net/gh/clash-verge-rev/clash-verge-rev.github.io@main/docs/assets/icons/youtube.svg',
     },
     {
@@ -132,7 +102,7 @@ function customProxiesAndGroups(config) {
       'name': '电报消息',
       'type': 'select',
       'proxies': ['节点选择', '延迟选优', '故障转移', '负载均衡(散列)', '负载均衡(轮询)', '全局直连', ...BASIC_GROUP_NAMES],
-      'include-all': true,
+      'include-all-proxies': true,
       'icon': 'https://fastly.jsdelivr.net/gh/clash-verge-rev/clash-verge-rev.github.io@main/docs/assets/icons/telegram.svg',
     },
     {
@@ -141,9 +111,9 @@ function customProxiesAndGroups(config) {
       'expected-status': '200',
       'name': 'ChatGPT',
       'type': 'select',
-      'include-all': true,
+      'include-all-proxies': true,
       'filter':
-        'AD|🇦🇩|AE|🇦🇪|AF|🇦🇫|AG|🇦🇬|AL|🇦🇱|AM|🇦🇲|AO|🇦🇴|AR|🇦🇷|AT|🇦🇹|AU|🇦🇺|AZ|🇦🇿|BA|🇧🇦|BB|🇧🇧|BD|🇧🇩|BE|🇧🇪|BF|🇧🇫|BG|🇧🇬|BH|🇧🇭|BI|🇧🇮|BJ|🇧🇯|BN|🇧🇳|BO|🇧🇴|BR|🇧🇷|BS|🇧🇸|BT|🇧🇹|BW|🇧🇼|BZ|🇧🇿|CA|🇨🇦|CD|🇨🇩|CF|🇨🇫|CG|🇨🇬|CH|🇨🇭|CI|🇨🇮|CL|🇨🇱|CM|🇨🇲|CO|🇨🇴|CR|🇨🇷|CV|🇨🇻|CY|🇨🇾|CZ|🇨🇿|DE|🇩🇪|DJ|🇩🇯|DK|🇩🇰|DM|🇩🇲|DO|🇩🇴|DZ|🇩🇿|EC|🇪🇨|EE|🇪🇪|EG|🇪🇬|ER|🇪🇷|ES|🇪🇸|ET|🇪🇹|FI|🇫🇮|FJ|🇫🇯|FM|🇫🇲|FR|🇫🇷|GA|🇬🇦|GB|🇬🇧|GD|🇬🇩|GE|🇬🇪|GH|🇬🇭|GM|🇬🇲|GN|🇬🇳|GQ|🇬🇶|GR|🇬🇷|GT|🇬🇹|GW|🇬🇼|GY|🇬🇾|HN|🇭🇳|HR|🇭🇷|HT|🇭🇹|HU|🇭🇺|ID|🇮🇩|IE|🇮🇪|IL|🇮🇱|IN|🇮🇳|IQ|🇮🇶|IS|🇮🇸|IT|🇮🇹|JM|🇯🇲|JO|🇯🇴|JP|🇯🇵|KE|🇰🇪|KG|🇰🇬|KH|🇰🇭|KI|🇰🇮|KM|🇰🇲|KN|🇰🇳|KR|🇰🇷|KW|🇰🇼|KZ|🇰🇿|LA|🇱🇦|LB|🇱🇧|LC|🇱🇨|LI|🇱🇮|LK|🇱🇰|LR|🇱🇷|LS|🇱🇸|LT|🇱🇹|LU|🇱🇺|LV|🇱🇻|LY|🇱🇾|MA|🇲🇦|MC|🇲🇨|MD|🇲🇩|ME|🇲🇪|MG|🇲🇬|MH|🇲🇭|MK|🇲🇰|ML|🇲🇱|MM|🇲🇲|MN|🇲🇳|MR|🇲🇷|MT|🇲🇹|MU|🇲🇺|MV|🇲🇻|MW|🇲🇼|MX|🇲🇽|MY|🇲🇾|MZ|🇲🇿|NA|🇳🇦|NE|🇳🇪|NG|🇳🇬|NI|🇳🇮|NL|🇳🇱|NO|🇳🇴|NP|🇳🇵|NR|🇳🇷|NZ|🇳🇿|OM|🇴🇲|PA|🇵🇦|PE|🇵🇪|PG|🇵🇬|PH|🇵🇭|PK|🇵🇰|PL|🇵🇱|PS|🇵🇸|PT|🇵🇹|PW|🇵🇼|PY|🇵🇾|QA|🇶🇦|RO|🇷🇴|RS|🇷🇸|RW|🇷🇼|SA|🇸🇦|SB|🇸🇧|SC|🇸🇨|SD|🇸🇩|SE|🇸🇪|SG|🇸🇬|SI|🇸🇮|SK|🇸🇰|SL|🇸🇱|SM|🇸🇲|SN|🇸🇳|SO|🇸🇴|SR|🇸🇷|SS|🇸🇸|ST|🇸🇹|SV|🇸🇻|SZ|🇸🇿|TD|🇹🇩|TG|🇹🇬|TH|🇹🇭|TJ|🇹🇯|TL|🇹🇱|TM|🇹🇲|TN|🇹🇳|TO|🇹🇴|TR|🇹🇷|TT|🇹🇹|TV|🇹🇻|TW|🇹🇼|TZ|🇹🇿|UA|🇺🇦|UG|🇺🇬|US|🇺🇸|UY|🇺🇾|UZ|🇺🇿|VA|🇻🇦|VC|🇻🇨|VN|🇻🇳|VU|🇻🇺|WS|🇼🇸|YE|🇾🇪|ZA|🇿🇦|ZM|🇿🇲|ZW|🇿🇼',
+        'AD|🇦🇩|AE|🇦🇪|AF|🇦🇫|AG|🇦🇬|AL|🇦🇱|AM|🇦🇲|AO|🇦🇴|AR|🇦🇷|AT|🇦🇹|AU|🇦🇺|AZ|🇦🇿|BA|🇧🇦|BB|🇧🇧|BD|🇧🇩|BE|🇧🇪|BF|🇧🇫|BG|🇧🇬|BH|🇧🇭|BI|🇧🇮|BJ|🇧🇯|BN|🇧🇳|文莱|BO|🇧🇴|BR|🇧🇷|BS|🇧🇸|BT|🇧🇹|BW|🇧🇼|BZ|🇧🇿|CA|🇨🇦|CD|🇨🇩|刚果金|CF|🇨🇫|CG|🇨🇬|CH|🇨🇭|CI|🇨🇮|CL|🇨🇱|智利|CM|🇨🇲|CO|🇨🇴|CR|🇨🇷|CV|🇨🇻|CY|🇨🇾|CZ|🇨🇿|捷克|DE|🇩🇪|德国|DJ|🇩🇯|DK|🇩🇰|DM|🇩🇲|DO|🇩🇴|DZ|🇩🇿|EC|🇪🇨|EE|🇪🇪|EG|🇪🇬|ER|🇪🇷|ES|🇪🇸|ET|🇪🇹|FI|🇫🇮|FJ|🇫🇯|FM|🇫🇲|FR|🇫🇷|法国|GA|🇬🇦|GB|🇬🇧|英国|GD|🇬🇩|GE|🇬🇪|GH|🇬🇭|GM|🇬🇲|GN|🇬🇳|GQ|🇬🇶|GR|🇬🇷|GT|🇬🇹|GW|🇬🇼|GY|🇬🇾|HN|🇭🇳|HR|🇭🇷|HT|🇭🇹|HU|🇭🇺|ID|🇮🇩|印尼|IE|🇮🇪|IL|🇮🇱|IN|🇮🇳|IQ|🇮🇶|IS|🇮🇸|IT|🇮🇹|JM|🇯🇲|JO|🇯🇴|JP|🇯🇵|日本|KE|🇰🇪|KG|🇰🇬|KH|🇰🇭|KI|🇰🇮|KM|🇰🇲|KN|🇰🇳|KR|🇰🇷|韩国|KW|🇰🇼|KZ|🇰🇿|LA|🇱🇦|LB|🇱🇧|LC|🇱🇨|LI|🇱🇮|LK|🇱🇰|LR|🇱🇷|LS|🇱🇸|LT|🇱🇹|LU|🇱🇺|LV|🇱🇻|LY|🇱🇾|MA|🇲🇦|MC|🇲🇨|MD|🇲🇩|摩尔多瓦|ME|🇲🇪|MG|🇲🇬|MH|🇲🇭|MK|🇲🇰|ML|🇲🇱|MM|🇲🇲|MN|🇲🇳|MR|🇲🇷|MT|🇲🇹|MU|🇲🇺|MV|🇲🇻|MW|🇲🇼|MX|🇲🇽|MY|🇲🇾|MZ|🇲🇿|NA|🇳🇦|NE|🇳🇪|NG|🇳🇬|NI|🇳🇮|NL|🇳🇱|NO|🇳🇴|NP|🇳🇵|NR|🇳🇷|NZ|🇳🇿|OM|🇴🇲|PA|🇵🇦|PE|🇵🇪|秘鲁|PG|🇵🇬|PH|🇵🇭|菲律宾|PK|🇵🇰|PL|🇵🇱|PS|🇵🇸|PT|🇵🇹|PW|🇵🇼|PY|🇵🇾|QA|🇶🇦|RO|🇷🇴|RS|🇷🇸|RW|🇷🇼|SA|🇸🇦|SB|🇸🇧|SC|🇸🇨|SD|🇸🇩|SE|🇸🇪|瑞典|SG|🇸🇬|新加坡|SI|🇸🇮|SK|🇸🇰|SL|🇸🇱|SM|🇸🇲|SN|🇸🇳|SO|🇸🇴|SR|🇸🇷|SS|🇸🇸|ST|🇸🇹|SV|🇸🇻|SZ|🇸🇿|TD|🇹🇩|TG|🇹🇬|TH|🇹🇭|泰国|TJ|🇹🇯|TL|🇹🇱|TM|🇹🇲|TN|🇹🇳|TO|🇹🇴|TR|🇹🇷|土耳其|TT|🇹🇹|TV|🇹🇻|TW|🇹🇼|台湾|TZ|🇹🇿|UA|🇺🇦|乌克兰|UG|🇺🇬|US|🇺🇸|美国|UY|🇺🇾|UZ|🇺🇿|VA|🇻🇦|VC|🇻🇨|VN|🇻🇳|越南|VU|🇻🇺|WS|🇼🇸|YE|🇾🇪|ZA|🇿🇦|ZM|🇿🇲|ZW|🇿🇼',
       'icon': 'https://fastly.jsdelivr.net/gh/clash-verge-rev/clash-verge-rev.github.io@main/docs/assets/icons/chatgpt.svg',
     },
     {
@@ -151,7 +121,7 @@ function customProxiesAndGroups(config) {
       'name': '全局直连',
       'type': 'select',
       'proxies': ['DIRECT', '节点选择', '延迟选优', '故障转移', '负载均衡(散列)', '负载均衡(轮询)', ...BASIC_GROUP_NAMES],
-      'include-all': true,
+      'include-all-proxies': true,
       'icon': 'https://fastly.jsdelivr.net/gh/clash-verge-rev/clash-verge-rev.github.io@main/docs/assets/icons/link.svg',
     },
     {
@@ -166,29 +136,40 @@ function customProxiesAndGroups(config) {
       'name': '漏网之鱼',
       'type': 'select',
       'proxies': ['节点选择', '延迟选优', '故障转移', '负载均衡(散列)', '负载均衡(轮询)', '全局直连', ...BASIC_GROUP_NAMES],
-      'include-all': true,
+      'include-all-proxies': true,
       'icon': 'https://fastly.jsdelivr.net/gh/clash-verge-rev/clash-verge-rev.github.io@main/docs/assets/icons/fish.svg',
     },
     // Basic groups for previous groups
     {
-      ...BASIC_GROUP_OPTIONS_URL_TEST,
-      name: '延迟选优',
-      icon: 'https://fastly.jsdelivr.net/gh/clash-verge-rev/clash-verge-rev.github.io@main/docs/assets/icons/speed.svg',
+      ...BASIC_GROUP_OPTIONS,
+      'type': 'url-test',
+      'tolerance': 50,
+      'include-all-proxies': true,
+      'name': '延迟选优',
+      'icon': 'https://fastly.jsdelivr.net/gh/clash-verge-rev/clash-verge-rev.github.io@main/docs/assets/icons/speed.svg',
     },
     {
-      ...BASIC_GROUP_OPTIONS_FALLBACK,
-      name: '故障转移',
-      icon: 'https://fastly.jsdelivr.net/gh/clash-verge-rev/clash-verge-rev.github.io@main/docs/assets/icons/ambulance.svg',
+      ...BASIC_GROUP_OPTIONS,
+      'type': 'fallback',
+      'include-all-proxies': true,
+      'name': '故障转移',
+      'icon': 'https://fastly.jsdelivr.net/gh/clash-verge-rev/clash-verge-rev.github.io@main/docs/assets/icons/ambulance.svg',
     },
     {
-      ...BASIC_GROUP_OPTIONS_LOAD_BALANCE_HASHING,
-      name: '负载均衡(散列)',
-      icon: 'https://fastly.jsdelivr.net/gh/clash-verge-rev/clash-verge-rev.github.io@main/docs/assets/icons/merry_go.svg',
+      ...BASIC_GROUP_OPTIONS,
+      'type': 'load-balance',
+      'strategy': 'consistent-hashing',
+      'include-all-proxies': true,
+      'name': '负载均衡(散列)',
+      'icon': 'https://fastly.jsdelivr.net/gh/clash-verge-rev/clash-verge-rev.github.io@main/docs/assets/icons/merry_go.svg',
     },
     {
-      ...BASIC_GROUP_OPTIONS_LOAD_BALANCE_ROBIN,
-      name: '负载均衡(轮询)',
-      icon: 'https://fastly.jsdelivr.net/gh/clash-verge-rev/clash-verge-rev.github.io@main/docs/assets/icons/balance.svg',
+      ...BASIC_GROUP_OPTIONS,
+      'type': 'load-balance',
+      'strategy': 'round-robin',
+      'include-all-proxies': true,
+      'name': '负载均衡(轮询)',
+      'icon': 'https://fastly.jsdelivr.net/gh/clash-verge-rev/clash-verge-rev.github.io@main/docs/assets/icons/balance.svg',
     },
     // Basic groups by country
     ...BASIC_GROUPS,
