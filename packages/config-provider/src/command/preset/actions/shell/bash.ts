@@ -1,10 +1,14 @@
 import type { ActionFactory } from '../types'
+import process from 'node:process'
 import { consola } from 'consola'
 import { join } from 'pathe'
 import { homedir } from 'starship-butler-utils/path'
+
 import { createConfigPathGenerator, createHandler } from '../utils'
 
 export const bash: ActionFactory = () => {
+  if (process.platform === 'win32')
+    return
   return {
     id: 'bash',
     name: 'Bash',

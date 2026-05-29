@@ -10,6 +10,7 @@ type ActionId
     | 'windows-powershell'
     | 'starship'
     | 'git'
+    | 'mise'
     | 'maven'
     | '@sxzz/create'
     | 'vscode'

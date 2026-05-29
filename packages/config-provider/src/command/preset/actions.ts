@@ -9,6 +9,7 @@ import { vscode } from './actions/editor/vscode'
 import { zed } from './actions/editor/zed'
 import { rime } from './actions/input_method/rime'
 import { cSpell } from './actions/linter/c_spell'
+import { mise } from './actions/manager/mise'
 import { clashVergeRev } from './actions/network/clash_verge_rev'
 import { maven } from './actions/pm/maven'
 import { bash } from './actions/shell/bash'
@@ -39,6 +40,8 @@ function _createActions(): (Action | undefined)[] {
     starship(),
     // VCS
     git(),
+    // Manager
+    mise(),
     // Package Manager
     maven(),
     // Tools

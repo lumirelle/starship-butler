@@ -1,0 +1,32 @@
+# Tools
+
+# -- NPM
+[tools.bun]
+version = "1.3.14"
+
+[tools."npm:@antfu/ni"]
+version = "latest"
+
+[tools."npm:taze"]
+version = "latest"
+
+[tools."npm:@sxzz/create"]
+version = "latest"
+
+[tools."npm:starship-butler"]
+version = "latest"
+
+# -- Zig
+[tools.zig]
+version = "0.11.0"
+
+# -- Java
+[tools.java]
+version = "graalvm-community-25.0.2"
+
+# -- C/C++ Compiler - Windows
+[tools."github:niXman/mingw-builds-binaries"]
+os = [ "windows" ]
+version = "16.1.0-rt_v14-rev1"
+version_prefix = ""
+asset_pattern = "x86_64-*-release-posix-seh-ucrt-*.7z"

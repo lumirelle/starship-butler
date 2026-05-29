@@ -1,5 +1,3 @@
-use utils.nu *
-
 # Banner
 $env.config.show_banner = 'short'
 
