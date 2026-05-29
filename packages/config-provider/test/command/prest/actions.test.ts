@@ -26,13 +26,13 @@ describe('actions', () => {
       })
       it('should prompt user to select actions when include option is empty', async () => {
         const clackPrompts = await import('@clack/prompts')
-        const spy = spyOn(clackPrompts, 'multiselect').mockImplementation(async () => ['nushell', 'bash'] as any)
+        const spy = spyOn(clackPrompts, 'multiselect').mockImplementation(async () => ['nushell', 'maven'] as any)
 
         const filteredActions = await filterActions({
           include: [],
         })
         expect(spy).toHaveBeenCalledTimes(1)
-        expect(filteredActions.map(action => action.id)).toEqual(['nushell', 'bash'])
+        expect(filteredActions.map(action => action.id)).toEqual(['nushell', 'maven'])
 
         spy.mockRestore()
       })
@@ -79,10 +79,6 @@ describe('actions', () => {
               "name": "Nushell",
             },
             {
-              "id": "bash",
-              "name": "Bash",
-            },
-            {
               "id": "powershell",
               "name": "PowerShell",
             },
@@ -97,6 +93,10 @@ describe('actions', () => {
             {
               "id": "git",
               "name": "Git",
+            },
+            {
+              "id": "mise",
+              "name": "Mise",
             },
             {
               "id": "maven",
@@ -156,10 +156,6 @@ describe('actions', () => {
               "name": "Nushell",
             },
             {
-              "id": "bash",
-              "name": "Bash",
-            },
-            {
               "id": "powershell",
               "name": "PowerShell",
             },
@@ -174,6 +170,10 @@ describe('actions', () => {
             {
               "id": "git",
               "name": "Git",
+            },
+            {
+              "id": "mise",
+              "name": "Mise",
             },
             {
               "id": "maven",
@@ -230,10 +230,6 @@ describe('actions', () => {
               "name": "Windows Terminal",
             },
             {
-              "id": "bash",
-              "name": "Bash",
-            },
-            {
               "id": "powershell",
               "name": "PowerShell",
             },
@@ -248,6 +244,10 @@ describe('actions', () => {
             {
               "id": "git",
               "name": "Git",
+            },
+            {
+              "id": "mise",
+              "name": "Mise",
             },
             {
               "id": "maven",
@@ -335,6 +335,10 @@ describe('actions', () => {
               "name": "Git",
             },
             {
+              "id": "mise",
+              "name": "Mise",
+            },
+            {
               "id": "maven",
               "name": "Maven",
             },
@@ -404,6 +408,10 @@ describe('actions', () => {
               "name": "Git",
             },
             {
+              "id": "mise",
+              "name": "Mise",
+            },
+            {
               "id": "maven",
               "name": "Maven",
             },
@@ -468,6 +476,10 @@ describe('actions', () => {
             {
               "id": "git",
               "name": "Git",
+            },
+            {
+              "id": "mise",
+              "name": "Mise",
             },
             {
               "id": "maven",
@@ -555,6 +567,10 @@ describe('actions', () => {
               "name": "Git",
             },
             {
+              "id": "mise",
+              "name": "Mise",
+            },
+            {
               "id": "maven",
               "name": "Maven",
             },
@@ -624,6 +640,10 @@ describe('actions', () => {
               "name": "Git",
             },
             {
+              "id": "mise",
+              "name": "Mise",
+            },
+            {
               "id": "maven",
               "name": "Maven",
             },
@@ -688,6 +708,10 @@ describe('actions', () => {
             {
               "id": "git",
               "name": "Git",
+            },
+            {
+              "id": "mise",
+              "name": "Mise",
             },
             {
               "id": "maven",
