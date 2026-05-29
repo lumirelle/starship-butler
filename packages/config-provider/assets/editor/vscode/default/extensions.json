@@ -38,22 +38,19 @@
     "cardinal90.multi-cursor-case-preserve",
     // Rename
     "jannisx11.batch-rename-extension",
-    // Format
-    "tombonnike.vscode-status-bar-format-toggle",
     // Snippet
     "zjffun.snippetsmanager",
     // AI
     "coderabbit.coderabbit-vscode", // AI Code Reviewer
     // Git
     "codezombiech.gitignore",
-    "github.vscode-github-actions",
-    "gitHub.vscode-pull-request-github",
     "eamodio.gitlens",
     // Dev Container
     "ms-azuretools.vscode-containers",
     // #endregion
 
     // #region Language Support
+    "hverlin.mise-vscode",
     "yzhang.markdown-all-in-one",
     "tamasfe.even-better-toml",
     "thenuprojectcontributors.vscode-nushell-lang",
@@ -67,6 +64,6 @@
     // #endregion
   ]
   // Extension Count
-  // VSCODE: 36
-  // CURSOR: 36
+  // VSCODE: 34
+  // CURSOR: 34
 }
