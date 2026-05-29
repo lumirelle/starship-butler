@@ -74,5 +74,20 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
       </properties>
     </profile>
+
+    <!-- jdk25 -->
+    <profile>
+      <id>jdk25</id>
+      <activation>
+        <jdk>25</jdk>
+      </activation>
+      <properties>
+        <java.version>25</java.version>
+        <maven.compiler.source>25</maven.compiler.source>
+        <maven.compiler.target>25</maven.compiler.target>
+        <maven.compiler.compilerVersion>25</maven.compiler.compilerVersion>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+      </properties>
+    </profile>
   </profiles>
 </settings>
