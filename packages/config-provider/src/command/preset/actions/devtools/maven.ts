@@ -7,7 +7,7 @@ export const maven: ActionFactory = () => {
   return {
     id: 'maven',
     name: 'Maven',
-    base: join('pm', 'maven'),
+    base: join('devtools', 'maven'),
     destination: homedir('.m2'),
     prehandler: createPrehandler('env-exist', { executable: 'mvn' }),
     handler: createHandler([

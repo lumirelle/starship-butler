@@ -8,7 +8,7 @@ export const cSpell: ActionFactory = () => {
   return {
     id: 'cspell',
     name: 'cSpell',
-    base: join('linter', 'cspell'),
+    base: join('devtools', 'cspell'),
     destination: homedir(),
     handler: createHandler([
       createConfigPathGenerator('.cspell.common.txt'),

@@ -7,7 +7,7 @@ export const sxzzCreate: ActionFactory = () => {
   return {
     id: '@sxzz/create',
     name: '@sxzz/create',
-    base: join('tools', 'sxzz_create'),
+    base: join('devtools', 'sxzz_create'),
     destination: homedir('.config'),
     prehandler: createPrehandler('env-exist', { executable: 'create' }),
     handler: createHandler([
