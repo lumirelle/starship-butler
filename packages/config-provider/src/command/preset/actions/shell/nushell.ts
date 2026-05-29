@@ -18,7 +18,6 @@ export const nushell: ActionFactory = () => {
     }),
     prehandler: createPrehandler('destination-exist'),
     handler: createHandler([
-      createConfigPathGenerator('utils.nu'),
       createConfigPathGenerator('config.nu'),
       createConfigPathGenerator('env.nu'),
     ]),
