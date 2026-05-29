@@ -43,7 +43,7 @@
       },
       "build": {
         "std-env": "^4.1.0",
-        "tsdown": "^0.22.0"
+        "tsdown": "^0.22.1"
       },
       "inlined": {
         "@antfu/utils": "^9.3.0"
@@ -56,33 +56,33 @@
         "defu": "^6.1.7",
         "pathe": "^2.0.3",
         "rc9": "^3.0.1",
-        "tinyexec": "^1.1.2",
+        "tinyexec": "^1.2.2",
         "tinyglobby": "^0.2.16"
       },
       "docs": {
         "@iconify-json/svg-spinners": "^1.2.4",
         "@shikijs/vitepress-twoslash": "^4.1.0",
-        "@unocss/reset": "^66.6.8",
+        "@unocss/reset": "^66.7.0",
         "@vueuse/core": "^14.3.0",
         "floating-vue": "^5.2.2",
         "pinia": "^3.0.4",
-        "unocss": "^66.6.8",
+        "unocss": "^66.7.0",
         "unplugin-vue-components": "^32.1.0",
-        "vite": "^8.0.13",
+        "vite": "^8.0.14",
         "vite-tsconfig-paths": "^6.1.1",
         "vitepress": "^2.0.0-alpha.17",
         "vitepress-plugin-group-icons": "^1.7.5",
-        "vue": "^3.5.34"
+        "vue": "^3.5.35"
       },
       "check": {
         "@antfu/eslint-config": "^9.0.0",
         "@arethetypeswrong/core": "^0.18.2",
         "@lumirelle/oxlint-config": "^0.6.0",
         "eslint": "^10.4.0",
-        "eslint-plugin-oxlint": "^1.66.0",
-        "knip": "^6.14.1",
+        "eslint-plugin-oxlint": "^1.67.0",
+        "knip": "^6.14.2",
         "nano-staged": "^1.0.2",
-        "oxlint": "^1.66.0",
+        "oxlint": "^1.67.0",
         "oxlint-tsgolint": "^0.23.0",
         "publint": "^0.3.21",
         "simple-git-hooks": "git+https://github.com/toplenboren/simple-git-hooks.git#7625657"
