@@ -404,6 +404,7 @@
   "i18n-ally.displayLanguage": "en",
   "markdown.extension.italic.indicator": "_",
   "markdown.extension.tableFormatter.enabled": false,
+  "mise.autoDetectMiseBinPath": false,
   "nuxtr.vueFiles.firstTag": "script",
   "nuxtr.vueFiles.style.addStyleTag": false,
   "nuxtr.piniaFiles.defaultTemplate": "setup",
