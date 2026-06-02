@@ -3,6 +3,9 @@ experimental_monorepo_root = true
 [env]
 _.path = [ "./node_modules/.bin" ]
 
+[tools]
+bun = "latest"
+
 [monorepo]
 config_roots = [
   "docs/",
