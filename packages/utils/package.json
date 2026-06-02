@@ -48,15 +48,17 @@
   "files": [
     "dist"
   ],
-  "scripts": {
-    "dev": "tsdown --watch",
-    "build": "tsdown --publint --attw.profile esm-only",
-    "typecheck": "tsc --noEmit"
-  },
   "dependencies": {
     "c12": "catalog:prod",
     "consola": "catalog:prod",
     "pathe": "catalog:prod",
     "rc9": "catalog:prod"
+  },
+  "devDependencies": {
+    "@arethetypeswrong/core": "catalog:check",
+    "publint": "catalog:check",
+    "std-env": "catalog:test",
+    "tsdown": "catalog:build",
+    "typescript": "catalog:types"
   }
 }

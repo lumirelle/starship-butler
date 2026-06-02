@@ -57,11 +57,6 @@
     "assets",
     "dist"
   ],
-  "scripts": {
-    "dev": "tsdown --watch",
-    "build": "tsdown --publint --attw.profile esm-only",
-    "typecheck": "tsc --noEmit"
-  },
   "dependencies": {
     "@clack/prompts": "catalog:prod",
     "consola": "catalog:prod",
@@ -72,6 +67,11 @@
     "tinyglobby": "catalog:prod"
   },
   "devDependencies": {
-    "@antfu/utils": "catalog:inlined"
+    "@antfu/utils": "catalog:inlined",
+    "@arethetypeswrong/core": "catalog:check",
+    "publint": "catalog:check",
+    "std-env": "catalog:test",
+    "tsdown": "catalog:build",
+    "typescript": "catalog:types"
   }
 }

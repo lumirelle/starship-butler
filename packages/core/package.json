@@ -41,12 +41,6 @@
   "files": [
     "dist"
   ],
-  "scripts": {
-    "dev": "tsdown --watch",
-    "build": "tsdown --publint --attw.profile esm-only",
-    "start": "bun run ./src/cli.ts",
-    "typecheck": "tsc --noEmit"
-  },
   "dependencies": {
     "@clack/prompts": "catalog:prod",
     "cac": "catalog:prod",
@@ -55,5 +49,12 @@
     "starship-butler-config-provider": "workspace:*",
     "starship-butler-types": "workspace:*",
     "starship-butler-utils": "workspace:*"
+  },
+  "devDependencies": {
+    "@arethetypeswrong/core": "catalog:check",
+    "publint": "catalog:check",
+    "std-env": "catalog:test",
+    "tsdown": "catalog:build",
+    "typescript": "catalog:types"
   }
 }

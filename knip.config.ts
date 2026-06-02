@@ -3,9 +3,16 @@ import type { KnipConfig } from 'knip'
 export default {
   workspaces: {
     '.': {
-      ignoreDependencies: ['@lumirelle/oxlint-config'],
+      entry: ['./scripts/**/*.{ts,js}', './test/**/*.{ts,js}'],
+      ignoreBinaries: ['mise'],
+      ignoreDependencies: [
+        '@lumirelle/oxlint-config',
+        'bumpp',
+        'nano-staged',
+      ],
     },
     'docs': {
+      entry: ['./mise.toml'],
       ignoreDependencies: [
         '@iconify-json/svg-spinners',
         '@unocss/reset',
@@ -16,15 +23,16 @@ export default {
       ],
     },
     'packages/config-provider': {
-      entry: ['./src/index.ts', './src/constants.ts', './src/command/*/index.ts'],
-      ignoreBinaries: ['nu'],
+      entry: ['./test/**/*.{ts,js}'],
       ignoreFiles: ['./assets/**/*'],
     },
     'packages/core': {
-      ignoreFiles: ['./test/fixtures/butler.config*.ts'],
+      entry: ['./test/**/*.{ts,js}'],
     },
     'packages/utils': {
-      entry: ['./src/*.ts'],
+      entry: ['./test/**/*.{ts,js}'],
+    },
+    'packages/types': {
     },
   },
 } satisfies KnipConfig

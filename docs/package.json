@@ -2,12 +2,6 @@
   "name": "docs",
   "type": "module",
   "private": true,
-  "scripts": {
-    "docs:dev": "vitepress dev",
-    "docs:build": "vitepress build",
-    "docs:start": "vitepress preview",
-    "typecheck": "tsc --build --noEmit"
-  },
   "devDependencies": {
     "@iconify-json/svg-spinners": "catalog:docs",
     "@shikijs/vitepress-twoslash": "catalog:docs",
@@ -15,6 +9,7 @@
     "@vueuse/core": "catalog:docs",
     "floating-vue": "catalog:docs",
     "pinia": "catalog:docs",
+    "typescript": "catalog:types",
     "unocss": "catalog:docs",
     "unplugin-vue-components": "catalog:docs",
     "vite": "catalog:docs",

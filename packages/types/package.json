@@ -32,9 +32,10 @@
   "files": [
     "dist"
   ],
-  "scripts": {
-    "dev": "tsdown --watch",
-    "build": "tsdown --publint --attw.profile esm-only",
-    "typecheck": "tsc --noEmit"
+  "devDependencies": {
+    "@arethetypeswrong/core": "catalog:check",
+    "publint": "catalog:check",
+    "tsdown": "catalog:build",
+    "typescript": "catalog:types"
   }
 }

@@ -2,9 +2,6 @@
   "name": "playground",
   "type": "module",
   "private": true,
-  "scripts": {
-    "play": "bun run ./src/index.ts"
-  },
   "devDependencies": {
     "starship-butler": "workspace:*"
   }

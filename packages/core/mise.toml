@@ -1,0 +1,15 @@
+[env]
+_.path = [ "./node_modules/.bin" ]
+
+[tasks.dev]
+run = "tsdown --watch"
+
+[tasks.start]
+run = "bun ./src/cli.ts"
+
+[tasks.build]
+run = "tsdown --publint --attw.profile esm-only"
+
+[tasks.typecheck]
+depends = [ ":build" ]
+run = "tsc --noEmit"

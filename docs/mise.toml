@@ -1,0 +1,15 @@
+[env]
+_.path = [ "./node_modules/.bin" ]
+
+[tasks.dev]
+run = "vitepress dev"
+
+[tasks.build]
+run = "vitepress build"
+
+[tasks.start]
+run = "vitepress preview"
+
+[tasks.typecheck]
+depends = [ ":build" ]
+run = "tsc --build --noEmit"
