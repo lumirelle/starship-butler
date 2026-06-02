@@ -93,3 +93,4 @@ depends = [
 depends = ":prerelease"
 # See https://github.com/oven-sh/bun/issues/18906 and https://github.com/oven-sh/bun/issues/20477
 run = "bumpp --all --recursive --execute 'bun ./scripts/update-lockfile.sh'"
+raw = true
