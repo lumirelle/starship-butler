@@ -1,70 +1,97 @@
 // cspell:disable
 {
   "recommendations": [
-    // #region UI
-    // Theme
+    // #region Appearance / Theme
     "github.github-vscode-theme",
     "wicked-labs.sequoia",
     "antfu.icons-carbon",
     "catppuccin.catppuccin-vsc-icons",
-    // File Nesting
+    // #endregion
+
+    // #region Appearance / Sidebar / Explorer
     "antfu.file-nesting",
-    // Highlight
-    "jgclark.vscode-todo-highlight",
-    "ibm.output-colorizer",
-    // Markdown Preview
+    // #endregion
+
+    // #region Appearance / Editor
+    // Cursor
+    "30d98f9b2.neovide-cursor",
+    // Lens
+    "usernamehw.errorlens",
+    // Preview Editor
     "bierner.markdown-checkbox",
     "bierner.markdown-emoji",
     "bierner.markdown-footnotes",
     "bierner.markdown-preview-github-styles",
     "bierner.markdown-yaml-preamble",
-    // Cursor
-    "30d98f9b2.neovide-cursor",
-    // Custom UI
+    // #endregion
+
+    // #region Appearance / Status Bar
+    // Hint
+    "johnpapa.read-time",
+    "mkxml.vscode-filesize",
+    // #endregion
+
+    // #region Appearance / Highlight
+    "jgclark.vscode-todo-highlight",
+    "ibm.output-colorizer",
+    // #endregion
+
+    // #region Appearance / Custom UI
     "subframe7536.custom-ui-style",
     // #endregion
 
-    // #region Lens & Hint
-    // Lens
-    "johnpapa.read-time",
-    "mkxml.vscode-filesize",
-    "usernamehw.errorlens",
+    // #region Behavior / Sidebar / Explorer
+    "jannisx11.batch-rename-extension",
     // #endregion
 
-    // #region Behavior
-    // Open & Edit
+    // #region Behavior / Sidebar / Addons
+    // Snippets Manager
+    "zjffun.snippetsmanager",
+    // Source Control
+    "eamodio.gitlens",
+    "github.vscode-github-actions", // Useful for Actions Development
+    // #endregion
+
+    // #region Behavior / Commands / Addons
+    "codezombiech.gitignore",
+    // #endregion
+
+    // #region Behavior / Editor
     "ms-vscode.hexeditor",
     "asvetliakov.vscode-neovim",
     "cardinal90.multi-cursor-case-preserve",
-    // Rename
-    "jannisx11.batch-rename-extension",
-    // Snippet
-    "zjffun.snippetsmanager",
-    // AI
-    "coderabbit.coderabbit-vscode", // AI Code Reviewer
-    // Git
-    "codezombiech.gitignore",
-    "eamodio.gitlens",
-    "github.vscode-github-actions", // Useful for Actions Development
-    // Dev Container
-    "ms-azuretools.vscode-containers",
     // #endregion
 
-    // #region Language Support
+    // #region Behavior / AI
+    "coderabbit.coderabbit-vscode", // AI Code Reviewer
+    // #endregion
+
+    // #region Behavior / Dev Experience
+    // Mise
     "hverlin.mise-vscode",
+    // Dev Container
+    "ms-azuretools.vscode-containers",
+    // Markdown
     "yzhang.markdown-all-in-one",
+    // Schema (JSON, YAML, TOML)
+    "remcohaszing.schemastore",
+    "redhat.vscode-yaml",
     "tamasfe.even-better-toml",
+    // Nushell
     "thenuprojectcontributors.vscode-nushell-lang",
     // #endregion
 
-    // #region Code Quality
+    // #region Behavior / Lint
+    "streetsidesoftware.code-spell-checker",
+    // #endregion
+
+    // #region Behavior / Format
     "oxc.oxc-vscode",
     "editorconfig.editorconfig",
-    "lumirelle.shell-format-rev",
-    "streetsidesoftware.code-spell-checker"
+    "lumirelle.shell-format-rev"
     // #endregion
   ]
   // Extension Count
-  // VSCODE: 35
-  // CURSOR: 35
+  // VSCODE: 37
+  // CURSOR: 37
 }

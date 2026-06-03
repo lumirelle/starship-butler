@@ -1,36 +1,49 @@
 // cSpell:disable
 {
-  // #region UI
-  // Theme
+  // #region Appearance / Theme
   "window.autoDetectColorScheme": true,
   "workbench.preferredDarkColorTheme": "GitHub Dark Default",
   "workbench.preferredLightColorTheme": "GitHub Light Default",
   "workbench.productIconTheme": "icons-carbon",
   "workbench.iconTheme": "catppuccin-mocha",
   "workbench.colorCustomizations": {
+    // Keep consistent experience with extension "30d98f9b2.neovide-cursor"
     "editorCursor.foreground": "#FFC0CB"
   },
-  // Layout
+  // #endregion
+
+  // #region Appearance / Font
+  "custom-ui-style.font.monospace": "'Comic Sans MS', 'Symbols Nerd Font Mono', 'Maple Mono CN', monospace",
+  "custom-ui-style.font.sansSerif": "'Comic Sans MS', 'Symbols Nerd Font', 'Maple Mono CN', sans-serif",
+  "editor.fontFamily": "'Comic Mono', 'Symbols Nerd Font Mono', 'Maple Mono CN', monospace",
+  "markdown.preview.fontFamily": "'Comic Sans MS', 'Symbols Nerd Font', 'Maple Mono CN', monospace",
+  "editor.fontSize": 16,
+  "terminal.integrated.fontSize": 14,
+  "markdown.preview.fontSize": 14,
+  "editor.lineHeight": 1.6,
+  "editor.fontLigatures": true,
+  "terminal.integrated.fontLigatures.enabled": true,
+  // #endregion
+
+  // #region Appearance / Layout
   "window.zoomLevel": 0,
   "window.titleBarStyle": "custom",
-  "window.dialogStyle": "custom",
   "window.controlsStyle": "custom",
+  "window.dialogStyle": "custom",
   "files.simpleDialog.enable": true,
   "workbench.activityBar.orientation": "vertical",
   "workbench.tree.renderIndentGuides": "always",
   "workbench.tree.indent": 8,
   "workbench.secondarySideBar.defaultVisibility": "hidden",
-  "editor.lineNumbers": "relative",
-  "scm.diffDecorationsGutterWidth": 2,
-  "editor.wordWrap": "on",
-  "editor.rulers": [100, 200],
-  "editor.renderWhitespace": "boundary",
-  "editor.guides.bracketPairs": true,
-  // File Nesting
+  // Extensions
+  "editorconfig.showMenuEntry": false,
+  // #endregion
+
+  // #region Appearance / Sidebar / Explorer
   "explorer.fileNesting.enabled": true,
   "explorer.fileNesting.expand": false,
   "explorer.fileNesting.patterns": {
-    "//": "Last update at 5/19/2026, 1:38:00 PM",
+    "//": "Last update at 6/3/2026, 8:28:32 PM",
     ".agent": ".agent, .claude, .cline, .codebuddy, .codex, .commandcode, .continue, .crush, .cursor, .factory, .gemini, .goose, .junie, .kilocode, .kiro, .kode, .mcpjam, .mux, .neovate, .opencode, .openhands, .pi, .pochi, .qoder, .qwen, .roo, .trae, .windsurf, .zencoder",
     ".clang-tidy": ".clang-format, .clangd, compile_commands.json",
     ".env": "*.env, .env.*, .envrc, env.d.ts",
@@ -134,22 +147,48 @@
     "*.wat": "$(capture).wasm",
     "*.xaml": "$(capture).xaml.cs"
   },
-  // Font
-  "custom-ui-style.font.monospace": "'Comic Sans MS', 'Symbols Nerd Font Mono', 'Maple Mono CN', monospace",
-  "custom-ui-style.font.sansSerif": "'Comic Sans MS', 'Symbols Nerd Font', 'Maple Mono CN', sans-serif",
-  "editor.fontFamily": "'Comic Mono', 'Symbols Nerd Font Mono', 'Maple Mono CN', monospace",
-  "markdown.preview.fontFamily": "'Comic Sans MS', 'Symbols Nerd Font', 'Maple Mono CN', monospace",
-  "editor.fontSize": 16,
-  "terminal.integrated.fontSize": 14,
-  "markdown.preview.fontSize": 14,
-  "editor.lineHeight": 1.6,
-  "editor.fontWeight": "500",
-  "editor.fontLigatures": true,
-  "terminal.integrated.fontLigatures.enabled": true,
+  "fileNestingUpdater.autoUpdate": true,
+  // #endregion
+
+  // #region Appearance / Sidebar / Source Control
+  // Built-in
+  // We use extension "eamodio.gitlensinstead" instead, because it respects .git-blame-ignore-revs without extra configuration.
+  "git.blame.editorDecoration.enabled": false,
+  "git.blame.statusBarItem.enabled": false,
+  // GitLens
+  "gitlens.defaultCurrentUserNameStyle": "nameAndYou",
+  "gitlens.graph.dimMergeCommits": true,
+  "gitlens.launchpad.indicator.enabled": false,
+  "gitlens.views.scm.grouped.hiddenViews": { "worktrees": true },
+  "gitlens.views.formats.commits.label": "${(tips|11?) > }${message}",
+  // #endregion
+
+  // #region Appearance / Editor
+  // Line Numbers & Guides
+  "editor.lineNumbers": "relative",
+  "scm.diffDecorationsGutterWidth": 2,
+  "editor.renderWhitespace": "boundary",
+  "editor.guides.bracketPairs": true,
+  "editor.rulers": [80, 120, 200],
   // Cursor
   "editor.cursorBlinking": "smooth",
   "editor.cursorSmoothCaretAnimation": "on",
-  // Highlight
+  // Lens
+  "errorLens.enabledDiagnosticLevels": ["warning", "error", "info", "hint"],
+  "errorLens.messageTemplate": "[$count] $severity $message $source($code)",
+  // Hint
+  "js/ts.inlayHints.enumMemberValues.enabled": true,
+  "js/ts.inlayHints.parameterNames.enabled": "all",
+  "js/ts.inlayHints.parameterTypes.enabled": true,
+  "vue.inlayHints.destructuredProps": true,
+  "vue.inlayHints.inlineHandlerLeading": true,
+  "vue.inlayHints.missingProps": true,
+  "vue.inlayHints.optionsWrapper": true,
+  "vue.suggest.defineAssignment": true,
+  "iconify.includes": [], // Include no icon sets by default, should be manually configured by users if needed.
+  // #endregion
+
+  // #region Appearance / Highlight
   "workbench.editor.highlightModifiedTabs": true,
   "todohighlight.include": [
     // Scripts
@@ -208,12 +247,10 @@
     "**/package-lock.json",
     "**/pnpm-lock.yaml",
     "**/yarn.lock",
-    "**/bun.lock"
+    "**/bun.lock",
+    "**/aube-lock.yaml"
   ],
-  "todohighlight.defaultStyle": {
-    "color": "#fff",
-    "borderRadius": "8px"
-  },
+  "todohighlight.defaultStyle": { "color": "#fff", "borderRadius": "8px" },
   "todohighlight.keywords": [
     // Uncompleted tasks.
     {
@@ -255,41 +292,30 @@
       "overviewRulerColor": "rgb(207 146 158 / 80%)"
     }
   ],
-  // Custom UI
+  // #endregion
+
+  // #region Appearance / Custom UI
   "custom-ui-style.external.imports": [
     "file://${userHome}/.vscode/extensions/30d98f9b2.neovide-cursor-1.0.1/neovide-cursor.js"
   ],
   // #endregion
 
-  // #region Lens & Hint
-  // Lens
-  "errorLens.enabledDiagnosticLevels": ["warning", "error", "info", "hint"],
-  "errorLens.messageTemplate": "[$count] $severity $message $source($code)",
-  // Hint
-  "js/ts.inlayHints.enumMemberValues.enabled": true,
-  "js/ts.inlayHints.parameterNames.enabled": "all",
-  "js/ts.inlayHints.parameterTypes.enabled": true,
-  "vue.autoInsert.dotValue": true,
-  "vue.hover.rich": true,
-  "vue.inlayHints.destructuredProps": true,
-  "vue.inlayHints.inlineHandlerLeading": true,
-  "vue.inlayHints.missingProps": true,
-  "vue.inlayHints.optionsWrapper": true,
-  "vue.suggest.defineAssignment": true,
+  // #region Behavior / Security
+  "security.workspace.trust.enabled": false,
   // #endregion
 
-  // #region Behavior
-  // Trust
-  "security.workspace.trust.enabled": false,
-  // Profile
+  // #region Behavior / Profile
   "window.newWindowProfile": "Default",
-  // Explorer
-  "explorer.autoOpenDroppedFile": false,
+  // #endregion
+
+  // #region Behavior / Sidebar / Explorer
   "explorer.confirmDelete": false,
   "explorer.confirmDragAndDrop": false,
   "explorer.copyPathSeparator": "/",
   "explorer.copyRelativePathSeparator": "/",
-  // Search
+  // #endregion
+
+  // #region Behavior / Sidebar / Search
   "search.showLineNumbers": true,
   "search.exclude": {
     // Dotfolders
@@ -315,52 +341,67 @@
     "**/pnpm-lock.yaml": true,
     "**/yarn.lock": true,
     "**/bun.lock": true,
+    "**/aube-lock.yaml": true,
     // Extra Files
     "**/*.svg": true,
     "**/CHANGELOG*": true,
     "**/LICENSE*": true
   },
-  // Git
+  // #endregion
+
+  // #region Behavior / Sidebar / Source Control
   "git.autofetch": true,
   "git.confirmSync": true,
   "git.enableSmartCommit": true,
   "git.openRepositoryInParentFolders": "always",
-  "git.untrackedChanges": "separate",
-  // We use GitLens instead, because it respects .git-blame-ignore-revs without extra configuration.
-  "git.blame.editorDecoration.enabled": false,
-  "git.blame.statusBarItem.enabled": false,
-  "gitlens.plusFeatures.enabled": false,
-  "gitlens.defaultCurrentUserNameStyle": "nameAndYou",
-  "gitlens.graph.dimMergeCommits": true,
-  "gitlens.launchpad.indicator.enabled": false,
-  "gitlens.cloudPatches.enabled": false,
-  "gitlens.views.scm.grouped.hiddenViews": { "worktrees": true },
-  "gitlens.views.formats.commits.label": "${(tips|11?) > }${message}",
-  // Editor
+  // #endregion
+
+  // #region Behavior / Editor
+  // Startup
   "workbench.startupEditor": "none",
+  // Accessibility
+  "editor.accessibilitySupport": "off",
+  // Open Editor Limits
   "workbench.editor.limit.enabled": true,
   "workbench.editor.limit.perEditorGroup": true,
   "workbench.editor.limit.value": 5,
-  "editor.acceptSuggestionOnCommitCharacter": false,
+  // Word Wrap
+  "editor.wordWrap": "on",
+  // Minimap
   "editor.minimap.enabled": true,
-  "editor.accessibilitySupport": "off",
+  "editor.minimap.renderCharacters": false,
+  // Suggestions & Emmet
+  "editor.acceptSuggestionOnCommitCharacter": false,
+  // Fucking Microsoft, why you set "other" to "offWhenInlineCompletions" by default since 1.121?
+  // Just because the fucking AI inline suggestions?
+  "editor.quickSuggestions": { "other": "on", "comments": "off", "strings": "off" },
+  "emmet.syntaxProfiles": { "html": { "filters": "bem" } },
+  "emmet.triggerExpansionOnTab": false,
   "editor.unusualLineTerminators": "auto",
+  // Zoom
+  "editor.mouseWheelZoom": true,
+  // Goto
+  "editor.gotoLocation.multipleDefinitions": "goto",
+  // Diff Editor
   "diffEditor.ignoreTrimWhitespace": false,
-  // Terminal
+  // #endregion
+
+  // #region Behavior / Terminal
   "terminal.integrated.profiles.linux": { "nushell": { "path": "nu" } },
   "terminal.integrated.profiles.osx": { "nushell": { "path": "nu" } },
   "terminal.integrated.profiles.windows": { "nushell": { "path": "nu" } },
   "terminal.integrated.defaultProfile.linux": "nushell",
   "terminal.integrated.defaultProfile.osx": "nushell",
   "terminal.integrated.defaultProfile.windows": "nushell",
+  // "terminal.integrated.agentHostProfile.linux": "Command Prompt",
+  // "terminal.integrated.agentHostProfile.osx": "Command Prompt",
+  "terminal.integrated.agentHostProfile.windows": "Command Prompt",
   "terminal.integrated.persistentSessionReviveProcess": "never",
   "terminal.integrated.rightClickBehavior": "default",
-  // Emmet
-  "emmet.syntaxProfiles": {
-    "html": { "filters": "bem" }
-  },
-  "emmet.triggerExpansionOnTab": false,
-  // Scroll
+  "terminal.integrated.shellIntegration.history": 9999,
+  // #endregion
+
+  // #region Behavior / Scroll
   "workbench.list.mouseWheelScrollSensitivity": 2,
   "editor.mouseWheelScrollSensitivity": 2,
   "terminal.integrated.mouseWheelScrollSensitivity": 2,
@@ -370,13 +411,13 @@
   "workbench.list.smoothScrolling": true,
   "editor.smoothScrolling": true,
   "terminal.integrated.smoothScrolling": true,
-  // Zoom
-  "editor.mouseWheelZoom": true,
-  // Goto
-  "editor.gotoLocation.multipleDefinitions": "goto",
-  // Zen Mode
+  // #endregion
+
+  // #region Behavior / Zen Mode
   "zenMode.hideLineNumbers": false,
-  // AI
+  // #endregion
+
+  // #region Behavior / AI
   "git.addAICoAuthor": "chatAndAgent",
   "github.copilot.enable": {
     "*": true,
@@ -386,28 +427,11 @@
     "dotenv": false
   },
   "github.copilot.nextEditSuggestions.enabled": true,
-  "chat.mcp.gallery.enabled": true,
   "cursor.cpp.disabledLanguages": ["plaintext", "dotenv"],
   // #endregion
 
-  // #region Extension Behavior
-  "extensions.experimental.affinity": {
-    "asvetliakov.vscode-neovim": 1
-  },
-  "bun.test.customFlag": "--isolate",
-  "console-ninja.featureSet": "Community",
-  "containers.containerClient": "com.microsoft.visualstudio.containers.podman",
-  "containers.orchestratorClient": "com.microsoft.visualstudio.orchestrators.podmancompose",
-  "editorconfig.showMenuEntry": false,
-  "fileNestingUpdater.autoUpdate": true,
-  "i18n-ally.autoDetection": false,
-  "i18n-ally.displayLanguage": "en",
-  "markdown.extension.italic.indicator": "_",
-  "markdown.extension.tableFormatter.enabled": false,
-  "mise.autoDetectMiseBinPath": false,
-  "nuxtr.vueFiles.firstTag": "script",
-  "nuxtr.vueFiles.style.addStyleTag": false,
-  "nuxtr.piniaFiles.defaultTemplate": "setup",
+  // #region Behavior / Dev Experience
+  // Neovim
   "vscode-neovim.ctrlKeysForNormalMode": [
     "a",
     "b",
@@ -452,13 +476,38 @@
     "u",
     "w"
   ],
+  // Markdown
+  "markdown.extension.italic.indicator": "_",
+  // Mise
+  "mise.autoDetectMiseBinPath": false,
+  // Dev Containers
+  "containers.containerClient": "com.microsoft.visualstudio.containers.podman",
+  "containers.orchestratorClient": "com.microsoft.visualstudio.orchestrators.podmancompose",
+  // Vue
+  "vue.autoInsert.dotValue": true,
+  "vue.hover.rich": true,
+  "nuxtr.vueFiles.firstTag": "script",
+  "nuxtr.vueFiles.style.addStyleTag": false, // Atomic CSS frameworks are more recommended.
+  "nuxtr.piniaFiles.defaultTemplate": "setup",
+  // I18n
+  "i18n-ally.autoDetection": false,
+  "i18n-ally.displayLanguage": "en",
+  // #endregion
+
+  // #region Behavior / Extensions / Performance
+  "extensions.experimental.affinity": {
+    "asvetliakov.vscode-neovim": 1
+  },
+  // #endregion
+
+  // #region Behavior / Extensions / Cleanliness
+  "console-ninja.featureSet": "Community",
+  "gitlens.plusFeatures.enabled": false,
+  "gitlens.cloudPatches.enabled": false,
   "rest-client.enableTelemetry": false,
   // #endregion
 
-  // #region Code Quality
-  "editor.defaultFormatter": "oxc.oxc-vscode",
-  "editor.formatOnSave": true,
-  "shellformat.useEditorConfig": true,
+  // #region Behavior / Lint
   "cSpell.allowCompoundWords": true,
   "cSpell.customDictionaries": {
     "common": {
@@ -493,13 +542,24 @@
     "pnpm-lock.yaml",
     "yarn.lock",
     "bun.lock",
+    "aube-lock.yaml",
     // Extra Files
     "*.svg"
   ],
+  // #endregion
+
+  // #region Behavior / Format
+  "editor.defaultFormatter": "oxc.oxc-vscode",
   "[shellscript]": { "editor.defaultFormatter": "lumirelle.shell-format-rev" },
   "[properties]": { "editor.defaultFormatter": "lumirelle.shell-format-rev" },
   "[dotenv]": { "editor.defaultFormatter": "lumirelle.shell-format-rev" },
   "[ignore]": { "editor.defaultFormatter": "lumirelle.shell-format-rev" },
-  "[dockerfile]": { "editor.defaultFormatter": "ms-azuretools.vscode-containers" }
+  "[dockerfile]": { "editor.defaultFormatter": "ms-azuretools.vscode-containers" },
+  "editor.formatOnSave": true,
+  "oxc.fixKind": "safe_fix_or_suggestion",
+  "markdown.extension.tableFormatter.enabled": false,
+  "shellformat.useEditorConfig": true,
+  "files.trimTrailingWhitespace": true,
+  "files.trimFinalNewlines": true
   // #endregion
 }

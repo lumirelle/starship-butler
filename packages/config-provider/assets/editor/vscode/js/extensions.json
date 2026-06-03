@@ -1,50 +1,51 @@
 // cspell:disable
 {
   "recommendations": [
-    // #region Lens & Hint
+    // #region Appearance / Editor
+    // Lens
     "yoavbls.pretty-ts-errors",
+    // Hint
     "ruban-s.fast-import-cost",
     "antfu.pnpm-catalog-lens",
     "wallabyjs.console-ninja",
     "antfu.iconify",
     // #endregion
 
-    // #region Behavior
+    // #region Behavior / Sidebar / Addons
+    // Excercises
+    "yrm.type-challenges",
+    // #endregion
+
+    // #region Behavior / Commands / Addons
     "jasonnutter.search-node-modules", // CTRL+K CTRL+N
     // #endregion
 
-    // #region Language Support
+    // #region Behavior / Dev Experience
     // JavaScript / TypeScript
-    "oven.bun-vscode",
     "johnsoncodehk.vscode-tsconfig-helper",
     "npmx-dev.vscode-npmx",
     // Vue
     "vue.volar",
-    // Nuxt
     "nuxtr.nuxtr-vscode",
     "alimozdemir.vscode-nuxt-dx-tools",
     "antfu.goto-alias", // F12 / gd (With Neovim)
+    "antfu.slidev",
+    // Atomic CSS Frameworks
+    "antfu.unocss",
+    "bradlc.vscode-tailwindcss",
+    // Testing
+    "vitest.explorer",
     // I18n
     "lokalise.i18n-ally",
-    // UnoCSS
-    "antfu.unocss",
-    // Tailwind CSS
-    "bradlc.vscode-tailwindcss",
-    // Slidev
-    "antfu.slidev",
     // REST Client
     "humao.rest-client",
     // #endregion
 
-    // #region Code Quality
-    "dbaeumer.vscode-eslint",
-    // #endregion
-
-    // #region Practice
-    "yrm.type-challenges"
+    // #region Behavior / Lint
+    "dbaeumer.vscode-eslint"
     // #endregion
   ]
   // Extension Count
-  // VSCODE: 20 + $DEFAULT_VSCODE = 55
-  // CURSOR: 20 + $DEFAULT_CURSOR = 55
+  // VSCODE: 20 + $DEFAULT_VSCODE = 57
+  // CURSOR: 20 + $DEFAULT_CURSOR = 57
 }
