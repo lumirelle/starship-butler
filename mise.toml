@@ -1,8 +1,5 @@
 experimental_monorepo_root = true
 
-[settings]
-npm.package_manager = "aube"
-
 [env]
 _.path = [ "./node_modules/.bin" ]
 

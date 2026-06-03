@@ -2,19 +2,10 @@
   "type": "module",
   "version": "8.0.0",
   "private": true,
+  "packageManager": "aube@1.17.1",
   "engines": {
     "node": ">=22",
     "bun": "*"
-  },
-  "devEngines": {
-    "runtime": {
-      "name": "bun",
-      "version": ">1.0.0"
-    },
-    "packageManager": {
-      "name": "aube",
-      "version": "1.17.0"
-    }
   },
   "scripts": {
     "prepare": "mise run prepare",
