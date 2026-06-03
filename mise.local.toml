@@ -1,0 +1,5 @@
+[tools]
+# We may need this until GitHub's hosted runners have a new enough npm version.
+# See https://github.blog/changelog/2025-09-19-deprecation-of-node-20-on-github-actions-runners/.
+npm = "latest"
+"npm:@antfu/ni" = "latest"
