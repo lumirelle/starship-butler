@@ -4,11 +4,7 @@
   "private": true,
   "packageManager": "bun@1.3.14",
   "scripts": {
-    "prepare": "mise run prepare",
-    "lint:fix": "mise run lint:fix",
-    "check": "mise run check",
-    "test": "mise run test",
-    "build": "mise run build"
+    "prepare": "mise run prepare"
   },
   "workspaces": {
     "packages": [
@@ -34,26 +30,26 @@
         "@antfu/utils": "^9.3.0"
       },
       "prod": {
-        "@clack/prompts": "^1.4.0",
+        "@clack/prompts": "^1.5.0",
         "c12": "^4.0.0-beta.5",
         "cac": "^7.0.0",
         "consola": "^3.4.2",
         "defu": "^6.1.7",
         "pathe": "^2.0.3",
         "rc9": "^3.0.1",
-        "tinyexec": "^1.2.2",
-        "tinyglobby": "^0.2.16"
+        "tinyexec": "^1.2.4",
+        "tinyglobby": "^0.2.17"
       },
       "docs": {
         "@iconify-json/svg-spinners": "^1.2.4",
-        "@shikijs/vitepress-twoslash": "^4.1.0",
+        "@shikijs/vitepress-twoslash": "^4.2.0",
         "@unocss/reset": "^66.7.0",
         "@vueuse/core": "^14.3.0",
         "floating-vue": "^5.2.2",
         "pinia": "^3.0.4",
         "unocss": "^66.7.0",
         "unplugin-vue-components": "^32.1.0",
-        "vite": "^8.0.14",
+        "vite": "^8.0.16",
         "vite-tsconfig-paths": "^6.1.1",
         "vitepress": "^2.0.0-alpha.17",
         "vitepress-plugin-group-icons": "^1.7.5",
@@ -61,13 +57,13 @@
       },
       "check": {
         "@antfu/eslint-config": "^9.0.0",
-        "@arethetypeswrong/core": "^0.18.2",
-        "@lumirelle/oxlint-config": "^0.6.0",
-        "eslint": "^10.4.0",
-        "eslint-plugin-oxlint": "^1.67.0",
-        "knip": "^6.14.2",
+        "@arethetypeswrong/core": "^0.18.3",
+        "@lumirelle/oxlint-config": "^0.7.0",
+        "eslint": "^10.4.1",
+        "eslint-plugin-oxlint": "^1.68.0",
+        "knip": "^6.15.0",
         "nano-staged": "^1.0.2",
-        "oxlint": "^1.67.0",
+        "oxlint": "^1.68.0",
         "oxlint-tsgolint": "^0.23.0",
         "publint": "^0.3.21"
       },
@@ -95,7 +91,6 @@
     "typescript": "catalog:types"
   },
   "overrides": {
-    "fflate": "0.8.2",
     "typescript": "catalog:types",
     "vite": "catalog:docs",
     "vue": "catalog:docs"

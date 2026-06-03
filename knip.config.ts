@@ -12,7 +12,6 @@ export default {
       ],
     },
     'docs': {
-      entry: ['./mise.toml'],
       ignoreDependencies: [
         '@iconify-json/svg-spinners',
         '@unocss/reset',
