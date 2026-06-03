@@ -1,99 +1,91 @@
-import type { Mock } from 'bun:test'
-import { afterEach, beforeEach, describe, expect, it, spyOn } from 'bun:test'
 import { consola } from 'consola'
+import { join } from 'pathe'
+import { afterEach, describe, expect, it, vi } from 'vitest'
+import { processConfig } from '../../../src/command/utils'
+import { ASSETS_FOLDER } from '../../../src/constants'
+
+// Mock fs functions, let them return true
+const { copyFile, createSymlink } = vi.hoisted(() => ({
+  copyFile: vi.fn(() => true),
+  createSymlink: vi.fn(() => true),
+}))
+vi.mock('starship-butler-utils/fs', () => ({
+  copyFile,
+  createSymlink,
+}))
 
 describe('config util', () => {
+  afterEach(() => {
+    vi.clearAllMocks()
+  })
+
   describe('copyPasteConfig()', async () => {
-    it('should return false if useGlob is true', async () => {
-      const { copyPasteConfig } = await import('../../../src/command/utils/config')
-      const result = copyPasteConfig('source', 'target', { useGlob: true })
-      expect(result).toBe(false)
+    it('should return false if useGlob is true, so it should not log success', async () => {
+      const spy = vi.spyOn(consola, 'success')
+      processConfig('source', 'target', { useGlob: true })
+      expect(spy).not.toHaveBeenCalled()
     })
   })
 
   describe('symlinkConfig()', async () => {
-    it('should return false if useGlob is true', async () => {
-      const { symlinkConfig } = await import('../../../src/command/utils/config')
-      const result = symlinkConfig('source', 'target', { useGlob: true })
-      expect(result).toBe(false)
+    it('should return false if useGlob is true, so it should not log success', async () => {
+      const spy = vi.spyOn(consola, 'success')
+      processConfig('source', 'target', { useGlob: true })
+      expect(spy).not.toHaveBeenCalled()
     })
   })
 
   describe('processConfig()', async () => {
-    const configUtils = await import('../../../src/command/utils/config')
-    let copyPasteConfigSpy: Mock<typeof import('../../../src/command/utils/config')['copyPasteConfig']>
-    let symlinkConfigSpy: Mock<typeof import('../../../src/command/utils/config')['symlinkConfig']>
-
-    beforeEach(() => {
-      copyPasteConfigSpy = spyOn(configUtils, 'copyPasteConfig').mockImplementation(() => true)
-      symlinkConfigSpy = spyOn(configUtils, 'symlinkConfig').mockImplementation(() => true)
-    })
-    afterEach(() => {
-      copyPasteConfigSpy.mockRestore()
-      symlinkConfigSpy.mockRestore()
-    })
-
     describe('copy-paste mode', () => {
-      it('should call copyPasteConfig()', () => {
-        configUtils.processConfig('source', 'target', { mode: 'copy-paste' })
-        expect(copyPasteConfigSpy).toBeCalledWith('source', 'target', { mode: 'copy-paste' })
-        expect(copyPasteConfigSpy).toBeCalledTimes(1)
+      it('should call copyFile()', async () => {
+        processConfig('source', 'target', { mode: 'copy-paste' })
+        expect(copyFile).toHaveBeenCalledWith(join(ASSETS_FOLDER, 'source'), 'target', undefined)
+        expect(copyFile).toHaveBeenCalledTimes(1)
       })
 
-      it('should not call symlinkConfig()', () => {
-        configUtils.processConfig('source', 'target', { mode: 'copy-paste' })
-        expect(symlinkConfigSpy).not.toBeCalled()
+      it('should not call createSymlink()', () => {
+        processConfig('source', 'target', { mode: 'copy-paste' })
+        expect(createSymlink).not.toHaveBeenCalled()
       })
 
-      it('should log success if copyPasteConfig() resolves to true', () => {
-        const spy = spyOn(consola, 'success')
-
-        configUtils.processConfig('source', 'target', { mode: 'copy-paste' })
-        expect(spy).toBeCalledTimes(1)
-
-        spy.mockRestore()
+      it('should log success if copyFile() resolves to true', () => {
+        const spy = vi.spyOn(consola, 'success')
+        processConfig('source', 'target', { mode: 'copy-paste' })
+        expect(spy).toHaveBeenCalledTimes(1)
       })
 
-      it('should not log success if copyPasteConfig() resolves to false', () => {
-        const spy = spyOn(consola, 'success')
-
-        copyPasteConfigSpy.mockImplementation(() => false)
-        configUtils.processConfig('source', 'target', { mode: 'copy-paste' })
-        expect(spy).toBeCalledTimes(0)
-
-        spy.mockRestore()
+      it('should not log success if copyFile() resolves to false', () => {
+        const spy = vi.spyOn(consola, 'success')
+        copyFile.mockImplementationOnce(() => false)
+        processConfig('source', 'target', { mode: 'copy-paste' })
+        expect(spy).toHaveBeenCalledTimes(0)
       })
     })
 
     describe('symlink mode', () => {
-      it('should call symlinkConfig() ', () => {
-        configUtils.processConfig('source', 'target', { mode: 'symlink' })
-        expect(symlinkConfigSpy).toBeCalledWith('source', 'target', { mode: 'symlink' })
-        expect(symlinkConfigSpy).toBeCalledTimes(1)
+      it('should call createSymlin() ', () => {
+        processConfig('source', 'target', { mode: 'symlink' })
+        expect(createSymlink).toHaveBeenCalledWith(join(ASSETS_FOLDER, 'source'), 'target', undefined)
+        expect(createSymlink).toHaveBeenCalledTimes(1)
       })
 
-      it('should not call copyPasteConfig() ', () => {
-        configUtils.processConfig('source', 'target', { mode: 'symlink' })
-        expect(copyPasteConfigSpy).not.toBeCalled()
+      it('should not call copyFile() ', () => {
+        processConfig('source', 'target', { mode: 'symlink' })
+        expect(copyFile).not.toHaveBeenCalled()
       })
 
-      it('should log success if symlinkConfig() resolves to true', () => {
-        const spy = spyOn(consola, 'success')
-
-        configUtils.processConfig('source', 'target', { mode: 'symlink' })
-        expect(spy).toBeCalledTimes(1)
-
-        spy.mockRestore()
+      it('should log success if createSymlink() resolves to true', () => {
+        const spy = vi.spyOn(consola, 'success')
+        processConfig('source', 'target', { mode: 'symlink' })
+        expect(spy).toHaveBeenCalledTimes(1)
       })
 
-      it('should not log success if symlinkConfig() resolves to false', () => {
-        const spy = spyOn(consola, 'success')
+      it('should not log success if createSymlink() resolves to false', () => {
+        const spy = vi.spyOn(consola, 'success')
 
-        symlinkConfigSpy.mockImplementation(() => false)
-        configUtils.processConfig('source', 'target', { mode: 'symlink' })
-        expect(spy).toBeCalledTimes(0)
-
-        spy.mockRestore()
+        createSymlink.mockImplementationOnce(() => false)
+        processConfig('source', 'target', { mode: 'symlink' })
+        expect(spy).toHaveBeenCalledTimes(0)
       })
     })
   })

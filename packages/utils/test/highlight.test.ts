@@ -1,5 +1,5 @@
-import { describe, expect, it } from 'bun:test'
 import { styleText } from 'node:util'
+import { describe, expect, it } from 'vitest'
 import { important, info } from '../src/highlight'
 
 describe('highlight util', () => {

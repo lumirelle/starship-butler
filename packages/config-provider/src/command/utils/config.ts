@@ -14,7 +14,7 @@ import { ASSETS_FOLDER } from '../../constants'
  * @param options Processing options.
  * @returns Whether operation success or not.
  */
-export function copyPasteConfig(
+function copyPasteConfig(
   source: string,
   target: string,
   options: Omit<ProcessConfigOptions, 'mode'> = {},
@@ -36,7 +36,7 @@ export function copyPasteConfig(
  * @param options Processing options.
  * @returns Whether operation success or not.
  */
-export function symlinkConfig(
+function symlinkConfig(
   source: string,
   target: string,
   options: Omit<ProcessConfigOptions, 'mode'> = {},

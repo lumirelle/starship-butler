@@ -1,4 +1,4 @@
-import { describe, expect, it } from 'bun:test'
+import { describe, expect, it } from 'vitest'
 import { HandlerError } from '../../../src/command/preset/error'
 
 describe('error', () => {

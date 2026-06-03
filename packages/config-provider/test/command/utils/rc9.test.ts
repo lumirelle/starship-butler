@@ -1,8 +1,8 @@
-import { afterEach, beforeAll, beforeEach, describe, expect, it } from 'bun:test'
 import { removeUserConfig, writeUserConfig } from 'starship-butler-utils/config'
 import { ensureDirectory } from 'starship-butler-utils/fs'
 import { homedir } from 'starship-butler-utils/path'
 import { isCI } from 'std-env'
+import { afterEach, beforeAll, beforeEach, describe, expect, it } from 'vitest'
 import { readUserConfig, upsertUserConfig } from '../../../src/command/utils'
 
 // Avoid name conflict with the test in the utils package

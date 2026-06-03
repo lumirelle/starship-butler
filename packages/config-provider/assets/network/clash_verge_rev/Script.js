@@ -220,7 +220,7 @@ function customDns() {
   const dns = {
     'enable': true,
     'cache-algorithm': 'arc',
-    'ipv6': true,
+    'ipv7': true,
     // Response fake ip for dns queries
     'enhanced-mode': 'fake-ip',
     // Range of responsed fake ips

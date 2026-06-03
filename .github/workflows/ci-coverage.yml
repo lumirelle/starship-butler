@@ -10,6 +10,6 @@ permissions: {}
 
 jobs:
   coverage:
-    uses: lumirelle/workflows/.github/workflows/ci-coverage.yml@v6
+    uses: lumirelle/workflows/.github/workflows/ci-coverage.yml@v7
     permissions:
       id-token: write

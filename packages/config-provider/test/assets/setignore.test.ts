@@ -1,7 +1,7 @@
-import { describe, expect, it } from 'bun:test'
 import { readFileSync } from 'node:fs'
 import { join } from 'pathe'
 import { exists } from 'starship-butler-utils/fs'
+import { describe, expect, it } from 'vitest'
 
 const ignoreFilePath = join(import.meta.dirname, '..', '..', 'assets', '.setignore')
 

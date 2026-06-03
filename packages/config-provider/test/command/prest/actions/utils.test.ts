@@ -1,5 +1,5 @@
-import { describe, expect, it } from 'bun:test'
 import { exists, remove } from 'starship-butler-utils/fs'
+import { describe, expect, it } from 'vitest'
 import {
   ensureDirectoryExist,
   isPathExist,

@@ -1,7 +1,10 @@
-// oxlint-disable no-console
-import { afterAll, beforeAll, describe, expect, it, spyOn } from 'bun:test'
 import process from 'node:process'
+import * as clackPrompts from '@clack/prompts'
+// oxlint-disable no-console
+import { afterAll, beforeAll, describe, expect, it, vi } from 'vitest'
 import { filterActions } from '../../../src/command/preset/actions'
+
+vi.mock('@clack/prompts', { spy: true })
 
 describe('actions', () => {
   describe('filterActions()', () => {
@@ -25,16 +28,12 @@ describe('actions', () => {
         `)
       })
       it('should prompt user to select actions when include option is empty', async () => {
-        const clackPrompts = await import('@clack/prompts')
-        const spy = spyOn(clackPrompts, 'multiselect').mockImplementation(async () => ['nushell', 'maven'] as any)
-
+        const spy = vi.spyOn(clackPrompts, 'multiselect').mockImplementation(async () => ['nushell', 'maven'] as any)
         const filteredActions = await filterActions({
           include: [],
         })
         expect(spy).toHaveBeenCalledTimes(1)
         expect(filteredActions.map(action => action.id)).toEqual(['nushell', 'maven'])
-
-        spy.mockRestore()
       })
     })
 

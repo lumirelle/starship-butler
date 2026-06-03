@@ -6,7 +6,7 @@ permissions: {}
 
 jobs:
   release-commit:
-    uses: lumirelle/workflows/.github/workflows/release-commit.yml@v6
+    uses: lumirelle/workflows/.github/workflows/release-commit.yml@v7
     with:
       publish: true
       packages: './packages/*'

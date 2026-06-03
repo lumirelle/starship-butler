@@ -8,12 +8,12 @@
     "@unocss/reset": "catalog:docs",
     "@vueuse/core": "catalog:docs",
     "floating-vue": "catalog:docs",
+    "oxc-minify": "catalog:docs",
     "pinia": "catalog:docs",
     "typescript": "catalog:types",
     "unocss": "catalog:docs",
     "unplugin-vue-components": "catalog:docs",
     "vite": "catalog:docs",
-    "vite-tsconfig-paths": "catalog:docs",
     "vitepress": "catalog:docs",
     "vitepress-plugin-group-icons": "catalog:docs",
     "vue": "catalog:docs"

@@ -1,9 +1,9 @@
-import { describe, expect, it } from 'bun:test'
 import { join } from 'pathe'
+import { describe, expect, it } from 'vitest'
 import { ASSETS_FOLDER, PKG_ROOT } from '../src/constants'
 
 describe('constants', () => {
-  describe('PKG_ROOT', () => {
+  describe('$PKG_ROOT', () => {
     it('should be correct', () => {
       const expectedPath = join(import.meta.dirname, '..')
       if (PKG_ROOT !== expectedPath) {
@@ -13,7 +13,7 @@ describe('constants', () => {
     })
   })
 
-  describe('ASSETS_FOLDER', () => {
+  describe('$ASSETS_FOLDER', () => {
     it('should be correct', () => {
       const expectedPath = join(import.meta.dirname, '..', 'assets')
       if (ASSETS_FOLDER !== expectedPath) {

@@ -5,6 +5,7 @@ _.path = [ "./node_modules/.bin" ]
 
 [tools]
 bun = "latest"
+aube = "latest"
 
 [monorepo]
 config_roots = [
@@ -20,35 +21,36 @@ run = "mise generate git-pre-commit --write"
 run = "nano-staged"
 
 [tasks.dev]
-depends = "//packages/*:dev"
+run = "aubr dev"
 
 [tasks.count-vscode-extensions]
-run = "bun run ./scripts/count-vscode-extensions.ts"
+run = "aubr count-vscode-extensions"
 
 [tasks.build]
-depends = "//packages/*:build"
+run = "aubr build"
 
 [tasks.start]
-depends = "//packages/core:start"
+run = "aubr start --"
 
 [tasks."docs:dev"]
-run = "//docs:dev"
+run = "aubr docs:dev --"
 
 [tasks."docs:build"]
-run = "//docs:build"
+run = "aubr docs:build --"
 
 [tasks."docs:start"]
-run = "//docs:start"
+run = "aubr docs:start --"
 
 [tasks.play]
-run = "//playground:play"
+depends = ":build"
+run = "aubr play"
 
 [tasks."lint:oxlint"]
-run = "oxlint"
+run = "aubr lint:oxlint"
 
 [tasks."lint:eslint"]
 wait_for = ":lint:oxlint"
-run = "eslint"
+run = "aubr lint:eslint"
 
 [tasks.lint]
 depends = [
@@ -57,11 +59,11 @@ depends = [
 ]
 
 [tasks."lint:fix:oxlint"]
-run = "oxlint --fix"
+run = "aubr lint:fix:oxlint"
 
 [tasks."lint:fix:eslint"]
 wait_for = ":lint:fix:oxlint"
-run = "eslint --fix"
+run = "aubr lint:fix:eslint"
 
 [tasks."lint:fix"]
 depends = [
@@ -70,10 +72,11 @@ depends = [
 ]
 
 [tasks.typecheck]
-depends = [ "//packages/*:typecheck" ]
+depends = ":build"
+run = "aubr typecheck"
 
 [tasks.unused]
-run = "knip-bun"
+run = "aubr unused"
 
 [tasks.check]
 depends = [
@@ -82,9 +85,13 @@ depends = [
   ":unused"
 ]
 
+[tasks."test:watch"]
+depends = ":build"
+run = "aubr test:watch"
+
 [tasks.test]
-depends = [ ":build" ]
-run = "bun test --isolate"
+depends = ":build"
+run = "aubr test"
 
 [tasks.prerelease]
 depends = [
@@ -95,5 +102,5 @@ depends = [
 [tasks.release]
 depends = ":prerelease"
 # See https://github.com/oven-sh/bun/issues/18906 and https://github.com/oven-sh/bun/issues/20477
-run = "bumpp --all --recursive --execute 'bun ./scripts/update-lockfile.sh'"
+run = "aubr release --execute 'bun ./scripts/update-lockfile.sh'"
 raw = true

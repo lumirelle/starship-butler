@@ -1,6 +1,6 @@
-import { afterAll, beforeAll, describe, expect, it, spyOn } from 'bun:test'
 import { consola } from 'consola'
 import { relative as _relative, normalize } from 'pathe'
+import { afterAll, beforeAll, describe, expect, it, vi } from 'vitest'
 import {
   copyFile,
   createSymlink,
@@ -12,6 +12,8 @@ import {
   removeSymlink,
 } from '../src/fs'
 import { info } from '../src/highlight'
+
+vi.mock('node:fs', { spy: true })
 
 // Helpers
 /** Dirname of the current file */
@@ -231,7 +233,7 @@ describe('fs util', () => {
     })
 
     it('should warn if file is exist', () => {
-      const spy = spyOn(consola, 'warn')
+      const spy = vi.spyOn(consola, 'warn')
 
       expect(copyFile(
         absoluteDirname('fixtures/butler.config.json'),
@@ -249,7 +251,6 @@ describe('fs util', () => {
       )
 
       remove(absoluteDirname('fixtures/tmp/butler.config.json'))
-      spy.mockRestore()
     })
 
     it('should create backup when force', async () => {
@@ -259,8 +260,8 @@ describe('fs util', () => {
       )).toBe(true)
 
       const fs = await import('node:fs')
-      const spiedRenameSync = spyOn(fs, 'renameSync')
-      const spiedCopyFileSync = spyOn(fs, 'copyFileSync').mockImplementationOnce(() => {
+      const spiedRenameSync = vi.spyOn(fs, 'renameSync')
+      vi.spyOn(fs, 'copyFileSync').mockImplementationOnce(() => {
         throw new Error('Throw an error to test rollback')
       })
       try {
@@ -281,8 +282,6 @@ describe('fs util', () => {
       expect(exists(absoluteDirname('fixtures/tmp/butler.config.json'))).toBe(true)
 
       remove(absoluteDirname('fixtures/tmp/butler.config.json'))
-      spiedRenameSync.mockRestore()
-      spiedCopyFileSync.mockRestore()
     })
   })
 
@@ -298,7 +297,7 @@ describe('fs util', () => {
     })
 
     it('should warn if symlink is exist', () => {
-      const spy = spyOn(consola, 'warn')
+      const spy = vi.spyOn(consola, 'warn')
 
       expect(createSymlink(
         absoluteDirname('fixtures/tmp/butler.config.json'),
@@ -316,7 +315,6 @@ describe('fs util', () => {
       )
 
       remove(absoluteDirname('fixtures/tmp/symlink-to-config'))
-      spy.mockRestore()
     })
 
     it('should create backup when force', async () => {
@@ -326,8 +324,8 @@ describe('fs util', () => {
       )).toBe(true)
 
       const fs = await import('node:fs')
-      const spiedRenameSync = spyOn(fs, 'renameSync')
-      const spiedSymlinkSync = spyOn(fs, 'symlinkSync').mockImplementationOnce(() => {
+      const spiedRenameSync = vi.spyOn(fs, 'renameSync')
+      vi.spyOn(fs, 'symlinkSync').mockImplementationOnce(() => {
         throw new Error('Throw an error to test rollback')
       })
       try {
@@ -349,8 +347,6 @@ describe('fs util', () => {
       expect(isSymbolicLink(absoluteDirname('fixtures/tmp/symlink-to-config'))).toBe(true)
 
       remove(absoluteDirname('fixtures/tmp/symlink-to-config'))
-      spiedRenameSync.mockRestore()
-      spiedSymlinkSync.mockRestore()
     })
   })
 
@@ -372,14 +368,13 @@ describe('fs util', () => {
     })
 
     it('should warn if remove path is not exist', () => {
-      const spied = spyOn(consola, 'warn')
+      const spied = vi.spyOn(consola, 'warn')
       const result = remove(absoluteDirname('fixtures/tmp/non-existing-path'))
       expect(result).toBe(false)
       expect(spied).toHaveBeenCalledTimes(1)
       expect(spied).toHaveBeenCalledWith(
         `REMOVE: Path not exists: ${info(absoluteDirname('fixtures/tmp/non-existing-path'))}, skip`,
       )
-      spied.mockRestore()
     })
   })
 
@@ -395,14 +390,13 @@ describe('fs util', () => {
     })
 
     it('should warn if remove path is not symlink', () => {
-      const spy = spyOn(consola, 'warn')
+      const spy = vi.spyOn(consola, 'warn')
       expect(removeSymlink(absoluteDirname('fixtures/butler.config.json'))).toBe(false)
       expect(spy).toHaveBeenCalledTimes(1)
       expect(spy).toHaveBeenCalledWith(
         `REMOVE: Path is not a symlink: ${info(absoluteDirname('fixtures/butler.config.json'))}, skip`,
       )
       expect(exists(absoluteDirname('fixtures/butler.config.json'))).toBe(true)
-      spy.mockRestore()
     })
   })
 })

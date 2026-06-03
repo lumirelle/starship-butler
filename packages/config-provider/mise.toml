@@ -8,5 +8,4 @@ run = "tsdown --watch"
 run = "tsdown --publint --attw.profile esm-only"
 
 [tasks.typecheck]
-depends = [ ":build" ]
 run = "tsc --noEmit"

@@ -1,5 +1,5 @@
-import { afterEach, beforeAll, beforeEach, describe, expect, it } from 'bun:test'
 import { isCI } from 'std-env'
+import { afterEach, beforeAll, beforeEach, describe, expect, it } from 'vitest'
 import { version } from '../package.json'
 import {
   loadConfig,

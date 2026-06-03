@@ -1,11 +1,12 @@
 [settings]
 experimental = true
 
-npm.package_manager = "bun"
+npm.package_manager = "aube"
 
 [tools]
 # -- JS/TS
 bun = "latest"
+aube = "latest"
 node = "24.16.0"
 "npm:@antfu/ni" = { version = "latest", depends = "node" }
 "npm:taze" = { version = "latest", depends = "node" }

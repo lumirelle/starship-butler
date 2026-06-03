@@ -1,8 +1,8 @@
-import { afterAll, beforeAll, beforeEach, describe, expect, it } from 'bun:test'
 import { readUserConfig, removeUserConfig, writeUserConfig } from 'starship-butler-utils/config'
 import { ensureDirectory } from 'starship-butler-utils/fs'
 import { homedir } from 'starship-butler-utils/path'
 import { isCI } from 'std-env'
+import { afterAll, beforeAll, beforeEach, describe, expect, it } from 'vitest'
 import { loadConfig } from '../src/config'
 
 beforeAll(() => {

@@ -7,7 +7,6 @@ export default {
       ignoreBinaries: ['mise'],
       ignoreDependencies: [
         '@lumirelle/oxlint-config',
-        'bumpp',
         'nano-staged',
       ],
     },
