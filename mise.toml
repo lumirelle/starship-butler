@@ -23,7 +23,7 @@ run = "nano-staged"
 depends = "//packages/*:dev"
 
 [tasks.count-vscode-extensions]
-run = "bun run count-vscode-extensions"
+run = "bun run ./scripts/count-vscode-extensions.ts"
 
 [tasks.build]
 depends = "//packages/*:build"
