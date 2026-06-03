@@ -98,6 +98,7 @@
         "publint": "^0.3.21"
       },
       "test": {
+        "@vitest/coverage-v8": "^4.1.8",
         "std-env": "^4.1.0",
         "tsnapi": "^0.3.3",
         "vitest": "^4.1.8"
@@ -109,6 +110,7 @@
     "@lumirelle/oxlint-config": "catalog:check",
     "@lumirelle/tsconfig": "catalog:types",
     "@types/node": "catalog:types",
+    "@vitest/coverage-v8": "catalog:test",
     "bumpp": "catalog:dev",
     "bun-types": "catalog:types",
     "consola": "catalog:prod",
