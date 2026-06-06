@@ -4,8 +4,8 @@
   // Theme
   "theme": {
     "mode": "system",
-    "dark": "GitHub Dark",
-    "light": "GitHub Light"
+    "dark": "ayu-darker",
+    "light": "ayu-darker"
   },
   "icon_theme": "Catppuccin Mocha",
   // Layout

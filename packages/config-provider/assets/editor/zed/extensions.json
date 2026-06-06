@@ -3,7 +3,7 @@
   "recommendations": [
     // #region UI
     // Theme
-    "github-theme",
+    "ayu-darker",
     "catppuccin-icons",
     // #endregion
 
