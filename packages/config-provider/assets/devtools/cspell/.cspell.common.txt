@@ -109,6 +109,8 @@ primevue
 tsnapi
 unhead
 scroller
+aube
+aubr
 # JAVA ECOSYSTEM
 graalvm
 javax
