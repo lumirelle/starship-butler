@@ -2,8 +2,8 @@
 {
   // #region Appearance / Theme
   "window.autoDetectColorScheme": true,
-  "workbench.preferredDarkColorTheme": "GitHub Dark Default",
-  "workbench.preferredLightColorTheme": "GitHub Light Default",
+  "workbench.preferredDarkColorTheme": "Ayu Dark",
+  "workbench.preferredLightColorTheme": "Ayu Light",
   "workbench.productIconTheme": "icons-carbon",
   "workbench.iconTheme": "catppuccin-mocha",
   "workbench.colorCustomizations": {
@@ -13,10 +13,10 @@
   // #endregion
 
   // #region Appearance / Font
-  "custom-ui-style.font.monospace": "'Comic Sans MS', 'Symbols Nerd Font Mono', 'Maple Mono CN', monospace",
-  "custom-ui-style.font.sansSerif": "'Comic Sans MS', 'Symbols Nerd Font', 'Maple Mono CN', sans-serif",
-  "editor.fontFamily": "'Comic Mono', 'Symbols Nerd Font Mono', 'Maple Mono CN', monospace",
-  "markdown.preview.fontFamily": "'Comic Sans MS', 'Symbols Nerd Font', 'Maple Mono CN', monospace",
+  "custom-ui-style.font.monospace": "'Geist', 'Symbols Nerd Font Mono', 'Maple Mono CN', monospace",
+  "custom-ui-style.font.sansSerif": "'Geist', 'Symbols Nerd Font', 'Maple Mono CN', sans-serif",
+  "editor.fontFamily": "'Geist Mono', 'Symbols Nerd Font Mono', 'Maple Mono CN', monospace",
+  "markdown.preview.fontFamily": "'Geist', 'Symbols Nerd Font', 'Maple Mono CN', monospace",
   "editor.fontSize": 16,
   "terminal.integrated.fontSize": 14,
   "markdown.preview.fontSize": 14,

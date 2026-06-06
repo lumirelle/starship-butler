@@ -2,8 +2,7 @@
 {
   "recommendations": [
     // #region Appearance / Theme
-    "github.github-vscode-theme",
-    "wicked-labs.sequoia",
+    "teabyii.ayu",
     "antfu.icons-carbon",
     "catppuccin.catppuccin-vsc-icons",
     // #endregion
@@ -91,6 +90,6 @@
     // #endregion
   ]
   // Extension Count
-  // VSCODE: 37
-  // CURSOR: 37
+  // VSCODE: 35
+  // CURSOR: 35
 }
