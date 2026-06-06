@@ -8,9 +8,7 @@
   "copyOnSelect": false,
   "defaultProfile": "{47302f9c-1ac4-566c-aa3e-8cf29889d6ab}",
   "keybindings": [
-    { "id": "Terminal.DuplicatePaneAuto", "keys": "alt+shift+d" },
-    // Send Ctrl+. correctly (Used by Neovim for Quickfix List).
-    { "keys": "ctrl+.", "command": { "action": "sendInput", "input": "\u001b[46;5u" } }
+    { "id": "Terminal.DuplicatePaneAuto", "keys": "alt+shift+d" }
   ],
   "launchMode": "maximized",
   "newTabMenu": [

@@ -28,7 +28,7 @@
     "vue.volar",
     "nuxtr.nuxtr-vscode",
     "alimozdemir.vscode-nuxt-dx-tools",
-    "antfu.goto-alias", // F12 / gd (With Neovim)
+    "antfu.goto-alias", // F12
     "antfu.slidev",
     // Atomic CSS Frameworks
     "antfu.unocss",

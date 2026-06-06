@@ -58,7 +58,6 @@
 
     // #region Behavior / Editor
     "ms-vscode.hexeditor",
-    "asvetliakov.vscode-neovim",
     "cardinal90.multi-cursor-case-preserve",
     // #endregion
 

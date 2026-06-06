@@ -118,10 +118,6 @@ describe('actions', () => {
               "name": "Zed",
             },
             {
-              "id": "nvim",
-              "name": "Neo Vim",
-            },
-            {
               "id": "cspell",
               "name": "cSpell",
             },
@@ -195,10 +191,6 @@ describe('actions', () => {
               "name": "Zed",
             },
             {
-              "id": "nvim",
-              "name": "Neo Vim",
-            },
-            {
               "id": "cspell",
               "name": "cSpell",
             },
@@ -267,10 +259,6 @@ describe('actions', () => {
             {
               "id": "zed",
               "name": "Zed",
-            },
-            {
-              "id": "nvim",
-              "name": "Neo Vim",
             },
             {
               "id": "cspell",
@@ -358,10 +346,6 @@ describe('actions', () => {
               "name": "Zed",
             },
             {
-              "id": "nvim",
-              "name": "Neo Vim",
-            },
-            {
               "id": "cspell",
               "name": "cSpell",
             },
@@ -431,10 +415,6 @@ describe('actions', () => {
               "name": "Zed",
             },
             {
-              "id": "nvim",
-              "name": "Neo Vim",
-            },
-            {
               "id": "cspell",
               "name": "cSpell",
             },
@@ -499,10 +479,6 @@ describe('actions', () => {
             {
               "id": "zed",
               "name": "Zed",
-            },
-            {
-              "id": "nvim",
-              "name": "Neo Vim",
             },
             {
               "id": "cspell",
@@ -590,10 +566,6 @@ describe('actions', () => {
               "name": "Zed",
             },
             {
-              "id": "nvim",
-              "name": "Neo Vim",
-            },
-            {
               "id": "cspell",
               "name": "cSpell",
             },
@@ -663,10 +635,6 @@ describe('actions', () => {
               "name": "Zed",
             },
             {
-              "id": "nvim",
-              "name": "Neo Vim",
-            },
-            {
               "id": "cspell",
               "name": "cSpell",
             },
@@ -731,10 +699,6 @@ describe('actions', () => {
             {
               "id": "zed",
               "name": "Zed",
-            },
-            {
-              "id": "nvim",
-              "name": "Neo Vim",
             },
             {
               "id": "cspell",

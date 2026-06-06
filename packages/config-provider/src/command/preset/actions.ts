@@ -7,7 +7,6 @@ import { cSpell } from './actions/devtools/c_spell'
 import { maven } from './actions/devtools/maven'
 import { sxzzCreate } from './actions/devtools/sxzz_create'
 import { cursor } from './actions/editor/cursor'
-import { neovim } from './actions/editor/neovim'
 import { vscode } from './actions/editor/vscode'
 import { zed } from './actions/editor/zed'
 import { rime } from './actions/input_method/rime'
@@ -50,7 +49,6 @@ function _createActions(): (Action | undefined)[] {
     vscode(),
     cursor(),
     zed(),
-    neovim(),
     // Linters
     cSpell(),
   ]

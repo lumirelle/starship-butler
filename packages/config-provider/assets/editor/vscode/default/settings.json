@@ -431,51 +431,6 @@
   // #endregion
 
   // #region Behavior / Dev Experience
-  // Neovim
-  "vscode-neovim.ctrlKeysForNormalMode": [
-    "a",
-    "b",
-    "c",
-    "d",
-    "f",
-    "h",
-    "i",
-    "j",
-    "k",
-    "l",
-    "m",
-    "n",
-    "o",
-    "r",
-    "t",
-    "u",
-    "v",
-    "w",
-    "x",
-    "z",
-    "/",
-    "]",
-    "right",
-    "left",
-    "up",
-    "down",
-    "backspace",
-    "delete"
-  ],
-  "vscode-neovim.ctrlKeysForInsertMode": [
-    "a",
-    "c",
-    "d",
-    "h",
-    "j",
-    "m",
-    "n",
-    "o",
-    "r",
-    "t",
-    "u",
-    "w"
-  ],
   // Markdown
   "markdown.extension.italic.indicator": "_",
   // Mise
@@ -492,12 +447,6 @@
   // I18n
   "i18n-ally.autoDetection": false,
   "i18n-ally.displayLanguage": "en",
-  // #endregion
-
-  // #region Behavior / Extensions / Performance
-  "extensions.experimental.affinity": {
-    "asvetliakov.vscode-neovim": 1
-  },
   // #endregion
 
   // #region Behavior / Extensions / Cleanliness

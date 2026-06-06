@@ -16,7 +16,6 @@ type ActionId
     | 'vscode'
     | 'cursor'
     | 'zed'
-    | 'nvim'
     | 'cspell'
     | 'rime'
 
