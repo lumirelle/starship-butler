@@ -9,7 +9,7 @@
 
 > [!Caution]
 >
-> This package is still in development, and the API may change frequently.
+> Migrated to [chezmoi](https://github.com/twpayne/chezmoi), see new repository [dotfiles](https://github.com/lumirelle/dotfiles).
 
 > [!Note]
 >

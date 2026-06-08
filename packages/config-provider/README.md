@@ -7,6 +7,10 @@
 [![Codecov][codecov-src]][codecov-href]
 [![License][license-src]][license-href]
 
+> [!Caution]
+>
+> Migrated to [chezmoi](https://github.com/twpayne/chezmoi), see new repository [dotfiles](https://github.com/lumirelle/dotfiles).
+
 Config provider of [starship butler](https://github.com/lumirelle/starship-butler).
 
 Provide the configuring ability for the butler.
