@@ -4,6 +4,7 @@ experimental = true
 npm.package_manager = "aube"
 
 [tools]
+chezmoi = "latest"
 # -- JS/TS
 bun = "latest"
 aube = "latest"
